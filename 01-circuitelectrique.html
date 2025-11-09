@@ -296,6 +296,11 @@
                         animation: flicker 0.1s ease-in-out infinite;
                     }
 
+                    .bulb-on {
+                        fill: #ffed4e !important;
+                        filter: drop-shadow(0 0 8px rgba(255, 237, 74, 0.8));
+                    }
+
                     .dim-bulb {
                         animation: dim 1.5s ease-in-out infinite;
                     }
@@ -453,6 +458,7 @@
 
                 this.setupEventListeners();
                 this.initializeParticles();
+                this.updateUI(); // Initialiser l'état de la lampe
                 this.startAnimation();
             }
 
@@ -476,8 +482,9 @@
                     this.circuitState.setAttribute('fill', '#2ecc71');
                     this.statusDisplay.textContent = '✓ Circuit ACTIF - Énergie en circulation';
                     this.statusDisplay.classList.add('on');
-                    this.bulb.classList.add('flicker-bulb');
+                    this.bulb.classList.add('bulb-on');
                     this.bulb.classList.remove('dim-bulb');
+                    this.bulb.classList.remove('flicker-bulb');
                 } else {
                     this.switchButton.classList.remove('on');
                     this.switchContainer.classList.remove('active');
@@ -487,6 +494,7 @@
                     this.circuitState.setAttribute('fill', '#f44336');
                     this.statusDisplay.textContent = '✗ Circuit INACTIF - Aucun courant';
                     this.statusDisplay.classList.remove('on');
+                    this.bulb.classList.remove('bulb-on');
                     this.bulb.classList.remove('flicker-bulb');
                     this.bulb.classList.add('dim-bulb');
                 }
