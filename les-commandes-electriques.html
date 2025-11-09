@@ -20,6 +20,27 @@
             padding: 0;
         }
 
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .content-area {
+            flex: 0 0 80%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 20%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         header {
             background: rgba(0, 0, 0, 0.9);
             padding: 20px;
@@ -66,9 +87,9 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-y: auto;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
         }
 
         .container {
@@ -76,8 +97,8 @@
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-            max-width: 1200px;
             width: 100%;
+            max-width: 100%;
         }
 
         h2 {
@@ -274,8 +295,21 @@
             background: #fff9e6;
             border: 2px solid #ff9800;
             border-radius: 10px;
-            padding: 30px;
-            margin-top: 50px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
         }
 
         .quiz-section h3 {
@@ -284,53 +318,66 @@
             border-bottom: 3px solid #ff9800;
         }
 
+        .quiz-section p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
         .quiz-question {
             background: white;
             border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
             transition: all 0.3s ease;
+            display: none;
+        }
+
+        .quiz-question:first-of-type {
+            display: block;
         }
 
         .quiz-question:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .question-number {
             display: inline-block;
             background: #ff9800;
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             text-align: center;
-            line-height: 30px;
+            line-height: 24px;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 8px;
+            font-size: 12px;
         }
 
         .question-text {
             font-weight: 600;
             color: #333;
-            margin: 15px 0;
-            font-size: 16px;
+            margin: 8px 0;
+            font-size: 13px;
         }
 
         .quiz-options {
-            margin: 15px 0;
+            margin: 8px 0;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 6px;
         }
 
         .quiz-option {
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
             background: #f9f9f9;
+            font-size: 12px;
         }
 
         .quiz-option:hover {
@@ -339,7 +386,7 @@
         }
 
         .quiz-option input[type="radio"] {
-            margin-right: 10px;
+            margin-right: 6px;
             cursor: pointer;
         }
 
@@ -348,6 +395,7 @@
             margin: 0;
             display: flex;
             align-items: center;
+            font-size: 12px;
         }
 
         .quiz-answer {
@@ -376,22 +424,28 @@
             background: #ff9800;
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 16px;
-            margin-top: 10px;
+            font-size: 12px;
+            margin-top: 8px;
+            width: 100%;
         }
 
         .quiz-button:hover {
             background: #f57c00;
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         .quiz-button:active {
-            transform: scale(0.95);
+            transform: scale(0.98);
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 6px;
         }
 
         .quiz-result {
@@ -410,6 +464,20 @@
             display: block;
         }
 
+        @media (max-width: 1024px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .content-area {
+                flex: 1;
+            }
+
+            .quiz-area {
+                flex: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 24px;
@@ -426,6 +494,19 @@
             h3 {
                 font-size: 18px;
             }
+
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area {
+                flex: 1;
+            }
+
+            .quiz-area {
+                flex: 1;
+            }
         }
     </style>
 </head>
@@ -436,8 +517,9 @@
         <p>Cours complet et interactif</p>
     </header>
 
-    <div class="content">
-        <div class="container">
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="container">
             <!-- SECTION 1: COMMANDES D'UN CIRCUIT ÉLECTRIQUE -->
             <div class="section">
                 <h2>🔌 Les Commandes d'un Circuit Électrique</h2>
@@ -1235,9 +1317,12 @@
                 </table>
             </div>
         </div>
-    </div>
+        </div>
+        </div>
 
-    <!-- Quiz Section for Commutateur -->
+    <!-- Quiz Area -->
+    <div class="quiz-area">
+        <!-- Quiz Section for Commutateur -->
     <section class="quiz-section" id="commutateur-quiz">
         <h2>📝 Quiz - Section 3: Commutateur</h2>
         <p>Répondez à ces 5 questions pour tester votre compréhension des commutateurs.</p>
@@ -1576,6 +1661,7 @@
                 <div id="quiz-results" style="margin-top: 20px;"></div>
             </div>
         </section>
+    </div>
     </div>
     </div>
 
