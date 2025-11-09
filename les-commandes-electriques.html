@@ -394,14 +394,22 @@
             <!-- SECTION 2: BOUTONS POUSSOIRS -->
             <div class="section">
                 <h2>🔘 Les Boutons Poussoirs</h2>
-                <p class="subtitle">Comprendre les deux types de boutons poussoirs et leurs applications</p>
+                <p class="subtitle">Découvrir les deux types de boutons poussoirs et comment ils fonctionnent</p>
 
-                <h3>2.1 Bouton Poussoir Ouvert au Repos (NO - Normally Open)</h3>
+                <div class="info" style="background: #fff3cd; border-left: 5px solid #ff9800; margin-bottom: 30px;">
+                    <strong>📌 Différence Position Repos vs Position Travail :</strong><br><br>
+                    <strong>Position REPOS :</strong> L'état naturel du bouton quand on ne l'appuie pas<br>
+                    <strong>Position TRAVAIL :</strong> L'état du bouton quand on appuie dessus<br><br>
+                    • <strong>Bouton NO (Ouvert au repos) :</strong> REPOS = Ouvert | TRAVAIL = Fermé (ferme le circuit)<br>
+                    • <strong>Bouton NC (Fermé au repos) :</strong> REPOS = Fermé | TRAVAIL = Ouvert (coupe le circuit)
+                </div>
+
+                <h3>2.1 Bouton Poussoir Ouvert au Repos (NO) - Exemple: SONNERIE</h3>
 
                 <div class="circuits-grid">
                     <!-- Bouton Poussoir Ouvert - Au Repos -->
                     <div class="circuit-card open">
-                        <h4>🔘 BOUTON AU REPOS (Pas appuyé)</h4>
+                        <h4>🔘 POSITION REPOS (Circuit OUVERT)</h4>
                         <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Pile -->
                             <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
@@ -442,14 +450,15 @@
                             <line x1="150" y1="260" x2="120" y2="260" stroke="#333" stroke-width="2"/>
                         </svg>
                         <div class="circuit-description">
-                            <strong>Au repos (pas appuyé)</strong><br>
-                            Circuit OUVERT → Lampe ÉTEINTE ❌
+                            <strong>Position REPOS</strong><br>
+                            ❌ Sonnerie NE SONNE PAS<br>
+                            Circuit OUVERT
                         </div>
                     </div>
 
                     <!-- Bouton Poussoir Ouvert - Appuyé -->
                     <div class="circuit-card closed">
-                        <h4>🔘 BOUTON APPUYÉ</h4>
+                        <h4>🔘 POSITION TRAVAIL (Circuit FERMÉ)</h4>
                         <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Pile -->
                             <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
@@ -496,25 +505,28 @@
                             <circle cx="120" cy="150" r="3" fill="#ff6b6b" class="pulse-particle" style="animation-delay: 0.6s;"/>
                         </svg>
                         <div class="circuit-description">
-                            <strong>En appuyant sur le bouton</strong><br>
-                            Circuit FERMÉ → Lampe ALLUMÉE ✅
+                            <strong>Position TRAVAIL</strong><br>
+                            ✅ Sonnerie SONNE 🔔<br>
+                            Circuit FERMÉ
                         </div>
                     </div>
                 </div>
 
-                <div class="info" style="margin-top: 20px;">
-                    <strong>📌 Bouton Poussoir NO (Normally Open) :</strong><br>
-                    • <strong>Au repos :</strong> Circuit OUVERT → Lampe ÉTEINTE<br>
-                    • <strong>Appuyé :</strong> Circuit FERMÉ → Lampe ALLUMÉE<br>
-                    • <strong>Applications :</strong> Sonnettes, interphones, ascenseurs, commandes d'urgence
+                <div class="info" style="margin-top: 20px; background: #e8f5e9; border-left: 5px solid #4caf50;">
+                    <strong>📌 Bouton Poussoir NO (Ouvert au Repos) :</strong><br><br>
+                    <strong>Position REPOS :</strong> Circuit OUVERT → Sonnerie s'arrête ❌<br>
+                    <strong>Position TRAVAIL (appui) :</strong> Circuit FERMÉ → Sonnerie sonne ✅ 🔔<br><br>
+                    <strong>📍 Exemple parfait :</strong> Bouton de sonnerie à la porte<br>
+                    • Quand vous n'appuyez pas → la sonnerie est silencieuse<br>
+                    • Quand vous appuyez → la sonnerie retentit
                 </div>
 
-                <h3 style="margin-top: 50px;">2.2 Bouton Poussoir Fermé au Repos (NC - Normally Closed)</h3>
+                <h3 style="margin-top: 50px;">2.2 Bouton Poussoir Fermé au Repos (NC) - Exemple: LAMPE DE RÉFRIGÉRATEUR</h3>
 
                 <div class="circuits-grid">
                     <!-- Bouton Poussoir Fermé - Au Repos -->
                     <div class="circuit-card closed">
-                        <h4>🔘 BOUTON AU REPOS (Pas appuyé)</h4>
+                        <h4>🔘 POSITION REPOS (Circuit FERMÉ)</h4>
                         <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Pile -->
                             <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
@@ -561,14 +573,15 @@
                             <circle cx="120" cy="150" r="3" fill="#ff6b6b" class="pulse-particle" style="animation-delay: 0.6s;"/>
                         </svg>
                         <div class="circuit-description">
-                            <strong>Au repos (pas appuyé)</strong><br>
-                            Circuit FERMÉ → Lampe ALLUMÉE ✅
+                            <strong>Position REPOS</strong><br>
+                            ✅ Lampe ALLUMÉE 💡<br>
+                            (Porte du frigo FERMÉE)
                         </div>
                     </div>
 
                     <!-- Bouton Poussoir Fermé - Appuyé -->
                     <div class="circuit-card open">
-                        <h4>🔘 BOUTON APPUYÉ</h4>
+                        <h4>🔘 POSITION TRAVAIL (Circuit OUVERT)</h4>
                         <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Pile -->
                             <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
@@ -608,17 +621,20 @@
                             <line x1="150" y1="260" x2="120" y2="260" stroke="#333" stroke-width="2"/>
                         </svg>
                         <div class="circuit-description">
-                            <strong>En appuyant sur le bouton</strong><br>
-                            Circuit OUVERT → Lampe ÉTEINTE ❌
+                            <strong>Position TRAVAIL</strong><br>
+                            ❌ Lampe ÉTEINTE<br>
+                            (Porte du frigo OUVERTE)
                         </div>
                     </div>
                 </div>
 
-                <div class="info" style="margin-top: 20px;">
-                    <strong>📌 Bouton Poussoir NC (Normally Closed) :</strong><br>
-                    • <strong>Au repos :</strong> Circuit FERMÉ → Lampe ALLUMÉE<br>
-                    • <strong>Appuyé :</strong> Circuit OUVERT → Lampe ÉTEINTE<br>
-                    • <strong>Applications :</strong> Arrêt d'urgence, détecteurs de présence, alarmes
+                <div class="info" style="margin-top: 20px; background: #e3f2fd; border-left: 5px solid #2196f3;">
+                    <strong>📌 Bouton Poussoir NC (Fermé au Repos) :</strong><br><br>
+                    <strong>Position REPOS :</strong> Circuit FERMÉ → Lampe allumée ✅ 💡<br>
+                    <strong>Position TRAVAIL (appui) :</strong> Circuit OUVERT → Lampe éteinte ❌<br><br>
+                    <strong>📍 Exemple parfait :</strong> Bouton de la porte du réfrigérateur<br>
+                    • Quand la porte est FERMÉE (repos) → la lampe s'ALLUME<br>
+                    • Quand vous OUVREZ la porte (appui sur le bouton) → la lampe s'ÉTEINT
                 </div>
 
                 <h3 style="margin-top: 50px;">2.3 Symboles Normalisés des Boutons Poussoirs</h3>
@@ -669,25 +685,25 @@
                 </div>
 
                 <div class="conclusion-box" style="margin-top: 40px;">
-                    <h3>💡 Comparaison des Boutons Poussoirs</h3>
+                    <h3>💡 Comparaison des Deux Types de Boutons Poussoirs</h3>
                     <table style="width: 100%; border-collapse: collapse; color: white; margin-top: 15px;">
                         <tr style="background: rgba(0,0,0,0.3);">
                             <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Type</th>
-                            <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Au Repos</th>
-                            <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Appuyé</th>
-                            <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Applications</th>
+                            <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Position REPOS</th>
+                            <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Position TRAVAIL (appui)</th>
+                            <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: left;">Exemple</th>
                         </tr>
                         <tr>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);"><strong>NO</strong> (Ouvert)</td>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Ouvert (OFF)</td>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Fermé (ON)</td>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Sonnettes, ascenseurs, interphones</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);"><strong>NO</strong> (Ouvert au repos)</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Circuit OUVERT ❌</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Circuit FERMÉ ✅</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">🔔 Sonnerie</td>
                         </tr>
                         <tr style="background: rgba(0,0,0,0.2);">
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);"><strong>NC</strong> (Fermé)</td>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Fermé (ON)</td>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Ouvert (OFF)</td>
-                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Arrêt d'urgence, alarmes, portes</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);"><strong>NC</strong> (Fermé au repos)</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Circuit FERMÉ ✅</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Circuit OUVERT ❌</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">💡 Lampe réfrigérateur</td>
                         </tr>
                     </table>
                 </div>
