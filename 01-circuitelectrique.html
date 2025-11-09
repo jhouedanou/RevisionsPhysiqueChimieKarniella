@@ -327,7 +327,7 @@
             <!-- FIL 1 - De la pile vers la lampe (haut) -->
             <path id="fil1" d="M 115 95 L 115 60 L 570 60" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
 
-            <!-- Conteneur pour particules fil 1 -->
+            <!-- Conteneur pour courant électrique fil 1 -->
             <g id="particles-fil1" class="animated-glow"></g>
 
             <!-- LAMPE (Récepteur) -->
@@ -348,7 +348,7 @@
             <!-- FIL 2 - De la lampe vers l'interrupteur (côté droit) -->
             <path id="fil2" d="M 600 125 L 600 240 L 480 240" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
 
-            <!-- Conteneur pour particules fil 2 -->
+            <!-- Conteneur pour courant électrique fil 2 -->
             <g id="particles-fil2" class="animated-glow"></g>
 
             <!-- INTERRUPTEUR -->
@@ -375,7 +375,7 @@
             <!-- FIL 3 - De l'interrupteur vers la pile (bas) -->
             <path id="fil3" d="M 390 252 L 300 252 L 300 360 L 115 360 L 115 245" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
 
-            <!-- Conteneur pour particules fil 3 -->
+            <!-- Conteneur pour courant électrique fil 3 -->
             <g id="particles-fil3" class="animated-glow"></g>
 
             <!-- LÉGENDE / INFO -->
@@ -401,10 +401,10 @@
                 <text x="570" y="478" font-size="12" fill="#333" font-weight="bold">Interrupteur:</text>
                 <text x="570" y="495" font-size="11" fill="#666">Active/Désactive le courant</text>
 
-                <!-- Particules -->
+                <!-- Courant électrique -->
                 <circle cx="100" cy="525" r="3" fill="#FFD700" class="pulse-circle"/>
-                <text x="125" y="528" font-size="12" fill="#333" font-weight="bold">Particules:</text>
-                <text x="125" y="545" font-size="11" fill="#666">Représentent le flux d'électricité</text>
+                <text x="125" y="528" font-size="12" fill="#333" font-weight="bold">Courant électrique:</text>
+                <text x="125" y="545" font-size="11" fill="#666">Se déplace dans le circuit fermé</text>
 
                 <!-- Flux -->
                 <text x="320" y="528" font-size="12" fill="#333" font-weight="bold">Flux d'énergie:</text>
@@ -429,9 +429,9 @@
         <div class="info">
             <strong>💡 Comment utiliser:</strong><br>
             • Clique sur l'interrupteur (ou le bouton à droite) pour activer/désactiver le courant<br>
-            • Quand le circuit est fermé (ACTIF), les particules d'énergie se déplacent dans les fils<br>
-            • Quand le circuit est ouvert (INACTIF), les particules s'arrêtent et la lampe s'éteint<br>
-            • Les petits points jaunes représentent le flux d'électricité circulant dans la boucle
+            • Quand le circuit est fermé (ACTIF), le courant électrique se déplace dans les fils<br>
+            • Quand le circuit est ouvert (INACTIF), le courant s'arrête et la lampe s'éteint<br>
+            • Les petits points jaunes représentent le courant électrique circulant dans la boucle
         </div>
     </div>
 
@@ -493,7 +493,7 @@
             }
 
             initializeParticles() {
-                // Définir les trajets des particules
+                // Définir les trajets du courant électrique
                 this.paths = [
                     {
                         // Fil 1: Pile vers Lampe
@@ -529,7 +529,7 @@
                     }
                 ];
 
-                // Créer les particules
+                // Créer le courant électrique
                 let particleId = 0;
                 this.paths.forEach((path, pathIndex) => {
                     const particlesPerPath = 5;
@@ -620,7 +620,7 @@
                         particle.element.setAttribute('cy', pos.y);
                     });
                 } else {
-                    // Si le circuit est inactif, cacher les particules
+                    // Si le circuit est inactif, cacher le courant électrique
                     this.particles.forEach(particle => {
                         if (particle.element) {
                             particle.element.setAttribute('opacity', '0');
