@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 3: Court-circuit et Protection - Physique-Chimie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .content-area {
+            flex: 0 0 80%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 20%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-size: 28px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            font-size: 20px;
+        }
+
+        h4 {
+            color: #444;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%);
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.15);
+        }
+
+        .definition-box h4 {
+            color: #e74c3c;
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .danger-box {
+            background: #fff3cd;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .danger-box h4 {
+            color: #ff6f00;
+            margin-top: 0;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .cause-card {
+            background: white;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cause-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);
+        }
+
+        .cause-card h4 {
+            color: #e74c3c;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cause-icon {
+            font-size: 24px;
+        }
+
+        .protection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .protection-table thead {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .protection-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .protection-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .protection-table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%);
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #e74c3c;
+            margin-top: 0;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 2px solid #e74c3c;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+            border-color: #c0392b;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 13px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-size: 14px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #e74c3c;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #c0392b;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #e74c3c;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .quiz-feedback {
+            font-size: 12px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #c0392b;
+            transform: scale(1.02);
+        }
+
+        .quiz-button:active {
+            transform: scale(0.98);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .info-list {
+            background: #f9f9f9;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li:before {
+            content: "⚡ ";
+            color: #e74c3c;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        svg-diagram {
+            margin: 20px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .content-area {
+                flex: 1;
+            }
+
+            .quiz-area {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area {
+                flex: 1;
+            }
+
+            .quiz-area {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>⚠️ Leçon 3: Court-Circuit et Protection</h1>
+        <p>Comprendre les dangers et les protections des installations électriques</p>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="container">
+                <!-- SECTION 1: DÉFINITION D'UN COURT-CIRCUIT -->
+                <h2>⚠️ Qu'est-ce qu'un Court-Circuit?</h2>
+                <p class="subtitle">Comprendre les risques et les causes</p>
+
+                <div class="definition-box">
+                    <h4>📖 Définition Précise d'un Court-Circuit</h4>
+                    <p><strong>Un court-circuit est une connexion directe entre la borne positive et la borne négative d'une source d'électricité, avec une résistance très faible ou nulle.</strong></p>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e74c3c;">
+                        Normalement, le courant circule à travers un circuit complet (pile → fils → appareil → fils → pile). Dans un court-circuit, le courant contourne l'appareil et prend le chemin le plus court possible entre les deux bornes, en contournant toute résistance.
+                    </p>
+                </div>
+
+                <div class="danger-box">
+                    <h4>⚠️ Conséquences d'un Court-Circuit</h4>
+                    <ul style="margin: 15px 0; padding-left: 25px;">
+                        <li><strong>Courant très intense:</strong> Sans résistance pour le freiner, le courant devient extrêmement puissant</li>
+                        <li><strong>Chaleur excessive:</strong> La formule P = I²R génère une chaleur dangereuse, même avec R faible</li>
+                        <li><strong>Risque d'incendie:</strong> Les fils peuvent surchauffer et prendre feu</li>
+                        <li><strong>Risque d'électrocution:</strong> Le courant intense peut être mortel</li>
+                        <li><strong>Dommages matériels:</strong> Les appareils électriques peuvent être endommagés</li>
+                    </ul>
+                </div>
+
+                <!-- SECTION 2: CAUSES DES COURTS-CIRCUITS -->
+                <h3>🔴 Les Principales Causes d'un Court-Circuit</h3>
+
+                <div class="causes-grid">
+                    <!-- Cause 1: Branchement Anarchique -->
+                    <div class="cause-card">
+                        <h4><span class="cause-icon">🔌</span> Branchement Anarchique</h4>
+                        <p><strong>Description:</strong> Connexions électriques désorganisées, mal isolées ou sans respect des normes.</p>
+                        <p><strong>Exemple:</strong> Plusieurs fils de couleurs différentes branchés ensemble sans organisation, ou des fils croisés sans isolation.</p>
+                        <p><strong>Risque:</strong> Les fils positifs et négatifs peuvent se toucher accidentellement.</p>
+                    </div>
+
+                    <!-- Cause 2: Contacts Dénudés -->
+                    <div class="cause-card">
+                        <h4><span class="cause-icon">🔪</span> Contacts Dénudés</h4>
+                        <p><strong>Description:</strong> Les fils de cuivre sont exposés sans leur isolation en plastique.</p>
+                        <p><strong>Exemple:</strong> Un fil usé où l'isolant s'est détérioré, ou un fil coupé avec une lame, exposant le cuivre.</p>
+                        <p><strong>Risque:</strong> Deux fils dénudés qui se touchent créent un court-circuit immédiat.</p>
+                    </div>
+
+                    <!-- Cause 3: Surcharge d'une Prise -->
+                    <div class="cause-card">
+                        <h4><span class="cause-icon">🔥</span> Surcharge d'une Prise</h4>
+                        <p><strong>Description:</strong> Brancher trop d'appareils sur une seule prise, dépassant sa capacité.</p>
+                        <p><strong>Exemple:</strong> Utiliser une multiprise pour brancher un aspirateur, un chauffage ET un micro-ondes ensemble.</p>
+                        <p><strong>Risque:</strong> La prise surchauffe et peut créer un court-circuit interne.</p>
+                    </div>
+
+                    <!-- Cause 4: Dégâts Physiques -->
+                    <div class="cause-card">
+                        <h4><span class="cause-icon">💥</span> Dégâts Physiques</h4>
+                        <p><strong>Description:</strong> L'installation électrique est endommagée par un accident ou l'usure.</p>
+                        <p><strong>Exemple:</strong> Un câble écrasé par un meuble, une prise exposée à l'humidité, ou un câble rongé.</p>
+                        <p><strong>Risque:</strong> L'isolation se fissure et les conducteurs se touchent.</p>
+                    </div>
+
+                    <!-- Cause 5: Eau et Humidité -->
+                    <div class="cause-card">
+                        <h4><span class="cause-icon">💧</span> Eau et Humidité</h4>
+                        <p><strong>Description:</strong> L'eau pénètre dans l'installation électrique.</p>
+                        <p><strong>Exemple:</strong> Une prise mouillée, un câble dans un endroit humide, ou une fuite d'eau qui touche les fils.</p>
+                        <p><strong>Risque:</strong> L'eau conduit l'électricité et crée un chemin direct entre les conducteurs.</p>
+                    </div>
+
+                    <!-- Cause 6: Défaut d'Appareil -->
+                    <div class="cause-card">
+                        <h4><span class="cause-icon">⚙️</span> Défaut d'Appareil</h4>
+                        <p><strong>Description:</strong> Un appareil électrique a un défaut interne qui crée un court-circuit.</p>
+                        <p><strong>Exemple:</strong> Un radiateur électrique avec un défaut où le fil intérieur touche la carcasse métallique.</p>
+                        <p><strong>Risque:</strong> Le court-circuit se produit lors de l'utilisation de l'appareil.</p>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: PROTECTION CONTRE LES COURTS-CIRCUITS -->
+                <h3>🛡️ Les Protections contre les Courts-Circuits</h3>
+
+                <p>Pour éviter les dangers des courts-circuits, les installations électriques modernes utilisent plusieurs systèmes de protection:</p>
+
+                <table class="protection-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">🔧 Appareil de Protection</th>
+                            <th style="width: 35%;">⚙️ Fonctionnement</th>
+                            <th style="width: 40%;">✅ Avantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fusible</strong></td>
+                            <td>Un fil de faible résistance qui fond quand le courant est trop intense, coupant le circuit</td>
+                            <td>Simple, peu cher, coupe immédiatement le circuit en cas de surcharge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disjoncteur</strong></td>
+                            <td>Un interrupteur électromagnétique qui se déclenche automatiquement quand le courant dépasse une limite</td>
+                            <td>Réutilisable, réaction rapide, protection efficace, peut être réarmé</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disjoncteur Différentiel (DDR)</strong></td>
+                            <td>Détecte les fuites de courant vers la terre (ex: si quelqu'un touche un fil)</td>
+                            <td>Protège contre l'électrocution, détecte les défauts d'isolation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Isolation des Câbles</strong></td>
+                            <td>Une gaine en plastique protège les conducteurs de cuivre</td>
+                            <td>Prévient le contact direct entre les conducteurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prise de Terre</strong></td>
+                            <td>Un câble relié à la terre qui évacue les fuites de courant</td>
+                            <td>Crée un chemin sûr pour le courant de fuite, protège contre l'électrocution</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- SECTION 4: BONNES PRATIQUES -->
+                <h3>✅ Bonnes Pratiques pour Éviter les Courts-Circuits</h3>
+
+                <div class="info-list">
+                    <ul>
+                        <li><strong>Vérifier régulièrement</strong> l'état des câbles et des prises (pas de fissures, d'usure ou d'humidité)</li>
+                        <li><strong>Ne pas surcharger</strong> les prises de courant avec trop d'appareils à la fois</li>
+                        <li><strong>Utiliser des multiprises</strong> avec protection contre les surcharges</li>
+                        <li><strong>Éloigner l'eau</strong> des installations électriques (pas de prise près d'un lavabo)</li>
+                        <li><strong>Ne pas réparer</strong> soi-même un fil endommagé - appeler un électricien professionnel</li>
+                        <li><strong>Débrancher</strong> les appareils défectueux immédiatement</li>
+                        <li><strong>Entretenir</strong> l'installation électrique selon les normes</li>
+                        <li><strong>Installer un disjoncteur</strong> ou un fusible adapté à chaque circuit</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <h4>🚨 En Cas de Court-Circuit</h4>
+                    <p style="margin: 0;"><strong>Si vous soupçonnez un court-circuit (étincelles, odeur de brûlé, disjoncteur déclenché):</strong></p>
+                    <ol style="margin: 15px 0 0 20px; color: #555;">
+                        <li>Coupez immédiatement l'électricité à l'aide du disjoncteur principal</li>
+                        <li>N'essayez pas de réparer vous-même</li>
+                        <li>Appelez un électricien professionnel certifié</li>
+                        <li>Ne réutilisez pas le circuit tant qu'il n'a pas été réparé</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <section class="quiz-section">
+                <h2>📝 Quiz</h2>
+                <p>Testez vos connaissances sur les courts-circuits (5 questions)</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce qu'un court-circuit?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Une connexion directe entre + et − avec très peu de résistance
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Un circuit qui manque de puissance
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Un fil qui est trop court
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="d"> Une prise avec peu d'amperage
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quel est le principal danger d'un court-circuit?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Cela consomme moins d'énergie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Courant très intense qui génère beaucoup de chaleur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Cela augmente la tension
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="d"> Cela éteint tous les appareils
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Qu'est-ce qui peut causer un court-circuit?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Des fils dénudés qui se touchent
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Une prise humide
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Une surcharge d'appareils
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="d"> Tous les éléments ci-dessus
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quel appareil coupe automatiquement le circuit en cas de surcharge?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Un fusible ou un disjoncteur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Un transformateur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Une multiprise
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="d"> Un compteur électrique
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Que faire en cas de court-circuit soupçonné?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Essayer de réparer soi-même avec un tournevis
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Couper l'électricité et appeler un électricien
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Continuer à utiliser le circuit normalement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="d"> Brancher plus d'appareils pour tester
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier Réponses</button>
+                <div id="quiz-results" class="quiz-result"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Réponses correctes du quiz
+        const quizAnswers = {
+            q1: 'a', // Connexion directe entre + et −
+            q2: 'b', // Courant très intense qui génère de la chaleur
+            q3: 'd', // Tous les éléments ci-dessus
+            q4: 'a', // Fusible ou disjoncteur
+            q5: 'b'  // Couper l'électricité et appeler un électricien
+        };
+
+        // Fonction pour vérifier le quiz
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            // Vérifier chaque réponse
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff6f00; font-weight: bold;">⚠️ Réponse manquante</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Correct!</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                    }
+                }
+            }
+
+            // Afficher les résultats
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #27ae60;">🎉 Excellent! Vous maîtrisez bien ce sujet.</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #f39c12;">👍 Bon travail! Continuez à réviser.</span>';
+            } else {
+                resultMessage += '<span style="color: #e74c3c;">📚 À relire! Revisitez le contenu.</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+
+            // Scroll vers les résultats
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
