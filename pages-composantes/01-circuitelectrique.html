@@ -50,6 +50,17 @@
             border-bottom: 3px solid #ffed4e;
         }
 
+        .btn-back {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            margin-right: auto !important;
+            padding: 10px 20px !important;
+        }
+
+        .btn-back:hover {
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateX(-5px);
+        }
+
         .content {
             flex: 1;
             display: flex;
@@ -242,6 +253,7 @@
 <body>
     <!-- Navigation Menu -->
     <nav>
+        <a href="../index.html" class="btn-back">← Retour</a>
         <a href="01-circuitelectrique.html" class="active">⚡ Circuit Électrique</a>
         <a href="02-sens-courant.html">🔄 Sens du Courant</a>
         <a href="03-isolants-conducteurs.html">🔌 Isolants &amp; Conducteurs</a>

@@ -25,6 +25,30 @@
             padding: 20px;
             text-align: center;
             border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         header h1 {
@@ -512,6 +536,7 @@
 </head>
 <body>
     <header>
+        <a href="index.html" class="btn-back">← Retour</a>
         <h1>⚡ Le Circuit Électrique</h1>
         <p>Cours complet et interactif</p>
     </header>
