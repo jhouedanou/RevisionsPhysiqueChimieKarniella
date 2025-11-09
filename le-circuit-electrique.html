@@ -521,6 +521,7 @@
         <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Sens du Courant</button>
         <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Isolants &amp; Conducteurs</button>
         <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Types de Piles</button>
+        <button class="tab-button" onclick="openTab(event, 'tab5')">5️⃣ Symboles Normalisés</button>
     </div>
 
     <div class="content">
@@ -1140,6 +1141,215 @@
                     • Les piles de même tension peuvent être combinées en série (+ d'une à − de l'autre)<br>
                     • Attention : inverser les bornes peut endommager les appareils<br>
                     • La couleur dorée/jaune indique généralement la borne positive
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: SYMBOLES NORMALISÉS -->
+        <div id="tab5" class="tab-content">
+            <div class="container">
+                <h2>🔌 Symboles Normalisés des Éléments du Circuit</h2>
+                <p class="subtitle">Les symboles utilisés dans les schémas électriques normalisés</p>
+
+                <svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Grille de symboles -->
+
+                    <!-- Ligne 1 -->
+                    <!-- Pile -->
+                    <g>
+                        <text x="120" y="50" font-size="16" font-weight="bold" fill="#333">Pile</text>
+                        <line x1="80" y1="80" x2="80" y2="120" stroke="#333" stroke-width="3"/>
+                        <line x1="100" y1="70" x2="100" y2="130" stroke="#333" stroke-width="2"/>
+                        <text x="40" y="150" font-size="12" fill="#666">Batterie / Pile</text>
+                        <text x="40" y="165" font-size="11" fill="#999">+ et − polaires</text>
+                    </g>
+
+                    <!-- Lampe -->
+                    <g>
+                        <text x="300" y="50" font-size="16" font-weight="bold" fill="#333">Lampe</text>
+                        <circle cx="320" cy="100" r="20" fill="none" stroke="#333" stroke-width="2"/>
+                        <line x1="310" y1="120" x2="310" y2="140" stroke="#333" stroke-width="2"/>
+                        <line x1="330" y1="120" x2="330" y2="140" stroke="#333" stroke-width="2"/>
+                        <line x1="320" y1="85" x2="320" y2="65" stroke="#333" stroke-width="2"/>
+                        <text x="280" y="150" font-size="12" fill="#666">Ampoule</text>
+                        <text x="280" y="165" font-size="11" fill="#999">Voyant lumineux</text>
+                    </g>
+
+                    <!-- Interrupteur -->
+                    <g>
+                        <text x="520" y="50" font-size="16" font-weight="bold" fill="#333">Interrupteur</text>
+                        <line x1="520" y1="100" x2="540" y2="100" stroke="#333" stroke-width="2"/>
+                        <circle cx="540" cy="100" r="4" fill="#333"/>
+                        <line x1="545" y1="100" x2="560" y2="100" stroke="#333" stroke-width="2"/>
+                        <circle cx="520" cy="100" r="4" fill="#333"/>
+                        <text x="480" y="150" font-size="12" fill="#666">Commutateur</text>
+                        <text x="480" y="165" font-size="11" fill="#999">Ouvert / Fermé</text>
+                    </g>
+
+                    <!-- Moteur -->
+                    <g>
+                        <text x="740" y="50" font-size="16" font-weight="bold" fill="#333">Moteur</text>
+                        <circle cx="760" cy="100" r="20" fill="none" stroke="#333" stroke-width="2"/>
+                        <text x="755" y="108" font-size="18" font-weight="bold" fill="#333">M</text>
+                        <line x1="750" y1="120" x2="750" y2="140" stroke="#333" stroke-width="2"/>
+                        <line x1="770" y1="120" x2="770" y2="140" stroke="#333" stroke-width="2"/>
+                        <text x="720" y="150" font-size="12" fill="#666">Moteur Électrique</text>
+                        <text x="720" y="165" font-size="11" fill="#999">Convertit énergie</text>
+                    </g>
+
+                    <!-- Ligne 2 -->
+                    <!-- Fil / Connexion -->
+                    <g>
+                        <text x="120" y="220" font-size="16" font-weight="bold" fill="#333">Fil</text>
+                        <line x1="80" y1="260" x2="140" y2="260" stroke="#333" stroke-width="3"/>
+                        <text x="40" y="310" font-size="12" fill="#666">Fil conducteur</text>
+                        <text x="40" y="325" font-size="11" fill="#999">Transport courant</text>
+                    </g>
+
+                    <!-- Nœud -->
+                    <g>
+                        <text x="300" y="220" font-size="16" font-weight="bold" fill="#333">Nœud</text>
+                        <line x1="310" y1="250" x2="340" y2="250" stroke="#333" stroke-width="2"/>
+                        <line x1="310" y1="270" x2="310" y2="250" stroke="#333" stroke-width="2"/>
+                        <circle cx="310" cy="250" r="4" fill="#333"/>
+                        <line x1="340" y1="270" x2="340" y2="250" stroke="#333" stroke-width="2"/>
+                        <text x="270" y="310" font-size="12" fill="#666">Connexion</text>
+                        <text x="270" y="325" font-size="11" fill="#999">Jonction de fils</text>
+                    </g>
+
+                    <!-- Résistance -->
+                    <g>
+                        <text x="520" y="220" font-size="16" font-weight="bold" fill="#333">Résistance</text>
+                        <line x1="520" y1="260" x2="530" y2="260" stroke="#333" stroke-width="2"/>
+                        <rect x="530" y="250" width="30" height="20" fill="none" stroke="#333" stroke-width="2"/>
+                        <line x1="560" y1="260" x2="570" y2="260" stroke="#333" stroke-width="2"/>
+                        <text x="480" y="310" font-size="12" fill="#666">Résistance</text>
+                        <text x="480" y="325" font-size="11" fill="#999">Limite le courant</text>
+                    </g>
+
+                    <!-- Fusible -->
+                    <g>
+                        <text x="740" y="220" font-size="16" font-weight="bold" fill="#333">Fusible</text>
+                        <line x1="750" y1="250" x2="750" y2="280" stroke="#333" stroke-width="2"/>
+                        <circle cx="750" cy="265" r="8" fill="none" stroke="#333" stroke-width="2"/>
+                        <line x1="750" y1="250" x2="760" y2="240" stroke="#333" stroke-width="2"/>
+                        <line x1="750" y1="280" x2="760" y2="290" stroke="#333" stroke-width="2"/>
+                        <text x="710" y="310" font-size="12" fill="#666">Protection</text>
+                        <text x="710" y="325" font-size="11" fill="#999">Coupe surcharge</text>
+                    </g>
+
+                    <!-- Ligne 3 -->
+                    <!-- Diode -->
+                    <g>
+                        <text x="120" y="390" font-size="16" font-weight="bold" fill="#333">Diode</text>
+                        <polygon points="80,430 100,445 80,460" fill="none" stroke="#333" stroke-width="2"/>
+                        <line x1="100" y1="430" x2="100" y2="460" stroke="#333" stroke-width="2"/>
+                        <line x1="70" y1="445" x2="80" y2="445" stroke="#333" stroke-width="2"/>
+                        <line x1="100" y1="445" x2="110" y2="445" stroke="#333" stroke-width="2"/>
+                        <text x="40" y="480" font-size="12" fill="#666">Diode</text>
+                        <text x="40" y="495" font-size="11" fill="#999">Laisse passer sens</text>
+                    </g>
+
+                    <!-- Batterie Multiple -->
+                    <g>
+                        <text x="300" y="390" font-size="16" font-weight="bold" fill="#333">Batterie</text>
+                        <line x1="300" y1="430" x2="300" y2="470" stroke="#333" stroke-width="3"/>
+                        <line x1="310" y1="420" x2="310" y2="480" stroke="#333" stroke-width="2"/>
+                        <line x1="320" y1="430" x2="320" y2="470" stroke="#333" stroke-width="3"/>
+                        <line x1="330" y1="420" x2="330" y2="480" stroke="#333" stroke-width="2"/>
+                        <line x1="280" y1="450" x2="340" y2="450" stroke="#333" stroke-width="2"/>
+                        <text x="270" y="480" font-size="12" fill="#666">Batterie</text>
+                        <text x="270" y="495" font-size="11" fill="#999">Piles en série</text>
+                    </g>
+
+                    <!-- Condensateur -->
+                    <g>
+                        <text x="520" y="390" font-size="16" font-weight="bold" fill="#333">Condensateur</text>
+                        <line x1="520" y1="440" x2="550" y2="440" stroke="#333" stroke-width="2"/>
+                        <line x1="560" y1="430" x2="560" y2="450" stroke="#333" stroke-width="2"/>
+                        <line x1="570" y1="430" x2="570" y2="450" stroke="#333" stroke-width="2"/>
+                        <line x1="580" y1="440" x2="610" y2="440" stroke="#333" stroke-width="2"/>
+                        <text x="480" y="480" font-size="12" fill="#666">Condensateur</text>
+                        <text x="480" y="495" font-size="11" fill="#999">Stocke électricité</text>
+                    </g>
+
+                    <!-- Inductance / Bobine -->
+                    <g>
+                        <text x="740" y="390" font-size="16" font-weight="bold" fill="#333">Inductance</text>
+                        <line x1="750" y1="440" x2="760" y2="440" stroke="#333" stroke-width="2"/>
+                        <path d="M 765 430 Q 765 450 775 450 Q 785 450 785 430" fill="none" stroke="#333" stroke-width="2"/>
+                        <path d="M 790 430 Q 790 450 800 450 Q 810 450 810 430" fill="none" stroke="#333" stroke-width="2"/>
+                        <line x1="815" y1="440" x2="825" y2="440" stroke="#333" stroke-width="2"/>
+                        <text x="700" y="480" font-size="12" fill="#666">Bobine / Inductance</text>
+                        <text x="700" y="495" font-size="11" fill="#999">Crée champ magn.</text>
+                    </g>
+
+                    <!-- Ligne 4 -->
+                    <!-- Interrupteur Croisé -->
+                    <g>
+                        <text x="120" y="560" font-size="16" font-weight="bold" fill="#333">Inverseur</text>
+                        <line x1="80" y1="610" x2="90" y2="610" stroke="#333" stroke-width="2"/>
+                        <circle cx="90" cy="610" r="3" fill="#333"/>
+                        <line x1="95" y1="605" x2="105" y2="615" stroke="#333" stroke-width="2"/>
+                        <line x1="110" y1="610" x2="120" y2="610" stroke="#333" stroke-width="2"/>
+                        <line x1="110" y1="620" x2="120" y2="620" stroke="#333" stroke-width="2"/>
+                        <text x="40" y="650" font-size="12" fill="#666">Interrupteur 3 pos</text>
+                        <text x="40" y="665" font-size="11" fill="#999">Inverse polarité</text>
+                    </g>
+
+                    <!-- Thermostat -->
+                    <g>
+                        <text x="300" y="560" font-size="16" font-weight="bold" fill="#333">Interr. Thermique</text>
+                        <line x1="310" y1="600" x2="330" y2="600" stroke="#333" stroke-width="2"/>
+                        <circle cx="330" cy="600" r="4" fill="#333"/>
+                        <path d="M 335 600 Q 340 610 345 600" fill="none" stroke="#333" stroke-width="2"/>
+                        <line x1="350" y1="600" x2="370" y2="600" stroke="#333" stroke-width="2"/>
+                        <text x="270" y="650" font-size="12" fill="#666">Interrupteur Thermique</text>
+                        <text x="270" y="665" font-size="11" fill="#999">Sensible chaleur</text>
+                    </g>
+
+                    <!-- LED -->
+                    <g>
+                        <text x="520" y="560" font-size="16" font-weight="bold" fill="#333">LED</text>
+                        <polygon points="540,600 560,615 540,630" fill="none" stroke="#FF6B6B" stroke-width="2"/>
+                        <line x1="560" y1="600" x2="560" y2="630" stroke="#FF6B6B" stroke-width="2"/>
+                        <line x1="545" y1="595" x2="555" y2="585" stroke="#FF6B6B" stroke-width="2"/>
+                        <line x1="555" y1="595" x2="565" y2="585" stroke="#FF6B6B" stroke-width="2"/>
+                        <line x1="530" y1="615" x2="550" y2="615" stroke="#FF6B6B" stroke-width="2"/>
+                        <text x="500" y="650" font-size="12" fill="#666">LED</text>
+                        <text x="500" y="665" font-size="11" fill="#999">Diode luminescente</text>
+                    </g>
+
+                    <!-- Commutateur Double -->
+                    <g>
+                        <text x="740" y="560" font-size="16" font-weight="bold" fill="#333">Interr. Double</text>
+                        <circle cx="760" cy="595" r="3" fill="#333"/>
+                        <circle cx="760" cy="620" r="3" fill="#333"/>
+                        <line x1="750" y1="595" x2="760" y2="595" stroke="#333" stroke-width="2"/>
+                        <line x1="765" y1="595" x2="775" y2="595" stroke="#333" stroke-width="2"/>
+                        <line x1="750" y1="620" x2="760" y2="620" stroke="#333" stroke-width="2"/>
+                        <line x1="765" y1="620" x2="775" y2="620" stroke="#333" stroke-width="2"/>
+                        <text x="700" y="650" font-size="12" fill="#666">Interr. Double</text>
+                        <text x="700" y="665" font-size="11" fill="#999">Deux circuits</text>
+                    </g>
+
+                    <!-- Légende -->
+                    <rect x="50" y="740" width="900" height="130" fill="#f5f5f5" stroke="#ddd" stroke-width="1" rx="5"/>
+                    <text x="70" y="765" font-size="14" font-weight="bold" fill="#333">📖 À retenir</text>
+
+                    <text x="70" y="790" font-size="12" fill="#555">• Les <strong>symboles normalisés</strong> permettent de représenter les circuits de façon universelle</text>
+                    <text x="70" y="810" font-size="12" fill="#555">• Chaque symbole a une <strong>signification précise</strong> et reconnue internationalement</text>
+                    <text x="70" y="830" font-size="12" fill="#555">• Ces symboles permettent aux techniciens du monde entier de <strong>comprendre les schémas</strong></text>
+                    <text x="70" y="850" font-size="12" fill="#555">• Les symboles simplent la représentation et facilitent la <strong>lecture et l'analyse</strong> des circuits</text>
+                </svg>
+
+                <div class="info" style="margin-top: 30px;">
+                    <strong>💡 Conseils :</strong><br>
+                    • Apprenez à reconnaître ces symboles pour lire les schémas électriques<br>
+                    • Les symboles peuvent varier légèrement selon les pays mais les concepts restent similaires<br>
+                    • Utilisez une légende ou un tableau de symboles quand vous dessinez des circuits<br>
+                    • Les normes européennes (CEI) et américaines (ANSI) ont quelques différences mineures<br>
+                    • La pratique régulière vous permettra de mémoriser ces symboles facilement
                 </div>
             </div>
         </div>
