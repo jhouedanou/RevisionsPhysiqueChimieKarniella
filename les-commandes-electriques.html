@@ -1038,9 +1038,322 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Section 3: Commutateur -->
+            <div style="border: 2px solid #667eea; border-radius: 10px; padding: 30px; margin-top: 40px; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);">
+                <h3 style="margin-top: 0; color: #667eea;">3️⃣ Section 3: Commutateur (Commande d'un Circuit Électrique)</h3>
+                <p style="color: #666; margin-bottom: 20px;">Un commutateur est un composant électrique qui permet de contrôler deux circuits différents à partir d'une seule position. Contrairement à l'interrupteur simple qui ouvre/ferme un seul circuit, le commutateur peut basculer entre deux circuits différents.</p>
+
+                <!-- Section 3.1: Symbole Normalisé du Commutateur -->
+                <h4 style="color: #333; margin-top: 30px; margin-bottom: 15px;">3.1 Symbole Normalisé d'un Commutateur</h4>
+                <p style="color: #555; margin-bottom: 15px;">Le symbole normalisé du commutateur représente un contact mobile qui peut se positionner en deux états différents:</p>
+
+                <div style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 20px;">
+                    <svg width="600" height="250" viewBox="0 0 600 250" style="border: 1px solid #e0e0e0; border-radius: 5px; background: #fafafa;">
+                        <!-- Titre -->
+                        <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Symbole Normalisé du Commutateur</text>
+
+                        <!-- Position 1: Circuit A fermé -->
+                        <g>
+                            <text x="100" y="55" font-size="13" font-weight="bold" fill="#333">Position 1 (Circuit A)</text>
+
+                            <!-- Entrée -->
+                            <circle cx="80" cy="100" r="4" fill="#333"/>
+                            <line x1="70" y1="100" x2="80" y2="100" stroke="#333" stroke-width="2"/>
+
+                            <!-- Contact mobile (traits) -->
+                            <line x1="80" y1="100" x2="100" y2="130" stroke="#333" stroke-width="2"/>
+
+                            <!-- Sortie A (connectée) -->
+                            <circle cx="130" cy="150" r="4" fill="#333"/>
+                            <line x1="130" y1="150" x2="140" y2="150" stroke="#333" stroke-width="2"/>
+                            <text x="150" y="155" font-size="12" fill="#333">Circuit A (FERMÉ)</text>
+
+                            <!-- Sortie B (déconnectée) -->
+                            <circle cx="130" cy="80" r="4" fill="#999"/>
+                            <line x1="130" y1="80" x2="140" y2="80" stroke="#999" stroke-width="2" stroke-dasharray="3,3"/>
+                            <text x="150" y="85" font-size="12" fill="#999">Circuit B (ouvert)</text>
+                        </g>
+
+                        <!-- Position 2: Circuit B fermé -->
+                        <g>
+                            <text x="380" y="55" font-size="13" font-weight="bold" fill="#333">Position 2 (Circuit B)</text>
+
+                            <!-- Entrée -->
+                            <circle cx="360" cy="100" r="4" fill="#333"/>
+                            <line x1="350" y1="100" x2="360" y2="100" stroke="#333" stroke-width="2"/>
+
+                            <!-- Contact mobile (traits) -->
+                            <line x1="360" y1="100" x2="380" y2="70" stroke="#333" stroke-width="2"/>
+
+                            <!-- Sortie A (déconnectée) -->
+                            <circle cx="410" cy="150" r="4" fill="#999"/>
+                            <line x1="410" y1="150" x2="420" y2="150" stroke="#999" stroke-width="2" stroke-dasharray="3,3"/>
+                            <text x="430" y="155" font-size="12" fill="#999">Circuit A (ouvert)</text>
+
+                            <!-- Sortie B (connectée) -->
+                            <circle cx="410" cy="50" r="4" fill="#333"/>
+                            <line x1="410" y1="50" x2="420" y2="50" stroke="#333" stroke-width="2"/>
+                            <text x="430" y="55" font-size="12" fill="#333">Circuit B (FERMÉ)</text>
+                        </g>
+
+                        <!-- Légende -->
+                        <line x1="50" y1="200" x2="550" y2="200" stroke="#ddd" stroke-width="1"/>
+                        <text x="50" y="220" font-size="11" fill="#666">• Trait plein = circuit fermé (connecté) | • Trait pointillé = circuit ouvert (déconnecté)</text>
+                        <text x="50" y="235" font-size="11" fill="#666">• Le contact mobile bascule entre deux positions, fermant un circuit et ouvrant l'autre</text>
+                    </svg>
+                </div>
+
+                <!-- Section 3.2: Exemple Pratique avec 2 Lampes -->
+                <h4 style="color: #333; margin-top: 30px; margin-bottom: 15px;">3.2 Exemple Pratique: Contrôler 2 Lampes avec un Commutateur</h4>
+                <p style="color: #555; margin-bottom: 15px;">Imaginez une lampe dans le salon et une lampe dans la chambre. Un commutateur permet d'allumer l'une OU l'autre (jamais les deux en même temps).</p>
+
+                <!-- Interactive Circuit Example -->
+                <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border: 2px solid #667eea; margin-bottom: 20px;">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <button onclick="toggleCommutateur()" style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: bold; transition: all 0.3s;">
+                            🔄 Basculer le Commutateur
+                        </button>
+                    </div>
+
+                    <svg id="commutateur-circuit" width="100%" height="350" viewBox="0 0 700 350" style="border: 1px solid #ddd; border-radius: 5px; background: white;">
+                        <!-- Titre -->
+                        <text x="350" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Circuit avec Commutateur: 2 Lampes</text>
+
+                        <!-- Pile -->
+                        <g>
+                            <rect x="20" y="60" width="15" height="60" fill="none" stroke="#333" stroke-width="2"/>
+                            <rect x="37" y="50" width="15" height="80" fill="none" stroke="#333" stroke-width="2"/>
+                            <line x1="10" y1="90" x2="60" y2="90" stroke="#333" stroke-width="2"/>
+                            <text x="75" y="95" font-size="12" fill="#333">Pile</text>
+                            <text x="75" y="110" font-size="11" fill="#666">(+) haut</text>
+                        </g>
+
+                        <!-- Fil principal (haut) -->
+                        <line x1="50" y1="50" x2="50" y2="20" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="20" x2="550" y2="20" stroke="#333" stroke-width="2"/>
+
+                        <!-- Commutateur (position initiale = Lampe 1) -->
+                        <g id="commutateur-symbol">
+                            <circle cx="200" cy="50" r="4" fill="#333"/>
+                            <line x1="200" y1="50" x2="220" y2="80" stroke="#FF6B6B" stroke-width="3" id="commutateur-contact"/>
+
+                            <!-- Sortie 1 (ACTIVE - courte distance) -->
+                            <circle cx="240" cy="90" r="4" fill="#333"/>
+                            <line x1="240" y1="90" x2="240" y2="150" stroke="#333" stroke-width="2"/>
+                            <text x="250" y="125" font-size="12" fill="#333">Vers Lampe 1</text>
+
+                            <!-- Sortie 2 (INACTIVE - longue distance) -->
+                            <circle cx="200" cy="150" r="4" fill="#999"/>
+                            <line x1="200" y1="150" x2="200" y2="250" stroke="#999" stroke-width="2" stroke-dasharray="5,5" id="commutateur-contact2"/>
+                            <text x="100" y="200" font-size="12" fill="#999">Vers Lampe 2 (fermée)</text>
+                        </g>
+
+                        <!-- Lampe 1 (actuelle) -->
+                        <g>
+                            <circle cx="240" cy="150" r="15" fill="none" stroke="#FFD700" stroke-width="3" id="lampe1-circle"/>
+                            <line x1="235" y1="145" x2="245" y2="155" stroke="#FFD700" stroke-width="2"/>
+                            <line x1="245" y1="145" x2="235" y2="155" stroke="#FFD700" stroke-width="2"/>
+                            <text x="200" y="190" font-size="12" fill="#333">Lampe 1 (ALLUMÉE)</text>
+                            <circle cx="240" cy="200" r="4" fill="#333"/>
+                            <line x1="240" y1="200" x2="240" y2="290" stroke="#333" stroke-width="2"/>
+                        </g>
+
+                        <!-- Lampe 2 (inactive) -->
+                        <g>
+                            <circle cx="500" cy="250" r="15" fill="none" stroke="#999" stroke-width="2" id="lampe2-circle"/>
+                            <line x1="495" y1="245" x2="505" y2="255" stroke="#999" stroke-width="2"/>
+                            <line x1="505" y1="245" x2="495" y2="255" stroke="#999" stroke-width="2"/>
+                            <text x="460" y="290" font-size="12" fill="#999">Lampe 2 (ÉTEINTE)</text>
+                            <circle cx="500" cy="310" r="4" fill="#999"/>
+                            <line x1="500" y1="310" x2="500" y2="335" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>
+                        </g>
+
+                        <!-- Fil de retour (bas) -->
+                        <line x1="240" y1="290" x2="240" y2="320" stroke="#333" stroke-width="2"/>
+                        <line x1="240" y1="320" x2="50" y2="320" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="320" x2="50" y2="130" stroke="#333" stroke-width="2"/>
+                        <text x="550" y="330" font-size="11" fill="#666">Retour à la pile</text>
+                    </svg>
+
+                    <!-- Status Display -->
+                    <div id="commutateur-status" style="margin-top: 15px; padding: 15px; background: white; border-radius: 8px; border: 2px solid #FFD700; text-align: center;">
+                        <div style="font-size: 14px; color: #333;">
+                            <strong>État Actuel:</strong> <span id="status-text" style="color: #FFD700; font-weight: bold;">Lampe 1 ALLUMÉE 💡 | Lampe 2 ÉTEINTE 🌑</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explication détaillée -->
+                <div style="background: #f0f7ff; padding: 20px; border-radius: 10px; border-left: 4px solid #2196f3; margin-bottom: 20px;">
+                    <h5 style="color: #2196f3; margin-top: 0;">💡 Comment fonctionne le commutateur:</h5>
+                    <ul style="margin: 10px 0; color: #555;">
+                        <li><strong>Position 1:</strong> Le contact ferme le circuit vers la Lampe 1, la Lampe 1 s'allume</li>
+                        <li><strong>Position 2:</strong> Le contact bascule et ferme le circuit vers la Lampe 2, la Lampe 2 s'allume</li>
+                        <li><strong>Important:</strong> Une seule lampe peut être allumée à la fois (circuit exclusif)</li>
+                        <li><strong>Utilisation réelle:</strong> Plafonnier (1 ou 2 rangées de spots), chauffage (2 vitesses), etc.</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3.3: Tableau Comparatif -->
+                <h4 style="color: #333; margin-top: 30px; margin-bottom: 15px;">3.3 Tableau Comparatif: Interrupteur vs Commutateur</h4>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr style="background: #667eea; color: white;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #555;">Caractéristique</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #555;">Interrupteur Simple</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #555;">Commutateur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Fonction</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Ouvre/ferme UN seul circuit</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Bascule entre DEUX circuits</td>
+                        </tr>
+                        <tr style="background: #f9f9f9;">
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Nombre de sorties</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">1 sortie</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">2 sorties (ou plus)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Nombre de positions</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">2 (OUVERT/FERMÉ)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">2 (ou plus selon type)</td>
+                        </tr>
+                        <tr style="background: #f9f9f9;">
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Exemple d'usage</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Allumer une lampe</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Choisir entre lampe 1 OU lampe 2</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Symbole</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">—○— (simple)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">/—⊗— (contact basculant)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- Quiz Section -->
+        <!-- Quiz Section for Commutateur -->
+        <section class="quiz-section" id="commutateur-quiz">
+            <h2>📝 Quiz - Section 3: Commutateur</h2>
+            <p>Répondez à ces 5 questions pour tester votre compréhension des commutateurs.</p>
+
+            <!-- Question 1 -->
+            <div class="quiz-question">
+                <span class="question-number">1</span>
+                <div class="question-text">Quelle est la différence principale entre un interrupteur simple et un commutateur?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com1" value="a"> L'interrupteur est plus cher
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com1" value="b"> L'interrupteur contrôle 1 circuit, le commutateur bascule entre 2 circuits
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com1" value="c"> Le commutateur ne fonctionne qu'avec des piles
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com1" value="d"> Il n'y a aucune différence
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q-com1"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question">
+                <span class="question-number">2</span>
+                <div class="question-text">Avec un commutateur contrôlant 2 lampes, combien de lampes peuvent être allumées à la fois?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com2" value="a"> 0 (aucune)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com2" value="b"> 1 lampe (l'une OU l'autre)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com2" value="c"> 2 lampes (les deux ensemble)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com2" value="d"> Cela dépend de la tension
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q-com2"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question">
+                <span class="question-number">3</span>
+                <div class="question-text">Combien de positions a un commutateur basique?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com3" value="a"> 1 seule position
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com3" value="b"> 2 positions
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com3" value="c"> 3 positions
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com3" value="d"> Autant que d'utilisateurs
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q-com3"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-question">
+                <span class="question-number">4</span>
+                <div class="question-text">Quel est un exemple d'utilisation réelle d'un commutateur?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com4" value="a"> Choisir entre lampe du salon OU lampe de la chambre
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com4" value="b"> Éteindre toutes les lumières de la maison
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com4" value="c"> Augmenter la luminosité d'une lampe
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com4" value="d"> Changer la couleur d'une lampe
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q-com4"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-question">
+                <span class="question-number">5</span>
+                <div class="question-text">Combien de sorties a un commutateur pour contrôler 2 circuits?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com5" value="a"> 1 sortie
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com5" value="b"> 2 sorties
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com5" value="c"> 3 sorties
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q-com5" value="d"> Aucune (le commutateur se recharge seul)
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q-com5"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="quiz-button" onclick="submitCommutateurQuiz()">Soumettre le Quiz</button>
+                <div id="quiz-results-commutateur" style="margin-top: 20px;"></div>
+            </div>
+        </section>
+
+        <!-- Original Quiz Section -->
         <section class="quiz-section">
             <h2>📝 Quiz - Évaluez vos Connaissances</h2>
             <p>Répondez à ces 10 questions pour tester votre compréhension des commandes électriques.</p>
@@ -1438,6 +1751,146 @@
 
             if (percentage >= 80) {
                 resultMessage += '<p style="margin: 10px 0 0 0; color: #2f5233;"><strong>🎉 Excellent travail!</strong> Vous maîtrisez bien les commandes électriques.</p>';
+            } else if (percentage >= 60) {
+                resultMessage += '<p style="margin: 10px 0 0 0; color: #704214;"><strong>👍 Bon effort!</strong> Revoyez les sections où vous avez eu des difficultés.</p>';
+            } else {
+                resultMessage += '<p style="margin: 10px 0 0 0; color: #5c1a1a;"><strong>📚 À relire!</strong> Révisez le contenu et retentez le quiz.</p>';
+            }
+
+            resultMessage += `
+                </div>
+            `;
+
+            resultsDiv.innerHTML = resultMessage;
+
+            // Scroll vers les résultats
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Variable pour l'état du commutateur
+        let commutateurPosition = 1; // 1 = Lampe 1 active, 2 = Lampe 2 active
+
+        // Fonction pour basculer le commutateur
+        function toggleCommutateur() {
+            commutateurPosition = commutateurPosition === 1 ? 2 : 1;
+            updateCommutateurDisplay();
+        }
+
+        // Fonction pour mettre à jour l'affichage du commutateur
+        function updateCommutateurDisplay() {
+            const svg = document.getElementById('commutateur-circuit');
+            const statusText = document.getElementById('status-text');
+            const contact = document.getElementById('commutateur-contact');
+            const contact2 = document.getElementById('commutateur-contact2');
+            const lampe1Circle = document.getElementById('lampe1-circle');
+            const lampe2Circle = document.getElementById('lampe2-circle');
+            const lampe1Text = svg.querySelector('text[x="200"][y="190"]');
+            const lampe2Text = svg.querySelector('text[x="460"][y="290"]');
+
+            if (commutateurPosition === 1) {
+                // Lampe 1 active
+                statusText.textContent = 'Lampe 1 ALLUMÉE 💡 | Lampe 2 ÉTEINTE 🌑';
+
+                // Mettre à jour le contact du commutateur (vers Lampe 1)
+                contact.setAttribute('x2', '220');
+                contact.setAttribute('y2', '80');
+                contact.setAttribute('stroke', '#FF6B6B');
+
+                // Deuxième contact
+                contact2.setAttribute('stroke-dasharray', '5,5');
+                contact2.setAttribute('stroke', '#999');
+
+                // Lampe 1 allumée (or/doré)
+                lampe1Circle.setAttribute('stroke', '#FFD700');
+                lampe1Circle.setAttribute('stroke-width', '3');
+                if (lampe1Text) lampe1Text.setAttribute('fill', '#333');
+
+                // Lampe 2 éteinte (gris)
+                lampe2Circle.setAttribute('stroke', '#999');
+                lampe2Circle.setAttribute('stroke-width', '2');
+                if (lampe2Text) lampe2Text.setAttribute('fill', '#999');
+            } else {
+                // Lampe 2 active
+                statusText.textContent = 'Lampe 1 ÉTEINTE 🌑 | Lampe 2 ALLUMÉE 💡';
+
+                // Mettre à jour le contact du commutateur (vers Lampe 2)
+                contact.setAttribute('x2', '200');
+                contact.setAttribute('y2', '150');
+                contact.setAttribute('stroke', '#FF6B6B');
+
+                // Deuxième contact
+                contact2.setAttribute('stroke-dasharray', 'none');
+                contact2.setAttribute('stroke', '#333');
+
+                // Lampe 1 éteinte (gris)
+                lampe1Circle.setAttribute('stroke', '#999');
+                lampe1Circle.setAttribute('stroke-width', '2');
+                if (lampe1Text) lampe1Text.setAttribute('fill', '#999');
+
+                // Lampe 2 allumée (or/doré)
+                lampe2Circle.setAttribute('stroke', '#FFD700');
+                lampe2Circle.setAttribute('stroke-width', '3');
+                if (lampe2Text) lampe2Text.setAttribute('fill', '#333');
+            }
+        }
+
+        // Définir les réponses correctes pour le quiz du commutateur
+        const quizAnswersCommutateur = {
+            'q-com1': 'b', // L'interrupteur contrôle 1 circuit, le commutateur bascule entre 2
+            'q-com2': 'b', // 1 lampe (l'une OU l'autre)
+            'q-com3': 'b', // 2 positions
+            'q-com4': 'a', // Choisir entre lampe 1 OU lampe 2
+            'q-com5': 'b'  // 2 sorties
+        };
+
+        // Fonction pour soumettre le quiz du commutateur
+        function submitCommutateurQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswersCommutateur).length;
+
+            // Vérifier chaque réponse
+            for (let key in quizAnswersCommutateur) {
+                const selectedAnswer = document.querySelector(`input[name="${key}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${key}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff6b6b; font-weight: bold;">⚠️ Veuillez répondre à cette question</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswersCommutateur[key];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #51cf66; font-weight: bold;">✅ Correct!</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff6b6b; font-weight: bold;">❌ Incorrect</span>';
+                    }
+                }
+            }
+
+            // Afficher les résultats
+            const resultsDiv = document.getElementById('quiz-results-commutateur');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <div style="background: ${percentage >= 80 ? '#d3f9d8' : percentage >= 60 ? '#fff3bf' : '#ffe0e0'};
+                            border: 2px solid ${percentage >= 80 ? '#51cf66' : percentage >= 60 ? '#fcc419' : '#ff6b6b'};
+                            padding: 20px;
+                            border-radius: 10px;
+                            text-align: center;">
+                    <h3 style="margin: 0 0 10px 0; color: ${percentage >= 80 ? '#2f5233' : percentage >= 60 ? '#704214' : '#5c1a1a'};">
+                        Résultats: ${score}/${totalQuestions} (${percentage}%)
+                    </h3>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<p style="margin: 10px 0 0 0; color: #2f5233;"><strong>🎉 Excellent travail!</strong> Vous comprenez bien les commutateurs.</p>';
             } else if (percentage >= 60) {
                 resultMessage += '<p style="margin: 10px 0 0 0; color: #704214;"><strong>👍 Bon effort!</strong> Revoyez les sections où vous avez eu des difficultés.</p>';
             } else {
