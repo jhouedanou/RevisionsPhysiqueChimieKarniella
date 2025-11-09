@@ -223,6 +223,53 @@
             animation: pulse 0.8s ease-in-out infinite;
         }
 
+        .interactive-circuit {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .interactive-circuit:hover {
+            opacity: 0.8;
+        }
+
+        .interactive-button {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .interactive-button:active {
+            transform: scale(0.95);
+        }
+
+        .circuit-status {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .circuit-status.open {
+            background: #ffebee;
+            color: #e74c3c;
+        }
+
+        .circuit-status.closed {
+            background: #e8f5e9;
+            color: #27ae60;
+        }
+
+        .instruction {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 24px;
@@ -410,7 +457,7 @@
                     <!-- Bouton Poussoir Ouvert - Au Repos -->
                     <div class="circuit-card open">
                         <h4>🔘 POSITION REPOS (Circuit OUVERT)</h4>
-                        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                        <svg id="circuit-no-repos" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Pile -->
                             <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
                             <text x="150" y="50" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
@@ -459,7 +506,7 @@
                     <!-- Bouton Poussoir Ouvert - Appuyé -->
                     <div class="circuit-card closed">
                         <h4>🔘 POSITION TRAVAIL (Circuit FERMÉ)</h4>
-                        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                        <svg id="circuit-no-interactive" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Pile -->
                             <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
                             <text x="150" y="50" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
@@ -509,6 +556,8 @@
                             ✅ Sonnerie SONNE 🔔<br>
                             Circuit FERMÉ
                         </div>
+                        <div class="instruction">💡 Cliquez sur le circuit pour relâcher le bouton</div>
+                        <div id="status-no-interactive" class="circuit-status open">❌ POSITION REPOS - Sonnerie NE SONNE PAS</div>
                     </div>
                 </div>
 
@@ -853,8 +902,115 @@
     </div>
 
     <script>
-        // Simple script for any future interactivity
+        // Gestion interactivité des circuits
         console.log('Les Commandes Électriques - Leçon chargée');
+
+        // Classe pour gérer les circuits interactifs
+        class InteractiveCircuit {
+            constructor(svgId, statusId, isNO = true) {
+                this.svg = document.getElementById(svgId);
+                this.statusDiv = document.getElementById(statusId);
+                this.isNO = isNO; // true pour NO, false pour NC
+                this.isPressed = false;
+                this.init();
+            }
+
+            init() {
+                if (this.svg) {
+                    this.svg.classList.add('interactive-circuit');
+                    this.svg.addEventListener('click', () => this.toggleCircuit());
+                    this.updateDisplay();
+                }
+            }
+
+            toggleCircuit() {
+                this.isPressed = !this.isPressed;
+                this.updateDisplay();
+                this.animateClick();
+            }
+
+            updateDisplay() {
+                // Déterminer l'état du circuit (ouvert ou fermé)
+                const isCircuitClosed = this.isNO ? this.isPressed : !this.isPressed;
+
+                // Mettre à jour le statut
+                if (this.statusDiv) {
+                    this.statusDiv.className = 'circuit-status ' + (isCircuitClosed ? 'closed' : 'open');
+                    if (this.isNO) {
+                        this.statusDiv.textContent = this.isPressed
+                            ? '✅ POSITION TRAVAIL - Sonnerie SONNE 🔔'
+                            : '❌ POSITION REPOS - Sonnerie NE SONNE PAS';
+                    } else {
+                        this.statusDiv.textContent = this.isPressed
+                            ? '❌ POSITION TRAVAIL - Lampe ÉTEINTE'
+                            : '✅ POSITION REPOS - Lampe ALLUMÉE 💡';
+                    }
+                }
+
+                // Mettre à jour les éléments visuels du SVG
+                this.updateSVGState(isCircuitClosed);
+            }
+
+            updateSVGState(isCircuitClosed) {
+                // Chercher les éléments du circuit à mettre à jour
+                const buttonCircles = this.svg.querySelectorAll('circle[cx="70"]');
+                const wires = this.svg.querySelectorAll('[stroke-dasharray="5,5"]');
+                const lamp = this.svg.querySelector('circle[cx="120"][cy="180"]');
+
+                if (isCircuitClosed) {
+                    // Circuit fermé: montrer les fils continus
+                    wires.forEach(wire => {
+                        wire.removeAttribute('stroke-dasharray');
+                        wire.setAttribute('stroke-width', '3');
+                    });
+                    // Allumer la lampe
+                    if (lamp) {
+                        lamp.setAttribute('stroke', '#ffed4e');
+                        lamp.setAttribute('stroke-width', '3');
+                        lamp.classList.add('bulb-on');
+                    }
+                } else {
+                    // Circuit ouvert: montrer les fils pointillés
+                    wires.forEach(wire => {
+                        wire.setAttribute('stroke-dasharray', '5,5');
+                        wire.setAttribute('stroke-width', '2');
+                    });
+                    // Éteindre la lampe
+                    if (lamp) {
+                        lamp.setAttribute('stroke', '#999');
+                        lamp.setAttribute('stroke-width', '2');
+                        lamp.classList.remove('bulb-on');
+                    }
+                }
+            }
+
+            animateClick() {
+                // Petit effet visuel au clic
+                this.svg.style.opacity = '0.8';
+                setTimeout(() => {
+                    this.svg.style.opacity = '1';
+                }, 100);
+            }
+        }
+
+        // Initialiser les circuits interactifs au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Créer les instances des circuits interactifs
+            new InteractiveCircuit('circuit-no-interactive', 'status-no-interactive', true);
+        });
+
+        // Fonction pour ajouter l'interactivité à un SVG
+        function makeCircuitInteractive(svgElement, statusElement, isNO = true) {
+            if (svgElement && statusElement) {
+                const circuit = new InteractiveCircuit(svgElement.id || generateId(), statusElement.id || generateId(), isNO);
+            }
+        }
+
+        // Générer des IDs uniques
+        let idCounter = 0;
+        function generateId() {
+            return 'interactive-circuit-' + (++idCounter);
+        }
     </script>
 </body>
 </html>
