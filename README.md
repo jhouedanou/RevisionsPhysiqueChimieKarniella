@@ -4,10 +4,15 @@
 
 Ce projet contient une leçon complète et interactive sur le circuit électrique avec des schémas animés et des contrôles interactifs.
 
-### 📄 Fichiers principaux
+### 📄 Fichiers à la racine
 
-- **`le-circuit-electrique.html`** ⭐ **PAGE PRINCIPALE À UTILISER**
-  - Contient les 4 leçons complètes dans une seule page
+- **`index.html`** 🏠 **PAGE D'ACCUEIL**
+  - Menu principal avec accès à toutes les leçons
+  - Présentation attrayante et moderne
+  - Point d'entrée du site
+
+- **`le-circuit-electrique.html`** ⭐ **LEÇON 1 - PRINCIPALE**
+  - Contient les 4 sections complètes dans une seule page
   - Système d'onglets pour naviguer facilement
   - Tous les schémas et animations intégrés
   - Format pédagogique optimal
@@ -46,9 +51,19 @@ Contient les pages individuelles (optionnelles) :
 
 ## 🚀 Comment utiliser
 
+### Méthode 1 : Via le menu d'accueil (recommandé)
+1. Ouvrir **`index.html`** dans un navigateur (page d'accueil)
+2. Cliquer sur "Commencer la Leçon 1" ou explorer les autres pages
+3. Suivre la leçon interactive
+
+### Méthode 2 : Directement à la leçon complète
 1. Ouvrir **`le-circuit-electrique.html`** dans un navigateur
-2. Utiliser les onglets pour naviguer entre les leçons
+2. Utiliser les onglets pour naviguer entre les 4 sections
 3. Interagir avec les éléments (cliquer sur les boutons, interrupteurs, etc.)
+
+### Méthode 3 : Pages individuelles
+1. Ouvrir l'une des pages dans le dossier `pages-composantes/`
+2. Consulter une leçon spécifique de manière isolée
 
 ## 💡 Caractéristiques
 
