@@ -181,6 +181,63 @@
         .info strong {
             color: #0d47a1;
         }
+
+        .current-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 15px 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .current-controls label {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .current-toggle {
+            width: 70px;
+            height: 34px;
+            background: #ccc;
+            border-radius: 17px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .current-toggle.reversed {
+            background: #ff9800;
+        }
+
+        .current-toggle::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.3s ease;
+        }
+
+        .current-toggle.reversed::after {
+            left: 38px;
+        }
+
+        .direction-label {
+            font-weight: 600;
+            color: #2196f3;
+            font-size: 13px;
+            min-width: 120px;
+        }
     </style>
 </head>
 <body>
@@ -199,9 +256,14 @@
                 <!-- Définitions -->
                 <defs>
                     <style>
-                        @keyframes rotatePropeller {
+                        @keyframes rotatePropellerClockwise {
                             0% { transform: rotate(0deg); }
                             100% { transform: rotate(360deg); }
+                        }
+
+                        @keyframes rotatePropellerCounterClockwise {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(-360deg); }
                         }
 
                         @keyframes arrowFlow {
@@ -216,7 +278,14 @@
 
                         .propeller {
                             transform-origin: 450px 300px;
-                            animation: rotatePropeller 2s linear infinite;
+                        }
+
+                        .propeller.clockwise {
+                            animation: rotatePropellerClockwise 2s linear infinite;
+                        }
+
+                        .propeller.counterClockwise {
+                            animation: rotatePropellerCounterClockwise 2s linear infinite;
                         }
 
                         .current-arrow {
@@ -239,16 +308,16 @@
                 </text>
 
                 <!-- PILE -->
-                <g id="pile">
+                <g id="pile" class="battery-normal">
                     <rect x="50" y="80" width="60" height="100" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="3"/>
                     <rect x="70" y="60" width="20" height="20" fill="#f39c12" stroke="#d68910" stroke-width="2" rx="2"/>
                     <rect x="65" y="190" width="30" height="20" fill="#34495e" stroke="#2c3e50" stroke-width="2" rx="2"/>
                     <text x="80" y="145" font-size="14" text-anchor="middle" fill="white" font-weight="bold">PILE</text>
                     <!-- Bornes polaires -->
-                    <circle cx="72" cy="65" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-                    <text x="72" y="50" font-size="12" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                    <circle cx="88" cy="65" r="4" fill="#333" stroke="#000" stroke-width="1"/>
-                    <text x="88" y="50" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">−</text>
+                    <circle id="pole-left" cx="72" cy="65" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+                    <text id="label-left" x="72" y="50" font-size="12" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
+                    <circle id="pole-right" cx="88" cy="65" r="4" fill="#333" stroke="#000" stroke-width="1"/>
+                    <text id="label-right" x="88" y="50" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">−</text>
                 </g>
 
                 <!-- FIL 1 - De la pile vers le moteur (haut) -->
@@ -263,7 +332,7 @@
                     <rect x="350" y="150" width="200" height="150" fill="#e8e8e8" stroke="#999" stroke-width="2" rx="10"/>
 
                     <!-- Hélice / Propeller -->
-                    <g class="propeller" id="propeller">
+                    <g class="propeller clockwise" id="propeller">
                         <!-- Pale 1 -->
                         <rect x="435" y="200" width="30" height="80" fill="#2196f3" stroke="#1976d2" stroke-width="2" rx="5"/>
                         <!-- Pale 2 -->
@@ -322,6 +391,13 @@
                 </g>
             </svg>
 
+            <!-- Contrôles du sens du courant -->
+            <div class="current-controls">
+                <label for="currentToggle">Sens du courant:</label>
+                <button type="button" class="current-toggle" id="currentToggle" title="Inverser le sens du courant" aria-label="Inverser le sens du courant">Inverser</button>
+                <span class="direction-label" id="directionLabel">Normal → Moteur horaire</span>
+            </div>
+
             <div class="controls">
                 <div class="switch active" id="switchContainer">
                     <span class="switch-label">État du moteur:</span>
@@ -346,12 +422,23 @@
         class MotorController {
             constructor() {
                 this.isActive = true;
+                this.isCurrentReversed = false;
+
+                // Éléments du moteur
                 this.switchButton = document.getElementById('switchButton');
                 this.switchStatus = document.getElementById('switch-status');
                 this.statusDisplay = document.getElementById('statusDisplay');
                 this.switchContainer = document.getElementById('switchContainer');
                 this.interrupteur = document.querySelector('.interactive-switch');
                 this.propeller = document.getElementById('propeller');
+
+                // Éléments du courant
+                this.currentToggle = document.getElementById('currentToggle');
+                this.directionLabel = document.getElementById('directionLabel');
+                this.poleLeft = document.getElementById('pole-left');
+                this.poleRight = document.getElementById('pole-right');
+                this.labelLeft = document.getElementById('label-left');
+                this.labelRight = document.getElementById('label-right');
 
                 this.setupEventListeners();
                 this.updateUI();
@@ -360,6 +447,7 @@
             setupEventListeners() {
                 this.switchButton.addEventListener('click', () => this.toggleMotor());
                 this.interrupteur.addEventListener('click', () => this.toggleMotor());
+                this.currentToggle.addEventListener('click', () => this.toggleCurrent());
             }
 
             toggleMotor() {
@@ -367,7 +455,13 @@
                 this.updateUI();
             }
 
+            toggleCurrent() {
+                this.isCurrentReversed = !this.isCurrentReversed;
+                this.updateUI();
+            }
+
             updateUI() {
+                // Mettre à jour l'état du moteur
                 if (this.isActive) {
                     this.switchButton.classList.add('on');
                     this.switchContainer.classList.add('active');
@@ -384,6 +478,41 @@
                     this.statusDisplay.textContent = '✗ Moteur INACTIF - Arrêté';
                     this.statusDisplay.classList.remove('on');
                     this.propeller.style.animationPlayState = 'paused';
+                }
+
+                // Mettre à jour le sens de rotation et les bornes
+                if (this.isCurrentReversed) {
+                    this.currentToggle.classList.add('reversed');
+                    this.directionLabel.textContent = 'Inversé → Moteur anti-horaire';
+
+                    // Inverser les bornes visuellement
+                    this.poleLeft.setAttribute('fill', '#333');
+                    this.labelLeft.textContent = '−';
+                    this.labelLeft.setAttribute('fill', '#333');
+
+                    this.poleRight.setAttribute('fill', '#FFD700');
+                    this.labelRight.textContent = '+';
+                    this.labelRight.setAttribute('fill', '#FF6B6B');
+
+                    // Rotation anti-horaire
+                    this.propeller.classList.remove('clockwise');
+                    this.propeller.classList.add('counterClockwise');
+                } else {
+                    this.currentToggle.classList.remove('reversed');
+                    this.directionLabel.textContent = 'Normal → Moteur horaire';
+
+                    // Bornes normales
+                    this.poleLeft.setAttribute('fill', '#FFD700');
+                    this.labelLeft.textContent = '+';
+                    this.labelLeft.setAttribute('fill', '#FF6B6B');
+
+                    this.poleRight.setAttribute('fill', '#333');
+                    this.labelRight.textContent = '−';
+                    this.labelRight.setAttribute('fill', '#333');
+
+                    // Rotation horaire
+                    this.propeller.classList.remove('counterClockwise');
+                    this.propeller.classList.add('clockwise');
                 }
             }
         }
