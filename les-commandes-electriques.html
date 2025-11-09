@@ -270,6 +270,146 @@
             font-size: 13px;
         }
 
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .quiz-section h3 {
+            color: #ff6f00;
+            margin-top: 0;
+            border-bottom: 3px solid #ff9800;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .quiz-options {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+        }
+
+        .quiz-option:hover {
+            background: #f0f0f0;
+            border-color: #ff9800;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-answer {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+            font-weight: 600;
+        }
+
+        .quiz-answer.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 5px solid #4caf50;
+            display: block;
+        }
+
+        .quiz-answer.incorrect {
+            background: #ffebee;
+            color: #c62828;
+            border-left: 5px solid #f44336;
+            display: block;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .quiz-button:hover {
+            background: #f57c00;
+            transform: scale(1.05);
+        }
+
+        .quiz-button:active {
+            transform: scale(0.95);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .quiz-result.show {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 24px;
@@ -899,6 +1039,228 @@
                 </div>
             </div>
         </div>
+
+        <!-- Quiz Section -->
+        <section class="quiz-section">
+            <h2>📝 Quiz - Évaluez vos Connaissances</h2>
+            <p>Répondez à ces 10 questions pour tester votre compréhension des commandes électriques.</p>
+
+            <!-- Question 1 -->
+            <div class="quiz-question">
+                <span class="question-number">1</span>
+                <div class="question-text">Quel est l'état d'un bouton poussoir NO (Normally Open) au repos?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="a"> Circuit OUVERT, lampe ÉTEINTE
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="b"> Circuit FERMÉ, lampe ALLUMÉE
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="c"> Dépend de la pile utilisée
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="d"> Aucun courant ne circule
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q1"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question">
+                <span class="question-number">2</span>
+                <div class="question-text">Un bouton NO (Normally Open) dans une sonnerie fait que la sonnerie:</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="a"> Sonne au repos
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="b"> Sonne quand on appuie sur le bouton
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="c"> Ne sonne jamais
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="d"> Sonne en continu
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q2"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question">
+                <span class="question-number">3</span>
+                <div class="question-text">Quel est l'état d'un bouton poussoir NC (Normally Closed) au repos?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="a"> Circuit OUVERT
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="b"> Circuit FERMÉ
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="c"> Partiellement fermé
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="d"> L'état dépend du courant
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q3"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-question">
+                <span class="question-number">4</span>
+                <div class="question-text">Quand on appuie sur un bouton NC (Normally Closed), le circuit devient:</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="a"> FERMÉ
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="b"> OUVERT
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="c"> Court-circuité
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q4" value="d"> Plus d'électricité
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q4"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-question">
+                <span class="question-number">5</span>
+                <div class="question-text">Quelle est la différence principale entre NO et NC?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="a"> NO coûte plus cher que NC
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="b"> NO ferme le circuit au repos, NC le laisse ouvert
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="c"> NO laisse le circuit ouvert au repos, NC le laisse fermé
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q5" value="d"> Il n'y a pas vraiment de différence
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q5"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="quiz-question">
+                <span class="question-number">6</span>
+                <div class="question-text">Une lampe de réfrigérateur utilise un bouton NC parce que:</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="a"> C'est moins cher
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="b"> La lampe doit être allumée quand la porte est fermée
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="c"> C'est plus sûr
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q6" value="d"> La lampe doit être allumée quand la porte est ouverte
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q6"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="quiz-question">
+                <span class="question-number">7</span>
+                <div class="question-text">Un interrupteur simple possède combien de positions stables?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="a"> 1 position (toujours fermé)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="b"> 2 positions (OUVERT ou FERMÉ)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="c"> 3 positions
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q7" value="d"> Aucune position stable
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q7"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="quiz-question">
+                <span class="question-number">8</span>
+                <div class="question-text">Contrairement à un interrupteur simple, un bouton poussoir:</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="a"> Revient à sa position initiale tout seul grâce à un ressort
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="b"> Reste enfoncé définitivement
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="c"> N'a besoin d'aucun ressort
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q8" value="d"> Consomme moins d'énergie
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q8"></div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="quiz-question">
+                <span class="question-number">9</span>
+                <div class="question-text">Le symbole normalisé d'un bouton NO (Normally Open) est:</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="a"> Un cercle avec une ligne continue
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="b"> Un cercle avec une ligne pointillée
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="c"> Un cercle avec un contact séparé (circuit OUVERT)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q9" value="d"> Deux cercles reliés
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q9"></div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="quiz-question">
+                <span class="question-number">10</span>
+                <div class="question-text">Quels sont les deux types principaux de boutons poussoirs?</div>
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="a"> Boutons rouges et bleus
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="b"> Boutons simples et composés
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="c"> NO (Normally Open) et NC (Normally Closed)
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q10" value="d"> Boutons cylindriques et plats
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-q10"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="quiz-button" onclick="submitQuiz()">Soumettre le Quiz</button>
+                <div id="quiz-results" style="margin-top: 20px;"></div>
+            </div>
+        </section>
     </div>
 
     <script>
@@ -1010,6 +1372,86 @@
         let idCounter = 0;
         function generateId() {
             return 'interactive-circuit-' + (++idCounter);
+        }
+
+        // Définir les réponses correctes pour le quiz
+        const quizAnswers = {
+            q1: 'a', // Circuit OUVERT au repos
+            q2: 'b', // Sonne quand on appuie
+            q3: 'b', // Circuit FERMÉ au repos
+            q4: 'b', // Devient OUVERT quand appuyé
+            q5: 'c', // NO laisse ouvert, NC laisse fermé
+            q6: 'd', // Lampe allumée quand porte ouverte
+            q7: 'b', // 2 positions stables
+            q8: 'a', // Revient grâce au ressort
+            q9: 'c', // Contact séparé
+            q10: 'c' // NO et NC
+        };
+
+        // Fonction pour vérifier le quiz
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+            let feedback = '';
+
+            // Vérifier chaque réponse
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff6b6b; font-weight: bold;">⚠️ Veuillez répondre à cette question</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #51cf66; font-weight: bold;">✅ Correct!</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff6b6b; font-weight: bold;">❌ Incorrect</span>';
+                    }
+                }
+            }
+
+            // Afficher les résultats
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <div style="background: ${percentage >= 80 ? '#d3f9d8' : percentage >= 60 ? '#fff3bf' : '#ffe0e0'};
+                            border: 2px solid ${percentage >= 80 ? '#51cf66' : percentage >= 60 ? '#fcc419' : '#ff6b6b'};
+                            padding: 20px;
+                            border-radius: 10px;
+                            text-align: center;">
+                    <h3 style="margin: 0 0 10px 0; color: ${percentage >= 80 ? '#2f5233' : percentage >= 60 ? '#704214' : '#5c1a1a'};">
+                        Résultats: ${score}/${totalQuestions} (${percentage}%)
+                    </h3>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<p style="margin: 10px 0 0 0; color: #2f5233;"><strong>🎉 Excellent travail!</strong> Vous maîtrisez bien les commandes électriques.</p>';
+            } else if (percentage >= 60) {
+                resultMessage += '<p style="margin: 10px 0 0 0; color: #704214;"><strong>👍 Bon effort!</strong> Revoyez les sections où vous avez eu des difficultés.</p>';
+            } else {
+                resultMessage += '<p style="margin: 10px 0 0 0; color: #5c1a1a;"><strong>📚 À relire!</strong> Révisez le contenu et retentez le quiz.</p>';
+            }
+
+            resultMessage += `
+                </div>
+            `;
+
+            resultsDiv.innerHTML = resultMessage;
+
+            // Scroll vers les résultats
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     </script>
 </body>
