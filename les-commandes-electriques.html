@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Commandes Électriques - Cours Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #fafafa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .circuits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .circuits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .circuit-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .circuit-card h4 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .circuit-card.open {
+            border-color: #e74c3c;
+            background: #ffebee;
+        }
+
+        .circuit-card.open h4 {
+            color: #e74c3c;
+        }
+
+        .circuit-card.closed {
+            border-color: #27ae60;
+            background: #f0f9ff;
+        }
+
+        .circuit-card.closed h4 {
+            color: #27ae60;
+        }
+
+        .circuit-description {
+            text-align: center;
+            margin-top: 15px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .info {
+            background: #f0f7ff;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .info strong {
+            color: #1976d2;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .conclusion-box h3 {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .conclusion-box ul {
+            list-style-position: inside;
+            margin-left: 20px;
+        }
+
+        .conclusion-box li {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 200, 0, 0.4)); }
+            50% { filter: drop-shadow(0 0 12px rgba(255, 200, 0, 0.9)); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { r: 3; opacity: 1; }
+            50% { r: 5; opacity: 0.8; }
+        }
+
+        .bulb-on {
+            animation: glow 0.8s ease-in-out infinite;
+        }
+
+        .pulse-particle {
+            animation: pulse 0.8s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>🔌 Les Commandes Électriques</h1>
+        <p>Cours complet et interactif</p>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <!-- SECTION 1: COMMANDES D'UN CIRCUIT ÉLECTRIQUE -->
+            <div class="section">
+                <h2>🔌 Les Commandes d'un Circuit Électrique</h2>
+                <p class="subtitle">Comprendre comment contrôler le flux d'électricité</p>
+
+                <h3>1.1 Interrupteur Simple - Deux États</h3>
+
+                <div class="circuits-grid">
+                    <!-- Circuit Ouvert -->
+                    <div class="circuit-card open">
+                        <h4>⚠️ INTERRUPTEUR OUVERT</h4>
+                        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Pile -->
+                            <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+                            <text x="150" y="50" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
+                            <text x="150" y="90" text-anchor="middle" font-size="11" fill="white" font-weight="bold">−</text>
+
+                            <!-- Fil de la pile vers le haut -->
+                            <line x1="150" y1="20" x2="150" y2="10" stroke="#333" stroke-width="2"/>
+
+                            <!-- Fil horizontal haut -->
+                            <line x1="150" y1="10" x2="50" y2="10" stroke="#333" stroke-width="2"/>
+                            <line x1="50" y1="10" x2="50" y2="120" stroke="#333" stroke-width="2"/>
+
+                            <!-- Interrupteur OUVERT -->
+                            <circle cx="50" cy="120" r="5" fill="#333"/>
+                            <line x1="55" y1="120" x2="80" y2="100" stroke="#333" stroke-width="2"/>
+                            <circle cx="85" cy="95" r="4" fill="#333" stroke="#999" stroke-width="1"/>
+                            <line x1="90" y1="95" x2="120" y2="95" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="65" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">OUVERT</text>
+
+                            <!-- Fil vers la lampe (coupé) -->
+                            <line x1="120" y1="95" x2="120" y2="160" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>
+
+                            <!-- Lampe éteinte -->
+                            <circle cx="120" cy="180" r="25" fill="none" stroke="#999" stroke-width="2"/>
+                            <line x1="107" y1="193" x2="133" y2="167" stroke="#999" stroke-width="1"/>
+                            <line x1="133" y1="193" x2="107" y2="167" stroke="#999" stroke-width="1"/>
+                            <text x="120" y="220" text-anchor="middle" font-size="12" font-weight="bold" fill="#999">Lampe</text>
+                            <text x="120" y="235" text-anchor="middle" font-size="11" fill="#999">ÉTEINTE</text>
+
+                            <!-- Fil vers le bas de la lampe -->
+                            <line x1="120" y1="205" x2="120" y2="260" stroke="#999" stroke-width="2" stroke-dasharray="5,5"/>
+
+                            <!-- Fil retour à la pile -->
+                            <line x1="120" y1="260" x2="50" y2="260" stroke="#333" stroke-width="2"/>
+                            <line x1="50" y1="260" x2="50" y2="120" stroke="#333" stroke-width="2"/>
+                            <line x1="150" y1="100" x2="150" y2="260" stroke="#333" stroke-width="2"/>
+                            <line x1="150" y1="260" x2="120" y2="260" stroke="#333" stroke-width="2"/>
+                        </svg>
+                        <div class="circuit-description">
+                            <strong>Circuit COUPÉ</strong><br>
+                            ❌ Aucun courant ne circule<br>
+                            💡 La lampe est éteinte
+                        </div>
+                    </div>
+
+                    <!-- Circuit Fermé -->
+                    <div class="circuit-card closed">
+                        <h4>✅ INTERRUPTEUR FERMÉ</h4>
+                        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Pile -->
+                            <rect x="120" y="20" width="60" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+                            <text x="150" y="50" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
+                            <text x="150" y="90" text-anchor="middle" font-size="11" fill="white" font-weight="bold">−</text>
+
+                            <!-- Fil de la pile vers le haut -->
+                            <line x1="150" y1="20" x2="150" y2="10" stroke="#333" stroke-width="3"/>
+
+                            <!-- Fil horizontal haut -->
+                            <line x1="150" y1="10" x2="50" y2="10" stroke="#333" stroke-width="3"/>
+                            <line x1="50" y1="10" x2="50" y2="120" stroke="#333" stroke-width="3"/>
+
+                            <!-- Interrupteur FERMÉ -->
+                            <circle cx="50" cy="120" r="5" fill="#333"/>
+                            <line x1="55" y1="120" x2="85" y2="120" stroke="#333" stroke-width="2"/>
+                            <circle cx="90" cy="120" r="4" fill="#333"/>
+                            <line x1="95" y1="120" x2="120" y2="120" stroke="#333" stroke-width="3"/>
+                            <text x="65" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#27ae60">FERMÉ</text>
+
+                            <!-- Fil vers la lampe -->
+                            <line x1="120" y1="120" x2="120" y2="160" stroke="#333" stroke-width="3"/>
+
+                            <!-- Lampe ALLUMÉE -->
+                            <circle cx="120" cy="180" r="25" fill="none" stroke="#ffed4e" stroke-width="3"/>
+                            <circle cx="120" cy="180" r="25" fill="none" stroke="#ffed4e" stroke-width="2" class="bulb-on"/>
+                            <line x1="107" y1="193" x2="133" y2="167" stroke="#ffed4e" stroke-width="2"/>
+                            <line x1="133" y1="193" x2="107" y2="167" stroke="#ffed4e" stroke-width="2"/>
+                            <circle cx="120" cy="180" r="8" fill="#ffed4e" class="bulb-on"/>
+                            <text x="120" y="220" text-anchor="middle" font-size="12" font-weight="bold" fill="#27ae60">Lampe</text>
+                            <text x="120" y="235" text-anchor="middle" font-size="11" fill="#27ae60">ALLUMÉE ✨</text>
+
+                            <!-- Fil vers le bas de la lampe -->
+                            <line x1="120" y1="205" x2="120" y2="260" stroke="#333" stroke-width="3"/>
+
+                            <!-- Fil retour à la pile -->
+                            <line x1="120" y1="260" x2="50" y2="260" stroke="#333" stroke-width="3"/>
+                            <line x1="50" y1="260" x2="50" y2="120" stroke="#333" stroke-width="3"/>
+                            <line x1="150" y1="100" x2="150" y2="260" stroke="#333" stroke-width="3"/>
+                            <line x1="150" y1="260" x2="120" y2="260" stroke="#333" stroke-width="3"/>
+
+                            <!-- Particules de courant -->
+                            <circle cx="120" cy="80" r="3" fill="#ff6b6b" class="pulse-particle"/>
+                            <circle cx="100" cy="100" r="3" fill="#ff6b6b" class="pulse-particle" style="animation-delay: 0.3s;"/>
+                            <circle cx="120" cy="140" r="3" fill="#ff6b6b" class="pulse-particle" style="animation-delay: 0.6s;"/>
+                        </svg>
+                        <div class="circuit-description">
+                            <strong>Circuit FERMÉ</strong><br>
+                            ✅ Le courant circule normalement<br>
+                            💡 La lampe s'allume
+                        </div>
+                    </div>
+                </div>
+
+                <h3>1.2 Conclusion - Rôle de l'Interrupteur Simple</h3>
+
+                <div class="info">
+                    <strong>📌 Définition :</strong><br>
+                    Un interrupteur simple est un dispositif qui permet de <strong>fermer ou d'ouvrir</strong> un circuit électrique.
+                </div>
+
+                <div class="conclusion-box">
+                    <h3>💡 À Retenir</h3>
+                    <ul>
+                        <li><strong>Interrupteur OUVERT</strong> → Circuit coupé → Courant s'arrête → Lampe <span style="color: #ffed4e;">ÉTEINTE</span> ⚠️</li>
+                        <li><strong>Interrupteur FERMÉ</strong> → Circuit fermé → Courant circule → Lampe <span style="color: #ffed4e;">ALLUMÉE</span> ✨</li>
+                    </ul>
+                </div>
+
+                <div class="info" style="margin-top: 30px;">
+                    <strong>🏠 Applications Pratiques :</strong><br>
+                    • Les interrupteurs des lampes de votre maison fonctionnent selon ce principe<br>
+                    • Un simple geste sur l'interrupteur (ouvert/fermé) contrôle l'éclairage<br>
+                    • La télévision, l'ordinateur, le réfrigérateur : tous utilisent des interrupteurs<br>
+                    • C'est le système de commande électrique le plus basique et le plus utilisé<br><br>
+                    <strong style="color: #1976d2;">✅ Conclusion générale :</strong><br>
+                    L'interrupteur simple est le dispositif de commande le plus essentiel d'un circuit électrique. Il permet simplement et efficacement de fermer ou d'ouvrir le circuit pour allumer ou éteindre les lampes et les appareils électriques de notre quotidien.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script for any future interactivity
+        console.log('Les Commandes Électriques - Leçon chargée');
+    </script>
+</body>
+</html>
