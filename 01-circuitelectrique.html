@@ -668,10 +668,8 @@
             }
 
             drawFlatBattery() {
-                // Transformer la pile en forme plate
+                // Transformer la pile en forme plate (LR12)
                 const pileGroup = this.pile;
-                // Réinitialiser les transformations
-                pileGroup.style.transform = 'none';
 
                 // Récréer la forme plate
                 const rect = pileGroup.querySelector('rect:first-child');
@@ -681,6 +679,46 @@
                     rect.setAttribute('width', '70');
                     rect.setAttribute('height', '120');
                     rect.setAttribute('rx', '3');
+                }
+
+                // Cacher les connecteurs cylindriques
+                const connectors = pileGroup.querySelectorAll('rect:nth-child(2), rect:nth-child(3)');
+                connectors.forEach(c => c.style.display = 'none');
+
+                // Afficher les lames (pour pile plate LR12)
+                let blades = pileGroup.querySelectorAll('.blade');
+                if (blades.length === 0) {
+                    // Créer les lames si elles n'existent pas
+                    // Lame positive (gauche)
+                    const bladePosGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    bladePosGroup.setAttribute('class', 'blade blade-positive');
+                    const bladePosRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    bladePosRect.setAttribute('x', '85');
+                    bladePosRect.setAttribute('y', '235');
+                    bladePosRect.setAttribute('width', '12');
+                    bladePosRect.setAttribute('height', '30');
+                    bladePosRect.setAttribute('fill', '#FFD700');
+                    bladePosRect.setAttribute('stroke', '#FFA500');
+                    bladePosRect.setAttribute('stroke-width', '1');
+                    bladePosGroup.appendChild(bladePosRect);
+                    pileGroup.appendChild(bladePosGroup);
+
+                    // Lame négative (droite)
+                    const bladeNegGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    bladeNegGroup.setAttribute('class', 'blade blade-negative');
+                    const bladeNegRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    bladeNegRect.setAttribute('x', '123');
+                    bladeNegRect.setAttribute('y', '235');
+                    bladeNegRect.setAttribute('width', '12');
+                    bladeNegRect.setAttribute('height', '30');
+                    bladeNegRect.setAttribute('fill', '#333');
+                    bladeNegRect.setAttribute('stroke', '#000');
+                    bladeNegRect.setAttribute('stroke-width', '1');
+                    bladeNegGroup.appendChild(bladeNegRect);
+                    pileGroup.appendChild(bladeNegGroup);
+                } else {
+                    // Afficher les lames existantes
+                    blades.forEach(blade => blade.style.display = 'block');
                 }
             }
 
@@ -694,6 +732,14 @@
                     rect.setAttribute('rx', '35');
                     rect.setAttribute('ry', '60');
                 }
+
+                // Afficher les connecteurs cylindriques
+                const connectors = pileGroup.querySelectorAll('rect:nth-child(2), rect:nth-child(3)');
+                connectors.forEach(c => c.style.display = 'block');
+
+                // Cacher les lames
+                let blades = pileGroup.querySelectorAll('.blade');
+                blades.forEach(blade => blade.style.display = 'none');
             }
         }
 
