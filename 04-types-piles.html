@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types de Piles - Bornes Polaires</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #667eea;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background: #764ba2;
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .batteries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .battery-card {
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            padding: 25px;
+            background: #fafafa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .battery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .battery-card h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .battery-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            margin-bottom: 15px;
+        }
+
+        .battery-info p {
+            color: #1565c0;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .battery-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .poles-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .pole {
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .pole.positive {
+            background: #fff3e0;
+            color: #e65100;
+            border: 2px solid #ff9800;
+        }
+
+        .pole.negative {
+            background: #f5f5f5;
+            color: #666;
+            border: 2px solid #999;
+        }
+
+        .pole-symbol {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .comparison-table tbody tr:nth-child(odd) {
+            background-color: #fafafa;
+        }
+
+        .battery-type {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .voltage {
+            background: #e3f2fd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #2196f3;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+            color: #1565c0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .legend-item {
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .legend-item.positive {
+            background: #fff3e0;
+            border-color: #ff9800;
+        }
+
+        .legend-item.negative {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        .legend-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .legend-item p {
+            font-size: 12px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="01-circuitelectrique.html">⚡ Circuit Électrique</a>
+        <a href="02-sens-courant.html">🔄 Sens du Courant</a>
+        <a href="03-isolants-conducteurs.html">🔌 Isolants &amp; Conducteurs</a>
+        <a href="04-types-piles.html" class="active">🔋 Types de Piles</a>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>🔋 Types de Piles et Bornes Polaires</h1>
+            <p class="subtitle">Identifier les bornes positives (+) et négatives (−) des différents types de piles</p>
+
+            <!-- Cartes des piles -->
+            <div class="batteries-grid">
+                <!-- Pile Plate -->
+                <div class="battery-card">
+                    <h3>Pile Plate</h3>
+                    <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Boîtier principal -->
+                        <rect x="40" y="80" width="120" height="140" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+
+                        <!-- Étiquette -->
+                        <text x="100" y="160" font-size="14" text-anchor="middle" fill="white" font-weight="bold">PILE</text>
+                        <text x="100" y="180" font-size="11" text-anchor="middle" fill="white" font-weight="bold">PLATE</text>
+
+                        <!-- Lame positive (gauche) -->
+                        <rect x="50" y="220" width="15" height="35" fill="#FFD700" stroke="#FFA500" stroke-width="2" rx="2"/>
+                        <circle cx="57.5" cy="215" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+                        <text x="57.5" y="250" font-size="11" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
+
+                        <!-- Lame négative (droite) -->
+                        <rect x="135" y="220" width="15" height="35" fill="#333" stroke="#000" stroke-width="2" rx="2"/>
+                        <circle cx="142.5" cy="215" r="4" fill="#333" stroke="#000" stroke-width="1"/>
+                        <text x="142.5" y="250" font-size="11" text-anchor="middle" fill="#333" font-weight="bold">−</text>
+
+                        <!-- Contacts supérieurs -->
+                        <circle cx="57.5" cy="75" r="5" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+                        <circle cx="142.5" cy="75" r="5" fill="#333" stroke="#000" stroke-width="1"/>
+                    </svg>
+
+                    <div class="battery-info">
+                        <p><strong>Caractéristiques :</strong></p>
+                        <p>• Forme plate et rectangulaire</p>
+                        <p>• Deux lames polaires en bas (LR12)</p>
+                        <p>• Tension : 4,5V à 9V</p>
+                    </div>
+
+                    <div class="poles-display">
+                        <div class="pole positive">
+                            <div class="pole-symbol">⊕</div>
+                            BORNE +
+                        </div>
+                        <div class="pole negative">
+                            <div class="pole-symbol">⊖</div>
+                            BORNE −
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pile Cylindrique -->
+                <div class="battery-card">
+                    <h3>Pile Cylindrique</h3>
+                    <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Corps principal -->
+                        <rect x="60" y="50" width="80" height="160" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="15"/>
+
+                        <!-- Étiquette -->
+                        <text x="100" y="145" font-size="14" text-anchor="middle" fill="white" font-weight="bold">AA</text>
+
+                        <!-- Bouton positif (haut) -->
+                        <circle cx="100" cy="45" r="12" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                        <circle cx="100" cy="45" r="8" fill="#fff9e6" stroke="#FFD700" stroke-width="1"/>
+                        <text x="100" y="50" font-size="16" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
+
+                        <!-- Borne négative (bas) -->
+                        <ellipse cx="100" cy="215" rx="35" ry="8" fill="#333" stroke="#000" stroke-width="2"/>
+                        <text x="100" y="220" font-size="16" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
+
+                        <!-- Nervures -->
+                        <line x1="70" y1="120" x2="70" y2="140" stroke="#c0392b" stroke-width="1"/>
+                        <line x1="130" y1="120" x2="130" y2="140" stroke="#c0392b" stroke-width="1"/>
+                    </svg>
+
+                    <div class="battery-info">
+                        <p><strong>Caractéristiques :</strong></p>
+                        <p>• Forme cylindrique allongée</p>
+                        <p>• Bouton/ressort (+) en haut</p>
+                        <p>• Base plate (−) en bas</p>
+                        <p>• Tension : 1,5V (AA, AAA, C, D)</p>
+                    </div>
+
+                    <div class="poles-display">
+                        <div class="pole positive">
+                            <div class="pole-symbol">⊕</div>
+                            BOUTON +
+                        </div>
+                        <div class="pole negative">
+                            <div class="pole-symbol">⊖</div>
+                            BASE −
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pile LR12 -->
+                <div class="battery-card">
+                    <h3>Pile LR12 (4,5V)</h3>
+                    <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Boîtier principal -->
+                        <rect x="50" y="60" width="100" height="130" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+
+                        <!-- Étiquette -->
+                        <text x="100" y="140" font-size="13" text-anchor="middle" fill="white" font-weight="bold">LR12</text>
+                        <text x="100" y="160" font-size="11" text-anchor="middle" fill="white" font-weight="bold">4.5V</text>
+
+                        <!-- Connecteur positif (haut) -->
+                        <rect x="85" y="35" width="30" height="30" fill="#FFD700" stroke="#FFA500" stroke-width="2" rx="3"/>
+                        <rect x="92" y="42" width="16" height="16" fill="#fff9e6" stroke="#FFD700" stroke-width="1" rx="2"/>
+                        <text x="100" y="55" font-size="14" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
+
+                        <!-- Connecteur négatif (bas) -->
+                        <rect x="85" y="205" width="30" height="30" fill="#333" stroke="#000" stroke-width="2" rx="3"/>
+                        <rect x="92" y="212" width="16" height="16" fill="#666" stroke="#000" stroke-width="1" rx="2"/>
+                        <text x="100" y="225" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
+
+                        <!-- Lames sur les côtés -->
+                        <rect x="40" y="180" width="12" height="25" fill="#FFD700" stroke="#FFA500" stroke-width="1" rx="2"/>
+                        <rect x="148" y="180" width="12" height="25" fill="#333" stroke="#000" stroke-width="1" rx="2"/>
+                    </svg>
+
+                    <div class="battery-info">
+                        <p><strong>Caractéristiques :</strong></p>
+                        <p>• Pile plate professionnelle</p>
+                        <p>• Connecteurs en haut et bas</p>
+                        <p>• Deux lames latérales (anciennes)</p>
+                        <p>• Tension : 4,5V</p>
+                    </div>
+
+                    <div class="poles-display">
+                        <div class="pole positive">
+                            <div class="pole-symbol">⊕</div>
+                            BORNE +
+                        </div>
+                        <div class="pole negative">
+                            <div class="pole-symbol">⊖</div>
+                            BORNE −
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tableau comparatif -->
+            <h3 style="margin-bottom: 15px; color: #333;">Tableau Comparatif</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Type de Pile</th>
+                        <th>Forme</th>
+                        <th>Borne Positive (+)</th>
+                        <th>Borne Négative (−)</th>
+                        <th>Tension</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="battery-type">Pile Plate</td>
+                        <td>Rectangulaire plate</td>
+                        <td>Lame dorée (gauche)</td>
+                        <td>Lame noire (droite)</td>
+                        <td><span class="voltage">4,5V - 9V</span></td>
+                    </tr>
+                    <tr>
+                        <td class="battery-type">Pile Cylindrique</td>
+                        <td>Cylindre allongé</td>
+                        <td>Bouton/ressort (haut)</td>
+                        <td>Base plate (bas)</td>
+                        <td><span class="voltage">1,5V</span></td>
+                    </tr>
+                    <tr>
+                        <td class="battery-type">Pile LR12</td>
+                        <td>Rectangulaire plate</td>
+                        <td>Connecteur (haut)</td>
+                        <td>Connecteur (bas)</td>
+                        <td><span class="voltage">4,5V</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Légende -->
+            <div class="legend">
+                <div class="legend-item positive">
+                    <strong>⊕ Borne Positive (+)</strong>
+                    <p>La borne par laquelle sort le courant. Couleur dorée/jaune. Point de départ du courant dans le circuit.</p>
+                </div>
+                <div class="legend-item negative">
+                    <strong>⊖ Borne Négative (−)</strong>
+                    <p>La borne par laquelle rentre le courant. Couleur noire/grise. Point d'arrivée du courant dans le circuit.</p>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="info">
+                <strong>💡 À retenir :</strong><br>
+                • Chaque pile a toujours une borne <strong>positive (+)</strong> et une borne <strong>négative (−)</strong><br>
+                • Le courant circule de + vers − à l'extérieur de la pile (convention)<br>
+                • Les piles de même tension peuvent être combinées en série (+ d'une à − de l'autre)<br>
+                • Attention : inverser les bornes peut endommager les appareils<br>
+                • La couleur dorée/jaune indique généralement la borne positive<br>
+                • Pour identifier une borne inconnue, utiliser un multimètre
+            </div>
+        </div>
+    </div>
+</body>
+</html>
