@@ -331,6 +331,12 @@
                     <!-- Boîtier du moteur -->
                     <rect x="350" y="150" width="200" height="150" fill="#e8e8e8" stroke="#999" stroke-width="2" rx="10"/>
 
+                    <!-- Borne positive en haut -->
+                    <circle id="motor-pole-top" cx="450" cy="140" r="6" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    <text id="motor-label-top" x="450" y="145" font-size="14" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
+                    <!-- Bouton central du haut -->
+                    <circle cx="450" cy="155" r="5" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+
                     <!-- Hélice / Propeller -->
                     <g class="propeller clockwise" id="propeller">
                         <!-- Pale 1 -->
@@ -341,6 +347,12 @@
 
                     <!-- Centre du moteur -->
                     <circle cx="450" cy="225" r="8" fill="#333" stroke="#000" stroke-width="2"/>
+
+                    <!-- Borne négative en bas -->
+                    <circle id="motor-pole-bottom" cx="450" cy="310" r="6" fill="#333" stroke="#000" stroke-width="2"/>
+                    <text id="motor-label-bottom" x="450" y="315" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">−</text>
+                    <!-- Bouton central du bas -->
+                    <circle cx="450" cy="295" r="5" fill="#333" stroke="#000" stroke-width="1"/>
 
                     <!-- Label -->
                     <text x="450" y="320" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">MOTEUR</text>
@@ -440,6 +452,12 @@
                 this.labelLeft = document.getElementById('label-left');
                 this.labelRight = document.getElementById('label-right');
 
+                // Éléments des bornes du moteur
+                this.motorPoleTop = document.getElementById('motor-pole-top');
+                this.motorPoleBottom = document.getElementById('motor-pole-bottom');
+                this.motorLabelTop = document.getElementById('motor-label-top');
+                this.motorLabelBottom = document.getElementById('motor-label-bottom');
+
                 this.setupEventListeners();
                 this.updateUI();
             }
@@ -485,7 +503,7 @@
                     this.currentToggle.classList.add('reversed');
                     this.directionLabel.textContent = 'Inversé → Moteur anti-horaire';
 
-                    // Inverser les bornes visuellement
+                    // Inverser les bornes de la pile
                     this.poleLeft.setAttribute('fill', '#333');
                     this.labelLeft.textContent = '−';
                     this.labelLeft.setAttribute('fill', '#333');
@@ -494,6 +512,15 @@
                     this.labelRight.textContent = '+';
                     this.labelRight.setAttribute('fill', '#FF6B6B');
 
+                    // Inverser les bornes du moteur
+                    this.motorPoleTop.setAttribute('fill', '#333');
+                    this.motorLabelTop.textContent = '−';
+                    this.motorLabelTop.setAttribute('fill', '#333');
+
+                    this.motorPoleBottom.setAttribute('fill', '#FFD700');
+                    this.motorLabelBottom.textContent = '+';
+                    this.motorLabelBottom.setAttribute('fill', '#FF6B6B');
+
                     // Rotation anti-horaire
                     this.propeller.classList.remove('clockwise');
                     this.propeller.classList.add('counterClockwise');
@@ -501,7 +528,7 @@
                     this.currentToggle.classList.remove('reversed');
                     this.directionLabel.textContent = 'Normal → Moteur horaire';
 
-                    // Bornes normales
+                    // Bornes normales de la pile
                     this.poleLeft.setAttribute('fill', '#FFD700');
                     this.labelLeft.textContent = '+';
                     this.labelLeft.setAttribute('fill', '#FF6B6B');
@@ -509,6 +536,15 @@
                     this.poleRight.setAttribute('fill', '#333');
                     this.labelRight.textContent = '−';
                     this.labelRight.setAttribute('fill', '#333');
+
+                    // Bornes normales du moteur
+                    this.motorPoleTop.setAttribute('fill', '#FFD700');
+                    this.motorLabelTop.textContent = '+';
+                    this.motorLabelTop.setAttribute('fill', '#FF6B6B');
+
+                    this.motorPoleBottom.setAttribute('fill', '#333');
+                    this.motorLabelBottom.textContent = '−';
+                    this.motorLabelBottom.setAttribute('fill', '#333');
 
                     // Rotation horaire
                     this.propeller.classList.remove('counterClockwise');
