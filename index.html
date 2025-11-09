@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Circuit Électrique</title>
+    <title>Physique-Chimie</title>
     <style>
         * {
             margin: 0;
@@ -15,43 +15,55 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
             text-align: center;
+            color: white;
+            margin-bottom: 60px;
             animation: slideDown 0.8s ease-out;
         }
 
-        h1 {
-            font-size: 56px;
-            color: white;
-            margin-bottom: 40px;
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 20px 60px;
-            background: white;
-            color: #667eea;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3);
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
+
+        .lesson-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .lesson-card:nth-child(1) { animation-delay: 0.1s; }
+        .lesson-card:nth-child(2) { animation-delay: 0.2s; }
+        .lesson-card:nth-child(3) { animation-delay: 0.3s; }
+        .lesson-card:nth-child(4) { animation-delay: 0.4s; }
+        .lesson-card:nth-child(5) { animation-delay: 0.5s; }
 
         @keyframes slideDown {
             from {
@@ -64,22 +76,212 @@
             }
         }
 
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .lesson-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .lesson-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .lesson-card h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 12px;
+            border-bottom: 3px solid;
+            padding-bottom: 8px;
+        }
+
+        /* Couleurs différentes pour chaque leçon */
+        .lesson-card.lesson-1 h2 { border-color: #667eea; }
+        .lesson-card.lesson-2 h2 { border-color: #764ba2; }
+        .lesson-card.lesson-3 h2 { border-color: #2196f3; }
+        .lesson-card.lesson-4 h2 { border-color: #ff9800; }
+        .lesson-card.lesson-5 h2 { border-color: #4caf50; }
+
+        .lesson-card p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .lesson-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .lesson-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .status-coming-soon {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .status-available {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
+            header h1 {
+                font-size: 32px;
             }
 
-            .cta-button {
-                padding: 15px 40px;
-                font-size: 16px;
+            header p {
+                font-size: 14px;
+            }
+
+            .lessons-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>⚡ Le Circuit Électrique</h1>
-        <a href="le-circuit-electrique.html" class="cta-button">Entrer →</a>
+        <!-- Header -->
+        <header>
+            <h1>📚 Physique-Chimie</h1>
+            <p>Cours Interactifs et Animés</p>
+        </header>
+
+        <!-- Lessons Grid -->
+        <div class="lessons-grid" id="lessonsContainer">
+            <!-- Les leçons sont générées par JavaScript -->
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>💡 Cours interactifs avec schémas animés | Facile à étendre</p>
+        </footer>
     </div>
+
+    <script>
+        // Configuration des leçons
+        const lessons = [
+            {
+                id: 1,
+                icon: "⚡",
+                title: "Le Circuit Électrique",
+                description: "Comprendre les circuits électriques, le moteur, les isolants, conducteurs et les types de piles.",
+                url: "le-circuit-electrique.html",
+                status: "available"
+            },
+            // AJOUTER D'AUTRES LEÇONS ICI
+            // Exemple:
+            // {
+            //     id: 2,
+            //     icon: "🧲",
+            //     title: "Le Magnétisme",
+            //     description: "Découvrir les propriétés magnétiques et les champs magnétiques.",
+            //     url: "le-magnetisme.html",
+            //     status: "available"
+            // },
+            // {
+            //     id: 3,
+            //     icon: "⚛️",
+            //     title: "La Chimie Générale",
+            //     description: "Bases de la chimie, atomes et molécules.",
+            //     url: "chimie-generale.html",
+            //     status: "coming-soon"
+            // }
+        ];
+
+        // Générer les cartes de leçons
+        function renderLessons() {
+            const container = document.getElementById('lessonsContainer');
+            container.innerHTML = '';
+
+            lessons.forEach((lesson, index) => {
+                const card = document.createElement('div');
+                card.className = `lesson-card lesson-${index + 1}`;
+
+                const statusBadge = lesson.status === 'available'
+                    ? '<span class="status-available">Disponible</span>'
+                    : '<span class="status-coming-soon">Bientôt</span>';
+
+                if (lesson.status === 'available') {
+                    card.innerHTML = `
+                        <a href="${lesson.url}">
+                            <span class="lesson-icon">${lesson.icon}</span>
+                            <h2>${lesson.title}</h2>
+                            <p>${lesson.description}</p>
+                            <button class="lesson-button">Accéder →</button>
+                        </a>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <span class="lesson-icon">${lesson.icon}</span>
+                        ${statusBadge}
+                        <h2>${lesson.title}</h2>
+                        <p>${lesson.description}</p>
+                        <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
+                    `;
+                }
+
+                container.appendChild(card);
+            });
+        }
+
+        // Initialiser les leçons au chargement
+        renderLessons();
+    </script>
 </body>
 </html>
