@@ -448,6 +448,169 @@
                 flex: 1;
             }
         }
+
+        /* Styles pour la section quiz intégrée */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .quiz-section > p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.2);
+            border-color: #ff6f00;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-size: 15px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #fff3e0;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .quiz-feedback {
+            font-size: 13px;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-button:active {
+            transform: scale(0.98);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .quiz-result.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -816,5 +979,251 @@
             </div>
         </div>
         </div>
+
+        <!-- SECTION QUIZ INTÉGRÉE -->
+        <div class="container">
+            <section class="quiz-section">
+                <h2>📝 Quiz - Court-Circuit et Protection</h2>
+                <p>8 questions pour tester votre compréhension du cours</p>
+
+                <div class="quiz-questions">
+                    <!-- Question 1 -->
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Qu'est-ce qu'un court-circuit?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> Une connexion directe entre + et − avec très peu de résistance
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> Un circuit qui manque de puissance
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> Un fil qui est trop court
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="d"> Une prise avec peu d'amperage
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Quel est le principal danger d'un court-circuit?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> Cela consomme moins d'énergie
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> Courant très intense qui génère beaucoup de chaleur
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> Cela augmente la tension
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="d"> Cela éteint tous les appareils
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Qu'est-ce qui peut causer un court-circuit?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> Des fils dénudés qui se touchent
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> Une prise humide
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> Une surcharge d'appareils
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="d"> Tous les éléments ci-dessus
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Quel appareil coupe automatiquement le circuit en cas de surcharge?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> Un fusible ou un disjoncteur
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> Un transformateur
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> Une multiprise
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="d"> Un compteur électrique
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Si vous détectez un court-circuit chez vous, que devez-vous faire en priorité?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> Ajouter une nouvelle prise
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> Couper l'électricité et appeler un électricien
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> Essayer de réparer vous-même
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="d"> Ignorer le problème
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Pourquoi un court-circuit peut-il causer un incendie?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> Génération d'une chaleur extrême pouvant causer un incendie
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> Le froid généré gèle les fils
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> Il produit de l'eau
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="d"> Il n'y a pas de danger d'incendie
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="quiz-question">
+                        <span class="question-number">7</span>
+                        <span class="question-text">Comment se produit un court-circuit?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="a"> Les deux fils positif et négatif entrent en contact direct
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="b"> La tension est trop basse
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="c"> Le compteur est défectueux
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="d"> Les lampes sont éteintes
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q7"></div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="quiz-question">
+                        <span class="question-number">8</span>
+                        <span class="question-text">Quelle est la différence entre un fusible et un disjoncteur après déclenchement?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="a"> Le fusible se détériore et doit être remplacé; le disjoncteur peut être réarmé
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="b"> Aucune différence
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="c"> Le disjoncteur est jetable
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="d"> Le fusible peut être réutilisé indéfiniment
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q8"></div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitCourtCircuitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results-court-circuit" class="quiz-result"></div>
+            </section>
+        </div>
+
+    <script>
+        // Quiz functionality for Court-Circuit
+        function submitCourtCircuitQuiz() {
+            const quizAnswers = {
+                q1: 'a', // Connexion directe entre + et −
+                q2: 'b', // Courant très intense qui génère de la chaleur
+                q3: 'd', // Tous les éléments ci-dessus
+                q4: 'a', // Fusible ou disjoncteur
+                q5: 'b', // Couper l'électricité et appeler un électricien
+                q6: 'a', // Génération d'une chaleur extrême pouvant causer un incendie
+                q7: 'a', // Les deux fils positif et négatif entrent en contact direct
+                q8: 'a'  // Le fusible se détériore et doit être remplacé; le disjoncteur peut être réarmé
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            // Vérifier chaque réponse
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback-${questionName}`);
+
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === quizAnswers[questionName]) {
+                        score++;
+                        feedbackDiv.textContent = '✅ Correct!';
+                        feedbackDiv.className = 'quiz-feedback correct';
+                    } else {
+                        feedbackDiv.textContent = '❌ Incorrect. Réfléchissez à nouveau!';
+                        feedbackDiv.className = 'quiz-feedback incorrect';
+                    }
+                } else {
+                    feedbackDiv.textContent = '⚠️ Veuillez sélectionner une réponse.';
+                    feedbackDiv.className = 'quiz-feedback incorrect';
+                }
+            }
+
+            // Afficher les résultats
+            const resultsDiv = document.getElementById('quiz-results-court-circuit');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            let message = '';
+            if (percentage >= 90) {
+                message = '🏆 Excellent! Vous maîtrisez parfaitement le sujet!';
+            } else if (percentage >= 70) {
+                message = '👍 Très bien! Vous avez une bonne compréhension du cours.';
+            } else if (percentage >= 50) {
+                message = '📚 Pas mal! Révisez encore un peu pour améliorer votre score.';
+            } else {
+                message = '💪 Continuez vos efforts! Relisez le cours attentivement.';
+            }
+
+            resultsDiv.innerHTML = `
+                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+                ${message}
+            `;
+            resultsDiv.classList.add('show');
+
+            // Scroll vers les résultats
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
 </body>
 </html>
