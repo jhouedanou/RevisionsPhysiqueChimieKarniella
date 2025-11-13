@@ -170,6 +170,23 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .subject-title:hover {
+            transform: translateX(10px);
+            opacity: 0.9;
+        }
+
+        .subject-title a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
         }
 
         .subject-description {
@@ -243,6 +260,7 @@
                 icon: "🔢",
                 name: "Mathématiques",
                 description: "Calculs algébriques, géométrie, nombres relatifs et plus encore",
+                url: "mathematiques.html",
                 lessons: [
                     {
                         id: 1,
@@ -259,6 +277,7 @@
                 icon: "⚡",
                 name: "Physique",
                 description: "Circuits électriques, électricité et phénomènes physiques",
+                url: "physique.html",
                 lessons: [
                     {
                         id: 1,
@@ -291,6 +310,7 @@
                 icon: "🧪",
                 name: "Chimie",
                 description: "Réactions chimiques, molécules et transformations de la matière",
+                url: null,
                 lessons: [
                     // Leçons de chimie à venir
                 ]
@@ -300,6 +320,7 @@
                 icon: "🌱",
                 name: "SVT",
                 description: "Sciences de la Vie et de la Terre - Reproduction et biologie",
+                url: "svt.html",
                 lessons: [
                     {
                         id: 1,
@@ -316,6 +337,7 @@
                 icon: "🌍",
                 name: "Histoire-Géographie",
                 description: "Histoire des civilisations et découverte du monde",
+                url: "histoire-geographie.html",
                 lessons: [
                     {
                         id: 1,
@@ -342,7 +364,17 @@
                 // Titre de la matière
                 const titleDiv = document.createElement('div');
                 titleDiv.className = 'subject-title';
-                titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                
+                if (subject.url) {
+                    // Si une URL existe, rendre le titre cliquable
+                    const titleLink = document.createElement('a');
+                    titleLink.href = subject.url;
+                    titleLink.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                    titleDiv.appendChild(titleLink);
+                } else {
+                    // Sinon, afficher le titre normalement
+                    titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                }
                 section.appendChild(titleDiv);
 
                 // Description de la matière
