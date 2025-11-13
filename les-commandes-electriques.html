@@ -515,9 +515,8 @@
 <body>
     <header>
         <a href="index.html" class="btn-back">← Retour</a>
-        <a href="les-commandes-electriques-quiz.html" class="btn-back" style="right: 20px; left: auto;">Quiz ➜</a>
         <h1>🔌 Les Commandes Électriques</h1>
-        <p>Cours complet et interactif</p>
+        <p>Cours complet et interactif avec quiz intégré</p>
     </header>
 
     <div class="main-wrapper">
@@ -1322,9 +1321,174 @@
         </div>
         </div>
         </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Les Commandes Électriques</h2>
+                <p>Testez vos connaissances en temps réel!</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Quelle est la différence principale entre un interrupteur simple et un commutateur?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> L'interrupteur est plus cher
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> L'interrupteur contrôle 1 circuit, le commutateur bascule entre 2 circuits
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Le commutateur ne fonctionne qu'avec des piles
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Avec un commutateur contrôlant 2 lampes, combien de lampes peuvent être allumées à la fois?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> 0 (aucune)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> 1 lampe (l'une OU l'autre)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> 2 lampes (les deux ensemble)
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Combien de positions a un commutateur basique?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> 1 seule position
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> 2 positions
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> 3 positions
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quel est un exemple d'utilisation réelle d'un commutateur?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Choisir entre lampe du salon OU lampe de la chambre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Éteindre toutes les lumières de la maison
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Augmenter la luminosité d'une lampe
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Combien de sorties a un commutateur pour contrôler 2 circuits?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> 1 sortie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> 2 sorties
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> 3 sorties
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
         </div>
 
     <script>
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'b', // Interrupteur 1 circuit, commutateur 2 circuits
+            q2: 'b', // 1 lampe à la fois
+            q3: 'b', // 2 positions
+            q4: 'a', // Choisir entre 2 lampes
+            q5: 'b'  // 2 sorties
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Réponse manquante</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Correct!</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                    }
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent! Vous maîtrisez bien les commandes électriques.</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bon travail! Continuez à réviser.</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 À relire! Revisitez le contenu.</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
         // Gestion interactivité des circuits
         console.log('Les Commandes Électriques - Leçon chargée');
 
