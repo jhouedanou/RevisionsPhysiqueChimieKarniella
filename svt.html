@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT - Sciences de la Vie et de la Terre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #2ecc71;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #2ecc71;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #2ecc71;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #2ecc71;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #1b5e20;
+        }
+
+        .experience-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .experience-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .observation-box {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .observation-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 12px;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>🌱 SVT - Sciences de la Vie et de la Terre</h1>
+        <p>La reproduction chez les plantes à fleurs et chez les vertébrés</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Formation de la Graine</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Germination de la Graine</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: FORMATION DE LA GRAINE -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>🌸 Formation de la Graine</h2>
+                        <p class="subtitle">Comment se forme la graine chez les plantes à fleurs</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>La graine est l'organe qui permet la reproduction des plantes à fleurs. Elle se forme grâce à des phénomènes biologiques précis qui se déroulent dans la fleur.</p>
+
+                        <div class="observation-box">
+                            <h4>🔬 Observation</h4>
+                            <p><strong>Question :</strong> La graine se forme-t-elle grâce à certains phénomènes ?</p>
+                            <p><strong>Réponse :</strong> Oui, la formation de la graine nécessite plusieurs étapes essentielles que nous allons découvrir.</p>
+                        </div>
+
+                        <h3>🌺 Structure de la Fleur</h3>
+                        <p>La fleur est l'organe de reproduction des plantes à fleurs. Elle comprend plusieurs parties importantes :</p>
+                        <ul>
+                            <li><strong>Les pétales :</strong> Partie colorée qui attire les insectes</li>
+                            <li><strong>Les étamines :</strong> Organes mâles qui produisent le pollen</li>
+                            <li><strong>Le pistil :</strong> Organe femelle qui contient les ovules</li>
+                            <li><strong>Les sépales :</strong> Enveloppe protectrice de la fleur</li>
+                        </ul>
+
+                        <h3>🔄 Le Phénomène de Pollinisation</h3>
+                        <div class="experience-box">
+                            <h4>🧪 Expérience : La Pollinisation</h4>
+                            <p><strong>Protocole :</strong></p>
+                            <ol>
+                                <li>Prenez deux fleurs identiques au stade de floraison</li>
+                                <li>Fleur A : Laissez-la intacte, exposée aux insectes</li>
+                                <li>Fleur B : Protégez-la avec un sac en plastique pour empêcher l'accès des insectes</li>
+                                <li>Observez après quelques semaines</li>
+                            </ol>
+                            <p><strong>Résultats :</strong></p>
+                            <ul>
+                                <li>Fleur A : Formation de fruits contenant des graines</li>
+                                <li>Fleur B : Pas de fruits, flétrissement de la fleur</li>
+                            </ul>
+                            <p><strong>Conclusion :</strong> Les insectes transportent le pollen d'une fleur à une autre. Ce phénomène s'appelle la <strong>pollinisation</strong>.</p>
+                        </div>
+
+                        <h3>💚 La Fécondation</h3>
+                        <p>Après la pollinisation, le grain de pollen dépose sur le pistil germe et forme un tube pollinique qui descend vers l'ovule.</p>
+                        <ul>
+                            <li>Le noyau du grain de pollen rencontre l'ovule dans le pistil</li>
+                            <li>Cette rencontre s'appelle la <strong>fécondation</strong></li>
+                            <li>L'ovule fécondé se transforme en <strong>graine</strong></li>
+                            <li>Le pistil se développe et devient le <strong>fruit</strong></li>
+                        </ul>
+
+                        <h3>🌱 Transformation de la Fleur</h3>
+                        <p>Après la fécondation, plusieurs transformations ont lieu :</p>
+                        <ol>
+                            <li><strong>Ovule fécondé →</strong> Se transforme en GRAINE</li>
+                            <li><strong>Pistil →</strong> Se développe en FRUIT</li>
+                            <li><strong>Pétales et étamines →</strong> Se fanent et tombent</li>
+                        </ol>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La graine se forme grâce à la <strong>pollinisation</strong> suivie de la <strong>fécondation</strong><br>
+                            • Les insectes jouent un rôle essentiel dans le transport du pollen<br>
+                            • Sans pollinisation, il n'y a pas de formation de graines<br>
+                            • Le fruit protège et aide à la dispersion des graines
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: GERMINATION DE LA GRAINE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🌾 Germination de la Graine</h2>
+                        <p class="subtitle">Les conditions nécessaires à la germination</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>La germination est le développement de la graine qui donne naissance à une nouvelle plante. Mais quelles sont les conditions nécessaires pour que la graine germe ?</p>
+
+                        <div class="observation-box">
+                            <h4>🔬 Question de Recherche</h4>
+                            <p><strong>Question :</strong> La graine germe-t-elle en fonction des facteurs du milieu ?</p>
+                            <p>Nous allons réaliser des expériences pour le découvrir.</p>
+                        </div>
+
+                        <h3>🧪 Expérience 1 : Facteurs du Milieu</h3>
+                        <div class="experience-box">
+                            <h4>Influence de l'eau, de l'air et de la température</h4>
+                            <p><strong>Protocole :</strong></p>
+                            <p>Prenez 4 pots identiques avec des graines de haricot :</p>
+                            <ul>
+                                <li><strong>Pot A :</strong> Eau + Air + Température ambiante (environ 20-25°C)</li>
+                                <li><strong>Pot B :</strong> Pas d'eau + Air + Température ambiante</li>
+                                <li><strong>Pot C :</strong> Eau + Pas d'air (sous l'eau) + Température ambiante</li>
+                                <li><strong>Pot D :</strong> Eau + Air + Froid (réfrigérateur à 4°C)</li>
+                            </ul>
+                            <p><strong>Résultats après 1 semaine :</strong></p>
+                            <ul>
+                                <li><strong>Pot A :</strong> ✅ Germination réussie - la plantule se développe</li>
+                                <li><strong>Pot B :</strong> ❌ Pas de germination - graine sèche</li>
+                                <li><strong>Pot C :</strong> ❌ Pas de germination - graine pourrit</li>
+                                <li><strong>Pot D :</strong> ❌ Germination très lente ou absente</li>
+                            </ul>
+                            <p><strong>Conclusion :</strong></p>
+                            <p>Pour germer, la graine a besoin de trois facteurs du milieu :</p>
+                            <ol>
+                                <li><strong>L'eau :</strong> Permet le gonflement de la graine et active les réserves</li>
+                                <li><strong>L'air (oxygène) :</strong> Nécessaire à la respiration de la graine</li>
+                                <li><strong>Une température favorable :</strong> En général entre 15°C et 30°C selon les espèces</li>
+                            </ol>
+                        </div>
+
+                        <h3>🌰 Expérience 2 : Facteurs Liés à la Graine</h3>
+                        <div class="experience-box">
+                            <h4>Influence de l'intégrité et de l'âge de la graine</h4>
+                            <p><strong>Question :</strong> La graine germe-t-elle en fonction des facteurs liés à la graine elle-même ?</p>
+                            <p><strong>Protocole :</strong></p>
+                            <p>Dans des conditions optimales (eau, air, température), testez :</p>
+                            <ul>
+                                <li><strong>Graines A :</strong> Graines fraîches et intactes</li>
+                                <li><strong>Graines B :</strong> Graines abîmées ou cassées</li>
+                                <li><strong>Graines C :</strong> Graines très vieilles (plusieurs années)</li>
+                            </ul>
+                            <p><strong>Résultats :</strong></p>
+                            <ul>
+                                <li><strong>Graines A :</strong> ✅ Germination réussie</li>
+                                <li><strong>Graines B :</strong> ❌ Pas de germination ou plantule malformée</li>
+                                <li><strong>Graines C :</strong> ⚠️ Peu ou pas de germination</li>
+                            </ul>
+                            <p><strong>Conclusion :</strong></p>
+                            <p>La germination dépend aussi de facteurs liés à la graine :</p>
+                            <ol>
+                                <li><strong>L'intégrité :</strong> La graine doit être intacte, non endommagée</li>
+                                <li><strong>La viabilité :</strong> La graine doit être viable (vivante)</li>
+                                <li><strong>L'âge :</strong> Les graines trop vieilles perdent leur pouvoir germinatif</li>
+                            </ol>
+                        </div>
+
+                        <h3>🌿 Étapes de la Germination</h3>
+                        <p>Lorsque les conditions sont réunies, la germination se déroule en plusieurs étapes :</p>
+                        <ol>
+                            <li><strong>Absorption d'eau :</strong> La graine gonfle</li>
+                            <li><strong>Rupture du tégument :</strong> L'enveloppe de la graine se déchire</li>
+                            <li><strong>Sortie de la radicule :</strong> La première racine apparaît</li>
+                            <li><strong>Développement de la tigelle :</strong> La tige commence à pousser</li>
+                            <li><strong>Apparition des premières feuilles :</strong> La plantule devient autonome</li>
+                        </ol>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La germination nécessite trois facteurs du milieu : <strong>eau, air et température favorable</strong><br>
+                            • La graine doit être <strong>intacte et viable</strong> pour germer<br>
+                            • Sans l'un de ces facteurs, la germination ne peut pas avoir lieu<br>
+                            • La lumière n'est pas nécessaire pour la germination mais sera indispensable pour la croissance ultérieure<br>
+                            • Les réserves de la graine nourrissent la jeune plante jusqu'à ce qu'elle puisse faire la photosynthèse
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - La Reproduction chez les Plantes</h2>
+                <p>Testez vos connaissances!</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce que la pollinisation ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Le transport du pollen d'une fleur à une autre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> La formation du fruit
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> L'arrosage de la plante
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Que devient l'ovule après la fécondation ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Une graine
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Un pétale
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Une feuille
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Quels sont les trois facteurs du milieu nécessaires à la germination ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Eau, air et température favorable
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Lumière, eau et terre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Vent, pluie et soleil
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Que se passe-t-il si une graine n'a pas d'eau ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Elle ne peut pas germer
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Elle germe normalement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Elle germe plus vite
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Quel rôle jouent les insectes dans la reproduction des plantes ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Ils transportent le pollen d'une fleur à une autre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Ils mangent les graines
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Ils arrosent les plantes
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'a', // Transport du pollen
+            q2: 'a', // Graine
+            q3: 'a', // Eau, air, température
+            q4: 'a', // Ne peut pas germer
+            q5: 'a'  // Transportent le pollen
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Réponse manquante</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Correct!</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                    }
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent! Vous maîtrisez bien la reproduction des plantes.</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bon travail! Continuez à réviser.</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 À relire! Revisitez le contenu.</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
