@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droites Sécantes et Perpendiculaires</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>✖️ Droites Sécantes et Perpendiculaires</h1>
+        <p>Leçon 4 - Intersections et angles droits</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Droites Sécantes</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Perpendiculaires</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Construction</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Droites Sécantes</h2>
+                
+                <div class="definition-box">
+                    <h4>�� Définition</h4>
+                    <p>Deux droites sont <strong>sécantes</strong> si elles ont un point commun, appelé <strong>point d'intersection</strong>.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>�� Représentation</h4>
+                    <svg width="100%" height="200" viewBox="0 0 600 200">
+                        <line x1="50" y1="50" x2="550" y2="150" stroke="#2196f3" stroke-width="2"/>
+                        <text x="560" y="155" fill="#2196f3" font-size="16">d</text>
+                        <line x1="50" y1="150" x2="550" y2="50" stroke="#f44336" stroke-width="2"/>
+                        <text x="560" y="55" fill="#f44336" font-size="16">d'</text>
+                        <circle cx="300" cy="100" r="5" fill="#4caf50"/>
+                        <text x="310" y="95" fill="#4caf50" font-size="16" font-weight="bold">I</text>
+                    </svg>
+                    <p>Les droites d et d' se coupent au point I</p>
+                    <p>On dit : "d et d' sont sécantes en I"</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Deux droites sécantes ont exactement un point commun</p>
+                    <p><strong>2.</strong> Les droites sécantes forment 4 angles</p>
+                    <p><strong>3.</strong> Les angles opposés par le sommet sont égaux</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Sécantes = qui se coupent en un point<br>
+                    • Le point d'intersection est unique<br>
+                    • Deux droites qui ne sont pas sécantes sont soit parallèles, soit confondues
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Droites Perpendiculaires</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Deux droites sont <strong>perpendiculaires</strong> si elles sont sécantes et forment un <strong>angle droit</strong> (90°).</p>
+                    <p>Notation : d ⊥ d' (d est perpendiculaire à d')</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="250" viewBox="0 0 600 250">
+                        <line x1="300" y1="20" x2="300" y2="230" stroke="#2196f3" stroke-width="2"/>
+                        <text x="310" y="30" fill="#2196f3" font-size="16">d</text>
+                        <line x1="100" y1="125" x2="500" y2="125" stroke="#f44336" stroke-width="2"/>
+                        <text x="510" y="130" fill="#f44336" font-size="16">d'</text>
+                        <rect x="290" y="115" width="20" height="20" fill="none" stroke="#4caf50" stroke-width="2"/>
+                        <circle cx="300" cy="125" r="5" fill="#4caf50"/>
+                        <text x="310" y="145" fill="#4caf50" font-size="16" font-weight="bold">I</text>
+                        <text x="320" y="100" fill="#4caf50" font-size="14">90°</text>
+                    </svg>
+                    <p>Le petit carré indique un angle droit (90°)</p>
+                    <p>On écrit : d ⊥ d'</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Deux droites perpendiculaires forment 4 angles droits</p>
+                    <p><strong>2.</strong> Par un point, on peut tracer une seule perpendiculaire à une droite donnée</p>
+                    <p><strong>3.</strong> Si d ⊥ d', alors d' ⊥ d (propriété symétrique)</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Perpendiculaires = sécantes à angle droit (90°)<br>
+                    • Symbole : ⊥<br>
+                    • Le petit carré indique l'angle droit
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>Construction de Perpendiculaires</h2>
+
+                <h3>Méthode 1 : Avec une équerre</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Placer l'équerre sur la droite d</p>
+                    <p><strong>2.</strong> Faire coïncider un côté de l'angle droit avec d</p>
+                    <p><strong>3.</strong> Tracer la perpendiculaire le long de l'autre côté</p>
+                </div>
+
+                <h3>Méthode 2 : Avec un compas</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Tracer un arc de cercle centré sur le point d'intersection</p>
+                    <p><strong>2.</strong> L'arc coupe la droite en deux points A et B</p>
+                    <p><strong>3.</strong> Tracer deux arcs de cercle de même rayon centrés en A et B</p>
+                    <p><strong>4.</strong> Les deux arcs se coupent en un point C</p>
+                    <p><strong>5.</strong> Tracer la droite passant par I et C</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Perpendiculaire passant par un point</h4>
+                    <p><strong>Cas 1 :</strong> Le point est sur la droite → une seule perpendiculaire possible</p>
+                    <p><strong>Cas 2 :</strong> Le point est hors de la droite → une seule perpendiculaire possible</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • L'équerre est l'outil le plus simple pour tracer des perpendiculaires<br>
+                    • Le compas permet une construction précise<br>
+                    • Par un point, il n'y a qu'une seule perpendiculaire à une droite donnée
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+</body>
+</html>

@@ -15,15 +15,15 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         header {
-            background: rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
             padding: 20px;
             text-align: center;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #FF69B4;
             position: relative;
         }
 
@@ -33,8 +33,8 @@
             top: 50%;
             transform: translateY(-50%);
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -50,7 +50,7 @@
         }
 
         header h1 {
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             font-size: 32px;
             margin-bottom: 5px;
         }
@@ -67,13 +67,13 @@
             gap: 5px;
             padding: 15px 20px;
             flex-wrap: wrap;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #FF69B4;
         }
 
         .tab-button {
             padding: 12px 20px;
             background: #444;
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             border-radius: 8px 8px 0 0;
             cursor: pointer;
@@ -83,12 +83,12 @@
         }
 
         .tab-button:hover {
-            background: #667eea;
+            background: #FF69B4;
             transform: translateY(-2px);
         }
 
         .tab-button.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
             border-bottom: 3px solid #ffed4e;
         }
 
@@ -101,10 +101,10 @@
         }
 
         .container {
-            background: white;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4); border: 4px solid #FF69B4;
             max-width: 1000px;
             width: 100%;
         }
@@ -121,27 +121,27 @@
             color: #333;
             margin-bottom: 20px;
             font-size: 28px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #FF69B4;
             padding-bottom: 10px;
         }
 
         h3 {
-            color: #667eea;
+            color: #FF69B4;
             margin-top: 30px;
             margin-bottom: 15px;
             font-size: 20px;
         }
 
         .definition-box {
-            background: #e3f2fd;
-            border-left: 5px solid #2196f3;
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 5px solid #FF69B4;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
         }
 
         .definition-box h4 {
-            color: #1565c0;
+            color: #C71585; font-weight: 700;
             margin-bottom: 10px;
             font-size: 18px;
         }
@@ -153,15 +153,15 @@
         }
 
         .example-box {
-            background: #fff3e0;
-            border-left: 5px solid #ff9800;
+            background: #FFFFFF; border: 3px solid #ff9800;
+            border-left: 5px solid #FF69B4;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
         }
 
         .example-box h4 {
-            color: #e65100;
+            color: #C71585; font-weight: 700;
             margin-bottom: 10px;
             font-size: 18px;
         }
@@ -178,15 +178,15 @@
         }
 
         .property-box {
-            background: #e8f5e9;
-            border-left: 5px solid #4caf50;
+            background: #FFFFFF; border: 3px solid #4caf50;
+            border-left: 5px solid #FF69B4;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
         }
 
         .property-box h4 {
-            color: #2e7d32;
+            color: #C71585; font-weight: 700;
             margin-bottom: 10px;
             font-size: 18px;
         }
@@ -227,7 +227,7 @@
             font-weight: bold;
             color: #333;
             margin: 15px 0;
-            border: 2px dashed #667eea;
+            border: 2px dashed #FF69B4;
         }
 
         .table-container {
@@ -238,15 +238,15 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             padding: 15px;
             text-align: left;
             font-weight: bold;
@@ -273,15 +273,15 @@
             width: 100px;
             padding: 8px;
             font-size: 16px;
-            border: 2px solid #667eea;
+            border: 3px solid #FF1493;
             border-radius: 5px;
             text-align: center;
         }
 
         .interactive-demo button {
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -297,7 +297,7 @@
         }
 
         .result-box {
-            background: #e8f5e9;
+            background: #FFFFFF; border: 3px solid #4caf50;
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
@@ -309,21 +309,21 @@
         }
 
         .result-box p {
-            color: #2e7d32;
+            color: #C71585; font-weight: 700;
             font-weight: bold;
             font-size: 16px;
         }
 
         .info {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 4px solid #FF69B4;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
         }
 
         .info strong {
-            color: #1565c0;
+            color: #C71585; font-weight: 700;
         }
 
         @media (max-width: 768px) {
@@ -396,7 +396,7 @@
                 </div>
 
                 <div class="interactive-demo">
-                    <h3 style="margin-top: 0; color: #667eea;">🎮 Outil Interactif</h3>
+                    <h3 style="margin-top: 0; color: #FF69B4;">🎮 Outil Interactif</h3>
                     <p>Trouve tous les diviseurs d'un nombre :</p>
                     <div style="margin: 20px 0;">
                         <label>Nombre : <input type="number" id="divisor-number" value="24" min="1"></label>
@@ -482,7 +482,7 @@
             <div class="container">
                 <h2>Critères de Divisibilité</h2>
 
-                <p style="font-size: 16px; color: #666; margin-bottom: 20px;">Les critères de divisibilité permettent de savoir rapidement si un nombre est divisible par un autre sans faire la division.</p>
+                <p style="font-size: 16px; color: #333; margin-bottom: 20px;">Les critères de divisibilité permettent de savoir rapidement si un nombre est divisible par un autre sans faire la division.</p>
 
                 <div class="table-container">
                     <table>
@@ -552,7 +552,7 @@
                 </div>
 
                 <div class="interactive-demo">
-                    <h3 style="margin-top: 0; color: #667eea;">🎮 Testeur de Divisibilité</h3>
+                    <h3 style="margin-top: 0; color: #FF69B4;">🎮 Testeur de Divisibilité</h3>
                     <p>Vérifie si un nombre est divisible par 2, 3, 5, 9, ou 10 :</p>
                     <div style="margin: 20px 0;">
                         <label>Nombre : <input type="number" id="divisibility-test" value="180" min="1"></label>
@@ -586,8 +586,8 @@
                         <li>c) 36</li>
                         <li>d) 50</li>
                     </ul>
-                    <button onclick="showSolution1()" style="margin-top: 10px; padding: 8px 15px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Voir la solution</button>
-                    <div id="solution1" style="display: none; margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 5px;">
+                    <button onclick="showSolution1()" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Voir la solution</button>
+                    <div id="solution1" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
                         <p><strong>Solutions :</strong></p>
                         <p>a) Diviseurs de 18 : 1, 2, 3, 6, 9, 18</p>
                         <p>b) Diviseurs de 25 : 1, 5, 25</p>
@@ -604,8 +604,8 @@
                         <li>b) 457</li>
                         <li>c) 639</li>
                     </ul>
-                    <button onclick="showSolution2()" style="margin-top: 10px; padding: 8px 15px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Voir la solution</button>
-                    <div id="solution2" style="display: none; margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 5px;">
+                    <button onclick="showSolution2()" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Voir la solution</button>
+                    <div id="solution2" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
                         <p><strong>Solutions :</strong></p>
                         <p>a) 234 : 2+3+4 = 9, divisible par 3 ✓</p>
                         <p>b) 457 : 4+5+7 = 16, NON divisible par 3 ✗</p>
@@ -622,8 +622,8 @@
                         <li>c) 17</li>
                         <li>d) 21</li>
                     </ul>
-                    <button onclick="showSolution3()" style="margin-top: 10px; padding: 8px 15px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Voir la solution</button>
-                    <div id="solution3" style="display: none; margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 5px;">
+                    <button onclick="showSolution3()" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Voir la solution</button>
+                    <div id="solution3" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
                         <p><strong>Solutions :</strong></p>
                         <p>a) 13 est premier (diviseurs : 1, 13) ✓</p>
                         <p>b) 15 n'est PAS premier (diviseurs : 1, 3, 5, 15) ✗</p>

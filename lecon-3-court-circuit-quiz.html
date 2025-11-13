@@ -15,16 +15,16 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
         }
 
         header {
-            background: rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
             padding: 20px;
             text-align: center;
-            border-bottom: 3px solid #e74c3c;
+            border-bottom: 3px solid #FF1493;
             position: relative;
         }
 
@@ -34,8 +34,8 @@
             top: 50%;
             transform: translateY(-50%);
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -52,7 +52,7 @@
         }
 
         header h1 {
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             font-size: 32px;
             margin-bottom: 5px;
         }
@@ -72,26 +72,26 @@
         }
 
         .container {
-            background: white;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4); border: 4px solid #FF69B4;
             max-width: 900px;
             width: 100%;
         }
 
         h2 {
             text-align: center;
-            color: #e74c3c;
+            color: #C71585; font-weight: 700;
             margin-bottom: 10px;
             font-size: 28px;
-            border-bottom: 3px solid #e74c3c;
+            border-bottom: 3px solid #FF1493;
             padding-bottom: 15px;
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #333;
             margin-bottom: 30px;
             font-size: 14px;
         }
@@ -103,8 +103,8 @@
         }
 
         .quiz-question {
-            background: white;
-            border: 2px solid #e74c3c;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 2px solid #FF1493;
             border-radius: 8px;
             padding: 20px;
             transition: all 0.3s ease;
@@ -118,8 +118,8 @@
 
         .question-number {
             display: inline-block;
-            background: #e74c3c;
-            color: white;
+            background: #FF1493;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             width: 30px;
             height: 30px;
             border-radius: 50%;
@@ -147,7 +147,7 @@
 
         .quiz-option {
             padding: 12px;
-            border: 2px solid #e74c3c;
+            border: 2px solid #FF1493;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -165,7 +165,7 @@
         .quiz-option input[type="radio"] {
             margin-right: 10px;
             cursor: pointer;
-            accent-color: #e74c3c;
+            accent-color: #C71585; font-weight: 700;
         }
 
         .quiz-option label {
@@ -184,8 +184,8 @@
         }
 
         .quiz-button {
-            background: #e74c3c;
-            color: white;
+            background: #FF1493;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             padding: 15px 30px;
             border-radius: 8px;
@@ -208,8 +208,8 @@
         }
 
         .quiz-result {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
+            background: linear-gradient(135deg, #FF1493 0%, #c0392b 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             padding: 20px;
             border-radius: 8px;
             text-align: center;
@@ -461,7 +461,7 @@
                     }
                 } else {
                     if (feedbackElement) {
-                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                        feedbackElement.innerHTML = '<span style="color: #FF1493; font-weight: bold;">❌ Incorrect</span>';
                     }
                 }
             }
@@ -479,7 +479,7 @@
             } else if (percentage >= 60) {
                 resultMessage += '<span style="color: #f39c12;">👍 Bon travail! Continuez à réviser.</span>';
             } else {
-                resultMessage += '<span style="color: #e74c3c;">📚 À relire! Revisitez le contenu.</span>';
+                resultMessage += '<span style="color: #FF1493;">📚 À relire! Revisitez le contenu.</span>';
             }
 
             resultsDiv.innerHTML = resultMessage;

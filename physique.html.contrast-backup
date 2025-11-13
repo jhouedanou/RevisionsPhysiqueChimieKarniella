@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physique - Cours Complets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '⚡';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.1;
+            bottom: 10%;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: #FF69B4;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+        }
+
+        header h1::before {
+            content: '🎀 ';
+        }
+
+        header h1::after {
+            content: ' 🎀';
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .lesson-card {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #FFB6D9;
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #FF69B4 0%, #FF1493 100%);
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+        }
+
+        .lesson-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .lesson-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .lesson-card h2 {
+            color: #FF1493;
+            font-size: 22px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .lesson-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .lesson-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .lesson-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .section-title {
+            color: white;
+            font-size: 28px;
+            margin: 40px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid white;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            .btn-back:hover {
+                transform: translateX(-5px);
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="btn-back">← Retour à l'accueil</a>
+            <h1>⚡ Physique</h1>
+            <p>Cours Complets avec Explications, Quiz et Exercices</p>
+        </header>
+
+        <h2 class="section-title">📚 Leçons Disponibles</h2>
+
+        <div class="lessons-grid">
+            <!-- Leçon 1: Le Circuit Électrique -->
+            <div class="lesson-card">
+                <a href="le-circuit-electrique.html">
+                    <span class="lesson-icon">⚡</span>
+                    <h2>1. Le Circuit Électrique</h2>
+                    <p>Comprendre les circuits électriques, le moteur, les isolants, conducteurs et les types de piles.</p>
+                    <button class="lesson-button">Commencer →</button>
+                </a>
+            </div>
+
+            <!-- Leçon 2: Les Commandes Électriques -->
+            <div class="lesson-card">
+                <a href="les-commandes-electriques.html">
+                    <span class="lesson-icon">🔌</span>
+                    <h2>2. Les Commandes Électriques</h2>
+                    <p>Maîtriser les interrupteurs simples et comment ils contrôlent les circuits électriques pour allumer ou éteindre les lampes.</p>
+                    <button class="lesson-button">Commencer →</button>
+                </a>
+            </div>
+
+            <!-- Leçon 3: Court-Circuit et Protection -->
+            <div class="lesson-card">
+                <a href="lecon-3-court-circuit.html">
+                    <span class="lesson-icon">⚠️</span>
+                    <h2>3. Court-Circuit et Protection</h2>
+                    <p>Comprendre les dangers des courts-circuits, leurs causes et les systèmes de protection des installations électriques.</p>
+                    <button class="lesson-button">Commencer →</button>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 Cours interactifs avec schémas animés | Facile à comprendre</p>
+        </footer>
+    </div>
+</body>
+</html>

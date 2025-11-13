@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire-Géographie</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🌍';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            color: #0d47a1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        .definition-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 12px;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons between tabs */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>🌍 Histoire-Géographie 🎀</h1>
+        <p>Voyage dans le temps et découvre le monde !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ C'est quoi l'Histoire ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Comment on connaît le passé ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ C'est quoi la Géographie ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Les différents reliefs</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: L'HISTOIRE ET SON OBJET -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📜 L'Histoire et son Objet</h2>
+                        <p class="subtitle">Comprendre ce qu'est l'histoire et pourquoi elle est importante</p>
+
+                        <h3>📌 I - Objet et Intérêt de l'Histoire</h3>
+
+                        <h4>1. Objet de l'Histoire</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>L'histoire</strong> est la science qui étudie le passé de l'humanité. Elle s'intéresse aux événements, aux sociétés et aux civilisations qui ont existé avant nous.</p>
+                        </div>
+
+                        <p>L'histoire étudie :</p>
+                        <ul>
+                            <li><strong>Les événements du passé :</strong> guerres, découvertes, inventions</li>
+                            <li><strong>Les sociétés humaines :</strong> modes de vie, organisations sociales</li>
+                            <li><strong>Les personnages historiques :</strong> rois, chefs, inventeurs</li>
+                            <li><strong>Les civilisations :</strong> leur développement, leur apogée et leur déclin</li>
+                            <li><strong>Les changements :</strong> comment les sociétés évoluent au fil du temps</li>
+                        </ul>
+
+                        <h4>2. Intérêt de l'Étude de l'Histoire</h4>
+                        <p>Pourquoi étudier l'histoire ? L'histoire nous permet de :</p>
+                        <ul>
+                            <li><strong>Comprendre le présent :</strong> Le passé explique pourquoi notre monde est comme il est aujourd'hui</li>
+                            <li><strong>Connaître nos origines :</strong> D'où venons-nous ? Comment nos ancêtres vivaient-ils ?</li>
+                            <li><strong>Apprendre des erreurs du passé :</strong> Pour ne pas les répéter</li>
+                            <li><strong>Préserver notre identité :</strong> Connaître notre culture et nos traditions</li>
+                            <li><strong>Développer notre esprit critique :</strong> Analyser les faits et comprendre les causes et conséquences</li>
+                            <li><strong>Inspirer l'avenir :</strong> Les grandes réalisations du passé nous montrent ce qui est possible</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 Citation importante :</strong><br>
+                            "Un peuple qui ne connaît pas son histoire est condamné à la revivre." Cette phrase montre l'importance de l'histoire pour éviter de répéter les erreurs du passé.
+                        </div>
+
+                        <h3>🎯 Exemples Concrets</h3>
+                        <p>L'histoire nous aide à comprendre :</p>
+                        <ul>
+                            <li>Pourquoi nous parlons français dans certains pays d'Afrique (colonisation)</li>
+                            <li>Comment les grandes inventions ont changé notre vie (roue, écriture, électricité)</li>
+                            <li>Les origines de nos fêtes et traditions</li>
+                            <li>Les causes des conflits et comment les éviter</li>
+                        </ul>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LES SOURCES DE L'HISTOIRE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>📚 Les Sources de l'Histoire</h2>
+                        <p class="subtitle">Comment les historiens reconstituent-ils le passé ?</p>
+
+                        <h3>📌 II - Les Sources de l'Histoire</h3>
+
+                        <h4>1. Diverses Sources pour Reconstituer l'Histoire</h4>
+                        <p>Pour connaître le passé, les historiens utilisent des <strong>sources historiques</strong>. Ce sont des traces laissées par les hommes du passé.</p>
+
+                        <p>Les historiens sont comme des détectives qui cherchent des indices pour reconstituer ce qui s'est passé il y a longtemps. Ils utilisent toutes les traces disponibles pour comprendre comment vivaient nos ancêtres.</p>
+
+                        <h4>2. Classification des Sources de l'Histoire</h4>
+                        <p>Il existe différents types de sources historiques :</p>
+
+                        <div class="category-box">
+                            <h4>📝 A. Les Sources Écrites</h4>
+                            <p>Ce sont tous les documents écrits qui nous renseignent sur le passé :</p>
+                            <ul>
+                                <li><strong>Manuscrits :</strong> Livres anciens écrits à la main</li>
+                                <li><strong>Journaux et chroniques :</strong> Récits des événements de l'époque</li>
+                                <li><strong>Lettres et correspondances :</strong> Échanges entre personnes</li>
+                                <li><strong>Documents administratifs :</strong> Registres, actes officiels</li>
+                                <li><strong>Inscriptions :</strong> Textes gravés sur pierre ou métal</li>
+                                <li><strong>Livres sacrés :</strong> Bible, Coran, etc.</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les hiéroglyphes égyptiens nous renseignent sur la vie dans l'Égypte ancienne.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗿 B. Les Sources Archéologiques</h4>
+                            <p>Ce sont les vestiges matériels découverts lors de fouilles :</p>
+                            <ul>
+                                <li><strong>Monuments :</strong> Pyramides, temples, châteaux</li>
+                                <li><strong>Objets du quotidien :</strong> Poteries, outils, bijoux</li>
+                                <li><strong>Armes :</strong> Épées, lances, flèches</li>
+                                <li><strong>Pièces de monnaie :</strong> Qui montrent l'économie de l'époque</li>
+                                <li><strong>Restes humains :</strong> Squelettes, momies</li>
+                                <li><strong>Œuvres d'art :</strong> Sculptures, peintures, mosaïques</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les fouilles archéologiques au Bénin ont révélé les palais royaux d'Abomey.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗣️ C. Les Sources Orales</h4>
+                            <p>Ce sont les témoignages transmis de bouche à oreille :</p>
+                            <ul>
+                                <li><strong>Traditions orales :</strong> Histoires racontées de génération en génération</li>
+                                <li><strong>Contes et légendes :</strong> Récits populaires</li>
+                                <li><strong>Chansons historiques :</strong> Qui relatent des événements</li>
+                                <li><strong>Proverbes :</strong> Sagesse ancestrale</li>
+                                <li><strong>Témoignages :</strong> Récits de personnes ayant vécu les événements</li>
+                                <li><strong>Généalogies :</strong> Histoires des familles et lignées</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les griots en Afrique de l'Ouest sont des gardiens de l'histoire orale.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🎨 D. Les Sources Iconographiques</h4>
+                            <p>Ce sont les images et représentations visuelles :</p>
+                            <ul>
+                                <li><strong>Peintures :</strong> Tableaux, fresques murales</li>
+                                <li><strong>Dessins et gravures :</strong> Illustrations anciennes</li>
+                                <li><strong>Photographies :</strong> À partir du 19e siècle</li>
+                                <li><strong>Films documentaires :</strong> Pour l'histoire récente</li>
+                                <li><strong>Cartes anciennes :</strong> Qui montrent la géographie du passé</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les peintures rupestres dans les grottes nous montrent la vie préhistorique.</p>
+                        </div>
+
+                        <h3>🔍 Le Travail de l'Historien</h3>
+                        <p>L'historien doit :</p>
+                        <ol>
+                            <li><strong>Collecter</strong> les sources disponibles</li>
+                            <li><strong>Vérifier</strong> leur authenticité</li>
+                            <li><strong>Comparer</strong> différentes sources</li>
+                            <li><strong>Analyser</strong> et interpréter les informations</li>
+                            <li><strong>Reconstituer</strong> les événements du passé</li>
+                        </ol>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les sources historiques sont les traces du passé qui permettent de reconstituer l'histoire<br>
+                            • Il existe quatre types principaux de sources : écrites, archéologiques, orales et iconographiques<br>
+                            • L'historien doit croiser plusieurs sources pour être sûr de ses conclusions<br>
+                            • En Afrique, les sources orales sont particulièrement importantes car beaucoup de connaissances étaient transmises oralement
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: LA GÉOGRAPHIE ET SON OBJET -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🌍 La Géographie et son Objet</h2>
+                        <p class="subtitle">Découvrir la géographie et ses domaines d'étude</p>
+
+                        <h3>📌 I - L'Objet et les Grands Domaines de la Géographie</h3>
+
+                        <h4>1. L'Objet de l'Étude de la Géographie</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>La géographie</strong> est la science qui étudie la surface de la Terre, les paysages, les lieux et les relations entre les hommes et leur environnement.</p>
+                        </div>
+
+                        <p>La géographie étudie :</p>
+                        <ul>
+                            <li><strong>Les espaces terrestres :</strong> Continents, océans, pays</li>
+                            <li><strong>Les phénomènes naturels :</strong> Climat, reliefs, végétation</li>
+                            <li><strong>Les activités humaines :</strong> Villes, agriculture, industries</li>
+                            <li><strong>Les interactions :</strong> Comment l'homme transforme son environnement</li>
+                            <li><strong>La localisation :</strong> Où se trouvent les choses sur Terre</li>
+                        </ul>
+
+                        <h4>2. Les Grands Domaines ou Branches de la Géographie</h4>
+                        <p>La géographie se divise en plusieurs branches :</p>
+
+                        <div class="category-box">
+                            <h4>🏔️ A. La Géographie Physique</h4>
+                            <p>Elle étudie les aspects naturels de la Terre :</p>
+                            <ul>
+                                <li><strong>Le relief :</strong> Montagnes, plaines, vallées</li>
+                                <li><strong>Le climat :</strong> Températures, précipitations, vents</li>
+                                <li><strong>L'hydrographie :</strong> Fleuves, lacs, océans</li>
+                                <li><strong>La végétation :</strong> Forêts, savanes, déserts</li>
+                                <li><strong>Les sols :</strong> Types de terres et leur fertilité</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Étudier le fleuve Niger et son importance pour l'Afrique de l'Ouest.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>👥 B. La Géographie Humaine</h4>
+                            <p>Elle étudie les populations et leurs activités :</p>
+                            <ul>
+                                <li><strong>La démographie :</strong> Nombre d'habitants, densité de population</li>
+                                <li><strong>L'urbanisation :</strong> Villes et leur développement</li>
+                                <li><strong>Les activités économiques :</strong> Agriculture, industrie, commerce</li>
+                                <li><strong>Les migrations :</strong> Déplacements de populations</li>
+                                <li><strong>Les cultures :</strong> Langues, religions, traditions</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Étudier la croissance des villes africaines comme Lagos ou Kinshasa.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗺️ C. La Géographie Régionale</h4>
+                            <p>Elle étudie des espaces particuliers :</p>
+                            <ul>
+                                <li><strong>Un pays :</strong> Le Bénin, le Cameroun, etc.</li>
+                                <li><strong>Une région :</strong> L'Afrique de l'Ouest</li>
+                                <li><strong>Un continent :</strong> L'Afrique, l'Europe</li>
+                                <li><strong>Une ville :</strong> Cotonou, Dakar, etc.</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Étudier les caractéristiques géographiques du Bénin.</p>
+                        </div>
+
+                        <h3>🎯 Pourquoi Étudier la Géographie ?</h3>
+                        <p>La géographie est importante car elle nous permet de :</p>
+                        <ul>
+                            <li><strong>Comprendre notre environnement :</strong> Savoir où nous vivons</li>
+                            <li><strong>Mieux utiliser les ressources :</strong> Eau, sols, forêts</li>
+                            <li><strong>Protéger la nature :</strong> Lutter contre la pollution et la déforestation</li>
+                            <li><strong>Planifier le développement :</strong> Construire des routes, des écoles, des hôpitaux</li>
+                            <li><strong>S'orienter :</strong> Lire des cartes, se repérer dans l'espace</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La géographie étudie la Terre et les relations entre l'homme et son environnement<br>
+                            • Elle se divise en géographie physique (nature) et géographie humaine (sociétés)<br>
+                            • La géographie nous aide à comprendre notre monde et à mieux le gérer<br>
+                            • C'est une science essentielle pour le développement durable
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: LES RELIEFS -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>⛰️ Les Reliefs</h2>
+                        <p class="subtitle">Découvrir les différentes formes du relief terrestre</p>
+
+                        <h3>📌 II - Les Reliefs</h3>
+
+                        <h4>Qu'est-ce que le Relief ?</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Le relief</strong> désigne l'ensemble des formes et des irrégularités de la surface terrestre. C'est ce qui fait que la Terre n'est pas plate mais présente des élévations et des creux.</p>
+                        </div>
+
+                        <h3>🏔️ Les Différents Types de Relief</h3>
+
+                        <div class="category-box">
+                            <h4>⛰️ 1. Les Montagnes</h4>
+                            <p><strong>Définition :</strong> Une montagne est une élévation importante du sol, généralement supérieure à 600 mètres.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Altitude élevée</li>
+                                <li>Pentes raides</li>
+                                <li>Sommet pointu ou arrondi</li>
+                                <li>Climat froid en altitude</li>
+                                <li>Végétation qui varie selon l'altitude</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Le Mont Kilimanjaro en Tanzanie (5 895 m)</li>
+                                <li>Les montagnes de l'Atlas au Maghreb</li>
+                                <li>Le massif de l'Atakora au Bénin et au Togo</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏞️ 2. Les Plateaux</h4>
+                            <p><strong>Définition :</strong> Un plateau est une surface plane ou légèrement ondulée située en altitude.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Surface relativement plate</li>
+                                <li>Altitude moyenne (300 à 1000 m)</li>
+                                <li>Bordé par des pentes ou falaises</li>
+                                <li>Bonne visibilité</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Le plateau de Jos au Nigeria</li>
+                                <li>Le plateau du Fouta-Djalon en Guinée</li>
+                                <li>Le plateau de l'Adamaoua au Cameroun</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌾 3. Les Plaines</h4>
+                            <p><strong>Définition :</strong> Une plaine est une étendue de terre plate ou peu accidentée, généralement de faible altitude.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Surface très plate</li>
+                                <li>Altitude basse (0 à 200 m)</li>
+                                <li>Peu ou pas de reliefs</li>
+                                <li>Souvent très fertiles</li>
+                                <li>Favorable à l'agriculture</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Les plaines côtières du Golfe de Guinée</li>
+                                <li>La vallée du fleuve Niger</li>
+                                <li>Les plaines alluviales (formées par les fleuves)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏖️ 4. Les Vallées</h4>
+                            <p><strong>Définition :</strong> Une vallée est un espace allongé et creux entre deux reliefs (montagnes ou collines), souvent creusé par un cours d'eau.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Forme allongée</li>
+                                <li>Encaissée entre des hauteurs</li>
+                                <li>Souvent traversée par une rivière</li>
+                                <li>Sols fertiles</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La vallée de l'Ouémé au Bénin</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏝️ 5. Les Collines</h4>
+                            <p><strong>Définition :</strong> Une colline est une élévation de terrain de faible ou moyenne altitude (moins de 600 m), aux pentes douces.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Altitude modérée</li>
+                                <li>Sommet arrondi</li>
+                                <li>Pentes douces</li>
+                                <li>Plus petite qu'une montagne</li>
+                            </ul>
+                        </div>
+
+                        <h3>🌊 Reliefs Littoraux</h3>
+                        <p>Le long des côtes, on trouve des reliefs particuliers :</p>
+                        <ul>
+                            <li><strong>Les falaises :</strong> Parois rocheuses abruptes au bord de la mer</li>
+                            <li><strong>Les plages :</strong> Étendues de sable ou de galets</li>
+                            <li><strong>Les dunes :</strong> Accumulations de sable formées par le vent</li>
+                            <li><strong>Les lagunes :</strong> Étendues d'eau séparées de la mer par un cordon de sable</li>
+                        </ul>
+
+                        <h3>💡 Importance des Reliefs</h3>
+                        <p>Les reliefs influencent :</p>
+                        <ul>
+                            <li><strong>Le climat :</strong> Les montagnes bloquent les vents et créent des zones de pluie</li>
+                            <li><strong>L'agriculture :</strong> Les plaines sont favorables aux cultures</li>
+                            <li><strong>L'habitat :</strong> Les hommes préfèrent souvent les plaines et vallées</li>
+                            <li><strong>Les communications :</strong> Les montagnes rendent les déplacements difficiles</li>
+                            <li><strong>Le tourisme :</strong> Certains reliefs attirent les visiteurs</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le relief désigne les formes de la surface terrestre<br>
+                            • Les principaux types de relief sont : montagnes, plateaux, plaines, vallées et collines<br>
+                            • Les reliefs influencent le climat, l'agriculture et l'installation humaine<br>
+                            • L'Afrique possède une grande diversité de reliefs<br>
+                            • Les plaines et vallées sont généralement plus peuplées que les montagnes
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Histoire-Géographie</h2>
+                <p>Testez vos connaissances!</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce que l'histoire ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> La science qui étudie le passé de l'humanité
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> L'étude des animaux
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> L'étude des plantes
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quels sont les quatre types de sources historiques ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Écrites, archéologiques, orales et iconographiques
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Anciennes, modernes, récentes et futures
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Vraies, fausses, douteuses et certaines
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Qu'est-ce que la géographie ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> La science qui étudie la surface de la Terre et les relations entre l'homme et son environnement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> L'étude des mathématiques
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> L'étude de la physique
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Qu'est-ce qu'une montagne ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Une élévation importante du sol, généralement supérieure à 600 mètres
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Une surface plate
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Un cours d'eau
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Quelle est la différence entre géographie physique et géographie humaine ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> La géographie physique étudie la nature, la géographie humaine étudie les populations
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Elles étudient la même chose
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> La géographie physique étudie les sports
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'a', // Science du passé
+            q2: 'a', // 4 types de sources
+            q3: 'a', // Géographie définition
+            q4: 'a', // Montagne
+            q5: 'a'  // Différence physique/humaine
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+            let answers = [];
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    answers.push(`Question ${i}: Pas de réponse`);
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                    answers.push(`Question ${i}: Correcte`);
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                    answers.push(`Question ${i}: Incorrecte`);
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu connais super bien l\'histoire et la géo ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue à apprendre ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Envoyer les résultats par email
+            sendQuizResults('Histoire-Géographie', score, totalQuestions, percentage, answers);
+        }
+
+        // Fonction pour envoyer les résultats par email
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Navigate to a specific tab programmatically
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            
+            // Find and activate the corresponding tab button
+            const targetButton = Array.from(buttons).find(button => 
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

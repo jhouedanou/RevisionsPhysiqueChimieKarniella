@@ -15,23 +15,23 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
         }
 
         nav {
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
             padding: 15px 20px;
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #FF69B4;
         }
 
         nav a {
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             text-decoration: none;
             font-weight: 500;
             padding: 10px 20px;
@@ -41,17 +41,17 @@
         }
 
         nav a:hover {
-            background: #667eea;
+            background: #FF69B4;
             transform: translateY(-2px);
         }
 
         nav a.active {
-            background: #764ba2;
+            background: #FF1493;
             border-bottom: 3px solid #ffed4e;
         }
 
         .btn-back {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%) !important;
             margin-right: auto !important;
             padding: 10px 20px !important;
         }
@@ -89,7 +89,7 @@
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #333;
             margin-bottom: 30px;
             font-size: 14px;
         }
@@ -108,12 +108,12 @@
         }
 
         .definition-box.conductor {
-            background: #e3f2fd;
+            background: #FFFFFF; border: 3px solid #2196f3;
             border-color: #2196f3;
         }
 
         .definition-box.insulator {
-            background: #fff3e0;
+            background: #FFFFFF; border: 3px solid #ff9800;
             border-color: #ff9800;
         }
 
@@ -124,7 +124,7 @@
         }
 
         .definition-box p {
-            color: #666;
+            color: #333;
             font-size: 13px;
             line-height: 1.6;
         }
@@ -139,8 +139,8 @@
         }
 
         .comparison-table thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         .comparison-table th {
@@ -175,7 +175,7 @@
             display: inline-block;
             padding: 5px 12px;
             background: #2196f3;
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
@@ -185,7 +185,7 @@
             display: inline-block;
             padding: 5px 12px;
             background: #ff9800;
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
@@ -241,7 +241,7 @@
         .info {
             margin-top: 25px;
             padding: 20px;
-            background: #e3f2fd;
+            background: #FFFFFF; border: 3px solid #2196f3;
             border-left: 4px solid #2196f3;
             border-radius: 8px;
             color: #1565c0;
