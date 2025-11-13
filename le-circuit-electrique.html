@@ -532,6 +532,167 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+        }
+
+        .quiz-section p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .quiz-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.2);
+            border-color: #ff6f00;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-size: 15px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #fff3e0;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .quiz-feedback {
+            font-size: 13px;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-button:active {
+            transform: scale(0.98);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .quiz-result.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -548,6 +709,7 @@
         <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Isolants &amp; Conducteurs</button>
         <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Types de Piles</button>
         <button class="tab-button" onclick="openTab(event, 'tab5')">5️⃣ Symboles Normalisés</button>
+        <button class="tab-button" onclick="openTab(event, 'tab6')">📝 Quiz</button>
     </div>
 
     <div class="content">
@@ -1383,6 +1545,232 @@
                 </div>
             </div>
         </div>
+
+        <!-- TAB 6: QUIZ -->
+        <div id="tab6" class="tab-content">
+            <div class="container">
+                <section class="quiz-section">
+                    <h2>📝 Quiz - Le Circuit Électrique</h2>
+                    <p>10 questions pour évaluer votre compréhension du cours</p>
+
+                    <div class="quiz-questions">
+                        <!-- Question 1 -->
+                        <div class="quiz-question">
+                            <span class="question-number">1</span>
+                            <span class="question-text">Qu'est-ce qu'un circuit électrique complet?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q1" value="a"> Une boucle fermée permettant au courant de circuler sans interruption
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q1" value="b"> Un circuit avec beaucoup de fils
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q1" value="c"> Une prise de courant en muraille
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q1" value="d"> Un fil qui n'est pas connecté
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q1"></div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="quiz-question">
+                            <span class="question-number">2</span>
+                            <span class="question-text">Quels sont les composants essentiels d'un circuit électrique simple?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q2" value="a"> Une pile, des fils et un appareil (lampe, moteur, etc.)
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q2" value="b"> Seulement une pile
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q2" value="c"> Des fils sans aucune source d'énergie
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q2" value="d"> Un transformateur et une lampe
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q2"></div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="quiz-question">
+                            <span class="question-number">3</span>
+                            <span class="question-text">Quel est le rôle de la pile dans un circuit électrique?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q3" value="a"> Elle fournit l'énergie électrique pour faire fonctionner le circuit
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q3" value="b"> Elle éteint le circuit
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q3" value="c"> Elle stocke seulement l'énergie sans la fournir
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q3" value="d"> Elle dirige le courant uniquement vers la lampe
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q3"></div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="quiz-question">
+                            <span class="question-number">4</span>
+                            <span class="question-text">Que se passe-t-il si le circuit électrique est ouvert (cassé)?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q4" value="a"> Le courant circule toujours normalement
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q4" value="b"> Le courant ne circule pas et la lampe s'éteint
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q4" value="c"> La pile explose
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q4" value="d"> Le courant augmente énormément
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q4"></div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="quiz-question">
+                            <span class="question-number">5</span>
+                            <span class="question-text">Comment le courant circule-t-il dans un circuit fermé?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q5" value="a"> De la borne positive à la borne négative en passant par l'appareil
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q5" value="b"> Aléatoirement dans toutes les directions
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q5" value="c"> Uniquement dans un seul fil
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q5" value="d"> Il ne circule pas du tout
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q5"></div>
+                        </div>
+
+                        <!-- Question 6 -->
+                        <div class="quiz-question">
+                            <span class="question-number">6</span>
+                            <span class="question-text">Quel symbole représente l'interrupteur dans un schéma électrique?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q6" value="a"> Un cercle avec un X à l'intérieur
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q6" value="b"> Une droite oblique basculante entre deux points
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q6" value="c"> Un rectangle avec une ligne en travers
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q6" value="d"> Un triangle pointant vers le haut
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q6"></div>
+                        </div>
+
+                        <!-- Question 7 -->
+                        <div class="quiz-question">
+                            <span class="question-number">7</span>
+                            <span class="question-text">À quoi sert un schéma électrique normalisé?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q7" value="a"> Représentation graphique simplifiée et universelle d'un circuit
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q7" value="b"> Décorer les manuels de physique
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q7" value="c"> Montrer la couleur des fils
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q7" value="d"> Calculer la puissance électrique
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q7"></div>
+                        </div>
+
+                        <!-- Question 8 -->
+                        <div class="quiz-question">
+                            <span class="question-number">8</span>
+                            <span class="question-text">Qu'est-ce qu'un dipôle électrique?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q8" value="a"> Un composant électrique avec deux bornes de connexion
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q8" value="b"> Une pile avec quatre bornes
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q8" value="c"> Un fil électrique sans bornes
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q8" value="d"> Un interrupteur à trois positions
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q8"></div>
+                        </div>
+
+                        <!-- Question 9 -->
+                        <div class="quiz-question">
+                            <span class="question-number">9</span>
+                            <span class="question-text">Quelle est la différence entre un circuit en série et un circuit en parallèle?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q9" value="a"> En série: 1 chemin; en parallèle: plusieurs chemins pour le courant
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q9" value="b"> Il n'y a aucune différence
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q9" value="c"> En série: plusieurs piles; en parallèle: une seule pile
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q9" value="d"> En série: fils rouges; en parallèle: fils bleus
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q9"></div>
+                        </div>
+
+                        <!-- Question 10 -->
+                        <div class="quiz-question">
+                            <span class="question-number">10</span>
+                            <span class="question-text">Si deux lampes sont branchées en parallèle et qu'une grille, que se passe-t-il?</span>
+                            <div class="quiz-options">
+                                <label class="quiz-option">
+                                    <input type="radio" name="q10" value="a"> L'autre lampe s'éteint aussi
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q10" value="b"> L'autre lampe reste allumée car elle a son propre circuit
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q10" value="c"> Les deux lampes deviennent plus brillantes
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="q10" value="d"> La tension augmente
+                                </label>
+                            </div>
+                            <div class="quiz-feedback" id="feedback-q10"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
+                </section>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1690,6 +2078,70 @@
         // Initialize controllers
         const circuit = new CircuitController();
         const motor = new MotorController();
+
+        // Quiz functionality
+        const quizAnswers = {
+            q1: 'a', // Boucle fermée
+            q2: 'a', // Pile, fils, appareil
+            q3: 'a', // Fournit l'énergie
+            q4: 'b', // Courant ne circule pas
+            q5: 'a', // De + à - via l'appareil
+            q6: 'b', // Droite oblique basculante
+            q7: 'a', // Représentation graphique simplifiée
+            q8: 'a', // Composant à deux bornes
+            q9: 'a', // Série vs parallèle
+            q10: 'b' // L'autre reste allumée
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            // Vérifier chaque réponse
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback-${questionName}`);
+
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === quizAnswers[questionName]) {
+                        score++;
+                        feedbackDiv.textContent = '✅ Correct!';
+                        feedbackDiv.className = 'quiz-feedback correct';
+                    } else {
+                        feedbackDiv.textContent = '❌ Incorrect. Réfléchissez à nouveau!';
+                        feedbackDiv.className = 'quiz-feedback incorrect';
+                    }
+                } else {
+                    feedbackDiv.textContent = '⚠️ Veuillez sélectionner une réponse.';
+                    feedbackDiv.className = 'quiz-feedback incorrect';
+                }
+            }
+
+            // Afficher les résultats
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            let message = '';
+            if (percentage >= 90) {
+                message = '🏆 Excellent! Vous maîtrisez parfaitement le sujet!';
+            } else if (percentage >= 70) {
+                message = '👍 Très bien! Vous avez une bonne compréhension du cours.';
+            } else if (percentage >= 50) {
+                message = '📚 Pas mal! Révisez encore un peu pour améliorer votre score.';
+            } else {
+                message = '💪 Continuez vos efforts! Relisez le cours attentivement.';
+            }
+
+            resultsDiv.innerHTML = `
+                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+                ${message}
+            `;
+            resultsDiv.classList.add('show');
+
+            // Scroll vers les résultats
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     </script>
 </body>
 </html>
