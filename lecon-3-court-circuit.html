@@ -453,9 +453,8 @@
 <body>
     <header>
         <a href="index.html" class="btn-back">← Retour</a>
-        <a href="lecon-3-court-circuit-quiz.html" class="btn-back" style="right: 20px; left: auto;">Quiz ➜</a>
         <h1>⚠️ Leçon 3: Court-Circuit et Protection</h1>
-        <p>Comprendre les dangers et les protections des installations électriques</p>
+        <p>Comprendre les dangers et les protections des installations électriques - avec quiz intégré</p>
     </header>
 
     <div class="main-wrapper">
@@ -816,5 +815,176 @@
             </div>
         </div>
         </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Court-Circuit et Protection</h2>
+                <p>Testez vos connaissances en temps réel!</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce qu'un court-circuit?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Une connexion directe entre + et − avec très peu de résistance
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Un circuit qui manque de puissance
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Un fil qui est trop court
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quel est le principal danger d'un court-circuit?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Cela consomme moins d'énergie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Courant très intense qui génère beaucoup de chaleur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Cela augmente la tension
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Qu'est-ce qui peut causer un court-circuit?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Des fils dénudés qui se touchent
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Une prise humide
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Une surcharge d'appareils
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="d"> Tous les éléments ci-dessus
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quel appareil coupe automatiquement le circuit en cas de surcharge?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Un fusible ou un disjoncteur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Un transformateur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Une multiprise
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Que faire en cas de court-circuit soupçonné?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Essayer de réparer soi-même avec un tournevis
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Couper l'électricité et appeler un électricien
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Continuer à utiliser le circuit normalement
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'a', // Connexion directe + et −
+            q2: 'b', // Courant intense, chaleur
+            q3: 'd', // Tous les éléments
+            q4: 'a', // Fusible ou disjoncteur
+            q5: 'b'  // Couper et appeler électricien
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Réponse manquante</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Correct!</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                    }
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent! Vous maîtrisez bien les courts-circuits.</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bon travail! Continuez à réviser.</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 À relire! Revisitez le contenu.</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
 </body>
 </html>
