@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physique-Chimie</title>
+    <title>Révisions Karniella</title>
     <style>
         * {
             margin: 0;
@@ -157,6 +157,28 @@
             opacity: 0.7;
         }
 
+        .subject-section {
+            margin-bottom: 50px;
+        }
+
+        .subject-title {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subject-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
         .status-coming-soon {
             display: inline-block;
             background: rgba(255, 255, 255, 0.3);
@@ -198,8 +220,8 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>📚 Physique-Chimie</h1>
-            <p>Cours Interactifs et Animés</p>
+            <h1>📚 Révisions Karniella</h1>
+            <p>Cours Interactifs et Animés - Toutes les Matières</p>
         </header>
 
         <!-- Lessons Grid -->
@@ -209,103 +231,155 @@
 
         <!-- Footer -->
         <footer>
-            <p>💡 Cours interactifs avec schémas animés | Facile à étendre</p>
+            <p>💡 Cours interactifs avec schémas animés pour toutes les matières | Facile à étendre</p>
         </footer>
     </div>
 
     <script>
-        // Configuration des leçons
-        const lessons = [
+        // Configuration des matières et leurs leçons
+        const subjects = [
             {
-                id: 1,
-                icon: "⚡",
-                title: "Le Circuit Électrique",
-                description: "Comprendre les circuits électriques, le moteur, les isolants, conducteurs et les types de piles.",
-                url: "le-circuit-electrique.html",
-                status: "available"
-            },
-            {
-                id: 2,
-                icon: "🔌",
-                title: "Les Commandes Électriques",
-                description: "Maîtriser les interrupteurs simples et comment ils contrôlent les circuits électriques pour allumer ou éteindre les lampes.",
-                url: "les-commandes-electriques.html",
-                status: "available"
-            },
-            {
-                id: 3,
-                icon: "⚠️",
-                title: "Court-Circuit et Protection",
-                description: "Comprendre les dangers des courts-circuits, leurs causes et les systèmes de protection des installations électriques.",
-                url: "lecon-3-court-circuit.html",
-                status: "available"
-            },
-            {
-                id: 4,
+                id: "mathematiques",
                 icon: "🔢",
-                title: "Mathématiques",
-                description: "Apprendre les calculs algébriques, les droites, les nombres relatifs avec explications, quiz et exercices interactifs.",
-                url: "mathematiques.html",
-                status: "available"
+                name: "Mathématiques",
+                description: "Calculs algébriques, géométrie, nombres relatifs et plus encore",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📐",
+                        title: "Mathématiques",
+                        description: "Apprendre les calculs algébriques, les droites, les nombres relatifs avec explications, quiz et exercices interactifs.",
+                        url: "mathematiques.html",
+                        status: "available"
+                    }
+                ]
             },
-            // AJOUTER D'AUTRES LEÇONS ICI
-            // Exemple:
-            // {
-            //     id: 2,
-            //     icon: "🧲",
-            //     title: "Le Magnétisme",
-            //     description: "Découvrir les propriétés magnétiques et les champs magnétiques.",
-            //     url: "le-magnetisme.html",
-            //     status: "available"
-            // },
-            // {
-            //     id: 3,
-            //     icon: "⚛️",
-            //     title: "La Chimie Générale",
-            //     description: "Bases de la chimie, atomes et molécules.",
-            //     url: "chimie-generale.html",
-            //     status: "coming-soon"
-            // }
+            {
+                id: "physique",
+                icon: "⚡",
+                name: "Physique",
+                description: "Circuits électriques, électricité et phénomènes physiques",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "⚡",
+                        title: "Le Circuit Électrique",
+                        description: "Comprendre les circuits électriques, le moteur, les isolants, conducteurs et les types de piles.",
+                        url: "le-circuit-electrique.html",
+                        status: "available"
+                    },
+                    {
+                        id: 2,
+                        icon: "🔌",
+                        title: "Les Commandes Électriques",
+                        description: "Maîtriser les interrupteurs simples et comment ils contrôlent les circuits électriques pour allumer ou éteindre les lampes.",
+                        url: "les-commandes-electriques.html",
+                        status: "available"
+                    },
+                    {
+                        id: 3,
+                        icon: "⚠️",
+                        title: "Court-Circuit et Protection",
+                        description: "Comprendre les dangers des courts-circuits, leurs causes et les systèmes de protection des installations électriques.",
+                        url: "lecon-3-court-circuit.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "chimie",
+                icon: "🧪",
+                name: "Chimie",
+                description: "Réactions chimiques, molécules et transformations de la matière",
+                lessons: [
+                    // Leçons de chimie à venir
+                ]
+            },
+            {
+                id: "histoire-geo",
+                icon: "🌍",
+                name: "Histoire-Géographie",
+                description: "Histoire des civilisations et découverte du monde",
+                lessons: [
+                    // Leçons d'histoire-géographie à venir
+                ]
+            }
         ];
 
-        // Générer les cartes de leçons
-        function renderLessons() {
+        // Générer les sections par matière
+        function renderSubjects() {
             const container = document.getElementById('lessonsContainer');
             container.innerHTML = '';
 
-            lessons.forEach((lesson, index) => {
-                const card = document.createElement('div');
-                card.className = `lesson-card lesson-${index + 1}`;
+            subjects.forEach(subject => {
+                // Créer la section de la matière
+                const section = document.createElement('div');
+                section.className = 'subject-section';
 
-                const statusBadge = lesson.status === 'available'
-                    ? '<span class="status-available">Disponible</span>'
-                    : '<span class="status-coming-soon">Bientôt</span>';
+                // Titre de la matière
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'subject-title';
+                titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                section.appendChild(titleDiv);
 
-                if (lesson.status === 'available') {
+                // Description de la matière
+                const descDiv = document.createElement('div');
+                descDiv.className = 'subject-description';
+                descDiv.textContent = subject.description;
+                section.appendChild(descDiv);
+
+                // Grille de leçons
+                const lessonsGrid = document.createElement('div');
+                lessonsGrid.className = 'lessons-grid';
+
+                if (subject.lessons.length === 0) {
+                    // Carte "Bientôt disponible" si pas de leçons
+                    const card = document.createElement('div');
+                    card.className = 'lesson-card';
                     card.innerHTML = `
-                        <a href="${lesson.url}">
-                            <span class="lesson-icon">${lesson.icon}</span>
-                            <h2>${lesson.title}</h2>
-                            <p>${lesson.description}</p>
-                            <button class="lesson-button">Accéder →</button>
-                        </a>
-                    `;
-                } else {
-                    card.innerHTML = `
-                        <span class="lesson-icon">${lesson.icon}</span>
-                        ${statusBadge}
-                        <h2>${lesson.title}</h2>
-                        <p>${lesson.description}</p>
+                        <span class="lesson-icon">${subject.icon}</span>
+                        <span class="status-coming-soon">Bientôt</span>
+                        <h2>Cours en préparation</h2>
+                        <p>Les leçons de ${subject.name.toLowerCase()} seront bientôt disponibles.</p>
                         <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
                     `;
+                    lessonsGrid.appendChild(card);
+                } else {
+                    // Ajouter les leçons disponibles
+                    subject.lessons.forEach((lesson, index) => {
+                        const card = document.createElement('div');
+                        card.className = `lesson-card lesson-${index + 1}`;
+
+                        if (lesson.status === 'available') {
+                            card.innerHTML = `
+                                <a href="${lesson.url}">
+                                    <span class="lesson-icon">${lesson.icon}</span>
+                                    <h2>${lesson.title}</h2>
+                                    <p>${lesson.description}</p>
+                                    <button class="lesson-button">Accéder →</button>
+                                </a>
+                            `;
+                        } else {
+                            card.innerHTML = `
+                                <span class="lesson-icon">${lesson.icon}</span>
+                                <span class="status-coming-soon">Bientôt</span>
+                                <h2>${lesson.title}</h2>
+                                <p>${lesson.description}</p>
+                                <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
+                            `;
+                        }
+
+                        lessonsGrid.appendChild(card);
+                    });
                 }
 
-                container.appendChild(card);
+                section.appendChild(lessonsGrid);
+                container.appendChild(section);
             });
         }
 
-        // Initialiser les leçons au chargement
-        renderLessons();
+        // Initialiser les sections au chargement
+        renderSubjects();
     </script>
 </body>
 </html>
