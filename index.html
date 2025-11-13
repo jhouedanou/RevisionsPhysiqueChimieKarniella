@@ -13,9 +13,36 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 40px 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '🎀';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.1;
+            bottom: 10%;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .container {
@@ -33,7 +60,16 @@
         header h1 {
             font-size: 48px;
             margin-bottom: 10px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+            letter-spacing: 2px;
+        }
+
+        header h1::before {
+            content: '🎀 ';
+        }
+
+        header h1::after {
+            content: ' 🎀';
         }
 
         header p {
@@ -49,14 +85,26 @@
         }
 
         .lesson-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border-radius: 25px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: scaleIn 0.6s ease-out forwards;
             opacity: 0;
             cursor: pointer;
+            border: 3px solid #FFB6D9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card::before {
+            content: '💖';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            opacity: 0.3;
         }
 
         .lesson-card:nth-child(1) { animation-delay: 0.1s; }
@@ -89,7 +137,8 @@
 
         .lesson-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+            border-color: #FF69B4;
         }
 
         .lesson-card a {
@@ -105,7 +154,7 @@
         }
 
         .lesson-card h2 {
-            color: #333;
+            color: #FF1493;
             font-size: 20px;
             margin-bottom: 12px;
             border-bottom: 3px solid;
@@ -113,11 +162,11 @@
         }
 
         /* Couleurs différentes pour chaque leçon */
-        .lesson-card.lesson-1 h2 { border-color: #667eea; }
-        .lesson-card.lesson-2 h2 { border-color: #764ba2; }
-        .lesson-card.lesson-3 h2 { border-color: #2196f3; }
-        .lesson-card.lesson-4 h2 { border-color: #ff9800; }
-        .lesson-card.lesson-5 h2 { border-color: #4caf50; }
+        .lesson-card.lesson-1 h2 { border-color: #FF69B4; }
+        .lesson-card.lesson-2 h2 { border-color: #FFB6D9; }
+        .lesson-card.lesson-3 h2 { border-color: #FF1493; }
+        .lesson-card.lesson-4 h2 { border-color: #FF85C1; }
+        .lesson-card.lesson-5 h2 { border-color: #FFC0CB; }
 
         .lesson-card p {
             color: #666;
@@ -129,7 +178,7 @@
         .lesson-button {
             display: inline-block;
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
             color: white;
             border: none;
             border-radius: 25px;
@@ -140,11 +189,12 @@
             text-decoration: none;
             width: 100%;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
         }
 
         .lesson-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.6);
         }
 
         footer {
@@ -166,13 +216,14 @@
             font-size: 32px;
             margin-bottom: 20px;
             padding-left: 15px;
-            border-left: 5px solid white;
+            border-left: 5px solid #FFE5F0;
             display: flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.5);
         }
 
         .subject-title:hover {
@@ -237,8 +288,8 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>📚 Révisions Karniella</h1>
-            <p>Cours Interactifs et Animés - Toutes les Matières</p>
+            <h1>📚 Objectif 15/20</h1>
+            <p>Apprends en t'amusant avec tes matières préférées ! 🌸</p>
         </header>
 
         <!-- Lessons Grid -->
@@ -248,7 +299,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>💡 Cours interactifs avec schémas animés pour toutes les matières | Facile à étendre</p>
+            <p>� Apprends facilement avec des cours amusants et des quiz super cool ! 🎀</p>
         </footer>
     </div>
 
@@ -259,14 +310,14 @@
                 id: "mathematiques",
                 icon: "🔢",
                 name: "Mathématiques",
-                description: "Calculs algébriques, géométrie, nombres relatifs et plus encore",
+                description: "Apprends les calculs, la géométrie et les nombres de façon simple !",
                 url: "mathematiques.html",
                 lessons: [
                     {
                         id: 1,
                         icon: "📐",
                         title: "Mathématiques",
-                        description: "Apprendre les calculs algébriques, les droites, les nombres relatifs avec explications, quiz et exercices interactifs.",
+                        description: "Calculs, droites, nombres avec des explications faciles et des quiz amusants.",
                         url: "mathematiques.html",
                         status: "available"
                     }
@@ -276,14 +327,14 @@
                 id: "physique",
                 icon: "⚡",
                 name: "Physique",
-                description: "Circuits électriques, électricité et phénomènes physiques",
+                description: "Découvre l'électricité et les circuits avec des expériences fun !",
                 url: "physique.html",
                 lessons: [
                     {
                         id: 1,
                         icon: "⚡",
                         title: "Physique",
-                        description: "Découvrir les circuits électriques, les commandes électriques et les court-circuits avec explications et quiz.",
+                        description: "Circuits électriques, interrupteurs et sécurité avec des explications simples et des quiz.",
                         url: "physique.html",
                         status: "available"
                     }
@@ -293,14 +344,14 @@
                 id: "svt",
                 icon: "🌱",
                 name: "SVT",
-                description: "Sciences de la Vie et de la Terre - Reproduction et biologie",
+                description: "Explore la nature : plantes, animaux et comment ils vivent !",
                 url: "svt-lecons.html",
                 lessons: [
                     {
                         id: 1,
                         icon: "🌸",
-                        title: "La Reproduction chez les Plantes",
-                        description: "Comprendre la formation et la germination de la graine, les facteurs influençant ces processus.",
+                        title: "La Vie des Plantes",
+                        description: "Comment les plantes se reproduisent et grandissent, expliqué simplement.",
                         url: "svt-lecons.html",
                         status: "available"
                     }
@@ -310,14 +361,14 @@
                 id: "histoire-geo",
                 icon: "🌍",
                 name: "Histoire-Géographie",
-                description: "Histoire des civilisations et découverte du monde",
+                description: "Voyage dans le temps et découvre le monde !",
                 url: "histoire-geographie-lecons.html",
                 lessons: [
                     {
                         id: 1,
                         icon: "📜",
                         title: "Histoire et Géographie",
-                        description: "Découvrir l'histoire et son objet, la géographie et ses domaines d'étude.",
+                        description: "Découvre le passé et les paysages de notre planète.",
                         url: "histoire-geographie-lecons.html",
                         status: "available"
                     }

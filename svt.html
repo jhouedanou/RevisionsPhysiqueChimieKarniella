@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVT - Sciences de la Vie et de la Terre</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L"); // Clé publique EmailJS
+        })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -15,17 +21,45 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🌸';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🎀';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         header {
-            background: rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
             padding: 20px;
             text-align: center;
-            border-bottom: 3px solid #2ecc71;
+            border-bottom: 3px solid #FFE5F0;
             position: relative;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
         }
 
         .btn-back {
@@ -34,21 +68,23 @@
             top: 50%;
             transform: translateY(-50%);
             padding: 10px 20px;
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #FF1493;
+            border: 2px solid white;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 14px;
             display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
         }
 
         .btn-back:hover {
             transform: translateY(-50%) translateX(-5px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
         }
 
         header h1 {
@@ -438,13 +474,13 @@
 <body>
     <header>
         <a href="index.html" class="btn-back">← Retour</a>
-        <h1>🌱 SVT - Sciences de la Vie et de la Terre</h1>
-        <p>La reproduction chez les plantes à fleurs et chez les vertébrés</p>
+        <h1>� SVT - La Vie des Plantes 🌸</h1>
+        <p>Découvre comment les plantes grandissent !</p>
     </header>
 
     <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Formation de la Graine</button>
-        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Germination de la Graine</button>
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Comment la graine se forme</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Comment la graine germe</button>
     </div>
 
     <div class="main-wrapper">
@@ -738,6 +774,7 @@
         function submitQuiz() {
             let score = 0;
             let totalQuestions = Object.keys(quizAnswers).length;
+            let answers = [];
 
             // Check each answer
             for (let i = 1; i <= totalQuestions; i++) {
@@ -747,8 +784,9 @@
 
                 if (!selectedAnswer) {
                     if (feedbackElement) {
-                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Réponse manquante</span>';
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
                     }
+                    answers.push(`Question ${i}: Pas de réponse`);
                     continue;
                 }
 
@@ -757,12 +795,14 @@
                 if (isCorrect) {
                     score++;
                     if (feedbackElement) {
-                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Correct!</span>';
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
                     }
+                    answers.push(`Question ${i}: Correcte`);
                 } else {
                     if (feedbackElement) {
-                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
                     }
+                    answers.push(`Question ${i}: Incorrecte`);
                 }
             }
 
@@ -771,15 +811,15 @@
             const percentage = Math.round((score / totalQuestions) * 100);
 
             let resultMessage = `
-                <strong>Résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+                <strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
             `;
 
             if (percentage >= 80) {
-                resultMessage += '<span style="color: #ffd700;">🎉 Excellent! Vous maîtrisez bien la reproduction des plantes.</span>';
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu as tout compris ! 🌟</span>';
             } else if (percentage >= 60) {
-                resultMessage += '<span style="color: #fff;">👍 Bon travail! Continuez à réviser.</span>';
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
             } else {
-                resultMessage += '<span style="color: #fff;">📚 À relire! Revisitez le contenu.</span>';
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
             }
 
             resultsDiv.innerHTML = resultMessage;
@@ -787,6 +827,35 @@
 
             // Scroll to results
             resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Envoyer les résultats par email
+            sendQuizResults('SVT - La Vie des Plantes', score, totalQuestions, percentage, answers);
+        }
+
+        // Fonction pour envoyer les résultats par email
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
         }
 
         // Tab switching
