@@ -17,6 +17,7 @@
         <button class="tab-button active" onclick="openTab(event, 'tab1')">Présentation</button>
         <button class="tab-button" onclick="openTab(event, 'tab2')">Appartenance</button>
         <button class="tab-button" onclick="openTab(event, 'tab3')">Demi-droites</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
     </div>
 
     <div class="content">
@@ -149,8 +150,172 @@
                 </div>
             </div>
         </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="container">
+                <h2>📝 Quiz - Droites et Points</h2>
+                <p>Testez vos connaissances sur les droites et les points</p>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Un point est :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> Un objet géométrique sans dimension
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> Une petite ligne
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> Un angle très petit
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Comment note-t-on une droite qui passe par les points A et B ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> AB
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> [AB]
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> (AB)
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Par deux points distincts, on peut tracer :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> Une seule droite
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> Deux droites
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> Une infinité de droites
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Trois points A, B et C sont alignés. Cela signifie :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> Ils sont à la même distance l'un de l'autre
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> Ils appartiennent à la même droite
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> Ils forment un triangle
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Quelle est la notation pour indiquer qu'un point A appartient à une droite d ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> A = d
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> A ∈ d
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> A ⊂ d
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Une demi-droite est :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> La moitié d'une droite
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> Une partie d'une droite limitée d'un côté par un point et illimitée de l'autre
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> Une droite très courte
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <button class="quiz-button" onclick="submitQuiz('quiz3')">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="math-lessons-script.js"></script>
+    <script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'a',
+                q2: 'c',
+                q3: 'a',
+                q4: 'b',
+                q5: 'b',
+                q6: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
