@@ -198,6 +198,122 @@ h3 {
     color: #1565c0;
 }
 
+/* Quiz Styles */
+.quiz-section {
+    background: #f5f5f5;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.quiz-section h3 {
+    color: #667eea;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.quiz-question {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.quiz-question:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.question-number {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.question-text {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.quiz-options {
+    margin-top: 15px;
+}
+
+.quiz-option {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: #fafafa;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.quiz-option:hover {
+    background: #fff;
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.quiz-options input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.quiz-button {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.quiz-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.quiz-button:active {
+    transform: translateY(0);
+}
+
+.quiz-feedback {
+    display: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.quiz-result {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.quiz-result h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -210,5 +326,22 @@ h3 {
     .tab-button {
         padding: 10px 15px;
         font-size: 12px;
+    }
+
+    .quiz-section {
+        padding: 15px;
+    }
+
+    .quiz-question {
+        padding: 15px;
+    }
+
+    .question-text {
+        font-size: 14px;
+    }
+
+    .quiz-button {
+        width: 100%;
+        padding: 15px;
     }
 }
