@@ -17,6 +17,7 @@
         <button class="tab-button active" onclick="openTab(event, 'tab1')">Définition</button>
         <button class="tab-button" onclick="openTab(event, 'tab2')">Droite Graduée</button>
         <button class="tab-button" onclick="openTab(event, 'tab3')">Comparaison</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
     </div>
 
     <div class="content">
@@ -180,8 +181,244 @@
                 </div>
             </div>
         </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="container">
+                <h2>📝 Quiz - Nombres Décimaux Relatifs</h2>
+                <p>Testez vos connaissances sur les nombres relatifs</p>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Qu'est-ce qu'un nombre décimal relatif?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> Un nombre qui peut être positif, négatif ou nul
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> Seulement un nombre positif
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> Un nombre sans virgule
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Le nombre 0 est-il positif ou négatif?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> Il est positif
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> Il est négatif
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> Il est ni positif ni négatif
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Quel est l'opposé du nombre +7?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> +7
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> -7
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> 0
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Quelle est la distance à zéro du nombre -5?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> -5
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> 5
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> 0
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Sur une droite graduée, où se trouvent les nombres négatifs?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> À droite de 0
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> À gauche de 0
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> Au-dessus de 0
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Comparer +3 et -7. Lequel est le plus grand?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> +3 est plus grand
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> -7 est plus grand
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> Ils sont égaux
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">7</span>
+                        <span class="question-text">Comparer -4 et -9. Lequel est le plus grand?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="a"> -4 est plus grand
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="b"> -9 est plus grand
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="c"> Ils sont égaux
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q7"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">8</span>
+                        <span class="question-text">Quel est l'opposé de 0?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="a"> 0
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="b"> -1
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="c"> +1
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q8"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">9</span>
+                        <span class="question-text">Ranger dans l'ordre croissant: -5, +3, -1, 0</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="a"> -5 < -1 < 0 < +3
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="b"> +3 < 0 < -1 < -5
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q9" value="c"> 0 < -1 < -5 < +3
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q9"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">10</span>
+                        <span class="question-text">Une température de -10°C représente:</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="a"> Une température au-dessus de 0
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="b"> Une température en-dessous de 0
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q10" value="c"> Une température égale à 0
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q10"></div>
+                    </div>
+
+                    <button class="quiz-button" onclick="submitQuiz('quiz7')">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="math-lessons-script.js"></script>
+    <script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'a',
+                q2: 'c',
+                q3: 'b',
+                q4: 'b',
+                q5: 'b',
+                q6: 'a',
+                q7: 'a',
+                q8: 'a',
+                q9: 'a',
+                q10: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
