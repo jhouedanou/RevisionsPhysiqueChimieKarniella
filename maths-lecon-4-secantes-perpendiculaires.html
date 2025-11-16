@@ -17,6 +17,7 @@
         <button class="tab-button active" onclick="openTab(event, 'tab1')">Droites Sécantes</button>
         <button class="tab-button" onclick="openTab(event, 'tab2')">Perpendiculaires</button>
         <button class="tab-button" onclick="openTab(event, 'tab3')">Construction</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
     </div>
 
     <div class="content">
@@ -137,8 +138,172 @@
                 </div>
             </div>
         </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="container">
+                <h2>📝 Quiz - Droites Sécantes et Perpendiculaires</h2>
+                <p>Testez vos connaissances sur les intersections et les angles droits</p>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Deux droites sécantes sont des droites qui :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> Se coupent en deux points
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> Se coupent en un seul point
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> Ne se coupent jamais
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Comment note-t-on que deux droites d et d' sont perpendiculaires ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> d // d'
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> d = d'
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> d ⊥ d'
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Deux droites perpendiculaires forment des angles de :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> 45°
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> 60°
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> 90°
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Quel instrument permet de tracer facilement une perpendiculaire ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> Un compas
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> Une équerre
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> Un rapporteur
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Par un point donné, combien de perpendiculaires peut-on tracer à une droite donnée ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> Aucune
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> Une seule
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> Une infinité
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Si d ⊥ d', alors d' ⊥ d. C'est la propriété :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> De transitivité
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> Symétrique
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> De réflexivité
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <button class="quiz-button" onclick="submitQuiz('quiz4')">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="math-lessons-script.js"></script>
+    <script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'c',
+                q4: 'b',
+                q5: 'b',
+                q6: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
