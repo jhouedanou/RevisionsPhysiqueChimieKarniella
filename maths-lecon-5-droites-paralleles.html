@@ -251,6 +251,22 @@
                         <div class="quiz-feedback" id="feedback-q6"></div>
                     </div>
 
+                    <div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+                        <span class="question-number">🎨</span>
+                        <span class="question-text">Exercice de dessin : Tracez une droite d, puis tracez deux droites parallèles à d.</span>
+                        <div style="margin-top: 15px;">
+                            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer les droites parallèles.
+                            </p>
+                            <canvas id="drawingCanvas5" width="600" height="300" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;"></canvas>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <button class="quiz-button" onclick="clearCanvas5()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+                                <button class="quiz-button" onclick="saveDrawing5()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+                            </div>
+                            <div id="drawing-feedback5" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+                        </div>
+                    </div>
+
                     <button class="quiz-button" onclick="submitQuiz('quiz5')">Vérifier les Réponses</button>
                     <div id="quiz-results" class="quiz-result"></div>
                 </div>
@@ -260,6 +276,98 @@
 
     <script src="math-lessons-script.js"></script>
     <script>
+        // Variables pour le dessin
+        let canvas5 = document.getElementById('drawingCanvas5');
+        let ctx5 = canvas5.getContext('2d');
+        let isDrawing5 = false;
+        let lastX5 = 0;
+        let lastY5 = 0;
+        let drawingData5 = null;
+
+        // Initialiser le canvas
+        if (canvas5) {
+            canvas5.addEventListener('mousedown', startDrawing5);
+            canvas5.addEventListener('mousemove', draw5);
+            canvas5.addEventListener('mouseup', stopDrawing5);
+            canvas5.addEventListener('mouseout', stopDrawing5);
+
+            // Support tactile
+            canvas5.addEventListener('touchstart', handleTouch5);
+            canvas5.addEventListener('touchmove', handleTouch5);
+            canvas5.addEventListener('touchend', stopDrawing5);
+        }
+
+        function startDrawing5(e) {
+            isDrawing5 = true;
+            const rect = canvas5.getBoundingClientRect();
+            lastX5 = e.clientX - rect.left;
+            lastY5 = e.clientY - rect.top;
+        }
+
+        function draw5(e) {
+            if (!isDrawing5) return;
+
+            const rect = canvas5.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx5.strokeStyle = '#FF69B4';
+            ctx5.lineWidth = 2;
+            ctx5.lineCap = 'round';
+            ctx5.lineJoin = 'round';
+
+            ctx5.beginPath();
+            ctx5.moveTo(lastX5, lastY5);
+            ctx5.lineTo(x, y);
+            ctx5.stroke();
+
+            lastX5 = x;
+            lastY5 = y;
+        }
+
+        function stopDrawing5() {
+            isDrawing5 = false;
+        }
+
+        function handleTouch5(e) {
+            const touch = e.touches[0];
+            const rect = canvas5.getBoundingClientRect();
+
+            if (e.type === 'touchstart') {
+                lastX5 = touch.clientX - rect.left;
+                lastY5 = touch.clientY - rect.top;
+                isDrawing5 = true;
+            } else if (e.type === 'touchmove') {
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx5.strokeStyle = '#FF69B4';
+                ctx5.lineWidth = 2;
+                ctx5.lineCap = 'round';
+                ctx5.lineJoin = 'round';
+
+                ctx5.beginPath();
+                ctx5.moveTo(lastX5, lastY5);
+                ctx5.lineTo(x, y);
+                ctx5.stroke();
+
+                lastX5 = x;
+                lastY5 = y;
+            }
+            e.preventDefault();
+        }
+
+        function clearCanvas5() {
+            ctx5.clearRect(0, 0, canvas5.width, canvas5.height);
+            document.getElementById('drawing-feedback5').innerHTML = '';
+        }
+
+        function saveDrawing5() {
+            // Enregistrer les données du dessin
+            drawingData5 = canvas5.toDataURL();
+            document.getElementById('drawing-feedback5').innerHTML = '<span style="color: #4caf50;">✓ Dessin enregistré !</span>';
+        }
+
         function submitQuiz(quizId) {
             const answers = {
                 q1: 'b',
