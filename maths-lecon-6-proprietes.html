@@ -224,6 +224,22 @@
                         <div class="quiz-feedback" id="feedback-q6"></div>
                     </div>
 
+                    <div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+                        <span class="question-number">🎨</span>
+                        <span class="question-text">Exercice de dessin : Utilisez les propriétés apprises pour construire une figure géométrique (droites parallèles, perpendiculaires, points).</span>
+                        <div style="margin-top: 15px;">
+                            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer votre figure.
+                            </p>
+                            <canvas id="drawingCanvas6" width="600" height="300" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;"></canvas>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <button class="quiz-button" onclick="clearCanvas6()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+                                <button class="quiz-button" onclick="saveDrawing6()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+                            </div>
+                            <div id="drawing-feedback6" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+                        </div>
+                    </div>
+
                     <button class="quiz-button" onclick="submitQuiz('quiz6')">Vérifier les Réponses</button>
                     <div id="quiz-results" class="quiz-result"></div>
                 </div>
@@ -233,6 +249,98 @@
 
     <script src="math-lessons-script.js"></script>
     <script>
+        // Variables pour le dessin
+        let canvas6 = document.getElementById('drawingCanvas6');
+        let ctx6 = canvas6.getContext('2d');
+        let isDrawing6 = false;
+        let lastX6 = 0;
+        let lastY6 = 0;
+        let drawingData6 = null;
+
+        // Initialiser le canvas
+        if (canvas6) {
+            canvas6.addEventListener('mousedown', startDrawing6);
+            canvas6.addEventListener('mousemove', draw6);
+            canvas6.addEventListener('mouseup', stopDrawing6);
+            canvas6.addEventListener('mouseout', stopDrawing6);
+
+            // Support tactile
+            canvas6.addEventListener('touchstart', handleTouch6);
+            canvas6.addEventListener('touchmove', handleTouch6);
+            canvas6.addEventListener('touchend', stopDrawing6);
+        }
+
+        function startDrawing6(e) {
+            isDrawing6 = true;
+            const rect = canvas6.getBoundingClientRect();
+            lastX6 = e.clientX - rect.left;
+            lastY6 = e.clientY - rect.top;
+        }
+
+        function draw6(e) {
+            if (!isDrawing6) return;
+
+            const rect = canvas6.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx6.strokeStyle = '#FF69B4';
+            ctx6.lineWidth = 2;
+            ctx6.lineCap = 'round';
+            ctx6.lineJoin = 'round';
+
+            ctx6.beginPath();
+            ctx6.moveTo(lastX6, lastY6);
+            ctx6.lineTo(x, y);
+            ctx6.stroke();
+
+            lastX6 = x;
+            lastY6 = y;
+        }
+
+        function stopDrawing6() {
+            isDrawing6 = false;
+        }
+
+        function handleTouch6(e) {
+            const touch = e.touches[0];
+            const rect = canvas6.getBoundingClientRect();
+
+            if (e.type === 'touchstart') {
+                lastX6 = touch.clientX - rect.left;
+                lastY6 = touch.clientY - rect.top;
+                isDrawing6 = true;
+            } else if (e.type === 'touchmove') {
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx6.strokeStyle = '#FF69B4';
+                ctx6.lineWidth = 2;
+                ctx6.lineCap = 'round';
+                ctx6.lineJoin = 'round';
+
+                ctx6.beginPath();
+                ctx6.moveTo(lastX6, lastY6);
+                ctx6.lineTo(x, y);
+                ctx6.stroke();
+
+                lastX6 = x;
+                lastY6 = y;
+            }
+            e.preventDefault();
+        }
+
+        function clearCanvas6() {
+            ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
+            document.getElementById('drawing-feedback6').innerHTML = '';
+        }
+
+        function saveDrawing6() {
+            // Enregistrer les données du dessin
+            drawingData6 = canvas6.toDataURL();
+            document.getElementById('drawing-feedback6').innerHTML = '<span style="color: #4caf50;">✓ Dessin enregistré !</span>';
+        }
+
         function submitQuiz(quizId) {
             const answers = {
                 q1: 'b',
