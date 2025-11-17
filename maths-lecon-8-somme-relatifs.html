@@ -16,7 +16,7 @@
     <div class="tabs">
         <button class="tab-button active" onclick="openTab(event, 'tab1')">Même Signe</button>
         <button class="tab-button" onclick="openTab(event, 'tab2')">Signes Contraires</button>
-        <button class="tab-button" onclick="openTab(event, 'tab3')">Exercices</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Quiz</button>
     </div>
 
     <div class="content">
@@ -131,61 +131,205 @@
 
         <div id="tab3" class="tab-content">
             <div class="container">
-                <h2>🎯 Exercices d'Application</h2>
+                <h2>📝 Quiz - Somme de Nombres Relatifs</h2>
+                <p>Testez vos connaissances sur l'addition de nombres positifs et négatifs</p>
 
-                <div class="example-box">
-                    <h4>Exercice 1 : Calculer</h4>
-                    <p>a) (+6) + (+9)</p>
-                    <p>b) (-4) + (-7)</p>
-                    <p>c) (+10) + (-3)</p>
-                    <p>d) (-8) + (+12)</p>
-                    <p>e) (+5) + (-5)</p>
-                    <button onclick="document.getElementById('sol1').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Solutions</button>
-                    <div id="sol1" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
-                        <p>a) (+6) + (+9) = <strong>+15</strong></p>
-                        <p>b) (-4) + (-7) = <strong>-11</strong></p>
-                        <p>c) (+10) + (-3) = <strong>+7</strong></p>
-                        <p>d) (-8) + (+12) = <strong>+4</strong></p>
-                        <p>e) (+5) + (-5) = <strong>0</strong></p>
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Calculer : (+6) + (+9)</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> +3
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> +15
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> -15
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
                     </div>
-                </div>
 
-                <div class="example-box">
-                    <h4>Exercice 2 : Problème</h4>
-                    <p>Un thermomètre indique -5°C le matin. La température monte de 8°C dans la journée. Quelle est la température finale ?</p>
-                    <button onclick="document.getElementById('sol2').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Solution</button>
-                    <div id="sol2" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
-                        <p><strong>Solution :</strong></p>
-                        <p>Température le matin : -5°C</p>
-                        <p>Augmentation : +8°C</p>
-                        <p>Calcul : (-5) + (+8) = +3°C</p>
-                        <p><strong>Réponse : La température finale est de +3°C</strong></p>
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Calculer : (-4) + (-7)</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> -11
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> +11
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> -3
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
                     </div>
-                </div>
 
-                <div class="example-box">
-                    <h4>Exercice 3 : Série de calculs</h4>
-                    <p>Calculer : (-3) + (+7) + (-2)</p>
-                    <button onclick="document.getElementById('sol3').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Solution</button>
-                    <div id="sol3" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
-                        <p><strong>Solution :</strong></p>
-                        <p>Étape 1 : (-3) + (+7) = +4</p>
-                        <p>Étape 2 : (+4) + (-2) = +2</p>
-                        <p><strong>Résultat final : +2</strong></p>
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Calculer : (+10) + (-3)</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> +7
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> -7
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> +13
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
                     </div>
-                </div>
 
-                <div class="info">
-                    <strong>💡 Méthode de travail :</strong><br>
-                    • Identifie d'abord si les nombres ont le même signe ou non<br>
-                    • Applique la règle correspondante<br>
-                    • Pour plusieurs nombres, calcule deux par deux<br>
-                    • Vérifie toujours ton résultat
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Calculer : (-8) + (+12)</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> -4
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> +4
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> +20
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Calculer : (+5) + (-5)</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> +10
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> 0
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> -10
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Quand l'addition de deux nombres relatifs de même signe donne un résultat positif ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> Toujours
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> Seulement si on additionne deux positifs
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> Jamais
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">7</span>
+                        <span class="question-text">Calculer : (+2,5) + (-1,2)</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="a"> +1,3
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="b"> -1,3
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="c"> +3,7
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q7"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">8</span>
+                        <span class="question-text">Un thermomètre indique -5°C. La température monte de 8°C. Quelle est la nouvelle température ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="a"> -13°C
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="b"> +3°C
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="c"> +13°C
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q8"></div>
+                    </div>
+
+                    <button class="quiz-button" onclick="submitQuiz('quiz8')">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="math-lessons-script.js"></script>
+    <script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'b',
+                q2: 'a',
+                q3: 'a',
+                q4: 'b',
+                q5: 'b',
+                q6: 'b',
+                q7: 'a',
+                q8: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
