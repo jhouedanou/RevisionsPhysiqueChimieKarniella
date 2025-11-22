@@ -88,11 +88,13 @@
             color: white;
             font-size: 32px;
             margin-bottom: 5px;
+            font-weight: bold;
         }
 
         header p {
             color: #bbb;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 500;
         }
 
         .main-content {
@@ -181,31 +183,37 @@
         .question-number {
             color: #3498db;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            font-size: 16px;
         }
 
         .question-text {
-            font-size: 16px;
+            font-size: 22px;
             color: #333;
-            margin-bottom: 15px;
-            font-weight: 500;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.4;
         }
 
         .options {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         .option {
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            padding: 18px 20px;
+            border: 3px solid #ddd;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             background: white;
             color: #333;
-            font-size: 14px;
+            font-size: 18px;
+            font-weight: 500;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
         }
 
         .option:hover {
@@ -232,11 +240,13 @@
         }
 
         .feedback {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 18px;
             display: none;
+            line-height: 1.6;
+            font-weight: 500;
         }
 
         .feedback.show {
@@ -245,13 +255,13 @@
 
         .feedback.correct-feedback {
             background: #d4edda;
-            border: 1px solid #2ecc71;
+            border: 3px solid #2ecc71;
             color: #155724;
         }
 
         .feedback.incorrect-feedback {
             background: #f8d7da;
-            border: 1px solid #e74c3c;
+            border: 3px solid #e74c3c;
             color: #721c24;
         }
 
@@ -264,13 +274,17 @@
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 16px 40px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: bold;
             transition: all 0.3s ease;
-            font-size: 14px;
+            font-size: 18px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-submit {
@@ -307,23 +321,25 @@
         }
 
         .score-display {
-            font-size: 48px;
+            font-size: 72px;
             color: #3498db;
             font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .score-text {
-            font-size: 18px;
-            color: #333;
             margin-bottom: 20px;
         }
 
+        .score-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
         .score-message {
-            font-size: 16px;
+            font-size: 22px;
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .info-box {
@@ -372,14 +388,14 @@
 <body>
     <header>
         <a href="education-civique.html" class="btn-back">← Retour</a>
-        <h1>🎓 Quiz - Éducation Civique</h1>
-        <p>Teste tes connaissances sur tes droits et tes devoirs !</p>
+        <h1>🎓 Quiz - Apprendre à Vivre Ensemble</h1>
+        <p>Des questions amusantes sur comment bien se comporter ! 🌈</p>
     </header>
 
     <div class="main-content">
         <div class="container">
-            <h2>Quiz Compréhensif d'Éducation Civique</h2>
-            <p class="subtitle">Réponds aux questions pour tester tes connaissances</p>
+            <h2>🌟 Mon Quiz de Gentillesse</h2>
+            <p class="subtitle">Montre que tu sais bien te comporter ! 💚</p>
 
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -387,336 +403,336 @@
 
             <div class="quiz-controls">
                 <button class="btn-category active" onclick="filterByCategory('all')">Toutes les questions</button>
-                <button class="btn-category" onclick="filterByCategory('human-rights')">Droits Humains</button>
-                <button class="btn-category" onclick="filterByCategory('dih')">DIH</button>
-                <button class="btn-category" onclick="filterByCategory('constitution')">Constitution</button>
-                <button class="btn-category" onclick="filterByCategory('democracy')">Démocratie</button>
+                <button class="btn-category" onclick="filterByCategory('human-rights')">Mes Droits 👶</button>
+                <button class="btn-category" onclick="filterByCategory('dih')">Être Gentil 💚</button>
+                <button class="btn-category" onclick="filterByCategory('constitution')">Les Règles 📏</button>
+                <button class="btn-category" onclick="filterByCategory('democracy')">Amitié 👫</button>
             </div>
 
             <div id="quiz-content"></div>
 
             <div class="quiz-buttons">
-                <button class="btn btn-submit" onclick="submitQuiz()">Soumettre mes réponses</button>
-                <button class="btn btn-reset" onclick="resetQuiz()">Recommencer</button>
+                <button class="btn btn-submit" onclick="submitQuiz()">✨ Vérifier mes réponses</button>
+                <button class="btn btn-reset" onclick="resetQuiz()">🔄 Rejouer</button>
             </div>
 
             <div class="results" id="results">
                 <div class="score-display" id="scoreDisplay"></div>
                 <div class="score-text" id="scoreText"></div>
                 <div class="score-message" id="scoreMessage"></div>
-                <button class="btn btn-reset" onclick="resetQuiz()">Recommencer</button>
+                <button class="btn btn-reset" onclick="resetQuiz()">🔄 Rejouer</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Quiz questions
+        // Quiz questions - Niveau 3 ans (langage très simple)
         const quizData = [
-            // Droits Humains
+            // Droits des enfants
             {
                 category: 'human-rights',
                 id: 1,
-                question: 'Qu\'est-ce que les droits humains ?',
+                question: 'Qui doit te protéger ?',
                 options: [
-                    'Les droits réservés uniquement aux adultes',
-                    'Les droits et libertés fondamentales auxquels tout être humain a droit, sans distinction',
-                    'Les droits donnés par le gouvernement',
-                    'Les responsabilités d\'un citoyen'
+                    'Les grands',
+                    'Personne',
+                    'Juste les parents',
+                    'Tout le monde'
                 ],
-                correct: 1,
-                explanation: 'Les droits humains sont universels et inaliénables. Ils appartiennent à tous sans distinction de race, de sexe, de nationalité, etc.'
+                correct: 3,
+                explanation: 'Tout le monde doit t\'aider et te protéger ! Les grands, les parents, et les amis !'
             },
             {
                 category: 'human-rights',
                 id: 2,
-                question: 'Quels sont les droits spécifiques des enfants à la survie ?',
+                question: 'Quel est ton droit le plus important ?',
                 options: [
-                    'Droit à la vie, à la santé, à l\'alimentation et à l\'eau potable',
-                    'Uniquement le droit à l\'école',
-                    'Droit au travail et aux loisirs',
-                    'Droit à l\'argent de poche'
+                    'Vivre',
+                    'Avoir des jouets',
+                    'Manger des bonbons',
+                    'Rester debout tard'
                 ],
                 correct: 0,
-                explanation: 'Les enfants ont le droit à la vie, à la santé, à une alimentation suffisante, à l\'eau potable et au logement.'
+                explanation: 'Tu as le droit de vivre ! C\'est très important !'
             },
             {
                 category: 'human-rights',
                 id: 3,
-                question: 'Combien de générations de droits humains existe-t-il ?',
+                question: 'Qu\'est-ce qu\'un enfant a besoin pour grandir ?',
                 options: [
-                    '2 générations',
-                    '3 générations',
-                    '4 générations',
-                    '5 générations'
+                    'À manger et à boire',
+                    'D\'amis',
+                    'De jouets colorés',
+                    'D\'avoir peur'
                 ],
-                correct: 1,
-                explanation: 'Il existe 3 générations : droits civils et politiques, droits économiques/sociaux/culturels, droits de solidarité.'
+                correct: 0,
+                explanation: 'Tu as besoin de manger, boire, dormir et être en bonne santé !'
             },
             {
                 category: 'human-rights',
                 id: 4,
-                question: 'La liberté d\'expression fait partie de laquelle génération de droits ?',
+                question: 'Quand tu es triste, qu\'est-ce que tu dois faire ?',
                 options: [
-                    'Première génération (droits civils et politiques)',
-                    'Deuxième génération (droits économiques et sociaux)',
-                    'Troisième génération (droits de solidarité)',
-                    'Aucune des réponses'
+                    'Te cacher',
+                    'Parler à quelqu\'un de confiance',
+                    'Pleurer tout seul',
+                    'Rien dire'
                 ],
-                correct: 0,
-                explanation: 'La liberté d\'expression est un droit civil et politique de première génération.'
+                correct: 1,
+                explanation: 'Tu peux parler à tes parents, tes amis ou un adulte qui te fait confiance !'
             },
             {
                 category: 'human-rights',
                 id: 5,
-                question: 'Lequel de ces éléments est un droit de deuxième génération ?',
+                question: 'Qu\'est-ce qu\'une famille ?',
                 options: [
-                    'Droit de vote',
-                    'Liberté de mouvement',
-                    'Droit à l\'éducation',
-                    'Liberté de réunion'
+                    'Juste maman et papa',
+                    'Les gens qui s\'aiment et prennent soin de toi',
+                    'Les voisins',
+                    'Les animaux'
                 ],
-                correct: 2,
-                explanation: 'Le droit à l\'éducation est un droit économique, social et culturel (deuxième génération).'
+                correct: 1,
+                explanation: 'Une famille c\'est les gens qui t\'aiment et prennent soin de toi !'
             },
 
-            // DIH
+            // Règles simples
             {
                 category: 'dih',
                 id: 6,
-                question: 'Qu\'est-ce que le Droit International Humanitaire (DIH) ?',
+                question: 'Faut-il faire du mal aux autres ?',
                 options: [
-                    'Les règles qui gouvernent les élections',
-                    'Un ensemble de règles qui cherchent à limiter les effets des conflits armés',
-                    'Les lois du commerce international',
-                    'Les règles pour les services de santé'
+                    'Oui, c\'est amusant',
+                    'Non, jamais',
+                    'Seulement aux amis',
+                    'Uniquement aux animaux'
                 ],
                 correct: 1,
-                explanation: 'Le DIH protège les civils, les blessés et les prisonniers de guerre, et limite les moyens de guerre.'
+                explanation: 'Non ! Il ne faut jamais faire du mal à quelqu\'un. La gentillesse est mieux !'
             },
             {
                 category: 'dih',
                 id: 7,
-                question: 'En quelle année a été signée la première Convention de Genève ?',
+                question: 'Comment se comporter avec quelqu\'un qui pleure ?',
                 options: [
-                    '1848',
-                    '1864',
-                    '1899',
-                    '1948'
+                    'Rire de lui',
+                    'L\'aider et le consoler',
+                    'S\'en aller',
+                    'Lui faire plus de mal'
                 ],
                 correct: 1,
-                explanation: 'La première Convention de Genève a été signée en 1864 par Henry Dunant, fondateur de la Croix-Rouge.'
+                explanation: 'Tu dois aider et consoler ! C\'est très gentil !'
             },
             {
                 category: 'dih',
                 id: 8,
-                question: 'Combien de Conventions de Genève ont été adoptées en 1949 ?',
+                question: 'Qu\'est-ce qu\'une promesse ?',
                 options: [
-                    '2 conventions',
-                    '3 conventions',
-                    '4 conventions',
-                    '5 conventions'
+                    'Juste des mots',
+                    'Quelque chose à oublier',
+                    'Dire qu\'on va faire quelque chose et vraiment le faire',
+                    'Mentir de temps en temps'
                 ],
                 correct: 2,
-                explanation: 'Quatre Conventions de Genève ont été adoptées en 1949 pour protéger différentes catégories de victimes.'
+                explanation: 'Une promesse, c\'est dire qu\'on va faire quelque chose et vraiment le faire !'
             },
             {
                 category: 'dih',
                 id: 9,
-                question: 'Quel est un objectif principal du DIH ?',
+                question: 'Faut-il frapper les autres enfants ?',
                 options: [
-                    'Augmenter les armes de guerre',
-                    'Protéger les civils et les blessés',
-                    'Accélérer les conflits armés',
-                    'Réduire les droits des prisonniers'
+                    'Oui, c\'est normal',
+                    'Non, jamais',
+                    'Seulement s\'ils nous énervent',
+                    'C\'est drôle'
                 ],
                 correct: 1,
-                explanation: 'Le DIH cherche à protéger les personnes qui ne participent pas aux combats et à humaniser la guerre.'
+                explanation: 'Non ! Il ne faut jamais frapper. Utilise les mots pour dire ce que tu ressens !'
             },
             {
                 category: 'dih',
                 id: 10,
-                question: 'En quelle année la Cour Pénale Internationale a-t-elle été créée ?',
+                question: 'Que dois-tu faire si quelqu\'un te fait du mal ?',
                 options: [
-                    '1989',
-                    '1995',
-                    '2002',
-                    '2010'
+                    'Garder ça secret',
+                    'Lui faire du mal en retour',
+                    'Parler à un adulte de confiance',
+                    'Pleurer sans rien dire'
                 ],
                 correct: 2,
-                explanation: 'La Cour Pénale Internationale a été créée en 2002 pour juger les crimes de guerre et crimes contre l\'humanité.'
+                explanation: 'Dis-le à un adulte ! Les parents, les maîtres ou les grands peuvent aider !'
             },
 
-            // Constitution
+            // Règles à la maison et à l\'école
             {
                 category: 'constitution',
                 id: 11,
-                question: 'Qu\'est-ce qu\'une Constitution ?',
+                question: 'Qu\'est-ce qu\'une règle ?',
                 options: [
-                    'Un ensemble de lois commerciales',
-                    'La loi fondamentale et suprême d\'un État',
-                    'Un contrat entre le gouvernement et les entreprises',
-                    'Une convention internationale'
+                    'Quelque chose pour être méchant',
+                    'Une chose obligatoire à faire pour la sécurité',
+                    'Juste un conseil',
+                    'Rien d\'important'
                 ],
                 correct: 1,
-                explanation: 'La Constitution est la loi suprême qui définit l\'organisation et le fonctionnement de l\'État.'
+                explanation: 'Une règle nous aide à être en sécurité et à vivre ensemble !'
             },
             {
                 category: 'constitution',
                 id: 12,
-                question: 'En quelle année la Constitution actuelle de la Côte d\'Ivoire a-t-elle été adoptée ?',
+                question: 'Où y a-t-il des règles ?',
                 options: [
-                    '2000',
-                    '2010',
-                    '2016',
-                    '2020'
+                    'À la maison seulement',
+                    'À l\'école seulement',
+                    'Partout : à la maison, l\'école, la rue',
+                    'Nulle part'
                 ],
                 correct: 2,
-                explanation: 'La Constitution de la Côte d\'Ivoire a été adoptée par référendum le 30 octobre 2016.'
+                explanation: 'Il y a des règles partout pour que tout le monde soit heureux et en sécurité !'
             },
             {
                 category: 'constitution',
                 id: 13,
-                question: 'Quelle est la capitale politique de la Côte d\'Ivoire selon la Constitution ?',
+                question: 'Pourquoi faut-il écouter les parents ?',
                 options: [
-                    'Abidjan',
-                    'San-Pédro',
-                    'Yamoussoukro',
-                    'Bouaké'
+                    'Parce qu\'ils sont méchants',
+                    'Pour nous protéger et nous aider',
+                    'Pour nous punir',
+                    'C\'est pas important'
                 ],
-                correct: 2,
-                explanation: 'Yamoussoukro est la capitale politique, tandis qu\'Abidjan est la capitale économique.'
+                correct: 1,
+                explanation: 'Les parents t\'aident et te protègent ! C\'est pour ton bien !'
             },
             {
                 category: 'constitution',
                 id: 14,
-                question: 'Quelle est la devise de la Côte d\'Ivoire ?',
+                question: 'Qui doit te dire ce que tu dois faire ?',
                 options: [
-                    'Liberté, Égalité, Fraternité',
-                    'Union, Discipline, Travail',
-                    'Paix, Justice, Progrès',
-                    'Force, Honneur, Dignité'
+                    'Les personnes méchantes',
+                    'Les adultes qui t\'aiment et te protègent',
+                    'Personne, fais ce que tu veux',
+                    'Seulement tes copains'
                 ],
                 correct: 1,
-                explanation: 'La devise de la Côte d\'Ivoire est "Union - Discipline - Travail".'
+                explanation: 'Les adultes qui t\'aiment : tes parents, tes maîtres, les gens de confiance !'
             },
             {
                 category: 'constitution',
                 id: 15,
-                question: 'Combien de temps le Président de la République exerce-t-il son mandat ?',
+                question: 'Qu\'est-ce que tu dois apprendre à l\'école ?',
                 options: [
-                    '3 ans',
-                    '4 ans',
-                    '5 ans, renouvelable une fois',
-                    '7 ans'
+                    'À être méchant',
+                    'À lire, écrire, compter et à être gentil',
+                    'C\'est inutile',
+                    'À faire du bruit'
                 ],
-                correct: 2,
-                explanation: 'Le Président est élu pour 5 ans au suffrage universel direct, renouvelable une fois.'
+                correct: 1,
+                explanation: 'À l\'école tu apprends à lire, compter et à bien te comporter !'
             },
             {
                 category: 'constitution',
                 id: 16,
-                question: 'Le Parlement ivoirien est composé de :',
+                question: 'Que dois-tu faire si tu fais une erreur ?',
                 options: [
-                    'Uniquement l\'Assemblée Nationale',
-                    'Assemblée Nationale et Sénat',
-                    'Chambre Basse et Chambre Haute',
-                    'Un seul chambre législative'
+                    'Cacher l\'erreur',
+                    'Mentir',
+                    'Le dire à un adulte et s\'excuser',
+                    'Rester triste'
                 ],
-                correct: 1,
-                explanation: 'Le Parlement comprend l\'Assemblée Nationale (députés) et le Sénat (sénateurs).'
+                correct: 2,
+                explanation: 'Tu peux le dire et t\'excuser ! Tout le monde fait des erreurs !'
             },
 
-            // Démocratie
+            // Comportement et amitié
             {
                 category: 'democracy',
                 id: 17,
-                question: 'D\'où vient le mot "démocratie" ?',
+                question: 'Qu\'est-ce que l\'amitié ?',
                 options: [
-                    'Du latin "demos"',
-                    'Du grec "demos" (peuple) et "kratos" (pouvoir)',
-                    'De l\'anglais "democracy"',
-                    'Du français médiéval'
+                    'Rien d\'important',
+                    'Aimer quelqu\'un et être gentil avec lui',
+                    'Faire du mal aux copains',
+                    'Rester tout seul'
                 ],
                 correct: 1,
-                explanation: 'Démocratie vient du grec "demos" (peuple) et "kratos" (pouvoir).'
+                explanation: 'L\'amitié c\'est aimer les gens et être gentil avec eux !'
             },
             {
                 category: 'democracy',
                 id: 18,
-                question: 'Quel est le principe fondamental de la démocratie ?',
+                question: 'Dois-tu partager tes jouets ?',
                 options: [
-                    'Le pouvoir appartient à une seule personne',
-                    'Le pouvoir appartient au peuple',
-                    'Le pouvoir appartient à l\'armée',
-                    'Le pouvoir appartient aux riches'
+                    'Non, jamais',
+                    'Oui, partager c\'est gentil',
+                    'Seulement les jouets cassés',
+                    'C\'est pas important'
                 ],
                 correct: 1,
-                explanation: 'La souveraineté populaire est le principe fondamental : le pouvoir appartient au peuple.'
+                explanation: 'Partager rend les autres heureux et c\'est très gentil !'
             },
             {
                 category: 'democracy',
                 id: 19,
-                question: 'Quel est le principe de séparation des pouvoirs en démocratie ?',
+                question: 'Comment dire "non" poliment ?',
                 options: [
-                    'Tous les pouvoirs sont concentrés au Président',
-                    'Les pouvoirs Exécutif, Législatif et Judiciaire sont séparés',
-                    'Seul le pouvoir Législatif existe',
-                    'Les pouvoirs ne peuvent jamais communiquer'
+                    'En criant',
+                    'En frappant',
+                    'Avec des mots gentils',
+                    'Sans rien dire'
                 ],
-                correct: 1,
-                explanation: 'La séparation des pouvoirs permet que chaque pouvoir contrôle les autres.'
+                correct: 2,
+                explanation: 'Tu peux dire non avec des mots gentils et sans faire du mal !'
             },
             {
                 category: 'democracy',
                 id: 20,
-                question: 'Laquelle de ces libertés n\'est PAS une liberté fondamentale en démocratie ?',
+                question: 'Que signifie être honnête ?',
                 options: [
-                    'Liberté d\'expression',
-                    'Liberté de religion',
-                    'Liberté d\'esclavage',
-                    'Liberté de persécution'
+                    'Mentir souvent',
+                    'Dire la vérité',
+                    'Voler les choses',
+                    'Garder ça secret'
                 ],
-                correct: 3,
-                explanation: 'La liberté de persécution n\'existe pas : c\'est l\'interdiction de persécuter qui existe. Les vraies libertés incluent l\'expression, la religion, la réunion, etc.'
+                correct: 1,
+                explanation: 'Être honnête c\'est dire la vérité ! C\'est très important !'
             },
             {
                 category: 'democracy',
                 id: 21,
-                question: 'Qu\'est-ce que l\'État de droit ?',
+                question: 'Qu\'est-ce qu\'une excuse sincère ?',
                 options: [
-                    'L\'État contrôlé par l\'armée',
-                    'L\'État où la loi s\'applique à tous, même aux dirigeants',
-                    'L\'État sans lois',
-                    'L\'État gouverné par les juges'
+                    'Ne rien dire',
+                    'Dire désolé mais pas vraiment',
+                    'Dire désolé et vraiment le penser',
+                    'Refuser de parler'
                 ],
-                correct: 1,
-                explanation: 'L\'État de droit signifie que tous, y compris les dirigeants, sont soumis à la loi.'
+                correct: 2,
+                explanation: 'Une excuse sincère c\'est dire désolé et vraiment le penser ! ❤️'
             },
             {
                 category: 'democracy',
                 id: 22,
-                question: 'Quel est un devoir fondamental du citoyen en démocratie ?',
+                question: 'Que dois-tu faire quand quelqu\'un est gentil avec toi ?',
                 options: [
-                    'Ne jamais critiquer le gouvernement',
-                    'Voter et participer aux élections',
-                    'Payer uniquement quand on veut',
-                    'Refuser de respecter les lois'
+                    'Être méchant',
+                    'Ignorer',
+                    'Être gentil aussi',
+                    'Crier'
                 ],
-                correct: 1,
-                explanation: 'Les citoyens ont le devoir de voter, de respecter la loi, de payer les impôts et de s\'informer.'
+                correct: 2,
+                explanation: 'Sois gentil aussi ! C\'est comme un échange de gentillesse !'
             },
             {
                 category: 'democracy',
                 id: 23,
-                question: 'Qu\'est-ce que le pluralisme politique ?',
+                question: 'Pourquoi faut-il dire "s\'il te plaît" et "merci" ?',
                 options: [
-                    'Un seul parti politique autorisé',
-                    'Plusieurs partis politiques qui coexistent',
-                    'L\'absence de partis politiques',
-                    'Le gouvernement des militaires'
+                    'C\'est ennuyeux',
+                    'C\'est pour être poli et faire plaisir',
+                    'C\'est pas important',
+                    'C\'est obligatoire mais méchant'
                 ],
                 correct: 1,
-                explanation: 'Le pluralisme politique permet à plusieurs partis d\'exister et de s\'affronter démocratiquement.'
+                explanation: 'C\'est pour montrer qu\'on est gentil et qu\'on apprécie les autres !'
             }
         ];
 
@@ -837,7 +853,7 @@
             const unanswered = filtered.filter(q => userAnswers[q.id] === undefined).length;
 
             if (unanswered > 0) {
-                alert(`Vous avez ${unanswered} question(s) sans réponse. Veuillez répondre à toutes les questions.`);
+                alert(`Oups ! Tu n'as pas répondu à ${unanswered} question(s). Réponds à toutes pour jouer ! 😊`);
                 return;
             }
 
@@ -864,19 +880,19 @@
             const scoreMessage = document.getElementById('scoreMessage');
 
             scoreDisplay.textContent = `${percentage}%`;
-            scoreText.textContent = `Tu as répondu correctement à ${correct} sur ${total} questions.`;
+            scoreText.textContent = `Tu as eu bon ${correct} sur ${total} réponses ! 🎉`;
 
             let message = '';
             if (percentage === 100) {
-                message = '🎉 Parfait ! Tu maîtrises complètement le sujet !';
+                message = '⭐ Bravo ! Tu es gentille et tu sais très bien te comporter ! Bisous ! 💕';
             } else if (percentage >= 80) {
-                message = '🌟 Excellent ! Tu as une très bonne compréhension !';
+                message = '🌈 Super ! Tu es une grande fille gentille ! Continue comme ça ! 🌟';
             } else if (percentage >= 60) {
-                message = '👍 Bien ! Tu comprends les concepts principaux. Révise les erreurs.';
+                message = '😊 Bien joué ! Tu connais beaucoup de choses ! Presque parfait ! 🎀';
             } else if (percentage >= 40) {
-                message = '💪 Pas mal. Continue à étudier pour améliorer tes résultats.';
+                message = '💪 Tu essaies ! Relis les réponses et réessaie. Tu vas réussir ! 🌸';
             } else {
-                message = '📚 Tu dois approfondir tes révisions. Retourne au cours et essaie à nouveau.';
+                message = '📚 C\'est un bon début ! Lis bien les histoires et réessaie ! Tu peux le faire ! 💖';
             }
 
             scoreMessage.textContent = message;
