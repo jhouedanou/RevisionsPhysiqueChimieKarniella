@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éducation Civique</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '⚖️';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6); border: 2px solid #C71585;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: #444;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            color: #0d47a1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        .definition-box {
+            background: #FFFFFF; border: 3px solid #ff9800;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .principles-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .principles-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .evolution-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .evolution-box h4 {
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Tab Navigation Buttons */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button.prev {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+        }
+
+        .nav-button.next {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="histoire-geographie-lecons.html" class="btn-back">← Retour</a>
+        <h1>⚖️ Éducation Civique 🎀</h1>
+        <p>Découvre tes droits et tes devoirs de citoyen !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Les Droits Humains</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Droit International Humanitaire</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Constitution de Côte d'Ivoire</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Principes de la Démocratie</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: LES DROITS HUMAINS -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>⚖️ Les Droits Humains</h2>
+                        <p class="subtitle">Comprendre les droits fondamentaux de chaque être humain</p>
+
+                        <h3>📌 I - Définition des Droits Humains</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Les droits humains</strong> (ou droits de l'homme) sont les droits et libertés fondamentaux auxquels tout être humain a droit, sans distinction de race, de sexe, de nationalité, d'origine ethnique, de langue, de religion ou de toute autre condition.</p>
+                            <p>Ces droits sont universels, inaliénables et indivisibles. Ils appartiennent à tous les êtres humains dès la naissance.</p>
+                        </div>
+
+                        <h3>👶 II - Droits à la Survie et à la Protection des Enfants</h3>
+
+                        <p>Les enfants ont des droits spécifiques qui garantissent leur survie, leur développement et leur protection :</p>
+
+                        <div class="category-box">
+                            <h4>🛡️ Droits à la Survie</h4>
+                            <ul>
+                                <li><strong>Droit à la vie :</strong> Tout enfant a le droit de vivre</li>
+                                <li><strong>Droit à la santé :</strong> Accès aux soins médicaux et à la prévention des maladies</li>
+                                <li><strong>Droit à l'alimentation :</strong> Recevoir une nourriture suffisante et de qualité</li>
+                                <li><strong>Droit à l'eau potable :</strong> Accès à l'eau propre et saine</li>
+                                <li><strong>Droit au logement :</strong> Avoir un toit et un abri décent</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔒 Droits à la Protection</h4>
+                            <ul>
+                                <li><strong>Protection contre la violence :</strong> Aucun enfant ne doit subir de violence physique ou psychologique</li>
+                                <li><strong>Protection contre l'exploitation :</strong> Les enfants ne doivent pas être exploités au travail</li>
+                                <li><strong>Protection contre les abus :</strong> Protection contre toute forme d'abus ou de négligence</li>
+                                <li><strong>Protection en cas de conflit :</strong> Les enfants doivent être protégés en temps de guerre</li>
+                                <li><strong>Droit à l'identité :</strong> Tout enfant a droit à un nom, une nationalité et à connaître ses parents</li>
+                            </ul>
+                        </div>
+
+                        <h3>📊 III - Les Différentes Catégories de Droits Humains</h3>
+
+                        <p>Les droits humains sont classés en trois générations ou catégories principales :</p>
+
+                        <div class="category-box">
+                            <h4>1️⃣ Première Génération : Droits Civils et Politiques</h4>
+                            <p>Ces droits protègent la liberté individuelle contre les abus de l'État :</p>
+                            <ul>
+                                <li><strong>Droit à la vie :</strong> Interdiction de la peine de mort arbitraire</li>
+                                <li><strong>Liberté d'expression :</strong> Pouvoir s'exprimer librement</li>
+                                <li><strong>Liberté de religion :</strong> Pratiquer la religion de son choix</li>
+                                <li><strong>Droit de vote :</strong> Participer aux élections</li>
+                                <li><strong>Droit à un procès équitable :</strong> Être jugé de manière juste</li>
+                                <li><strong>Liberté de mouvement :</strong> Se déplacer librement</li>
+                                <li><strong>Droit à la propriété :</strong> Posséder des biens</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>2️⃣ Deuxième Génération : Droits Économiques, Sociaux et Culturels</h4>
+                            <p>Ces droits garantissent des conditions de vie décentes :</p>
+                            <ul>
+                                <li><strong>Droit au travail :</strong> Avoir un emploi et des conditions de travail justes</li>
+                                <li><strong>Droit à l'éducation :</strong> Accès à l'enseignement gratuit et obligatoire</li>
+                                <li><strong>Droit à la santé :</strong> Accès aux soins de santé</li>
+                                <li><strong>Droit à un niveau de vie suffisant :</strong> Nourriture, logement, habillement</li>
+                                <li><strong>Droit à la sécurité sociale :</strong> Protection en cas de chômage, maladie, vieillesse</li>
+                                <li><strong>Droit de participer à la vie culturelle :</strong> Accès à la culture et aux arts</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>3️⃣ Troisième Génération : Droits de Solidarité</h4>
+                            <p>Ces droits concernent les peuples et l'humanité dans son ensemble :</p>
+                            <ul>
+                                <li><strong>Droit au développement :</strong> Les peuples ont le droit de se développer économiquement et socialement</li>
+                                <li><strong>Droit à la paix :</strong> Vivre dans un monde sans guerre</li>
+                                <li><strong>Droit à un environnement sain :</strong> Protection de l'environnement</li>
+                                <li><strong>Droit à l'autodétermination :</strong> Les peuples peuvent choisir leur système politique</li>
+                                <li><strong>Droit au patrimoine commun de l'humanité :</strong> Partager les ressources naturelles</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les droits humains sont universels et appartiennent à tous<br>
+                            • Les enfants ont des droits spécifiques pour assurer leur survie et leur protection<br>
+                            • Il existe trois générations de droits : civils et politiques, économiques et sociaux, et de solidarité<br>
+                            • Chacun a le devoir de respecter les droits des autres
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: DROIT INTERNATIONAL HUMANITAIRE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🌍 Le Droit International Humanitaire (DIH)</h2>
+                        <p class="subtitle">Les règles qui protègent les personnes en temps de guerre</p>
+
+                        <h3>📌 I - Définition du Droit International Humanitaire</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Le Droit International Humanitaire (DIH)</strong>, aussi appelé "droit de la guerre" ou "droit des conflits armés", est un ensemble de règles internationales qui cherchent à limiter les effets des conflits armés.</p>
+                            <p>Le DIH protège les personnes qui ne participent pas ou plus aux combats (civils, blessés, prisonniers) et limite les moyens et méthodes de guerre.</p>
+                        </div>
+
+                        <h4>Objectifs du DIH</h4>
+                        <ul>
+                            <li><strong>Protéger les personnes :</strong> Civils, blessés, malades, naufragés, prisonniers de guerre</li>
+                            <li><strong>Limiter les armes :</strong> Interdire certaines armes trop cruelles (armes chimiques, mines antipersonnel)</li>
+                            <li><strong>Protéger les biens essentiels :</strong> Hôpitaux, écoles, lieux de culte, infrastructure civile</li>
+                            <li><strong>Humaniser la guerre :</strong> Même en temps de guerre, il faut respecter certaines règles</li>
+                        </ul>
+
+                        <h3>📜 II - Étapes de l'Évolution des Droits Humains et du DIH</h3>
+
+                        <p>L'histoire de la protection des droits humains et du droit humanitaire a connu plusieurs étapes importantes :</p>
+
+                        <div class="evolution-box">
+                            <h4>📅 1. Antiquité et Moyen Âge</h4>
+                            <ul>
+                                <li><strong>Premières règles :</strong> Dans l'Antiquité, certaines civilisations avaient des règles pour protéger les prisonniers et les civils</li>
+                                <li><strong>Codes religieux :</strong> Les religions ont établi des règles de conduite en guerre (par exemple, interdiction de tuer les femmes et enfants)</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 2. 1864 : Première Convention de Genève</h4>
+                            <ul>
+                                <li><strong>Création de la Croix-Rouge :</strong> Henry Dunant fonde le Comité International de la Croix-Rouge</li>
+                                <li><strong>Protection des blessés :</strong> Première convention pour protéger les soldats blessés sur le champ de bataille</li>
+                                <li><strong>Neutralité médicale :</strong> Le personnel médical et les ambulances ne doivent pas être attaqués</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 3. 1899-1907 : Conventions de La Haye</h4>
+                            <ul>
+                                <li><strong>Règles de guerre :</strong> Établissement de règles sur la conduite des hostilités</li>
+                                <li><strong>Protection des prisonniers :</strong> Droits des prisonniers de guerre</li>
+                                <li><strong>Limitation des armes :</strong> Interdiction de certaines armes</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 4. 1948 : Déclaration Universelle des Droits de l'Homme</h4>
+                            <ul>
+                                <li><strong>Après la Seconde Guerre mondiale :</strong> En réponse aux horreurs de la guerre</li>
+                                <li><strong>Nations Unies :</strong> Adoption par l'Assemblée générale de l'ONU le 10 décembre 1948</li>
+                                <li><strong>30 articles :</strong> Énonciation de tous les droits fondamentaux</li>
+                                <li><strong>Document historique :</strong> Fondation du droit international des droits humains</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 5. 1949 : Quatre Conventions de Genève</h4>
+                            <ul>
+                                <li><strong>Convention I :</strong> Protection des blessés et malades des forces armées en campagne</li>
+                                <li><strong>Convention II :</strong> Protection des blessés, malades et naufragés des forces armées sur mer</li>
+                                <li><strong>Convention III :</strong> Traitement des prisonniers de guerre</li>
+                                <li><strong>Convention IV :</strong> Protection des personnes civiles en temps de guerre</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 6. 1977 : Protocoles additionnels</h4>
+                            <ul>
+                                <li><strong>Protocole I :</strong> Protection des victimes des conflits armés internationaux</li>
+                                <li><strong>Protocole II :</strong> Protection des victimes des conflits armés non internationaux (guerres civiles)</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 7. 1989 : Convention Internationale des Droits de l'Enfant</h4>
+                            <ul>
+                                <li><strong>Droits spécifiques :</strong> Protection particulière pour les enfants</li>
+                                <li><strong>Adoption universelle :</strong> Ratifiée par presque tous les pays du monde</li>
+                                <li><strong>54 articles :</strong> Couvrant tous les aspects de la vie de l'enfant</li>
+                            </ul>
+                        </div>
+
+                        <div class="evolution-box">
+                            <h4>📅 8. Époque contemporaine</h4>
+                            <ul>
+                                <li><strong>Cour Pénale Internationale :</strong> Créée en 2002 pour juger les crimes de guerre et crimes contre l'humanité</li>
+                                <li><strong>Tribunaux spéciaux :</strong> Pour juger les crimes commis dans certains conflits (Rwanda, ex-Yougoslavie)</li>
+                                <li><strong>Nouvelles conventions :</strong> Sur les armes (interdiction des mines antipersonnel en 1997, des armes à sous-munitions en 2008)</li>
+                            </ul>
+                        </div>
+
+                        <h3>🔍 Principes Fondamentaux du DIH</h3>
+                        <ul>
+                            <li><strong>Distinction :</strong> Distinguer entre combattants et civils</li>
+                            <li><strong>Proportionnalité :</strong> Les attaques ne doivent pas causer de dommages excessifs aux civils</li>
+                            <li><strong>Précaution :</strong> Prendre toutes les précautions pour éviter les pertes civiles</li>
+                            <li><strong>Humanité :</strong> Traiter toutes les personnes avec humanité</li>
+                            <li><strong>Nécessité militaire :</strong> Les actions doivent être justifiées par un objectif militaire</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le DIH limite les souffrances causées par la guerre<br>
+                            • Le DIH protège ceux qui ne combattent pas<br>
+                            • Les droits humains ont évolué progressivement depuis le 19e siècle<br>
+                            • Les conventions de Genève sont la base du DIH moderne<br>
+                            • Même en temps de guerre, certaines règles doivent être respectées
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: CONSTITUTION DE LA CÔTE D'IVOIRE -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>📜 La Constitution de la Côte d'Ivoire</h2>
+                        <p class="subtitle">La loi fondamentale qui régit notre pays</p>
+
+                        <h3>📌 I - Définition de la Constitution</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>La Constitution</strong> est la loi fondamentale et suprême d'un État. C'est le texte juridique qui définit l'organisation et le fonctionnement de l'État, ainsi que les droits et devoirs des citoyens.</p>
+                            <p>En Côte d'Ivoire, la Constitution actuelle date de 2016. Elle a été adoptée par référendum le 30 octobre 2016.</p>
+                        </div>
+
+                        <h4>Caractéristiques de la Constitution</h4>
+                        <ul>
+                            <li><strong>Loi suprême :</strong> Toutes les autres lois doivent respecter la Constitution</li>
+                            <li><strong>Rigidité :</strong> Elle ne peut être modifiée que par une procédure spéciale</li>
+                            <li><strong>Légitimité :</strong> Elle émane du peuple souverain</li>
+                            <li><strong>Stabilité :</strong> Elle assure la continuité de l'État</li>
+                        </ul>
+
+                        <h3>📊 II - Les Composants de la Constitution Ivoirienne</h3>
+
+                        <p>La Constitution de la Côte d'Ivoire de 2016 est composée de plusieurs parties essentielles :</p>
+
+                        <div class="category-box">
+                            <h4>1️⃣ Le Préambule</h4>
+                            <p>Introduction qui énonce les valeurs et principes fondamentaux :</p>
+                            <ul>
+                                <li><strong>Valeurs nationales :</strong> Liberté, démocratie, souveraineté nationale</li>
+                                <li><strong>Droits de l'homme :</strong> Adhésion à la Déclaration Universelle des Droits de l'Homme</li>
+                                <li><strong>Identité africaine :</strong> Attachement aux valeurs de civilisation africaine</li>
+                                <li><strong>Principes fondamentaux :</strong> Égalité, justice, dignité humaine</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>2️⃣ Titre I : De l'État et de la Souveraineté</h4>
+                            <ul>
+                                <li><strong>Nom de l'État :</strong> République de Côte d'Ivoire</li>
+                                <li><strong>Devise :</strong> "Union - Discipline - Travail"</li>
+                                <li><strong>Hymne national :</strong> L'Abidjanaise</li>
+                                <li><strong>Drapeau :</strong> Orange, blanc, vert en bandes verticales</li>
+                                <li><strong>Langue officielle :</strong> Le français</li>
+                                <li><strong>Capitale :</strong> Yamoussoukro (politique) et Abidjan (économique)</li>
+                                <li><strong>Souveraineté nationale :</strong> Appartient au peuple</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>3️⃣ Titre II : Des Libertés, des Droits et des Devoirs</h4>
+                            <p>Cette partie garantit les droits fondamentaux des citoyens :</p>
+                            <ul>
+                                <li><strong>Droits civils :</strong> Liberté d'expression, de circulation, d'association</li>
+                                <li><strong>Droits politiques :</strong> Droit de vote, d'être élu</li>
+                                <li><strong>Droits économiques et sociaux :</strong> Droit au travail, à l'éducation, à la santé</li>
+                                <li><strong>Égalité :</strong> Tous les citoyens sont égaux devant la loi</li>
+                                <li><strong>Devoirs :</strong> Respecter la loi, payer les impôts, défendre la patrie</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>4️⃣ Titre III : Du Président de la République</h4>
+                            <ul>
+                                <li><strong>Rôle :</strong> Chef de l'État, garant de la Constitution</li>
+                                <li><strong>Élection :</strong> Au suffrage universel direct pour 5 ans, renouvelable une fois</li>
+                                <li><strong>Pouvoirs :</strong> Nomme le Premier Ministre, dissout l'Assemblée Nationale, promulgue les lois</li>
+                                <li><strong>Conditions :</strong> Être ivoirien, avoir au moins 35 ans</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>5️⃣ Titre IV : Du Gouvernement</h4>
+                            <ul>
+                                <li><strong>Premier Ministre :</strong> Chef du Gouvernement, nommé par le Président</li>
+                                <li><strong>Ministres :</strong> Nommés par le Président sur proposition du Premier Ministre</li>
+                                <li><strong>Fonction :</strong> Conduire la politique de la Nation</li>
+                                <li><strong>Responsabilité :</strong> Le Gouvernement est responsable devant l'Assemblée Nationale</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>6️⃣ Titre V : Du Parlement</h4>
+                            <ul>
+                                <li><strong>Composition :</strong> Assemblée Nationale (députés) et Sénat (sénateurs)</li>
+                                <li><strong>Assemblée Nationale :</strong> Élue au suffrage universel direct pour 5 ans</li>
+                                <li><strong>Sénat :</strong> Représente les collectivités territoriales</li>
+                                <li><strong>Rôle :</strong> Vote les lois, contrôle l'action du Gouvernement</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>7️⃣ Titre VI : Des Rapports entre le Pouvoir Exécutif et le Pouvoir Législatif</h4>
+                            <ul>
+                                <li>Procédure législative (comment on fait les lois)</li>
+                                <li>Motion de censure</li>
+                                <li>Questions au Gouvernement</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>8️⃣ Titre VII : Du Pouvoir Judiciaire</h4>
+                            <ul>
+                                <li><strong>Indépendance :</strong> La justice est indépendante des autres pouvoirs</li>
+                                <li><strong>Cour Suprême :</strong> Plus haute juridiction</li>
+                                <li><strong>Conseil Constitutionnel :</strong> Juge la conformité des lois à la Constitution</li>
+                                <li><strong>Cours et tribunaux :</strong> Rendent la justice au nom du peuple</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>9️⃣ Titre VIII : Du Conseil Constitutionnel</h4>
+                            <ul>
+                                <li>Contrôle la constitutionnalité des lois</li>
+                                <li>Juge le contentieux des élections présidentielles et législatives</li>
+                                <li>Composé de 7 membres nommés pour 6 ans</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔟 Autres Titres</h4>
+                            <ul>
+                                <li><strong>Conseil Économique et Social :</strong> Organe consultatif</li>
+                                <li><strong>Médiateur de la République :</strong> Défend les droits des citoyens face à l'administration</li>
+                                <li><strong>Collectivités territoriales :</strong> Régions, districts, départements, communes</li>
+                                <li><strong>Traités et accords internationaux :</strong> Comment ils sont ratifiés</li>
+                                <li><strong>Révision de la Constitution :</strong> Procédure pour modifier la Constitution</li>
+                            </ul>
+                        </div>
+
+                        <h3>🔑 Principes Clés</h3>
+                        <ul>
+                            <li><strong>Séparation des pouvoirs :</strong> Exécutif, Législatif, Judiciaire</li>
+                            <li><strong>État de droit :</strong> Respect de la loi par tous</li>
+                            <li><strong>Démocratie :</strong> Le pouvoir vient du peuple</li>
+                            <li><strong>République :</strong> Le chef de l'État est élu</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La Constitution est la loi suprême de la Côte d'Ivoire<br>
+                            • Elle organise les pouvoirs de l'État (Exécutif, Législatif, Judiciaire)<br>
+                            • Elle garantit les droits et libertés des citoyens<br>
+                            • Elle définit les symboles nationaux (drapeau, hymne, devise)<br>
+                            • La Constitution actuelle date de 2016
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: PRINCIPES DE LA DÉMOCRATIE -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🗳️ Les Principes de la Démocratie</h2>
+                        <p class="subtitle">Comprendre comment fonctionne un système démocratique</p>
+
+                        <h3>📌 I - Définition de la Démocratie</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>La démocratie</strong> est un système politique dans lequel le pouvoir appartient au peuple. Le mot vient du grec "demos" (peuple) et "kratos" (pouvoir).</p>
+                            <p>Dans une démocratie, le peuple exerce le pouvoir soit directement (démocratie directe), soit par l'intermédiaire de représentants élus (démocratie représentative).</p>
+                        </div>
+
+                        <h3>🏛️ II - Les Principes Fondamentaux de la Démocratie</h3>
+
+                        <div class="principles-box">
+                            <h4>1️⃣ La Souveraineté Populaire</h4>
+                            <p><strong>Le pouvoir appartient au peuple</strong></p>
+                            <ul>
+                                <li><strong>Le peuple est souverain :</strong> C'est lui qui détient le pouvoir suprême</li>
+                                <li><strong>Élections libres :</strong> Le peuple choisit ses dirigeants par le vote</li>
+                                <li><strong>Suffrage universel :</strong> Tous les citoyens majeurs peuvent voter</li>
+                                <li><strong>Légitimité :</strong> Les gouvernants tirent leur autorité du peuple</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>2️⃣ La Séparation des Pouvoirs</h4>
+                            <p><strong>Les pouvoirs sont répartis entre différentes institutions</strong></p>
+                            <ul>
+                                <li><strong>Pouvoir Exécutif :</strong> Exécute les lois (Président, Gouvernement)</li>
+                                <li><strong>Pouvoir Législatif :</strong> Vote les lois (Parlement : Assemblée Nationale et Sénat)</li>
+                                <li><strong>Pouvoir Judiciaire :</strong> Applique les lois et rend la justice (Tribunaux, Cours)</li>
+                                <li><strong>Contrôle mutuel :</strong> Chaque pouvoir contrôle les autres pour éviter les abus</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>3️⃣ L'État de Droit</h4>
+                            <p><strong>Tous sont égaux devant la loi</strong></p>
+                            <ul>
+                                <li><strong>Primauté de la loi :</strong> La loi s'applique à tous, même aux dirigeants</li>
+                                <li><strong>Égalité juridique :</strong> Tous les citoyens sont égaux devant la loi</li>
+                                <li><strong>Justice indépendante :</strong> Les juges sont libres dans leurs décisions</li>
+                                <li><strong>Respect des droits :</strong> Les droits fondamentaux sont garantis</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>4️⃣ Les Libertés Fondamentales</h4>
+                            <p><strong>Les citoyens jouissent de libertés essentielles</strong></p>
+                            <ul>
+                                <li><strong>Liberté d'expression :</strong> Droit de s'exprimer librement</li>
+                                <li><strong>Liberté de la presse :</strong> Les médias peuvent informer librement</li>
+                                <li><strong>Liberté de réunion :</strong> Droit de se rassembler pacifiquement</li>
+                                <li><strong>Liberté d'association :</strong> Créer ou rejoindre des associations, partis politiques</li>
+                                <li><strong>Liberté de religion :</strong> Pratiquer la religion de son choix</li>
+                                <li><strong>Liberté de mouvement :</strong> Se déplacer librement</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>5️⃣ Le Pluralisme Politique</h4>
+                            <p><strong>Plusieurs partis politiques coexistent</strong></p>
+                            <ul>
+                                <li><strong>Multipartisme :</strong> Plusieurs partis politiques peuvent exister</li>
+                                <li><strong>Opposition reconnue :</strong> Les partis d'opposition ont un rôle légitime</li>
+                                <li><strong>Alternance politique :</strong> Le pouvoir peut changer de camp après les élections</li>
+                                <li><strong>Débat démocratique :</strong> Les différentes opinions peuvent s'exprimer</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>6️⃣ Les Élections Libres et Transparentes</h4>
+                            <p><strong>Des élections régulières et honnêtes</strong></p>
+                            <ul>
+                                <li><strong>Périodicité :</strong> Les élections ont lieu à intervalles réguliers</li>
+                                <li><strong>Vote secret :</strong> Chacun vote sans pression</li>
+                                <li><strong>Transparence :</strong> Le processus électoral est contrôlable</li>
+                                <li><strong>Égalité des candidats :</strong> Tous ont les mêmes chances de présenter leurs idées</li>
+                                <li><strong>Commission électorale indépendante :</strong> Organisation neutre des élections</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>7️⃣ La Protection des Minorités</h4>
+                            <p><strong>Les droits des minorités sont respectés</strong></p>
+                            <ul>
+                                <li><strong>Règle de la majorité :</strong> Les décisions sont prises à la majorité</li>
+                                <li><strong>Droits des minorités :</strong> Mais les minorités conservent leurs droits fondamentaux</li>
+                                <li><strong>Non-discrimination :</strong> Aucune discrimination basée sur l'ethnie, la religion, etc.</li>
+                                <li><strong>Représentation :</strong> Les minorités peuvent être représentées</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>8️⃣ La Participation Citoyenne</h4>
+                            <p><strong>Les citoyens participent à la vie publique</strong></p>
+                            <ul>
+                                <li><strong>Droit de vote :</strong> Participer aux élections</li>
+                                <li><strong>Droit d'éligibilité :</strong> Pouvoir se présenter aux élections</li>
+                                <li><strong>Pétitions :</strong> Faire des demandes collectives aux autorités</li>
+                                <li><strong>Manifestations :</strong> Exprimer pacifiquement son opinion</li>
+                                <li><strong>Associations :</strong> S'engager dans des organisations de la société civile</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>9️⃣ La Responsabilité des Gouvernants</h4>
+                            <p><strong>Les dirigeants doivent rendre compte</strong></p>
+                            <ul>
+                                <li><strong>Reddition de comptes :</strong> Les gouvernants expliquent leurs actions</li>
+                                <li><strong>Contrôle parlementaire :</strong> Le Parlement contrôle le Gouvernement</li>
+                                <li><strong>Contrôle citoyen :</strong> Les citoyens peuvent critiquer les autorités</li>
+                                <li><strong>Sanctions possibles :</strong> Les élus peuvent ne pas être réélus</li>
+                            </ul>
+                        </div>
+
+                        <div class="principles-box">
+                            <h4>🔟 La Transparence et l'Accès à l'Information</h4>
+                            <p><strong>Les citoyens ont accès à l'information</strong></p>
+                            <ul>
+                                <li><strong>Information publique :</strong> Les décisions sont rendues publiques</li>
+                                <li><strong>Médias libres :</strong> La presse informe les citoyens</li>
+                                <li><strong>Lutte contre la corruption :</strong> Gestion transparente des affaires publiques</li>
+                                <li><strong>Droit de savoir :</strong> Les citoyens peuvent connaître les actions de leurs dirigeants</li>
+                            </ul>
+                        </div>
+
+                        <h3>📚 Les Valeurs Démocratiques</h3>
+                        <ul>
+                            <li><strong>Liberté :</strong> Pouvoir agir sans contrainte injuste</li>
+                            <li><strong>Égalité :</strong> Mêmes droits pour tous</li>
+                            <li><strong>Fraternité :</strong> Solidarité entre citoyens</li>
+                            <li><strong>Justice :</strong> Traitement équitable de tous</li>
+                            <li><strong>Tolérance :</strong> Respect des différences</li>
+                            <li><strong>Solidarité :</strong> Entraide mutuelle</li>
+                        </ul>
+
+                        <h3>⚠️ Les Devoirs du Citoyen Démocratique</h3>
+                        <ul>
+                            <li><strong>Voter :</strong> Participer aux élections</li>
+                            <li><strong>Respecter la loi :</strong> Obéir aux règles communes</li>
+                            <li><strong>Payer les impôts :</strong> Contribuer aux charges publiques</li>
+                            <li><strong>S'informer :</strong> Connaître les enjeux politiques</li>
+                            <li><strong>Respecter les autres :</strong> Tolérer les opinions différentes</li>
+                            <li><strong>Défendre la démocratie :</strong> Lutter contre la dictature et l'injustice</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La démocratie repose sur la souveraineté du peuple<br>
+                            • Les trois pouvoirs (Exécutif, Législatif, Judiciaire) sont séparés<br>
+                            • Les libertés fondamentales sont garanties<br>
+                            • Des élections libres et régulières permettent l'alternance<br>
+                            • Chaque citoyen a des droits mais aussi des devoirs<br>
+                            • La démocratie nécessite la participation active des citoyens
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to open a specific tab
+        function openTab(event, tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to the clicked button
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Function to navigate to a specific tab
+        function navigateToTab(tabId) {
+            // Find the button for this tab
+            const buttons = document.querySelectorAll('.tab-button');
+            let targetButton = null;
+            
+            buttons.forEach((button, index) => {
+                if (button.getAttribute('onclick').includes(tabId)) {
+                    targetButton = button;
+                }
+            });
+
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to the target button
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize the first tab as active on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure the first tab is active
+            document.getElementById('tab1').classList.add('active');
+        });
+    </script>
+</body>
+</html>
