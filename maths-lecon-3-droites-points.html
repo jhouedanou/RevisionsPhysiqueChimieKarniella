@@ -159,16 +159,19 @@
                 <div class="quiz-section">
                     <div class="quiz-question">
                         <span class="question-number">1</span>
-                        <span class="question-text">Un point est :</span>
+                        <span class="question-text">Combien de droites peuvent passer par un seul point ?</span>
                         <div class="quiz-options">
                             <label class="quiz-option">
-                                <input type="radio" name="q1" value="a"> Un objet géométrique sans dimension
+                                <input type="radio" name="q1" value="a"> Une seule
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q1" value="b"> Une petite ligne
+                                <input type="radio" name="q1" value="b"> Deux
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q1" value="c"> Un angle très petit
+                                <input type="radio" name="q1" value="c"> Une infinité
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="d"> Aucune
                             </label>
                         </div>
                         <div class="quiz-feedback" id="feedback-q1"></div>
@@ -176,16 +179,19 @@
 
                     <div class="quiz-question">
                         <span class="question-number">2</span>
-                        <span class="question-text">Comment note-t-on une droite qui passe par les points A et B ?</span>
+                        <span class="question-text">Si trois points A, B et C sont alignés, alors :</span>
                         <div class="quiz-options">
                             <label class="quiz-option">
-                                <input type="radio" name="q2" value="a"> AB
+                                <input type="radio" name="q2" value="a"> Ils forment un triangle
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q2" value="b"> [AB]
+                                <input type="radio" name="q2" value="b"> Ils appartiennent à la même droite
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q2" value="c"> (AB)
+                                <input type="radio" name="q2" value="c"> AB = BC
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="d"> Ils sont confondus
                             </label>
                         </div>
                         <div class="quiz-feedback" id="feedback-q2"></div>
@@ -193,16 +199,19 @@
 
                     <div class="quiz-question">
                         <span class="question-number">3</span>
-                        <span class="question-text">Par deux points distincts, on peut tracer :</span>
+                        <span class="question-text">La notation [AB) désigne :</span>
                         <div class="quiz-options">
                             <label class="quiz-option">
-                                <input type="radio" name="q3" value="a"> Une seule droite
+                                <input type="radio" name="q3" value="a"> Le segment d'extrémités A et B
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q3" value="b"> Deux droites
+                                <input type="radio" name="q3" value="b"> La droite passant par A et B
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q3" value="c"> Une infinité de droites
+                                <input type="radio" name="q3" value="c"> La demi-droite d'origine A passant par B
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="d"> La demi-droite d'origine B passant par A
                             </label>
                         </div>
                         <div class="quiz-feedback" id="feedback-q3"></div>
@@ -210,16 +219,19 @@
 
                     <div class="quiz-question">
                         <span class="question-number">4</span>
-                        <span class="question-text">Trois points A, B et C sont alignés. Cela signifie :</span>
+                        <span class="question-text">Deux droites distinctes peuvent avoir au maximum :</span>
                         <div class="quiz-options">
                             <label class="quiz-option">
-                                <input type="radio" name="q4" value="a"> Ils sont à la même distance l'un de l'autre
+                                <input type="radio" name="q4" value="a"> 0 point commun
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q4" value="b"> Ils appartiennent à la même droite
+                                <input type="radio" name="q4" value="b"> 1 point commun
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q4" value="c"> Ils forment un triangle
+                                <input type="radio" name="q4" value="c"> 2 points communs
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="d"> Une infinité de points communs
                             </label>
                         </div>
                         <div class="quiz-feedback" id="feedback-q4"></div>
@@ -227,36 +239,22 @@
 
                     <div class="quiz-question">
                         <span class="question-number">5</span>
-                        <span class="question-text">Quelle est la notation pour indiquer qu'un point A appartient à une droite d ?</span>
+                        <span class="question-text">Si M appartient au segment [AB], alors :</span>
                         <div class="quiz-options">
                             <label class="quiz-option">
-                                <input type="radio" name="q5" value="a"> A = d
+                                <input type="radio" name="q5" value="a"> A, M et B sont alignés
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q5" value="b"> A ∈ d
+                                <input type="radio" name="q5" value="b"> AM + MB = AB
                             </label>
                             <label class="quiz-option">
-                                <input type="radio" name="q5" value="c"> A ⊂ d
+                                <input type="radio" name="q5" value="c"> M est entre A et B
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="d"> Toutes les réponses ci-dessus
                             </label>
                         </div>
                         <div class="quiz-feedback" id="feedback-q5"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <span class="question-number">6</span>
-                        <span class="question-text">Une demi-droite est :</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q6" value="a"> La moitié d'une droite
-                            </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q6" value="b"> Une partie d'une droite limitée d'un côté par un point et illimitée de l'autre
-                            </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q6" value="c"> Une droite très courte
-                            </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q6"></div>
                     </div>
 
                     <div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
@@ -378,12 +376,11 @@
 
         function submitQuiz(quizId) {
             const answers = {
-                q1: 'a',
-                q2: 'c',
-                q3: 'a',
+                q1: 'c',
+                q2: 'b',
+                q3: 'c',
                 q4: 'b',
-                q5: 'b',
-                q6: 'b'
+                q5: 'd'
             };
 
             let score = 0;
