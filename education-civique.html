@@ -339,6 +339,100 @@
             opacity: 0.5;
         }
 
+        /* Quiz Styles */
+        .quiz-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .quiz-options label:hover {
+            background: #fff0f5;
+            border-color: #FF69B4;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 12px;
+            accent-color: #FF69B4;
+            width: 18px;
+            height: 18px;
+        }
+
+        .check-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .check-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+            display: block;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .main-wrapper {
@@ -483,6 +577,106 @@
                             • Chacun a le devoir de respecter les droits des autres
                         </div>
 
+                        <!-- Quiz Section -->
+                        <h3>🎓 Quiz - Les Droits Humains</h3>
+                        <div class="quiz-section" id="quiz-droits-humains">
+                            <div class="quiz-question" id="q1">
+                                <p><strong>1. Qu'est-ce que les droits humains ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q1" value="a"> a) Des lois uniquement pour les adultes</label>
+                                    <label><input type="radio" name="q1" value="b"> b) Les droits et libertés fondamentaux auxquels tout être humain a droit</label>
+                                    <label><input type="radio" name="q1" value="c"> c) Des règles créées par les gouvernements</label>
+                                    <label><input type="radio" name="q1" value="d"> d) Des privilèges accordés aux citoyens riches</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q1', 'b', 'Les droits humains sont les droits et libertés fondamentaux auxquels tout être humain a droit, sans distinction.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q1"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q2">
+                                <p><strong>2. Quel est le principe fondamental de l'universalité des droits humains ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q2" value="a"> a) Les droits diffèrent selon le pays</label>
+                                    <label><input type="radio" name="q2" value="b"> b) Les droits dépendent de la religion</label>
+                                    <label><input type="radio" name="q2" value="c"> c) Les droits appartiennent à tous, sans distinction</label>
+                                    <label><input type="radio" name="q2" value="d"> d) Les droits sont donnés par le gouvernement</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q2', 'c', 'L\'universalité signifie que les droits appartiennent à tous les êtres humains, indépendamment de leur nationalité, race, religion ou sexe.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q2"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q3">
+                                <p><strong>3. Quels sont les droits de première génération ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q3" value="a"> a) Droit à l'éducation et à la santé</label>
+                                    <label><input type="radio" name="q3" value="b"> b) Droits civils et politiques (liberté d'expression, droit de vote)</label>
+                                    <label><input type="radio" name="q3" value="c"> c) Droits environnementaux</label>
+                                    <label><input type="radio" name="q3" value="d"> d) Droits des enfants</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q3', 'b', 'Les droits de première génération (civils et politiques) protègent la liberté individuelle contre les abus de l\'État.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q3"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q4">
+                                <p><strong>4. Quels sont les droits de deuxième génération ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q4" value="a"> a) Liberté d'expression et de religion</label>
+                                    <label><input type="radio" name="q4" value="b"> b) Droit à la paix et à l'environnement sain</label>
+                                    <label><input type="radio" name="q4" value="c"> c) Droits économiques, sociaux et culturels (travail, éducation, santé)</label>
+                                    <label><input type="radio" name="q4" value="d"> d) Droit à l'autodétermination</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q4', 'c', 'Les droits de deuxième génération garantissent des conditions de vie décentes : le droit au travail, à l\'éducation, à la santé.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q4"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q5">
+                                <p><strong>5. Quels sont les droits de troisième génération ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q5" value="a"> a) Droits civils et politiques</label>
+                                    <label><input type="radio" name="q5" value="b"> b) Droits économiques et sociaux</label>
+                                    <label><input type="radio" name="q5" value="c"> c) Droits de solidarité (développement, paix, environnement)</label>
+                                    <label><input type="radio" name="q5" value="d"> d) Droits culturels</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q5', 'c', 'Les droits de troisième génération concernent les peuples et l\'humanité dans son ensemble : droit au développement, à la paix, à un environnement sain.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q5"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q6">
+                                <p><strong>6. Qu'est-ce que la Déclaration Universelle des Droits de l'Homme ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q6" value="a"> a) Une loi française</label>
+                                    <label><input type="radio" name="q6" value="b"> b) Un document adopté par l'ONU en 1948 énoncant les droits fondamentaux</label>
+                                    <label><input type="radio" name="q6" value="c"> c) Un accord entre pays riches</label>
+                                    <label><input type="radio" name="q6" value="d"> d) Une constitution européenne</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q6', 'b', 'Adoptée par l\'Assemblée générale de l\'ONU le 10 décembre 1948, elle énonce les 30 droits fondamentaux que tout être humain possède.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q6"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q7">
+                                <p><strong>7. Quel droit spécifique ont les enfants selon les droits humains ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q7" value="a"> a) Aucun, ils doivent obéir aux adultes</label>
+                                    <label><input type="radio" name="q7" value="b"> b) Droits à la survie et à la protection</label>
+                                    <label><input type="radio" name="q7" value="c"> c) Seulement le droit à l'école</label>
+                                    <label><input type="radio" name="q7" value="d"> d) Le droit de choisir leurs parents</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q7', 'b', 'Les enfants ont des droits spécifiques : droit à la vie, à la santé, à l\'alimentation, à l\'eau potable, à la protection contre la violence et l\'exploitation.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q7"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q8">
+                                <p><strong>8. Quel principe garantit que les droits humains ne peuvent pas être enlevés ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q8" value="a"> a) La flexibilité</label>
+                                    <label><input type="radio" name="q8" value="b"> b) L'inaliénabilité</label>
+                                    <label><input type="radio" name="q8" value="c"> c) La révision</label>
+                                    <label><input type="radio" name="q8" value="d"> d) La relativité</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q8', 'b', 'L\'inaliénabilité signifie que les droits humains ne peuvent pas être enlevés ou cédés. Ils appartiennent à la personne dès sa naissance.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q8"></div>
+                            </div>
+                        </div>
+
                         <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" disabled>← Précédent</button>
@@ -605,6 +799,106 @@
                             • Les droits humains ont évolué progressivement depuis le 19e siècle<br>
                             • Les conventions de Genève sont la base du DIH moderne<br>
                             • Même en temps de guerre, certaines règles doivent être respectées
+                        </div>
+
+                        <!-- Quiz Section -->
+                        <h3>🎓 Quiz - Le Droit International Humanitaire</h3>
+                        <div class="quiz-section" id="quiz-dih">
+                            <div class="quiz-question" id="q9">
+                                <p><strong>1. Qu'est-ce que le Droit International Humanitaire ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q9" value="a"> a) Les lois du commerce international</label>
+                                    <label><input type="radio" name="q9" value="b"> b) Un ensemble de règles limitant les effets des conflits armés</label>
+                                    <label><input type="radio" name="q9" value="c"> c) Les traités commerciaux entre pays</label>
+                                    <label><input type="radio" name="q9" value="d"> d) Les lois environnementales mondiales</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q9', 'b', 'Le DIH est l\'ensemble des règles qui cherchent à limiter les effets des conflits armés et protéger les civils et les blessés.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q9"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q10">
+                                <p><strong>2. Qui a fondé le Comité International de la Croix-Rouge ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q10" value="a"> a) Albert Einstein</label>
+                                    <label><input type="radio" name="q10" value="b"> b) Henry Dunant</label>
+                                    <label><input type="radio" name="q10" value="c"> c) Karl Marx</label>
+                                    <label><input type="radio" name="q10" value="d"> d) Florence Nightingale</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q10', 'b', 'Henry Dunant a fondé le Comité International de la Croix-Rouge en 1864 après avoir été témoin des souffrances des blessés à la Bataille de Solférino.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q10"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q11">
+                                <p><strong>3. En quelle année a été adoptée la première Convention de Genève ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q11" value="a"> a) 1848</label>
+                                    <label><input type="radio" name="q11" value="b"> b) 1859</label>
+                                    <label><input type="radio" name="q11" value="c"> c) 1864</label>
+                                    <label><input type="radio" name="q11" value="d"> d) 1899</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q11', 'c', 'La première Convention de Genève a été adoptée en 1864 pour protéger les soldats blessés sur le champ de bataille.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q11"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q12">
+                                <p><strong>4. Combien de Conventions de Genève ont été adoptées en 1949 ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q12" value="a"> a) Deux</label>
+                                    <label><input type="radio" name="q12" value="b"> b) Trois</label>
+                                    <label><input type="radio" name="q12" value="c"> c) Quatre</label>
+                                    <label><input type="radio" name="q12" value="d"> d) Cinq</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q12', 'c', 'Quatre Conventions de Genève ont été adoptées en 1949 : protection des blessés en campagne, sur mer, traitement des prisonniers, et protection des civils.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q12"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q13">
+                                <p><strong>5. Quel est le principal objectif du DIH ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q13" value="a"> a) Arrêter toutes les guerres</label>
+                                    <label><input type="radio" name="q13" value="b"> b) Protéger les personnes ne participant pas aux combats</label>
+                                    <label><input type="radio" name="q13" value="c"> c) Augmenter la puissance des armées</label>
+                                    <label><input type="radio" name="q13" value="d"> d) Interdire tous les armements</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q13', 'b', 'Le DIH vise à protéger les civils, les blessés, les malades et les prisonniers de guerre, tout en limitant les moyens et les méthodes de guerre.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q13"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q14">
+                                <p><strong>6. Quel est le principe fondamental de "distinction" en DIH ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q14" value="a"> a) Distinguer les pauvres des riches</label>
+                                    <label><input type="radio" name="q14" value="b"> b) Distinguer les combattants des civils</label>
+                                    <label><input type="radio" name="q14" value="c"> c) Distinguer les jeunes des vieux</label>
+                                    <label><input type="radio" name="q14" value="d"> d) Distinguer les hommes des femmes</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q14', 'b', 'Le principe de distinction exige de faire la différence entre les combattants et les civils, et de protéger spécialement les civils.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q14"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q15">
+                                <p><strong>7. Quand la Convention Internationale des Droits de l'Enfant a-t-elle été adoptée ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q15" value="a"> a) 1948</label>
+                                    <label><input type="radio" name="q15" value="b"> b) 1964</label>
+                                    <label><input type="radio" name="q15" value="c"> c) 1989</label>
+                                    <label><input type="radio" name="q15" value="d"> d) 2000</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q15', 'c', 'La Convention Internationale des Droits de l\'Enfant a été adoptée en 1989. Elle est ratifiée par presque tous les pays du monde.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q15"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q16">
+                                <p><strong>8. Quels types d'armes sont interdites par le DIH ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q16" value="a"> a) Toutes les armes</label>
+                                    <label><input type="radio" name="q16" value="b"> b) Les armes trop cruelles (mines antipersonnel, armes chimiques)</label>
+                                    <label><input type="radio" name="q16" value="c"> c) Seulement les fusils</label>
+                                    <label><input type="radio" name="q16" value="d"> d) Aucune, toutes les armes sont permises</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q16', 'b', 'Le DIH interdit certaines armes jugées trop cruelles : mines antipersonnel, armes chimiques, armes à sous-munitions.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q16"></div>
+                            </div>
                         </div>
 
                         <!-- Navigation -->
@@ -761,6 +1055,106 @@
                             • Elle garantit les droits et libertés des citoyens<br>
                             • Elle définit les symboles nationaux (drapeau, hymne, devise)<br>
                             • La Constitution actuelle date de 2016
+                        </div>
+
+                        <!-- Quiz Section -->
+                        <h3>🎓 Quiz - La Constitution de Côte d'Ivoire</h3>
+                        <div class="quiz-section" id="quiz-constitution">
+                            <div class="quiz-question" id="q17">
+                                <p><strong>1. Qu'est-ce que la Constitution ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q17" value="a"> a) Un ensemble de règles de politesse</label>
+                                    <label><input type="radio" name="q17" value="b"> b) La loi fondamentale et suprême d'un État</label>
+                                    <label><input type="radio" name="q17" value="c"> c) Un traité de commerce</label>
+                                    <label><input type="radio" name="q17" value="d"> d) Une décision du roi</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q17', 'b', 'La Constitution est le texte juridique fondamental qui définit l\'organisation de l\'État, le fonctionnement des institutions et les droits des citoyens.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q17"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q18">
+                                <p><strong>2. Quelle est la devise de la Côte d'Ivoire selon sa Constitution ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q18" value="a"> a) Liberté, Égalité, Fraternité</label>
+                                    <label><input type="radio" name="q18" value="b"> b) Union, Discipline, Travail</label>
+                                    <label><input type="radio" name="q18" value="c"> c) Paix, Justice, Travail</label>
+                                    <label><input type="radio" name="q18" value="d"> d) Égalité, Fraternité, Liberté</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q18', 'b', 'La devise officielle de la Côte d Ivoire est Union - Discipline - Travail.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q18"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q19">
+                                <p><strong>3. Quelle est la capitale politique de la Côte d'Ivoire ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q19" value="a"> a) Abidjan</label>
+                                    <label><input type="radio" name="q19" value="b"> b) Yamoussoukro</label>
+                                    <label><input type="radio" name="q19" value="c"> c) Bouaké</label>
+                                    <label><input type="radio" name="q19" value="d"> d) Daloa</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q19', 'b', 'Yamoussoukro est la capitale politique de la Côte d Ivoire, tandis qu Abidjan est la capitale économique.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q19"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q20">
+                                <p><strong>4. En quelle année la Constitution actuelle de la Côte d'Ivoire a-t-elle été adoptée ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q20" value="a"> a) 1960</label>
+                                    <label><input type="radio" name="q20" value="b"> b) 1990</label>
+                                    <label><input type="radio" name="q20" value="c"> c) 2000</label>
+                                    <label><input type="radio" name="q20" value="d"> d) 2016</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q20', 'd', 'La Constitution actuelle de la Côte d Ivoire a été adoptée le 30 octobre 2016 par référendum.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q20"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q21">
+                                <p><strong>5. Quel est le rôle principal du Président de la République ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q21" value="a"> a) Écrire les lois</label>
+                                    <label><input type="radio" name="q21" value="b"> b) Juger les crimes</label>
+                                    <label><input type="radio" name="q21" value="c"> c) Chef de l'État et garant de la Constitution</label>
+                                    <label><input type="radio" name="q21" value="d"> d) Gérer les écoles</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q21', 'c', 'Le Président de la République est le chef de l\'État et le garant de la Constitution. Il nomme le Premier Ministre, dissout l\'Assemblée Nationale et promulgue les lois.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q21"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q22">
+                                <p><strong>6. Quel est le rôle principal du Parlement ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q22" value="a"> a) Commander l'armée</label>
+                                    <label><input type="radio" name="q22" value="b"> b) Voter les lois et contrôler l'action du Gouvernement</label>
+                                    <label><input type="radio" name="q22" value="c"> c) Interpréter les lois</label>
+                                    <label><input type="radio" name="q22" value="d"> d) Nommer les juges</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q22', 'b', 'Le Parlement (Assemblée Nationale et Sénat) vote les lois et contrôle l\'action du Gouvernement. Il représente le peuple.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q22"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q23">
+                                <p><strong>7. Quel est le rôle principal du Pouvoir Judiciaire ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q23" value="a"> a) Créer les lois</label>
+                                    <label><input type="radio" name="q23" value="b"> b) Exécuter les lois</label>
+                                    <label><input type="radio" name="q23" value="c"> c) Appliquer les lois et rendre la justice</label>
+                                    <label><input type="radio" name="q23" value="d"> d) Négocier avec les pays étrangers</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q23', 'c', 'Le Pouvoir Judiciaire applique les lois et rend la justice au nom du peuple. Il est composé de tribunaux et de cours, et doit être indépendant.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q23"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q24">
+                                <p><strong>8. Qu'est-ce que la séparation des pouvoirs ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q24" value="a"> a) L'absence de lois</label>
+                                    <label><input type="radio" name="q24" value="b"> b) La répartition du pouvoir entre le Président, le Parlement et la Justice</label>
+                                    <label><input type="radio" name="q24" value="c"> c) L'augmentation du pouvoir du Président</label>
+                                    <label><input type="radio" name="q24" value="d"> d) L'abolition des partis politiques</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q24', 'b', 'La séparation des pouvoirs signifie que le pouvoir est divisé entre trois branches : le Pouvoir Exécutif (Président), le Pouvoir Législatif (Parlement) et le Pouvoir Judiciaire.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q24"></div>
+                            </div>
                         </div>
 
                         <!-- Navigation -->
@@ -931,6 +1325,106 @@
                             • La démocratie nécessite la participation active des citoyens
                         </div>
 
+                        <!-- Quiz Section -->
+                        <h3>🎓 Quiz - Les Principes de la Démocratie</h3>
+                        <div class="quiz-section" id="quiz-democratie">
+                            <div class="quiz-question" id="q25">
+                                <p><strong>1. Qu'est-ce que la démocratie ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q25" value="a"> a) Le gouvernement d'un seul homme</label>
+                                    <label><input type="radio" name="q25" value="b"> b) Un système où le pouvoir appartient au peuple</label>
+                                    <label><input type="radio" name="q25" value="c"> c) Un gouvernement de militaires</label>
+                                    <label><input type="radio" name="q25" value="d"> d) Un pouvoir sans lois</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q25', 'b', 'La démocratie vient du grec demos (peuple) et kratos (pouvoir). C est un système où le pouvoir appartient au peuple.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q25"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q26">
+                                <p><strong>2. Qu'est-ce que la souveraineté populaire ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q26" value="a"> a) Le pouvoir du Président</label>
+                                    <label><input type="radio" name="q26" value="b"> b) Le pouvoir de la police</label>
+                                    <label><input type="radio" name="q26" value="c"> c) Le fait que le pouvoir appartient au peuple</label>
+                                    <label><input type="radio" name="q26" value="d"> d) L'autorité de l'armée</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q26', 'c', 'La souveraineté populaire signifie que le pouvoir ultime appartient au peuple, qui peut l exercer par le vote et les élections.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q26"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q27">
+                                <p><strong>3. Qu'est-ce que le suffrage universel ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q27" value="a"> a) Le droit de quelques riches de voter</label>
+                                    <label><input type="radio" name="q27" value="b"> b) Le droit de tous les citoyens majeurs de voter</label>
+                                    <label><input type="radio" name="q27" value="c"> c) Le droit des militaires de voter</label>
+                                    <label><input type="radio" name="q27" value="d"> d) Le droit du Président de voter plusieurs fois</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q27', 'b', 'Le suffrage universel signifie que tous les citoyens majeurs ont le droit de participer aux élections en votant.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q27"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q28">
+                                <p><strong>4. Quel est un principe fondamental de la démocratie ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q28" value="a"> a) La concentration du pouvoir</label>
+                                    <label><input type="radio" name="q28" value="b"> b) L'égalité devant la loi et les libertés fondamentales</label>
+                                    <label><input type="radio" name="q28" value="c"> c) L'absence de partis politiques</label>
+                                    <label><input type="radio" name="q28" value="d"> d) La dictature du Président</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q28', 'b', 'Un des principes fondamentaux de la démocratie est l égalité devant la loi : tous les citoyens sont égaux et jouissent des mêmes droits.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q28"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q29">
+                                <p><strong>5. Quel est le rôle de l'opposition dans une démocratie ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q29" value="a"> a) Elle ne doit pas exister</label>
+                                    <label><input type="radio" name="q29" value="b"> b) Elle critique le gouvernement et contrôle son action</label>
+                                    <label><input type="radio" name="q29" value="c"> c) Elle doit obéir silencieusement</label>
+                                    <label><input type="radio" name="q29" value="d"> d) Elle est toujours traître</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q29', 'b', 'L opposition a un rôle légitime : elle critique le gouvernement, défend des idées alternatives et contrôle l exercice du pouvoir.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q29"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q30">
+                                <p><strong>6. Qu'est-ce que l'État de droit ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q30" value="a"> a) Un État sans lois</label>
+                                    <label><input type="radio" name="q30" value="b"> b) Un État où la loi s'applique à tous, même aux dirigeants</label>
+                                    <label><input type="radio" name="q30" value="c"> c) Un État dirigé par l'armée</label>
+                                    <label><input type="radio" name="q30" value="d"> d) Un État sans Président</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q30', 'b', 'L État de droit signifie que tous, y compris les gouvernants, sont soumis au respect de la loi et que les droits fondamentaux sont garantis.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q30"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q31">
+                                <p><strong>7. Qu'est-ce que le pluralisme politique ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q31" value="a"> a) L'existence d'un seul parti politique</label>
+                                    <label><input type="radio" name="q31" value="b"> b) L'interdiction des partis</label>
+                                    <label><input type="radio" name="q31" value="c"> c) L'existence de plusieurs partis politiques</label>
+                                    <label><input type="radio" name="q31" value="d"> d) L'absence de politique</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q31', 'c', 'Le pluralisme politique signifie qu il existe plusieurs partis politiques qui peuvent présenter des idées différentes et participer aux élections.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q31"></div>
+                            </div>
+
+                            <div class="quiz-question" id="q32">
+                                <p><strong>8. Quel est un devoir citoyen important en démocratie ?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="q32" value="a"> a) Rester ignorant des affaires politiques</label>
+                                    <label><input type="radio" name="q32" value="b"> b) Voter et participer à la vie démocratique</label>
+                                    <label><input type="radio" name="q32" value="c"> c) Obéir sans discuter</label>
+                                    <label><input type="radio" name="q32" value="d"> d) Ignorer les lois</label>
+                                </div>
+                                <button type="button" class="check-btn" onclick="checkAnswer('q32', 'b', 'Un devoir important du citoyen en démocratie est de voter, de participer à la vie publique et de contribuer au fonctionnement démocratique.')">Vérifier</button>
+                                <div class="feedback" id="feedback-q32"></div>
+                            </div>
+                        </div>
+
                         <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
@@ -1009,6 +1503,36 @@
             // Make sure the first tab is active
             document.getElementById('tab1').classList.add('active');
         });
+
+        // Function to check quiz answers
+        function checkAnswer(questionId, correctAnswer, explanation) {
+            const options = document.getElementsByName(questionId);
+            let selectedValue = null;
+            
+            for (const option of options) {
+                if (option.checked) {
+                    selectedValue = option.value;
+                    break;
+                }
+            }
+
+            const feedbackElement = document.getElementById('feedback-' + questionId);
+            
+            if (!selectedValue) {
+                alert("Veuillez sélectionner une réponse !");
+                return;
+            }
+
+            feedbackElement.className = 'feedback';
+            
+            if (selectedValue === correctAnswer) {
+                feedbackElement.innerHTML = '<strong>✅ Correct !</strong><br>' + explanation;
+                feedbackElement.classList.add('correct');
+            } else {
+                feedbackElement.innerHTML = '<strong>❌ Incorrect.</strong><br>La bonne réponse était la réponse ' + correctAnswer.toUpperCase() + '.<br>' + explanation;
+                feedbackElement.classList.add('incorrect');
+            }
+        }
     </script>
 </body>
 </html>

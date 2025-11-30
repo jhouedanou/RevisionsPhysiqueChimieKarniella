@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leçon 3: Court-circuit et Protection - Physique-Chimie</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leçon 3: Court-circuit et Protection - Physique-Chimie</title>
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -451,478 +453,430 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="btn-back">← Retour</a>
-        <h1>⚠️ Leçon 3: Court-Circuit et Protection</h1>
-        <p>Comprendre les dangers et les protections des installations électriques - avec quiz intégré</p>
-    </header>
-
-    <div class="main-wrapper">
-        <div class="content-area">
-            <div class="container">
-                <!-- SECTION 1: DÉFINITION D'UN COURT-CIRCUIT -->
-                <h2>⚠️ Qu'est-ce qu'un Court-Circuit?</h2>
-                <p class="subtitle">Comprendre les risques et les causes</p>
-
-                <div class="definition-box">
-                    <h4>📖 Définition Précise d'un Court-Circuit</h4>
-                    <p><strong>Un court-circuit est une connexion directe entre la borne positive et la borne négative d'une source d'électricité, avec une résistance très faible ou nulle.</strong></p>
-                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #FF1493;">
+<header>
+<a class="btn-back" href="index.html">← Retour</a>
+<h1>⚠️ Leçon 3: Court-Circuit et Protection</h1>
+<p>Comprendre les dangers et les protections des installations électriques - avec quiz intégré</p>
+</header>
+<div class="main-wrapper">
+<div class="content-area">
+<div class="container">
+<!-- SECTION 1: DÉFINITION D'UN COURT-CIRCUIT -->
+<h2>⚠️ Qu'est-ce qu'un Court-Circuit?</h2>
+<p class="subtitle">Comprendre les risques et les causes</p>
+<div class="definition-box">
+<h4>📖 Définition Précise d'un Court-Circuit</h4>
+<p><strong>Un court-circuit est une connexion directe entre la borne positive et la borne négative d'une source d'électricité, avec une résistance très faible ou nulle.</strong></p>
+<p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #FF1493;">
                         Normalement, le courant circule à travers un circuit complet (pile → fils → appareil → fils → pile). Dans un court-circuit, le courant contourne l'appareil et prend le chemin le plus court possible entre les deux bornes, en contournant toute résistance.
                     </p>
-                </div>
-
-                <div class="danger-box">
-                    <h4>⚠️ Conséquences d'un Court-Circuit</h4>
-                    <ul style="margin: 15px 0; padding-left: 25px;">
-                        <li><strong>Courant très intense:</strong> Sans résistance pour le freiner, le courant devient extrêmement puissant</li>
-                        <li><strong>Chaleur excessive:</strong> La formule P = I²R génère une chaleur dangereuse, même avec R faible</li>
-                        <li><strong>Risque d'incendie:</strong> Les fils peuvent surchauffer et prendre feu</li>
-                        <li><strong>Risque d'électrocution:</strong> Le courant intense peut être mortel</li>
-                        <li><strong>Dommages matériels:</strong> Les appareils électriques peuvent être endommagés</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 2: CAUSES DES COURTS-CIRCUITS -->
-                <h3>🔴 Les Principales Causes d'un Court-Circuit</h3>
-
-                <div class="causes-grid">
-                    <!-- Cause 1: Branchement Anarchique -->
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🔌</span> Branchement Anarchique</h4>
-                        <p><strong>Description:</strong> Connexions électriques désorganisées, mal isolées ou sans respect des normes.</p>
-                        <p><strong>Exemple:</strong> Plusieurs fils de couleurs différentes branchés ensemble sans organisation, ou des fils croisés sans isolation.</p>
-                        <p><strong>Risque:</strong> Les fils positifs et négatifs peuvent se toucher accidentellement.</p>
-                    </div>
-
-                    <!-- Cause 2: Contacts Dénudés -->
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🔪</span> Contacts Dénudés</h4>
-                        <p><strong>Description:</strong> Les fils de cuivre sont exposés sans leur isolation en plastique.</p>
-                        <p><strong>Exemple:</strong> Un fil usé où l'isolant s'est détérioré, ou un fil coupé avec une lame, exposant le cuivre.</p>
-                        <p><strong>Risque:</strong> Deux fils dénudés qui se touchent créent un court-circuit immédiat.</p>
-                    </div>
-
-                    <!-- Cause 3: Surcharge d'une Prise -->
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🔥</span> Surcharge d'une Prise</h4>
-                        <p><strong>Description:</strong> Brancher trop d'appareils sur une seule prise, dépassant sa capacité.</p>
-                        <p><strong>Exemple:</strong> Utiliser une multiprise pour brancher un aspirateur, un chauffage ET un micro-ondes ensemble.</p>
-                        <p><strong>Risque:</strong> La prise surchauffe et peut créer un court-circuit interne.</p>
-                    </div>
-
-                    <!-- Cause 4: Dégâts Physiques -->
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">💥</span> Dégâts Physiques</h4>
-                        <p><strong>Description:</strong> L'installation électrique est endommagée par un accident ou l'usure.</p>
-                        <p><strong>Exemple:</strong> Un câble écrasé par un meuble, une prise exposée à l'humidité, ou un câble rongé.</p>
-                        <p><strong>Risque:</strong> L'isolation se fissure et les conducteurs se touchent.</p>
-                    </div>
-
-                    <!-- Cause 5: Eau et Humidité -->
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">💧</span> Eau et Humidité</h4>
-                        <p><strong>Description:</strong> L'eau pénètre dans l'installation électrique.</p>
-                        <p><strong>Exemple:</strong> Une prise mouillée, un câble dans un endroit humide, ou une fuite d'eau qui touche les fils.</p>
-                        <p><strong>Risque:</strong> L'eau conduit l'électricité et crée un chemin direct entre les conducteurs.</p>
-                    </div>
-
-                    <!-- Cause 6: Défaut d'Appareil -->
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">⚙️</span> Défaut d'Appareil</h4>
-                        <p><strong>Description:</strong> Un appareil électrique a un défaut interne qui crée un court-circuit.</p>
-                        <p><strong>Exemple:</strong> Un radiateur électrique avec un défaut où le fil intérieur touche la carcasse métallique.</p>
-                        <p><strong>Risque:</strong> Le court-circuit se produit lors de l'utilisation de l'appareil.</p>
-                    </div>
-                </div>
-
-                <!-- SECTION 3: DANGERS D'UN COURT-CIRCUIT -->
-                <h3>⚡ Section 1.3: Les Dangers d'un Court-Circuit</h3>
-
-                <div class="danger-box">
-                    <h4>🔥 Les Risques Immédiats et Long Terme</h4>
-                    <p>Un court-circuit ne dure généralement que quelques secondes (jusqu'à ce que le fusible saute ou le disjoncteur se déclenche), mais c'est suffisant pour causer des dégâts considérables:</p>
-                </div>
-
-                <div class="causes-grid">
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🔥</span> Chaleur Extrême</h4>
-                        <p><strong>Le problème:</strong> Sans résistance pour "freiner" le courant, la formule P = I²R crée une puissance énorme.</p>
-                        <p><strong>Exemple:</strong> Un court-circuit peut chauffer un fil de cuivre à plus de 1000°C en quelques secondes.</p>
-                        <p><strong>Conséquence:</strong> Le fil fond et peut mettre le feu aux matériaux environnants.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">💥</span> Incendie et Explosion</h4>
-                        <p><strong>Le problème:</strong> La chaleur intense peut igniter les isolants des câbles ou les matériaux à proximité.</p>
-                        <p><strong>Exemple:</strong> Un court-circuit dans les murs peut commencer un incendie sans qu'on le voie.</p>
-                        <p><strong>Conséquence:</strong> Destruction du bâtiment, risque de mort.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">⚡</span> Électrocution Mortelle</h4>
-                        <p><strong>Le problème:</strong> Le courant intense peut être fatal si une personne le touche.</p>
-                        <p><strong>Exemple:</strong> Un enfant qui touche un fil dénudé pendant un court-circuit.</p>
-                        <p><strong>Conséquence:</strong> Arrêt cardiaque, brûlures graves, décès.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">📱</span> Dommages aux Appareils</h4>
-                        <p><strong>Le problème:</strong> Les appareils branchés sont endommagés ou détruits.</p>
-                        <p><strong>Exemple:</strong> Un court-circuit peut griller un ordinateur, une télévision, un réfrigérateur.</p>
-                        <p><strong>Conséquence:</strong> Perte matérielle importante, frais de remplacement.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🏠</span> Dégâts Structurels</h4>
-                        <p><strong>Le problème:</strong> Les fils qui fondent peuvent endommager les gaines des câbles, l'isolation des murs.</p>
-                        <p><strong>Exemple:</strong> Les gaines plastiques qui fondent exposent le cuivre et les isolants.</p>
-                        <p><strong>Conséquence:</strong> Coûts de réparation très élevés.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🌍</span> Perte d'Électricité</h4>
-                        <p><strong>Le problème:</strong> Le disjoncteur coupe l'électricité pour toute la maison ou l'immeuble.</p>
-                        <p><strong>Exemple:</strong> Un court-circuit dans un appartement coupe l'électricité de plusieurs logements.</p>
-                        <p><strong>Conséquence:</strong> Inconvénience, perte de temps, perturbation des activités.</p>
-                    </div>
-                </div>
-
-                <!-- SECTION 4: COMMENT FAIRE UN COURT-CIRCUIT -->
-                <h3>🔴 Section 1.4: Comment un Court-Circuit se Crée (Exemples Pratiques)</h3>
-
-                <p>Comprendre comment un court-circuit se crée est essentiel pour l'éviter. Voici les scénarios les plus courants:</p>
-
-                <div class="info-list">
-                    <h4 style="margin-top: 0; color: #FF1493;">Scénario 1: Fils Dénudés qui se Touchent</h4>
-                    <p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
-                        <strong>Situation:</strong> Un câble d'extension a été rongé par un animal ou endommagé. Les fils de cuivre sont exposés.
+</div>
+<div class="danger-box">
+<h4>⚠️ Conséquences d'un Court-Circuit</h4>
+<ul style="margin: 15px 0; padding-left: 25px;">
+<li><strong>Courant très intense:</strong> Sans résistance pour le freiner, le courant devient extrêmement puissant</li>
+<li><strong>Chaleur excessive:</strong> La formule P = I²R génère une chaleur dangereuse, même avec R faible</li>
+<li><strong>Risque d'incendie:</strong> Les fils peuvent surchauffer et prendre feu</li>
+<li><strong>Risque d'électrocution:</strong> Le courant intense peut être mortel</li>
+<li><strong>Dommages matériels:</strong> Les appareils électriques peuvent être endommagés</li>
+</ul>
+</div>
+<!-- SECTION 2: CAUSES DES COURTS-CIRCUITS -->
+<h3>🔴 Les Principales Causes d'un Court-Circuit</h3>
+<div class="causes-grid">
+<!-- Cause 1: Branchement Anarchique -->
+<div class="cause-card">
+<h4><span class="cause-icon">🔌</span> Branchement Anarchique</h4>
+<p><strong>Description:</strong> Connexions électriques désorganisées, mal isolées ou sans respect des normes.</p>
+<p><strong>Exemple:</strong> Plusieurs fils de couleurs différentes branchés ensemble sans organisation, ou des fils croisés sans isolation.</p>
+<p><strong>Risque:</strong> Les fils positifs et négatifs peuvent se toucher accidentellement.</p>
+</div>
+<!-- Cause 2: Contacts Dénudés -->
+<div class="cause-card">
+<h4><span class="cause-icon">🔪</span> Contacts Dénudés</h4>
+<p><strong>Description:</strong> Les fils de cuivre sont exposés sans leur isolation en plastique.</p>
+<p><strong>Exemple:</strong> Un fil usé où l'isolant s'est détérioré, ou un fil coupé avec une lame, exposant le cuivre.</p>
+<p><strong>Risque:</strong> Deux fils dénudés qui se touchent créent un court-circuit immédiat.</p>
+</div>
+<!-- Cause 3: Surcharge d'une Prise -->
+<div class="cause-card">
+<h4><span class="cause-icon">🔥</span> Surcharge d'une Prise</h4>
+<p><strong>Description:</strong> Brancher trop d'appareils sur une seule prise, dépassant sa capacité.</p>
+<p><strong>Exemple:</strong> Utiliser une multiprise pour brancher un aspirateur, un chauffage ET un micro-ondes ensemble.</p>
+<p><strong>Risque:</strong> La prise surchauffe et peut créer un court-circuit interne.</p>
+</div>
+<!-- Cause 4: Dégâts Physiques -->
+<div class="cause-card">
+<h4><span class="cause-icon">💥</span> Dégâts Physiques</h4>
+<p><strong>Description:</strong> L'installation électrique est endommagée par un accident ou l'usure.</p>
+<p><strong>Exemple:</strong> Un câble écrasé par un meuble, une prise exposée à l'humidité, ou un câble rongé.</p>
+<p><strong>Risque:</strong> L'isolation se fissure et les conducteurs se touchent.</p>
+</div>
+<!-- Cause 5: Eau et Humidité -->
+<div class="cause-card">
+<h4><span class="cause-icon">💧</span> Eau et Humidité</h4>
+<p><strong>Description:</strong> L'eau pénètre dans l'installation électrique.</p>
+<p><strong>Exemple:</strong> Une prise mouillée, un câble dans un endroit humide, ou une fuite d'eau qui touche les fils.</p>
+<p><strong>Risque:</strong> L'eau conduit l'électricité et crée un chemin direct entre les conducteurs.</p>
+</div>
+<!-- Cause 6: Défaut d'Appareil -->
+<div class="cause-card">
+<h4><span class="cause-icon">⚙️</span> Défaut d'Appareil</h4>
+<p><strong>Description:</strong> Un appareil électrique a un défaut interne qui crée un court-circuit.</p>
+<p><strong>Exemple:</strong> Un radiateur électrique avec un défaut où le fil intérieur touche la carcasse métallique.</p>
+<p><strong>Risque:</strong> Le court-circuit se produit lors de l'utilisation de l'appareil.</p>
+</div>
+</div>
+<!-- SECTION 3: DANGERS D'UN COURT-CIRCUIT -->
+<h3>⚡ Section 1.3: Les Dangers d'un Court-Circuit</h3>
+<div class="danger-box">
+<h4>🔥 Les Risques Immédiats et Long Terme</h4>
+<p>Un court-circuit ne dure généralement que quelques secondes (jusqu'à ce que le fusible saute ou le disjoncteur se déclenche), mais c'est suffisant pour causer des dégâts considérables:</p>
+</div>
+<div class="causes-grid">
+<div class="cause-card">
+<h4><span class="cause-icon">🔥</span> Chaleur Extrême</h4>
+<p><strong>Le problème:</strong> Sans résistance pour "freiner" le courant, la formule P = I²R crée une puissance énorme.</p>
+<p><strong>Exemple:</strong> Un court-circuit peut chauffer un fil de cuivre à plus de 1000°C en quelques secondes.</p>
+<p><strong>Conséquence:</strong> Le fil fond et peut mettre le feu aux matériaux environnants.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">💥</span> Incendie et Explosion</h4>
+<p><strong>Le problème:</strong> La chaleur intense peut igniter les isolants des câbles ou les matériaux à proximité.</p>
+<p><strong>Exemple:</strong> Un court-circuit dans les murs peut commencer un incendie sans qu'on le voie.</p>
+<p><strong>Conséquence:</strong> Destruction du bâtiment, risque de mort.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">⚡</span> Électrocution Mortelle</h4>
+<p><strong>Le problème:</strong> Le courant intense peut être fatal si une personne le touche.</p>
+<p><strong>Exemple:</strong> Un enfant qui touche un fil dénudé pendant un court-circuit.</p>
+<p><strong>Conséquence:</strong> Arrêt cardiaque, brûlures graves, décès.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">📱</span> Dommages aux Appareils</h4>
+<p><strong>Le problème:</strong> Les appareils branchés sont endommagés ou détruits.</p>
+<p><strong>Exemple:</strong> Un court-circuit peut griller un ordinateur, une télévision, un réfrigérateur.</p>
+<p><strong>Conséquence:</strong> Perte matérielle importante, frais de remplacement.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">🏠</span> Dégâts Structurels</h4>
+<p><strong>Le problème:</strong> Les fils qui fondent peuvent endommager les gaines des câbles, l'isolation des murs.</p>
+<p><strong>Exemple:</strong> Les gaines plastiques qui fondent exposent le cuivre et les isolants.</p>
+<p><strong>Conséquence:</strong> Coûts de réparation très élevés.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">🌍</span> Perte d'Électricité</h4>
+<p><strong>Le problème:</strong> Le disjoncteur coupe l'électricité pour toute la maison ou l'immeuble.</p>
+<p><strong>Exemple:</strong> Un court-circuit dans un appartement coupe l'électricité de plusieurs logements.</p>
+<p><strong>Conséquence:</strong> Inconvénience, perte de temps, perturbation des activités.</p>
+</div>
+</div>
+<!-- SECTION 4: COMMENT FAIRE UN COURT-CIRCUIT -->
+<h3>🔴 Section 1.4: Comment un Court-Circuit se Crée (Exemples Pratiques)</h3>
+<p>Comprendre comment un court-circuit se crée est essentiel pour l'éviter. Voici les scénarios les plus courants:</p>
+<div class="info-list">
+<h4 style="margin-top: 0; color: #FF1493;">Scénario 1: Fils Dénudés qui se Touchent</h4>
+<p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
+<strong>Situation:</strong> Un câble d'extension a été rongé par un animal ou endommagé. Les fils de cuivre sont exposés.
                     </p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>Le fil positif (rouge) et le fil négatif (noir) sont maintenant côte à côte</li>
-                        <li>Ils se touchent légèrement ou complètement</li>
-                        <li>Résistance = quasi zéro (0.0001 Ohm)</li>
-                        <li>Courant = ÉNORME (plusieurs milliers d'ampères)</li>
-                        <li><strong>Résultat:</strong> Le fil fond instantanément, étincelles, odeur de brûlé</li>
-                    </ul>
-                </div>
-
-                <div class="info-list">
-                    <h4 style="margin-top: 0; color: #FF1493;">Scénario 2: Prise Mouillée</h4>
-                    <p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
-                        <strong>Situation:</strong> Une prise de courant est près d'un évier. De l'eau s'écoule dedans.
+<ul style="margin: 0; padding-left: 20px;">
+<li>Le fil positif (rouge) et le fil négatif (noir) sont maintenant côte à côte</li>
+<li>Ils se touchent légèrement ou complètement</li>
+<li>Résistance = quasi zéro (0.0001 Ohm)</li>
+<li>Courant = ÉNORME (plusieurs milliers d'ampères)</li>
+<li><strong>Résultat:</strong> Le fil fond instantanément, étincelles, odeur de brûlé</li>
+</ul>
+</div>
+<div class="info-list">
+<h4 style="margin-top: 0; color: #FF1493;">Scénario 2: Prise Mouillée</h4>
+<p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
+<strong>Situation:</strong> Une prise de courant est près d'un évier. De l'eau s'écoule dedans.
                     </p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>L'eau est un conducteur (surtout l'eau du robinet avec minéraux)</li>
-                        <li>Elle crée un chemin entre les bornes + et −</li>
-                        <li>Le courant passe par l'eau au lieu de passer par l'appareil</li>
-                        <li>Court-circuit instantané</li>
-                        <li><strong>Résultat:</strong> Disjoncteur se déclenche, risque électrocution si quelqu'un touche</li>
-                    </ul>
-                </div>
-
-                <div class="info-list">
-                    <h4 style="margin-top: 0; color: #FF1493;">Scénario 3: Surcharge d'une Multiprise</h4>
-                    <p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
-                        <strong>Situation:</strong> Une multiprise de 10A reçoit 20A d'appareils (aspirateur + chauffage + micro-ondes).
+<ul style="margin: 0; padding-left: 20px;">
+<li>L'eau est un conducteur (surtout l'eau du robinet avec minéraux)</li>
+<li>Elle crée un chemin entre les bornes + et −</li>
+<li>Le courant passe par l'eau au lieu de passer par l'appareil</li>
+<li>Court-circuit instantané</li>
+<li><strong>Résultat:</strong> Disjoncteur se déclenche, risque électrocution si quelqu'un touche</li>
+</ul>
+</div>
+<div class="info-list">
+<h4 style="margin-top: 0; color: #FF1493;">Scénario 3: Surcharge d'une Multiprise</h4>
+<p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
+<strong>Situation:</strong> Une multiprise de 10A reçoit 20A d'appareils (aspirateur + chauffage + micro-ondes).
                     </p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>Les contacts de la multiprise deviennent trop chauds</li>
-                        <li>L'isolation des fils peut fondre</li>
-                        <li>Les fils positif et négatif se touchent à l'intérieur</li>
-                        <li>Court-circuit dans la multiprise</li>
-                        <li><strong>Résultat:</strong> Odeur de brûlé, fumée, disjoncteur se déclenche</li>
-                    </ul>
-                </div>
-
-                <div class="info-list">
-                    <h4 style="margin-top: 0; color: #FF1493;">Scénario 4: Branchement Anarchique</h4>
-                    <p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
-                        <strong>Situation:</strong> Quelqu'un branche les fils sans ordre, sans étiquettes, dans le désordre.
+<ul style="margin: 0; padding-left: 20px;">
+<li>Les contacts de la multiprise deviennent trop chauds</li>
+<li>L'isolation des fils peut fondre</li>
+<li>Les fils positif et négatif se touchent à l'intérieur</li>
+<li>Court-circuit dans la multiprise</li>
+<li><strong>Résultat:</strong> Odeur de brûlé, fumée, disjoncteur se déclenche</li>
+</ul>
+</div>
+<div class="info-list">
+<h4 style="margin-top: 0; color: #FF1493;">Scénario 4: Branchement Anarchique</h4>
+<p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
+<strong>Situation:</strong> Quelqu'un branche les fils sans ordre, sans étiquettes, dans le désordre.
                     </p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>Un fil rouge (positif) croise un fil noir (négatif)</li>
-                        <li>Ils se touchent à cause de l'enchevêtrement</li>
-                        <li>Ou un fil dénudé accidentellement pendant le branchement</li>
-                        <li>Court-circuit immédiat</li>
-                        <li><strong>Résultat:</strong> Étincelles, bruit fort, disjoncteur déclenché</li>
-                    </ul>
-                </div>
-
-                <div class="info-list">
-                    <h4 style="margin-top: 0; color: #FF1493;">Scénario 5: Défaut d'un Appareil Ancien</h4>
-                    <p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
-                        <strong>Situation:</strong> Un radiateur électrique vieux a son isolation qui s'est usée avec le temps.
+<ul style="margin: 0; padding-left: 20px;">
+<li>Un fil rouge (positif) croise un fil noir (négatif)</li>
+<li>Ils se touchent à cause de l'enchevêtrement</li>
+<li>Ou un fil dénudé accidentellement pendant le branchement</li>
+<li>Court-circuit immédiat</li>
+<li><strong>Résultat:</strong> Étincelles, bruit fort, disjoncteur déclenché</li>
+</ul>
+</div>
+<div class="info-list">
+<h4 style="margin-top: 0; color: #FF1493;">Scénario 5: Défaut d'un Appareil Ancien</h4>
+<p style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #FF1493;">
+<strong>Situation:</strong> Un radiateur électrique vieux a son isolation qui s'est usée avec le temps.
                     </p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>Le fil électrique intérieur touche la carcasse métallique</li>
-                        <li>La carcasse devient sous tension</li>
-                        <li>Si quelqu'un touche le radiateur, c'est un court-circuit par la personne</li>
-                        <li>Ou la chaleur use encore plus l'isolation et crée un court-circuit complet</li>
-                        <li><strong>Résultat:</strong> Électrocution, disjoncteur déclenché</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 5: RÔLE DU FUSIBLE ET DISJONCTEUR -->
-                <h3>🛡️ Section 1.5: Le Rôle du Fusible et du Disjoncteur - Les Protections Essentielles</h3>
-
-                <div class="definition-box">
-                    <h4>⚡ Pourquoi Avons-Nous Besoin de Fusibles ou Disjoncteurs?</h4>
-                    <p><strong>Le problème simple:</strong> En cas de court-circuit, le courant devient extrêmement puissant et dangereux. Sans protection, le feu et l'électrocution sont presque certains.</p>
-                    <p style="margin-top: 15px;"><strong>La solution:</strong> Un fusible ou un disjoncteur coupe automatiquement le circuit avant que les dégâts ne deviennent catastrophiques.</p>
-                </div>
-
-                <div class="causes-grid">
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🔧</span> Le Fusible Traditionnel</h4>
-                        <p><strong>Composition:</strong> Un fil de metal de faible résistance (généralement en plomb ou argent) enfermé dans une porcelaine.</p>
-                        <p><strong>Fonctionnement:</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 15px;">
-                            <li>Courant normal (15A) → Le fil reste intact</li>
-                            <li>Courant élevé (25A) → Le fil se réchauffe</li>
-                            <li>Courant excessif (35A+) → Le fil FOND en quelques secondes</li>
-                            <li>Fil fondu = Circuit coupé = Courant s'arrête</li>
-                        </ul>
-                        <p><strong>Avantages:</strong> Simple, fiable, peu cher, réaction très rapide</p>
-                        <p><strong>Inconvénient:</strong> Usage unique - il faut remplacer le fusible à chaque fois</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">⚡</span> Le Disjoncteur Moderne</h4>
-                        <p><strong>Composition:</strong> Un interrupteur électromagnétique avec un ressort sensible.</p>
-                        <p><strong>Fonctionnement:</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 15px;">
-                            <li>Courant normal (15A) → Électroaimant faiblement magnétisé</li>
-                            <li>Courant élevé (25A) → Électroaimant se magnétise plus fort</li>
-                            <li>Courant excessif (35A+) → Électroaimant tire le ressort</li>
-                            <li>Ressort se relâche = Interrupteur s'ouvre = Courant s'arrête</li>
-                        </ul>
-                        <p><strong>Avantages:</strong> Réutilisable, plus rapide, plus sensible, automatique</p>
-                        <p><strong>Inconvénient:</strong> Légèrement plus cher qu'un fusible</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🌍</span> Le Disjoncteur Différentiel (DDR)</h4>
-                        <p><strong>Composition:</strong> Deux bobines de détection mesurant le courant "aller" et "retour".</p>
-                        <p><strong>Fonctionnement:</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 15px;">
-                            <li>Courant normal → "Aller" = "Retour"</li>
-                            <li>Fuite vers terre (quelqu'un touche un fil) → "Aller" ≠ "Retour"</li>
-                            <li>Différence détectée → Disjoncteur coupe instantanément</li>
-                        </ul>
-                        <p><strong>Avantages:</strong> Protège contre l'électrocution, très sensible (30mA)</p>
-                        <p><strong>Utilisation:</strong> Obligatoire dans les salles de bains, cuisines, jardins</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">⏱️</span> Temps de Réaction</h4>
-                        <p><strong>Fusible:</strong> 0.5 à 2 secondes pour fondre (selon l'intensité)</p>
-                        <p><strong>Disjoncteur:</strong> 0.01 à 0.1 secondes (100 fois plus rapide!)</p>
-                        <p><strong>DDR:</strong> 0.02 à 0.03 secondes (ultra-rapide pour la sécurité)</p>
-                        <p><strong>Pourquoi c'est important:</strong> Plus vite le circuit est coupé, moins il y a de risque d'incendie ou d'électrocution.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">🔌</span> Calibrage (Ampérage)</h4>
-                        <p><strong>Fusible 10A:</strong> Coupe si le courant dépasse 10A (pour circuits légers)</p>
-                        <p><strong>Fusible 20A:</strong> Coupe si le courant dépasse 20A (pour circuits standards)</p>
-                        <p><strong>Disjoncteur 32A:</strong> Coupe si le courant dépasse 32A (pour gros appareils)</p>
-                        <p><strong>Important:</strong> Le calibrage doit correspondre à la section du câble. Un mauvais calibrage augmente les risques d'incendie.</p>
-                    </div>
-
-                    <div class="cause-card">
-                        <h4><span class="cause-icon">💡</span> Installation Typique</h4>
-                        <p><strong>En France (normes NFC 15-100):</strong></p>
-                        <ul style="margin: 10px 0; padding-left: 15px;">
-                            <li>Disjoncteur général 60A → protège toute la maison</li>
-                            <li>Disjoncteur par circuit 16A ou 20A → protège chaque pièce</li>
-                            <li>DDR 30mA → protège contre l'électrocution (cuisine, salle de bain)</li>
-                            <li>Prise de terre → évacue les courants de fuite</li>
-                        </ul>
-                        <p><strong>Avantage:</strong> Protection en cascade - plusieurs niveaux de sécurité!</p>
-                    </div>
-                </div>
-
-                <!-- SECTION 6: PROTECTION CONTRE LES COURTS-CIRCUITS -->
-                <h3>🛡️ Section 1.6: Comment les Protections Sauvent des Vies</h3>
-
-                <p>Pour éviter les dangers des courts-circuits, les installations électriques modernes utilisent plusieurs systèmes de protection:</p>
-
-                <table class="protection-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">🔧 Appareil de Protection</th>
-                            <th style="width: 35%;">⚙️ Fonctionnement</th>
-                            <th style="width: 40%;">✅ Avantages</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Fusible</strong></td>
-                            <td>Un fil de faible résistance qui fond quand le courant est trop intense, coupant le circuit</td>
-                            <td>Simple, peu cher, coupe immédiatement le circuit en cas de surcharge</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Disjoncteur</strong></td>
-                            <td>Un interrupteur électromagnétique qui se déclenche automatiquement quand le courant dépasse une limite</td>
-                            <td>Réutilisable, réaction rapide, protection efficace, peut être réarmé</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Disjoncteur Différentiel (DDR)</strong></td>
-                            <td>Détecte les fuites de courant vers la terre (ex: si quelqu'un touche un fil)</td>
-                            <td>Protège contre l'électrocution, détecte les défauts d'isolation</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Isolation des Câbles</strong></td>
-                            <td>Une gaine en plastique protège les conducteurs de cuivre</td>
-                            <td>Prévient le contact direct entre les conducteurs</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Prise de Terre</strong></td>
-                            <td>Un câble relié à la terre qui évacue les fuites de courant</td>
-                            <td>Crée un chemin sûr pour le courant de fuite, protège contre l'électrocution</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- SECTION 4: BONNES PRATIQUES -->
-                <h3>✅ Bonnes Pratiques pour Éviter les Courts-Circuits</h3>
-
-                <div class="info-list">
-                    <ul>
-                        <li><strong>Vérifier régulièrement</strong> l'état des câbles et des prises (pas de fissures, d'usure ou d'humidité)</li>
-                        <li><strong>Ne pas surcharger</strong> les prises de courant avec trop d'appareils à la fois</li>
-                        <li><strong>Utiliser des multiprises</strong> avec protection contre les surcharges</li>
-                        <li><strong>Éloigner l'eau</strong> des installations électriques (pas de prise près d'un lavabo)</li>
-                        <li><strong>Ne pas réparer</strong> soi-même un fil endommagé - appeler un électricien professionnel</li>
-                        <li><strong>Débrancher</strong> les appareils défectueux immédiatement</li>
-                        <li><strong>Entretenir</strong> l'installation électrique selon les normes</li>
-                        <li><strong>Installer un disjoncteur</strong> ou un fusible adapté à chaque circuit</li>
-                    </ul>
-                </div>
-
-                <div class="definition-box">
-                    <h4>🚨 En Cas de Court-Circuit</h4>
-                    <p style="margin: 0;"><strong>Si vous soupçonnez un court-circuit (étincelles, odeur de brûlé, disjoncteur déclenché):</strong></p>
-                    <ol style="margin: 15px 0 0 20px; color: #555;">
-                        <li>Coupez immédiatement l'électricité à l'aide du disjoncteur principal</li>
-                        <li>N'essayez pas de réparer vous-même</li>
-                        <li>Appelez un électricien professionnel certifié</li>
-                        <li>Ne réutilisez pas le circuit tant qu'il n'a pas été réparé</li>
-                    </ol>
-                </div>
-
-            </div>
-        </div>
-        </div>
-
-        <!-- QUIZ AREA -->
-        <div class="quiz-area">
-            <div class="quiz-section">
-                <h2>📝 Quiz - Court-Circuit et Protection</h2>
-                <p>Testez vos connaissances en temps réel!</p>
-
-                <!-- Question 1 -->
-                <div class="quiz-question">
-                    <span class="question-number">1</span>
-                    <span class="question-text">Qu'est-ce qu'un court-circuit?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="a"> Une connexion directe entre + et − avec très peu de résistance
+<ul style="margin: 0; padding-left: 20px;">
+<li>Le fil électrique intérieur touche la carcasse métallique</li>
+<li>La carcasse devient sous tension</li>
+<li>Si quelqu'un touche le radiateur, c'est un court-circuit par la personne</li>
+<li>Ou la chaleur use encore plus l'isolation et crée un court-circuit complet</li>
+<li><strong>Résultat:</strong> Électrocution, disjoncteur déclenché</li>
+</ul>
+</div>
+<!-- SECTION 5: RÔLE DU FUSIBLE ET DISJONCTEUR -->
+<h3>🛡️ Section 1.5: Le Rôle du Fusible et du Disjoncteur - Les Protections Essentielles</h3>
+<div class="definition-box">
+<h4>⚡ Pourquoi Avons-Nous Besoin de Fusibles ou Disjoncteurs?</h4>
+<p><strong>Le problème simple:</strong> En cas de court-circuit, le courant devient extrêmement puissant et dangereux. Sans protection, le feu et l'électrocution sont presque certains.</p>
+<p style="margin-top: 15px;"><strong>La solution:</strong> Un fusible ou un disjoncteur coupe automatiquement le circuit avant que les dégâts ne deviennent catastrophiques.</p>
+</div>
+<div class="causes-grid">
+<div class="cause-card">
+<h4><span class="cause-icon">🔧</span> Le Fusible Traditionnel</h4>
+<p><strong>Composition:</strong> Un fil de metal de faible résistance (généralement en plomb ou argent) enfermé dans une porcelaine.</p>
+<p><strong>Fonctionnement:</strong></p>
+<ul style="margin: 10px 0; padding-left: 15px;">
+<li>Courant normal (15A) → Le fil reste intact</li>
+<li>Courant élevé (25A) → Le fil se réchauffe</li>
+<li>Courant excessif (35A+) → Le fil FOND en quelques secondes</li>
+<li>Fil fondu = Circuit coupé = Courant s'arrête</li>
+</ul>
+<p><strong>Avantages:</strong> Simple, fiable, peu cher, réaction très rapide</p>
+<p><strong>Inconvénient:</strong> Usage unique - il faut remplacer le fusible à chaque fois</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">⚡</span> Le Disjoncteur Moderne</h4>
+<p><strong>Composition:</strong> Un interrupteur électromagnétique avec un ressort sensible.</p>
+<p><strong>Fonctionnement:</strong></p>
+<ul style="margin: 10px 0; padding-left: 15px;">
+<li>Courant normal (15A) → Électroaimant faiblement magnétisé</li>
+<li>Courant élevé (25A) → Électroaimant se magnétise plus fort</li>
+<li>Courant excessif (35A+) → Électroaimant tire le ressort</li>
+<li>Ressort se relâche = Interrupteur s'ouvre = Courant s'arrête</li>
+</ul>
+<p><strong>Avantages:</strong> Réutilisable, plus rapide, plus sensible, automatique</p>
+<p><strong>Inconvénient:</strong> Légèrement plus cher qu'un fusible</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">🌍</span> Le Disjoncteur Différentiel (DDR)</h4>
+<p><strong>Composition:</strong> Deux bobines de détection mesurant le courant "aller" et "retour".</p>
+<p><strong>Fonctionnement:</strong></p>
+<ul style="margin: 10px 0; padding-left: 15px;">
+<li>Courant normal → "Aller" = "Retour"</li>
+<li>Fuite vers terre (quelqu'un touche un fil) → "Aller" ≠ "Retour"</li>
+<li>Différence détectée → Disjoncteur coupe instantanément</li>
+</ul>
+<p><strong>Avantages:</strong> Protège contre l'électrocution, très sensible (30mA)</p>
+<p><strong>Utilisation:</strong> Obligatoire dans les salles de bains, cuisines, jardins</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">⏱️</span> Temps de Réaction</h4>
+<p><strong>Fusible:</strong> 0.5 à 2 secondes pour fondre (selon l'intensité)</p>
+<p><strong>Disjoncteur:</strong> 0.01 à 0.1 secondes (100 fois plus rapide!)</p>
+<p><strong>DDR:</strong> 0.02 à 0.03 secondes (ultra-rapide pour la sécurité)</p>
+<p><strong>Pourquoi c'est important:</strong> Plus vite le circuit est coupé, moins il y a de risque d'incendie ou d'électrocution.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">🔌</span> Calibrage (Ampérage)</h4>
+<p><strong>Fusible 10A:</strong> Coupe si le courant dépasse 10A (pour circuits légers)</p>
+<p><strong>Fusible 20A:</strong> Coupe si le courant dépasse 20A (pour circuits standards)</p>
+<p><strong>Disjoncteur 32A:</strong> Coupe si le courant dépasse 32A (pour gros appareils)</p>
+<p><strong>Important:</strong> Le calibrage doit correspondre à la section du câble. Un mauvais calibrage augmente les risques d'incendie.</p>
+</div>
+<div class="cause-card">
+<h4><span class="cause-icon">💡</span> Installation Typique</h4>
+<p><strong>En France (normes NFC 15-100):</strong></p>
+<ul style="margin: 10px 0; padding-left: 15px;">
+<li>Disjoncteur général 60A → protège toute la maison</li>
+<li>Disjoncteur par circuit 16A ou 20A → protège chaque pièce</li>
+<li>DDR 30mA → protège contre l'électrocution (cuisine, salle de bain)</li>
+<li>Prise de terre → évacue les courants de fuite</li>
+</ul>
+<p><strong>Avantage:</strong> Protection en cascade - plusieurs niveaux de sécurité!</p>
+</div>
+</div>
+<!-- SECTION 6: PROTECTION CONTRE LES COURTS-CIRCUITS -->
+<h3>🛡️ Section 1.6: Comment les Protections Sauvent des Vies</h3>
+<p>Pour éviter les dangers des courts-circuits, les installations électriques modernes utilisent plusieurs systèmes de protection:</p>
+<table class="protection-table">
+<thead>
+<tr>
+<th style="width: 25%;">🔧 Appareil de Protection</th>
+<th style="width: 35%;">⚙️ Fonctionnement</th>
+<th style="width: 40%;">✅ Avantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fusible</strong></td>
+<td>Un fil de faible résistance qui fond quand le courant est trop intense, coupant le circuit</td>
+<td>Simple, peu cher, coupe immédiatement le circuit en cas de surcharge</td>
+</tr>
+<tr>
+<td><strong>Disjoncteur</strong></td>
+<td>Un interrupteur électromagnétique qui se déclenche automatiquement quand le courant dépasse une limite</td>
+<td>Réutilisable, réaction rapide, protection efficace, peut être réarmé</td>
+</tr>
+<tr>
+<td><strong>Disjoncteur Différentiel (DDR)</strong></td>
+<td>Détecte les fuites de courant vers la terre (ex: si quelqu'un touche un fil)</td>
+<td>Protège contre l'électrocution, détecte les défauts d'isolation</td>
+</tr>
+<tr>
+<td><strong>Isolation des Câbles</strong></td>
+<td>Une gaine en plastique protège les conducteurs de cuivre</td>
+<td>Prévient le contact direct entre les conducteurs</td>
+</tr>
+<tr>
+<td><strong>Prise de Terre</strong></td>
+<td>Un câble relié à la terre qui évacue les fuites de courant</td>
+<td>Crée un chemin sûr pour le courant de fuite, protège contre l'électrocution</td>
+</tr>
+</tbody>
+</table>
+<!-- SECTION 4: BONNES PRATIQUES -->
+<h3>✅ Bonnes Pratiques pour Éviter les Courts-Circuits</h3>
+<div class="info-list">
+<ul>
+<li><strong>Vérifier régulièrement</strong> l'état des câbles et des prises (pas de fissures, d'usure ou d'humidité)</li>
+<li><strong>Ne pas surcharger</strong> les prises de courant avec trop d'appareils à la fois</li>
+<li><strong>Utiliser des multiprises</strong> avec protection contre les surcharges</li>
+<li><strong>Éloigner l'eau</strong> des installations électriques (pas de prise près d'un lavabo)</li>
+<li><strong>Ne pas réparer</strong> soi-même un fil endommagé - appeler un électricien professionnel</li>
+<li><strong>Débrancher</strong> les appareils défectueux immédiatement</li>
+<li><strong>Entretenir</strong> l'installation électrique selon les normes</li>
+<li><strong>Installer un disjoncteur</strong> ou un fusible adapté à chaque circuit</li>
+</ul>
+</div>
+<div class="definition-box">
+<h4>🚨 En Cas de Court-Circuit</h4>
+<p style="margin: 0;"><strong>Si vous soupçonnez un court-circuit (étincelles, odeur de brûlé, disjoncteur déclenché):</strong></p>
+<ol style="margin: 15px 0 0 20px; color: #555;">
+<li>Coupez immédiatement l'électricité à l'aide du disjoncteur principal</li>
+<li>N'essayez pas de réparer vous-même</li>
+<li>Appelez un électricien professionnel certifié</li>
+<li>Ne réutilisez pas le circuit tant qu'il n'a pas été réparé</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<!-- QUIZ AREA -->
+<div class="quiz-area">
+<div class="quiz-section">
+<h2>📝 Quiz - Court-Circuit et Protection</h2>
+<p>Testez vos connaissances en temps réel!</p>
+<!-- Question 1 -->
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Qu'est-ce qu'un court-circuit?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Une connexion directe entre + et − avec très peu de résistance
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="b"> Un circuit qui manque de puissance
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Un circuit qui manque de puissance
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="c"> Un fil qui est trop court
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Un fil qui est trop court
                         </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q1"></div>
-                </div>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<!-- Question 2 -->
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Quel est le principal danger d'un court-circuit?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> Cela consomme moins d'énergie
+                        </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> Courant très intense qui génère beaucoup de chaleur
+                        </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> Cela augmente la tension
+                        </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<!-- Question 3 -->
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Qu'est-ce qui peut causer un court-circuit?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> Des fils dénudés qui se touchent
+                        </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> Une prise humide
+                        </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> Une surcharge d'appareils
+                        </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="d"/> Tous les éléments ci-dessus
+                        </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<!-- Question 4 -->
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Quel appareil coupe automatiquement le circuit en cas de surcharge?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> Un fusible ou un disjoncteur
+                        </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> Un transformateur
+                        </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> Une multiprise
+                        </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<!-- Question 5 -->
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Que faire en cas de court-circuit soupçonné?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> Essayer de réparer soi-même avec un tournevis
+                        </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> Couper l'électricité et appeler un électricien
+                        </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> Continuer à utiliser le circuit normalement
+                        </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<!-- Submit Button -->
+<button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results" style="display: none;"></div>
+</div>
+</div>
 
-                <!-- Question 2 -->
-                <div class="quiz-question">
-                    <span class="question-number">2</span>
-                    <span class="question-text">Quel est le principal danger d'un court-circuit?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="a"> Cela consomme moins d'énergie
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="b"> Courant très intense qui génère beaucoup de chaleur
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="c"> Cela augmente la tension
-                        </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q2"></div>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="quiz-question">
-                    <span class="question-number">3</span>
-                    <span class="question-text">Qu'est-ce qui peut causer un court-circuit?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="a"> Des fils dénudés qui se touchent
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="b"> Une prise humide
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="c"> Une surcharge d'appareils
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="d"> Tous les éléments ci-dessus
-                        </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q3"></div>
-                </div>
-
-                <!-- Question 4 -->
-                <div class="quiz-question">
-                    <span class="question-number">4</span>
-                    <span class="question-text">Quel appareil coupe automatiquement le circuit en cas de surcharge?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q4" value="a"> Un fusible ou un disjoncteur
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q4" value="b"> Un transformateur
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q4" value="c"> Une multiprise
-                        </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q4"></div>
-                </div>
-
-                <!-- Question 5 -->
-                <div class="quiz-question">
-                    <span class="question-number">5</span>
-                    <span class="question-text">Que faire en cas de court-circuit soupçonné?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q5" value="a"> Essayer de réparer soi-même avec un tournevis
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q5" value="b"> Couper l'électricité et appeler un électricien
-                        </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q5" value="c"> Continuer à utiliser le circuit normalement
-                        </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q5"></div>
-                </div>
-
-                <!-- Submit Button -->
-                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
-                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
-            </div>
-        </div>
-    </div>
-
-    <script>
+<script>
         // Quiz answers and validation
         const quizAnswers = {
             q1: 'a', // Connexion directe + et −

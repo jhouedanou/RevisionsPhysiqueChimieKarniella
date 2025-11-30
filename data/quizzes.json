@@ -1,0 +1,1837 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz-le-circuit-electrique",
+      "subjectId": "physique",
+      "lessonId": "le-circuit-electrique",
+      "title": "Quiz - Le Circuit Électrique",
+      "description": "Testez vos connaissances sur le circuit électrique",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Quel composant permet d'ouvrir ou de fermer un circuit à volonté ?",
+          "options": [
+            "La pile",
+            "L'interrupteur",
+            "La lampe",
+            "Le fil de connexion"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 2,
+          "text": "Quelle est l'unité de mesure de la tension électrique ?",
+          "options": [
+            "L'Ampère",
+            "Le Watt",
+            "Le Volt",
+            "Le Joule"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 3,
+          "text": "Dans un circuit en série, si une lampe grille, que font les autres lampes ?",
+          "options": [
+            "Elles brillent plus fort",
+            "Elles restent allumées normalement",
+            "Elles s'éteignent toutes",
+            "Elles clignotent"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 4,
+          "text": "Quel matériau est un bon conducteur électrique ?",
+          "options": [
+            "Le plastique",
+            "Le bois sec",
+            "Le cuivre",
+            "Le verre"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 5,
+          "text": "Quel est le symbole normalisé de la lampe dans un schéma électrique ?",
+          "options": [
+            "Un rectangle",
+            "Un cercle avec une croix à l'intérieur",
+            "Deux traits parallèles",
+            "Un triangle"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 6,
+          "text": "Quel appareil permet de mesurer la tension électrique ?",
+          "options": [
+            "L'Ampèremètre",
+            "Le Voltmètre",
+            "Le Thermomètre",
+            "Le Baromètre"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 7,
+          "text": "Quel est le rôle principal d'un générateur (comme une pile) ?",
+          "options": [
+            "Consommer de l'énergie",
+            "Fournir le courant électrique",
+            "Interrompre le courant",
+            "Mesurer le courant"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 8,
+          "text": "Le corps humain est-il conducteur d'électricité ?",
+          "options": [
+            "Non, jamais",
+            "Oui, c'est un conducteur (attention au danger !)",
+            "Seulement les cheveux",
+            "Seulement les pieds"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 9,
+          "text": "Qu'est-ce qu'un isolant électrique ?",
+          "options": [
+            "Un matériau qui laisse passer le courant facilement",
+            "Un matériau qui ne laisse pas passer le courant électrique",
+            "Une sorte de pile",
+            "Un type d'ampoule"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 10,
+          "text": "Quelle est la tension approximative du secteur (prises murales) en Côte d'Ivoire ?",
+          "options": [
+            "12 Volts",
+            "110 Volts",
+            "220 Volts",
+            "1000 Volts"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "id": "quiz-court-circuit-et-protection",
+      "subjectId": "physique",
+      "lessonId": "lecon-3-court-circuit-et-protection",
+      "title": "Quiz - Court-Circuit et Protection",
+      "description": "Testez vos connaissances sur les courts-circuits et les protections",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Qu'est-ce qu'un court-circuit ?",
+          "options": [
+            "Une connexion accidentelle entre deux points d'un circuit électrique à des potentiels différents",
+            "Un circuit qui est trop court",
+            "Une lampe qui ne s'allume pas",
+            "Une pile déchargée"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 2,
+          "text": "Que se passe-t-il lors d'un court-circuit au niveau du générateur ?",
+          "options": [
+            "Le courant s'arrête",
+            "L'intensité du courant devient très forte",
+            "La tension augmente",
+            "Le générateur refroidit"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 3,
+          "text": "Quel est le principal danger d'un court-circuit ?",
+          "options": [
+            "L'électrocution",
+            "L'incendie",
+            "La panne de courant",
+            "L'usure des piles"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 4,
+          "text": "Quel composant permet de protéger un circuit contre les courts-circuits ?",
+          "options": [
+            "L'interrupteur",
+            "La lampe",
+            "Le fusible",
+            "Le moteur"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 5,
+          "text": "Comment fonctionne un fusible ?",
+          "options": [
+            "Il fond et coupe le circuit si le courant est trop fort",
+            "Il stocke l'électricité",
+            "Il augmente la tension",
+            "Il refroidit le circuit"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 6,
+          "text": "Si on court-circuite une lampe dans un circuit en série, que se passe-t-il pour cette lampe ?",
+          "options": [
+            "Elle brille plus fort",
+            "Elle s'éteint",
+            "Elle clignote",
+            "Elle explose"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 7,
+          "text": "Si on court-circuite une lampe dans un circuit en série, que se passe-t-il pour les autres lampes ?",
+          "options": [
+            "Elles s'éteignent aussi",
+            "Elles brillent plus fort",
+            "Elles grillent",
+            "Rien ne change"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 8,
+          "text": "Quel matériau est un isolant électrique ?",
+          "options": [
+            "Le cuivre",
+            "L'eau salée",
+            "Le plastique",
+            "L'aluminium"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 9,
+          "text": "Pourquoi ne faut-il jamais relier directement les deux bornes d'une pile avec un fil ?",
+          "options": [
+            "Pour économiser la pile",
+            "Pour éviter un court-circuit et un échauffement",
+            "Pour augmenter la puissance",
+            "Pour recharger la pile"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 10,
+          "text": "Quel est le rôle du disjoncteur dans une installation domestique ?",
+          "options": [
+            "Allumer la lumière",
+            "Compter la consommation électrique",
+            "Protéger l'installation en coupant le courant en cas de problème",
+            "Produire de l'électricité"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "id": "quiz-les-commandes-electriques",
+      "subjectId": "physique",
+      "lessonId": "les-commandes-electriques",
+      "title": "Quiz - Les Commandes Électriques",
+      "description": "Testez vos connaissances sur les commandes électriques et commutateurs",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Quel est le rôle d'un interrupteur dans un circuit électrique ?",
+          "options": [
+            "Produire de l'électricité",
+            "Ouvrir ou fermer le circuit",
+            "Consommer de l'énergie",
+            "Protéger contre les courts-circuits"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 2,
+          "text": "Quand un interrupteur est \"ouvert\", la lampe :",
+          "options": [
+            "S'allume",
+            "S'éteint",
+            "Clignote",
+            "Chauffe"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 3,
+          "text": "Quel est le symbole normalisé d'un interrupteur ouvert ?",
+          "options": [
+            "Un cercle avec une croix",
+            "Deux cercles reliés par un trait continu",
+            "Deux cercles avec une barre relevée",
+            "Un rectangle"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 4,
+          "text": "Qu'est-ce qu'un bouton poussoir ?",
+          "options": [
+            "Un interrupteur qui reste dans sa position",
+            "Un interrupteur qui revient à sa position initiale quand on le relâche",
+            "Une sorte de pile",
+            "Un type de lampe"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 5,
+          "text": "Dans une installation \"va-et-vient\", combien d'interrupteurs utilise-t-on pour commander une lampe ?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 6,
+          "text": "Quel type d'interrupteur est utilisé pour un montage va-et-vient ?",
+          "options": [
+            "Interrupteur simple",
+            "Bouton poussoir",
+            "Commutateur (ou inverseur)",
+            "Disjoncteur"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 7,
+          "text": "Un bouton poussoir \"Normalement Ouvert\" (NO) :",
+          "options": [
+            "Laisse passer le courant au repos",
+            "Ne laisse pas passer le courant au repos",
+            "Est toujours fermé",
+            "N'existe pas"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 8,
+          "text": "Un bouton poussoir \"Normalement Fermé\" (NC) :",
+          "options": [
+            "Laisse passer le courant au repos",
+            "Ne laisse pas passer le courant au repos",
+            "Est toujours ouvert",
+            "Coupe le courant quand on le relâche"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 9,
+          "text": "Où trouve-t-on souvent des boutons poussoirs ?",
+          "options": [
+            "Pour allumer la lumière du salon",
+            "Pour la sonnette d'entrée",
+            "Pour le four",
+            "Pour le frigo"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 10,
+          "text": "Quelle est la différence entre un interrupteur et un disjoncteur ?",
+          "options": [
+            "C'est la même chose",
+            "L'interrupteur est une commande manuelle, le disjoncteur est une protection automatique",
+            "L'interrupteur est automatique, le disjoncteur est manuel",
+            "Le disjoncteur sert à allumer la lumière"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "id": "quiz-nombres-decimaux-relatifs",
+      "subjectId": "mathematiques",
+      "lessonId": "nombres-decimaux-relatifs",
+      "title": "Quiz - Nombres Décimaux Relatifs",
+      "description": "Testez vos connaissances sur les nombres relatifs",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Quel est le signe du produit de deux nombres négatifs ?",
+          "options": [
+            "Toujours positif",
+            "Toujours négatif",
+            "Cela dépend des nombres",
+            "Nul"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 2,
+          "text": "Quel est le résultat de (-5) + (-3) ?",
+          "options": [
+            "-2",
+            "+8",
+            "-8",
+            "+2"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 3,
+          "text": "Quel est le résultat de (-5) - (-3) ?",
+          "options": [
+            "-8",
+            "-2",
+            "+2",
+            "+8"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 4,
+          "text": "Quel est le résultat de (-5) x (-3) ?",
+          "options": [
+            "-15",
+            "+15",
+            "-8",
+            "+8"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 5,
+          "text": "Quel est le résultat de (-10) / (+2) ?",
+          "options": [
+            "+5",
+            "-5",
+            "-12",
+            "-8"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 6,
+          "text": "Quel est le signe de (-1) puissance 2024 ?",
+          "options": [
+            "Positif (+)",
+            "Négatif (-)",
+            "Nul",
+            "Impossible à savoir"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 7,
+          "text": "Quel est le signe de (-1) puissance 2023 ?",
+          "options": [
+            "Positif (+)",
+            "Négatif (-)",
+            "Nul",
+            "Impossible à savoir"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 8,
+          "text": "La distance à zéro de -15 est :",
+          "options": [
+            "-15",
+            "15",
+            "0",
+            "30"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 9,
+          "text": "Comparer -12 et -8 :",
+          "options": [
+            "-12 > -8",
+            "-12 < -8",
+            "-12 = -8",
+            "On ne peut pas comparer"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 10,
+          "text": "L'opposé de -(-5) est :",
+          "options": [
+            "5",
+            "-5",
+            "0",
+            "10"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "id": "quiz-somme-de-nombres-relatifs",
+      "subjectId": "mathematiques",
+      "lessonId": null,
+      "title": "Quiz - Somme de Nombres Relatifs",
+      "description": "Testez vos connaissances sur l'addition de nombres relatifs",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Quel est le résultat de (+12) + (+5) ?",
+          "options": [
+            "+7",
+            "+17",
+            "-17",
+            "-7"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 2,
+          "text": "Quel est le résultat de (-8) + (-6) ?",
+          "options": [
+            "-2",
+            "+14",
+            "-14",
+            "+2"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 3,
+          "text": "Quel est le résultat de (+9) + (-4) ?",
+          "options": [
+            "+5",
+            "-5",
+            "+13",
+            "-13"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 4,
+          "text": "Quel est le résultat de (-15) + (+7) ?",
+          "options": [
+            "+8",
+            "-8",
+            "-22",
+            "+22"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 5,
+          "text": "Complétez l'égalité : (-5) + ... = -12",
+          "options": [
+            "-7",
+            "+7",
+            "-17",
+            "+17"
+          ],
+          "correctAnswer": 0,
+          "explanation": ""
+        },
+        {
+          "id": 6,
+          "text": "Complétez l'égalité : ... + (+3) = -2",
+          "options": [
+            "+1",
+            "-1",
+            "-5",
+            "+5"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 7,
+          "text": "La somme de deux nombres opposés est toujours égale à :",
+          "options": [
+            "1",
+            "-1",
+            "0",
+            "Cela dépend des nombres"
+          ],
+          "correctAnswer": 2,
+          "explanation": ""
+        },
+        {
+          "id": 8,
+          "text": "Quel est le résultat de (-3) + (-2) + (+5) ?",
+          "options": [
+            "-10",
+            "0",
+            "+10",
+            "-5"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 9,
+          "text": "Un ascenseur est au 2ème étage. Il descend de 4 étages. À quel étage arrive-t-il ?",
+          "options": [
+            "6ème",
+            "-2ème (2ème sous-sol)",
+            "-6ème",
+            "0 (Rez-de-chaussée)"
+          ],
+          "correctAnswer": 1,
+          "explanation": ""
+        },
+        {
+          "id": 10,
+          "text": "Quel est le signe de la somme de deux nombres négatifs ?",
+          "options": [
+            "Toujours positif",
+            "Toujours négatif",
+            "Parfois positif, parfois négatif",
+            "Toujours nul"
+          ],
+          "explanation": ""
+        }
+      ]
+    },
+    {
+      "id": "quiz-calculs-algebriques",
+      "subjectId": "mathematiques",
+      "lessonId": "calculs-algebriques",
+      "title": "Quiz - Calculs Algébriques",
+      "description": "Testez vos connaissances sur les calculs algébriques",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Que signifie 'simplifier une expression algébrique' ?",
+          "options": [
+            "La rendre plus compliquée",
+            "La rendre plus courte et plus facile à comprendre",
+            "La transformer en nombre",
+            "L'écrire en lettres"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Simplifier signifie rendre l'expression plus courte en effectuant les calculs possibles."
+        },
+        {
+          "id": 2,
+          "text": "Que vaut 3x + 5x ?",
+          "options": [
+            "8x",
+            "8x²",
+            "15x",
+            "3x + 5x (impossible à simplifier)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "On additionne les coefficients : 3 + 5 = 8, donc 3x + 5x = 8x."
+        },
+        {
+          "id": 3,
+          "text": "Comment appelle-t-on 2x + 3 ?",
+          "options": [
+            "Une équation",
+            "Une expression algébrique",
+            "Un produit",
+            "Une division"
+          ],
+          "correctAnswer": 1,
+          "explanation": "C'est une expression algébrique car elle contient des nombres, des lettres et des opérations."
+        },
+        {
+          "id": 4,
+          "text": "Que vaut 4y - y ?",
+          "options": [
+            "4",
+            "3y",
+            "5y",
+            "4y"
+          ],
+          "correctAnswer": 1,
+          "explanation": "4y - y = 4y - 1y = 3y."
+        },
+        {
+          "id": 5,
+          "text": "Peut-on additionner 3x et 2y ?",
+          "options": [
+            "Oui, ça fait 5xy",
+            "Oui, ça fait 5x + y",
+            "Non, ce sont des termes de nature différente",
+            "Oui, ça fait 6xy"
+          ],
+          "correctAnswer": 2,
+          "explanation": "On ne peut additionner que des termes de même nature (même lettre)."
+        },
+        {
+          "id": 6,
+          "text": "Que vaut 2 × 3a ?",
+          "options": [
+            "5a",
+            "6a",
+            "2a + 3a",
+            "23a"
+          ],
+          "correctAnswer": 1,
+          "explanation": "2 × 3a = 6a. On multiplie le coefficient par 2."
+        },
+        {
+          "id": 7,
+          "text": "Si x = 5, que vaut 2x + 3 ?",
+          "options": [
+            "10",
+            "13",
+            "8",
+            "7"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On remplace x par 5 : 2(5) + 3 = 10 + 3 = 13."
+        },
+        {
+          "id": 8,
+          "text": "Comment développe-t-on 3(x + 2) ?",
+          "options": [
+            "3x + 2",
+            "3x + 6",
+            "x + 6",
+            "3x + 5"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On multiplie 3 par chaque terme : 3 × x + 3 × 2 = 3x + 6."
+        },
+        {
+          "id": 9,
+          "text": "Que signifie le terme 'coefficient' ?",
+          "options": [
+            "La lettre dans l'expression",
+            "Le nombre devant la lettre",
+            "Le résultat du calcul",
+            "L'opération utilisée"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Le coefficient est le nombre qui multiplie la variable (ex: dans 5x, 5 est le coefficient)."
+        },
+        {
+          "id": 10,
+          "text": "Quelle est la forme simplifiée de 7a - 3a + 2a ?",
+          "options": [
+            "12a",
+            "6a",
+            "2a",
+            "4a"
+          ],
+          "correctAnswer": 1,
+          "explanation": "7a - 3a + 2a = (7 - 3 + 2)a = 6a."
+        }
+      ]
+    },
+    {
+      "id": "quiz-diviseurs-d-un-nombre",
+      "subjectId": "mathematiques",
+      "lessonId": "diviseurs-d-un-nombre",
+      "title": "Quiz - Diviseurs d'un Nombre",
+      "description": "Testez vos connaissances sur les diviseurs",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Qu'est-ce qu'un diviseur d'un nombre ?",
+          "options": [
+            "Un nombre qui divise le nombre sans reste",
+            "Un nombre plus grand",
+            "Un nombre négatif",
+            "Un nombre décimal"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un diviseur divise le nombre exactement, sans reste."
+        },
+        {
+          "id": 2,
+          "text": "Combien 12 a-t-il de diviseurs ?",
+          "options": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Les diviseurs de 12 sont : 1, 2, 3, 4, 6, 12. Soit 6 diviseurs."
+        },
+        {
+          "id": 3,
+          "text": "Quel est le plus petit diviseur de tous les nombres ?",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "Le nombre lui-même"
+          ],
+          "correctAnswer": 1,
+          "explanation": "1 divise tous les nombres."
+        },
+        {
+          "id": 4,
+          "text": "Un nombre qui n'a que 2 diviseurs (1 et lui-même) est appelé :",
+          "options": [
+            "Nombre pair",
+            "Nombre premier",
+            "Nombre impair",
+            "Multiple"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un nombre premier n'a que deux diviseurs : 1 et lui-même."
+        },
+        {
+          "id": 5,
+          "text": "5 est-il un diviseur de 20 ?",
+          "options": [
+            "Oui",
+            "Non",
+            "Seulement si on multiplie par 4",
+            "Impossible à déterminer"
+          ],
+          "correctAnswer": 0,
+          "explanation": "20 ÷ 5 = 4 (division exacte), donc 5 est un diviseur de 20."
+        },
+        {
+          "id": 6,
+          "text": "Quels sont tous les diviseurs de 18 ?",
+          "options": [
+            "1, 2, 3, 6, 9, 18",
+            "1, 2, 9, 18",
+            "1, 3, 6, 18",
+            "2, 3, 6, 9"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Les diviseurs de 18 sont : 1, 2, 3, 6, 9 et 18."
+        },
+        {
+          "id": 7,
+          "text": "Le nombre 7 est-il premier ?",
+          "options": [
+            "Oui",
+            "Non",
+            "Seulement avec les nombres pairs",
+            "Parfois"
+          ],
+          "correctAnswer": 0,
+          "explanation": "7 est premier car il n'a que 2 diviseurs : 1 et 7."
+        },
+        {
+          "id": 8,
+          "text": "Quel nombre est le plus grand diviseur de 24 (autre que 24) ?",
+          "options": [
+            "8",
+            "12",
+            "6",
+            "4"
+          ],
+          "correctAnswer": 1,
+          "explanation": "24 ÷ 2 = 12. Le plus grand diviseur propre est toujours la moitié du nombre."
+        },
+        {
+          "id": 9,
+          "text": "Combien de diviseurs a un nombre premier ?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "Ça dépend du nombre"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un nombre premier a exactement 2 diviseurs : 1 et lui-même."
+        },
+        {
+          "id": 10,
+          "text": "Le PGCD de 12 et 18 est :",
+          "options": [
+            "2",
+            "3",
+            "6",
+            "36"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Le Plus Grand Commun Diviseur de 12 et 18 est 6."
+        }
+      ]
+    },
+    {
+      "id": "quiz-droites-et-points",
+      "subjectId": "mathematiques",
+      "lessonId": "droites-et-points",
+      "title": "Quiz - Droites et Points",
+      "description": "Testez vos connaissances sur les droites et points",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Qu'est-ce qu'un point en géométrie ?",
+          "options": [
+            "Une ligne courte",
+            "Une position exacte dans l'espace",
+            "Un cercle très petit",
+            "Une mesure"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un point représente une position exacte, sans dimension."
+        },
+        {
+          "id": 2,
+          "text": "Comment note-t-on un point ?",
+          "options": [
+            "Avec une lettre minuscule",
+            "Avec une lettre majuscule",
+            "Avec un nombre",
+            "Avec un symbole"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On note un point avec une lettre majuscule (A, B, C...)."
+        },
+        {
+          "id": 3,
+          "text": "Qu'est-ce qu'une droite ?",
+          "options": [
+            "Une ligne qui a un début et une fin",
+            "Une ligne courbe",
+            "Une ligne infinie dans les deux sens",
+            "Un segment"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Une droite s'étend à l'infini dans les deux sens."
+        },
+        {
+          "id": 4,
+          "text": "Comment note-t-on une droite passant par les points A et B ?",
+          "options": [
+            "(AB)",
+            "[AB]",
+            "(d)",
+            "AB"
+          ],
+          "correctAnswer": 0,
+          "explanation": "On note une droite (AB) ou avec une lettre minuscule comme (d)."
+        },
+        {
+          "id": 5,
+          "text": "Combien de points minimum faut-il pour définir une droite ?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Il faut au minimum 2 points pour définir une droite unique."
+        },
+        {
+          "id": 6,
+          "text": "Trois points sont 'alignés' si :",
+          "options": [
+            "Ils sont très proches",
+            "Ils appartiennent à la même droite",
+            "Ils forment un triangle",
+            "Ils ont le même nom"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Des points alignés appartiennent à une même droite."
+        },
+        {
+          "id": 7,
+          "text": "Une demi-droite a :",
+          "options": [
+            "Deux extrémités",
+            "Aucune extrémité",
+            "Une origine et s'étend à l'infini dans un sens",
+            "Une longueur fixe"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Une demi-droite a une origine et s'étend à l'infini dans une seule direction."
+        },
+        {
+          "id": 8,
+          "text": "Comment note-t-on la demi-droite d'origine A passant par B ?",
+          "options": [
+            "[AB)",
+            "(AB]",
+            "[AB]",
+            "(AB)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "On note une demi-droite [AB) avec le crochet du côté de l'origine."
+        },
+        {
+          "id": 9,
+          "text": "Un segment est :",
+          "options": [
+            "Une portion de droite limitée par deux points",
+            "Une droite infinie",
+            "Un cercle",
+            "Une courbe"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un segment est la portion de droite entre deux points."
+        },
+        {
+          "id": 10,
+          "text": "Par un point, combien peut-on tracer de droites ?",
+          "options": [
+            "1",
+            "2",
+            "10",
+            "Une infinité"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Par un point, on peut tracer une infinité de droites."
+        }
+      ]
+    },
+    {
+      "id": "quiz-droites-secantes-et-perpendiculaires",
+      "subjectId": "mathematiques",
+      "lessonId": "droites-secantes-et-perpendiculaires",
+      "title": "Quiz - Droites Sécantes et Perpendiculaires",
+      "description": "Testez vos connaissances sur les droites sécantes et perpendiculaires",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Deux droites sont sécantes si :",
+          "options": [
+            "Elles ne se croisent jamais",
+            "Elles se croisent en un point",
+            "Elles sont parallèles",
+            "Elles sont confondues"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Des droites sécantes se coupent en un seul point."
+        },
+        {
+          "id": 2,
+          "text": "Deux droites perpendiculaires forment un angle de :",
+          "options": [
+            "45°",
+            "90°",
+            "180°",
+            "60°"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Des droites perpendiculaires forment un angle droit de 90°."
+        },
+        {
+          "id": 3,
+          "text": "Le symbole ⊥ signifie :",
+          "options": [
+            "Parallèle",
+            "Perpendiculaire",
+            "Égal",
+            "Différent"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Le symbole ⊥ signifie 'perpendiculaire à'."
+        },
+        {
+          "id": 4,
+          "text": "Si (d1) ⊥ (d2), combien d'angles droits sont formés ?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Deux droites perpendiculaires forment 4 angles droits."
+        },
+        {
+          "id": 5,
+          "text": "Pour vérifier que deux droites sont perpendiculaires, on utilise :",
+          "options": [
+            "Une règle",
+            "Un compas",
+            "Une équerre",
+            "Un rapporteur"
+          ],
+          "correctAnswer": 2,
+          "explanation": "On utilise une équerre pour vérifier la perpendicularité."
+        },
+        {
+          "id": 6,
+          "text": "Deux droites sécantes non perpendiculaires forment :",
+          "options": [
+            "Seulement des angles droits",
+            "Des angles aigus et obtus",
+            "Aucun angle",
+            "Un seul angle"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Si elles ne sont pas perpendiculaires, elles forment des angles aigus et obtus."
+        },
+        {
+          "id": 7,
+          "text": "Le point d'intersection de deux droites sécantes s'appelle :",
+          "options": [
+            "Le milieu",
+            "Le sommet",
+            "Le point de concours",
+            "L'origine"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Le point d'intersection s'appelle le point de concours ou point sécant."
+        },
+        {
+          "id": 8,
+          "text": "Si deux droites sont perpendiculaires à une même troisième droite, elles sont :",
+          "options": [
+            "Perpendiculaires entre elles",
+            "Parallèles entre elles",
+            "Sécantes",
+            "Confondues"
+          ],
+          "correctAnswer": 1,
+          "explanation": "C'est une propriété importante : elles sont parallèles entre elles."
+        },
+        {
+          "id": 9,
+          "text": "Un angle droit mesure :",
+          "options": [
+            "45°",
+            "90°",
+            "180°",
+            "360°"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un angle droit mesure exactement 90°."
+        },
+        {
+          "id": 10,
+          "text": "Pour tracer une perpendiculaire à une droite passant par un point, on utilise :",
+          "options": [
+            "Seulement une règle",
+            "Une équerre ou un compas",
+            "Un rapporteur seulement",
+            "Rien, c'est impossible"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On peut utiliser une équerre ou un compas pour tracer une perpendiculaire."
+        }
+      ]
+    },
+    {
+      "id": "quiz-droites-paralleles",
+      "subjectId": "mathematiques",
+      "lessonId": "droites-paralleles",
+      "title": "Quiz - Droites Parallèles",
+      "description": "Testez vos connaissances sur les droites parallèles",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Deux droites parallèles sont :",
+          "options": [
+            "Deux droites qui se coupent",
+            "Deux droites qui ne se rencontrent jamais",
+            "Deux droites perpendiculaires",
+            "Deux droites confondues"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Des droites parallèles ne se rencontrent jamais, même prolongées à l'infini."
+        },
+        {
+          "id": 2,
+          "text": "Le symbole // signifie :",
+          "options": [
+            "Perpendiculaire",
+            "Parallèle",
+            "Égal",
+            "Plus grand"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Le symbole // signifie 'parallèle à'."
+        },
+        {
+          "id": 3,
+          "text": "La distance entre deux droites parallèles est :",
+          "options": [
+            "Variable",
+            "Nulle",
+            "Constante",
+            "Infinie"
+          ],
+          "correctAnswer": 2,
+          "explanation": "La distance entre deux droites parallèles reste toujours la même."
+        },
+        {
+          "id": 4,
+          "text": "Si (d1) // (d2) et (d2) // (d3), alors :",
+          "options": [
+            "(d1) ⊥ (d3)",
+            "(d1) et (d3) se coupent",
+            "(d1) // (d3)",
+            "Aucune relation"
+          ],
+          "correctAnswer": 2,
+          "explanation": "C'est la propriété de transitivité : si d1 // d2 et d2 // d3, alors d1 // d3."
+        },
+        {
+          "id": 5,
+          "text": "Comment trace-t-on une parallèle à une droite ?",
+          "options": [
+            "Avec un compas seulement",
+            "Avec une équerre et une règle",
+            "À main levée",
+            "Avec un rapporteur"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On utilise une équerre et une règle pour tracer des parallèles."
+        },
+        {
+          "id": 6,
+          "text": "Par un point extérieur à une droite, combien peut-on tracer de parallèles à cette droite ?",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "Une infinité"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Par un point, on ne peut tracer qu'une seule parallèle à une droite donnée."
+        },
+        {
+          "id": 7,
+          "text": "Si deux droites sont parallèles à une même troisième, elles sont :",
+          "options": [
+            "Perpendiculaires entre elles",
+            "Sécantes",
+            "Parallèles entre elles",
+            "Sans relation"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Deux droites parallèles à une même troisième sont parallèles entre elles."
+        },
+        {
+          "id": 8,
+          "text": "Dans un quadrilatère, si les côtés opposés sont parallèles deux à deux, c'est :",
+          "options": [
+            "Un triangle",
+            "Un parallélogramme",
+            "Un cercle",
+            "Un trapèze"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un parallélogramme a ses côtés opposés parallèles deux à deux."
+        },
+        {
+          "id": 9,
+          "text": "Deux droites dans le plan sont :",
+          "options": [
+            "Toujours parallèles",
+            "Soit parallèles, soit sécantes, soit confondues",
+            "Toujours sécantes",
+            "Toujours perpendiculaires"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Dans un plan, deux droites sont soit parallèles, soit sécantes, soit confondues."
+        },
+        {
+          "id": 10,
+          "text": "Les rails d'une voie ferrée sont :",
+          "options": [
+            "Perpendiculaires",
+            "Parallèles",
+            "Sécants",
+            "Variables"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Les rails d'une voie ferrée sont parallèles, ils gardent toujours la même distance."
+        }
+      ]
+    },
+    {
+      "id": "quiz-proprietes-des-droites-paralleles-et-perpendiculaires",
+      "subjectId": "mathematiques",
+      "lessonId": "proprietes-des-droites-paralleles-et-perpendiculaires",
+      "title": "Quiz - Propriétés des Droites Parallèles et Perpendiculaires",
+      "description": "Testez vos connaissances sur les propriétés des droites",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Si deux droites sont parallèles à une même troisième droite, alors :",
+          "options": [
+            "Elles sont perpendiculaires entre elles",
+            "Elles sont parallèles entre elles",
+            "Elles se coupent",
+            "Aucune relation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "C'est une propriété fondamentale : si (d1) // (d3) et (d2) // (d3), alors (d1) // (d2)."
+        },
+        {
+          "id": 2,
+          "text": "Si deux droites sont perpendiculaires à une même troisième droite, alors :",
+          "options": [
+            "Elles sont perpendiculaires entre elles",
+            "Elles sont parallèles entre elles",
+            "Elles se coupent n'importe comment",
+            "Elles sont confondues"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Si (d1) ⊥ (d3) et (d2) ⊥ (d3), alors (d1) // (d2)."
+        },
+        {
+          "id": 3,
+          "text": "Si une droite est perpendiculaire à l'une de deux droites parallèles, alors :",
+          "options": [
+            "Elle est perpendiculaire à l'autre aussi",
+            "Elle est parallèle à l'autre",
+            "Elle coupe l'autre obliquement",
+            "Aucune relation"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Si (d1) ⊥ (d2) et (d2) // (d3), alors (d1) ⊥ (d3)."
+        },
+        {
+          "id": 4,
+          "text": "Deux droites perpendiculaires peuvent-elles être parallèles ?",
+          "options": [
+            "Oui, toujours",
+            "Non, jamais",
+            "Parfois",
+            "Ça dépend de l'angle"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Des droites perpendiculaires se coupent, donc ne peuvent pas être parallèles."
+        },
+        {
+          "id": 5,
+          "text": "Dans un carré, les côtés consécutifs sont :",
+          "options": [
+            "Parallèles",
+            "Perpendiculaires",
+            "Obliques",
+            "Confondus"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Dans un carré, les côtés consécutifs sont perpendiculaires."
+        },
+        {
+          "id": 6,
+          "text": "Combien de perpendiculaires peut-on tracer à une droite en un point donné ?",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "Une infinité"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Par un point d'une droite, on ne peut tracer qu'une seule perpendiculaire."
+        },
+        {
+          "id": 7,
+          "text": "Si (AB) ⊥ (CD) et (AB) // (EF), quelle relation existe entre (EF) et (CD) ?",
+          "options": [
+            "(EF) ⊥ (CD)",
+            "(EF) // (CD)",
+            "(EF) et (CD) sont confondues",
+            "Aucune relation certaine"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Si AB ⊥ CD et AB // EF, alors EF ⊥ CD."
+        },
+        {
+          "id": 8,
+          "text": "La médiatrice d'un segment est :",
+          "options": [
+            "Parallèle au segment",
+            "Perpendiculaire au segment en son milieu",
+            "Une diagonale",
+            "Le segment lui-même"
+          ],
+          "correctAnswer": 1,
+          "explanation": "La médiatrice est perpendiculaire au segment et passe par son milieu."
+        },
+        {
+          "id": 9,
+          "text": "Dans un rectangle, les diagonales sont :",
+          "options": [
+            "Perpendiculaires",
+            "De même longueur",
+            "Parallèles",
+            "Différentes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Dans un rectangle, les diagonales ont la même longueur."
+        },
+        {
+          "id": 10,
+          "text": "Quelle figure a 4 angles droits ?",
+          "options": [
+            "Le triangle",
+            "Le losange",
+            "Le rectangle",
+            "Le trapèze"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Le rectangle (et le carré) ont 4 angles droits."
+        }
+      ]
+    },
+    {
+      "id": "quiz-nombres-decimaux-relatifs",
+      "subjectId": "mathematiques",
+      "lessonId": "nombres-decimaux-relatifs",
+      "title": "Quiz - Nombres Décimaux Relatifs",
+      "description": "Testez vos connaissances sur les nombres décimaux relatifs",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Qu'est-ce qu'un nombre relatif ?",
+          "options": [
+            "Un nombre positif seulement",
+            "Un nombre qui peut être positif, négatif ou nul",
+            "Un nombre décimal",
+            "Un nombre entier seulement"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un nombre relatif peut être positif (+), négatif (-) ou nul (0)."
+        },
+        {
+          "id": 2,
+          "text": "Comment note-t-on un nombre négatif ?",
+          "options": [
+            "Avec un plus devant",
+            "Avec un moins devant",
+            "Entre parenthèses",
+            "Avec une barre au-dessus"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un nombre négatif est précédé du signe moins (-)."
+        },
+        {
+          "id": 3,
+          "text": "Quel est l'opposé de +5 ?",
+          "options": [
+            "+5",
+            "-5",
+            "0",
+            "10"
+          ],
+          "correctAnswer": 1,
+          "explanation": "L'opposé de +5 est -5."
+        },
+        {
+          "id": 4,
+          "text": "Sur une droite graduée, les nombres négatifs sont placés :",
+          "options": [
+            "À droite de zéro",
+            "À gauche de zéro",
+            "Au-dessus de zéro",
+            "En dessous de zéro"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Les nombres négatifs sont à gauche de zéro sur une droite graduée."
+        },
+        {
+          "id": 5,
+          "text": "Comparer : -3 et -7. Lequel est le plus grand ?",
+          "options": [
+            "-3",
+            "-7",
+            "Ils sont égaux",
+            "Impossible à comparer"
+          ],
+          "correctAnswer": 0,
+          "explanation": "-3 est plus grand que -7 car il est plus proche de zéro."
+        },
+        {
+          "id": 6,
+          "text": "La distance d'un nombre à zéro s'appelle :",
+          "options": [
+            "L'opposé",
+            "La valeur absolue",
+            "Le signe",
+            "Le multiple"
+          ],
+          "correctAnswer": 1,
+          "explanation": "La valeur absolue est la distance du nombre à zéro."
+        },
+        {
+          "id": 7,
+          "text": "Quelle est la valeur absolue de -8 ?",
+          "options": [
+            "-8",
+            "8",
+            "0",
+            "-16"
+          ],
+          "correctAnswer": 1,
+          "explanation": "La valeur absolue de -8 est 8 (distance à zéro)."
+        },
+        {
+          "id": 8,
+          "text": "0 est-il un nombre positif ou négatif ?",
+          "options": [
+            "Positif",
+            "Négatif",
+            "Ni positif ni négatif",
+            "Les deux à la fois"
+          ],
+          "correctAnswer": 2,
+          "explanation": "0 n'est ni positif ni négatif, c'est la frontière."
+        },
+        {
+          "id": 9,
+          "text": "Ranger dans l'ordre croissant : -2, 5, -7, 0",
+          "options": [
+            "-7, -2, 0, 5",
+            "5, 0, -2, -7",
+            "-2, -7, 0, 5",
+            "0, -2, -7, 5"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Ordre croissant (du plus petit au plus grand) : -7, -2, 0, 5."
+        },
+        {
+          "id": 10,
+          "text": "En hiver, la température est de -5°C. Elle monte de 8°C. Quelle est la nouvelle température ?",
+          "options": [
+            "-13°C",
+            "3°C",
+            "13°C",
+            "-3°C"
+          ],
+          "correctAnswer": 1,
+          "explanation": "-5 + 8 = 3°C."
+        }
+      ]
+    },
+    {
+      "id": "quiz-somme-de-nombres-decimaux-relatifs",
+      "subjectId": "mathematiques",
+      "lessonId": "somme-de-nombres-decimaux-relatifs",
+      "title": "Quiz - Somme de Nombres Décimaux Relatifs",
+      "description": "Testez vos connaissances sur l'addition des nombres relatifs",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Que vaut (+5) + (+3) ?",
+          "options": [
+            "+8",
+            "-8",
+            "+2",
+            "-2"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La somme de deux nombres positifs est positive : +5 + 3 = +8."
+        },
+        {
+          "id": 2,
+          "text": "Que vaut (-4) + (-6) ?",
+          "options": [
+            "+10",
+            "-10",
+            "+2",
+            "-2"
+          ],
+          "correctAnswer": 1,
+          "explanation": "La somme de deux nombres négatifs est négative : -4 - 6 = -10."
+        },
+        {
+          "id": 3,
+          "text": "Que vaut (+7) + (-3) ?",
+          "options": [
+            "+10",
+            "-10",
+            "+4",
+            "-4"
+          ],
+          "correctAnswer": 2,
+          "explanation": "On soustrait les valeurs absolues et on garde le signe du plus grand : 7 - 3 = +4."
+        },
+        {
+          "id": 4,
+          "text": "Que vaut (-8) + (+5) ?",
+          "options": [
+            "+13",
+            "-13",
+            "+3",
+            "-3"
+          ],
+          "correctAnswer": 3,
+          "explanation": "On soustrait : 8 - 5 = 3, et on garde le signe de -8 donc -3."
+        },
+        {
+          "id": 5,
+          "text": "L'opposé d'un nombre ajouté à ce nombre donne :",
+          "options": [
+            "Le double du nombre",
+            "0",
+            "1",
+            "Le nombre lui-même"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un nombre + son opposé = 0. Ex: (+5) + (-5) = 0."
+        },
+        {
+          "id": 6,
+          "text": "Que vaut (+2,5) + (-2,5) ?",
+          "options": [
+            "5",
+            "-5",
+            "0",
+            "2,5"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Ce sont des nombres opposés : leur somme est 0."
+        },
+        {
+          "id": 7,
+          "text": "Pour additionner deux nombres de même signe :",
+          "options": [
+            "On soustrait leurs valeurs absolues",
+            "On additionne leurs valeurs absolues et on garde le signe",
+            "On multiplie",
+            "C'est impossible"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Même signe : on additionne les valeurs absolues et on garde le signe commun."
+        },
+        {
+          "id": 8,
+          "text": "Pour additionner deux nombres de signes contraires :",
+          "options": [
+            "On additionne leurs valeurs absolues",
+            "On soustrait les valeurs absolues et on garde le signe du plus grand",
+            "On multiplie",
+            "On divise"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Signes contraires : on soustrait et on garde le signe du nombre de plus grande valeur absolue."
+        },
+        {
+          "id": 9,
+          "text": "Que vaut (-3,5) + (-1,5) + (+2) ?",
+          "options": [
+            "-3",
+            "+3",
+            "-7",
+            "+7"
+          ],
+          "correctAnswer": 0,
+          "explanation": "(-3,5) + (-1,5) = -5; puis -5 + 2 = -3."
+        },
+        {
+          "id": 10,
+          "text": "Un compte bancaire affiche -50€. On dépose 80€. Quel est le nouveau solde ?",
+          "options": [
+            "-130€",
+            "-30€",
+            "+30€",
+            "+130€"
+          ],
+          "correctAnswer": 2,
+          "explanation": "(-50) + (+80) = +30€."
+        }
+      ]
+    },
+    {
+      "id": "quiz-les-segments",
+      "subjectId": "mathematiques",
+      "lessonId": "les-segments",
+      "title": "Quiz - Les Segments",
+      "description": "Testez vos connaissances sur les segments",
+      "icon": "📝",
+      "isActive": true,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Qu'est-ce qu'un segment ?",
+          "options": [
+            "Une droite infinie",
+            "Une portion de droite limitée par deux points",
+            "Un point",
+            "Une courbe"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Un segment est la portion de droite entre deux points (ses extrémités)."
+        },
+        {
+          "id": 2,
+          "text": "Comment note-t-on le segment d'extrémités A et B ?",
+          "options": [
+            "(AB)",
+            "[AB]",
+            "{AB}",
+            "AB"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On note un segment [AB] avec des crochets."
+        },
+        {
+          "id": 3,
+          "text": "La longueur d'un segment se note :",
+          "options": [
+            "[AB]",
+            "AB",
+            "(AB)",
+            "A-B"
+          ],
+          "correctAnswer": 1,
+          "explanation": "La longueur se note AB (sans crochet) ou |AB|."
+        },
+        {
+          "id": 4,
+          "text": "Le milieu d'un segment est :",
+          "options": [
+            "Le point le plus proche de A",
+            "Le point équidistant des deux extrémités",
+            "L'extrémité B",
+            "N'importe quel point du segment"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Le milieu est à égale distance des deux extrémités."
+        },
+        {
+          "id": 5,
+          "text": "Si M est le milieu de [AB], alors :",
+          "options": [
+            "AM = MB",
+            "AM > MB",
+            "AM < MB",
+            "AM + MB = 0"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Le milieu divise le segment en deux parties égales : AM = MB."
+        },
+        {
+          "id": 6,
+          "text": "Pour mesurer un segment, on utilise :",
+          "options": [
+            "Un compas",
+            "Une équerre",
+            "Une règle graduée",
+            "Un rapporteur"
+          ],
+          "correctAnswer": 2,
+          "explanation": "On utilise une règle graduée pour mesurer la longueur d'un segment."
+        },
+        {
+          "id": 7,
+          "text": "Deux segments de même longueur sont :",
+          "options": [
+            "Confondus",
+            "Égaux",
+            "Parallèles",
+            "Perpendiculaires"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Deux segments de même longueur sont dits égaux."
+        },
+        {
+          "id": 8,
+          "text": "Si AB = 10 cm et M est le milieu de [AB], que vaut AM ?",
+          "options": [
+            "10 cm",
+            "20 cm",
+            "5 cm",
+            "15 cm"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Le milieu divise le segment en deux : AM = AB/2 = 10/2 = 5 cm."
+        },
+        {
+          "id": 9,
+          "text": "Pour reporter une longueur, on utilise :",
+          "options": [
+            "Une équerre",
+            "Un compas",
+            "Un rapporteur",
+            "Une gomme"
+          ],
+          "correctAnswer": 1,
+          "explanation": "On utilise un compas pour reporter une longueur."
+        },
+        {
+          "id": 10,
+          "text": "La médiatrice d'un segment [AB] est :",
+          "options": [
+            "Parallèle au segment",
+            "Perpendiculaire au segment en son milieu",
+            "Le segment lui-même",
+            "Une diagonale"
+          ],
+          "correctAnswer": 1,
+          "explanation": "La médiatrice est perpendiculaire au segment et passe par son milieu."
+        }
+      ]
+    }
+  ]
+}

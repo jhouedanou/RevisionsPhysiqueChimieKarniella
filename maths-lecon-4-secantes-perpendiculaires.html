@@ -1,277 +1,262 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Droites Sécantes et Perpendiculaires</title>
-    <link rel="stylesheet" href="styles-math-lessons.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Droites Sécantes et Perpendiculaires</title>
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
 </head>
 <body>
-    <header>
-        <a href="mathematiques.html" class="btn-back">← Retour</a>
-        <h1>✖️ Droites Sécantes et Perpendiculaires</h1>
-        <p>Leçon 4 - Intersections et angles droits</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'tab1')">Droites Sécantes</button>
-        <button class="tab-button" onclick="openTab(event, 'tab2')">Perpendiculaires</button>
-        <button class="tab-button" onclick="openTab(event, 'tab3')">Construction</button>
-        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
-    </div>
-
-    <div class="content">
-        <div id="tab1" class="tab-content active">
-            <div class="container">
-                <h2>Droites Sécantes</h2>
-                
-                <div class="definition-box">
-                    <h4>�� Définition</h4>
-                    <p>Deux droites sont <strong>sécantes</strong> si elles ont un point commun, appelé <strong>point d'intersection</strong>.</p>
-                </div>
-
-                <div class="example-box">
-                    <h4>�� Représentation</h4>
-                    <svg width="100%" height="200" viewBox="0 0 600 200">
-                        <line x1="50" y1="50" x2="550" y2="150" stroke="#FF69B4" stroke-width="2"/>
-                        <text x="560" y="155" fill="#FF69B4" font-size="16">d</text>
-                        <line x1="50" y1="150" x2="550" y2="50" stroke="#f44336" stroke-width="2"/>
-                        <text x="560" y="55" fill="#f44336" font-size="16">d'</text>
-                        <circle cx="300" cy="100" r="5" fill="#FF69B4"/>
-                        <text x="310" y="95" fill="#FF69B4" font-size="16" font-weight="bold">I</text>
-                    </svg>
-                    <p>Les droites d et d' se coupent au point I</p>
-                    <p>On dit : "d et d' sont sécantes en I"</p>
-                </div>
-
-                <div class="property-box">
-                    <h4>✓ Propriétés</h4>
-                    <p><strong>1.</strong> Deux droites sécantes ont exactement un point commun</p>
-                    <p><strong>2.</strong> Les droites sécantes forment 4 angles</p>
-                    <p><strong>3.</strong> Les angles opposés par le sommet sont égaux</p>
-                </div>
-
-                <div class="info">
-                    <strong>💡 À retenir :</strong><br>
-                    • Sécantes = qui se coupent en un point<br>
-                    • Le point d'intersection est unique<br>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>✖️ Droites Sécantes et Perpendiculaires</h1>
+<p>Leçon 4 - Intersections et angles droits</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Droites Sécantes</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Perpendiculaires</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Construction</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Droites Sécantes</h2>
+<div class="definition-box">
+<h4>�� Définition</h4>
+<p>Deux droites sont <strong>sécantes</strong> si elles ont un point commun, appelé <strong>point d'intersection</strong>.</p>
+</div>
+<div class="example-box">
+<h4>�� Représentation</h4>
+<svg height="200" viewbox="0 0 600 200" width="100%">
+<line stroke="#FF69B4" stroke-width="2" x1="50" x2="550" y1="50" y2="150"></line>
+<text fill="#FF69B4" font-size="16" x="560" y="155">d</text>
+<line stroke="#f44336" stroke-width="2" x1="50" x2="550" y1="150" y2="50"></line>
+<text fill="#f44336" font-size="16" x="560" y="55">d'</text>
+<circle cx="300" cy="100" fill="#FF69B4" r="5"></circle>
+<text fill="#FF69B4" font-size="16" font-weight="bold" x="310" y="95">I</text>
+</svg>
+<p>Les droites d et d' se coupent au point I</p>
+<p>On dit : "d et d' sont sécantes en I"</p>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés</h4>
+<p><strong>1.</strong> Deux droites sécantes ont exactement un point commun</p>
+<p><strong>2.</strong> Les droites sécantes forment 4 angles</p>
+<p><strong>3.</strong> Les angles opposés par le sommet sont égaux</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Sécantes = qui se coupent en un point<br/>
+                    • Le point d'intersection est unique<br/>
                     • Deux droites qui ne sont pas sécantes sont soit parallèles, soit confondues
                 </div>
-            </div>
-        </div>
 
-        <div id="tab2" class="tab-content">
-            <div class="container">
-                <h2>Droites Perpendiculaires</h2>
 
-                <div class="definition-box">
-                    <h4>📘 Définition</h4>
-                    <p>Deux droites sont <strong>perpendiculaires</strong> si elles sont sécantes et forment un <strong>angle droit</strong> (90°).</p>
-                    <p>Notation : d ⊥ d' (d est perpendiculaire à d')</p>
-                </div>
-
-                <div class="example-box">
-                    <h4>💡 Représentation</h4>
-                    <svg width="100%" height="250" viewBox="0 0 600 250">
-                        <line x1="300" y1="20" x2="300" y2="230" stroke="#FF69B4" stroke-width="2"/>
-                        <text x="310" y="30" fill="#FF69B4" font-size="16">d</text>
-                        <line x1="100" y1="125" x2="500" y2="125" stroke="#f44336" stroke-width="2"/>
-                        <text x="510" y="130" fill="#f44336" font-size="16">d'</text>
-                        <rect x="290" y="115" width="20" height="20" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                        <circle cx="300" cy="125" r="5" fill="#FF69B4"/>
-                        <text x="310" y="145" fill="#FF69B4" font-size="16" font-weight="bold">I</text>
-                        <text x="320" y="100" fill="#FF69B4" font-size="14">90°</text>
-                    </svg>
-                    <p>Le petit carré indique un angle droit (90°)</p>
-                    <p>On écrit : d ⊥ d'</p>
-                </div>
-
-                <div class="property-box">
-                    <h4>✓ Propriétés</h4>
-                    <p><strong>1.</strong> Deux droites perpendiculaires forment 4 angles droits</p>
-                    <p><strong>2.</strong> Par un point, on peut tracer une seule perpendiculaire à une droite donnée</p>
-                    <p><strong>3.</strong> Si d ⊥ d', alors d' ⊥ d (propriété symétrique)</p>
-                </div>
-
-                <div class="info">
-                    <strong>💡 À retenir :</strong><br>
-                    • Perpendiculaires = sécantes à angle droit (90°)<br>
-                    • Symbole : ⊥<br>
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Droites Perpendiculaires</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Deux droites sont <strong>perpendiculaires</strong> si elles sont sécantes et forment un <strong>angle droit</strong> (90°).</p>
+<p>Notation : d ⊥ d' (d est perpendiculaire à d')</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation</h4>
+<svg height="250" viewbox="0 0 600 250" width="100%">
+<line stroke="#FF69B4" stroke-width="2" x1="300" x2="300" y1="20" y2="230"></line>
+<text fill="#FF69B4" font-size="16" x="310" y="30">d</text>
+<line stroke="#f44336" stroke-width="2" x1="100" x2="500" y1="125" y2="125"></line>
+<text fill="#f44336" font-size="16" x="510" y="130">d'</text>
+<rect fill="none" height="20" stroke="#FF69B4" stroke-width="2" width="20" x="290" y="115"></rect>
+<circle cx="300" cy="125" fill="#FF69B4" r="5"></circle>
+<text fill="#FF69B4" font-size="16" font-weight="bold" x="310" y="145">I</text>
+<text fill="#FF69B4" font-size="14" x="320" y="100">90°</text>
+</svg>
+<p>Le petit carré indique un angle droit (90°)</p>
+<p>On écrit : d ⊥ d'</p>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés</h4>
+<p><strong>1.</strong> Deux droites perpendiculaires forment 4 angles droits</p>
+<p><strong>2.</strong> Par un point, on peut tracer une seule perpendiculaire à une droite donnée</p>
+<p><strong>3.</strong> Si d ⊥ d', alors d' ⊥ d (propriété symétrique)</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Perpendiculaires = sécantes à angle droit (90°)<br/>
+                    • Symbole : ⊥<br/>
                     • Le petit carré indique l'angle droit
                 </div>
-            </div>
-        </div>
 
-        <div id="tab3" class="tab-content">
-            <div class="container">
-                <h2>Construction de Perpendiculaires</h2>
 
-                <h3>Méthode 1 : Avec une équerre</h3>
-                <div class="example-box">
-                    <h4>🔧 Étapes de construction</h4>
-                    <p><strong>1.</strong> Placer l'équerre sur la droite d</p>
-                    <p><strong>2.</strong> Faire coïncider un côté de l'angle droit avec d</p>
-                    <p><strong>3.</strong> Tracer la perpendiculaire le long de l'autre côté</p>
-                </div>
-
-                <h3>Méthode 2 : Avec un compas</h3>
-                <div class="example-box">
-                    <h4>🔧 Étapes de construction</h4>
-                    <p><strong>1.</strong> Tracer un arc de cercle centré sur le point d'intersection</p>
-                    <p><strong>2.</strong> L'arc coupe la droite en deux points A et B</p>
-                    <p><strong>3.</strong> Tracer deux arcs de cercle de même rayon centrés en A et B</p>
-                    <p><strong>4.</strong> Les deux arcs se coupent en un point C</p>
-                    <p><strong>5.</strong> Tracer la droite passant par I et C</p>
-                </div>
-
-                <div class="property-box">
-                    <h4>✓ Perpendiculaire passant par un point</h4>
-                    <p><strong>Cas 1 :</strong> Le point est sur la droite → une seule perpendiculaire possible</p>
-                    <p><strong>Cas 2 :</strong> Le point est hors de la droite → une seule perpendiculaire possible</p>
-                </div>
-
-                <div class="info">
-                    <strong>💡 À retenir :</strong><br>
-                    • L'équerre est l'outil le plus simple pour tracer des perpendiculaires<br>
-                    • Le compas permet une construction précise<br>
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Construction de Perpendiculaires</h2>
+<h3>Méthode 1 : Avec une équerre</h3>
+<div class="example-box">
+<h4>🔧 Étapes de construction</h4>
+<p><strong>1.</strong> Placer l'équerre sur la droite d</p>
+<p><strong>2.</strong> Faire coïncider un côté de l'angle droit avec d</p>
+<p><strong>3.</strong> Tracer la perpendiculaire le long de l'autre côté</p>
+</div>
+<h3>Méthode 2 : Avec un compas</h3>
+<div class="example-box">
+<h4>🔧 Étapes de construction</h4>
+<p><strong>1.</strong> Tracer un arc de cercle centré sur le point d'intersection</p>
+<p><strong>2.</strong> L'arc coupe la droite en deux points A et B</p>
+<p><strong>3.</strong> Tracer deux arcs de cercle de même rayon centrés en A et B</p>
+<p><strong>4.</strong> Les deux arcs se coupent en un point C</p>
+<p><strong>5.</strong> Tracer la droite passant par I et C</p>
+</div>
+<div class="property-box">
+<h4>✓ Perpendiculaire passant par un point</h4>
+<p><strong>Cas 1 :</strong> Le point est sur la droite → une seule perpendiculaire possible</p>
+<p><strong>Cas 2 :</strong> Le point est hors de la droite → une seule perpendiculaire possible</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • L'équerre est l'outil le plus simple pour tracer des perpendiculaires<br/>
+                    • Le compas permet une construction précise<br/>
                     • Par un point, il n'y a qu'une seule perpendiculaire à une droite donnée
                 </div>
-            </div>
-        </div>
 
-        <div id="tab4" class="tab-content">
-            <div class="container">
-                <h2>📝 Quiz - Droites Sécantes et Perpendiculaires</h2>
-                <p>Testez vos connaissances sur les intersections et les angles droits</p>
 
-                <div class="quiz-section">
-                    <div class="quiz-question">
-                        <span class="question-number">1</span>
-                        <span class="question-text">Deux droites sécantes sont des droites qui :</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q1" value="a"> Se coupent en deux points
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab3"></div></div>
+</div>
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Droites Sécantes et Perpendiculaires</h2>
+<p>Testez vos connaissances sur les intersections et les angles droits</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Deux droites sécantes sont des droites qui :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Se coupent en deux points
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q1" value="b"> Se coupent en un seul point
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Se coupent en un seul point
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q1" value="c"> Ne se coupent jamais
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Ne se coupent jamais
                             </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q1"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <span class="question-number">2</span>
-                        <span class="question-text">Comment note-t-on que deux droites d et d' sont perpendiculaires ?</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q2" value="a"> d // d'
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Comment note-t-on que deux droites d et d' sont perpendiculaires ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> d // d'
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q2" value="b"> d = d'
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> d = d'
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q2" value="c"> d ⊥ d'
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> d ⊥ d'
                             </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q2"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <span class="question-number">3</span>
-                        <span class="question-text">Deux droites perpendiculaires forment des angles de :</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q3" value="a"> 45°
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Deux droites perpendiculaires forment des angles de :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> 45°
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q3" value="b"> 60°
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> 60°
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q3" value="c"> 90°
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> 90°
                             </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q3"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <span class="question-number">4</span>
-                        <span class="question-text">Quel instrument permet de tracer facilement une perpendiculaire ?</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q4" value="a"> Un compas
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Quel instrument permet de tracer facilement une perpendiculaire ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> Un compas
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q4" value="b"> Une équerre
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> Une équerre
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q4" value="c"> Un rapporteur
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> Un rapporteur
                             </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q4"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <span class="question-number">5</span>
-                        <span class="question-text">Par un point donné, combien de perpendiculaires peut-on tracer à une droite donnée ?</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q5" value="a"> Aucune
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Par un point donné, combien de perpendiculaires peut-on tracer à une droite donnée ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> Aucune
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q5" value="b"> Une seule
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> Une seule
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q5" value="c"> Une infinité
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> Une infinité
                             </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q5"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <span class="question-number">6</span>
-                        <span class="question-text">Si d ⊥ d', alors d' ⊥ d. C'est la propriété :</span>
-                        <div class="quiz-options">
-                            <label class="quiz-option">
-                                <input type="radio" name="q6" value="a"> De transitivité
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Si d ⊥ d', alors d' ⊥ d. C'est la propriété :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> De transitivité
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q6" value="b"> Symétrique
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> Symétrique
                             </label>
-                            <label class="quiz-option">
-                                <input type="radio" name="q6" value="c"> De réflexivité
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> De réflexivité
                             </label>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-q6"></div>
-                    </div>
-
-                    <div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
-                        <span class="question-number">🎨</span>
-                        <span class="question-text">Exercice de dessin : Tracez deux droites sécantes, puis une perpendiculaire à l'une d'elles.</span>
-                        <div style="margin-top: 15px;">
-                            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+<div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+<span class="question-number">🎨</span>
+<span class="question-text">Exercice de dessin : Tracez deux droites sécantes, puis une perpendiculaire à l'une d'elles.</span>
+<div style="margin-top: 15px;">
+<p style="font-size: 14px; color: #666; margin-bottom: 10px;">
                                 ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer les droites.
                             </p>
-                            <canvas id="drawingCanvas4" width="600" height="300" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;"></canvas>
-                            <div style="text-align: center; margin-top: 10px;">
-                                <button class="quiz-button" onclick="clearCanvas4()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
-                                <button class="quiz-button" onclick="saveDrawing4()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
-                            </div>
-                            <div id="drawing-feedback4" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
-                        </div>
-                    </div>
-
-                    <button class="quiz-button" onclick="submitQuiz('quiz4')">Vérifier les Réponses</button>
-                    <div id="quiz-results" class="quiz-result"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="math-lessons-script.js"></script>
-    <script>
+<canvas height="300" id="drawingCanvas4" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;" width="600"></canvas>
+<div style="text-align: center; margin-top: 10px;">
+<button class="quiz-button" onclick="clearCanvas4()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+<button class="quiz-button" onclick="saveDrawing4()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+</div>
+<div id="drawing-feedback4" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+</div>
+</div>
+<button class="quiz-button" onclick="submitQuiz('quiz4')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
         // Variables pour le dessin
         let canvas4 = document.getElementById('drawingCanvas4');
         let ctx4 = canvas4.getContext('2d');
@@ -412,6 +397,39 @@
             resultsDiv.style.borderRadius = '8px';
             resultsDiv.style.display = 'block';
         }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-4-secantes-perpendiculaires'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-4-secantes-perpendiculaires');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
     </script>
 </body>
 </html>

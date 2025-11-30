@@ -61,23 +61,170 @@
             transform: translateX(-5px);
         }
 
-        .content {
-            flex: 1;
+        .main-wrapper {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex: 1;
+            gap: 20px;
             padding: 20px;
+            overflow-y: auto;
+            max-width: 95vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 38%;
+            overflow-y: auto;
         }
 
         .container {
             background: white;
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-            max-width: 1200px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4);
+            border: 4px solid #FF69B4;
+        }
+
+        .quiz-section h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 22px;
+            border-bottom: 3px solid #FF1493;
+            padding-bottom: 10px;
+        }
+
+        .quiz-section > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .quiz-question {
+            background: #fff;
+            border: 2px solid #FFB6D9;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #FF69B4;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .question-text {
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .quiz-options {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #FFF0F5;
+            border: 2px solid #FFB6D9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .quiz-option:hover {
+            background: #FFE4EC;
+            border-color: #FF69B4;
+        }
+
+        .quiz-option input {
+            margin-right: 10px;
+        }
+
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .quiz-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        .quiz-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .quiz-result {
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #FF69B4 0%, #C71585 100%);
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            .content-area, .quiz-area {
+                flex: 1;
+            }
         }
 
         h1 {
@@ -286,7 +433,8 @@
         <a href="04-types-piles.html" class="active">🔋 Types de Piles</a>
     </nav>
 
-    <div class="content">
+    <div class="main-wrapper">
+        <div class="content-area">
         <div class="container">
             <h1>🔋 Types de Piles et Bornes Polaires</h1>
             <p class="subtitle">Identifier les bornes positives (+) et négatives (−) des différents types de piles</p>
@@ -489,6 +637,173 @@
                 • Pour identifier une borne inconnue, utiliser un multimètre
             </div>
         </div>
+        </div>
+        <!-- FIN CONTENT-AREA -->
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Types de Piles</h2>
+                <p>Testez vos connaissances!</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Combien de bornes possède une pile?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Une seule borne
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Deux bornes (+ et −)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Trois bornes
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quelle couleur indique généralement la borne positive?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Noir
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Doré/Jaune
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Bleu
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Où se trouve la borne + sur une pile cylindrique?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> En bas (base plate)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> En haut (bouton/ressort)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Sur le côté
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quelle est la tension d'une pile AA standard?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> 1,5V
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> 4,5V
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> 9V
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Que se passe-t-il si on inverse les bornes d'une pile?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Rien de spécial
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Cela peut endommager l'appareil
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> L'appareil fonctionne mieux
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="button" class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
     </div>
+    <!-- FIN MAIN-WRAPPER -->
+
+    <script>
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'a',
+            q5: 'b'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector('input[name="' + questionName + '"]:checked');
+                const feedbackElement = document.getElementById('feedback-' + questionName);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.className = 'quiz-feedback incorrect';
+                        feedbackElement.innerHTML = '⚠️ Réponse manquante';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.className = 'quiz-feedback correct';
+                        feedbackElement.innerHTML = '✅ Correct!';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.className = 'quiz-feedback incorrect';
+                        feedbackElement.innerHTML = '❌ Incorrect';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = '<strong>Résultat: ' + score + '/' + totalQuestions + ' (' + percentage + '%)</strong><br>';
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent! Tu maîtrises les types de piles.</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bon travail! Continue à réviser.</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 À relire! Révise le contenu.</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
 </body>
 </html>

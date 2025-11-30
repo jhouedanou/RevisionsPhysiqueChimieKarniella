@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculs Algébriques - Cours de Mathématiques</title>
+    <link rel="stylesheet" href="css/section-quiz.css">
     <style>
         * {
             margin: 0;
@@ -18,7 +20,7 @@
             background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
             font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body::before {
             content: "🔢";
             position: fixed;
@@ -42,8 +44,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         header {
@@ -54,11 +63,11 @@
             position: relative;
             box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
         }
-        
+
         header h1::before {
             content: "🎀 ";
         }
-        
+
         header h1::after {
             content: " 🎀";
         }
@@ -70,7 +79,8 @@
             transform: translateY(-50%);
             padding: 10px 20px;
             background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
-            color: #C71585; font-weight: 700;
+            color: #C71585;
+            font-weight: 700;
             border: 3px solid #FF1493;
             border-radius: 8px;
             cursor: pointer;
@@ -84,11 +94,13 @@
             transform: translateY(-50%) translateX(-5px);
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
             background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         header h1 {
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             font-size: 32px;
             margin-bottom: 5px;
         }
@@ -111,7 +123,8 @@
         .tab-button {
             padding: 12px 20px;
             background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
-            color: #C71585; font-weight: 700;
+            color: #C71585;
+            font-weight: 700;
             border: 3px solid #FF1493;
             border-radius: 8px 8px 0 0;
             cursor: pointer;
@@ -122,13 +135,15 @@
 
         .tab-button:hover {
             background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             transform: translateY(-2px);
         }
 
         .tab-button.active {
             background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             border-bottom: 3px solid #FFE5F0;
         }
 
@@ -159,7 +174,8 @@
         }
 
         h2 {
-            color: #C71585; font-weight: 700;
+            color: #C71585;
+            font-weight: 700;
             margin-bottom: 20px;
             font-size: 28px;
             border-bottom: 3px solid #FF69B4;
@@ -167,14 +183,16 @@
         }
 
         h3 {
-            color: #C71585; font-weight: 700;
+            color: #C71585;
+            font-weight: 700;
             margin-top: 30px;
             margin-bottom: 15px;
             font-size: 20px;
         }
 
         .definition-box {
-            background: #FFFFFF; border: 3px solid #2196f3;
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
             border-left: 5px solid #2196f3;
             padding: 20px;
             border-radius: 8px;
@@ -194,7 +212,8 @@
         }
 
         .example-box {
-            background: #FFFFFF; border: 3px solid #ff9800;
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
             border-left: 5px solid #ff9800;
             padding: 20px;
             border-radius: 8px;
@@ -207,7 +226,8 @@
             font-size: 18px;
         }
 
-        .example-box p, .example-box ul {
+        .example-box p,
+        .example-box ul {
             color: #333;
             line-height: 1.8;
             font-size: 15px;
@@ -219,7 +239,8 @@
         }
 
         .property-box {
-            background: #FFFFFF; border: 3px solid #4caf50;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
             border-left: 5px solid #4caf50;
             padding: 20px;
             border-radius: 8px;
@@ -270,7 +291,8 @@
         .interactive-demo button {
             padding: 10px 20px;
             background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -286,7 +308,8 @@
         }
 
         .result-box {
-            background: #FFFFFF; border: 3px solid #4caf50;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
@@ -340,7 +363,8 @@
         }
 
         .quiz-options label:hover {
-            background: #FFFFFF; border: 3px solid #2196f3;
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
         }
 
         .quiz-options input[type="radio"] {
@@ -350,7 +374,8 @@
         .check-answer-btn {
             padding: 10px 25px;
             background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -375,7 +400,8 @@
         }
 
         .feedback.correct {
-            background: #FFFFFF; border: 3px solid #4caf50;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
             color: #2e7d32;
             border: 2px solid #4caf50;
         }
@@ -387,7 +413,8 @@
         }
 
         .info {
-            background: #FFFFFF; border: 3px solid #2196f3;
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
             border-left: 4px solid #2196f3;
             padding: 20px;
             border-radius: 8px;
@@ -414,6 +441,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <a href="mathematiques.html" class="btn-back">← Retour</a>
@@ -436,7 +464,8 @@
 
                 <div class="definition-box">
                     <h4>📘 Définition</h4>
-                    <p>Des <strong>nombres entiers naturels consécutifs</strong> sont des nombres qui se suivent dans l'ordre croissant, c'est-à-dire qu'ils diffèrent de 1.</p>
+                    <p>Des <strong>nombres entiers naturels consécutifs</strong> sont des nombres qui se suivent dans
+                        l'ordre croissant, c'est-à-dire qu'ils diffèrent de 1.</p>
                     <div class="formula">n, n+1, n+2, n+3, ...</div>
                     <p style="margin-top: 10px;">où <strong>n</strong> est un nombre entier naturel.</p>
                 </div>
@@ -454,9 +483,10 @@
 
                 <div class="definition-box">
                     <h4>📐 Formule</h4>
-                    <p>Pour déterminer tous les nombres entiers naturels consécutifs de <strong>m</strong> à <strong>n</strong> (avec m < n) :</p>
-                    <div class="formula">m, m+1, m+2, ..., n-1, n</div>
-                    <p style="margin-top: 10px;"><strong>Nombre total de termes :</strong> n - m + 1</p>
+                    <p>Pour déterminer tous les nombres entiers naturels consécutifs de <strong>m</strong> à
+                        <strong>n</strong> (avec m < n) :</p>
+                            <div class="formula">m, m+1, m+2, ..., n-1, n</div>
+                            <p style="margin-top: 10px;"><strong>Nombre total de termes :</strong> n - m + 1</p>
                 </div>
 
                 <div class="example-box">
@@ -471,7 +501,8 @@
                     <p>Trouve les nombres consécutifs de m à n :</p>
                     <div style="margin: 20px 0;">
                         <label>De m = <input type="number" id="m-value" value="1" min="0"> </label>
-                        <label style="margin-left: 20px;">à n = <input type="number" id="n-value" value="10" min="0"></label>
+                        <label style="margin-left: 20px;">à n = <input type="number" id="n-value" value="10"
+                                min="0"></label>
                         <button onclick="calculateConsecutive()">Calculer</button>
                     </div>
                     <div class="result-box" id="consecutive-result">
@@ -486,6 +517,9 @@
                     • Pour obtenir le nombre suivant, on ajoute 1 au nombre précédent<br>
                     • Le nombre de termes entre m et n (inclus) est : n - m + 1
                 </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab1"></div>
             </div>
         </div>
 
@@ -496,9 +530,11 @@
 
                 <div class="definition-box">
                     <h4>📘 Définition</h4>
-                    <p>Un nombre <strong>a</strong> est un <strong>multiple</strong> d'un nombre <strong>b</strong> s'il existe un nombre entier naturel <strong>k</strong> tel que :</p>
+                    <p>Un nombre <strong>a</strong> est un <strong>multiple</strong> d'un nombre <strong>b</strong> s'il
+                        existe un nombre entier naturel <strong>k</strong> tel que :</p>
                     <div class="formula">a = b × k</div>
-                    <p style="margin-top: 10px;">On dit aussi que <strong>a</strong> est divisible par <strong>b</strong>.</p>
+                    <p style="margin-top: 10px;">On dit aussi que <strong>a</strong> est divisible par
+                        <strong>b</strong>.</p>
                 </div>
 
                 <div class="example-box">
@@ -517,7 +553,8 @@
                     <p><strong>2.</strong> Tout nombre est un multiple de 1 (n = 1 × n)</p>
                     <p><strong>3.</strong> 0 est un multiple de tous les nombres</p>
                     <p><strong>4.</strong> Les multiples d'un nombre sont infinis</p>
-                    <p><strong>5.</strong> Si a est un multiple de b et b est un multiple de c, alors a est un multiple de c</p>
+                    <p><strong>5.</strong> Si a est un multiple de b et b est un multiple de c, alors a est un multiple
+                        de c</p>
                 </div>
 
                 <h3>Liste des premiers multiples</h3>
@@ -548,6 +585,9 @@
                     • Les multiples d'un nombre forment une suite infinie<br>
                     • Le plus petit multiple non nul d'un nombre est le nombre lui-même
                 </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab2"></div>
             </div>
         </div>
 
@@ -623,6 +663,9 @@
                     • Le dernier chiffre détermine si un nombre est pair ou impair<br>
                     • 0 est considéré comme un nombre pair
                 </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab3"></div>
             </div>
         </div>
 
@@ -643,7 +686,8 @@
                             <label><input type="radio" name="q1" value="c"> c) 12</label>
                             <label><input type="radio" name="q1" value="d"> d) 25</label>
                         </div>
-                        <button class="check-answer-btn" onclick="checkAnswer('q1', 'b', '25 - 12 + 1 = 14 nombres')">Vérifier</button>
+                        <button class="check-answer-btn"
+                            onclick="checkAnswer('q1', 'b', '25 - 12 + 1 = 14 nombres')">Vérifier</button>
                         <div class="feedback" id="feedback-q1"></div>
                     </div>
 
@@ -656,7 +700,8 @@
                             <label><input type="radio" name="q2" value="c"> c) 42</label>
                             <label><input type="radio" name="q2" value="d"> d) 50</label>
                         </div>
-                        <button class="check-answer-btn" onclick="checkAnswer('q2', 'c', '42 = 6 × 7')">Vérifier</button>
+                        <button class="check-answer-btn"
+                            onclick="checkAnswer('q2', 'c', '42 = 6 × 7')">Vérifier</button>
                         <div class="feedback" id="feedback-q2"></div>
                     </div>
 
@@ -669,7 +714,8 @@
                             <label><input type="radio" name="q3" value="c"> c) Cela dépend des nombres</label>
                             <label><input type="radio" name="q3" value="d"> d) Toujours nul</label>
                         </div>
-                        <button class="check-answer-btn" onclick="checkAnswer('q3', 'a', 'Pair × Impair = Pair (ex: 4 × 5 = 20)')">Vérifier</button>
+                        <button class="check-answer-btn"
+                            onclick="checkAnswer('q3', 'a', 'Pair × Impair = Pair (ex: 4 × 5 = 20)')">Vérifier</button>
                         <div class="feedback" id="feedback-q3"></div>
                     </div>
 
@@ -680,7 +726,8 @@
                             <label><input type="radio" name="q4" value="a"> a) Pair</label>
                             <label><input type="radio" name="q4" value="b"> b) Impair</label>
                         </div>
-                        <button class="check-answer-btn" onclick="checkAnswer('q4', 'b', 'Le nombre se termine par 3, donc il est impair')">Vérifier</button>
+                        <button class="check-answer-btn"
+                            onclick="checkAnswer('q4', 'b', 'Le nombre se termine par 3, donc il est impair')">Vérifier</button>
                         <div class="feedback" id="feedback-q4"></div>
                     </div>
 
@@ -693,7 +740,8 @@
                             <label><input type="radio" name="q5" value="c"> c) 40</label>
                             <label><input type="radio" name="q5" value="d"> d) 36</label>
                         </div>
-                        <button class="check-answer-btn" onclick="checkAnswer('q5', 'b', 'Les multiples de 8 sont 0, 8, 16, 24, 32... Le premier > 30 est 32.')">Vérifier</button>
+                        <button class="check-answer-btn"
+                            onclick="checkAnswer('q5', 'b', 'Les multiples de 8 sont 0, 8, 16, 24, 32... Le premier > 30 est 32.')">Vérifier</button>
                         <div class="feedback" id="feedback-q5"></div>
                     </div>
                 </div>
@@ -723,7 +771,7 @@
         function calculateConsecutive() {
             const m = parseInt(document.getElementById('m-value').value);
             const n = parseInt(document.getElementById('n-value').value);
-            
+
             if (m > n) {
                 alert('m doit être inférieur ou égal à n');
                 return;
@@ -735,10 +783,10 @@
             }
 
             const count = n - m + 1;
-            
-            document.getElementById('consecutive-numbers').textContent = 
+
+            document.getElementById('consecutive-numbers').textContent =
                 `Nombres consécutifs : ${numbers.join(', ')}`;
-            document.getElementById('consecutive-count').textContent = 
+            document.getElementById('consecutive-count').textContent =
                 `Nombre total : ${count} nombres`;
             document.getElementById('consecutive-result').classList.add('show');
         }
@@ -747,12 +795,12 @@
         function calculateMultiples() {
             const base = parseInt(document.getElementById('multiple-base').value);
             const multiples = [];
-            
+
             for (let i = 0; i <= 10; i++) {
                 multiples.push(base * i);
             }
 
-            document.getElementById('multiples-list').textContent = 
+            document.getElementById('multiples-list').textContent =
                 `Les 11 premiers multiples de ${base} : ${multiples.join(', ')}`;
             document.getElementById('multiples-result').classList.add('show');
         }
@@ -761,8 +809,8 @@
         function checkParity() {
             const num = parseInt(document.getElementById('parity-number').value);
             const isPair = num % 2 === 0;
-            
-            document.getElementById('parity-text').innerHTML = 
+
+            document.getElementById('parity-text').innerHTML =
                 `Le nombre <strong>${num}</strong> est <strong>${isPair ? 'PAIR' : 'IMPAIR'}</strong>` +
                 `<br>Dernièr chiffre : ${num % 10} → ${isPair ? 'Pair' : 'Impair'}`;
             document.getElementById('parity-result').classList.add('show');
@@ -772,14 +820,14 @@
         function checkAnswer(questionId, correctAnswer, explanation) {
             const selected = document.querySelector(`input[name="${questionId}"]:checked`);
             const feedback = document.getElementById(`feedback-${questionId}`);
-            
+
             if (!selected) {
                 alert('Veuillez sélectionner une réponse');
                 return;
             }
 
             feedback.classList.add('show');
-            
+
             if (selected.value === correctAnswer) {
                 feedback.className = 'feedback show correct';
                 feedback.innerHTML = `✓ <strong>Correct !</strong><br>${explanation}`;
@@ -789,5 +837,33 @@
             }
         }
     </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-1-calculs-algebriques'];
+
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1-nombres-consecutifs']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1-nombres-consecutifs']);
+                }
+
+                if (lessonQuestions['tab2-multiples']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2-multiples']);
+                }
+
+                if (lessonQuestions['tab3-pairs-impairs']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3-pairs-impairs']);
+                }
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
 </body>
+
 </html>

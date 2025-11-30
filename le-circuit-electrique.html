@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Circuit Électrique - Cours Complet</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Le Circuit Électrique - Cours Complet</title>
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -720,32 +722,29 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="btn-back">← Retour</a>
-        <h1>⚡ Le Circuit Électrique</h1>
-        <p>Cours complet et interactif avec quiz intégré</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Circuit Électrique</button>
-        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Sens du Courant</button>
-        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Isolants &amp; Conducteurs</button>
-        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Types de Piles</button>
-        <button class="tab-button" onclick="openTab(event, 'tab5')">5️⃣ Symboles Normalisés</button>
-    </div>
-
-    <div class="main-wrapper">
-        <div class="content-area">
-            <div class="content">
-        <!-- TAB 1: CIRCUIT ÉLECTRIQUE -->
-        <div id="tab1" class="tab-content active">
-            <div class="container">
-                <h2>⚡ Circuit Électrique Interactif</h2>
-                <p class="subtitle">Clique sur l'interrupteur pour contrôler le flux d'énergie</p>
-
-                <svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <style>
+<header>
+<a class="btn-back" href="index.html">← Retour</a>
+<h1>⚡ Le Circuit Électrique</h1>
+<p>Cours complet et interactif avec quiz intégré</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Circuit Électrique</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Sens du Courant</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Isolants &amp; Conducteurs</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Types de Piles</button>
+<button class="tab-button" onclick="openTab(event, 'tab5')">5️⃣ Symboles Normalisés</button>
+</div>
+<div class="main-wrapper">
+<div class="content-area">
+<div class="content">
+<!-- TAB 1: CIRCUIT ÉLECTRIQUE -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>⚡ Circuit Électrique Interactif</h2>
+<p class="subtitle">Clique sur l'interrupteur pour contrôler le flux d'énergie</p>
+<svg viewbox="0 0 900 650" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
                             @keyframes glow {
                                 0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 200, 0, 0.4)); }
                                 50% { filter: drop-shadow(0 0 12px rgba(255, 200, 0, 0.9)); }
@@ -779,120 +778,105 @@
                                 filter: drop-shadow(0 0 8px rgba(255, 237, 74, 0.8));
                             }
                         </style>
-                    </defs>
-
-                    <rect width="900" height="650" fill="#f9f9f9"/>
-                    <text x="450" y="45" font-size="32" font-weight="bold" text-anchor="middle" fill="#333">Circuit Électrique</text>
-
-                    <!-- PILE -->
-                    <g id="pile">
-                        <rect x="80" y="120" width="70" height="120" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="3"/>
-                        <rect x="105" y="95" width="20" height="25" fill="#f39c12" stroke="#d68910" stroke-width="2" rx="2"/>
-                        <rect x="100" y="245" width="30" height="25" fill="#34495e" stroke="#FF1493" stroke-width="2" rx="2"/>
-                        <text x="115" y="185" font-size="14" text-anchor="middle" fill="white" font-weight="bold">PILE</text>
-                        <text x="115" y="310" font-size="11" text-anchor="middle" fill="#333" font-weight="bold">Générateur</text>
-                        <!-- Bornes polaires -->
-                        <circle cx="110" cy="100" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-                        <text x="110" y="85" font-size="12" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                        <circle cx="120" cy="100" r="4" fill="#333" stroke="#000" stroke-width="1"/>
-                        <text x="120" y="85" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">−</text>
-                    </g>
-
-                    <!-- FIL 1 -->
-                    <path id="fil1" d="M 115 95 L 115 60 L 570 60" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <g id="particles-fil1" class="animated-glow"></g>
-
-                    <!-- LAMPE -->
-                    <g id="lampe">
-                        <circle cx="600" cy="95" r="22" fill="none" stroke="#d4a017" stroke-width="2"/>
-                        <circle cx="600" cy="95" r="18" fill="none" stroke="#d4a017" stroke-width="1" opacity="0.5"/>
-                        <circle id="bulb" cx="600" cy="65" r="20" fill="#ffed4e" stroke="#f39c12" stroke-width="2" class="dim-bulb"/>
-                        <path d="M 588 65 Q 594 50 600 58 Q 606 65 600 75" stroke="#ff6b6b" stroke-width="2" fill="none"/>
-                        <rect x="588" y="115" width="24" height="10" fill="#999" stroke="#666" stroke-width="1" rx="1"/>
-                        <text x="600" y="165" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">LAMPE</text>
-                        <text x="600" y="182" font-size="11" text-anchor="middle" fill="#666">Récepteur</text>
-                    </g>
-
-                    <!-- FIL 2 -->
-                    <path id="fil2" d="M 600 125 L 600 240 L 480 240" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <g id="particles-fil2" class="animated-glow"></g>
-
-                    <!-- INTERRUPTEUR -->
-                    <g id="interrupteur" class="interactive-switch" style="cursor: pointer;">
-                        <rect x="390" y="230" width="90" height="45" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="8"/>
-                        <circle cx="410" cy="252" r="5" fill="#333"/>
-                        <circle cx="460" cy="252" r="5" fill="#333"/>
-                        <g id="lever">
-                            <circle cx="410" cy="252" r="6" fill="#444"/>
-                            <line x1="410" y1="252" x2="460" y2="252" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-                            <circle cx="460" cy="252" r="6" fill="#444"/>
-                        </g>
-                        <text x="435" y="285" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">INTERRUPTEUR</text>
-                        <text id="switch-status" x="435" y="302" font-size="10" text-anchor="middle" fill="#FF69B4" font-weight="bold">FERMÉ</text>
-                    </g>
-
-                    <!-- FIL 3 -->
-                    <path id="fil3" d="M 390 252 L 300 252 L 300 360 L 115 360 L 115 245" stroke="#ff6b6b" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <g id="particles-fil3" class="animated-glow"></g>
-
-                    <!-- LÉGENDE -->
-                    <g id="legende">
-                        <rect x="60" y="400" width="780" height="220" fill="white" stroke="#ddd" stroke-width="2" rx="10"/>
-                        <text x="450" y="435" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Comment fonctionne le circuit</text>
-
-                        <circle cx="100" cy="475" r="10" fill="#FF1493"/>
-                        <text x="125" y="478" font-size="12" fill="#333" font-weight="bold">Pile:</text>
-                        <text x="125" y="495" font-size="11" fill="#666">Génère l'énergie électrique</text>
-
-                        <circle cx="320" cy="475" r="10" fill="#ffed4e" stroke="#f39c12" stroke-width="1"/>
-                        <text x="345" y="478" font-size="12" fill="#333" font-weight="bold">Lampe:</text>
-                        <text x="345" y="495" font-size="11" fill="#666">Utilise l'énergie pour briller</text>
-
-                        <rect x="535" y="465" width="20" height="20" fill="#e8e8e8" stroke="#666" stroke-width="1" rx="2"/>
-                        <text x="570" y="478" font-size="12" fill="#333" font-weight="bold">Interrupteur:</text>
-                        <text x="570" y="495" font-size="11" fill="#666">Active/Désactive le courant</text>
-
-                        <circle cx="100" cy="525" r="3" fill="#FFD700" class="pulse-circle"/>
-                        <text x="125" y="528" font-size="12" fill="#333" font-weight="bold">Courant électrique:</text>
-                        <text x="125" y="545" font-size="11" fill="#666">Se déplace dans le circuit fermé</text>
-
-                        <text x="320" y="528" font-size="12" fill="#333" font-weight="bold">Flux d'énergie:</text>
-                        <text x="320" y="545" font-size="11" fill="#666">Pile → Lampe → Interrupteur → Pile</text>
-
-                        <text x="535" y="528" font-size="12" fill="#333" font-weight="bold">État du circuit:</text>
-                        <text id="circuit-state" x="535" y="545" font-size="11" fill="#2ecc71" font-weight="bold">ACTIF ✓</text>
-                    </g>
-                </svg>
-
-                <div class="controls">
-                    <div class="switch active" id="switchContainer">
-                        <span class="switch-label">État du circuit:</span>
-                        <button type="button" class="toggle-switch on" id="switchButton" aria-label="Activer/Désactiver le circuit"></button>
-                    </div>
-                    <div class="status on" id="statusDisplay">
+</defs>
+<rect fill="#f9f9f9" height="650" width="900"></rect>
+<text fill="#333" font-size="32" font-weight="bold" text-anchor="middle" x="450" y="45">Circuit Électrique</text>
+<!-- PILE -->
+<g id="pile">
+<rect fill="#FF1493" height="120" rx="3" stroke="#c0392b" stroke-width="2" width="70" x="80" y="120"></rect>
+<rect fill="#f39c12" height="25" rx="2" stroke="#d68910" stroke-width="2" width="20" x="105" y="95"></rect>
+<rect fill="#34495e" height="25" rx="2" stroke="#FF1493" stroke-width="2" width="30" x="100" y="245"></rect>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="115" y="185">PILE</text>
+<text fill="#333" font-size="11" font-weight="bold" text-anchor="middle" x="115" y="310">Générateur</text>
+<!-- Bornes polaires -->
+<circle cx="110" cy="100" fill="#FFD700" r="4" stroke="#FFA500" stroke-width="1"></circle>
+<text fill="#FF6B6B" font-size="12" font-weight="bold" text-anchor="middle" x="110" y="85">+</text>
+<circle cx="120" cy="100" fill="#333" r="4" stroke="#000" stroke-width="1"></circle>
+<text fill="#333" font-size="12" font-weight="bold" text-anchor="middle" x="120" y="85">−</text>
+</g>
+<!-- FIL 1 -->
+<path d="M 115 95 L 115 60 L 570 60" fill="none" id="fil1" stroke="#ff6b6b" stroke-linecap="round" stroke-width="4"></path>
+<g class="animated-glow" id="particles-fil1"></g>
+<!-- LAMPE -->
+<g id="lampe">
+<circle cx="600" cy="95" fill="none" r="22" stroke="#d4a017" stroke-width="2"></circle>
+<circle cx="600" cy="95" fill="none" opacity="0.5" r="18" stroke="#d4a017" stroke-width="1"></circle>
+<circle class="dim-bulb" cx="600" cy="65" fill="#ffed4e" id="bulb" r="20" stroke="#f39c12" stroke-width="2"></circle>
+<path d="M 588 65 Q 594 50 600 58 Q 606 65 600 75" fill="none" stroke="#ff6b6b" stroke-width="2"></path>
+<rect fill="#999" height="10" rx="1" stroke="#666" stroke-width="1" width="24" x="588" y="115"></rect>
+<text fill="#333" font-size="12" font-weight="bold" text-anchor="middle" x="600" y="165">LAMPE</text>
+<text fill="#666" font-size="11" text-anchor="middle" x="600" y="182">Récepteur</text>
+</g>
+<!-- FIL 2 -->
+<path d="M 600 125 L 600 240 L 480 240" fill="none" id="fil2" stroke="#ff6b6b" stroke-linecap="round" stroke-width="4"></path>
+<g class="animated-glow" id="particles-fil2"></g>
+<!-- INTERRUPTEUR -->
+<g class="interactive-switch" id="interrupteur" style="cursor: pointer;">
+<rect fill="#f5f5f5" height="45" rx="8" stroke="#999" stroke-width="2" width="90" x="390" y="230"></rect>
+<circle cx="410" cy="252" fill="#333" r="5"></circle>
+<circle cx="460" cy="252" fill="#333" r="5"></circle>
+<g id="lever">
+<circle cx="410" cy="252" fill="#444" r="6"></circle>
+<line stroke="#333" stroke-linecap="round" stroke-width="4" x1="410" x2="460" y1="252" y2="252"></line>
+<circle cx="460" cy="252" fill="#444" r="6"></circle>
+</g>
+<text fill="#333" font-size="12" font-weight="bold" text-anchor="middle" x="435" y="285">INTERRUPTEUR</text>
+<text fill="#FF69B4" font-size="10" font-weight="bold" id="switch-status" text-anchor="middle" x="435" y="302">FERMÉ</text>
+</g>
+<!-- FIL 3 -->
+<path d="M 390 252 L 300 252 L 300 360 L 115 360 L 115 245" fill="none" id="fil3" stroke="#ff6b6b" stroke-linecap="round" stroke-width="4"></path>
+<g class="animated-glow" id="particles-fil3"></g>
+<!-- LÉGENDE -->
+<g id="legende">
+<rect fill="white" height="220" rx="10" stroke="#ddd" stroke-width="2" width="780" x="60" y="400"></rect>
+<text fill="#333" font-size="18" font-weight="bold" text-anchor="middle" x="450" y="435">Comment fonctionne le circuit</text>
+<circle cx="100" cy="475" fill="#FF1493" r="10"></circle>
+<text fill="#333" font-size="12" font-weight="bold" x="125" y="478">Pile:</text>
+<text fill="#666" font-size="11" x="125" y="495">Génère l'énergie électrique</text>
+<circle cx="320" cy="475" fill="#ffed4e" r="10" stroke="#f39c12" stroke-width="1"></circle>
+<text fill="#333" font-size="12" font-weight="bold" x="345" y="478">Lampe:</text>
+<text fill="#666" font-size="11" x="345" y="495">Utilise l'énergie pour briller</text>
+<rect fill="#e8e8e8" height="20" rx="2" stroke="#666" stroke-width="1" width="20" x="535" y="465"></rect>
+<text fill="#333" font-size="12" font-weight="bold" x="570" y="478">Interrupteur:</text>
+<text fill="#666" font-size="11" x="570" y="495">Active/Désactive le courant</text>
+<circle class="pulse-circle" cx="100" cy="525" fill="#FFD700" r="3"></circle>
+<text fill="#333" font-size="12" font-weight="bold" x="125" y="528">Courant électrique:</text>
+<text fill="#666" font-size="11" x="125" y="545">Se déplace dans le circuit fermé</text>
+<text fill="#333" font-size="12" font-weight="bold" x="320" y="528">Flux d'énergie:</text>
+<text fill="#666" font-size="11" x="320" y="545">Pile → Lampe → Interrupteur → Pile</text>
+<text fill="#333" font-size="12" font-weight="bold" x="535" y="528">État du circuit:</text>
+<text fill="#2ecc71" font-size="11" font-weight="bold" id="circuit-state" x="535" y="545">ACTIF ✓</text>
+</g>
+</svg>
+<div class="controls">
+<div class="switch active" id="switchContainer">
+<span class="switch-label">État du circuit:</span>
+<button aria-label="Activer/Désactiver le circuit" class="toggle-switch on" id="switchButton" type="button"></button>
+</div>
+<div class="status on" id="statusDisplay">
                         ✓ Circuit ACTIF - Énergie en circulation
                     </div>
-                </div>
-
-                <div class="info">
-                    <strong>💡 Comment utiliser:</strong><br>
-                    • Clique sur l'interrupteur (ou le bouton) pour activer/désactiver le courant<br>
-                    • Quand le circuit est fermé (ACTIF), le courant électrique se déplace dans les fils<br>
-                    • Quand le circuit est ouvert (INACTIF), le courant s'arrête et la lampe s'éteint<br>
+</div>
+<div class="info">
+<strong>💡 Comment utiliser:</strong><br/>
+                    • Clique sur l'interrupteur (ou le bouton) pour activer/désactiver le courant<br/>
+                    • Quand le circuit est fermé (ACTIF), le courant électrique se déplace dans les fils<br/>
+                    • Quand le circuit est ouvert (INACTIF), le courant s'arrête et la lampe s'éteint<br/>
                     • Les petits points jaunes représentent le courant électrique circulant dans la boucle
                 </div>
-            </div>
-        </div>
 
-        <!-- TAB 2: SENS DU COURANT & MOTEUR -->
-        <div id="tab2" class="tab-content">
-            <div class="container">
-                <h2>🔄 Moteur Électrique - Sens de Rotation</h2>
-                <p class="subtitle">Observe le sens de rotation du courant et le mouvement du moteur</p>
 
-                <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <style>
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<!-- TAB 2: SENS DU COURANT & MOTEUR -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>🔄 Moteur Électrique - Sens de Rotation</h2>
+<p class="subtitle">Observe le sens de rotation du courant et le mouvement du moteur</p>
+<svg viewbox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
                             @keyframes rotatePropellerClockwise {
                                 0% { transform: rotate(0deg); }
                                 100% { transform: rotate(360deg); }
@@ -919,763 +903,691 @@
                                 animation: arrowFlow 1.5s ease-in-out infinite;
                             }
                         </style>
-                    </defs>
-
-                    <rect width="900" height="600" fill="#f9f9f9"/>
-                    <text x="450" y="45" font-size="32" font-weight="bold" text-anchor="middle" fill="#333">Circuit avec Moteur Électrique</text>
-
-                    <!-- PILE -->
-                    <g id="pile-motor">
-                        <rect x="50" y="80" width="60" height="100" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="3"/>
-                        <rect x="70" y="60" width="20" height="20" fill="#f39c12" stroke="#d68910" stroke-width="2" rx="2"/>
-                        <rect x="65" y="190" width="30" height="20" fill="#34495e" stroke="#FF1493" stroke-width="2" rx="2"/>
-                        <text x="80" y="145" font-size="14" text-anchor="middle" fill="white" font-weight="bold">PILE</text>
-                        <circle id="pole-left" cx="72" cy="65" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-                        <text id="label-left" x="72" y="50" font-size="12" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                        <circle id="pole-right" cx="88" cy="65" r="4" fill="#333" stroke="#000" stroke-width="1"/>
-                        <text id="label-right" x="88" y="50" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">−</text>
-                    </g>
-
-                    <!-- FIL 1 -->
-                    <path id="fil1-motor" d="M 80 60 L 80 30 L 400 30" stroke="#ff6b6b" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path class="current-arrow" d="M 80 30 L 400 30" stroke="#FF6B6B" stroke-width="2" fill="none"/>
-                    <text x="240" y="20" font-size="12" fill="#FF6B6B" font-weight="bold">+ Sens du courant</text>
-
-                    <!-- MOTEUR -->
-                    <g id="moteur">
-                        <rect x="350" y="150" width="200" height="150" fill="#e8e8e8" stroke="#999" stroke-width="2" rx="10"/>
-                        <circle id="motor-pole-top" cx="450" cy="140" r="6" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
-                        <text id="motor-label-top" x="450" y="145" font-size="14" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                        <circle cx="450" cy="155" r="5" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-
-                        <g class="propeller clockwise" id="propeller">
-                            <rect x="435" y="200" width="30" height="80" fill="#FF69B4" stroke="#1976d2" stroke-width="2" rx="5"/>
-                            <rect x="400" y="250" width="80" height="30" fill="#FF69B4" stroke="#1976d2" stroke-width="2" rx="5"/>
-                        </g>
-
-                        <circle cx="450" cy="225" r="8" fill="#333" stroke="#000" stroke-width="2"/>
-                        <circle id="motor-pole-bottom" cx="450" cy="310" r="6" fill="#333" stroke="#000" stroke-width="2"/>
-                        <text id="motor-label-bottom" x="450" y="315" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">−</text>
-                        <circle cx="450" cy="295" r="5" fill="#333" stroke="#000" stroke-width="1"/>
-                        <text x="450" y="320" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">MOTEUR</text>
-                    </g>
-
-                    <!-- FIL 2 -->
-                    <path id="fil2-motor" d="M 450 320 L 450 400 L 300 400" stroke="#ff6b6b" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path class="current-arrow" d="M 450 320 L 450 400 L 300 400" stroke="#FF6B6B" stroke-width="2" fill="none"/>
-
-                    <!-- INTERRUPTEUR -->
-                    <g id="interrupteur-motor" class="interactive-switch" style="cursor: pointer;">
-                        <rect x="210" y="390" width="90" height="45" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="8"/>
-                        <circle cx="230" cy="412" r="5" fill="#333"/>
-                        <circle cx="280" cy="412" r="5" fill="#333"/>
-                        <circle cx="230" cy="412" r="6" fill="#444"/>
-                        <line x1="230" y1="412" x2="280" y2="412" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-                        <text x="255" y="445" font-size="12" text-anchor="middle" fill="#333" font-weight="bold">INTERRUPTEUR</text>
-                        <text id="switch-status-motor" x="255" y="462" font-size="10" text-anchor="middle" fill="#FF69B4" font-weight="bold">FERMÉ</text>
-                    </g>
-
-                    <!-- FIL 3 -->
-                    <path id="fil3-motor" d="M 210 412 L 120 412 L 120 210" stroke="#ff6b6b" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path class="current-arrow" d="M 210 412 L 120 412 L 120 210" stroke="#FF6B6B" stroke-width="2" fill="none"/>
-
-                    <!-- LÉGENDE -->
-                    <g id="legende-motor">
-                        <rect x="50" y="480" width="800" height="100" fill="white" stroke="#ddd" stroke-width="2" rx="10"/>
-                        <text x="450" y="510" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Comment fonctionne le moteur</text>
-                        <circle cx="100" cy="540" r="8" fill="#FF1493"/>
-                        <text x="120" y="543" font-size="11" fill="#333" font-weight="bold">Pile:</text>
-                        <text x="120" y="555" font-size="10" fill="#666">Fournit l'énergie</text>
-                        <circle cx="300" cy="540" r="8" fill="#FF69B4"/>
-                        <text x="320" y="543" font-size="11" fill="#333" font-weight="bold">Moteur:</text>
-                        <text x="320" y="555" font-size="10" fill="#666">Convertit l'énergie en mouvement</text>
-                        <text x="550" y="543" font-size="11" fill="#333" font-weight="bold">Sens du courant:</text>
-                        <text x="550" y="555" font-size="10" fill="#666">+ vers − dans le circuit fermé</text>
-                    </g>
-                </svg>
-
-                <!-- Contrôles du sens du courant -->
-                <div class="current-controls">
-                    <label for="currentToggle">Sens du courant:</label>
-                    <button type="button" class="current-toggle" id="currentToggle" title="Inverser le sens du courant" aria-label="Inverser le sens du courant">Inverser</button>
-                    <span class="direction-label" id="directionLabel">Normal → Moteur horaire</span>
-                </div>
-
-                <div class="controls">
-                    <div class="switch active" id="switchContainerMotor">
-                        <span class="switch-label">État du moteur:</span>
-                        <button type="button" class="toggle-switch on" id="switchButtonMotor" aria-label="Activer/Désactiver le moteur"></button>
-                    </div>
-                    <div class="status on" id="statusDisplayMotor">
+</defs>
+<rect fill="#f9f9f9" height="600" width="900"></rect>
+<text fill="#333" font-size="32" font-weight="bold" text-anchor="middle" x="450" y="45">Circuit avec Moteur Électrique</text>
+<!-- PILE -->
+<g id="pile-motor">
+<rect fill="#FF1493" height="100" rx="3" stroke="#c0392b" stroke-width="2" width="60" x="50" y="80"></rect>
+<rect fill="#f39c12" height="20" rx="2" stroke="#d68910" stroke-width="2" width="20" x="70" y="60"></rect>
+<rect fill="#34495e" height="20" rx="2" stroke="#FF1493" stroke-width="2" width="30" x="65" y="190"></rect>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="80" y="145">PILE</text>
+<circle cx="72" cy="65" fill="#FFD700" id="pole-left" r="4" stroke="#FFA500" stroke-width="1"></circle>
+<text fill="#FF6B6B" font-size="12" font-weight="bold" id="label-left" text-anchor="middle" x="72" y="50">+</text>
+<circle cx="88" cy="65" fill="#333" id="pole-right" r="4" stroke="#000" stroke-width="1"></circle>
+<text fill="#333" font-size="12" font-weight="bold" id="label-right" text-anchor="middle" x="88" y="50">−</text>
+</g>
+<!-- FIL 1 -->
+<path d="M 80 60 L 80 30 L 400 30" fill="none" id="fil1-motor" stroke="#ff6b6b" stroke-linecap="round" stroke-width="3"></path>
+<path class="current-arrow" d="M 80 30 L 400 30" fill="none" stroke="#FF6B6B" stroke-width="2"></path>
+<text fill="#FF6B6B" font-size="12" font-weight="bold" x="240" y="20">+ Sens du courant</text>
+<!-- MOTEUR -->
+<g id="moteur">
+<rect fill="#e8e8e8" height="150" rx="10" stroke="#999" stroke-width="2" width="200" x="350" y="150"></rect>
+<circle cx="450" cy="140" fill="#FFD700" id="motor-pole-top" r="6" stroke="#FFA500" stroke-width="2"></circle>
+<text fill="#FF6B6B" font-size="14" font-weight="bold" id="motor-label-top" text-anchor="middle" x="450" y="145">+</text>
+<circle cx="450" cy="155" fill="#FFD700" r="5" stroke="#FFA500" stroke-width="1"></circle>
+<g class="propeller clockwise" id="propeller">
+<rect fill="#FF69B4" height="80" rx="5" stroke="#1976d2" stroke-width="2" width="30" x="435" y="200"></rect>
+<rect fill="#FF69B4" height="30" rx="5" stroke="#1976d2" stroke-width="2" width="80" x="400" y="250"></rect>
+</g>
+<circle cx="450" cy="225" fill="#333" r="8" stroke="#000" stroke-width="2"></circle>
+<circle cx="450" cy="310" fill="#333" id="motor-pole-bottom" r="6" stroke="#000" stroke-width="2"></circle>
+<text fill="#333" font-size="14" font-weight="bold" id="motor-label-bottom" text-anchor="middle" x="450" y="315">−</text>
+<circle cx="450" cy="295" fill="#333" r="5" stroke="#000" stroke-width="1"></circle>
+<text fill="#333" font-size="14" font-weight="bold" text-anchor="middle" x="450" y="320">MOTEUR</text>
+</g>
+<!-- FIL 2 -->
+<path d="M 450 320 L 450 400 L 300 400" fill="none" id="fil2-motor" stroke="#ff6b6b" stroke-linecap="round" stroke-width="3"></path>
+<path class="current-arrow" d="M 450 320 L 450 400 L 300 400" fill="none" stroke="#FF6B6B" stroke-width="2"></path>
+<!-- INTERRUPTEUR -->
+<g class="interactive-switch" id="interrupteur-motor" style="cursor: pointer;">
+<rect fill="#f5f5f5" height="45" rx="8" stroke="#999" stroke-width="2" width="90" x="210" y="390"></rect>
+<circle cx="230" cy="412" fill="#333" r="5"></circle>
+<circle cx="280" cy="412" fill="#333" r="5"></circle>
+<circle cx="230" cy="412" fill="#444" r="6"></circle>
+<line stroke="#333" stroke-linecap="round" stroke-width="4" x1="230" x2="280" y1="412" y2="412"></line>
+<text fill="#333" font-size="12" font-weight="bold" text-anchor="middle" x="255" y="445">INTERRUPTEUR</text>
+<text fill="#FF69B4" font-size="10" font-weight="bold" id="switch-status-motor" text-anchor="middle" x="255" y="462">FERMÉ</text>
+</g>
+<!-- FIL 3 -->
+<path d="M 210 412 L 120 412 L 120 210" fill="none" id="fil3-motor" stroke="#ff6b6b" stroke-linecap="round" stroke-width="3"></path>
+<path class="current-arrow" d="M 210 412 L 120 412 L 120 210" fill="none" stroke="#FF6B6B" stroke-width="2"></path>
+<!-- LÉGENDE -->
+<g id="legende-motor">
+<rect fill="white" height="100" rx="10" stroke="#ddd" stroke-width="2" width="800" x="50" y="480"></rect>
+<text fill="#333" font-size="16" font-weight="bold" text-anchor="middle" x="450" y="510">Comment fonctionne le moteur</text>
+<circle cx="100" cy="540" fill="#FF1493" r="8"></circle>
+<text fill="#333" font-size="11" font-weight="bold" x="120" y="543">Pile:</text>
+<text fill="#666" font-size="10" x="120" y="555">Fournit l'énergie</text>
+<circle cx="300" cy="540" fill="#FF69B4" r="8"></circle>
+<text fill="#333" font-size="11" font-weight="bold" x="320" y="543">Moteur:</text>
+<text fill="#666" font-size="10" x="320" y="555">Convertit l'énergie en mouvement</text>
+<text fill="#333" font-size="11" font-weight="bold" x="550" y="543">Sens du courant:</text>
+<text fill="#666" font-size="10" x="550" y="555">+ vers − dans le circuit fermé</text>
+</g>
+</svg>
+<!-- Contrôles du sens du courant -->
+<div class="current-controls">
+<label for="currentToggle">Sens du courant:</label>
+<button aria-label="Inverser le sens du courant" class="current-toggle" id="currentToggle" title="Inverser le sens du courant" type="button">Inverser</button>
+<span class="direction-label" id="directionLabel">Normal → Moteur horaire</span>
+</div>
+<div class="controls">
+<div class="switch active" id="switchContainerMotor">
+<span class="switch-label">État du moteur:</span>
+<button aria-label="Activer/Désactiver le moteur" class="toggle-switch on" id="switchButtonMotor" type="button"></button>
+</div>
+<div class="status on" id="statusDisplayMotor">
                         ✓ Moteur ACTIF - Rotation en cours
                     </div>
-                </div>
-
-                <div class="info">
-                    <strong>💡 À retenir:</strong><br>
-                    • Le courant électrique circule toujours de la borne + vers la borne − dans le circuit extérieur<br>
-                    • Le moteur tourne grâce à l'interaction entre le courant et le champ magnétique<br>
-                    • Sans circuit fermé, le moteur ne peut pas fonctionner<br>
+</div>
+<div class="info">
+<strong>💡 À retenir:</strong><br/>
+                    • Le courant électrique circule toujours de la borne + vers la borne − dans le circuit extérieur<br/>
+                    • Le moteur tourne grâce à l'interaction entre le courant et le champ magnétique<br/>
+                    • Sans circuit fermé, le moteur ne peut pas fonctionner<br/>
                     • Le sens de rotation dépend directement du sens du courant électrique
                 </div>
-            </div>
-        </div>
 
-        <!-- TAB 3: ISOLANTS & CONDUCTEURS -->
-        <div id="tab3" class="tab-content">
-            <div class="container">
-                <h2>🔌 Isolants et Conducteurs</h2>
-                <p class="subtitle">Comprendre la différence entre les matériaux conducteurs et isolants</p>
 
-                <div class="definitions">
-                    <div class="definition-box conductor">
-                        <h3>⚡ Conducteur</h3>
-                        <p>Un conducteur est un matériau qui laisse passer facilement le courant électrique. Il possède des électrons libres qui peuvent se déplacer facilement.</p>
-                        <p style="margin-top: 10px;"><strong>Exemples :</strong> cuivre, fer, aluminium, argent</p>
-                    </div>
-
-                    <div class="definition-box insulator">
-                        <h3>🛡️ Isolant</h3>
-                        <p>Un isolant est un matériau qui n'laisse pas passer le courant électrique. Ses électrons sont fortement liés aux atomes et ne peuvent pas se déplacer librement.</p>
-                        <p style="margin-top: 10px;"><strong>Exemples :</strong> plastique, bois, caoutchouc, verre</p>
-                    </div>
-                </div>
-
-                <h3 style="margin-bottom: 15px; color: #333;">Teste avec différents matériaux :</h3>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Matériau</th>
-                            <th>Type</th>
-                            <th>État de la Lampe</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="material-name">Mine de crayon (graphite)</td>
-                            <td><span class="conductor-badge">CONDUCTEUR</span></td>
-                            <td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
-                        </tr>
-                        <tr>
-                            <td class="material-name">Fil de fer</td>
-                            <td><span class="conductor-badge">CONDUCTEUR</span></td>
-                            <td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
-                        </tr>
-                        <tr>
-                            <td class="material-name">Cuivre</td>
-                            <td><span class="conductor-badge">CONDUCTEUR</span></td>
-                            <td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
-                        </tr>
-                        <tr>
-                            <td class="material-name">Gomme</td>
-                            <td><span class="insulator-badge">ISOLANT</span></td>
-                            <td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
-                        </tr>
-                        <tr>
-                            <td class="material-name">Règle en plastique</td>
-                            <td><span class="insulator-badge">ISOLANT</span></td>
-                            <td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
-                        </tr>
-                        <tr>
-                            <td class="material-name">Bois sec</td>
-                            <td><span class="insulator-badge">ISOLANT</span></td>
-                            <td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3 style="margin-bottom: 15px; margin-top: 40px; color: #333;">Schématisation des concepts :</h3>
-                <div class="schemas">
-                    <!-- Conducteur -->
-                    <div class="schema-container">
-                        <h4>⚡ Conducteur (Passage du courant)</h4>
-                        <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Matériau conducteur -->
-                            <rect x="30" y="60" width="240" height="100" fill="#e3f2fd" stroke="#FF69B4" stroke-width="2" rx="5"/>
-
-                            <!-- Atomes -->
-                            <circle cx="60" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="60" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-
-                            <circle cx="110" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="110" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-
-                            <circle cx="160" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="160" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-
-                            <circle cx="210" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="210" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-
-                            <!-- Électrons libres -->
-                            <circle cx="70" cy="120" r="4" fill="#ff6b6b"/>
-                            <circle cx="120" cy="130" r="4" fill="#ff6b6b" style="animation-delay: 0.5s;"/>
-                            <circle cx="170" cy="125" r="4" fill="#ff6b6b" style="animation-delay: 1s;"/>
-                            <circle cx="220" cy="135" r="4" fill="#ff6b6b" style="animation-delay: 1.5s;"/>
-
-                            <!-- Pile -->
-                            <rect x="20" y="180" width="40" height="30" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="2"/>
-                            <text x="40" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
-
-                            <rect x="240" y="180" width="40" height="30" fill="#34495e" stroke="#FF1493" stroke-width="2" rx="2"/>
-                            <text x="260" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">−</text>
-
-                            <!-- Flux de courant -->
-                            <path d="M 60 185 Q 110 170 160 185" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-                            <text x="150" y="160" font-size="12" fill="#ff6b6b" font-weight="bold">Courant ➜</text>
-
-                            <!-- Label -->
-                            <text x="150" y="230" text-anchor="middle" font-size="14" fill="#FF69B4" font-weight="bold">Électrons libres → Courant passe</text>
-                        </svg>
-                    </div>
-
-                    <!-- Isolant -->
-                    <div class="schema-container">
-                        <h4>🛡️ Isolant (Blocage du courant)</h4>
-                        <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Matériau isolant -->
-                            <rect x="30" y="60" width="240" height="100" fill="#fff3e0" stroke="#FF69B4" stroke-width="2" rx="5"/>
-
-                            <!-- Atomes avec électrons liés -->
-                            <circle cx="60" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="60" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-                            <circle cx="62" cy="95" r="3" fill="#FF69B4"/>
-                            <circle cx="58" cy="105" r="3" fill="#FF69B4"/>
-
-                            <circle cx="110" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="110" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-                            <circle cx="112" cy="95" r="3" fill="#FF69B4"/>
-                            <circle cx="108" cy="105" r="3" fill="#FF69B4"/>
-
-                            <circle cx="160" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="160" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-                            <circle cx="162" cy="95" r="3" fill="#FF69B4"/>
-                            <circle cx="158" cy="105" r="3" fill="#FF69B4"/>
-
-                            <circle cx="210" cy="100" r="15" fill="none" stroke="#FF69B4" stroke-width="2"/>
-                            <text x="210" y="105" text-anchor="middle" font-size="12" fill="#FF69B4" font-weight="bold">+</text>
-                            <circle cx="212" cy="95" r="3" fill="#FF69B4"/>
-                            <circle cx="208" cy="105" r="3" fill="#FF69B4"/>
-
-                            <!-- Pile -->
-                            <rect x="20" y="180" width="40" height="30" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="2"/>
-                            <text x="40" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
-
-                            <rect x="240" y="180" width="40" height="30" fill="#34495e" stroke="#FF1493" stroke-width="2" rx="2"/>
-                            <text x="260" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">−</text>
-
-                            <!-- Barrière -->
-                            <line x1="150" y1="150" x2="150" y2="200" stroke="#f44336" stroke-width="3" stroke-dasharray="5,5"/>
-                            <text x="165" y="175" font-size="12" fill="#f44336" font-weight="bold">✗ Bloqué</text>
-
-                            <!-- Label -->
-                            <text x="150" y="230" text-anchor="middle" font-size="14" fill="#FF69B4" font-weight="bold">Électrons liés → Pas de courant</text>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <strong>💡 À retenir :</strong><br>
-                    • Les <strong>conducteurs</strong> permettent au courant électrique de circuler facilement<br>
-                    • Les <strong>isolants</strong> empêchent le courant électrique de passer<br>
-                    • Les fils électriques sont faits de <strong>cuivre (conducteur)</strong> entourés de <strong>plastique (isolant)</strong><br>
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<!-- TAB 3: ISOLANTS & CONDUCTEURS -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>🔌 Isolants et Conducteurs</h2>
+<p class="subtitle">Comprendre la différence entre les matériaux conducteurs et isolants</p>
+<div class="definitions">
+<div class="definition-box conductor">
+<h3>⚡ Conducteur</h3>
+<p>Un conducteur est un matériau qui laisse passer facilement le courant électrique. Il possède des électrons libres qui peuvent se déplacer facilement.</p>
+<p style="margin-top: 10px;"><strong>Exemples :</strong> cuivre, fer, aluminium, argent</p>
+</div>
+<div class="definition-box insulator">
+<h3>🛡️ Isolant</h3>
+<p>Un isolant est un matériau qui n'laisse pas passer le courant électrique. Ses électrons sont fortement liés aux atomes et ne peuvent pas se déplacer librement.</p>
+<p style="margin-top: 10px;"><strong>Exemples :</strong> plastique, bois, caoutchouc, verre</p>
+</div>
+</div>
+<h3 style="margin-bottom: 15px; color: #333;">Teste avec différents matériaux :</h3>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>Matériau</th>
+<th>Type</th>
+<th>État de la Lampe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="material-name">Mine de crayon (graphite)</td>
+<td><span class="conductor-badge">CONDUCTEUR</span></td>
+<td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
+</tr>
+<tr>
+<td class="material-name">Fil de fer</td>
+<td><span class="conductor-badge">CONDUCTEUR</span></td>
+<td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
+</tr>
+<tr>
+<td class="material-name">Cuivre</td>
+<td><span class="conductor-badge">CONDUCTEUR</span></td>
+<td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
+</tr>
+<tr>
+<td class="material-name">Gomme</td>
+<td><span class="insulator-badge">ISOLANT</span></td>
+<td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
+</tr>
+<tr>
+<td class="material-name">Règle en plastique</td>
+<td><span class="insulator-badge">ISOLANT</span></td>
+<td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
+</tr>
+<tr>
+<td class="material-name">Bois sec</td>
+<td><span class="insulator-badge">ISOLANT</span></td>
+<td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
+</tr>
+</tbody>
+</table>
+<h3 style="margin-bottom: 15px; margin-top: 40px; color: #333;">Schématisation des concepts :</h3>
+<div class="schemas">
+<!-- Conducteur -->
+<div class="schema-container">
+<h4>⚡ Conducteur (Passage du courant)</h4>
+<svg viewbox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+<!-- Matériau conducteur -->
+<rect fill="#e3f2fd" height="100" rx="5" stroke="#FF69B4" stroke-width="2" width="240" x="30" y="60"></rect>
+<!-- Atomes -->
+<circle cx="60" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="60" y="105">+</text>
+<circle cx="110" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="110" y="105">+</text>
+<circle cx="160" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="160" y="105">+</text>
+<circle cx="210" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="210" y="105">+</text>
+<!-- Électrons libres -->
+<circle cx="70" cy="120" fill="#ff6b6b" r="4"></circle>
+<circle cx="120" cy="130" fill="#ff6b6b" r="4" style="animation-delay: 0.5s;"></circle>
+<circle cx="170" cy="125" fill="#ff6b6b" r="4" style="animation-delay: 1s;"></circle>
+<circle cx="220" cy="135" fill="#ff6b6b" r="4" style="animation-delay: 1.5s;"></circle>
+<!-- Pile -->
+<rect fill="#FF1493" height="30" rx="2" stroke="#c0392b" stroke-width="2" width="40" x="20" y="180"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="40" y="200">+</text>
+<rect fill="#34495e" height="30" rx="2" stroke="#FF1493" stroke-width="2" width="40" x="240" y="180"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="260" y="200">−</text>
+<!-- Flux de courant -->
+<path d="M 60 185 Q 110 170 160 185" fill="none" stroke="#ff6b6b" stroke-dasharray="5,5" stroke-width="2"></path>
+<text fill="#ff6b6b" font-size="12" font-weight="bold" x="150" y="160">Courant ➜</text>
+<!-- Label -->
+<text fill="#FF69B4" font-size="14" font-weight="bold" text-anchor="middle" x="150" y="230">Électrons libres → Courant passe</text>
+</svg>
+</div>
+<!-- Isolant -->
+<div class="schema-container">
+<h4>🛡️ Isolant (Blocage du courant)</h4>
+<svg viewbox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+<!-- Matériau isolant -->
+<rect fill="#fff3e0" height="100" rx="5" stroke="#FF69B4" stroke-width="2" width="240" x="30" y="60"></rect>
+<!-- Atomes avec électrons liés -->
+<circle cx="60" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="60" y="105">+</text>
+<circle cx="62" cy="95" fill="#FF69B4" r="3"></circle>
+<circle cx="58" cy="105" fill="#FF69B4" r="3"></circle>
+<circle cx="110" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="110" y="105">+</text>
+<circle cx="112" cy="95" fill="#FF69B4" r="3"></circle>
+<circle cx="108" cy="105" fill="#FF69B4" r="3"></circle>
+<circle cx="160" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="160" y="105">+</text>
+<circle cx="162" cy="95" fill="#FF69B4" r="3"></circle>
+<circle cx="158" cy="105" fill="#FF69B4" r="3"></circle>
+<circle cx="210" cy="100" fill="none" r="15" stroke="#FF69B4" stroke-width="2"></circle>
+<text fill="#FF69B4" font-size="12" font-weight="bold" text-anchor="middle" x="210" y="105">+</text>
+<circle cx="212" cy="95" fill="#FF69B4" r="3"></circle>
+<circle cx="208" cy="105" fill="#FF69B4" r="3"></circle>
+<!-- Pile -->
+<rect fill="#FF1493" height="30" rx="2" stroke="#c0392b" stroke-width="2" width="40" x="20" y="180"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="40" y="200">+</text>
+<rect fill="#34495e" height="30" rx="2" stroke="#FF1493" stroke-width="2" width="40" x="240" y="180"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="260" y="200">−</text>
+<!-- Barrière -->
+<line stroke="#f44336" stroke-dasharray="5,5" stroke-width="3" x1="150" x2="150" y1="150" y2="200"></line>
+<text fill="#f44336" font-size="12" font-weight="bold" x="165" y="175">✗ Bloqué</text>
+<!-- Label -->
+<text fill="#FF69B4" font-size="14" font-weight="bold" text-anchor="middle" x="150" y="230">Électrons liés → Pas de courant</text>
+</svg>
+</div>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Les <strong>conducteurs</strong> permettent au courant électrique de circuler facilement<br/>
+                    • Les <strong>isolants</strong> empêchent le courant électrique de passer<br/>
+                    • Les fils électriques sont faits de <strong>cuivre (conducteur)</strong> entourés de <strong>plastique (isolant)</strong><br/>
                     • On utilise les isolants pour <strong>protéger</strong> et les conducteurs pour <strong>transporter</strong> l'électricité
                 </div>
-            </div>
-        </div>
 
-        <!-- TAB 4: TYPES DE PILES -->
-        <div id="tab4" class="tab-content">
-            <div class="container">
-                <h2>🔋 Types de Piles et Bornes Polaires</h2>
-                <p class="subtitle">Identifier les bornes positives (+) et négatives (−) des différents types de piles</p>
 
-                <div class="batteries-grid">
-                    <!-- Pile Plate -->
-                    <div class="battery-card">
-                        <h3>Pile Plate</h3>
-                        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="40" y="80" width="120" height="140" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="5"/>
-                            <text x="100" y="160" font-size="14" text-anchor="middle" fill="white" font-weight="bold">PILE</text>
-                            <text x="100" y="180" font-size="11" text-anchor="middle" fill="white" font-weight="bold">PLATE</text>
-                            <rect x="50" y="220" width="15" height="35" fill="#FFD700" stroke="#FFA500" stroke-width="2" rx="2"/>
-                            <circle cx="57.5" cy="215" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-                            <text x="57.5" y="250" font-size="11" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                            <rect x="135" y="220" width="15" height="35" fill="#333" stroke="#000" stroke-width="2" rx="2"/>
-                            <circle cx="142.5" cy="215" r="4" fill="#333" stroke="#000" stroke-width="1"/>
-                            <text x="142.5" y="250" font-size="11" text-anchor="middle" fill="#333" font-weight="bold">−</text>
-                            <circle cx="57.5" cy="75" r="5" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-                            <circle cx="142.5" cy="75" r="5" fill="#333" stroke="#000" stroke-width="1"/>
-                        </svg>
-
-                        <div class="battery-info">
-                            <p><strong>Caractéristiques :</strong></p>
-                            <p>• Forme plate et rectangulaire</p>
-                            <p>• Deux lames polaires en bas (LR12)</p>
-                            <p>• Tension : 4,5V à 9V</p>
-                        </div>
-
-                        <div class="poles-display">
-                            <div class="pole positive">
-                                <div class="pole-symbol">⊕</div>
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab3"></div></div>
+</div>
+<!-- TAB 4: TYPES DE PILES -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>🔋 Types de Piles et Bornes Polaires</h2>
+<p class="subtitle">Identifier les bornes positives (+) et négatives (−) des différents types de piles</p>
+<div class="batteries-grid">
+<!-- Pile Plate -->
+<div class="battery-card">
+<h3>Pile Plate</h3>
+<svg viewbox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FF1493" height="140" rx="5" stroke="#c0392b" stroke-width="2" width="120" x="40" y="80"></rect>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="100" y="160">PILE</text>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="100" y="180">PLATE</text>
+<rect fill="#FFD700" height="35" rx="2" stroke="#FFA500" stroke-width="2" width="15" x="50" y="220"></rect>
+<circle cx="57.5" cy="215" fill="#FFD700" r="4" stroke="#FFA500" stroke-width="1"></circle>
+<text fill="#FF6B6B" font-size="11" font-weight="bold" text-anchor="middle" x="57.5" y="250">+</text>
+<rect fill="#333" height="35" rx="2" stroke="#000" stroke-width="2" width="15" x="135" y="220"></rect>
+<circle cx="142.5" cy="215" fill="#333" r="4" stroke="#000" stroke-width="1"></circle>
+<text fill="#333" font-size="11" font-weight="bold" text-anchor="middle" x="142.5" y="250">−</text>
+<circle cx="57.5" cy="75" fill="#FFD700" r="5" stroke="#FFA500" stroke-width="1"></circle>
+<circle cx="142.5" cy="75" fill="#333" r="5" stroke="#000" stroke-width="1"></circle>
+</svg>
+<div class="battery-info">
+<p><strong>Caractéristiques :</strong></p>
+<p>• Forme plate et rectangulaire</p>
+<p>• Deux lames polaires en bas (LR12)</p>
+<p>• Tension : 4,5V à 9V</p>
+</div>
+<div class="poles-display">
+<div class="pole positive">
+<div class="pole-symbol">⊕</div>
                                 BORNE +
                             </div>
-                            <div class="pole negative">
-                                <div class="pole-symbol">⊖</div>
+<div class="pole negative">
+<div class="pole-symbol">⊖</div>
                                 BORNE −
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Pile Cylindrique -->
-                    <div class="battery-card">
-                        <h3>Pile Cylindrique</h3>
-                        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="60" y="50" width="80" height="160" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="15"/>
-                            <text x="100" y="145" font-size="14" text-anchor="middle" fill="white" font-weight="bold">AA</text>
-                            <circle cx="100" cy="45" r="12" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
-                            <circle cx="100" cy="45" r="8" fill="#fff9e6" stroke="#FFD700" stroke-width="1"/>
-                            <text x="100" y="50" font-size="16" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                            <ellipse cx="100" cy="215" rx="35" ry="8" fill="#333" stroke="#000" stroke-width="2"/>
-                            <text x="100" y="220" font-size="16" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
-                            <line x1="70" y1="120" x2="70" y2="140" stroke="#c0392b" stroke-width="1"/>
-                            <line x1="130" y1="120" x2="130" y2="140" stroke="#c0392b" stroke-width="1"/>
-                        </svg>
-
-                        <div class="battery-info">
-                            <p><strong>Caractéristiques :</strong></p>
-                            <p>• Forme cylindrique allongée</p>
-                            <p>• Bouton/ressort (+) en haut</p>
-                            <p>• Base plate (−) en bas</p>
-                            <p>• Tension : 1,5V (AA, AAA, C, D)</p>
-                        </div>
-
-                        <div class="poles-display">
-                            <div class="pole positive">
-                                <div class="pole-symbol">⊕</div>
+</div>
+</div>
+<!-- Pile Cylindrique -->
+<div class="battery-card">
+<h3>Pile Cylindrique</h3>
+<svg viewbox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FF1493" height="160" rx="15" stroke="#c0392b" stroke-width="2" width="80" x="60" y="50"></rect>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="100" y="145">AA</text>
+<circle cx="100" cy="45" fill="#FFD700" r="12" stroke="#FFA500" stroke-width="2"></circle>
+<circle cx="100" cy="45" fill="#fff9e6" r="8" stroke="#FFD700" stroke-width="1"></circle>
+<text fill="#FF6B6B" font-size="16" font-weight="bold" text-anchor="middle" x="100" y="50">+</text>
+<ellipse cx="100" cy="215" fill="#333" rx="35" ry="8" stroke="#000" stroke-width="2"></ellipse>
+<text fill="#fff" font-size="16" font-weight="bold" text-anchor="middle" x="100" y="220">−</text>
+<line stroke="#c0392b" stroke-width="1" x1="70" x2="70" y1="120" y2="140"></line>
+<line stroke="#c0392b" stroke-width="1" x1="130" x2="130" y1="120" y2="140"></line>
+</svg>
+<div class="battery-info">
+<p><strong>Caractéristiques :</strong></p>
+<p>• Forme cylindrique allongée</p>
+<p>• Bouton/ressort (+) en haut</p>
+<p>• Base plate (−) en bas</p>
+<p>• Tension : 1,5V (AA, AAA, C, D)</p>
+</div>
+<div class="poles-display">
+<div class="pole positive">
+<div class="pole-symbol">⊕</div>
                                 BOUTON +
                             </div>
-                            <div class="pole negative">
-                                <div class="pole-symbol">⊖</div>
+<div class="pole negative">
+<div class="pole-symbol">⊖</div>
                                 BASE −
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Pile LR12 -->
-                    <div class="battery-card">
-                        <h3>Pile LR12 (4,5V)</h3>
-                        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="50" y="60" width="100" height="130" fill="#FF1493" stroke="#c0392b" stroke-width="2" rx="5"/>
-                            <text x="100" y="140" font-size="13" text-anchor="middle" fill="white" font-weight="bold">LR12</text>
-                            <text x="100" y="160" font-size="11" text-anchor="middle" fill="white" font-weight="bold">4.5V</text>
-                            <rect x="85" y="35" width="30" height="30" fill="#FFD700" stroke="#FFA500" stroke-width="2" rx="3"/>
-                            <rect x="92" y="42" width="16" height="16" fill="#fff9e6" stroke="#FFD700" stroke-width="1" rx="2"/>
-                            <text x="100" y="55" font-size="14" text-anchor="middle" fill="#FF6B6B" font-weight="bold">+</text>
-                            <rect x="85" y="205" width="30" height="30" fill="#333" stroke="#000" stroke-width="2" rx="3"/>
-                            <rect x="92" y="212" width="16" height="16" fill="#666" stroke="#000" stroke-width="1" rx="2"/>
-                            <text x="100" y="225" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
-                            <rect x="40" y="180" width="12" height="25" fill="#FFD700" stroke="#FFA500" stroke-width="1" rx="2"/>
-                            <rect x="148" y="180" width="12" height="25" fill="#333" stroke="#000" stroke-width="1" rx="2"/>
-                        </svg>
-
-                        <div class="battery-info">
-                            <p><strong>Caractéristiques :</strong></p>
-                            <p>• Pile plate professionnelle</p>
-                            <p>• Connecteurs en haut et bas</p>
-                            <p>• Deux lames latérales (anciennes)</p>
-                            <p>• Tension : 4,5V</p>
-                        </div>
-
-                        <div class="poles-display">
-                            <div class="pole positive">
-                                <div class="pole-symbol">⊕</div>
+</div>
+</div>
+<!-- Pile LR12 -->
+<div class="battery-card">
+<h3>Pile LR12 (4,5V)</h3>
+<svg viewbox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FF1493" height="130" rx="5" stroke="#c0392b" stroke-width="2" width="100" x="50" y="60"></rect>
+<text fill="white" font-size="13" font-weight="bold" text-anchor="middle" x="100" y="140">LR12</text>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="100" y="160">4.5V</text>
+<rect fill="#FFD700" height="30" rx="3" stroke="#FFA500" stroke-width="2" width="30" x="85" y="35"></rect>
+<rect fill="#fff9e6" height="16" rx="2" stroke="#FFD700" stroke-width="1" width="16" x="92" y="42"></rect>
+<text fill="#FF6B6B" font-size="14" font-weight="bold" text-anchor="middle" x="100" y="55">+</text>
+<rect fill="#333" height="30" rx="3" stroke="#000" stroke-width="2" width="30" x="85" y="205"></rect>
+<rect fill="#666" height="16" rx="2" stroke="#000" stroke-width="1" width="16" x="92" y="212"></rect>
+<text fill="#fff" font-size="14" font-weight="bold" text-anchor="middle" x="100" y="225">−</text>
+<rect fill="#FFD700" height="25" rx="2" stroke="#FFA500" stroke-width="1" width="12" x="40" y="180"></rect>
+<rect fill="#333" height="25" rx="2" stroke="#000" stroke-width="1" width="12" x="148" y="180"></rect>
+</svg>
+<div class="battery-info">
+<p><strong>Caractéristiques :</strong></p>
+<p>• Pile plate professionnelle</p>
+<p>• Connecteurs en haut et bas</p>
+<p>• Deux lames latérales (anciennes)</p>
+<p>• Tension : 4,5V</p>
+</div>
+<div class="poles-display">
+<div class="pole positive">
+<div class="pole-symbol">⊕</div>
                                 BORNE +
                             </div>
-                            <div class="pole negative">
-                                <div class="pole-symbol">⊖</div>
+<div class="pole negative">
+<div class="pole-symbol">⊖</div>
                                 BORNE −
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 style="margin-bottom: 15px; color: #333;">Tableau Comparatif</h3>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Type de Pile</th>
-                            <th>Forme</th>
-                            <th>Borne Positive (+)</th>
-                            <th>Borne Négative (−)</th>
-                            <th>Tension</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="battery-type">Pile Plate</td>
-                            <td>Rectangulaire plate</td>
-                            <td>Lame dorée (gauche)</td>
-                            <td>Lame noire (droite)</td>
-                            <td><span class="voltage">4,5V - 9V</span></td>
-                        </tr>
-                        <tr>
-                            <td class="battery-type">Pile Cylindrique</td>
-                            <td>Cylindre allongé</td>
-                            <td>Bouton/ressort (haut)</td>
-                            <td>Base plate (bas)</td>
-                            <td><span class="voltage">1,5V</span></td>
-                        </tr>
-                        <tr>
-                            <td class="battery-type">Pile LR12</td>
-                            <td>Rectangulaire plate</td>
-                            <td>Connecteur (haut)</td>
-                            <td>Connecteur (bas)</td>
-                            <td><span class="voltage">4,5V</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="legend">
-                    <div class="legend-item positive">
-                        <strong>⊕ Borne Positive (+)</strong>
-                        <p>La borne par laquelle sort le courant. Couleur dorée/jaune. Point de départ du courant dans le circuit.</p>
-                    </div>
-                    <div class="legend-item negative">
-                        <strong>⊖ Borne Négative (−)</strong>
-                        <p>La borne par laquelle rentre le courant. Couleur noire/grise. Point d'arrivée du courant dans le circuit.</p>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <strong>💡 À retenir :</strong><br>
-                    • Chaque pile a toujours une borne <strong>positive (+)</strong> et une borne <strong>négative (−)</strong><br>
-                    • Le courant circule de + vers − à l'extérieur de la pile (convention)<br>
-                    • Les piles de même tension peuvent être combinées en série (+ d'une à − de l'autre)<br>
-                    • Attention : inverser les bornes peut endommager les appareils<br>
+</div>
+</div>
+</div>
+<h3 style="margin-bottom: 15px; color: #333;">Tableau Comparatif</h3>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>Type de Pile</th>
+<th>Forme</th>
+<th>Borne Positive (+)</th>
+<th>Borne Négative (−)</th>
+<th>Tension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="battery-type">Pile Plate</td>
+<td>Rectangulaire plate</td>
+<td>Lame dorée (gauche)</td>
+<td>Lame noire (droite)</td>
+<td><span class="voltage">4,5V - 9V</span></td>
+</tr>
+<tr>
+<td class="battery-type">Pile Cylindrique</td>
+<td>Cylindre allongé</td>
+<td>Bouton/ressort (haut)</td>
+<td>Base plate (bas)</td>
+<td><span class="voltage">1,5V</span></td>
+</tr>
+<tr>
+<td class="battery-type">Pile LR12</td>
+<td>Rectangulaire plate</td>
+<td>Connecteur (haut)</td>
+<td>Connecteur (bas)</td>
+<td><span class="voltage">4,5V</span></td>
+</tr>
+</tbody>
+</table>
+<div class="legend">
+<div class="legend-item positive">
+<strong>⊕ Borne Positive (+)</strong>
+<p>La borne par laquelle sort le courant. Couleur dorée/jaune. Point de départ du courant dans le circuit.</p>
+</div>
+<div class="legend-item negative">
+<strong>⊖ Borne Négative (−)</strong>
+<p>La borne par laquelle rentre le courant. Couleur noire/grise. Point d'arrivée du courant dans le circuit.</p>
+</div>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Chaque pile a toujours une borne <strong>positive (+)</strong> et une borne <strong>négative (−)</strong><br/>
+                    • Le courant circule de + vers − à l'extérieur de la pile (convention)<br/>
+                    • Les piles de même tension peuvent être combinées en série (+ d'une à − de l'autre)<br/>
+                    • Attention : inverser les bornes peut endommager les appareils<br/>
                     • La couleur dorée/jaune indique généralement la borne positive
                 </div>
-            </div>
-        </div>
 
-        <!-- TAB 5: SYMBOLES NORMALISÉS -->
-        <div id="tab5" class="tab-content">
-            <div class="container">
-                <h2>🔌 Symboles Normalisés des Éléments du Circuit</h2>
-                <p class="subtitle">Les symboles utilisés dans les schémas électriques normalisés</p>
 
-                <img src="public/images/schematiser_circuit_1250.jpg" alt="Symboles normalisés du circuit électrique" style="width: 100%; max-width: 900px; height: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
-
-                <h3 style="margin-top: 40px; margin-bottom: 20px; color: #333;">Description des symboles principaux</h3>
-
-                <svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Grille de symboles -->
-
-                    <!-- Ligne 1 -->
-                    <!-- Pile -->
-                    <g>
-                        <text x="120" y="50" font-size="16" font-weight="bold" fill="#333">Pile</text>
-                        <line x1="80" y1="80" x2="80" y2="120" stroke="#333" stroke-width="3"/>
-                        <line x1="100" y1="70" x2="100" y2="130" stroke="#333" stroke-width="2"/>
-                        <text x="40" y="150" font-size="12" fill="#666">Batterie / Pile</text>
-                        <text x="40" y="165" font-size="11" fill="#999">+ et − polaires</text>
-                    </g>
-
-                    <!-- Lampe -->
-                    <g>
-                        <text x="300" y="50" font-size="16" font-weight="bold" fill="#333">Lampe</text>
-                        <circle cx="320" cy="100" r="20" fill="none" stroke="#333" stroke-width="2"/>
-                        <line x1="310" y1="120" x2="310" y2="140" stroke="#333" stroke-width="2"/>
-                        <line x1="330" y1="120" x2="330" y2="140" stroke="#333" stroke-width="2"/>
-                        <line x1="320" y1="85" x2="320" y2="65" stroke="#333" stroke-width="2"/>
-                        <text x="280" y="150" font-size="12" fill="#666">Ampoule</text>
-                        <text x="280" y="165" font-size="11" fill="#999">Voyant lumineux</text>
-                    </g>
-
-                    <!-- Interrupteur -->
-                    <g>
-                        <text x="520" y="50" font-size="16" font-weight="bold" fill="#333">Interrupteur</text>
-                        <line x1="520" y1="100" x2="540" y2="100" stroke="#333" stroke-width="2"/>
-                        <circle cx="540" cy="100" r="4" fill="#333"/>
-                        <line x1="545" y1="100" x2="560" y2="100" stroke="#333" stroke-width="2"/>
-                        <circle cx="520" cy="100" r="4" fill="#333"/>
-                        <text x="480" y="150" font-size="12" fill="#666">Commutateur</text>
-                        <text x="480" y="165" font-size="11" fill="#999">Ouvert / Fermé</text>
-                    </g>
-
-                    <!-- Moteur -->
-                    <g>
-                        <text x="740" y="50" font-size="16" font-weight="bold" fill="#333">Moteur</text>
-                        <circle cx="760" cy="100" r="20" fill="none" stroke="#333" stroke-width="2"/>
-                        <text x="755" y="108" font-size="18" font-weight="bold" fill="#333">M</text>
-                        <line x1="750" y1="120" x2="750" y2="140" stroke="#333" stroke-width="2"/>
-                        <line x1="770" y1="120" x2="770" y2="140" stroke="#333" stroke-width="2"/>
-                        <text x="720" y="150" font-size="12" fill="#666">Moteur Électrique</text>
-                        <text x="720" y="165" font-size="11" fill="#999">Convertit énergie</text>
-                    </g>
-
-                    <!-- Ligne 2 -->
-                    <!-- Fil / Connexion -->
-                    <g>
-                        <text x="120" y="220" font-size="16" font-weight="bold" fill="#333">Fil</text>
-                        <line x1="80" y1="260" x2="140" y2="260" stroke="#333" stroke-width="3"/>
-                        <text x="40" y="310" font-size="12" fill="#666">Fil conducteur</text>
-                        <text x="40" y="325" font-size="11" fill="#999">Transport courant</text>
-                    </g>
-
-                    <!-- Nœud -->
-                    <g>
-                        <text x="300" y="220" font-size="16" font-weight="bold" fill="#333">Nœud</text>
-                        <line x1="310" y1="250" x2="340" y2="250" stroke="#333" stroke-width="2"/>
-                        <line x1="310" y1="270" x2="310" y2="250" stroke="#333" stroke-width="2"/>
-                        <circle cx="310" cy="250" r="4" fill="#333"/>
-                        <line x1="340" y1="270" x2="340" y2="250" stroke="#333" stroke-width="2"/>
-                        <text x="270" y="310" font-size="12" fill="#666">Connexion</text>
-                        <text x="270" y="325" font-size="11" fill="#999">Jonction de fils</text>
-                    </g>
-
-                    <!-- Résistance -->
-                    <g>
-                        <text x="520" y="220" font-size="16" font-weight="bold" fill="#333">Résistance</text>
-                        <line x1="520" y1="260" x2="530" y2="260" stroke="#333" stroke-width="2"/>
-                        <rect x="530" y="250" width="30" height="20" fill="none" stroke="#333" stroke-width="2"/>
-                        <line x1="560" y1="260" x2="570" y2="260" stroke="#333" stroke-width="2"/>
-                        <text x="480" y="310" font-size="12" fill="#666">Résistance</text>
-                        <text x="480" y="325" font-size="11" fill="#999">Limite le courant</text>
-                    </g>
-
-                    <!-- Fusible -->
-                    <g>
-                        <text x="740" y="220" font-size="16" font-weight="bold" fill="#333">Fusible</text>
-                        <line x1="750" y1="250" x2="750" y2="280" stroke="#333" stroke-width="2"/>
-                        <circle cx="750" cy="265" r="8" fill="none" stroke="#333" stroke-width="2"/>
-                        <line x1="750" y1="250" x2="760" y2="240" stroke="#333" stroke-width="2"/>
-                        <line x1="750" y1="280" x2="760" y2="290" stroke="#333" stroke-width="2"/>
-                        <text x="710" y="310" font-size="12" fill="#666">Protection</text>
-                        <text x="710" y="325" font-size="11" fill="#999">Coupe surcharge</text>
-                    </g>
-
-                    <!-- Ligne 3 -->
-                    <!-- Diode -->
-                    <g>
-                        <text x="120" y="390" font-size="16" font-weight="bold" fill="#333">Diode</text>
-                        <polygon points="80,430 100,445 80,460" fill="none" stroke="#333" stroke-width="2"/>
-                        <line x1="100" y1="430" x2="100" y2="460" stroke="#333" stroke-width="2"/>
-                        <line x1="70" y1="445" x2="80" y2="445" stroke="#333" stroke-width="2"/>
-                        <line x1="100" y1="445" x2="110" y2="445" stroke="#333" stroke-width="2"/>
-                        <text x="40" y="480" font-size="12" fill="#666">Diode</text>
-                        <text x="40" y="495" font-size="11" fill="#999">Laisse passer sens</text>
-                    </g>
-
-                    <!-- Batterie Multiple -->
-                    <g>
-                        <text x="300" y="390" font-size="16" font-weight="bold" fill="#333">Batterie</text>
-                        <line x1="300" y1="430" x2="300" y2="470" stroke="#333" stroke-width="3"/>
-                        <line x1="310" y1="420" x2="310" y2="480" stroke="#333" stroke-width="2"/>
-                        <line x1="320" y1="430" x2="320" y2="470" stroke="#333" stroke-width="3"/>
-                        <line x1="330" y1="420" x2="330" y2="480" stroke="#333" stroke-width="2"/>
-                        <line x1="280" y1="450" x2="340" y2="450" stroke="#333" stroke-width="2"/>
-                        <text x="270" y="480" font-size="12" fill="#666">Batterie</text>
-                        <text x="270" y="495" font-size="11" fill="#999">Piles en série</text>
-                    </g>
-
-                    <!-- Condensateur -->
-                    <g>
-                        <text x="520" y="390" font-size="16" font-weight="bold" fill="#333">Condensateur</text>
-                        <line x1="520" y1="440" x2="550" y2="440" stroke="#333" stroke-width="2"/>
-                        <line x1="560" y1="430" x2="560" y2="450" stroke="#333" stroke-width="2"/>
-                        <line x1="570" y1="430" x2="570" y2="450" stroke="#333" stroke-width="2"/>
-                        <line x1="580" y1="440" x2="610" y2="440" stroke="#333" stroke-width="2"/>
-                        <text x="480" y="480" font-size="12" fill="#666">Condensateur</text>
-                        <text x="480" y="495" font-size="11" fill="#999">Stocke électricité</text>
-                    </g>
-
-                    <!-- Inductance / Bobine -->
-                    <g>
-                        <text x="740" y="390" font-size="16" font-weight="bold" fill="#333">Inductance</text>
-                        <line x1="750" y1="440" x2="760" y2="440" stroke="#333" stroke-width="2"/>
-                        <path d="M 765 430 Q 765 450 775 450 Q 785 450 785 430" fill="none" stroke="#333" stroke-width="2"/>
-                        <path d="M 790 430 Q 790 450 800 450 Q 810 450 810 430" fill="none" stroke="#333" stroke-width="2"/>
-                        <line x1="815" y1="440" x2="825" y2="440" stroke="#333" stroke-width="2"/>
-                        <text x="700" y="480" font-size="12" fill="#666">Bobine / Inductance</text>
-                        <text x="700" y="495" font-size="11" fill="#999">Crée champ magn.</text>
-                    </g>
-
-                    <!-- Ligne 4 -->
-                    <!-- Interrupteur Croisé -->
-                    <g>
-                        <text x="120" y="560" font-size="16" font-weight="bold" fill="#333">Inverseur</text>
-                        <line x1="80" y1="610" x2="90" y2="610" stroke="#333" stroke-width="2"/>
-                        <circle cx="90" cy="610" r="3" fill="#333"/>
-                        <line x1="95" y1="605" x2="105" y2="615" stroke="#333" stroke-width="2"/>
-                        <line x1="110" y1="610" x2="120" y2="610" stroke="#333" stroke-width="2"/>
-                        <line x1="110" y1="620" x2="120" y2="620" stroke="#333" stroke-width="2"/>
-                        <text x="40" y="650" font-size="12" fill="#666">Interrupteur 3 pos</text>
-                        <text x="40" y="665" font-size="11" fill="#999">Inverse polarité</text>
-                    </g>
-
-                    <!-- Thermostat -->
-                    <g>
-                        <text x="300" y="560" font-size="16" font-weight="bold" fill="#333">Interr. Thermique</text>
-                        <line x1="310" y1="600" x2="330" y2="600" stroke="#333" stroke-width="2"/>
-                        <circle cx="330" cy="600" r="4" fill="#333"/>
-                        <path d="M 335 600 Q 340 610 345 600" fill="none" stroke="#333" stroke-width="2"/>
-                        <line x1="350" y1="600" x2="370" y2="600" stroke="#333" stroke-width="2"/>
-                        <text x="270" y="650" font-size="12" fill="#666">Interrupteur Thermique</text>
-                        <text x="270" y="665" font-size="11" fill="#999">Sensible chaleur</text>
-                    </g>
-
-                    <!-- LED -->
-                    <g>
-                        <text x="520" y="560" font-size="16" font-weight="bold" fill="#333">LED</text>
-                        <polygon points="540,600 560,615 540,630" fill="none" stroke="#FF6B6B" stroke-width="2"/>
-                        <line x1="560" y1="600" x2="560" y2="630" stroke="#FF6B6B" stroke-width="2"/>
-                        <line x1="545" y1="595" x2="555" y2="585" stroke="#FF6B6B" stroke-width="2"/>
-                        <line x1="555" y1="595" x2="565" y2="585" stroke="#FF6B6B" stroke-width="2"/>
-                        <line x1="530" y1="615" x2="550" y2="615" stroke="#FF6B6B" stroke-width="2"/>
-                        <text x="500" y="650" font-size="12" fill="#666">LED</text>
-                        <text x="500" y="665" font-size="11" fill="#999">Diode luminescente</text>
-                    </g>
-
-                    <!-- Commutateur Double -->
-                    <g>
-                        <text x="740" y="560" font-size="16" font-weight="bold" fill="#333">Interr. Double</text>
-                        <circle cx="760" cy="595" r="3" fill="#333"/>
-                        <circle cx="760" cy="620" r="3" fill="#333"/>
-                        <line x1="750" y1="595" x2="760" y2="595" stroke="#333" stroke-width="2"/>
-                        <line x1="765" y1="595" x2="775" y2="595" stroke="#333" stroke-width="2"/>
-                        <line x1="750" y1="620" x2="760" y2="620" stroke="#333" stroke-width="2"/>
-                        <line x1="765" y1="620" x2="775" y2="620" stroke="#333" stroke-width="2"/>
-                        <text x="700" y="650" font-size="12" fill="#666">Interr. Double</text>
-                        <text x="700" y="665" font-size="11" fill="#999">Deux circuits</text>
-                    </g>
-
-                    <!-- Légende -->
-                    <rect x="50" y="740" width="900" height="130" fill="#f5f5f5" stroke="#ddd" stroke-width="1" rx="5"/>
-                    <text x="70" y="765" font-size="14" font-weight="bold" fill="#333">📖 À retenir</text>
-
-                    <text x="70" y="790" font-size="12" fill="#555">• Les <strong>symboles normalisés</strong> permettent de représenter les circuits de façon universelle</text>
-                    <text x="70" y="810" font-size="12" fill="#555">• Chaque symbole a une <strong>signification précise</strong> et reconnue internationalement</text>
-                    <text x="70" y="830" font-size="12" fill="#555">• Ces symboles permettent aux techniciens du monde entier de <strong>comprendre les schémas</strong></text>
-                    <text x="70" y="850" font-size="12" fill="#555">• Les symboles simplent la représentation et facilitent la <strong>lecture et l'analyse</strong> des circuits</text>
-                </svg>
-
-                <div class="info" style="margin-top: 30px;">
-                    <strong>💡 Conseils :</strong><br>
-                    • Apprenez à reconnaître ces symboles pour lire les schémas électriques<br>
-                    • Les symboles peuvent varier légèrement selon les pays mais les concepts restent similaires<br>
-                    • Utilisez une légende ou un tableau de symboles quand vous dessinez des circuits<br>
-                    • Les normes européennes (CEI) et américaines (ANSI) ont quelques différences mineures<br>
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab4"></div></div>
+</div>
+<!-- TAB 5: SYMBOLES NORMALISÉS -->
+<div class="tab-content" id="tab5">
+<div class="container">
+<h2>🔌 Symboles Normalisés des Éléments du Circuit</h2>
+<p class="subtitle">Les symboles utilisés dans les schémas électriques normalisés</p>
+<img alt="Symboles normalisés du circuit électrique" src="public/images/schematiser_circuit_1250.jpg" style="width: 100%; max-width: 900px; height: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);"/>
+<h3 style="margin-top: 40px; margin-bottom: 20px; color: #333;">Description des symboles principaux</h3>
+<svg viewbox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+<!-- Grille de symboles -->
+<!-- Ligne 1 -->
+<!-- Pile -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="120" y="50">Pile</text>
+<line stroke="#333" stroke-width="3" x1="80" x2="80" y1="80" y2="120"></line>
+<line stroke="#333" stroke-width="2" x1="100" x2="100" y1="70" y2="130"></line>
+<text fill="#666" font-size="12" x="40" y="150">Batterie / Pile</text>
+<text fill="#999" font-size="11" x="40" y="165">+ et − polaires</text>
+</g>
+<!-- Lampe -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="300" y="50">Lampe</text>
+<circle cx="320" cy="100" fill="none" r="20" stroke="#333" stroke-width="2"></circle>
+<line stroke="#333" stroke-width="2" x1="310" x2="310" y1="120" y2="140"></line>
+<line stroke="#333" stroke-width="2" x1="330" x2="330" y1="120" y2="140"></line>
+<line stroke="#333" stroke-width="2" x1="320" x2="320" y1="85" y2="65"></line>
+<text fill="#666" font-size="12" x="280" y="150">Ampoule</text>
+<text fill="#999" font-size="11" x="280" y="165">Voyant lumineux</text>
+</g>
+<!-- Interrupteur -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="520" y="50">Interrupteur</text>
+<line stroke="#333" stroke-width="2" x1="520" x2="540" y1="100" y2="100"></line>
+<circle cx="540" cy="100" fill="#333" r="4"></circle>
+<line stroke="#333" stroke-width="2" x1="545" x2="560" y1="100" y2="100"></line>
+<circle cx="520" cy="100" fill="#333" r="4"></circle>
+<text fill="#666" font-size="12" x="480" y="150">Commutateur</text>
+<text fill="#999" font-size="11" x="480" y="165">Ouvert / Fermé</text>
+</g>
+<!-- Moteur -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="740" y="50">Moteur</text>
+<circle cx="760" cy="100" fill="none" r="20" stroke="#333" stroke-width="2"></circle>
+<text fill="#333" font-size="18" font-weight="bold" x="755" y="108">M</text>
+<line stroke="#333" stroke-width="2" x1="750" x2="750" y1="120" y2="140"></line>
+<line stroke="#333" stroke-width="2" x1="770" x2="770" y1="120" y2="140"></line>
+<text fill="#666" font-size="12" x="720" y="150">Moteur Électrique</text>
+<text fill="#999" font-size="11" x="720" y="165">Convertit énergie</text>
+</g>
+<!-- Ligne 2 -->
+<!-- Fil / Connexion -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="120" y="220">Fil</text>
+<line stroke="#333" stroke-width="3" x1="80" x2="140" y1="260" y2="260"></line>
+<text fill="#666" font-size="12" x="40" y="310">Fil conducteur</text>
+<text fill="#999" font-size="11" x="40" y="325">Transport courant</text>
+</g>
+<!-- Nœud -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="300" y="220">Nœud</text>
+<line stroke="#333" stroke-width="2" x1="310" x2="340" y1="250" y2="250"></line>
+<line stroke="#333" stroke-width="2" x1="310" x2="310" y1="270" y2="250"></line>
+<circle cx="310" cy="250" fill="#333" r="4"></circle>
+<line stroke="#333" stroke-width="2" x1="340" x2="340" y1="270" y2="250"></line>
+<text fill="#666" font-size="12" x="270" y="310">Connexion</text>
+<text fill="#999" font-size="11" x="270" y="325">Jonction de fils</text>
+</g>
+<!-- Résistance -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="520" y="220">Résistance</text>
+<line stroke="#333" stroke-width="2" x1="520" x2="530" y1="260" y2="260"></line>
+<rect fill="none" height="20" stroke="#333" stroke-width="2" width="30" x="530" y="250"></rect>
+<line stroke="#333" stroke-width="2" x1="560" x2="570" y1="260" y2="260"></line>
+<text fill="#666" font-size="12" x="480" y="310">Résistance</text>
+<text fill="#999" font-size="11" x="480" y="325">Limite le courant</text>
+</g>
+<!-- Fusible -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="740" y="220">Fusible</text>
+<line stroke="#333" stroke-width="2" x1="750" x2="750" y1="250" y2="280"></line>
+<circle cx="750" cy="265" fill="none" r="8" stroke="#333" stroke-width="2"></circle>
+<line stroke="#333" stroke-width="2" x1="750" x2="760" y1="250" y2="240"></line>
+<line stroke="#333" stroke-width="2" x1="750" x2="760" y1="280" y2="290"></line>
+<text fill="#666" font-size="12" x="710" y="310">Protection</text>
+<text fill="#999" font-size="11" x="710" y="325">Coupe surcharge</text>
+</g>
+<!-- Ligne 3 -->
+<!-- Diode -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="120" y="390">Diode</text>
+<polygon fill="none" points="80,430 100,445 80,460" stroke="#333" stroke-width="2"></polygon>
+<line stroke="#333" stroke-width="2" x1="100" x2="100" y1="430" y2="460"></line>
+<line stroke="#333" stroke-width="2" x1="70" x2="80" y1="445" y2="445"></line>
+<line stroke="#333" stroke-width="2" x1="100" x2="110" y1="445" y2="445"></line>
+<text fill="#666" font-size="12" x="40" y="480">Diode</text>
+<text fill="#999" font-size="11" x="40" y="495">Laisse passer sens</text>
+</g>
+<!-- Batterie Multiple -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="300" y="390">Batterie</text>
+<line stroke="#333" stroke-width="3" x1="300" x2="300" y1="430" y2="470"></line>
+<line stroke="#333" stroke-width="2" x1="310" x2="310" y1="420" y2="480"></line>
+<line stroke="#333" stroke-width="3" x1="320" x2="320" y1="430" y2="470"></line>
+<line stroke="#333" stroke-width="2" x1="330" x2="330" y1="420" y2="480"></line>
+<line stroke="#333" stroke-width="2" x1="280" x2="340" y1="450" y2="450"></line>
+<text fill="#666" font-size="12" x="270" y="480">Batterie</text>
+<text fill="#999" font-size="11" x="270" y="495">Piles en série</text>
+</g>
+<!-- Condensateur -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="520" y="390">Condensateur</text>
+<line stroke="#333" stroke-width="2" x1="520" x2="550" y1="440" y2="440"></line>
+<line stroke="#333" stroke-width="2" x1="560" x2="560" y1="430" y2="450"></line>
+<line stroke="#333" stroke-width="2" x1="570" x2="570" y1="430" y2="450"></line>
+<line stroke="#333" stroke-width="2" x1="580" x2="610" y1="440" y2="440"></line>
+<text fill="#666" font-size="12" x="480" y="480">Condensateur</text>
+<text fill="#999" font-size="11" x="480" y="495">Stocke électricité</text>
+</g>
+<!-- Inductance / Bobine -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="740" y="390">Inductance</text>
+<line stroke="#333" stroke-width="2" x1="750" x2="760" y1="440" y2="440"></line>
+<path d="M 765 430 Q 765 450 775 450 Q 785 450 785 430" fill="none" stroke="#333" stroke-width="2"></path>
+<path d="M 790 430 Q 790 450 800 450 Q 810 450 810 430" fill="none" stroke="#333" stroke-width="2"></path>
+<line stroke="#333" stroke-width="2" x1="815" x2="825" y1="440" y2="440"></line>
+<text fill="#666" font-size="12" x="700" y="480">Bobine / Inductance</text>
+<text fill="#999" font-size="11" x="700" y="495">Crée champ magn.</text>
+</g>
+<!-- Ligne 4 -->
+<!-- Interrupteur Croisé -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="120" y="560">Inverseur</text>
+<line stroke="#333" stroke-width="2" x1="80" x2="90" y1="610" y2="610"></line>
+<circle cx="90" cy="610" fill="#333" r="3"></circle>
+<line stroke="#333" stroke-width="2" x1="95" x2="105" y1="605" y2="615"></line>
+<line stroke="#333" stroke-width="2" x1="110" x2="120" y1="610" y2="610"></line>
+<line stroke="#333" stroke-width="2" x1="110" x2="120" y1="620" y2="620"></line>
+<text fill="#666" font-size="12" x="40" y="650">Interrupteur 3 pos</text>
+<text fill="#999" font-size="11" x="40" y="665">Inverse polarité</text>
+</g>
+<!-- Thermostat -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="300" y="560">Interr. Thermique</text>
+<line stroke="#333" stroke-width="2" x1="310" x2="330" y1="600" y2="600"></line>
+<circle cx="330" cy="600" fill="#333" r="4"></circle>
+<path d="M 335 600 Q 340 610 345 600" fill="none" stroke="#333" stroke-width="2"></path>
+<line stroke="#333" stroke-width="2" x1="350" x2="370" y1="600" y2="600"></line>
+<text fill="#666" font-size="12" x="270" y="650">Interrupteur Thermique</text>
+<text fill="#999" font-size="11" x="270" y="665">Sensible chaleur</text>
+</g>
+<!-- LED -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="520" y="560">LED</text>
+<polygon fill="none" points="540,600 560,615 540,630" stroke="#FF6B6B" stroke-width="2"></polygon>
+<line stroke="#FF6B6B" stroke-width="2" x1="560" x2="560" y1="600" y2="630"></line>
+<line stroke="#FF6B6B" stroke-width="2" x1="545" x2="555" y1="595" y2="585"></line>
+<line stroke="#FF6B6B" stroke-width="2" x1="555" x2="565" y1="595" y2="585"></line>
+<line stroke="#FF6B6B" stroke-width="2" x1="530" x2="550" y1="615" y2="615"></line>
+<text fill="#666" font-size="12" x="500" y="650">LED</text>
+<text fill="#999" font-size="11" x="500" y="665">Diode luminescente</text>
+</g>
+<!-- Commutateur Double -->
+<g>
+<text fill="#333" font-size="16" font-weight="bold" x="740" y="560">Interr. Double</text>
+<circle cx="760" cy="595" fill="#333" r="3"></circle>
+<circle cx="760" cy="620" fill="#333" r="3"></circle>
+<line stroke="#333" stroke-width="2" x1="750" x2="760" y1="595" y2="595"></line>
+<line stroke="#333" stroke-width="2" x1="765" x2="775" y1="595" y2="595"></line>
+<line stroke="#333" stroke-width="2" x1="750" x2="760" y1="620" y2="620"></line>
+<line stroke="#333" stroke-width="2" x1="765" x2="775" y1="620" y2="620"></line>
+<text fill="#666" font-size="12" x="700" y="650">Interr. Double</text>
+<text fill="#999" font-size="11" x="700" y="665">Deux circuits</text>
+</g>
+<!-- Légende -->
+<rect fill="#f5f5f5" height="130" rx="5" stroke="#ddd" stroke-width="1" width="900" x="50" y="740"></rect>
+<text fill="#333" font-size="14" font-weight="bold" x="70" y="765">📖 À retenir</text>
+<text fill="#555" font-size="12" x="70" y="790">• Les <strong>symboles normalisés</strong> permettent de représenter les circuits de façon universelle</text>
+<text fill="#555" font-size="12" x="70" y="810">• Chaque symbole a une <strong>signification précise</strong> et reconnue internationalement</text>
+<text fill="#555" font-size="12" x="70" y="830">• Ces symboles permettent aux techniciens du monde entier de <strong>comprendre les schémas</strong></text>
+<text fill="#555" font-size="12" x="70" y="850">• Les symboles simplent la représentation et facilitent la <strong>lecture et l'analyse</strong> des circuits</text>
+</svg>
+<div class="info" style="margin-top: 30px;">
+<strong>💡 Conseils :</strong><br/>
+                    • Apprenez à reconnaître ces symboles pour lire les schémas électriques<br/>
+                    • Les symboles peuvent varier légèrement selon les pays mais les concepts restent similaires<br/>
+                    • Utilisez une légende ou un tableau de symboles quand vous dessinez des circuits<br/>
+                    • Les normes européennes (CEI) et américaines (ANSI) ont quelques différences mineures<br/>
                     • La pratique régulière vous permettra de mémoriser ces symboles facilement
                 </div>
-            </div>
-        </div>
-            </div>
-        </div>
-
-        <!-- QUIZ AREA -->
-        <div class="quiz-area">
-            <div class="quiz-section">
-                <h2>📝 Quiz - Le Circuit Électrique</h2>
-                <p>Testez vos connaissances en temps réel!</p>
-
-                <!-- Question 1 -->
-                <div class="quiz-question">
-                    <span class="question-number">1</span>
-                    <span class="question-text">Qu'est-ce qu'un circuit électrique complet?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="a"> Une boucle fermée permettant au courant de circuler sans interruption
+</div>
+</div>
+</div>
+</div>
+<!-- QUIZ AREA -->
+<div class="quiz-area">
+<div class="quiz-section">
+<h2>📝 Quiz - Le Circuit Électrique</h2>
+<p>Testez vos connaissances en temps réel!</p>
+<!-- Question 1 -->
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Qu'est-ce qu'un circuit électrique complet?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Une boucle fermée permettant au courant de circuler sans interruption
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="b"> Un circuit avec beaucoup de fils
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Un circuit avec beaucoup de fils
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q1" value="c"> Une prise de courant murale
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Une prise de courant murale
                         </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q1"></div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="quiz-question">
-                    <span class="question-number">2</span>
-                    <span class="question-text">Quels sont les composants essentiels d'un circuit électrique simple?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="a"> Une pile, des fils et un appareil (lampe, moteur, etc.)
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<!-- Question 2 -->
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Quels sont les composants essentiels d'un circuit électrique simple?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> Une pile, des fils et un appareil (lampe, moteur, etc.)
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="b"> Seulement une pile
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> Seulement une pile
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q2" value="c"> Des fils sans aucune source d'énergie
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> Des fils sans aucune source d'énergie
                         </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q2"></div>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="quiz-question">
-                    <span class="question-number">3</span>
-                    <span class="question-text">Quel est le rôle de la pile dans un circuit électrique?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="a"> Elle fournit l'énergie électrique pour faire fonctionner le circuit
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<!-- Question 3 -->
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Quel est le rôle de la pile dans un circuit électrique?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> Elle fournit l'énergie électrique pour faire fonctionner le circuit
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="b"> Elle éteint le circuit
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> Elle éteint le circuit
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q3" value="c"> Elle stocke seulement l'énergie sans la fournir
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> Elle stocke seulement l'énergie sans la fournir
                         </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q3"></div>
-                </div>
-
-                <!-- Question 4 -->
-                <div class="quiz-question">
-                    <span class="question-number">4</span>
-                    <span class="question-text">Que se passe-t-il si le circuit électrique est ouvert (cassé)?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q4" value="a"> Le courant circule toujours normalement
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<!-- Question 4 -->
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Que se passe-t-il si le circuit électrique est ouvert (cassé)?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> Le courant circule toujours normalement
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q4" value="b"> Le courant ne circule pas et la lampe s'éteint
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> Le courant ne circule pas et la lampe s'éteint
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q4" value="c"> La pile explose
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> La pile explose
                         </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q4"></div>
-                </div>
-
-                <!-- Question 5 -->
-                <div class="quiz-question">
-                    <span class="question-number">5</span>
-                    <span class="question-text">Comment le courant circule-t-il dans un circuit fermé?</span>
-                    <div class="quiz-options">
-                        <label class="quiz-option">
-                            <input type="radio" name="q5" value="a"> De la borne positive à la borne négative en passant par l'appareil
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<!-- Question 5 -->
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Comment le courant circule-t-il dans un circuit fermé?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> De la borne positive à la borne négative en passant par l'appareil
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q5" value="b"> Aléatoirement dans toutes les directions
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> Aléatoirement dans toutes les directions
                         </label>
-                        <label class="quiz-option">
-                            <input type="radio" name="q5" value="c"> Uniquement dans un seul fil
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> Uniquement dans un seul fil
                         </label>
-                    </div>
-                    <div class="quiz-feedback" id="feedback-q5"></div>
-                </div>
-
-                <!-- Submit Button -->
-                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
-                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
-            </div>
-        </div>
-    </div>
-
-    <script>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<!-- Submit Button -->
+<button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results" style="display: none;"></div>
+</div>
+</div>
+</div>
+<script>
         // Quiz answers and validation
         const quizAnswers = {
             q1: 'a', // Boucle fermée
@@ -2043,6 +1955,43 @@
         // Initialize controllers
         const circuit = new CircuitController();
         const motor = new MotorController();
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['le-circuit-electrique'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: le-circuit-electrique');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+                if (lessonQuestions['tab4']) {
+                    initSectionQuiz('quiz-tab4', lessonQuestions['tab4']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
     </script>
 </body>
 </html>

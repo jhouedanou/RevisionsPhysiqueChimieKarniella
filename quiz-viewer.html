@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Chargement... - Karniella Révisions</title>
+    <link rel="stylesheet" href="css/quiz-viewer.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1 id="quiz-title">Chargement...</h1>
+        <p id="quiz-description">...</p>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <div id="loading" class="loading" style="color: #333;">Chargement du quiz...</div>
+
+            <section id="quiz-container" class="quiz-section" style="display: none;">
+                <h2 id="quiz-header">📝 Quiz</h2>
+                <p class="subtitle" id="quiz-subtitle">Répondez aux questions ci-dessous</p>
+
+                <div id="questions-list">
+                    <!-- Questions will be generated here -->
+                </div>
+
+                <button id="submit-quiz" class="quiz-button">Vérifier mes réponses</button>
+
+                <div id="quiz-result" class="quiz-result"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/quiz-viewer.js"></script>
+</body>
+
+</html>

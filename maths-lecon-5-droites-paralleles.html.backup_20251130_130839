@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droites Parallèles</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>║ Droites Parallèles</h1>
+        <p>Leçon 5 - Parallélisme</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Définition</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Construction</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Exercices</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Droites Parallèles</h2>
+                
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Deux droites sont <strong>parallèles</strong> si elles n'ont aucun point commun ou si elles sont confondues.</p>
+                    <p>Notation : d // d' (d est parallèle à d')</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="200" viewBox="0 0 600 200">
+                        <line x1="50" y1="70" x2="550" y2="70" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="560" y="75" fill="#FF69B4" font-size="16">d</text>
+                        <line x1="50" y1="130" x2="550" y2="130" stroke="#f44336" stroke-width="2"/>
+                        <text x="560" y="135" fill="#f44336" font-size="16">d'</text>
+                        <line x1="200" y1="55" x2="200" y2="145" stroke="#888" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="400" y1="55" x2="400" y2="145" stroke="#888" stroke-width="1" stroke-dasharray="5,5"/>
+                        <text x="250" y="100" fill="#FF69B4" font-size="14">d // d'</text>
+                    </svg>
+                    <p>Les droites d et d' ne se coupent jamais</p>
+                    <p>Elles restent toujours à la même distance l'une de l'autre</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Deux droites parallèles ne se rencontrent jamais</p>
+                    <p><strong>2.</strong> Par un point hors d'une droite, il passe une seule parallèle à cette droite</p>
+                    <p><strong>3.</strong> Si d // d', alors d' // d (propriété symétrique)</p>
+                    <p><strong>4.</strong> Si d // d' et d' // d'', alors d // d'' (transitivité)</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Parallèles = pas de point commun<br>
+                    • Symbole : //<br>
+                    • Les droites parallèles restent équidistantes
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Construction de Droites Parallèles</h2>
+
+                <h3>Méthode 1 : Avec une équerre et une règle</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Placer la règle le long de la droite d</p>
+                    <p><strong>2.</strong> Placer l'équerre contre la règle</p>
+                    <p><strong>3.</strong> Faire glisser l'équerre le long de la règle jusqu'au point A</p>
+                    <p><strong>4.</strong> Tracer la parallèle en suivant l'équerre</p>
+                </div>
+
+                <h3>Méthode 2 : Avec un compas (méthode des perpendiculaires)</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Tracer une perpendiculaire à d passant par A</p>
+                    <p><strong>2.</strong> Marquer un point B sur cette perpendiculaire</p>
+                    <p><strong>3.</strong> Tracer une perpendiculaire à (AB) passant par B</p>
+                    <p><strong>4.</strong> Cette dernière droite est parallèle à d</p>
+                    <p style="margin-top: 10px;"><em>Rappel : Si deux droites sont perpendiculaires à une même droite, alors elles sont parallèles</em></p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Parallèle passant par un point</h4>
+                    <p>Par un point donné A, il existe une seule droite parallèle à une droite d donnée.</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • L'équerre + règle est la méthode la plus simple<br>
+                    • On peut aussi utiliser deux perpendiculaires successives<br>
+                    • Par un point, une seule parallèle à une droite donnée
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>🎯 Exercices</h2>
+
+                <div class="example-box">
+                    <h4>Exercice 1</h4>
+                    <p>Vrai ou Faux ?</p>
+                    <ul>
+                        <li>a) Si d // d' et d' // d'', alors d // d''</li>
+                        <li>b) Deux droites parallèles se coupent en un point à l'infini</li>
+                        <li>c) Par un point, on peut tracer plusieurs parallèles à une droite</li>
+                    </ul>
+                    <button onclick="document.getElementById('sol1').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Solution</button>
+                    <div id="sol1" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
+                        <p>a) <strong>VRAI</strong> - Propriété de transitivité</p>
+                        <p>b) <strong>FAUX</strong> - Les parallèles ne se coupent jamais</p>
+                        <p>c) <strong>FAUX</strong> - Une seule parallèle par un point</p>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Exercice 2</h4>
+                    <p>Complète avec les symboles corrects (// ou ⊥) :</p>
+                    <ul>
+                        <li>a) Si d ⊥ d' et d' ⊥ d'', alors d ___ d''</li>
+                        <li>b) Si d // d' et d' // d'', alors d ___ d''</li>
+                    </ul>
+                    <button onclick="document.getElementById('sol2').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #FF69B4; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); border: none; border-radius: 5px; cursor: pointer;">Solution</button>
+                    <div id="sol2" style="display: none; margin-top: 15px; padding: 15px; background: #FFFFFF; border: 3px solid #4caf50; border-radius: 5px;">
+                        <p>a) d <strong>//</strong> d'' (deux droites perpendiculaires à une même droite sont parallèles)</p>
+                        <p>b) d <strong>//</strong> d'' (transitivité du parallélisme)</p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <strong>💡 Pour bien comprendre :</strong><br>
+                    • Pratique en dessinant beaucoup de figures<br>
+                    • Utilise tes instruments de géométrie<br>
+                    • Vérifie toujours avec une règle graduée
+                </div>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="container">
+                <h2>📝 Quiz - Droites Parallèles</h2>
+                <p>Testez vos connaissances sur le parallélisme des droites</p>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Deux droites sont parallèles si :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> Elles se coupent en un point
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> Elles n'ont aucun point commun ou elles sont confondues
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> Elles forment un angle droit
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Comment note-t-on que deux droites d et d' sont parallèles ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> d // d'
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> d ⊥ d'
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> d = d'
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Par un point donné A, hors d'une droite d, combien de parallèles à d peut-on tracer ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> Aucune
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> Une seule
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> Une infinité
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Si d // d' et d' // d'', alors :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> d ⊥ d''
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> d // d''
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> d = d''
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Deux droites parallèles sont toujours :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> À distance variable l'une de l'autre
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> À la même distance l'une de l'autre
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> À angle droit l'une de l'autre
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Quel est le meilleur outil pour construire une droite parallèle avec précision ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> Une équerre seule
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> Une équerre et une règle
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> Un seul compas
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+                        <span class="question-number">🎨</span>
+                        <span class="question-text">Exercice de dessin : Tracez une droite d, puis tracez deux droites parallèles à d.</span>
+                        <div style="margin-top: 15px;">
+                            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer les droites parallèles.
+                            </p>
+                            <canvas id="drawingCanvas5" width="600" height="300" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;"></canvas>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <button class="quiz-button" onclick="clearCanvas5()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+                                <button class="quiz-button" onclick="saveDrawing5()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+                            </div>
+                            <div id="drawing-feedback5" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-button" onclick="submitQuiz('quiz5')">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+    <script>
+        // Variables pour le dessin
+        let canvas5 = document.getElementById('drawingCanvas5');
+        let ctx5 = canvas5.getContext('2d');
+        let isDrawing5 = false;
+        let lastX5 = 0;
+        let lastY5 = 0;
+        let drawingData5 = null;
+
+        // Initialiser le canvas
+        if (canvas5) {
+            canvas5.addEventListener('mousedown', startDrawing5);
+            canvas5.addEventListener('mousemove', draw5);
+            canvas5.addEventListener('mouseup', stopDrawing5);
+            canvas5.addEventListener('mouseout', stopDrawing5);
+
+            // Support tactile
+            canvas5.addEventListener('touchstart', handleTouch5);
+            canvas5.addEventListener('touchmove', handleTouch5);
+            canvas5.addEventListener('touchend', stopDrawing5);
+        }
+
+        function startDrawing5(e) {
+            isDrawing5 = true;
+            const rect = canvas5.getBoundingClientRect();
+            lastX5 = e.clientX - rect.left;
+            lastY5 = e.clientY - rect.top;
+        }
+
+        function draw5(e) {
+            if (!isDrawing5) return;
+
+            const rect = canvas5.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx5.strokeStyle = '#FF69B4';
+            ctx5.lineWidth = 2;
+            ctx5.lineCap = 'round';
+            ctx5.lineJoin = 'round';
+
+            ctx5.beginPath();
+            ctx5.moveTo(lastX5, lastY5);
+            ctx5.lineTo(x, y);
+            ctx5.stroke();
+
+            lastX5 = x;
+            lastY5 = y;
+        }
+
+        function stopDrawing5() {
+            isDrawing5 = false;
+        }
+
+        function handleTouch5(e) {
+            const touch = e.touches[0];
+            const rect = canvas5.getBoundingClientRect();
+
+            if (e.type === 'touchstart') {
+                lastX5 = touch.clientX - rect.left;
+                lastY5 = touch.clientY - rect.top;
+                isDrawing5 = true;
+            } else if (e.type === 'touchmove') {
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx5.strokeStyle = '#FF69B4';
+                ctx5.lineWidth = 2;
+                ctx5.lineCap = 'round';
+                ctx5.lineJoin = 'round';
+
+                ctx5.beginPath();
+                ctx5.moveTo(lastX5, lastY5);
+                ctx5.lineTo(x, y);
+                ctx5.stroke();
+
+                lastX5 = x;
+                lastY5 = y;
+            }
+            e.preventDefault();
+        }
+
+        function clearCanvas5() {
+            ctx5.clearRect(0, 0, canvas5.width, canvas5.height);
+            document.getElementById('drawing-feedback5').innerHTML = '';
+        }
+
+        function saveDrawing5() {
+            // Enregistrer les données du dessin
+            drawingData5 = canvas5.toDataURL();
+            document.getElementById('drawing-feedback5').innerHTML = '<span style="color: #4caf50;">✓ Dessin enregistré !</span>';
+        }
+
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'b',
+                q2: 'a',
+                q3: 'b',
+                q4: 'b',
+                q5: 'b',
+                q6: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droites Sécantes et Perpendiculaires</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>✖️ Droites Sécantes et Perpendiculaires</h1>
+        <p>Leçon 4 - Intersections et angles droits</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Droites Sécantes</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Perpendiculaires</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Construction</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Droites Sécantes</h2>
+                
+                <div class="definition-box">
+                    <h4>�� Définition</h4>
+                    <p>Deux droites sont <strong>sécantes</strong> si elles ont un point commun, appelé <strong>point d'intersection</strong>.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>�� Représentation</h4>
+                    <svg width="100%" height="200" viewBox="0 0 600 200">
+                        <line x1="50" y1="50" x2="550" y2="150" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="560" y="155" fill="#FF69B4" font-size="16">d</text>
+                        <line x1="50" y1="150" x2="550" y2="50" stroke="#f44336" stroke-width="2"/>
+                        <text x="560" y="55" fill="#f44336" font-size="16">d'</text>
+                        <circle cx="300" cy="100" r="5" fill="#FF69B4"/>
+                        <text x="310" y="95" fill="#FF69B4" font-size="16" font-weight="bold">I</text>
+                    </svg>
+                    <p>Les droites d et d' se coupent au point I</p>
+                    <p>On dit : "d et d' sont sécantes en I"</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Deux droites sécantes ont exactement un point commun</p>
+                    <p><strong>2.</strong> Les droites sécantes forment 4 angles</p>
+                    <p><strong>3.</strong> Les angles opposés par le sommet sont égaux</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Sécantes = qui se coupent en un point<br>
+                    • Le point d'intersection est unique<br>
+                    • Deux droites qui ne sont pas sécantes sont soit parallèles, soit confondues
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Droites Perpendiculaires</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Deux droites sont <strong>perpendiculaires</strong> si elles sont sécantes et forment un <strong>angle droit</strong> (90°).</p>
+                    <p>Notation : d ⊥ d' (d est perpendiculaire à d')</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="250" viewBox="0 0 600 250">
+                        <line x1="300" y1="20" x2="300" y2="230" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="310" y="30" fill="#FF69B4" font-size="16">d</text>
+                        <line x1="100" y1="125" x2="500" y2="125" stroke="#f44336" stroke-width="2"/>
+                        <text x="510" y="130" fill="#f44336" font-size="16">d'</text>
+                        <rect x="290" y="115" width="20" height="20" fill="none" stroke="#FF69B4" stroke-width="2"/>
+                        <circle cx="300" cy="125" r="5" fill="#FF69B4"/>
+                        <text x="310" y="145" fill="#FF69B4" font-size="16" font-weight="bold">I</text>
+                        <text x="320" y="100" fill="#FF69B4" font-size="14">90°</text>
+                    </svg>
+                    <p>Le petit carré indique un angle droit (90°)</p>
+                    <p>On écrit : d ⊥ d'</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Deux droites perpendiculaires forment 4 angles droits</p>
+                    <p><strong>2.</strong> Par un point, on peut tracer une seule perpendiculaire à une droite donnée</p>
+                    <p><strong>3.</strong> Si d ⊥ d', alors d' ⊥ d (propriété symétrique)</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Perpendiculaires = sécantes à angle droit (90°)<br>
+                    • Symbole : ⊥<br>
+                    • Le petit carré indique l'angle droit
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>Construction de Perpendiculaires</h2>
+
+                <h3>Méthode 1 : Avec une équerre</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Placer l'équerre sur la droite d</p>
+                    <p><strong>2.</strong> Faire coïncider un côté de l'angle droit avec d</p>
+                    <p><strong>3.</strong> Tracer la perpendiculaire le long de l'autre côté</p>
+                </div>
+
+                <h3>Méthode 2 : Avec un compas</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Tracer un arc de cercle centré sur le point d'intersection</p>
+                    <p><strong>2.</strong> L'arc coupe la droite en deux points A et B</p>
+                    <p><strong>3.</strong> Tracer deux arcs de cercle de même rayon centrés en A et B</p>
+                    <p><strong>4.</strong> Les deux arcs se coupent en un point C</p>
+                    <p><strong>5.</strong> Tracer la droite passant par I et C</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Perpendiculaire passant par un point</h4>
+                    <p><strong>Cas 1 :</strong> Le point est sur la droite → une seule perpendiculaire possible</p>
+                    <p><strong>Cas 2 :</strong> Le point est hors de la droite → une seule perpendiculaire possible</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • L'équerre est l'outil le plus simple pour tracer des perpendiculaires<br>
+                    • Le compas permet une construction précise<br>
+                    • Par un point, il n'y a qu'une seule perpendiculaire à une droite donnée
+                </div>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="container">
+                <h2>📝 Quiz - Droites Sécantes et Perpendiculaires</h2>
+                <p>Testez vos connaissances sur les intersections et les angles droits</p>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <span class="question-number">1</span>
+                        <span class="question-text">Deux droites sécantes sont des droites qui :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a"> Se coupent en deux points
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b"> Se coupent en un seul point
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c"> Ne se coupent jamais
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">2</span>
+                        <span class="question-text">Comment note-t-on que deux droites d et d' sont perpendiculaires ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a"> d // d'
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b"> d = d'
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c"> d ⊥ d'
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">3</span>
+                        <span class="question-text">Deux droites perpendiculaires forment des angles de :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a"> 45°
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b"> 60°
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c"> 90°
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">4</span>
+                        <span class="question-text">Quel instrument permet de tracer facilement une perpendiculaire ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a"> Un compas
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b"> Une équerre
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c"> Un rapporteur
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">5</span>
+                        <span class="question-text">Par un point donné, combien de perpendiculaires peut-on tracer à une droite donnée ?</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a"> Aucune
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b"> Une seule
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c"> Une infinité
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q5"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <span class="question-number">6</span>
+                        <span class="question-text">Si d ⊥ d', alors d' ⊥ d. C'est la propriété :</span>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a"> De transitivité
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b"> Symétrique
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c"> De réflexivité
+                            </label>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-q6"></div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+                        <span class="question-number">🎨</span>
+                        <span class="question-text">Exercice de dessin : Tracez deux droites sécantes, puis une perpendiculaire à l'une d'elles.</span>
+                        <div style="margin-top: 15px;">
+                            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer les droites.
+                            </p>
+                            <canvas id="drawingCanvas4" width="600" height="300" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;"></canvas>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <button class="quiz-button" onclick="clearCanvas4()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+                                <button class="quiz-button" onclick="saveDrawing4()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+                            </div>
+                            <div id="drawing-feedback4" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+                        </div>
+                    </div>
+
+                    <button class="quiz-button" onclick="submitQuiz('quiz4')">Vérifier les Réponses</button>
+                    <div id="quiz-results" class="quiz-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+    <script>
+        // Variables pour le dessin
+        let canvas4 = document.getElementById('drawingCanvas4');
+        let ctx4 = canvas4.getContext('2d');
+        let isDrawing4 = false;
+        let lastX4 = 0;
+        let lastY4 = 0;
+        let drawingData4 = null;
+
+        // Initialiser le canvas
+        if (canvas4) {
+            canvas4.addEventListener('mousedown', startDrawing4);
+            canvas4.addEventListener('mousemove', draw4);
+            canvas4.addEventListener('mouseup', stopDrawing4);
+            canvas4.addEventListener('mouseout', stopDrawing4);
+
+            // Support tactile
+            canvas4.addEventListener('touchstart', handleTouch4);
+            canvas4.addEventListener('touchmove', handleTouch4);
+            canvas4.addEventListener('touchend', stopDrawing4);
+        }
+
+        function startDrawing4(e) {
+            isDrawing4 = true;
+            const rect = canvas4.getBoundingClientRect();
+            lastX4 = e.clientX - rect.left;
+            lastY4 = e.clientY - rect.top;
+        }
+
+        function draw4(e) {
+            if (!isDrawing4) return;
+
+            const rect = canvas4.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx4.strokeStyle = '#FF69B4';
+            ctx4.lineWidth = 2;
+            ctx4.lineCap = 'round';
+            ctx4.lineJoin = 'round';
+
+            ctx4.beginPath();
+            ctx4.moveTo(lastX4, lastY4);
+            ctx4.lineTo(x, y);
+            ctx4.stroke();
+
+            lastX4 = x;
+            lastY4 = y;
+        }
+
+        function stopDrawing4() {
+            isDrawing4 = false;
+        }
+
+        function handleTouch4(e) {
+            const touch = e.touches[0];
+            const rect = canvas4.getBoundingClientRect();
+
+            if (e.type === 'touchstart') {
+                lastX4 = touch.clientX - rect.left;
+                lastY4 = touch.clientY - rect.top;
+                isDrawing4 = true;
+            } else if (e.type === 'touchmove') {
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx4.strokeStyle = '#FF69B4';
+                ctx4.lineWidth = 2;
+                ctx4.lineCap = 'round';
+                ctx4.lineJoin = 'round';
+
+                ctx4.beginPath();
+                ctx4.moveTo(lastX4, lastY4);
+                ctx4.lineTo(x, y);
+                ctx4.stroke();
+
+                lastX4 = x;
+                lastY4 = y;
+            }
+            e.preventDefault();
+        }
+
+        function clearCanvas4() {
+            ctx4.clearRect(0, 0, canvas4.width, canvas4.height);
+            document.getElementById('drawing-feedback4').innerHTML = '';
+        }
+
+        function saveDrawing4() {
+            // Enregistrer les données du dessin
+            drawingData4 = canvas4.toDataURL();
+            document.getElementById('drawing-feedback4').innerHTML = '<span style="color: #4caf50;">✓ Dessin enregistré !</span>';
+        }
+
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'c',
+                q4: 'b',
+                q5: 'b',
+                q6: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
