@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Le Circuit Électrique</title>
-    <link rel="stylesheet" href="css/karniella-theme.css">
     <style>
         * {
             margin: 0;

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 4 : Les Solides et les Liquides - Physique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #E8F4FD 0%, #B8D4E8 50%, #87CEEB 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        /* Layout principal */
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 6;
+            min-width: 0;
+        }
+
+        .quiz-area {
+            flex: 4;
+            min-width: 350px;
+            max-width: 500px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 40px rgba(30, 144, 255, 0.4);
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: #4169E1;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Sections de cours */
+        .lesson-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(30, 144, 255, 0.15);
+            border-left: 5px solid #4169E1;
+        }
+
+        .lesson-section h2 {
+            color: #4169E1;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lesson-section h3 {
+            color: #1E90FF;
+            font-size: 20px;
+            margin: 20px 0 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid #1E90FF;
+        }
+
+        .lesson-section h4 {
+            color: #4169E1;
+            font-size: 17px;
+            margin: 15px 0 10px 0;
+        }
+
+        .lesson-section p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Boîtes d'information */
+        .definition-box {
+            background: linear-gradient(135deg, #E6F3FF 0%, #B8D4E8 100%);
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .definition-box h4 {
+            color: #4169E1;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .definition-box p, .definition-box ul {
+            color: #333;
+            margin: 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE4B5 100%);
+            border: 3px solid #FFA500;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .info-box h4 {
+            color: #FF8C00;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #A5D6A7 100%);
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .example-box h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .danger-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border: 3px solid #F44336;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .danger-box h4 {
+            color: #C62828;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Listes */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .info-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 100%);
+            border-radius: 10px;
+            border-left: 4px solid #4169E1;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .info-list li::before {
+            content: '✓ ';
+            color: #4169E1;
+            font-weight: bold;
+        }
+
+        /* Grille de cartes */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30, 144, 255, 0.3);
+        }
+
+        .info-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .info-card h4 {
+            color: #4169E1;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .info-card p {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Grille de verrerie */
+        .verrerie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .verrerie-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E6F3FF 100%);
+            border: 3px solid #1E90FF;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .verrerie-card .icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .verrerie-card h5 {
+            color: #1E90FF;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .verrerie-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Pictogrammes de sécurité */
+        .picto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .picto-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .picto-card:hover {
+            transform: scale(1.05);
+        }
+
+        .picto-card .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .picto-card h5 {
+            color: #333;
+            font-size: 12px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+
+        .picto-card p {
+            color: #666;
+            font-size: 10px;
+            margin: 0;
+        }
+
+        .picto-explosif { border: 3px solid #FF5722; }
+        .picto-inflammable { border: 3px solid #FF5722; }
+        .picto-comburant { border: 3px solid #FF9800; }
+        .picto-corrosif { border: 3px solid #9C27B0; }
+        .picto-toxique { border: 3px solid #000000; }
+        .picto-nocif { border: 3px solid #F44336; }
+        .picto-sante { border: 3px solid #E91E63; }
+        .picto-environnement { border: 3px solid #4CAF50; }
+
+        /* Tableau comparatif */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.2);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #E0E0E0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #F0F8FF;
+        }
+
+        .comparison-table tr:hover {
+            background: #E6F3FF;
+        }
+
+        /* Section Quiz */
+        .quiz-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(30, 144, 255, 0.2);
+            border: 3px solid #4169E1;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .quiz-section h2 {
+            color: #4169E1;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 2px solid #E0E0E0;
+            transition: border-color 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            border-color: #4169E1;
+        }
+
+        .quiz-question h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #F5F5F5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .quiz-options label:hover {
+            background: #E6F3FF;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #4169E1;
+        }
+
+        .quiz-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .quiz-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(30, 144, 255, 0.5);
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .quiz-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-result.success {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            color: #2E7D32;
+            border: 3px solid #4CAF50;
+        }
+
+        .quiz-result.partial {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            color: #E65100;
+            border: 3px solid #FF9800;
+        }
+
+        .quiz-result.fail {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            color: #C62828;
+            border: 3px solid #F44336;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .quiz-area {
+                max-width: 100%;
+            }
+
+            .quiz-section {
+                position: static;
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .lesson-section {
+                padding: 15px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .verrerie-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .picto-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            border-radius: 15px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="physique.html" class="btn-back">← Retour aux leçons</a>
+        <h1>🧪 Leçon 4 : Les Solides et les Liquides</h1>
+        <p>Propriétés physiques de la matière et verrerie de laboratoire</p>
+    </header>
+
+    <div class="main-wrapper">
+        <!-- Zone de contenu -->
+        <div class="content-area">
+            
+            <!-- Section 1: Introduction -->
+            <section class="lesson-section">
+                <h2>📖 1. Introduction</h2>
+                <div class="definition-box">
+                    <h4>🎯 Objectifs de la leçon</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>Distinguer les solides compacts des solides divisés</li>
+                        <li>Caractériser l'état liquide et ses propriétés</li>
+                        <li>Identifier la verrerie courante de laboratoire</li>
+                        <li>Comprendre les pictogrammes de sécurité</li>
+                    </ul>
+                </div>
+                <p>La matière qui nous entoure existe sous différents états physiques. Dans cette leçon, nous allons étudier les propriétés des <strong>solides</strong> et des <strong>liquides</strong>, ainsi que les outils utilisés pour les manipuler au laboratoire.</p>
+            </section>
+
+            <!-- Section 2: Les Solides -->
+            <section class="lesson-section">
+                <h2>🧊 2. Les Solides</h2>
+                
+                <div class="definition-box">
+                    <h4>📚 Définition</h4>
+                    <p>Un <strong>solide</strong> est un corps qui possède une <strong>forme propre</strong> et un <strong>volume invariable</strong> (constant). Il existe deux types de solides.</p>
+                </div>
+
+                <h3>2.1 Les Solides Compacts</h3>
+                <p>Les solides compacts sont des corps qui forment un <strong>seul bloc</strong>. Ils conservent leur forme propre quel que soit le récipient dans lequel on les place.</p>
+                
+                <div class="example-box">
+                    <h4>📝 Exemples de solides compacts</h4>
+                    <div class="cards-grid">
+                        <div class="info-card">
+                            <span class="icon">🪨</span>
+                            <h4>Pierre</h4>
+                            <p>Bloc solide naturel</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🧱</span>
+                            <h4>Brique</h4>
+                            <p>Bloc de construction</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🪵</span>
+                            <h4>Bois</h4>
+                            <p>Matériau naturel</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🔩</span>
+                            <h4>Fer</h4>
+                            <p>Métal solide</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🥄</span>
+                            <h4>Cuillère</h4>
+                            <p>Objet métallique</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🖊️</span>
+                            <h4>Crayon</h4>
+                            <p>Objet scolaire</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>✨ Caractéristiques des solides compacts</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>Ils forment un seul bloc indivisible</li>
+                        <li>Ils ont une forme propre bien définie</li>
+                        <li>Leur volume ne change pas</li>
+                        <li>On peut les saisir avec la main</li>
+                    </ul>
+                </div>
+
+                <h3>2.2 Les Solides Divisés (Pulvérisés)</h3>
+                <p>Les solides divisés ou pulvérisés sont des solides sous forme de <strong>poudre</strong> ou de <strong>petits grains</strong>. Chaque grain est un petit solide compact, mais l'ensemble n'a pas de forme propre.</p>
+
+                <div class="example-box">
+                    <h4>📝 Exemples de solides divisés</h4>
+                    <div class="cards-grid">
+                        <div class="info-card">
+                            <span class="icon">🏖️</span>
+                            <h4>Sable</h4>
+                            <p>Petits grains de roche</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🌾</span>
+                            <h4>Farine</h4>
+                            <p>Poudre de céréales</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🍚</span>
+                            <h4>Riz</h4>
+                            <p>Grains alimentaires</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🫘</span>
+                            <h4>Haricots</h4>
+                            <p>Légumineuses en grains</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🧂</span>
+                            <h4>Sucre</h4>
+                            <p>Cristaux fins</p>
+                        </div>
+                        <div class="info-card">
+                            <span class="icon">🧂</span>
+                            <h4>Sel</h4>
+                            <p>Cristaux de chlorure</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>✨ Caractéristiques des solides divisés</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>Ils sont formés de nombreux petits grains</li>
+                        <li>Ils prennent la forme du récipient qui les contient</li>
+                        <li>Ils peuvent "couler" comme un liquide</li>
+                        <li>Chaque grain garde un volume constant</li>
+                    </ul>
+                </div>
+
+                <h3>2.3 Tableau Comparatif</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Critère</th>
+                            <th>Solide Compact</th>
+                            <th>Solide Divisé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Forme</strong></td>
+                            <td>Forme propre ✅</td>
+                            <td>Prend la forme du récipient</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Structure</strong></td>
+                            <td>Un seul bloc</td>
+                            <td>Poudre ou grains</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Volume</strong></td>
+                            <td>Constant ✅</td>
+                            <td>Constant ✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Manipulation</strong></td>
+                            <td>Saisissable à la main</td>
+                            <td>Nécessite un récipient</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 3: Les Liquides -->
+            <section class="lesson-section">
+                <h2>💧 3. Les Liquides</h2>
+                
+                <div class="definition-box">
+                    <h4>📚 Définition</h4>
+                    <p>Les liquides sont des corps <strong>insaisissables</strong> et <strong>fluides</strong>. Ils n'ont pas de forme propre mais possèdent un volume constant.</p>
+                </div>
+
+                <h3>3.1 Propriétés des Liquides</h3>
+                
+                <div class="info-box">
+                    <h4>✨ Caractéristiques essentielles</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Insaisissables :</strong> On ne peut pas les attraper avec la main</li>
+                        <li><strong>Fluides :</strong> Ils s'écoulent et coulent facilement</li>
+                        <li><strong>Pas de forme propre :</strong> Ils prennent la forme du récipient</li>
+                        <li><strong>Volume constant :</strong> Le volume reste le même dans tout récipient</li>
+                    </ul>
+                </div>
+
+                <h3>3.2 La Surface Libre</h3>
+                <div class="definition-box">
+                    <h4>📚 Qu'est-ce que la surface libre ?</h4>
+                    <p>La <strong>surface libre</strong> d'un liquide est la surface de contact entre le liquide et l'air. Elle est toujours <strong>plane</strong> (plate) et <strong>horizontale</strong>, quelle que soit l'inclinaison du récipient.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>🔬 Expérience</h4>
+                    <p>Si tu inclines un verre d'eau, tu remarqueras que la surface de l'eau reste toujours horizontale, même si le verre est penché. C'est une propriété fondamentale des liquides au repos.</p>
+                </div>
+
+                <h3>3.3 Exemples de Liquides</h3>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <span class="icon">💧</span>
+                        <h4>Eau</h4>
+                        <p>Liquide le plus courant</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🥛</span>
+                        <h4>Lait</h4>
+                        <p>Liquide alimentaire</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🛢️</span>
+                        <h4>Huile</h4>
+                        <p>Liquide visqueux</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🧴</span>
+                        <h4>Alcool</h4>
+                        <p>Liquide volatil</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🍯</span>
+                        <h4>Miel</h4>
+                        <p>Liquide très visqueux</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">⛽</span>
+                        <h4>Essence</h4>
+                        <p>Carburant liquide</p>
+                    </div>
+                </div>
+
+                <h3>3.4 Tableau Comparatif Solides vs Liquides</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Propriété</th>
+                            <th>Solides</th>
+                            <th>Liquides</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Forme propre</strong></td>
+                            <td>Oui (compacts)</td>
+                            <td>Non ❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Volume</strong></td>
+                            <td>Constant ✅</td>
+                            <td>Constant ✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Peut couler</strong></td>
+                            <td>Non (sauf divisés)</td>
+                            <td>Oui ✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Saisissable</strong></td>
+                            <td>Oui</td>
+                            <td>Non ❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Surface libre</strong></td>
+                            <td>Non applicable</td>
+                            <td>Plane et horizontale</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 4: Verrerie de Laboratoire -->
+            <section class="lesson-section">
+                <h2>🔬 4. La Verrerie de Laboratoire</h2>
+                
+                <div class="definition-box">
+                    <h4>📚 Définition</h4>
+                    <p>La <strong>verrerie de laboratoire</strong> désigne l'ensemble des récipients et instruments en verre utilisés pour réaliser des expériences scientifiques, notamment pour mesurer, contenir et manipuler des liquides.</p>
+                </div>
+
+                <h3>4.1 Les Principaux Récipients</h3>
+                
+                <div class="verrerie-grid">
+                    <div class="verrerie-card">
+                        <span class="icon">🥛</span>
+                        <h5>Bécher</h5>
+                        <p>Récipient cylindrique gradué pour contenir et mélanger</p>
+                    </div>
+                    <div class="verrerie-card">
+                        <span class="icon">📏</span>
+                        <h5>Éprouvette Graduée</h5>
+                        <p>Tube gradué pour mesurer précisément les volumes</p>
+                    </div>
+                    <div class="verrerie-card">
+                        <span class="icon">🧪</span>
+                        <h5>Erlenmeyer</h5>
+                        <p>Fiole conique pour les mélanges et les chauffages</p>
+                    </div>
+                    <div class="verrerie-card">
+                        <span class="icon">⚗️</span>
+                        <h5>Ballon</h5>
+                        <p>Récipient sphérique pour les réactions chimiques</p>
+                    </div>
+                    <div class="verrerie-card">
+                        <span class="icon">🧫</span>
+                        <h5>Tube à Essais</h5>
+                        <p>Petit tube pour tester de petites quantités</p>
+                    </div>
+                    <div class="verrerie-card">
+                        <span class="icon">🍷</span>
+                        <h5>Verre à Pied</h5>
+                        <p>Verre avec base pour éviter le renversement</p>
+                    </div>
+                    <div class="verrerie-card">
+                        <span class="icon">🥣</span>
+                        <h5>Cristallisoir</h5>
+                        <p>Récipient large et peu profond pour les cristallisations</p>
+                    </div>
+                </div>
+
+                <h3>4.2 Utilisation de la Verrerie</h3>
+                
+                <div class="info-box">
+                    <h4>📋 Règles d'utilisation</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Éprouvette :</strong> Pour mesurer avec précision un volume de liquide</li>
+                        <li><strong>Bécher :</strong> Pour contenir et mélanger des solutions</li>
+                        <li><strong>Erlenmeyer :</strong> Pour les réactions avec agitation ou chauffage</li>
+                        <li><strong>Tube à essais :</strong> Pour les tests rapides en petites quantités</li>
+                    </ul>
+                </div>
+
+                <div class="danger-box">
+                    <h4>⚠️ Précautions avec la verrerie</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>Manipuler avec précaution : le verre est fragile</li>
+                        <li>Ne jamais chauffer un récipient vide</li>
+                        <li>Vérifier l'absence de fissures avant utilisation</li>
+                        <li>Rincer la verrerie après chaque utilisation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 5: Pictogrammes de Sécurité -->
+            <section class="lesson-section">
+                <h2>⚠️ 5. Les Pictogrammes de Sécurité</h2>
+                
+                <div class="definition-box">
+                    <h4>📚 Définition</h4>
+                    <p>Les <strong>pictogrammes de sécurité</strong> sont des symboles graphiques présents sur les emballages des produits chimiques. Ils indiquent les <strong>dangers</strong> liés à ces produits et les <strong>précautions</strong> à prendre.</p>
+                </div>
+
+                <h3>5.1 Les Principaux Pictogrammes</h3>
+                
+                <div class="picto-grid">
+                    <div class="picto-card picto-explosif">
+                        <span class="icon">💥</span>
+                        <h5>Explosif</h5>
+                        <p>Peut exploser sous l'effet de la chaleur ou d'un choc</p>
+                    </div>
+                    <div class="picto-card picto-inflammable">
+                        <span class="icon">🔥</span>
+                        <h5>Inflammable</h5>
+                        <p>Prend feu facilement au contact d'une flamme</p>
+                    </div>
+                    <div class="picto-card picto-comburant">
+                        <span class="icon">⭕</span>
+                        <h5>Comburant</h5>
+                        <p>Favorise ou active la combustion</p>
+                    </div>
+                    <div class="picto-card picto-corrosif">
+                        <span class="icon">🧪</span>
+                        <h5>Corrosif</h5>
+                        <p>Attaque et détruit les métaux et la peau</p>
+                    </div>
+                    <div class="picto-card picto-toxique">
+                        <span class="icon">☠️</span>
+                        <h5>Toxique</h5>
+                        <p>Peut causer la mort même à faible dose</p>
+                    </div>
+                    <div class="picto-card picto-nocif">
+                        <span class="icon">⚠️</span>
+                        <h5>Nocif/Irritant</h5>
+                        <p>Provoque des irritations ou des effets nocifs</p>
+                    </div>
+                    <div class="picto-card picto-sante">
+                        <span class="icon">🏥</span>
+                        <h5>Danger pour la Santé</h5>
+                        <p>Peut provoquer des maladies graves</p>
+                    </div>
+                    <div class="picto-card picto-environnement">
+                        <span class="icon">🐟</span>
+                        <h5>Danger Environnement</h5>
+                        <p>Toxique pour les organismes aquatiques</p>
+                    </div>
+                </div>
+
+                <h3>5.2 Tableau Récapitulatif</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Pictogramme</th>
+                            <th>Signification</th>
+                            <th>Précautions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>💥 Explosif</td>
+                            <td>Risque d'explosion</td>
+                            <td>Éviter les chocs et la chaleur</td>
+                        </tr>
+                        <tr>
+                            <td>🔥 Inflammable</td>
+                            <td>Prend feu facilement</td>
+                            <td>Éloigner des flammes</td>
+                        </tr>
+                        <tr>
+                            <td>⭕ Comburant</td>
+                            <td>Favorise le feu</td>
+                            <td>Tenir éloigné des combustibles</td>
+                        </tr>
+                        <tr>
+                            <td>🧪 Corrosif</td>
+                            <td>Détruit la peau/métaux</td>
+                            <td>Porter des gants et lunettes</td>
+                        </tr>
+                        <tr>
+                            <td>☠️ Toxique</td>
+                            <td>Danger mortel</td>
+                            <td>Ne pas inhaler, ingérer ou toucher</td>
+                        </tr>
+                        <tr>
+                            <td>⚠️ Nocif</td>
+                            <td>Irritation/effets nocifs</td>
+                            <td>Éviter le contact direct</td>
+                        </tr>
+                        <tr>
+                            <td>🏥 Danger santé</td>
+                            <td>Maladies graves</td>
+                            <td>Manipulation avec protection</td>
+                        </tr>
+                        <tr>
+                            <td>🐟 Environnement</td>
+                            <td>Pollution aquatique</td>
+                            <td>Ne pas jeter dans la nature</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="danger-box">
+                    <h4>🛡️ Règles de Sécurité au Laboratoire</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>Toujours lire les étiquettes avant d'utiliser un produit</li>
+                        <li>Porter des équipements de protection (blouse, lunettes, gants)</li>
+                        <li>Ne jamais goûter ou sentir directement un produit</li>
+                        <li>Travailler dans un endroit bien aéré</li>
+                        <li>Savoir où se trouvent les équipements de secours</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 6: Résumé -->
+            <section class="lesson-section">
+                <h2>📋 6. Résumé de la Leçon</h2>
+                
+                <div class="definition-box">
+                    <h4>🎯 Points Essentiels à Retenir</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Solides compacts :</strong> Forme propre, volume constant, un seul bloc</li>
+                        <li><strong>Solides divisés :</strong> Poudres/grains, prennent la forme du récipient</li>
+                        <li><strong>Liquides :</strong> Insaisissables, fluides, surface libre horizontale</li>
+                        <li><strong>Verrerie :</strong> Bécher, éprouvette, erlenmeyer, ballon, tube à essais</li>
+                        <li><strong>Pictogrammes :</strong> Symboles indiquant les dangers des produits</li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer>
+                <p>💡 Leçon complète sur les solides, liquides et la sécurité au laboratoire</p>
+            </footer>
+        </div>
+
+        <!-- Zone Quiz -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Teste tes Connaissances</h2>
+                
+                <div class="quiz-question">
+                    <h4>1. Qu'est-ce qui caractérise un solide compact ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Il est formé de petits grains</label>
+                        <label><input type="radio" name="q1" value="b"> Il forme un seul bloc avec une forme propre</label>
+                        <label><input type="radio" name="q1" value="c"> Il prend la forme du récipient</label>
+                        <label><input type="radio" name="q1" value="d"> Il peut couler comme un liquide</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Quel est un exemple de solide divisé ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Une brique</label>
+                        <label><input type="radio" name="q2" value="b"> Une pierre</label>
+                        <label><input type="radio" name="q2" value="c"> Du sable</label>
+                        <label><input type="radio" name="q2" value="d"> Une cuillère</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Comment est la surface libre d'un liquide au repos ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Inclinée</label>
+                        <label><input type="radio" name="q3" value="b"> Courbe</label>
+                        <label><input type="radio" name="q3" value="c"> Plane et horizontale</label>
+                        <label><input type="radio" name="q3" value="d"> Verticale</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Quel instrument utilise-t-on pour mesurer précisément un volume de liquide ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Le bécher</label>
+                        <label><input type="radio" name="q4" value="b"> L'éprouvette graduée</label>
+                        <label><input type="radio" name="q4" value="c"> Le cristallisoir</label>
+                        <label><input type="radio" name="q4" value="d"> Le tube à essais</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Que signifie le pictogramme avec une flamme 🔥 ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Produit explosif</label>
+                        <label><input type="radio" name="q5" value="b"> Produit inflammable</label>
+                        <label><input type="radio" name="q5" value="c"> Produit toxique</label>
+                        <label><input type="radio" name="q5" value="d"> Produit corrosif</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Quelle est la propriété commune aux solides et aux liquides ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Ils ont une forme propre</label>
+                        <label><input type="radio" name="q6" value="b"> Ils ont un volume constant</label>
+                        <label><input type="radio" name="q6" value="c"> Ils sont fluides</label>
+                        <label><input type="radio" name="q6" value="d"> Ils sont insaisissables</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Quel récipient a une forme conique ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Le bécher</label>
+                        <label><input type="radio" name="q7" value="b"> L'erlenmeyer</label>
+                        <label><input type="radio" name="q7" value="c"> Le ballon</label>
+                        <label><input type="radio" name="q7" value="d"> Le tube à essais</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Que signifie le pictogramme ☠️ (tête de mort) ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Produit inflammable</label>
+                        <label><input type="radio" name="q8" value="b"> Produit corrosif</label>
+                        <label><input type="radio" name="q8" value="c"> Produit toxique mortel</label>
+                        <label><input type="radio" name="q8" value="d"> Produit irritant</label>
+                    </div>
+                </div>
+
+                <button class="quiz-submit" onclick="submitQuiz()">Vérifier mes réponses</button>
+                
+                <div id="quiz-result" class="quiz-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'c',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'b',
+            q8: 'c'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let question in quizAnswers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === quizAnswers[question]) {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+            const percentage = (score / totalQuestions) * 100;
+
+            resultDiv.classList.remove('success', 'partial', 'fail');
+            
+            if (percentage >= 80) {
+                resultDiv.classList.add('success');
+                resultDiv.innerHTML = `🎉 Excellent ! Tu as ${score}/${totalQuestions} bonnes réponses (${percentage.toFixed(0)}%) !<br>Tu maîtrises bien les solides et les liquides !`;
+            } else if (percentage >= 50) {
+                resultDiv.classList.add('partial');
+                resultDiv.innerHTML = `👍 Pas mal ! Tu as ${score}/${totalQuestions} bonnes réponses (${percentage.toFixed(0)}%).<br>Relis la leçon pour t'améliorer !`;
+            } else {
+                resultDiv.classList.add('fail');
+                resultDiv.innerHTML = `📚 Tu as ${score}/${totalQuestions} bonnes réponses (${percentage.toFixed(0)}%).<br>Relis attentivement la leçon et réessaie !`;
+            }
+
+            resultDiv.classList.add('show');
+        }
+    </script>
+</body>
+</html>

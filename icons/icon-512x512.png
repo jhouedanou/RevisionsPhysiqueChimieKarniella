@@ -1,0 +1,34 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB6D9;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF69B4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE5F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" rx="115" ry="115" fill="url(#pinkGradient)"/>
+  
+  <!-- Book icon -->
+  <g transform="translate(156, 156)">
+    <!-- Book pages -->
+    <rect x="0" y="40" width="200" height="160" fill="#FFF" stroke="#FF1493" stroke-width="6" rx="10"/>
+    <line x1="100" y1="40" x2="100" y2="200" stroke="#FF1493" stroke-width="4"/>
+    
+    <!-- Book spine lines -->
+    <line x1="20" y1="60" x2="80" y2="60" stroke="#FFB6D9" stroke-width="3"/>
+    <line x1="20" y1="85" x2="80" y2="85" stroke="#FFB6D9" stroke-width="3"/>
+    <line x1="20" y1="110" x2="80" y2="110" stroke="#FFB6D9" stroke-width="3"/>
+    
+    <line x1="120" y1="60" x2="180" y2="60" stroke="#FFB6D9" stroke-width="3"/>
+    <line x1="120" y1="85" x2="180" y2="85" stroke="#FFB6D9" stroke-width="3"/>
+    <line x1="120" y1="110" x2="180" y2="110" stroke="#FFB6D9" stroke-width="3"/>
+    
+    <!-- Top of book -->
+    <path d="M 0 40 Q 100 20, 200 40" fill="#FF69B4" stroke="#FF1493" stroke-width="4"/>
+  </g>
+  
+  <!-- Letter K for Karniella -->
+  <text x="256" y="400" font-family="Comic Sans MS, cursive" font-size="180" font-weight="bold" fill="#FFF" text-anchor="middle" stroke="#FF1493" stroke-width="4">K</text>
+</svg>

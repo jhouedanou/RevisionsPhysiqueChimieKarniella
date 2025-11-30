@@ -5,7 +5,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Le Circuit Électrique - Cours Complet</title>
-    <link rel="stylesheet" href="css/karniella-theme.css">
 <link href="css/section-quiz.css" rel="stylesheet"/>
 <style>
         * {
@@ -77,7 +76,7 @@
 
         .tab-button {
             padding: 12px 25px;
-            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%); color: #C71585; font-weight: 700;
+            background: #444;
             color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             border-radius: 8px 8px 0 0;

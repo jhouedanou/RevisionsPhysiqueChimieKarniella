@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Révisions Karniella</title>
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FF69B4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Karniella">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <meta name="description"
+        content="Site de révisions scolaires pour Karniella - Mathématiques, Physique, SVT et plus">
+
     <style>
         * {
             margin: 0;
@@ -41,8 +53,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .container {
@@ -52,7 +71,8 @@
 
         header {
             text-align: center;
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-bottom: 60px;
             animation: slideDown 0.8s ease-out;
         }
@@ -107,17 +127,32 @@
             opacity: 0.3;
         }
 
-        .lesson-card:nth-child(1) { animation-delay: 0.1s; }
-        .lesson-card:nth-child(2) { animation-delay: 0.2s; }
-        .lesson-card:nth-child(3) { animation-delay: 0.3s; }
-        .lesson-card:nth-child(4) { animation-delay: 0.4s; }
-        .lesson-card:nth-child(5) { animation-delay: 0.5s; }
+        .lesson-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .lesson-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .lesson-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .lesson-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .lesson-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
 
         @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -129,6 +164,7 @@
                 opacity: 0;
                 transform: scale(0.8);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -153,7 +189,7 @@
             display: block;
         }
 
-                .lesson-card h2 {
+        .lesson-card h2 {
             color: #C71585;
             font-size: 20px;
             margin-bottom: 12px;
@@ -164,11 +200,25 @@
         }
 
         /* Couleurs différentes pour chaque leçon */
-        .lesson-card.lesson-1 h2 { border-color: #FF69B4; }
-        .lesson-card.lesson-2 h2 { border-color: #FFB6D9; }
-        .lesson-card.lesson-3 h2 { border-color: #FF1493; }
-        .lesson-card.lesson-4 h2 { border-color: #FF85C1; }
-        .lesson-card.lesson-5 h2 { border-color: #FFC0CB; }
+        .lesson-card.lesson-1 h2 {
+            border-color: #FF69B4;
+        }
+
+        .lesson-card.lesson-2 h2 {
+            border-color: #FFB6D9;
+        }
+
+        .lesson-card.lesson-3 h2 {
+            border-color: #FF1493;
+        }
+
+        .lesson-card.lesson-4 h2 {
+            border-color: #FF85C1;
+        }
+
+        .lesson-card.lesson-5 h2 {
+            border-color: #FFC0CB;
+        }
 
         .lesson-card p {
             color: #333;
@@ -177,7 +227,7 @@
             margin-bottom: 15px;
         }
 
-                .lesson-button {
+        .lesson-button {
             display: inline-block;
             padding: 10px 20px;
             background: linear-gradient(135deg, #FF69B4 0%, #C71585 100%);
@@ -202,7 +252,8 @@
 
         footer {
             text-align: center;
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -215,7 +266,8 @@
         }
 
         .subject-title {
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             font-size: 32px;
             margin-bottom: 20px;
             padding-left: 15px;
@@ -235,7 +287,8 @@
         }
 
         .subject-title a {
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -264,7 +317,8 @@
         .status-available {
             display: inline-block;
             background: #4caf50;
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 11px;
@@ -287,6 +341,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
@@ -417,7 +472,7 @@
                 // Titre de la matière
                 const titleDiv = document.createElement('div');
                 titleDiv.className = 'subject-title';
-                
+
                 if (subject.url) {
                     // Si une URL existe, rendre le titre cliquable
                     const titleLink = document.createElement('a');
@@ -489,5 +544,21 @@
         // Initialiser les sections au chargement
         renderSubjects();
     </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker enregistré:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('❌ Erreur Service Worker:', error);
+                    });
+            });
+        }
+    </script>
 </body>
+
 </html>

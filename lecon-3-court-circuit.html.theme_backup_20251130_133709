@@ -5,7 +5,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Leçon 3: Court-circuit et Protection - Physique-Chimie</title>
-    <link rel="stylesheet" href="css/karniella-theme.css">
 <link href="css/section-quiz.css" rel="stylesheet"/>
 <style>
         * {
@@ -751,112 +750,6 @@
 </tr>
 </tbody>
 </table>
-
-<!-- SECTION 7: LE PARAFOUDRE -->
-<h3>⚡ Section 1.7: Le Parafoudre - Protection contre la Foudre</h3>
-
-<div class="definition-box">
-<h4>🌩️ Qu'est-ce qu'un Parafoudre?</h4>
-<p><strong>Le parafoudre</strong> est un dispositif de protection qui protège les équipements électriques contre les surtensions brutales causées par la foudre lors des orages.</p>
-<p style="margin-top: 15px;"><strong>Fonctionnement:</strong> Lorsqu'une surtension se produit (coup de foudre à proximité), le parafoudre redirige instantanément le courant excessif vers la terre, évitant ainsi qu'il n'endommage les appareils branchés.</p>
-</div>
-
-<div class="causes-grid">
-<div class="cause-card">
-<h4><span class="cause-icon">🌩️</span> Comment ça marche?</h4>
-<p><strong>En temps normal:</strong> Le parafoudre laisse passer le courant normal sans intervenir.</p>
-<p><strong>En cas de surtension:</strong></p>
-<ul style="margin: 10px 0; padding-left: 15px;">
-<li>La foudre crée une surtension très élevée</li>
-<li>Le parafoudre détecte cette surtension anormale</li>
-<li>Il s'active et crée un chemin vers la terre</li>
-<li>Le courant de foudre est évacué sans toucher les appareils</li>
-</ul>
-</div>
-
-<div class="cause-card">
-<h4><span class="cause-icon">🏠</span> Où l'installer?</h4>
-<p><strong>Emplacement optimal:</strong> Au tableau électrique principal, à l'entrée de l'installation.</p>
-<p><strong>Zones recommandées:</strong></p>
-<ul style="margin: 10px 0; padding-left: 15px;">
-<li>Régions exposées aux orages fréquents</li>
-<li>Maisons isolées ou en hauteur</li>
-<li>Bâtiments avec équipements électroniques sensibles</li>
-<li>Installations avec paratonnerre</li>
-</ul>
-</div>
-</div>
-
-<!-- SECTION 8: RECHERCHE DE PANNE -->
-<h3>🔍 Section 1.8: Recherche de Panne</h3>
-
-<div class="definition-box">
-<h4>🔧 Qu'est-ce qu'une Panne Électrique?</h4>
-<p>Une <strong>panne</strong> est un dysfonctionnement du circuit électrique qui empêche le courant de circuler correctement. Elle est souvent due à un élément défectueux.</p>
-</div>
-
-<div class="danger-box">
-<h4>⚠️ Causes Courantes de Pannes</h4>
-<ul style="margin: 15px 0; padding-left: 25px;">
-<li><strong>Pile usée:</strong> La pile n'a plus assez d'énergie pour alimenter le circuit</li>
-<li><strong>Lampe grillée:</strong> Le filament de la lampe est cassé</li>
-<li><strong>Fil coupé:</strong> Un fil conducteur est interrompu quelque part dans le circuit</li>
-<li><strong>Mauvais contact:</strong> Les connexions sont mal fixées ou oxydées</li>
-<li><strong>Interrupteur défectueux:</strong> L'interrupteur ne ferme plus correctement le circuit</li>
-</ul>
-</div>
-
-<h4 style="color: #FF1493; margin-top: 25px;">🧪 Méthode de Recherche de Panne avec un Circuit Témoin</h4>
-
-<div class="info-list">
-<p style="margin-bottom: 15px;">Pour trouver l'élément défectueux, on utilise un <strong>circuit témoin</strong> (un circuit simple qui fonctionne) pour tester chaque élément un par un.</p>
-
-<h4 style="margin-top: 0; color: #FF1493;">Étape 1: Préparer le Circuit Témoin</h4>
-<ul style="margin: 0 0 15px 0; padding-left: 20px;">
-<li>Créer un circuit simple avec une pile neuve, une lampe qui fonctionne et des fils en bon état</li>
-<li>Vérifier que ce circuit témoin s'allume correctement</li>
-</ul>
-
-<h4 style="margin-top: 0; color: #FF1493;">Étape 2: Tester la Pile</h4>
-<ul style="margin: 0 0 15px 0; padding-left: 20px;">
-<li>Remplacer la pile du circuit témoin par la pile suspecte</li>
-<li>Si la lampe s'allume → la pile est bonne</li>
-<li>Si la lampe ne s'allume pas → la pile est usée (remplacer)</li>
-</ul>
-
-<h4 style="margin-top: 0; color: #FF1493;">Étape 3: Tester la Lampe</h4>
-<ul style="margin: 0 0 15px 0; padding-left: 20px;">
-<li>Remettre la pile neuve et placer la lampe suspecte dans le circuit témoin</li>
-<li>Si la lampe s'allume → la lampe est bonne</li>
-<li>Si la lampe ne s'allume pas → la lampe est grillée (remplacer)</li>
-</ul>
-
-<h4 style="margin-top: 0; color: #FF1493;">Étape 4: Tester les Fils</h4>
-<ul style="margin: 0 0 15px 0; padding-left: 20px;">
-<li>Tester chaque fil suspect en l'intégrant au circuit témoin</li>
-<li>Si le circuit fonctionne → le fil est bon</li>
-<li>Si le circuit ne fonctionne pas → le fil est coupé (remplacer)</li>
-</ul>
-
-<h4 style="margin-top: 0; color: #FF1493;">Étape 5: Tester l'Interrupteur</h4>
-<ul style="margin: 0; padding-left: 20px;">
-<li>Intégrer l'interrupteur suspect au circuit témoin</li>
-<li>Actionner l'interrupteur: si la lampe s'allume et s'éteint → l'interrupteur est bon</li>
-<li>Si la lampe ne réagit pas → l'interrupteur est défectueux (remplacer)</li>
-</ul>
-</div>
-
-<div class="definition-box">
-<h4>💡 Astuce de Diagnostic Rapide</h4>
-<p>Procédez par élimination: testez d'abord les éléments les plus susceptibles de tomber en panne:</p>
-<ol style="margin: 15px 0 0 20px; color: #555;">
-<li><strong>La pile</strong> - c'est l'élément qui s'use le plus souvent</li>
-<li><strong>La lampe</strong> - le filament peut griller avec le temps</li>
-<li><strong>Les connexions</strong> - vérifier que tout est bien branché</li>
-<li><strong>Les fils</strong> - peuvent être coupés ou dénudés</li>
-</ol>
-</div>
-
 <!-- SECTION 4: BONNES PRATIQUES -->
 <h3>✅ Bonnes Pratiques pour Éviter les Courts-Circuits</h3>
 <div class="info-list">
