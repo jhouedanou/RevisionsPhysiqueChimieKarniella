@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.0.0
 
-const CACHE_NAME = 'karniella-cache-v1';
+const CACHE_NAME = 'karniella-cache-v2';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -13,6 +13,17 @@ const FILES_TO_CACHE = [
     '/svt.html',
     '/histoire-geographie.html',
     '/education-civique.html',
+
+    // Leçons de Physique
+    '/le-circuit-electrique.html',
+    '/les-commandes-electriques.html',
+    '/lecon-3-court-circuit.html',
+    '/lecon-4-solides-liquides.html',
+
+    // Quiz de Physique
+    '/le-circuit-electrique-quiz.html',
+    '/les-commandes-electriques-quiz.html',
+    '/lecon-3-court-circuit-quiz.html',
 
     // CSS
     '/css/section-quiz.css',

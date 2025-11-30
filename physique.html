@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physique - Cours Complets</title>
+    
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FF69B4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Karniella">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <meta name="description" content="Cours de Physique pour Karniella - Circuits électriques, court-circuits, solides et liquides">
+    
     <style>
         * {
             margin: 0;
@@ -279,5 +289,20 @@
             <p>💡 Cours interactifs avec schémas animés | Facile à comprendre</p>
         </footer>
     </div>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker enregistré avec succès:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Échec de l\'enregistrement du Service Worker:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
