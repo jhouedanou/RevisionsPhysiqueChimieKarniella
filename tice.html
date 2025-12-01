@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TICE - Technologies de l'Information</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '💻';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🎀';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #FF69B4;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #FF69B4;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #C71585;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #FFFFFF;
+            border: 3px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Component Cards */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .component-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .component-card h5 {
+            color: #C71585;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .component-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons between tabs */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>💻 TICE - Technologies de l'Information 🖥️</h1>
+        <p>Découvre le monde de l'informatique !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Système Informatique</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Partie Matérielle</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Partie Logicielle</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Micro-Ordinateur</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: SYSTÈME INFORMATIQUE -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>💻 Composantes d'un Système Informatique</h2>
+                        <p class="subtitle">Comprendre l'organisation d'un système informatique</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>Un <strong>système informatique</strong> est un ensemble d'éléments (matériels et logiciels) qui permettent de traiter automatiquement les informations. Il est composé de deux grandes parties : la partie matérielle (hardware) et la partie logicielle (software).</p>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>L'informatique</strong> est la science du traitement automatique de l'information à l'aide d'un ordinateur. Le mot "informatique" vient de "information" et "automatique".</p>
+                        </div>
+
+                        <h3>🔧 Les Deux Composantes Principales</h3>
+                        <p>Un système informatique se compose de :</p>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🖥️</span>
+                                <h5>Partie Matérielle</h5>
+                                <p>Hardware - Les composants physiques qu'on peut voir et toucher</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">💿</span>
+                                <h5>Partie Logicielle</h5>
+                                <p>Software - Les programmes qui font fonctionner l'ordinateur</p>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Analogie</h4>
+                            <p>Imagine un orchestre :</p>
+                            <ul>
+                                <li><strong>Le matériel</strong> = les instruments de musique (piano, violon, trompette...)</li>
+                                <li><strong>Le logiciel</strong> = les partitions et le chef d'orchestre</li>
+                            </ul>
+                            <p>Sans instruments, on ne peut pas jouer. Sans partitions, les instruments ne servent à rien !</p>
+                        </div>
+
+                        <h3>📊 Schéma d'un Système Informatique</h3>
+                        <div class="category-box">
+                            <h4>🏗️ Architecture Générale</h4>
+                            <ul>
+                                <li><strong>Entrées</strong> → Clavier, souris, scanner, microphone</li>
+                                <li><strong>Traitement</strong> → Unité centrale (processeur)</li>
+                                <li><strong>Stockage</strong> → Disque dur, mémoire</li>
+                                <li><strong>Sorties</strong> → Écran, imprimante, haut-parleurs</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Un système informatique = Matériel + Logiciel<br>
+                            • Le matériel (hardware) est la partie physique<br>
+                            • Le logiciel (software) est la partie programmée<br>
+                            • Les deux parties sont indispensables et complémentaires
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: PARTIE MATÉRIELLE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🖥️ La Partie Matérielle (Hardware)</h2>
+                        <p class="subtitle">Les composants physiques de l'ordinateur</p>
+
+                        <h3>📌 Définition</h3>
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que le matériel ?</h4>
+                            <p>Le <strong>matériel informatique</strong> (hardware en anglais) désigne l'ensemble des éléments physiques d'un ordinateur. Ce sont tous les composants qu'on peut voir et toucher.</p>
+                        </div>
+
+                        <h3>🔌 Les Périphériques</h3>
+                        <p>Les <strong>périphériques</strong> sont les appareils connectés à l'unité centrale. Ils sont classés en trois catégories :</p>
+
+                        <div class="category-box">
+                            <h4>📥 Périphériques d'Entrée</h4>
+                            <p>Ils permettent d'envoyer des informations vers l'ordinateur :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">⌨️</span>
+                                    <h5>Clavier</h5>
+                                    <p>Saisie de texte et commandes</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🖱️</span>
+                                    <h5>Souris</h5>
+                                    <p>Pointage et sélection</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📷</span>
+                                    <h5>Scanner</h5>
+                                    <p>Numérisation de documents</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎤</span>
+                                    <h5>Microphone</h5>
+                                    <p>Entrée audio</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📸</span>
+                                    <h5>Webcam</h5>
+                                    <p>Capture vidéo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📤 Périphériques de Sortie</h4>
+                            <p>Ils permettent de recevoir des informations de l'ordinateur :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">🖥️</span>
+                                    <h5>Écran</h5>
+                                    <p>Affichage visuel</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🖨️</span>
+                                    <h5>Imprimante</h5>
+                                    <p>Impression de documents</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🔊</span>
+                                    <h5>Haut-parleurs</h5>
+                                    <p>Sortie audio</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📽️</span>
+                                    <h5>Vidéoprojecteur</h5>
+                                    <p>Projection d'images</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>↔️ Périphériques d'Entrée/Sortie</h4>
+                            <p>Ils peuvent à la fois envoyer et recevoir des informations :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">💾</span>
+                                    <h5>Clé USB</h5>
+                                    <p>Stockage portable</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">💿</span>
+                                    <h5>Graveur CD/DVD</h5>
+                                    <p>Lecture et écriture</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📱</span>
+                                    <h5>Écran tactile</h5>
+                                    <p>Affichage et saisie</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🌐</span>
+                                    <h5>Modem</h5>
+                                    <p>Connexion internet</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Périphériques d'entrée → vers l'ordinateur (clavier, souris...)<br>
+                            • Périphériques de sortie → depuis l'ordinateur (écran, imprimante...)<br>
+                            • Périphériques mixtes → dans les deux sens (clé USB, écran tactile...)
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: PARTIE LOGICIELLE -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>💿 La Partie Logicielle (Software)</h2>
+                        <p class="subtitle">Les programmes qui font fonctionner l'ordinateur</p>
+
+                        <h3>📌 Définition</h3>
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce qu'un logiciel ?</h4>
+                            <p>Un <strong>logiciel</strong> (software en anglais) est un ensemble de programmes qui permettent à l'ordinateur de fonctionner et d'exécuter des tâches. On distingue deux types de logiciels.</p>
+                        </div>
+
+                        <h3>🔧 Les Programmes de Base (Systèmes d'Exploitation)</h3>
+                        <div class="category-box">
+                            <h4>💻 Le Système d'Exploitation</h4>
+                            <p>Le <strong>système d'exploitation</strong> (OS - Operating System) est le logiciel principal qui gère l'ordinateur. Il fait le lien entre le matériel et les autres logiciels.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">🪟</span>
+                                    <h5>Windows</h5>
+                                    <p>Microsoft (le plus utilisé)</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🍎</span>
+                                    <h5>macOS</h5>
+                                    <p>Apple (pour Mac)</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🐧</span>
+                                    <h5>Linux</h5>
+                                    <p>Gratuit et libre</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📱</span>
+                                    <h5>Android</h5>
+                                    <p>Pour smartphones</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Rôles du système d'exploitation</h4>
+                            <ul>
+                                <li><strong>Gestion des fichiers :</strong> Créer, copier, supprimer des fichiers</li>
+                                <li><strong>Gestion de la mémoire :</strong> Répartir la mémoire entre les programmes</li>
+                                <li><strong>Gestion des périphériques :</strong> Faire fonctionner les appareils connectés</li>
+                                <li><strong>Interface utilisateur :</strong> Permettre à l'utilisateur d'interagir avec l'ordinateur</li>
+                            </ul>
+                        </div>
+
+                        <h3>📦 Les Programmes d'Application (Applicatifs)</h3>
+                        <div class="category-box">
+                            <h4>🛠️ Les Applications</h4>
+                            <p>Les <strong>applications</strong> (ou logiciels applicatifs) sont des programmes qui permettent d'effectuer des tâches spécifiques. Ils fonctionnent grâce au système d'exploitation.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">📝</span>
+                                    <h5>Traitement de texte</h5>
+                                    <p>Word, LibreOffice Writer</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📊</span>
+                                    <h5>Tableur</h5>
+                                    <p>Excel, LibreOffice Calc</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🌐</span>
+                                    <h5>Navigateur Web</h5>
+                                    <p>Chrome, Firefox, Edge</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎮</span>
+                                    <h5>Jeux</h5>
+                                    <p>Applications ludiques</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎨</span>
+                                    <h5>Dessin/Photo</h5>
+                                    <p>Paint, Photoshop</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📧</span>
+                                    <h5>Messagerie</h5>
+                                    <p>Outlook, Gmail</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Logiciels de base = Systèmes d'exploitation (Windows, macOS, Linux...)<br>
+                            • Logiciels d'application = Programmes pour des tâches spécifiques<br>
+                            • Le système d'exploitation est indispensable pour faire fonctionner les applications<br>
+                            • Sans logiciel, le matériel ne peut rien faire
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: MICRO-ORDINATEUR -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🖥️ Les Constituants d'un Micro-Ordinateur</h2>
+                        <p class="subtitle">L'intérieur de l'unité centrale</p>
+
+                        <h3>📌 L'Unité Centrale</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>L'<strong>unité centrale</strong> est le boîtier qui contient les composants principaux de l'ordinateur. C'est le "cerveau" de la machine où sont effectués tous les calculs et traitements.</p>
+                        </div>
+
+                        <h3>🔧 Les Composants Internes</h3>
+
+                        <div class="category-box">
+                            <h4>🧠 Le Processeur (CPU)</h4>
+                            <p>Le <strong>processeur</strong> (CPU - Central Processing Unit) est le "cerveau" de l'ordinateur. Il exécute les instructions des programmes et effectue les calculs.</p>
+                            <ul>
+                                <li><strong>Vitesse :</strong> Mesurée en GHz (gigahertz)</li>
+                                <li><strong>Marques connues :</strong> Intel, AMD</li>
+                                <li><strong>Rôle :</strong> Traiter les données et exécuter les programmes</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💾 La Mémoire RAM</h4>
+                            <p>La <strong>mémoire vive</strong> (RAM - Random Access Memory) est une mémoire temporaire qui stocke les données en cours d'utilisation.</p>
+                            <ul>
+                                <li><strong>Caractéristique :</strong> Rapide mais volatile (s'efface à l'arrêt)</li>
+                                <li><strong>Capacité :</strong> Mesurée en Go (gigaoctets)</li>
+                                <li><strong>Rôle :</strong> Stocker temporairement les données des programmes actifs</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💿 Le Disque Dur (HDD/SSD)</h4>
+                            <p>Le <strong>disque dur</strong> est une mémoire de stockage permanente qui conserve les données même quand l'ordinateur est éteint.</p>
+                            <ul>
+                                <li><strong>HDD :</strong> Disque dur mécanique (moins cher, plus lent)</li>
+                                <li><strong>SSD :</strong> Disque électronique (plus rapide, plus cher)</li>
+                                <li><strong>Capacité :</strong> Mesurée en Go ou To (téraoctets)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔲 La Carte Mère</h4>
+                            <p>La <strong>carte mère</strong> est le circuit imprimé principal qui relie tous les composants entre eux.</p>
+                            <ul>
+                                <li>Accueille le processeur et la mémoire RAM</li>
+                                <li>Connecte les périphériques via les ports (USB, HDMI...)</li>
+                                <li>Contient le BIOS qui démarre l'ordinateur</li>
+                            </ul>
+                        </div>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🔌</span>
+                                <h5>Alimentation</h5>
+                                <p>Fournit l'électricité</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🎮</span>
+                                <h5>Carte Graphique</h5>
+                                <p>Affichage vidéo</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🔊</span>
+                                <h5>Carte Son</h5>
+                                <p>Gestion audio</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">❄️</span>
+                                <h5>Ventilateur</h5>
+                                <p>Refroidissement</p>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>📊 Tableau Récapitulatif</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                                <tr style="background: #FF69B4; color: white;">
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Composant</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Rôle</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Unité</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Processeur</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Calculs et traitements</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">GHz</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">RAM</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Mémoire temporaire</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Go</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Disque dur</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Stockage permanent</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Go/To</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Carte mère</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Connexion des composants</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">-</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le processeur (CPU) est le "cerveau" qui fait les calculs<br>
+                            • La RAM est la mémoire rapide mais temporaire<br>
+                            • Le disque dur stocke les données de façon permanente<br>
+                            • La carte mère relie tous les composants ensemble<br>
+                            • Plus la RAM et le processeur sont puissants, plus l'ordinateur est rapide
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - TICE</h2>
+                <p>Testez vos connaissances !</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Un système informatique est composé de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Matériel uniquement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Logiciel uniquement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Matériel et Logiciel
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Le clavier est un périphérique de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Entrée
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Sortie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Entrée/Sortie
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Windows est un exemple de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Périphérique
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Système d'exploitation
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Processeur
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Le "cerveau" de l'ordinateur s'appelle :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> La RAM
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Le processeur (CPU)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Le disque dur
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Quelle mémoire s'efface quand on éteint l'ordinateur ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Le disque dur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> La RAM
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> La clé USB
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">L'imprimante est un périphérique de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> Entrée
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> Sortie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> Stockage
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">La carte mère sert à :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Stocker les fichiers
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Afficher l'image
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Relier tous les composants
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Word est un exemple de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> Système d'exploitation
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> Logiciel d'application
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> Périphérique
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz answers
+        const quizAnswers = {
+            q1: 'c', // Matériel et Logiciel
+            q2: 'a', // Entrée
+            q3: 'b', // Système d'exploitation
+            q4: 'b', // Processeur
+            q5: 'b', // RAM
+            q6: 'b', // Sortie
+            q7: 'c', // Relier tous les composants
+            q8: 'b'  // Logiciel d'application
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+            let answers = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    answers.push(`Question ${i}: Pas de réponse`);
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                    answers.push(`Question ${i}: Correcte`);
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                    answers.push(`Question ${i}: Incorrecte`);
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu maîtrises l\'informatique ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Send results by email
+            sendQuizResults('TICE - Technologies de l\'Information', score, totalQuestions, percentage, answers);
+        }
+
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            
+            const targetButton = Array.from(buttons).find(button => 
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
