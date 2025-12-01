@@ -480,8 +480,10 @@
     </header>
 
     <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Comment la graine se forme</button>
-        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Comment la graine germe</button>
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Formation de la graine</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Germination</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Méthode Scientifique</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Reproduction des Mammifères</button>
     </div>
 
     <div class="main-wrapper">
@@ -652,6 +654,259 @@
                         <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: MÉTHODE SCIENTIFIQUE - GERMINATION -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🔬 La Méthode Scientifique - Germination</h2>
+                        <p class="subtitle">Étude approfondie avec la démarche expérimentale</p>
+
+                        <h3>📌 Question de Recherche</h3>
+                        <div class="observation-box">
+                            <h4>❓ Problématique</h4>
+                            <p><strong>Question :</strong> Quels sont les facteurs qui influencent la germination d'une graine ?</p>
+                            <p><strong>Hypothèse :</strong> La germination dépend de l'eau, de l'air (oxygène) et de la température.</p>
+                        </div>
+
+                        <h3>🧪 Expérience</h3>
+                        <div class="experience-box">
+                            <h4>🔧 Protocole Expérimental</h4>
+                            <p><strong>Matériel :</strong></p>
+                            <ul>
+                                <li>20 graines de haricot identiques</li>
+                                <li>4 récipients (pots ou boîtes de Pétri)</li>
+                                <li>Du coton ou du papier absorbant</li>
+                                <li>De l'eau</li>
+                                <li>Un réfrigérateur</li>
+                            </ul>
+                            <p><strong>Conditions testées :</strong></p>
+                            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                                <tr style="background: #FF69B4; color: white;">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Pot</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Eau</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Air</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Température</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">A (témoin)</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Oui</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Oui</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">20-25°C</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">B</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">❌ Non</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Oui</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">20-25°C</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">C</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Oui</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">❌ Non (immergée)</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">20-25°C</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">D</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Oui</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Oui</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">4°C (frigo)</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>📊 Résultats</h3>
+                        <div class="observation-box">
+                            <h4>📈 Observations après 7 jours</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                                <tr style="background: #2ecc71; color: white;">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Pot</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">État des graines</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Germination</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">A (témoin)</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Radicule et tigelle visibles</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">✅ Réussie (5/5)</td>
+                                </tr>
+                                <tr style="background: #f5f5f5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">B</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Graines sèches, inchangées</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">❌ Aucune (0/5)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">C</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Graines gonflées, pourrissantes</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">❌ Aucune (0/5)</td>
+                                </tr>
+                                <tr style="background: #f5f5f5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">D</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Graines gonflées mais dormantes</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">❌ Aucune (0/5)</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>🔍 Analyse</h3>
+                        <div class="experience-box">
+                            <h4>📋 Analyse des Résultats</h4>
+                            <ul>
+                                <li><strong>Comparaison A vs B :</strong> Seul le facteur eau diffère → L'eau est indispensable</li>
+                                <li><strong>Comparaison A vs C :</strong> Seul le facteur air diffère → L'air (oxygène) est indispensable</li>
+                                <li><strong>Comparaison A vs D :</strong> Seul le facteur température diffère → Une température favorable est indispensable</li>
+                            </ul>
+                            <p><strong>Remarque :</strong> Chaque expérience ne teste qu'un seul facteur à la fois (méthode de l'expérience témoin).</p>
+                        </div>
+
+                        <h3>💡 Interprétation</h3>
+                        <div class="observation-box">
+                            <h4>🧠 Explication Scientifique</h4>
+                            <ul>
+                                <li><strong>L'eau :</strong> Elle permet le gonflement de la graine et active les enzymes qui transforment les réserves</li>
+                                <li><strong>L'air (O₂) :</strong> L'oxygène est nécessaire à la respiration cellulaire qui fournit l'énergie pour la croissance</li>
+                                <li><strong>La température :</strong> Les enzymes ne fonctionnent qu'à certaines températures (optimum entre 20-30°C)</li>
+                            </ul>
+                        </div>
+
+                        <h3>✅ Conclusion</h3>
+                        <div class="info">
+                            <strong>🎯 Conclusion de l'expérience :</strong><br><br>
+                            Pour germer, une graine a besoin de <strong>trois facteurs indispensables</strong> :<br>
+                            <ol>
+                                <li><strong>L'eau</strong> - pour activer les réserves de la graine</li>
+                                <li><strong>L'air (oxygène)</strong> - pour la respiration cellulaire</li>
+                                <li><strong>Une température favorable</strong> - pour le fonctionnement des enzymes</li>
+                            </ol>
+                            <br>
+                            <strong>💡 Note :</strong> La lumière n'est PAS nécessaire pour la germination, mais elle le devient pour la croissance de la plantule (photosynthèse).
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: REPRODUCTION DES MAMMIFÈRES -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🐾 La Reproduction chez les Mammifères</h2>
+                        <p class="subtitle">Comment les mammifères se reproduisent-ils ?</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>Les mammifères sont des animaux vertébrés qui se caractérisent par l'allaitement de leurs petits. La reproduction chez les mammifères nécessite la rencontre d'un mâle et d'une femelle adultes.</p>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>La <strong>reproduction sexuée</strong> chez les mammifères est le processus par lequel un mâle et une femelle s'unissent pour donner naissance à de nouveaux individus.</p>
+                        </div>
+
+                        <h3>👫 Les Acteurs de la Reproduction</h3>
+                        <div class="experience-box">
+                            <h4>🔬 Les Cellules Reproductrices (Gamètes)</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                                <tr style="background: #FF69B4; color: white;">
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Caractéristique</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Mâle 🚹</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Femelle 🚺</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Cellule reproductrice</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Spermatozoïde</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Ovule</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Lieu de production</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Testicules</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Ovaires</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Taille</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Très petite (mobile)</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Plus grande (immobile)</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Nombre produit</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Des millions</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Un ou quelques-uns</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>🔄 Les Étapes de la Reproduction</h3>
+                        <div class="observation-box">
+                            <h4>📋 Processus en 4 étapes</h4>
+                            <ol>
+                                <li><strong>1. L'accouplement :</strong> Le mâle et la femelle s'unissent. Les spermatozoïdes sont déposés dans l'appareil reproducteur de la femelle.</li>
+                                <li><strong>2. La fécondation :</strong> Un spermatozoïde rencontre l'ovule et fusionne avec lui. Cette rencontre forme une cellule-œuf.</li>
+                                <li><strong>3. La gestation :</strong> La cellule-œuf se développe dans l'utérus de la mère. L'embryon puis le fœtus grandissent pendant plusieurs semaines ou mois.</li>
+                                <li><strong>4. La naissance (mise bas) :</strong> Le petit naît vivant et sera allaité par sa mère.</li>
+                            </ol>
+                        </div>
+
+                        <h3>🤰 La Gestation</h3>
+                        <div class="experience-box">
+                            <h4>⏱️ Durée de gestation chez différents mammifères</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                                <tr style="background: #2ecc71; color: white;">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Animal</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Durée de gestation</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">🐭 Souris</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">19-21 jours</td>
+                                </tr>
+                                <tr style="background: #f5f5f5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">🐰 Lapin</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">30-33 jours</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">🐕 Chien</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">58-68 jours</td>
+                                </tr>
+                                <tr style="background: #f5f5f5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">👩 Humain</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">9 mois (environ 280 jours)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">🐄 Vache</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">9 mois</td>
+                                </tr>
+                                <tr style="background: #f5f5f5;">
+                                    <td style="padding: 8px; border: 1px solid #ddd;">🐘 Éléphant</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">22 mois</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>🍼 L'Allaitement</h3>
+                        <div class="observation-box">
+                            <h4>🥛 Caractéristique des Mammifères</h4>
+                            <p>Ce qui distingue les mammifères des autres animaux est l'<strong>allaitement</strong>. La mère produit du lait grâce à ses <strong>glandes mammaires</strong> pour nourrir ses petits.</p>
+                            <ul>
+                                <li>Le lait contient tous les nutriments nécessaires au nouveau-né</li>
+                                <li>Il contient aussi des anticorps pour protéger le petit des maladies</li>
+                                <li>La durée de l'allaitement varie selon les espèces</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les mammifères se reproduisent grâce à un <strong>mâle et une femelle adultes</strong><br>
+                            • La fécondation est <strong>interne</strong> (à l'intérieur du corps de la femelle)<br>
+                            • Le petit se développe dans l'<strong>utérus</strong> de la mère pendant la gestation<br>
+                            • Les petits naissent <strong>vivants</strong> (viviparité)<br>
+                            • La mère <strong>allaite</strong> ses petits avec son lait (caractère principal des mammifères)
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
                             <button class="nav-button next" disabled>Suivant →</button>
                         </div>
                     </div>
@@ -662,7 +917,7 @@
         <!-- QUIZ AREA -->
         <div class="quiz-area">
             <div class="quiz-section">
-                <h2>📝 Quiz - La Reproduction chez les Plantes</h2>
+                <h2>📝 Quiz - SVT Complet</h2>
                 <p>Testez vos connaissances!</p>
 
                 <!-- Question 1 -->
@@ -755,6 +1010,60 @@
                     <div class="quiz-feedback" id="feedback-q5"></div>
                 </div>
 
+                <!-- Question 6 - Mammifères -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Comment s'appelle la cellule reproductrice mâle chez les mammifères ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> Le spermatozoïde
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> L'ovule
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> La cellule-œuf
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 - Mammifères -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Qu'est-ce qui caractérise les mammifères ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> L'allaitement des petits
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> La ponte d'œufs
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Les écailles
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 - Méthode scientifique -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Dans une expérience, à quoi sert le "témoin" ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> À comparer avec les autres expériences
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> À décorer le laboratoire
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> À surveiller les expériences
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
                 <!-- Submit Button -->
                 <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
                 <div id="quiz-results" class="quiz-result" style="display: none;"></div>
@@ -769,7 +1078,10 @@
             q2: 'a', // Graine
             q3: 'a', // Eau, air, température
             q4: 'a', // Ne peut pas germer
-            q5: 'a'  // Transportent le pollen
+            q5: 'a', // Transportent le pollen
+            q6: 'a', // Spermatozoïde
+            q7: 'a', // Allaitement des petits
+            q8: 'a'  // Comparer avec les autres expériences
         };
 
         function submitQuiz() {
