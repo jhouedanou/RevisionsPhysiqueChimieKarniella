@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Cercles et Disques</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FF1493;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585; font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 28px;
+            border-bottom: 3px solid #FF1493;
+            padding-bottom: 15px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4); border: 4px solid #FF69B4;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .quiz-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .quiz-question {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 2px solid #FF1493;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            border-color: #C71585;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #FF1493;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-size: 15px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            background: white;
+            border: 2px solid #FFB6D9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .quiz-option:hover {
+            background: #FFF0F5;
+            border-color: #FF69B4;
+            transform: translateX(5px);
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .quiz-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FF69B4 0%, #C71585 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .quiz-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .quiz-feedback {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="maths-lecon-cercles-disques.html" class="btn-back">← Retour au cours</a>
+        <h1>⭕ Quiz - Cercles et Disques</h1>
+        <p>Testez vos connaissances</p>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <h2>Quiz Complet</h2>
+            <p class="subtitle">Répondez à toutes les questions pour valider vos connaissances</p>
+
+            <div class="quiz-section">
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce qu'un cercle ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a" /> L'ensemble des points situés à une même distance d'un point fixe
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b" /> Une surface pleine limitée par une courbe
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c" /> Un segment de droite courbe
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quelle est la principale différence entre un cercle et un disque ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a" /> Il n'y a aucune différence
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b" /> Le cercle est le contour, le disque est la surface pleine
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c" /> Le disque est plus grand que le cercle
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Comment appelle-t-on le point fixe au centre d'un cercle ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a" /> Le rayon
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b" /> Le centre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c" /> Le diamètre
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Le rayon d'un cercle est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a" /> La distance du centre à n'importe quel point du cercle
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b" /> Le double du diamètre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c" /> La surface du cercle
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Si un cercle a un rayon de 5 cm, quel est son diamètre ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a" /> 2.5 cm
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b" /> 5 cm
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c" /> 10 cm
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Comment note-t-on un cercle de centre O et de rayon 3 cm ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a" /> [O, 3]
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b" /> (O; 3 cm)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c" /> ℭ(O, 3 cm)
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Quel instrument utilise-t-on pour tracer un cercle ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a" /> Une règle graduée
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b" /> Un compas
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c" /> Une équerre
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Tous les rayons d'un même cercle :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a" /> Ont des longueurs différentes
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b" /> Ont la même longueur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c" /> Sont perpendiculaires entre eux
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">9</span>
+                    <span class="question-text">Le diamètre est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="a" /> La moitié du rayon
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="b" /> Égal au rayon
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="c" /> Le double du rayon
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q9"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">10</span>
+                    <span class="question-text">Un point M est sur le cercle ℭ(O, r) si :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="a" /> OM &lt; r
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="b" /> OM = r
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="c" /> OM &gt; r
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q10"></div>
+                </div>
+
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div class="quiz-result" id="quiz-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answers = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'b',
+                q4: 'a',
+                q5: 'c',
+                q6: 'c',
+                q7: 'b',
+                q8: 'b',
+                q9: 'c',
+                q10: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            let message = '';
+            let emoji = '';
+            if (percentage >= 90) {
+                message = 'Excellent travail ! 🌟';
+                emoji = '🎉';
+            } else if (percentage >= 70) {
+                message = 'Très bien ! 👍';
+                emoji = '😊';
+            } else if (percentage >= 50) {
+                message = 'Bien, mais vous pouvez faire mieux ! 💪';
+                emoji = '📚';
+            } else {
+                message = 'Révisez le cours et réessayez ! 📖';
+                emoji = '🔄';
+            }
+
+            resultsDiv.innerHTML = `
+                <h3>${emoji} Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>
+                <p style="margin-top: 10px; font-size: 16px;">${message}</p>
+            `;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '20px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+
+            // Smooth scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
