@@ -248,10 +248,10 @@
 <span class="question-text">Un segment est :</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q1" type="radio" value="a"/> Une portion de droite limitée par deux points
+<input name="q1" type="radio" value="a"/> Une droite infinie
                             </label>
 <label class="quiz-option">
-<input name="q1" type="radio" value="b"/> Une droite infinie
+<input name="q1" type="radio" value="b"/> Une portion de droite limitée par deux points
                             </label>
 <label class="quiz-option">
 <input name="q1" type="radio" value="c"/> Un angle entre deux points
@@ -264,13 +264,13 @@
 <span class="question-text">Comment note-t-on un segment ayant pour extrémités A et B ?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q2" type="radio" value="a"/> (AB)
+<input name="q2" type="radio" value="a"/> [AB]
                             </label>
 <label class="quiz-option">
-<input name="q2" type="radio" value="b"/> [AB)
+<input name="q2" type="radio" value="b"/> (AB)
                             </label>
 <label class="quiz-option">
-<input name="q2" type="radio" value="c"/> [AB]
+<input name="q2" type="radio" value="c"/> [AB)
                             </label>
 </div>
 <div class="quiz-feedback" id="feedback-q2"></div>
@@ -280,13 +280,13 @@
 <span class="question-text">[AB] et [BA] représentent :</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q3" type="radio" value="a"/> Le même segment
+<input name="q3" type="radio" value="a"/> Deux segments différents
                             </label>
 <label class="quiz-option">
-<input name="q3" type="radio" value="b"/> Deux segments différents
+<input name="q3" type="radio" value="b"/> Un segment et une droite
                             </label>
 <label class="quiz-option">
-<input name="q3" type="radio" value="c"/> Un segment et une droite
+<input name="q3" type="radio" value="c"/> Le même segment
                             </label>
 </div>
 <div class="quiz-feedback" id="feedback-q3"></div>
@@ -296,10 +296,10 @@
 <span class="question-text">Quelle est la différence entre [AB] et AB ?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q4" type="radio" value="a"/> Il n'y a pas de différence
+<input name="q4" type="radio" value="a"/> [AB] est le segment, AB est sa longueur
                             </label>
 <label class="quiz-option">
-<input name="q4" type="radio" value="b"/> [AB] est le segment, AB est sa longueur
+<input name="q4" type="radio" value="b"/> Il n'y a pas de différence
                             </label>
 <label class="quiz-option">
 <input name="q4" type="radio" value="c"/> [AB] est une droite, AB est un segment
@@ -312,10 +312,10 @@
 <span class="question-text">Avec quel outil mesure-t-on la longueur d'un segment ?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q5" type="radio" value="a"/> Un compas
+<input name="q5" type="radio" value="a"/> Une règle graduée
                             </label>
 <label class="quiz-option">
-<input name="q5" type="radio" value="b"/> Une règle graduée
+<input name="q5" type="radio" value="b"/> Un compas
                             </label>
 <label class="quiz-option">
 <input name="q5" type="radio" value="c"/> Une équerre
@@ -328,10 +328,10 @@
 <span class="question-text">Deux segments sont égaux si :</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q6" type="radio" value="a"/> Ils ont les mêmes extrémités
+<input name="q6" type="radio" value="a"/> Ils ont la même longueur
                             </label>
 <label class="quiz-option">
-<input name="q6" type="radio" value="b"/> Ils ont la même longueur
+<input name="q6" type="radio" value="b"/> Ils ont les mêmes extrémités
                             </label>
 <label class="quiz-option">
 <input name="q6" type="radio" value="c"/> Ils sont tracés à la même position
@@ -349,12 +349,12 @@
 <script>
         function submitQuiz(quizId) {
             const answers = {
-                q1: 'a',
-                q2: 'c',
-                q3: 'a',
-                q4: 'b',
-                q5: 'b',
-                q6: 'b'
+                q1: 'b',
+                q2: 'a',
+                q3: 'c',
+                q4: 'a',
+                q5: 'a',
+                q6: 'a'
             };
 
             let score = 0;

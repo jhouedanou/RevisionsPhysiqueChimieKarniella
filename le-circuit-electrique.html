@@ -1503,10 +1503,10 @@
 <span class="question-text">Qu'est-ce qu'un circuit électrique complet?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q1" type="radio" value="a"/> Une boucle fermée permettant au courant de circuler sans interruption
+<input name="q1" type="radio" value="a"/> Un circuit avec beaucoup de fils
                         </label>
 <label class="quiz-option">
-<input name="q1" type="radio" value="b"/> Un circuit avec beaucoup de fils
+<input name="q1" type="radio" value="b"/> Une boucle fermée permettant au courant de circuler sans interruption
                         </label>
 <label class="quiz-option">
 <input name="q1" type="radio" value="c"/> Une prise de courant murale
@@ -1520,13 +1520,13 @@
 <span class="question-text">Quels sont les composants essentiels d'un circuit électrique simple?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q2" type="radio" value="a"/> Une pile, des fils et un appareil (lampe, moteur, etc.)
+<input name="q2" type="radio" value="a"/> Seulement une pile
                         </label>
 <label class="quiz-option">
-<input name="q2" type="radio" value="b"/> Seulement une pile
+<input name="q2" type="radio" value="b"/> Des fils sans aucune source d'énergie
                         </label>
 <label class="quiz-option">
-<input name="q2" type="radio" value="c"/> Des fils sans aucune source d'énergie
+<input name="q2" type="radio" value="c"/> Une pile, des fils et un appareil (lampe, moteur, etc.)
                         </label>
 </div>
 <div class="quiz-feedback" id="feedback-q2"></div>
@@ -1537,10 +1537,10 @@
 <span class="question-text">Quel est le rôle de la pile dans un circuit électrique?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q3" type="radio" value="a"/> Elle fournit l'énergie électrique pour faire fonctionner le circuit
+<input name="q3" type="radio" value="a"/> Elle éteint le circuit
                         </label>
 <label class="quiz-option">
-<input name="q3" type="radio" value="b"/> Elle éteint le circuit
+<input name="q3" type="radio" value="b"/> Elle fournit l'énergie électrique pour faire fonctionner le circuit
                         </label>
 <label class="quiz-option">
 <input name="q3" type="radio" value="c"/> Elle stocke seulement l'énergie sans la fournir
@@ -1554,10 +1554,10 @@
 <span class="question-text">Que se passe-t-il si le circuit électrique est ouvert (cassé)?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q4" type="radio" value="a"/> Le courant circule toujours normalement
+<input name="q4" type="radio" value="a"/> Le courant ne circule pas et la lampe s'éteint
                         </label>
 <label class="quiz-option">
-<input name="q4" type="radio" value="b"/> Le courant ne circule pas et la lampe s'éteint
+<input name="q4" type="radio" value="b"/> Le courant circule toujours normalement
                         </label>
 <label class="quiz-option">
 <input name="q4" type="radio" value="c"/> La pile explose
@@ -1571,13 +1571,13 @@
 <span class="question-text">Comment le courant circule-t-il dans un circuit fermé?</span>
 <div class="quiz-options">
 <label class="quiz-option">
-<input name="q5" type="radio" value="a"/> De la borne positive à la borne négative en passant par l'appareil
+<input name="q5" type="radio" value="a"/> Aléatoirement dans toutes les directions
                         </label>
 <label class="quiz-option">
-<input name="q5" type="radio" value="b"/> Aléatoirement dans toutes les directions
+<input name="q5" type="radio" value="b"/> Uniquement dans un seul fil
                         </label>
 <label class="quiz-option">
-<input name="q5" type="radio" value="c"/> Uniquement dans un seul fil
+<input name="q5" type="radio" value="c"/> De la borne positive à la borne négative en passant par l'appareil
                         </label>
 </div>
 <div class="quiz-feedback" id="feedback-q5"></div>
@@ -1591,11 +1591,11 @@
 <script>
         // Quiz answers and validation
         const quizAnswers = {
-            q1: 'a', // Boucle fermée
-            q2: 'a', // Pile, fils, appareil
-            q3: 'a', // Fournit l'énergie
-            q4: 'b', // Courant ne circule pas
-            q5: 'a'  // De + à - via l'appareil
+            q1: 'b', // Boucle fermée
+            q2: 'c', // Pile, fils, appareil
+            q3: 'b', // Fournit l'énergie
+            q4: 'a', // Courant ne circule pas
+            q5: 'c'  // De + à - via l'appareil
         };
 
         function submitQuiz() {
