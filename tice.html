@@ -1013,6 +1013,60 @@
                     <div class="quiz-feedback" id="feedback-q5"></div>
                 </div>
 
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Lequel est un périphérique de sortie ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> Le clavier
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> L'imprimante
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> La souris
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Quel exemple est un logiciel d'application ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Windows
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Microsoft Word
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Le processeur
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Que signifie 1 Go (gigaoctet) ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> 1 024 Mo (mégaoctets)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> 100 Mo
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> 1 000 Ko
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
                 <!-- Submit Button -->
                 <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
                 <div id="quiz-results" class="quiz-result" style="display: none;"></div>
@@ -1027,7 +1081,10 @@
             q2: 'a', // Envoie des informations
             q3: 'a', // Exécuter les instructions
             q4: 'a', // Programme principal
-            q5: 'a'  // RAM temporaire, disque dur permanent
+            q5: 'a', // RAM temporaire, disque dur permanent
+            q6: 'b', // L'imprimante (sortie)
+            q7: 'b', // Microsoft Word (application)
+            q8: 'a'  // 1 024 Mo
         };
 
         function submitQuiz() {
