@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cercles et Disques - Cours de Mathématiques</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>⭕ Cercles et Disques</h1>
+<p>Géométrie des figures circulaires</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Présentation</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Cercles</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Définition</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Présentation des Cercles et Disques</h2>
+<div class="definition-box">
+<h4>📘 Qu'est-ce qu'un cercle ?</h4>
+<p>Un <strong>cercle</strong> est l'ensemble de tous les points situés à une même distance d'un point fixe appelé le <strong>centre</strong>.</p>
+<p>Cette distance constante s'appelle le <strong>rayon</strong> du cercle.</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation</h4>
+<svg height="300" viewBox="0 0 600 300" width="100%">
+<!-- Cercle -->
+<circle cx="300" cy="150" fill="none" r="100" stroke="#FF69B4" stroke-width="3"></circle>
+<!-- Centre -->
+<circle cx="300" cy="150" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="310" y="155">O</text>
+<!-- Rayon -->
+<line stroke="#4CAF50" stroke-width="2" x1="300" x2="400" y1="150" y2="150"></line>
+<circle cx="400" cy="150" fill="#4CAF50" r="4"></circle>
+<text fill="#4CAF50" font-size="16" font-weight="bold" x="405" y="155">A</text>
+<text fill="#4CAF50" font-size="14" text-anchor="middle" x="350" y="135">rayon</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Qu'est-ce qu'un disque ?</h4>
+<p>Un <strong>disque</strong> est l'ensemble de tous les points situés à l'intérieur d'un cercle, y compris le cercle lui-même.</p>
+<p>Le disque est donc une surface pleine, contrairement au cercle qui est seulement le contour.</p>
+</div>
+<div class="example-box">
+<h4>💡 Différence entre cercle et disque</h4>
+<svg height="250" viewBox="0 0 600 250" width="100%">
+<!-- Cercle (contour uniquement) -->
+<circle cx="150" cy="125" fill="none" r="80" stroke="#FF69B4" stroke-width="3"></circle>
+<circle cx="150" cy="125" fill="#f44336" r="4"></circle>
+<text fill="#333" font-size="16" font-weight="bold" text-anchor="middle" x="150" y="230">Cercle (contour)</text>
+<!-- Disque (surface pleine) -->
+<circle cx="450" cy="125" fill="#FFE5F0" r="80" stroke="#FF69B4" stroke-width="3"></circle>
+<circle cx="450" cy="125" fill="#f44336" r="4"></circle>
+<text fill="#333" font-size="16" font-weight="bold" text-anchor="middle" x="450" y="230">Disque (surface)</text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Points importants</h4>
+<p><strong>1.</strong> Le cercle est une ligne courbe fermée</p>
+<p><strong>2.</strong> Tous les points du cercle sont à la même distance du centre</p>
+<p><strong>3.</strong> Le disque inclut le cercle et toute la surface intérieure</p>
+<p><strong>4.</strong> Le rayon est la distance du centre à n'importe quel point du cercle</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Un cercle est un contour, un disque est une surface<br/>
+                    • Le centre est le point fixe au milieu du cercle<br/>
+                    • Le rayon est la distance du centre au cercle<br/>
+                    • Tous les rayons d'un même cercle ont la même longueur
+                </div>
+
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab1"></div></div>
+</div>
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Les Cercles</h2>
+<div class="definition-box">
+<h4>📘 Éléments d'un cercle</h4>
+<p>Un cercle possède plusieurs éléments caractéristiques :</p>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li><strong>Le centre (O) :</strong> Point fixe au milieu du cercle</li>
+<li><strong>Le rayon (r) :</strong> Distance du centre à un point du cercle</li>
+<li><strong>Le diamètre (d) :</strong> Segment passant par le centre et reliant deux points du cercle</li>
+<li><strong>La corde :</strong> Segment reliant deux points du cercle</li>
+<li><strong>L'arc :</strong> Portion du cercle entre deux points</li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Visualisation des éléments</h4>
+<svg height="350" viewBox="0 0 600 350" width="100%">
+<!-- Cercle principal -->
+<circle cx="300" cy="175" fill="none" r="120" stroke="#FF69B4" stroke-width="3"></circle>
+<!-- Centre -->
+<circle cx="300" cy="175" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="285" y="195">O</text>
+<!-- Rayon -->
+<line stroke="#4CAF50" stroke-width="2" x1="300" x2="390" y1="175" y2="115"></line>
+<circle cx="390" cy="115" fill="#4CAF50" r="4"></circle>
+<text fill="#4CAF50" font-size="14" text-anchor="middle" x="345" y="135">Rayon</text>
+<!-- Diamètre -->
+<line stroke="#2196F3" stroke-width="2" x1="180" x2="420" y1="175" y2="175"></line>
+<circle cx="180" cy="175" fill="#2196F3" r="4"></circle>
+<circle cx="420" cy="175" fill="#2196F3" r="4"></circle>
+<text fill="#2196F3" font-size="14" text-anchor="middle" x="300" y="160">Diamètre</text>
+<!-- Corde -->
+<line stroke="#FF9800" stroke-width="2" x1="230" x2="370" y1="95" y2="95"></line>
+<circle cx="230" cy="95" fill="#FF9800" r="4"></circle>
+<circle cx="370" cy="95" fill="#FF9800" r="4"></circle>
+<text fill="#FF9800" font-size="14" text-anchor="middle" x="300" y="85">Corde</text>
+<!-- Arc -->
+<path d="M 220 255 A 120 120 0 0 1 380 255" fill="none" stroke="#9C27B0" stroke-width="4"></path>
+<text fill="#9C27B0" font-size="14" text-anchor="middle" x="300" y="320">Arc</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Notation d'un cercle</h4>
+<p>Un cercle de centre O et de rayon r se note : <strong>ℭ(O, r)</strong> ou <strong>cercle (O, r)</strong></p>
+<p>Exemple : ℭ(O, 5 cm) désigne le cercle de centre O et de rayon 5 cm</p>
+</div>
+<div class="example-box">
+<h4>💡 Relation entre rayon et diamètre</h4>
+<div style="background: #e3f2fd; padding: 20px; border-radius: 8px; border-left: 4px solid #2196F3;">
+<p><strong>Le diamètre est toujours égal au double du rayon :</strong></p>
+<p style="font-size: 20px; text-align: center; margin: 15px 0; color: #1976D2;"><strong>d = 2 × r</strong></p>
+<p style="margin-top: 10px; color: #666;"><em>Exemple : Si r = 3 cm, alors d = 2 × 3 = 6 cm</em></p>
+</div>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés des cercles</h4>
+<p><strong>1.</strong> Tous les rayons d'un même cercle ont la même longueur</p>
+<p><strong>2.</strong> Le diamètre est la plus grande corde du cercle</p>
+<p><strong>3.</strong> Le diamètre passe toujours par le centre</p>
+<p><strong>4.</strong> Un cercle a une infinité de rayons et de diamètres</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Rayon = distance du centre au cercle<br/>
+                    • Diamètre = 2 × Rayon<br/>
+                    • Le diamètre est la plus grande distance dans un cercle<br/>
+                    • Notation : ℭ(O, r) pour un cercle de centre O et de rayon r
+                </div>
+
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab2"></div></div>
+</div>
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Définition Complète</h2>
+<div class="definition-box">
+<h4>📘 Définition mathématique du cercle</h4>
+<p>Soit O un point du plan et r un nombre positif.</p>
+<p>Le <strong>cercle de centre O et de rayon r</strong>, noté ℭ(O, r), est l'ensemble de tous les points M du plan tels que OM = r.</p>
+<p>En d'autres termes : M appartient au cercle ℭ(O, r) si et seulement si la distance de M à O est égale à r.</p>
+</div>
+<div class="example-box">
+<h4>💡 Points sur, à l'intérieur et à l'extérieur du cercle</h4>
+<svg height="350" viewBox="0 0 600 350" width="100%">
+<!-- Cercle -->
+<circle cx="300" cy="175" fill="#FFF0F5" r="100" stroke="#FF69B4" stroke-width="3"></circle>
+<!-- Centre -->
+<circle cx="300" cy="175" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="310" y="180">O</text>
+<!-- Point sur le cercle -->
+<circle cx="400" cy="175" fill="#4CAF50" r="5"></circle>
+<text fill="#4CAF50" font-size="16" font-weight="bold" x="410" y="180">A</text>
+<line stroke="#4CAF50" stroke-dasharray="3,3" stroke-width="1" x1="300" x2="400" y1="175" y2="175"></line>
+<text fill="#4CAF50" font-size="13" text-anchor="middle" x="350" y="195">OA = r</text>
+<!-- Point à l'intérieur -->
+<circle cx="330" cy="150" fill="#2196F3" r="5"></circle>
+<text fill="#2196F3" font-size="16" font-weight="bold" x="340" y="150">B</text>
+<line stroke="#2196F3" stroke-dasharray="3,3" stroke-width="1" x1="300" x2="330" y1="175" y2="150"></line>
+<text fill="#2196F3" font-size="13" text-anchor="middle" x="315" y="160">OB &lt; r</text>
+<!-- Point à l'extérieur -->
+<circle cx="450" cy="120" fill="#FF9800" r="5"></circle>
+<text fill="#FF9800" font-size="16" font-weight="bold" x="460" y="125">C</text>
+<line stroke="#FF9800" stroke-dasharray="3,3" stroke-width="1" x1="300" x2="450" y1="175" y2="120"></line>
+<text fill="#FF9800" font-size="13" text-anchor="middle" x="375" y="135">OC &gt; r</text>
+<!-- Légende -->
+<text fill="#333" font-size="14" x="50" y="300">
+<tspan fill="#4CAF50" font-weight="bold">●</tspan> Point A : sur le cercle (OM = r)
+</text>
+<text fill="#333" font-size="14" x="50" y="320">
+<tspan fill="#2196F3" font-weight="bold">●</tspan> Point B : à l'intérieur (OM &lt; r)
+</text>
+<text fill="#333" font-size="14" x="50" y="340">
+<tspan fill="#FF9800" font-weight="bold">●</tspan> Point C : à l'extérieur (OM &gt; r)
+</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Définition mathématique du disque</h4>
+<p>Le <strong>disque de centre O et de rayon r</strong>, noté 𝒟(O, r), est l'ensemble de tous les points M du plan tels que OM ≤ r.</p>
+<p>Le disque contient donc :</p>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li>Tous les points du cercle (où OM = r)</li>
+<li>Tous les points à l'intérieur du cercle (où OM &lt; r)</li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Construction d'un cercle au compas</h4>
+<ol style="margin-left: 20px; line-height: 2;">
+<li><strong>Marquer le centre :</strong> Placer un point O qui sera le centre du cercle</li>
+<li><strong>Régler l'écartement :</strong> Ouvrir le compas à la longueur du rayon souhaité</li>
+<li><strong>Placer la pointe :</strong> Mettre la pointe sèche du compas sur le point O</li>
+<li><strong>Tracer le cercle :</strong> Faire pivoter le compas pour tracer le cercle complet</li>
+</ol>
+</div>
+<div class="property-box">
+<h4>✓ Caractéristiques importantes</h4>
+<p><strong>1.</strong> Un point M est sur le cercle ⟺ OM = r</p>
+<p><strong>2.</strong> Un point M est dans le disque ⟺ OM ≤ r</p>
+<p><strong>3.</strong> Le cercle est la frontière du disque</p>
+<p><strong>4.</strong> Le disque est une surface, le cercle est une ligne</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • ℭ(O, r) = cercle de centre O et de rayon r<br/>
+                    • 𝒟(O, r) = disque de centre O et de rayon r<br/>
+                    • Sur le cercle : OM = r<br/>
+                    • Dans le disque : OM ≤ r<br/>
+                    • Le compas permet de tracer des cercles parfaits
+                </div>
+
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab3"></div></div>
+</div>
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Cercles et Disques</h2>
+<p>Testez vos connaissances sur les cercles et disques</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Un cercle est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> L'ensemble des points situés à une même distance d'un point fixe
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Une surface pleine
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Un segment de droite
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Quelle est la différence entre un cercle et un disque ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> Il n'y a pas de différence
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> Le cercle est le contour, le disque est la surface pleine
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> Le disque est plus petit que le cercle
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Le rayon d'un cercle est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> La distance du centre à un point du cercle
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> Le double du diamètre
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> La circonférence du cercle
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Si le rayon d'un cercle est 4 cm, quel est son diamètre ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> 2 cm
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> 4 cm
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> 8 cm
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Comment note-t-on un cercle de centre O et de rayon r ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> [O, r]
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> (O, r)
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> ℭ(O, r)
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Quel outil utilise-t-on pour tracer un cercle ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> Une règle
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> Un compas
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> Une équerre
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Tous les rayons d'un même cercle :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q7" type="radio" value="a"/> Ont des longueurs différentes
+                            </label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="b"/> Ont la même longueur
+                            </label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="c"/> Sont perpendiculaires
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q7"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Le diamètre est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q8" type="radio" value="a"/> La moitié du rayon
+                            </label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="b"/> Égal au rayon
+                            </label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="c"/> Le double du rayon
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q8"></div>
+</div>
+<button class="quiz-button" onclick="submitQuiz('quiz-cercles-disques')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'a',
+                q4: 'c',
+                q5: 'c',
+                q6: 'b',
+                q7: 'b',
+                q8: 'c'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-cercles-disques'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-cercles-disques');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
+</body>
+</html>
