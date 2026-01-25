@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Français - Grammaire et Expression</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📚';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '✏️';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: 3px solid #FF1493;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: 3px solid #FF1493;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .tab-button:hover {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            width: 100%;
+            max-width: 1000px;
+            border: 4px solid #FF69B4;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #C71585;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 3px solid #FF69B4;
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        h4 {
+            color: #FF1493;
+            margin: 20px 0 10px 0;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        p, li {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-left: 5px solid #FF69B4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #1565C0;
+            margin-top: 0;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #FF9800;
+            border-left: 5px solid #FF69B4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #E65100;
+            margin-top: 0;
+        }
+
+        .rule-box {
+            background: #FFFFFF;
+            border: 3px solid #4CAF50;
+            border-left: 5px solid #FF69B4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .rule-box h4 {
+            color: #2E7D32;
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: #FFFFFF;
+            border: 3px solid #f44336;
+            border-left: 5px solid #FF69B4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #C62828;
+            margin-top: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #C71585;
+        }
+
+        .accent-display {
+            font-size: 28px;
+            text-align: center;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: Georgia, serif;
+            border: 2px dashed #FF69B4;
+        }
+
+        .letter-example {
+            background: #fffef5;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            font-family: 'Georgia', serif;
+            line-height: 2;
+        }
+
+        .letter-example .lieu-date {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .letter-example .formule {
+            margin: 20px 0;
+        }
+
+        .letter-example .signature {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #FFF0F5;
+        }
+
+        .quiz-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .quiz-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Accueil</a>
+        <h1>📚 Français - Grammaire et Expression</h1>
+        <p>Maîtrise la langue française avec des leçons claires et des exercices amusants !</p>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab-button active" onclick="showTab('expansions')">📝 Les Expansions</button>
+        <button class="tab-button" onclick="showTab('textes-descriptifs')">🖼️ Textes Descriptifs</button>
+        <button class="tab-button" onclick="showTab('actions')">🎬 Les Actions</button>
+        <button class="tab-button" onclick="showTab('accents')">É Les Accents</button>
+        <button class="tab-button" onclick="showTab('apostrophe')">L' L'Apostrophe</button>
+        <button class="tab-button" onclick="showTab('lettre')">✉️ Lettre Personnelle</button>
+        <button class="tab-button" onclick="showTab('phrase')">📖 La Phrase</button>
+    </nav>
+
+    <main class="content">
+        <div class="container">
+            <!-- Tab 1: Les Expansions du Nom -->
+            <div id="expansions" class="tab-content active">
+                <h2>📝 Les Expansions du Nom</h2>
+                <p class="subtitle">Enrichis tes phrases en ajoutant des informations au nom !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Les <span class="highlight">expansions du nom</span> sont des mots ou groupes de mots qui apportent des précisions sur un nom. Elles permettent d'enrichir une phrase et de donner plus de détails.</p>
+                </div>
+
+                <h3>🔍 Les trois types d'expansions</h3>
+
+                <h4>1. L'adjectif qualificatif</h4>
+                <p>L'adjectif qualificatif décrit une qualité du nom. Il s'accorde en genre et en nombre avec le nom qu'il qualifie.</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Un <span class="highlight">petit</span> chat → adjectif épithète</li>
+                        <li>Une fleur <span class="highlight">rouge</span> → adjectif épithète</li>
+                        <li>Le ciel est <span class="highlight">bleu</span> → adjectif attribut</li>
+                    </ul>
+                </div>
+
+                <h4>2. Le complément du nom</h4>
+                <p>Le complément du nom est un groupe introduit par une préposition (de, à, en, pour, sans...) qui complète le nom.</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Un livre <span class="highlight">de contes</span></li>
+                        <li>Une maison <span class="highlight">en briques</span></li>
+                        <li>Un gâteau <span class="highlight">au chocolat</span></li>
+                        <li>Une machine <span class="highlight">à laver</span></li>
+                    </ul>
+                </div>
+
+                <h4>3. La proposition subordonnée relative</h4>
+                <p>C'est une proposition introduite par un pronom relatif (qui, que, dont, où, lequel...) qui apporte une information sur le nom.</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Le garçon <span class="highlight">qui court</span> est mon frère.</li>
+                        <li>Le livre <span class="highlight">que j'ai lu</span> était passionnant.</li>
+                        <li>La ville <span class="highlight">où je suis né</span> est magnifique.</li>
+                        <li>L'ami <span class="highlight">dont je t'ai parlé</span> arrive demain.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <h4>✅ À retenir</h4>
+                    <ul>
+                        <li><strong>Adjectif épithète</strong> : placé directement à côté du nom</li>
+                        <li><strong>Adjectif attribut</strong> : relié au nom par un verbe d'état</li>
+                        <li><strong>Complément du nom</strong> : introduit par une préposition</li>
+                        <li><strong>Relative</strong> : introduite par un pronom relatif</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                </div>
+            </div>
+
+            <!-- Tab 2: Les Textes Descriptifs -->
+            <div id="textes-descriptifs" class="tab-content">
+                <h2>🖼️ Les Textes Descriptifs</h2>
+                <p class="subtitle">Apprends à décrire de manière vivante et précise !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Un <span class="highlight">texte descriptif</span> est un texte qui donne des informations détaillées sur un lieu, un personnage, un objet ou une atmosphère. Son but est de permettre au lecteur de visualiser ce qui est décrit.</p>
+                </div>
+
+                <h3>🎯 Les caractéristiques du texte descriptif</h3>
+
+                <div class="rule-box">
+                    <h4>✅ Éléments essentiels</h4>
+                    <ul>
+                        <li>Utilisation d'<strong>adjectifs qualificatifs</strong> nombreux</li>
+                        <li>Emploi de <strong>comparaisons</strong> et de <strong>métaphores</strong></li>
+                        <li>Présence de <strong>verbes d'état</strong> (être, paraître, sembler...)</li>
+                        <li>Organisation <strong>logique</strong> (du haut vers le bas, du général au particulier...)</li>
+                        <li>Utilisation des <strong>cinq sens</strong> (vue, ouïe, toucher, goût, odorat)</li>
+                    </ul>
+                </div>
+
+                <h3>📍 Description d'un lieu</h3>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemple</h4>
+                    <p><em>La <span class="highlight">vieille</span> maison se dressait au sommet de la colline. Ses murs de <span class="highlight">pierre grise</span> étaient couverts de lierre. Les volets <span class="highlight">bleus délavés</span> grinçaient au vent. Tout autour, un jardin <span class="highlight">sauvage</span> débordait de roses <span class="highlight">parfumées</span>.</em></p>
+                </div>
+
+                <h3>👤 Description d'un personnage</h3>
+
+                <h4>Le portrait physique</h4>
+                <p>Il décrit l'apparence : taille, visage, cheveux, yeux, vêtements...</p>
+
+                <h4>Le portrait moral</h4>
+                <p>Il décrit le caractère : qualités, défauts, habitudes, comportements...</p>
+
+                <div class="example-box">
+                    <h4>🌟 Exemple de portrait</h4>
+                    <p><em>Marie était une <span class="highlight">grande</span> femme aux cheveux <span class="highlight">noirs comme l'ébène</span>. Ses yeux <span class="highlight">verts</span> pétillaient de malice. Toujours <span class="highlight">souriante</span>, elle avait le don de mettre les gens à l'aise. <span class="highlight">Généreuse</span> et <span class="highlight">attentive</span>, elle aidait volontiers ses voisins.</em></p>
+                </div>
+
+                <h3>🔧 Les outils de la description</h3>
+
+                <table>
+                    <tr>
+                        <th>Outil</th>
+                        <th>Définition</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td>Comparaison</td>
+                        <td>Rapproche deux éléments avec un mot-outil (comme, tel que...)</td>
+                        <td>Ses cheveux brillent <em>comme</em> de l'or</td>
+                    </tr>
+                    <tr>
+                        <td>Métaphore</td>
+                        <td>Comparaison sans mot-outil</td>
+                        <td>Ses cheveux sont <em>de l'or</em></td>
+                    </tr>
+                    <tr>
+                        <td>Personnification</td>
+                        <td>Attribue des qualités humaines à un objet</td>
+                        <td>Le vent <em>murmure</em></td>
+                    </tr>
+                </table>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                </div>
+            </div>
+
+            <!-- Tab 3: Les Actions -->
+            <div id="actions" class="tab-content">
+                <h2>🎬 Les Actions dans la Phrase</h2>
+                <p class="subtitle">Comprends comment les verbes expriment les actions !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Les <span class="highlight">actions</span> sont exprimées par les verbes d'action. Ils indiquent ce que fait le sujet : courir, manger, parler, construire, etc.</p>
+                </div>
+
+                <h3>🔍 Types de verbes</h3>
+
+                <h4>1. Les verbes d'action</h4>
+                <p>Ils expriment une action concrète ou abstraite réalisée par le sujet.</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Le chat <span class="highlight">saute</span> sur le lit. (action physique)</li>
+                        <li>Elle <span class="highlight">réfléchit</span> à son avenir. (action mentale)</li>
+                        <li>Les ouvriers <span class="highlight">construisent</span> une maison.</li>
+                    </ul>
+                </div>
+
+                <h4>2. Les verbes d'état</h4>
+                <p>Ils expriment un état, une manière d'être. Ils introduisent un attribut du sujet.</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Le ciel <span class="highlight">est</span> bleu.</li>
+                        <li>Marie <span class="highlight">semble</span> fatiguée.</li>
+                        <li>Ce gâteau <span class="highlight">paraît</span> délicieux.</li>
+                    </ul>
+                    <p><em>Verbes d'état principaux : être, paraître, sembler, devenir, demeurer, rester, avoir l'air</em></p>
+                </div>
+
+                <h3>⏰ Les temps de l'action</h3>
+
+                <table>
+                    <tr>
+                        <th>Temps</th>
+                        <th>Utilisation</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td>Présent</td>
+                        <td>Action en cours</td>
+                        <td>Je <em>mange</em> une pomme.</td>
+                    </tr>
+                    <tr>
+                        <td>Passé composé</td>
+                        <td>Action terminée récemment</td>
+                        <td>J'<em>ai mangé</em> une pomme.</td>
+                    </tr>
+                    <tr>
+                        <td>Imparfait</td>
+                        <td>Action passée qui dure ou habitude</td>
+                        <td>Je <em>mangeais</em> souvent des pommes.</td>
+                    </tr>
+                    <tr>
+                        <td>Futur</td>
+                        <td>Action à venir</td>
+                        <td>Je <em>mangerai</em> une pomme demain.</td>
+                    </tr>
+                </table>
+
+                <h3>🎯 La progression des actions</h3>
+
+                <div class="rule-box">
+                    <h4>✅ Les connecteurs temporels</h4>
+                    <p>Pour ordonner les actions dans un récit, on utilise des connecteurs :</p>
+                    <ul>
+                        <li><strong>D'abord, premièrement</strong> → début</li>
+                        <li><strong>Ensuite, puis, après</strong> → suite</li>
+                        <li><strong>Enfin, finalement</strong> → fin</li>
+                        <li><strong>Pendant ce temps, au même moment</strong> → simultanéité</li>
+                        <li><strong>Soudain, tout à coup</strong> → événement inattendu</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                </div>
+            </div>
+
+            <!-- Tab 4: Les Accents -->
+            <div id="accents" class="tab-content">
+                <h2>É Les Accents en Français</h2>
+                <p class="subtitle">Maîtrise les accents pour bien écrire !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Les <span class="highlight">accents</span> sont des signes graphiques placés sur certaines voyelles. Ils modifient la prononciation ou permettent de distinguer des mots.</p>
+                </div>
+
+                <h3>Les trois types d'accents</h3>
+
+                <h4>1. L'accent aigu ( ´ )</h4>
+                <div class="accent-display">é → café, été, éléphant</div>
+                <p>Il se place uniquement sur le <strong>e</strong> et se prononce [é] (son fermé).</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li><span class="highlight">é</span>cole, <span class="highlight">é</span>l<span class="highlight">è</span>ve, m<span class="highlight">é</span>decin</li>
+                        <li>caf<span class="highlight">é</span>, th<span class="highlight">é</span>, march<span class="highlight">é</span></li>
+                    </ul>
+                </div>
+
+                <h4>2. L'accent grave ( ` )</h4>
+                <div class="accent-display">è, à, ù → père, là, où</div>
+                <p>Il se place sur le <strong>e, a, u</strong>. Sur le e, il se prononce [è] (son ouvert).</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>p<span class="highlight">è</span>re, m<span class="highlight">è</span>re, fr<span class="highlight">è</span>re</li>
+                        <li>l<span class="highlight">à</span> (lieu) ≠ la (article)</li>
+                        <li>o<span class="highlight">ù</span> (lieu) ≠ ou (choix)</li>
+                    </ul>
+                </div>
+
+                <h4>3. L'accent circonflexe ( ^ )</h4>
+                <div class="accent-display">ê, â, ô, î, û → forêt, âge, hôpital</div>
+                <p>Il peut se placer sur toutes les voyelles. Il indique souvent une lettre disparue (généralement un "s").</p>
+                
+                <div class="example-box">
+                    <h4>🌟 Exemples et origines</h4>
+                    <ul>
+                        <li>for<span class="highlight">ê</span>t (ancien : forest)</li>
+                        <li>h<span class="highlight">ô</span>pital (ancien : hospital)</li>
+                        <li>f<span class="highlight">ê</span>te (ancien : feste)</li>
+                        <li><span class="highlight">î</span>le (ancien : isle)</li>
+                    </ul>
+                </div>
+
+                <h3>🔤 Le tréma ( ¨ )</h3>
+                <div class="accent-display">ë, ï, ü → Noël, naïf, Saül</div>
+                <p>Le tréma indique que deux voyelles doivent être prononcées séparément.</p>
+
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>No<span class="highlight">ë</span>l → on prononce [no-èl] et non [nol]</li>
+                        <li>ma<span class="highlight">ï</span>s → on prononce [ma-is] et non [mè]</li>
+                        <li>na<span class="highlight">ï</span>f → on prononce [na-if]</li>
+                    </ul>
+                </div>
+
+                <h3>🔤 La cédille ( ç )</h3>
+                <div class="accent-display">ç → français, garçon, leçon</div>
+                <p>La cédille se place sous le <strong>c</strong> devant a, o, u pour obtenir le son [s].</p>
+
+                <div class="rule-box">
+                    <h4>✅ Règle</h4>
+                    <p>Sans cédille, le c se prononce [k] devant a, o, u :</p>
+                    <ul>
+                        <li><strong>ca</strong> = [ka] (café) → <strong>ça</strong> = [sa]</li>
+                        <li><strong>co</strong> = [ko] (colis) → <strong>ço</strong> = [so] (garçon)</li>
+                        <li><strong>cu</strong> = [ku] (culotte) → <strong>çu</strong> = [su] (reçu)</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                    <a href="francais-dictee.html" class="quiz-link" style="margin-left: 10px;">📝 Faire une dictée</a>
+                </div>
+            </div>
+
+            <!-- Tab 5: L'Apostrophe (Élision) -->
+            <div id="apostrophe" class="tab-content">
+                <h2>L' L'Apostrophe et l'Élision</h2>
+                <p class="subtitle">Comprends quand et pourquoi on utilise l'apostrophe !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>L'<span class="highlight">élision</span> est la suppression d'une voyelle finale devant un mot commençant par une voyelle ou un h muet. Cette suppression est marquée par une <span class="highlight">apostrophe</span> (').</p>
+                </div>
+
+                <h3>🔍 Les mots qui s'élident</h3>
+
+                <table>
+                    <tr>
+                        <th>Mot complet</th>
+                        <th>Forme élidée</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td>le, la</td>
+                        <td>l'</td>
+                        <td>l'ami, l'école, l'heure</td>
+                    </tr>
+                    <tr>
+                        <td>je</td>
+                        <td>j'</td>
+                        <td>j'aime, j'habite</td>
+                    </tr>
+                    <tr>
+                        <td>me, te, se</td>
+                        <td>m', t', s'</td>
+                        <td>il m'appelle, tu t'amuses, il s'endort</td>
+                    </tr>
+                    <tr>
+                        <td>de</td>
+                        <td>d'</td>
+                        <td>d'accord, d'abord</td>
+                    </tr>
+                    <tr>
+                        <td>ne</td>
+                        <td>n'</td>
+                        <td>je n'ai pas, il n'est pas</td>
+                    </tr>
+                    <tr>
+                        <td>que</td>
+                        <td>qu'</td>
+                        <td>qu'est-ce que, parce qu'il</td>
+                    </tr>
+                    <tr>
+                        <td>ce</td>
+                        <td>c'</td>
+                        <td>c'est, c'était</td>
+                    </tr>
+                </table>
+
+                <h3>📖 Le h muet et le h aspiré</h3>
+
+                <div class="rule-box">
+                    <h4>✅ H muet : on fait l'élision</h4>
+                    <ul>
+                        <li>l'<span class="highlight">h</span>omme (et non le homme)</li>
+                        <li>l'<span class="highlight">h</span>eure (et non la heure)</li>
+                        <li>l'<span class="highlight">h</span>ôpital (et non le hôpital)</li>
+                        <li>l'<span class="highlight">h</span>istoire (et non la histoire)</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ H aspiré : on ne fait PAS l'élision</h4>
+                    <ul>
+                        <li>le <span class="highlight">h</span>éros (et non l'héros)</li>
+                        <li>la <span class="highlight">h</span>onte (et non l'honte)</li>
+                        <li>le <span class="highlight">h</span>aricot (et non l'haricot)</li>
+                        <li>la <span class="highlight">h</span>ache (et non l'hache)</li>
+                    </ul>
+                </div>
+
+                <h3>⚡ Pourquoi l'élision ?</h3>
+                
+                <div class="example-box">
+                    <h4>🎵 Pour la fluidité</h4>
+                    <p>L'élision évite la rencontre de deux voyelles qui serait difficile à prononcer :</p>
+                    <ul>
+                        <li>❌ "la amie" → ✅ "l'amie"</li>
+                        <li>❌ "je ai" → ✅ "j'ai"</li>
+                        <li>❌ "de abord" → ✅ "d'abord"</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <h4>✅ À retenir</h4>
+                    <ul>
+                        <li>L'élision est <strong>obligatoire</strong> devant une voyelle ou un h muet</li>
+                        <li>On utilise l'<strong>apostrophe</strong> pour marquer l'élision</li>
+                        <li>Le h aspiré <strong>empêche</strong> l'élision</li>
+                        <li>Dans le doute, consulte un dictionnaire !</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                    <a href="francais-dictee.html" class="quiz-link" style="margin-left: 10px;">📝 Faire une dictée</a>
+                </div>
+            </div>
+
+            <!-- Tab 6: La Lettre Personnelle -->
+            <div id="lettre" class="tab-content">
+                <h2>✉️ La Lettre Personnelle</h2>
+                <p class="subtitle">Apprends à écrire une lettre à un ami ou un membre de ta famille !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>La <span class="highlight">lettre personnelle</span> est un écrit adressé à une personne proche (ami, famille) pour donner des nouvelles, raconter un événement ou exprimer des sentiments.</p>
+                </div>
+
+                <h3>📋 La structure de la lettre</h3>
+
+                <div class="rule-box">
+                    <h4>✅ Les parties essentielles</h4>
+                    <ol>
+                        <li><strong>Le lieu et la date</strong> (en haut à droite)</li>
+                        <li><strong>La formule d'appel</strong> (Cher/Chère + prénom)</li>
+                        <li><strong>Le corps de la lettre</strong> (le message)</li>
+                        <li><strong>La formule de politesse</strong></li>
+                        <li><strong>La signature</strong></li>
+                    </ol>
+                </div>
+
+                <h3>📝 Exemple de lettre personnelle</h3>
+
+                <div class="letter-example">
+                    <p class="lieu-date">Abidjan, le 15 janvier 2025</p>
+                    
+                    <p class="formule">Chère Aminata,</p>
+                    
+                    <p>J'espère que tu vas bien et que ta rentrée s'est bien passée. Ici, tout va bien et je voulais te donner de mes nouvelles.</p>
+                    
+                    <p>Pendant les vacances, je suis allée à Grand-Bassam avec ma famille. C'était magnifique ! Nous avons visité le musée et nous nous sommes baignés dans la mer. J'aurais tellement aimé que tu sois là !</p>
+                    
+                    <p>La semaine prochaine, c'est mon anniversaire. J'aimerais beaucoup t'inviter à ma fête. Ce sera samedi à partir de 15 heures. Dis-moi vite si tu peux venir !</p>
+                    
+                    <p class="formule">Je t'embrasse très fort et j'attends ta réponse avec impatience.</p>
+                    
+                    <p class="signature">Ton amie,<br>Karniella</p>
+                </div>
+
+                <h3>💬 Les formules d'appel</h3>
+
+                <table>
+                    <tr>
+                        <th>Destinataire</th>
+                        <th>Formule</th>
+                    </tr>
+                    <tr>
+                        <td>Ami(e) proche</td>
+                        <td>Cher/Chère + prénom, Mon cher/Ma chère + prénom</td>
+                    </tr>
+                    <tr>
+                        <td>Parents</td>
+                        <td>Cher papa, Chère maman, Chers parents</td>
+                    </tr>
+                    <tr>
+                        <td>Grands-parents</td>
+                        <td>Cher papi, Chère mamie</td>
+                    </tr>
+                    <tr>
+                        <td>Cousin(e)</td>
+                        <td>Cher/Chère + prénom</td>
+                    </tr>
+                </table>
+
+                <h3>💝 Les formules de politesse</h3>
+
+                <div class="example-box">
+                    <h4>🌟 Formules amicales</h4>
+                    <ul>
+                        <li>Je t'embrasse très fort</li>
+                        <li>Grosses bises</li>
+                        <li>À très bientôt</li>
+                        <li>Ton ami(e) qui pense à toi</li>
+                        <li>Amitiés</li>
+                        <li>Affectueusement</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Erreurs à éviter</h4>
+                    <ul>
+                        <li>❌ Oublier la date</li>
+                        <li>❌ Commencer sans formule d'appel</li>
+                        <li>❌ Terminer sans formule de politesse</li>
+                        <li>❌ Ne pas signer</li>
+                        <li>❌ Faire des phrases trop longues</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                </div>
+            </div>
+
+            <!-- Tab 7: La Phrase -->
+            <div id="phrase" class="tab-content">
+                <h2>📖 La Phrase</h2>
+                <p class="subtitle">Comprends la structure et les types de phrases !</p>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Une <span class="highlight">phrase</span> est un ensemble de mots ordonnés qui a un sens complet. Elle commence par une majuscule et se termine par un point (. ! ?).</p>
+                </div>
+
+                <h3>🔍 Les types de phrases</h3>
+
+                <h4>1. La phrase déclarative</h4>
+                <p>Elle donne une information, raconte quelque chose. Elle se termine par un point.</p>
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Le soleil brille<span class="highlight">.</span></li>
+                        <li>Marie mange une pomme<span class="highlight">.</span></li>
+                    </ul>
+                </div>
+
+                <h4>2. La phrase interrogative</h4>
+                <p>Elle pose une question. Elle se termine par un point d'interrogation.</p>
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Quelle heure est-il<span class="highlight">?</span></li>
+                        <li>Est-ce que tu viens<span class="highlight">?</span></li>
+                        <li>Tu viens<span class="highlight">?</span></li>
+                    </ul>
+                </div>
+
+                <h4>3. La phrase exclamative</h4>
+                <p>Elle exprime un sentiment fort (joie, colère, surprise). Elle se termine par un point d'exclamation.</p>
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Quelle belle journée<span class="highlight">!</span></li>
+                        <li>Comme tu as grandi<span class="highlight">!</span></li>
+                    </ul>
+                </div>
+
+                <h4>4. La phrase impérative (ou injonctive)</h4>
+                <p>Elle donne un ordre, un conseil ou une interdiction.</p>
+                <div class="example-box">
+                    <h4>🌟 Exemples</h4>
+                    <ul>
+                        <li>Ferme la porte<span class="highlight">.</span></li>
+                        <li>Ne cours pas<span class="highlight">!</span></li>
+                        <li>Sois prudent<span class="highlight">.</span></li>
+                    </ul>
+                </div>
+
+                <h3>📝 Les formes de phrases</h3>
+
+                <table>
+                    <tr>
+                        <th>Forme</th>
+                        <th>Caractéristique</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td>Affirmative</td>
+                        <td>Affirme quelque chose</td>
+                        <td>Je mange une pomme.</td>
+                    </tr>
+                    <tr>
+                        <td>Négative</td>
+                        <td>Nie avec ne...pas, ne...plus, ne...jamais</td>
+                        <td>Je <em>ne</em> mange <em>pas</em> de pomme.</td>
+                    </tr>
+                </table>
+
+                <h3>🏗️ Les constituants de la phrase</h3>
+
+                <div class="rule-box">
+                    <h4>✅ La phrase simple minimale</h4>
+                    <p>Une phrase simple contient au minimum :</p>
+                    <ul>
+                        <li><strong>Un sujet</strong> : qui fait l'action ?</li>
+                        <li><strong>Un verbe</strong> : quelle action ?</li>
+                    </ul>
+                    <p>Exemple : <span class="highlight">Le chat</span> (sujet) <span class="highlight">dort</span> (verbe).</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>🌟 Phrase enrichie</h4>
+                    <p>On peut enrichir la phrase avec des compléments :</p>
+                    <ul>
+                        <li><strong>Complément d'objet direct (COD)</strong> : Le chat mange <span class="highlight">une souris</span>.</li>
+                        <li><strong>Complément d'objet indirect (COI)</strong> : Marie parle <span class="highlight">à son frère</span>.</li>
+                        <li><strong>Complément circonstanciel</strong> : Le chat dort <span class="highlight">sur le canapé</span> (lieu), <span class="highlight">depuis une heure</span> (temps).</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="francais-quiz.html" class="quiz-link">🎯 Teste tes connaissances !</a>
+                    <a href="francais-dictee.html" class="quiz-link" style="margin-left: 10px;">📝 Faire une dictée</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top of content
+            document.querySelector('.content').scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

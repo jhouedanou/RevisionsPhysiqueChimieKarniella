@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictée Français - Entraînement</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📝';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '✍️';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: 3px solid #FF1493;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            width: 100%;
+            max-width: 900px;
+            border: 4px solid #FF69B4;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .dictee-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-level {
+            padding: 10px 20px;
+            border: 3px solid #FF69B4;
+            background: white;
+            color: #C71585;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-level:hover {
+            background: #FFE5F0;
+            transform: translateY(-2px);
+        }
+
+        .btn-level.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-color: #C71585;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .dictee-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 2px solid #FFB6D9;
+        }
+
+        .dictee-info h3 {
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .dictee-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .dictee-theme {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .audio-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            background: #f5f5f5;
+            border-radius: 12px;
+            border: 2px dashed #FF69B4;
+        }
+
+        .audio-section h3 {
+            color: #C71585;
+            margin-bottom: 15px;
+        }
+
+        .btn-audio {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            margin: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-play {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-play:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        .btn-slow {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-slow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-stop {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .btn-stop:hover {
+            transform: scale(1.05);
+        }
+
+        .writing-section {
+            margin: 30px 0;
+        }
+
+        .writing-section h3 {
+            color: #C71585;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .writing-area {
+            width: 100%;
+            min-height: 200px;
+            padding: 20px;
+            border: 3px solid #FFB6D9;
+            border-radius: 12px;
+            font-size: 18px;
+            font-family: 'Georgia', serif;
+            line-height: 2;
+            resize: vertical;
+            background: #fffef5;
+        }
+
+        .writing-area:focus {
+            outline: none;
+            border-color: #FF69B4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-check {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+        }
+
+        .btn-check:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-show {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+        }
+
+        .btn-show:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+        }
+
+        .btn-next:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+        }
+
+        .correction-section {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #f9f9f9;
+            border: 3px solid #FF69B4;
+        }
+
+        .correction-section.show {
+            display: block;
+        }
+
+        .correction-section h3 {
+            color: #C71585;
+            margin-bottom: 15px;
+        }
+
+        .original-text {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            font-size: 18px;
+            line-height: 2;
+            border: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .score-display .score {
+            font-size: 48px;
+            color: #C71585;
+            font-weight: bold;
+        }
+
+        .score-display .message {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .word-correct {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .word-incorrect {
+            color: #e74c3c;
+            text-decoration: line-through;
+            font-weight: bold;
+        }
+
+        .word-missing {
+            color: #f39c12;
+            font-style: italic;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .comparison-box {
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .comparison-box h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .comparison-box.user h4 {
+            color: #3498db;
+        }
+
+        .comparison-box.original h4 {
+            color: #2ecc71;
+        }
+
+        .tips-box {
+            background: #e8f4fc;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .tips-box h4 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            color: #333;
+        }
+
+        .tips-box li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .dictee-controls {
+                flex-direction: column;
+            }
+
+            .btn-level {
+                width: 100%;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-audio {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="francais.html" class="btn-back">← Retour</a>
+        <h1>📝 Dictée Français</h1>
+        <p>Entraîne-toi à écrire correctement avec des dictées progressives !</p>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>✍️ Exercice de Dictée</h2>
+            <p class="subtitle">Écoute attentivement et écris ce que tu entends</p>
+
+            <div class="dictee-controls">
+                <button class="btn-level active" onclick="selectLevel('facile')">🌱 Facile</button>
+                <button class="btn-level" onclick="selectLevel('moyen')">🌿 Moyen</button>
+                <button class="btn-level" onclick="selectLevel('difficile')">🌳 Difficile</button>
+            </div>
+
+            <div class="dictee-info" id="dictee-info">
+                <h3>📖 Dictée n°<span id="dictee-number">1</span></h3>
+                <p id="dictee-description"></p>
+                <div id="dictee-themes"></div>
+            </div>
+
+            <div class="audio-section">
+                <h3>🔊 Écoute la dictée</h3>
+                <p style="color: #666; margin-bottom: 15px;">Clique sur le bouton pour écouter. Tu peux réécouter autant de fois que nécessaire.</p>
+                <button class="btn-audio btn-play" onclick="playDictee()">
+                    ▶️ Écouter la dictée
+                </button>
+                <button class="btn-audio btn-slow" onclick="playDictee(0.7)">
+                    🐢 Écouter lentement
+                </button>
+                <button class="btn-audio btn-stop" onclick="stopDictee()">
+                    ⏹️ Arrêter
+                </button>
+            </div>
+
+            <div class="writing-section">
+                <h3>✏️ Écris ta dictée ici :</h3>
+                <textarea class="writing-area" id="user-text" placeholder="Commence à écrire ici..."></textarea>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-check" onclick="checkDictee()">✅ Vérifier</button>
+                <button class="btn btn-show" onclick="showAnswer()">👁️ Voir la correction</button>
+                <button class="btn btn-reset" onclick="resetDictee()">🔄 Recommencer</button>
+                <button class="btn btn-next" onclick="nextDictee()">➡️ Dictée suivante</button>
+            </div>
+
+            <div class="correction-section" id="correction-section">
+                <h3>📊 Résultat de ta dictée</h3>
+                
+                <div class="comparison-container">
+                    <div class="comparison-box user">
+                        <h4>📝 Ton texte :</h4>
+                        <div id="user-result"></div>
+                    </div>
+                    <div class="comparison-box original">
+                        <h4>✅ Texte original :</h4>
+                        <div id="original-text"></div>
+                    </div>
+                </div>
+
+                <div class="score-display">
+                    <div class="score" id="score"></div>
+                    <div class="message" id="score-message"></div>
+                </div>
+
+                <div class="tips-box" id="tips-box">
+                    <h4>💡 Points à réviser :</h4>
+                    <ul id="tips-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dictées organisées par niveau
+        const dictees = {
+            facile: [
+                {
+                    id: 1,
+                    text: "Le petit chat dort sur le canapé. Il est très mignon avec ses yeux verts. Ma mère l'aime beaucoup.",
+                    description: "Une dictée simple sur un animal de compagnie.",
+                    themes: ["Accords", "Apostrophe"],
+                    tips: ["L'apostrophe dans 'l'aime'", "L'accord de l'adjectif 'mignon'"]
+                },
+                {
+                    id: 2,
+                    text: "C'est l'été. Le soleil brille dans le ciel bleu. Les enfants jouent dans le jardin. Ils sont très contents.",
+                    description: "Une dictée sur les vacances d'été.",
+                    themes: ["Apostrophe", "Pluriel"],
+                    tips: ["C'est = cela est", "L'accord du verbe avec 'les enfants'"]
+                },
+                {
+                    id: 3,
+                    text: "Ma sœur s'appelle Marie. Elle a douze ans. Elle aime lire des livres et dessiner. C'est ma meilleure amie.",
+                    description: "Présentation d'un membre de la famille.",
+                    themes: ["Apostrophe", "Accents"],
+                    tips: ["L'élision dans 's'appelle'", "L'accent grave sur 'sœur'"]
+                },
+                {
+                    id: 4,
+                    text: "J'ai un beau cartable neuf. Il est rouge et noir. J'y range mes cahiers et mes stylos. Je l'ai reçu pour la rentrée.",
+                    description: "Une dictée sur la rentrée scolaire.",
+                    themes: ["Apostrophe", "Accords"],
+                    tips: ["J'ai = je ai", "L'accord de 'neuf' avec 'cartable'"]
+                }
+            ],
+            moyen: [
+                {
+                    id: 1,
+                    text: "Hier, nous sommes allés à la forêt avec mes parents. Nous avons vu des écureuils qui sautaient de branche en branche. C'était magnifique !",
+                    description: "Une promenade en forêt.",
+                    themes: ["Passé composé", "Accent circonflexe", "Relative"],
+                    tips: ["L'accent circonflexe sur 'forêt'", "L'accord du participe passé avec 'nous'", "La relative introduite par 'qui'"]
+                },
+                {
+                    id: 2,
+                    text: "Le garçon que j'ai rencontré habite près de l'école. Il s'appelle Thomas et il joue au football. Nous allons devenir amis.",
+                    description: "Une rencontre avec un nouvel ami.",
+                    themes: ["Relative", "Cédille", "Apostrophe"],
+                    tips: ["La cédille dans 'garçon'", "La relative 'que j'ai rencontré'", "L'élision dans 'l'école'"]
+                },
+                {
+                    id: 3,
+                    text: "Noël approche et toute la famille est excitée. Nous allons décorer le sapin avec des guirlandes et des boules. Ma grand-mère préparera un délicieux gâteau au chocolat.",
+                    description: "Les préparatifs de Noël.",
+                    themes: ["Tréma", "Futur", "Complément du nom"],
+                    tips: ["Le tréma sur 'Noël'", "Le futur 'préparera'", "Complément du nom 'au chocolat'"]
+                },
+                {
+                    id: 4,
+                    text: "L'hôpital se trouve au bout de la rue principale. Les médecins y travaillent jour et nuit pour soigner les malades. C'est un métier très important.",
+                    description: "Description d'un lieu public.",
+                    themes: ["H muet", "Accent circonflexe", "Apostrophe"],
+                    tips: ["L'élision devant 'hôpital' (h muet)", "L'accent circonflexe sur 'hôpital'"]
+                }
+            ],
+            difficile: [
+                {
+                    id: 1,
+                    text: "Malgré la pluie qui tombait sans cesse, les élèves décidèrent de participer à la course. Ils s'élancèrent courageusement sur la piste boueuse. Finalement, c'est Marie qui franchit la première la ligne d'arrivée.",
+                    description: "Une compétition sportive sous la pluie.",
+                    themes: ["Passé simple", "Accents", "Relative", "Apostrophe"],
+                    tips: ["Le passé simple 'décidèrent', 's'élancèrent', 'franchit'", "L'accent grave sur 'élèves'", "La relative 'qui tombait'"]
+                },
+                {
+                    id: 2,
+                    text: "Cher Papa, je t'écris cette lettre pour te donner de mes nouvelles. L'école se passe très bien et mes professeurs sont satisfaits de mon travail. J'espère te voir bientôt. Je t'embrasse très fort.",
+                    description: "Une lettre personnelle à un parent.",
+                    themes: ["Lettre", "Apostrophe", "Formules"],
+                    tips: ["Les formules de la lettre", "L'élision dans 'j'espère', 't'écris'", "L'apostrophe dans 'te'"]
+                },
+                {
+                    id: 3,
+                    text: "La vieille maison abandonnée, dont les volets grinçaient au moindre souffle de vent, semblait garder d'innombrables secrets. Les habitants du village n'osaient plus s'en approcher depuis des années.",
+                    description: "Description d'un lieu mystérieux.",
+                    themes: ["Description", "Relative avec 'dont'", "Imparfait"],
+                    tips: ["La relative avec 'dont'", "L'imparfait descriptif", "L'accord de 'abandonnée'"]
+                },
+                {
+                    id: 4,
+                    text: "Bien qu'il fût très fatigué, le héros continua son périlleux voyage à travers les montagnes enneigées. Il savait que le temps lui était compté et qu'il ne pouvait s'arrêter.",
+                    description: "Récit d'aventure.",
+                    themes: ["Subjonctif", "H aspiré", "Accents"],
+                    tips: ["Le subjonctif 'fût'", "Le h aspiré de 'héros' (pas d'élision)", "L'accent circonflexe sur 'fût'"]
+                }
+            ]
+        };
+
+        let currentLevel = 'facile';
+        let currentIndex = 0;
+        let speechSynthesis = window.speechSynthesis;
+        let currentUtterance = null;
+
+        function selectLevel(level) {
+            currentLevel = level;
+            currentIndex = 0;
+            
+            // Update button styles
+            document.querySelectorAll('.btn-level').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            loadDictee();
+            resetDictee();
+        }
+
+        function loadDictee() {
+            const dictee = dictees[currentLevel][currentIndex];
+            document.getElementById('dictee-number').textContent = currentIndex + 1;
+            document.getElementById('dictee-description').textContent = dictee.description;
+            
+            const themesContainer = document.getElementById('dictee-themes');
+            themesContainer.innerHTML = dictee.themes.map(theme => 
+                `<span class="dictee-theme">${theme}</span>`
+            ).join('');
+        }
+
+        function playDictee(rate = 1) {
+            stopDictee();
+            
+            const dictee = dictees[currentLevel][currentIndex];
+            currentUtterance = new SpeechSynthesisUtterance(dictee.text);
+            currentUtterance.lang = 'fr-FR';
+            currentUtterance.rate = rate;
+            currentUtterance.pitch = 1;
+            
+            // Try to find a French voice
+            const voices = speechSynthesis.getVoices();
+            const frenchVoice = voices.find(voice => voice.lang.startsWith('fr'));
+            if (frenchVoice) {
+                currentUtterance.voice = frenchVoice;
+            }
+            
+            speechSynthesis.speak(currentUtterance);
+        }
+
+        function stopDictee() {
+            speechSynthesis.cancel();
+        }
+
+        function checkDictee() {
+            const userText = document.getElementById('user-text').value.trim();
+            const dictee = dictees[currentLevel][currentIndex];
+            const originalText = dictee.text;
+
+            if (!userText) {
+                alert("Écris d'abord ta dictée avant de vérifier !");
+                return;
+            }
+
+            // Normalize texts for comparison
+            const normalizeText = (text) => {
+                return text.toLowerCase()
+                    .replace(/[.,!?;:'"«»]/g, '')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            };
+
+            const userWords = normalizeText(userText).split(' ');
+            const originalWords = normalizeText(originalText).split(' ');
+
+            let correctCount = 0;
+            let userResultHtml = '';
+            
+            // Compare words
+            userWords.forEach((word, index) => {
+                if (index < originalWords.length && word === originalWords[index]) {
+                    correctCount++;
+                    userResultHtml += `<span class="word-correct">${word}</span> `;
+                } else {
+                    userResultHtml += `<span class="word-incorrect">${word}</span> `;
+                }
+            });
+
+            // Calculate score
+            const score = Math.round((correctCount / originalWords.length) * 100);
+            
+            // Display results
+            document.getElementById('user-result').innerHTML = userResultHtml;
+            document.getElementById('original-text').textContent = originalText;
+            document.getElementById('score').textContent = score + '%';
+            
+            let message = '';
+            if (score >= 90) {
+                message = '🌟 Excellent ! Tu as très bien écrit cette dictée !';
+            } else if (score >= 70) {
+                message = '👍 Bien joué ! Quelques petites erreurs à corriger.';
+            } else if (score >= 50) {
+                message = '📚 Pas mal ! Relis la correction et réessaie.';
+            } else {
+                message = '💪 Courage ! Écoute encore et réessaie !';
+            }
+            document.getElementById('score-message').textContent = message;
+
+            // Display tips
+            const tipsList = document.getElementById('tips-list');
+            tipsList.innerHTML = dictee.tips.map(tip => `<li>${tip}</li>`).join('');
+
+            // Show correction section
+            document.getElementById('correction-section').classList.add('show');
+            document.getElementById('correction-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showAnswer() {
+            const dictee = dictees[currentLevel][currentIndex];
+            document.getElementById('user-result').innerHTML = '<em>(Tu n\'as pas encore écrit)</em>';
+            document.getElementById('original-text').textContent = dictee.text;
+            document.getElementById('score').textContent = '--';
+            document.getElementById('score-message').textContent = 'Lis bien le texte original et réessaie !';
+            
+            const tipsList = document.getElementById('tips-list');
+            tipsList.innerHTML = dictee.tips.map(tip => `<li>${tip}</li>`).join('');
+
+            document.getElementById('correction-section').classList.add('show');
+            document.getElementById('correction-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetDictee() {
+            document.getElementById('user-text').value = '';
+            document.getElementById('correction-section').classList.remove('show');
+            stopDictee();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextDictee() {
+            const dicteeList = dictees[currentLevel];
+            currentIndex = (currentIndex + 1) % dicteeList.length;
+            loadDictee();
+            resetDictee();
+        }
+
+        // Initialize
+        loadDictee();
+
+        // Load voices when available
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = function() {
+                // Voices loaded
+            };
+        }
+    </script>
+</body>
+</html>

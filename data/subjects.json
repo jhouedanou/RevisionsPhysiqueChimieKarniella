@@ -44,6 +44,15 @@
             "order": 5,
             "isActive": true,
             "url": "education-civique.html"
+        },
+        {
+            "id": "francais",
+            "icon": "📚",
+            "name": "Français",
+            "description": "Maîtrise la grammaire, l'orthographe et l'expression écrite !",
+            "order": 6,
+            "isActive": true,
+            "url": "francais.html"
         }
     ]
 }
