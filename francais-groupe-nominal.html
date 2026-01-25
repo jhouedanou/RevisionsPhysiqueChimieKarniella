@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Groupe Nominal - Français</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📖';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6); border: 2px solid #C71585;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%); color: #C71585; font-weight: 700;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            color: #0d47a1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        .definition-box {
+            background: #FFFFFF; border: 3px solid #ff9800;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box .example {
+            background: #c8e6c9;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+
+        .example-box .example strong {
+            color: #1b5e20;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 12px;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons between tabs */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>📖 Le Groupe Nominal 🎀</h1>
+        <p>Apprends à reconnaître et utiliser les groupes nominaux !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ C'est quoi un GN ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Structure du GN</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Types de GN</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Expansions du nom</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: DÉFINITION DU GROUPE NOMINAL -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📝 Qu'est-ce qu'un Groupe Nominal ?</h2>
+                        <p class="subtitle">Comprendre la base de la grammaire française</p>
+
+                        <h3>📌 I - Définition du Groupe Nominal (GN)</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Le groupe nominal (GN)</strong> est un ensemble de mots organisés autour d'un <strong>nom</strong>, appelé <strong>nom noyau</strong>. Le nom noyau est le mot le plus important du groupe, celui qui donne son sens à l'ensemble.</p>
+                        </div>
+
+                        <p>Le groupe nominal peut être :</p>
+                        <ul>
+                            <li><strong>Minimal :</strong> composé uniquement d'un déterminant et d'un nom</li>
+                            <li><strong>Étendu :</strong> enrichi par d'autres mots qui précisent le nom</li>
+                        </ul>
+
+                        <div class="example-box">
+                            <h4>✏️ Exemples</h4>
+                            <div class="example">
+                                <strong>GN minimal :</strong> <em>le chat</em>, <em>une fleur</em>, <em>des enfants</em>
+                            </div>
+                            <div class="example">
+                                <strong>GN étendu :</strong> <em>le petit chat noir</em>, <em>une belle fleur rouge</em>, <em>des enfants joyeux</em>
+                            </div>
+                        </div>
+
+                        <h3>📌 II - À Quoi Sert le Groupe Nominal ?</h3>
+
+                        <p>Le groupe nominal a plusieurs fonctions importantes dans la phrase :</p>
+                        <ul>
+                            <li><strong>Sujet :</strong> <em><u>Le soleil</u> brille.</em> (Le soleil = GN sujet)</li>
+                            <li><strong>Complément d'objet direct (COD) :</strong> <em>Je mange <u>une pomme</u>.</em></li>
+                            <li><strong>Complément d'objet indirect (COI) :</strong> <em>Je parle <u>à mon ami</u>.</em></li>
+                            <li><strong>Complément circonstanciel :</strong> <em>Je vais <u>au marché</u>.</em></li>
+                            <li><strong>Attribut du sujet :</strong> <em>Marie est <u>une bonne élève</u>.</em></li>
+                        </ul>
+
+                        <h3>🎯 Comment Reconnaître un Groupe Nominal ?</h3>
+                        <p>Pour identifier un groupe nominal, pose-toi ces questions :</p>
+                        <ol>
+                            <li>Y a-t-il un <strong>nom</strong> (personne, animal, chose, idée) ?</li>
+                            <li>Ce nom est-il accompagné d'un <strong>déterminant</strong> (le, la, un, une, des, mon, ce...) ?</li>
+                            <li>Peut-on remplacer le groupe par un <strong>pronom</strong> (il, elle, ils, elles, le, la, les) ?</li>
+                        </ol>
+
+                        <div class="info">
+                            <strong>💡 Astuce :</strong><br>
+                            Si tu peux remplacer un groupe de mots par "il", "elle", "ils" ou "elles", c'est probablement un groupe nominal !<br><br>
+                            <strong>Exemple :</strong> <em>Les enfants jouent.</em> → <em>Ils jouent.</em> ✓
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: STRUCTURE DU GROUPE NOMINAL -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🏗️ Structure du Groupe Nominal</h2>
+                        <p class="subtitle">Les éléments qui composent un groupe nominal</p>
+
+                        <h3>📌 I - Les Éléments Obligatoires</h3>
+
+                        <div class="category-box">
+                            <h4>📍 A. Le Nom Noyau</h4>
+                            <p>C'est le mot central, indispensable. Il donne son sens au groupe nominal.</p>
+                            <ul>
+                                <li><strong>Nom commun :</strong> chat, maison, école, bonheur</li>
+                                <li><strong>Nom propre :</strong> Paris, Marie, Afrique (souvent sans déterminant)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📍 B. Le Déterminant</h4>
+                            <p>Il précède le nom et indique son genre (masculin/féminin) et son nombre (singulier/pluriel).</p>
+                            <p><strong>Types de déterminants :</strong></p>
+                            <ul>
+                                <li><strong>Articles définis :</strong> le, la, l', les</li>
+                                <li><strong>Articles indéfinis :</strong> un, une, des</li>
+                                <li><strong>Articles partitifs :</strong> du, de la, de l'</li>
+                                <li><strong>Déterminants possessifs :</strong> mon, ma, mes, ton, ta, tes, son, sa, ses, notre, nos, votre, vos, leur, leurs</li>
+                                <li><strong>Déterminants démonstratifs :</strong> ce, cet, cette, ces</li>
+                                <li><strong>Déterminants interrogatifs :</strong> quel, quelle, quels, quelles</li>
+                                <li><strong>Déterminants exclamatifs :</strong> quel, quelle, quels, quelles</li>
+                                <li><strong>Déterminants numéraux :</strong> un, deux, trois, quatre...</li>
+                                <li><strong>Déterminants indéfinis :</strong> quelques, plusieurs, certains, chaque, tout, aucun...</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>✏️ Structure de base : Déterminant + Nom</h4>
+                            <div class="example">
+                                <strong>le</strong> + <strong>livre</strong> = <em>le livre</em>
+                            </div>
+                            <div class="example">
+                                <strong>une</strong> + <strong>maison</strong> = <em>une maison</em>
+                            </div>
+                            <div class="example">
+                                <strong>mes</strong> + <strong>amis</strong> = <em>mes amis</em>
+                            </div>
+                            <div class="example">
+                                <strong>cette</strong> + <strong>voiture</strong> = <em>cette voiture</em>
+                            </div>
+                        </div>
+
+                        <h3>📌 II - Les Éléments Facultatifs (Expansions)</h3>
+                        <p>Ces éléments enrichissent le groupe nominal en apportant des précisions sur le nom :</p>
+                        <ul>
+                            <li><strong>Adjectif qualificatif :</strong> <em>un <u>beau</u> jardin</em></li>
+                            <li><strong>Complément du nom :</strong> <em>le livre <u>de Marie</u></em></li>
+                            <li><strong>Proposition subordonnée relative :</strong> <em>la fille <u>qui chante</u></em></li>
+                            <li><strong>Nom en apposition :</strong> <em>Paris, <u>capitale de la France</u></em></li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le groupe nominal minimal = Déterminant + Nom<br>
+                            • Le groupe nominal étendu = Déterminant + Nom + Expansion(s)<br>
+                            • Le nom noyau est le mot central qui ne peut pas être supprimé<br>
+                            • Les expansions peuvent être supprimées sans changer le sens général
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: TYPES DE GROUPES NOMINAUX -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>📚 Les Types de Groupes Nominaux</h2>
+                        <p class="subtitle">Découvrir les différentes formes du groupe nominal</p>
+
+                        <h3>📌 I - Le GN Minimal</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Le <strong>GN minimal</strong> est composé uniquement d'un déterminant et d'un nom. C'est la forme la plus simple du groupe nominal.</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>✏️ Exemples de GN minimal</h4>
+                            <div class="example"><em>le soleil</em> • <em>une étoile</em> • <em>des arbres</em> • <em>ma sœur</em> • <em>cette maison</em></div>
+                        </div>
+
+                        <h3>📌 II - Le GN avec Adjectif Épithète</h3>
+                        <div class="category-box">
+                            <h4>📍 A. Adjectif placé AVANT le nom</h4>
+                            <p>Certains adjectifs courts et courants se placent avant le nom :</p>
+                            <ul>
+                                <li><em>un <strong>petit</strong> garçon</em></li>
+                                <li><em>une <strong>grande</strong> maison</em></li>
+                                <li><em>un <strong>beau</strong> paysage</em></li>
+                                <li><em>une <strong>vieille</strong> dame</em></li>
+                                <li><em>un <strong>jeune</strong> homme</em></li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📍 B. Adjectif placé APRÈS le nom</h4>
+                            <p>La plupart des adjectifs se placent après le nom :</p>
+                            <ul>
+                                <li><em>une voiture <strong>rouge</strong></em></li>
+                                <li><em>un livre <strong>intéressant</strong></em></li>
+                                <li><em>une fille <strong>intelligente</strong></em></li>
+                                <li><em>un pays <strong>africain</strong></em></li>
+                                <li><em>une chanson <strong>magnifique</strong></em></li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📍 C. Plusieurs adjectifs</h4>
+                            <p>Un GN peut avoir plusieurs adjectifs :</p>
+                            <ul>
+                                <li><em>un <strong>petit</strong> chat <strong>noir</strong></em></li>
+                                <li><em>une <strong>belle</strong> robe <strong>bleue</strong> <strong>élégante</strong></em></li>
+                                <li><em>un <strong>grand</strong> arbre <strong>vert</strong></em></li>
+                            </ul>
+                        </div>
+
+                        <h3>📌 III - Le GN avec Complément du Nom</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Le <strong>complément du nom</strong> est un groupe introduit par une préposition (de, à, en, pour, sans...) qui complète le nom.</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>✏️ Exemples de GN avec complément du nom</h4>
+                            <div class="example"><em>le livre <strong>de mon frère</strong></em> (possession)</div>
+                            <div class="example"><em>une tasse <strong>de café</strong></em> (contenu)</div>
+                            <div class="example"><em>une robe <strong>en soie</strong></em> (matière)</div>
+                            <div class="example"><em>un voyage <strong>en Afrique</strong></em> (lieu)</div>
+                            <div class="example"><em>une machine <strong>à laver</strong></em> (usage)</div>
+                            <div class="example"><em>un gâteau <strong>au chocolat</strong></em> (composition)</div>
+                        </div>
+
+                        <h3>📌 IV - Le GN avec Proposition Subordonnée Relative</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>La <strong>proposition subordonnée relative</strong> est une phrase introduite par un pronom relatif (qui, que, dont, où, lequel...) qui complète le nom.</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>✏️ Exemples de GN avec relative</h4>
+                            <div class="example"><em>la fille <strong>qui chante</strong></em> (qui = sujet)</div>
+                            <div class="example"><em>le film <strong>que j'ai vu</strong></em> (que = COD)</div>
+                            <div class="example"><em>l'ami <strong>dont je t'ai parlé</strong></em> (dont = complément)</div>
+                            <div class="example"><em>la ville <strong>où je suis né</strong></em> (où = lieu)</div>
+                        </div>
+
+                        <h3>📌 V - Le GN avec Apposition</h3>
+                        <div class="category-box">
+                            <h4>📍 L'apposition</h4>
+                            <p>C'est un nom ou un groupe nominal qui complète un autre nom en le renommant. Elle est souvent séparée par des virgules.</p>
+                            <ul>
+                                <li><em>Paris<strong>, capitale de la France</strong>, est une belle ville.</em></li>
+                                <li><em>Mon ami<strong>, un excellent cuisinier</strong>, a préparé le repas.</em></li>
+                                <li><em>Le lion<strong>, roi des animaux</strong>, est majestueux.</em></li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • GN minimal = Déterminant + Nom<br>
+                            • GN avec adjectif = Déterminant + (Adjectif) + Nom + (Adjectif)<br>
+                            • GN avec complément du nom = Déterminant + Nom + Préposition + GN<br>
+                            • GN avec relative = Déterminant + Nom + Pronom relatif + Proposition<br>
+                            • On peut combiner plusieurs types d'expansions dans un même GN !
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: EXPANSIONS DU NOM -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🔍 Les Expansions du Nom</h2>
+                        <p class="subtitle">Enrichir le groupe nominal avec des précisions</p>
+
+                        <h3>📌 I - Qu'est-ce qu'une Expansion du Nom ?</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Une <strong>expansion du nom</strong> est un mot ou un groupe de mots qui complète le nom noyau en apportant des informations supplémentaires. Elle peut être supprimée sans rendre la phrase incorrecte.</p>
+                        </div>
+
+                        <h3>📌 II - Les Différentes Expansions</h3>
+
+                        <div class="category-box">
+                            <h4>1️⃣ L'Adjectif Qualificatif Épithète</h4>
+                            <p>Il est directement lié au nom (avant ou après).</p>
+                            <ul>
+                                <li>Peut être supprimé : <em>un <del>beau</del> jardin</em> → <em>un jardin</em> ✓</li>
+                                <li>S'accorde en genre et en nombre avec le nom</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li><em>une <strong>jolie</strong> fleur <strong>parfumée</strong></em></li>
+                                <li><em>des enfants <strong>heureux</strong></em></li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>2️⃣ Le Complément du Nom</h4>
+                            <p>Groupe introduit par une préposition qui complète le nom.</p>
+                            <p><strong>Prépositions courantes :</strong> de, à, en, pour, avec, sans, sur, par...</p>
+                            <p><strong>Il peut exprimer :</strong></p>
+                            <ul>
+                                <li><strong>La possession :</strong> <em>le vélo <strong>de Paul</strong></em></li>
+                                <li><strong>La matière :</strong> <em>une table <strong>en bois</strong></em></li>
+                                <li><strong>Le contenu :</strong> <em>un verre <strong>d'eau</strong></em></li>
+                                <li><strong>L'origine :</strong> <em>un vin <strong>de France</strong></em></li>
+                                <li><strong>La destination :</strong> <em>un billet <strong>pour Paris</strong></em></li>
+                                <li><strong>La caractéristique :</strong> <em>une femme <strong>aux yeux bleus</strong></em></li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>3️⃣ La Proposition Subordonnée Relative</h4>
+                            <p>Phrase qui commence par un pronom relatif et qui complète le nom.</p>
+                            <p><strong>Pronoms relatifs :</strong></p>
+                            <ul>
+                                <li><strong>qui :</strong> sujet de la relative → <em>L'homme <strong>qui parle</strong> est mon père.</em></li>
+                                <li><strong>que :</strong> COD de la relative → <em>Le livre <strong>que je lis</strong> est passionnant.</em></li>
+                                <li><strong>dont :</strong> complément → <em>La fille <strong>dont je parle</strong> est ma cousine.</em></li>
+                                <li><strong>où :</strong> lieu ou temps → <em>La maison <strong>où j'habite</strong> est grande.</em></li>
+                                <li><strong>lequel, laquelle, lesquels, lesquelles :</strong> après préposition → <em>La table <strong>sur laquelle</strong> j'écris est neuve.</em></li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>4️⃣ Le Nom ou GN en Apposition</h4>
+                            <p>Nom qui reprend ou précise le nom noyau, souvent entre virgules.</p>
+                            <ul>
+                                <li><em>Abidjan<strong>, la perle des lagunes</strong>, est magnifique.</em></li>
+                                <li><em>Mon oncle<strong>, médecin réputé</strong>, travaille à l'hôpital.</em></li>
+                            </ul>
+                        </div>
+
+                        <h3>📌 III - Tableau Récapitulatif</h3>
+                        <div class="info">
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                                <tr style="background: #e3f2fd;">
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Type d'expansion</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Caractéristique</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Exemple</th>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Adjectif épithète</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Directement lié au nom</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;"><em>un <strong>grand</strong> arbre</em></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Complément du nom</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Préposition + GN</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;"><em>un livre <strong>de contes</strong></em></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Relative</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Pronom relatif + proposition</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;"><em>le garçon <strong>qui court</strong></em></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Apposition</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Nom entre virgules</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;"><em>Léa<strong>, ma sœur</strong>, arrive</em></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>🎯 Exercice : Identifier les Expansions</h3>
+                        <div class="example-box">
+                            <h4>✏️ Analyse cette phrase :</h4>
+                            <div class="example">
+                                <em>Le petit garçon de ma voisine qui joue dans le jardin est mon ami.</em>
+                            </div>
+                            <p><strong>Nom noyau :</strong> garçon</p>
+                            <p><strong>Expansions :</strong></p>
+                            <ul>
+                                <li>"petit" → adjectif épithète (avant le nom)</li>
+                                <li>"de ma voisine" → complément du nom</li>
+                                <li>"qui joue dans le jardin" → proposition subordonnée relative</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les expansions enrichissent le groupe nominal<br>
+                            • Elles peuvent être supprimées sans rendre la phrase incorrecte<br>
+                            • Les 4 types d'expansions : adjectif épithète, complément du nom, relative, apposition<br>
+                            • On peut combiner plusieurs expansions dans un même GN<br>
+                            • Les expansions permettent d'écrire des textes plus précis et plus riches
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Le Groupe Nominal</h2>
+                <p>Teste tes connaissances !</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce qu'un groupe nominal ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Un groupe de mots autour d'un verbe
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Un groupe de mots autour d'un nom
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Un groupe de mots autour d'un adjectif
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quel est le GN minimal dans "le petit chat noir" ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> le petit chat
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> le chat
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> chat noir
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Dans "le livre de Marie", "de Marie" est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Un adjectif épithète
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Un complément du nom
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Une apposition
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quelle est l'expansion dans "la fille qui chante" ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Adjectif qualificatif
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Complément du nom
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Proposition subordonnée relative
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Quel est le nom noyau dans "une belle robe rouge" ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> belle
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> robe
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> rouge
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">"Mon, ma, mes" sont des déterminants :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> Démonstratifs
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> Possessifs
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> Indéfinis
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier mes réponses</button>
+                <div id="quiz-result" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'c',
+            q5: 'b',
+            q6: 'b'
+        };
+
+        const explanations = {
+            q1: {
+                correct: '✅ Bravo ! Le groupe nominal est bien un groupe de mots organisé autour d\'un nom.',
+                wrong: '❌ Non, le groupe nominal est un groupe de mots autour d\'un NOM, pas d\'un verbe ou adjectif.'
+            },
+            q2: {
+                correct: '✅ Excellent ! Le GN minimal est "le chat" (déterminant + nom). "petit" et "noir" sont des expansions.',
+                wrong: '❌ Le GN minimal est "le chat". Il ne contient que le déterminant et le nom noyau.'
+            },
+            q3: {
+                correct: '✅ Très bien ! "de Marie" est un complément du nom introduit par la préposition "de".',
+                wrong: '❌ "de Marie" est un complément du nom, car il est introduit par une préposition (de).'
+            },
+            q4: {
+                correct: '✅ Parfait ! "qui chante" est une proposition subordonnée relative introduite par "qui".',
+                wrong: '❌ "qui chante" est une proposition subordonnée relative (pronom relatif + verbe).'
+            },
+            q5: {
+                correct: '✅ Super ! "robe" est le nom noyau. "belle" et "rouge" sont des adjectifs qui le complètent.',
+                wrong: '❌ Le nom noyau est "robe". C\'est le mot central autour duquel s\'organise le groupe.'
+            },
+            q6: {
+                correct: '✅ Exact ! "mon, ma, mes" sont des déterminants possessifs car ils indiquent la possession.',
+                wrong: '❌ "mon, ma, mes" sont des déterminants POSSESSIFS (ils indiquent que quelque chose m\'appartient).'
+            }
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const total = Object.keys(answers).length;
+            let answersDetail = [];
+
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-${q}`);
+                
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        score++;
+                        feedbackEl.innerHTML = explanations[q].correct;
+                        feedbackEl.style.background = '#c8e6c9';
+                        feedbackEl.style.color = '#2e7d32';
+                        answersDetail.push(`${q}: ✅ Correct`);
+                    } else {
+                        feedbackEl.innerHTML = explanations[q].wrong;
+                        feedbackEl.style.background = '#ffcdd2';
+                        feedbackEl.style.color = '#c62828';
+                        answersDetail.push(`${q}: ❌ Incorrect`);
+                    }
+                } else {
+                    feedbackEl.innerHTML = '⚠️ Tu n\'as pas répondu à cette question.';
+                    feedbackEl.style.background = '#fff3e0';
+                    feedbackEl.style.color = '#e65100';
+                    answersDetail.push(`${q}: ⚠️ Sans réponse`);
+                }
+            }
+
+            const percentage = Math.round((score / total) * 100);
+            const resultEl = document.getElementById('quiz-result');
+            resultEl.style.display = 'block';
+            
+            let message = '';
+            if (percentage === 100) {
+                message = '🌟 Parfait ! Tu maîtrises le groupe nominal !';
+            } else if (percentage >= 80) {
+                message = '👏 Très bien ! Tu as presque tout compris !';
+            } else if (percentage >= 60) {
+                message = '👍 Pas mal ! Continue à réviser !';
+            } else {
+                message = '💪 Courage ! Relis la leçon et réessaie !';
+            }
+            
+            resultEl.innerHTML = `
+                <p>Score : ${score}/${total} (${percentage}%)</p>
+                <p>${message}</p>
+            `;
+
+            // Envoyer les résultats par email
+            sendQuizResults('Français - Le Groupe Nominal', score, total, percentage, answersDetail);
+        }
+
+        // Fonction pour envoyer les résultats par email
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Navigate to a specific tab programmatically
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            
+            // Find and activate the corresponding tab button
+            const targetButton = Array.from(buttons).find(button => 
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
