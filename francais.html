@@ -1011,16 +1011,42 @@
             });
             
             // Show selected tab content
-            document.getElementById(tabId).classList.add('active');
+            const tabContent = document.getElementById(tabId);
+            if (tabContent) {
+                tabContent.classList.add('active');
+            }
             
             // Add active class to clicked button
             if (typeof event !== 'undefined' && event && event.target) {
                 event.target.classList.add('active');
+            } else {
+                // Find and activate the correct button when called programmatically
+                document.querySelectorAll('.tab-button').forEach(button => {
+                    if (button.getAttribute('onclick') && button.getAttribute('onclick').includes(tabId)) {
+                        button.classList.add('active');
+                    }
+                });
             }
             
             // Scroll to top of content
-            document.querySelector('.content').scrollTop = 0;
+            const contentEl = document.querySelector('.content');
+            if (contentEl) {
+                contentEl.scrollTop = 0;
+            }
         }
+
+        // Handle hash-based navigation for direct linking to tabs
+        function handleHashNavigation() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showTab(hash);
+            }
+        }
+
+        // Run on page load
+        window.addEventListener('DOMContentLoaded', handleHashNavigation);
+        // Run when hash changes
+        window.addEventListener('hashchange', handleHashNavigation);
     </script>
 </body>
 </html>
