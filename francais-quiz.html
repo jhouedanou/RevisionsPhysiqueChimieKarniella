@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Français - Grammaire et Expression</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📚';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🎯';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: 3px solid #FF1493;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            width: 100%;
+            max-width: 900px;
+            border: 4px solid #FF69B4;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .quiz-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-category {
+            padding: 10px 20px;
+            border: 3px solid #FF69B4;
+            background: white;
+            color: #C71585;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-category:hover {
+            background: #FFE5F0;
+            transform: translateY(-2px);
+        }
+
+        .btn-category.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-color: #C71585;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF69B4, #C71585);
+            transition: width 0.3s ease;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            color: #C71585;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 18px 20px;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #FF69B4;
+            background: #FFF0F5;
+        }
+
+        .option.selected {
+            border-color: #FF69B4;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+        }
+
+        .option.correct {
+            border-color: #2ecc71;
+            background: #2ecc71;
+            color: white;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: #e74c3c;
+            color: white;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 16px;
+            display: none;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct-feedback {
+            background: #d4edda;
+            border: 3px solid #2ecc71;
+            color: #155724;
+        }
+
+        .feedback.incorrect-feedback {
+            background: #f8d7da;
+            border: 3px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .results {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+            border: 3px solid #FF69B4;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .score-display {
+            font-size: 72px;
+            color: #C71585;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .score-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .score-message {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .quiz-controls {
+                flex-direction: column;
+            }
+
+            .btn-category {
+                width: 100%;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .score-display {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="francais.html" class="btn-back">← Retour</a>
+        <h1>🎯 Quiz Français</h1>
+        <p>Teste tes connaissances en grammaire et expression française !</p>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>📚 Quiz de Français</h2>
+            <p class="subtitle">Vérifie ce que tu as appris sur la grammaire française</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn-category active" onclick="filterByCategory('all')">Toutes les questions</button>
+                <button class="btn-category" onclick="filterByCategory('expansions')">📝 Expansions</button>
+                <button class="btn-category" onclick="filterByCategory('descriptif')">🖼️ Texte Descriptif</button>
+                <button class="btn-category" onclick="filterByCategory('accents')">É Accents</button>
+                <button class="btn-category" onclick="filterByCategory('apostrophe')">L' Apostrophe</button>
+                <button class="btn-category" onclick="filterByCategory('phrase')">📖 Phrase</button>
+            </div>
+
+            <div id="quiz-content"></div>
+
+            <div class="quiz-buttons">
+                <button class="btn btn-submit" onclick="submitQuiz()">📊 Vérifier mes réponses</button>
+                <button class="btn btn-reset" onclick="resetQuiz()">🔄 Recommencer</button>
+            </div>
+
+            <div class="results" id="results">
+                <div class="score-display" id="scoreDisplay"></div>
+                <div class="score-text" id="scoreText"></div>
+                <div class="score-message" id="scoreMessage"></div>
+                <button class="btn btn-reset" onclick="resetQuiz()">🔄 Recommencer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions - Français (grammaire et expression)
+        const quizData = [
+            // EXPANSIONS DU NOM
+            {
+                category: 'expansions',
+                id: 1,
+                question: 'Dans la phrase "Le petit chat dort", quel est le type d\'expansion du nom ?',
+                options: [
+                    'Un complément du nom',
+                    'Un adjectif qualificatif épithète',
+                    'Une proposition subordonnée relative',
+                    'Un adjectif attribut'
+                ],
+                correct: 1,
+                explanation: '"Petit" est un adjectif qualificatif placé directement à côté du nom "chat", c\'est donc un adjectif épithète.'
+            },
+            {
+                category: 'expansions',
+                id: 2,
+                question: 'Quelle est l\'expansion du nom dans "Une tasse de café" ?',
+                options: [
+                    'Un adjectif qualificatif',
+                    'Un complément du nom',
+                    'Une proposition relative',
+                    'Un attribut du sujet'
+                ],
+                correct: 1,
+                explanation: '"De café" est un complément du nom introduit par la préposition "de".'
+            },
+            {
+                category: 'expansions',
+                id: 3,
+                question: 'Dans "Le livre que j\'ai lu était passionnant", "que j\'ai lu" est :',
+                options: [
+                    'Un adjectif qualificatif',
+                    'Un complément du nom',
+                    'Une proposition subordonnée relative',
+                    'Un groupe nominal'
+                ],
+                correct: 2,
+                explanation: '"Que j\'ai lu" est une proposition subordonnée relative introduite par le pronom relatif "que".'
+            },
+            {
+                category: 'expansions',
+                id: 4,
+                question: 'Quel pronom relatif introduit une relative indiquant le lieu ?',
+                options: [
+                    'qui',
+                    'que',
+                    'dont',
+                    'où'
+                ],
+                correct: 3,
+                explanation: 'Le pronom relatif "où" introduit une proposition relative indiquant le lieu ou le temps.'
+            },
+            {
+                category: 'expansions',
+                id: 5,
+                question: 'Dans "Le ciel est bleu", "bleu" est :',
+                options: [
+                    'Un adjectif épithète',
+                    'Un adjectif attribut du sujet',
+                    'Un complément du nom',
+                    'Une proposition relative'
+                ],
+                correct: 1,
+                explanation: '"Bleu" est un adjectif attribut car il est relié au sujet "ciel" par le verbe d\'état "est".'
+            },
+
+            // TEXTE DESCRIPTIF
+            {
+                category: 'descriptif',
+                id: 6,
+                question: 'Quel est l\'objectif principal d\'un texte descriptif ?',
+                options: [
+                    'Raconter une histoire',
+                    'Donner son opinion',
+                    'Permettre au lecteur de visualiser ce qui est décrit',
+                    'Convaincre le lecteur'
+                ],
+                correct: 2,
+                explanation: 'Un texte descriptif vise à permettre au lecteur de se représenter mentalement ce qui est décrit (lieu, personnage, objet...).'
+            },
+            {
+                category: 'descriptif',
+                id: 7,
+                question: 'Dans un portrait, le "portrait moral" décrit :',
+                options: [
+                    'L\'apparence physique',
+                    'Les vêtements',
+                    'Le caractère et la personnalité',
+                    'L\'âge de la personne'
+                ],
+                correct: 2,
+                explanation: 'Le portrait moral décrit le caractère, les qualités, les défauts et le comportement de la personne.'
+            },
+            {
+                category: 'descriptif',
+                id: 8,
+                question: '"Ses cheveux brillent comme de l\'or" est :',
+                options: [
+                    'Une métaphore',
+                    'Une comparaison',
+                    'Une personnification',
+                    'Une hyperbole'
+                ],
+                correct: 1,
+                explanation: 'C\'est une comparaison car elle utilise le mot-outil "comme" pour rapprocher deux éléments.'
+            },
+            {
+                category: 'descriptif',
+                id: 9,
+                question: '"Le vent murmure entre les arbres" est :',
+                options: [
+                    'Une comparaison',
+                    'Une métaphore',
+                    'Une personnification',
+                    'Une énumération'
+                ],
+                correct: 2,
+                explanation: 'C\'est une personnification car on attribue une action humaine (murmurer) à un élément naturel (le vent).'
+            },
+
+            // ACCENTS
+            {
+                category: 'accents',
+                id: 10,
+                question: 'Quel accent se trouve uniquement sur la lettre "e" ?',
+                options: [
+                    'L\'accent grave',
+                    'L\'accent aigu',
+                    'L\'accent circonflexe',
+                    'Le tréma'
+                ],
+                correct: 1,
+                explanation: 'L\'accent aigu (´) se place uniquement sur le "e" pour donner le son [é].'
+            },
+            {
+                category: 'accents',
+                id: 11,
+                question: 'Pourquoi "forêt" a-t-il un accent circonflexe ?',
+                options: [
+                    'Pour faire joli',
+                    'Pour indiquer une lettre disparue (forest)',
+                    'Pour changer la prononciation',
+                    'C\'est une erreur'
+                ],
+                correct: 1,
+                explanation: 'L\'accent circonflexe indique souvent une lettre disparue. "Forêt" vient de l\'ancien français "forest".'
+            },
+            {
+                category: 'accents',
+                id: 12,
+                question: 'La cédille (ç) sert à :',
+                options: [
+                    'Prononcer le "c" comme [k]',
+                    'Prononcer le "c" comme [s] devant a, o, u',
+                    'Décorer le mot',
+                    'Indiquer un pluriel'
+                ],
+                correct: 1,
+                explanation: 'La cédille permet au "c" de se prononcer [s] devant a, o, u (sinon il se prononcerait [k]).'
+            },
+            {
+                category: 'accents',
+                id: 13,
+                question: 'Le tréma dans "Noël" indique que :',
+                options: [
+                    'C\'est un mot étranger',
+                    'Le "o" et le "e" doivent être prononcés séparément',
+                    'On doit prononcer le "l" plus fort',
+                    'C\'est un nom propre'
+                ],
+                correct: 1,
+                explanation: 'Le tréma indique que les deux voyelles doivent être prononcées séparément : [no-èl] et non [nol].'
+            },
+            {
+                category: 'accents',
+                id: 14,
+                question: 'Quel est le mot correctement accentué ?',
+                options: [
+                    'élève',
+                    'éléve',
+                    'elève',
+                    'eleve'
+                ],
+                correct: 0,
+                explanation: '"Élève" prend un accent aigu sur le premier "e" (son [é]) et un accent grave sur le second (son [è]).'
+            },
+
+            // APOSTROPHE ET ÉLISION
+            {
+                category: 'apostrophe',
+                id: 15,
+                question: 'L\'élision, c\'est :',
+                options: [
+                    'L\'ajout d\'une lettre',
+                    'La suppression d\'une voyelle finale devant une autre voyelle',
+                    'Le doublement d\'une consonne',
+                    'La transformation d\'une lettre'
+                ],
+                correct: 1,
+                explanation: 'L\'élision est la suppression d\'une voyelle finale devant un mot commençant par une voyelle ou un h muet.'
+            },
+            {
+                category: 'apostrophe',
+                id: 16,
+                question: 'Quelle phrase est correcte ?',
+                options: [
+                    'Le ami de Marie',
+                    'L\'ami de Marie',
+                    'La ami de Marie',
+                    'Le\'ami de Marie'
+                ],
+                correct: 1,
+                explanation: 'Devant un mot commençant par une voyelle, "le" devient "l\'" (élision obligatoire).'
+            },
+            {
+                category: 'apostrophe',
+                id: 17,
+                question: 'Pourquoi dit-on "le héros" et non "l\'héros" ?',
+                options: [
+                    'C\'est une exception',
+                    'Le "h" est aspiré donc on ne fait pas l\'élision',
+                    'C\'est un mot masculin',
+                    'On ne sait pas'
+                ],
+                correct: 1,
+                explanation: '"Héros" commence par un "h aspiré", qui empêche l\'élision et la liaison.'
+            },
+            {
+                category: 'apostrophe',
+                id: 18,
+                question: 'Quelle forme est correcte ?',
+                options: [
+                    'Je ai faim',
+                    'J\'ai faim',
+                    'Je\'ai faim',
+                    'Jai faim'
+                ],
+                correct: 1,
+                explanation: '"Je" s\'élide devant un mot commençant par une voyelle, donnant "j\'".'
+            },
+
+            // LA PHRASE
+            {
+                category: 'phrase',
+                id: 19,
+                question: '"Quelle heure est-il ?" est une phrase :',
+                options: [
+                    'Déclarative',
+                    'Interrogative',
+                    'Exclamative',
+                    'Impérative'
+                ],
+                correct: 1,
+                explanation: 'C\'est une phrase interrogative car elle pose une question (point d\'interrogation).'
+            },
+            {
+                category: 'phrase',
+                id: 20,
+                question: '"Ferme la porte !" est une phrase :',
+                options: [
+                    'Déclarative',
+                    'Interrogative',
+                    'Exclamative',
+                    'Impérative'
+                ],
+                correct: 3,
+                explanation: 'C\'est une phrase impérative (ou injonctive) car elle donne un ordre.'
+            },
+            {
+                category: 'phrase',
+                id: 21,
+                question: 'Une phrase négative contient :',
+                options: [
+                    'Un point d\'exclamation',
+                    'Une négation (ne...pas, ne...plus, etc.)',
+                    'Un point d\'interrogation',
+                    'Un verbe à l\'impératif'
+                ],
+                correct: 1,
+                explanation: 'Une phrase négative contient une négation comme ne...pas, ne...plus, ne...jamais, etc.'
+            },
+            {
+                category: 'phrase',
+                id: 22,
+                question: 'Dans "Le chat mange une souris", "une souris" est :',
+                options: [
+                    'Le sujet',
+                    'Le verbe',
+                    'Le complément d\'objet direct (COD)',
+                    'Le complément circonstanciel'
+                ],
+                correct: 2,
+                explanation: '"Une souris" est le COD car c\'est ce que le chat mange (complète directement le verbe).'
+            },
+            {
+                category: 'phrase',
+                id: 23,
+                question: 'Quels sont les deux éléments essentiels d\'une phrase simple ?',
+                options: [
+                    'L\'adjectif et l\'adverbe',
+                    'Le sujet et le verbe',
+                    'Le COD et le COI',
+                    'Le complément et l\'attribut'
+                ],
+                correct: 1,
+                explanation: 'Une phrase simple minimale contient obligatoirement un sujet (qui fait l\'action) et un verbe (l\'action).'
+            },
+            {
+                category: 'phrase',
+                id: 24,
+                question: '"Comme tu as grandi !" est une phrase :',
+                options: [
+                    'Déclarative',
+                    'Interrogative',
+                    'Exclamative',
+                    'Impérative'
+                ],
+                correct: 2,
+                explanation: 'C\'est une phrase exclamative car elle exprime un sentiment fort (la surprise) avec un point d\'exclamation.'
+            }
+        ];
+
+        let currentQuestions = [...quizData];
+        let userAnswers = {};
+
+        function filterByCategory(category) {
+            // Update active button
+            document.querySelectorAll('.btn-category').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            if (typeof event !== 'undefined' && event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            // Filter questions
+            if (category === 'all') {
+                currentQuestions = [...quizData];
+            } else {
+                currentQuestions = quizData.filter(q => q.category === category);
+            }
+
+            // Reset quiz
+            userAnswers = {};
+            renderQuiz();
+            updateProgress();
+            document.getElementById('results').classList.remove('show');
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-content');
+            container.innerHTML = '';
+
+            currentQuestions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                questionDiv.id = `question-${question.id}`;
+
+                let optionsHtml = '';
+                question.options.forEach((option, optIndex) => {
+                    const selectedClass = userAnswers[question.id] === optIndex ? 'selected' : '';
+                    optionsHtml += `
+                        <div class="option ${selectedClass}" onclick="selectOption(${question.id}, ${optIndex})">
+                            ${option}
+                        </div>
+                    `;
+                });
+
+                questionDiv.innerHTML = `
+                    <div class="question-number">Question ${index + 1}/${currentQuestions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">
+                        ${optionsHtml}
+                    </div>
+                    <div class="feedback" id="feedback-${question.id}"></div>
+                `;
+
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function selectOption(questionId, optionIndex) {
+            userAnswers[questionId] = optionIndex;
+            
+            // Update visual selection
+            const questionDiv = document.getElementById(`question-${questionId}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach((opt, index) => {
+                opt.classList.remove('selected');
+                if (index === optionIndex) {
+                    opt.classList.add('selected');
+                }
+            });
+
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(userAnswers).length;
+            const total = currentQuestions.length;
+            const percentage = (answered / total) * 100;
+            document.getElementById('progressFill').style.width = `${percentage}%`;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+
+            currentQuestions.forEach(question => {
+                const questionDiv = document.getElementById(`question-${question.id}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const feedback = document.getElementById(`feedback-${question.id}`);
+                const userAnswer = userAnswers[question.id];
+
+                options.forEach((opt, index) => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                    if (index === question.correct) {
+                        opt.classList.add('correct');
+                    } else if (index === userAnswer && userAnswer !== question.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                if (userAnswer === question.correct) {
+                    score++;
+                    feedback.className = 'feedback show correct-feedback';
+                    feedback.innerHTML = `✅ Bravo ! ${question.explanation}`;
+                } else if (userAnswer !== undefined) {
+                    feedback.className = 'feedback show incorrect-feedback';
+                    feedback.innerHTML = `❌ Pas tout à fait. ${question.explanation}`;
+                } else {
+                    feedback.className = 'feedback show incorrect-feedback';
+                    feedback.innerHTML = `⚠️ Tu n'as pas répondu. ${question.explanation}`;
+                }
+            });
+
+            // Show results
+            const percentage = Math.round((score / currentQuestions.length) * 100);
+            document.getElementById('scoreDisplay').textContent = `${percentage}%`;
+            document.getElementById('scoreText').textContent = `Tu as ${score} bonne${score > 1 ? 's' : ''} réponse${score > 1 ? 's' : ''} sur ${currentQuestions.length}`;
+            
+            let message = '';
+            if (percentage >= 90) {
+                message = '🌟 Excellent ! Tu maîtrises parfaitement le français !';
+            } else if (percentage >= 70) {
+                message = '👍 Très bien ! Continue comme ça !';
+            } else if (percentage >= 50) {
+                message = '📚 Pas mal ! Révise encore un peu les leçons.';
+            } else {
+                message = '💪 Courage ! Relis les leçons et réessaie !';
+            }
+            document.getElementById('scoreMessage').textContent = message;
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            renderQuiz();
+            updateProgress();
+            document.getElementById('results').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize quiz
+        renderQuiz();
+        updateProgress();
+    </script>
+</body>
+</html>
