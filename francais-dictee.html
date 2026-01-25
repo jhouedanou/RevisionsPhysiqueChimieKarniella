@@ -662,7 +662,9 @@
             document.querySelectorAll('.btn-level').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            if (typeof event !== 'undefined' && event && event.target) {
+                event.target.classList.add('active');
+            }
 
             loadDictee();
             resetDictee();

@@ -1014,7 +1014,9 @@
             document.getElementById(tabId).classList.add('active');
             
             // Add active class to clicked button
-            event.target.classList.add('active');
+            if (typeof event !== 'undefined' && event && event.target) {
+                event.target.classList.add('active');
+            }
             
             // Scroll to top of content
             document.querySelector('.content').scrollTop = 0;
