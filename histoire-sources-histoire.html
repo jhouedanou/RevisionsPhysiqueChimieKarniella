@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Les Sources de l'Histoire</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📜';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🏛️';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #8e44ad;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #8e44ad;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%);
+            border-bottom: 3px solid #ffed4e;
+            color: white;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #8e44ad;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #8e44ad;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #8e44ad;
+            border-left: 4px solid #6c3483;
+            border-radius: 8px;
+            color: #5b2c6f;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .observation-box {
+            background: #FFFFFF;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .observation-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #f5eef8;
+            border: 2px solid #8e44ad;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6c3483;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="histoire-geographie-lecons.html" class="btn-back">← Retour</a>
+        <h1>📜 Les Sources de l'Histoire 🏛️</h1>
+        <p>Découvrir comment les historiens étudient le passé</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Types de Sources</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Analyse des Sources</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Utilité des Sources</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: TYPES DE SOURCES -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📜 Les Différents Types de Sources Historiques</h2>
+                        <p class="subtitle">Comment l'historien étudie-t-il le passé ?</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce qu'une source historique ?</h4>
+                            <p>Une <strong>source historique</strong> est tout document, objet ou témoignage qui nous renseigne sur le passé. C'est la "matière première" de l'historien pour reconstituer et comprendre l'histoire.</p>
+                        </div>
+
+                        <h3>✍️ II - Les Sources Écrites</h3>
+
+                        <div class="category-box">
+                            <h4>📝 A. Définition</h4>
+                            <p>Les <strong>sources écrites</strong> sont tous les documents comportant du texte qui témoignent du passé.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📚 B. Exemples de sources écrites</h4>
+                            <ul>
+                                <li><strong>Documents officiels :</strong> Lois, décrets, traités, registres d'état civil</li>
+                                <li><strong>Correspondances :</strong> Lettres, télégrammes, courriers officiels</li>
+                                <li><strong>Journaux et presse :</strong> Articles de journaux, revues</li>
+                                <li><strong>Livres :</strong> Chroniques, mémoires, romans historiques</li>
+                                <li><strong>Inscriptions :</strong> Épitaphes, stèles, monuments</li>
+                                <li><strong>Archives :</strong> Documents conservés par les institutions</li>
+                            </ul>
+                        </div>
+
+                        <h3>🗣️ III - Les Sources Orales</h3>
+
+                        <div class="category-box">
+                            <h4>🎤 A. Définition</h4>
+                            <p>Les <strong>sources orales</strong> sont les témoignages transmis par la parole, de génération en génération ou recueillis directement.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗣️ B. Exemples de sources orales</h4>
+                            <ul>
+                                <li><strong>Témoignages :</strong> Récits de personnes ayant vécu un événement</li>
+                                <li><strong>Interviews :</strong> Entretiens enregistrés</li>
+                                <li><strong>Traditions orales :</strong> Contes, légendes, chants traditionnels</li>
+                                <li><strong>Proverbes et dictons :</strong> Sagesse populaire transmise</li>
+                                <li><strong>Généalogies orales :</strong> Histoire des familles racontée</li>
+                            </ul>
+                        </div>
+
+                        <h3>🏺 IV - Les Sources Archéologiques (ou Muettes)</h3>
+
+                        <div class="category-box">
+                            <h4>⛏️ A. Définition</h4>
+                            <p>Les <strong>sources archéologiques</strong> ou <strong>sources muettes</strong> sont les vestiges matériels du passé découverts lors de fouilles ou trouvailles.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏛️ B. Exemples de sources archéologiques</h4>
+                            <ul>
+                                <li><strong>Monuments :</strong> Temples, pyramides, châteaux, ruines</li>
+                                <li><strong>Objets :</strong> Poteries, outils, armes, bijoux</li>
+                                <li><strong>Ossements :</strong> Squelettes, momies</li>
+                                <li><strong>Habitats :</strong> Vestiges de maisons, villages</li>
+                                <li><strong>Monnaies :</strong> Pièces anciennes</li>
+                                <li><strong>Œuvres d'art :</strong> Sculptures, peintures rupestres</li>
+                            </ul>
+                        </div>
+
+                        <h3>🎬 V - Les Sources Audiovisuelles</h3>
+
+                        <div class="category-box">
+                            <h4>📹 A. Définition</h4>
+                            <p>Les <strong>sources audiovisuelles</strong> sont les documents qui combinent son et/ou image pour témoigner du passé.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🎥 B. Exemples de sources audiovisuelles</h4>
+                            <ul>
+                                <li><strong>Photographies :</strong> Images fixes du passé</li>
+                                <li><strong>Films :</strong> Documentaires, actualités filmées</li>
+                                <li><strong>Enregistrements sonores :</strong> Discours, émissions radio</li>
+                                <li><strong>Vidéos :</strong> Reportages, témoignages filmés</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les sources écrites : documents avec du texte<br>
+                            • Les sources orales : témoignages parlés<br>
+                            • Les sources archéologiques : vestiges matériels<br>
+                            • Les sources audiovisuelles : photos, films, sons<br>
+                            • L'historien utilise toutes ces sources pour comprendre le passé
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" disabled>← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: ANALYSE DES SOURCES -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🔍 L'Analyse des Sources Historiques</h2>
+                        <p class="subtitle">Comment l'historien étudie-t-il les sources ?</p>
+
+                        <h3>📌 I - La Critique des Sources</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Pourquoi critiquer les sources ?</h4>
+                            <p>L'historien doit <strong>critiquer</strong> les sources pour vérifier leur fiabilité. Une source peut contenir des erreurs, être incomplète ou orientée. La critique permet de distinguer le vrai du faux.</p>
+                        </div>
+
+                        <h3>🔎 II - Les Deux Types de Critique</h3>
+
+                        <div class="category-box">
+                            <h4>📋 A. La Critique Externe</h4>
+                            <p>Elle porte sur l'authenticité du document :</p>
+                            <ul>
+                                <li><strong>Qui ?</strong> Qui est l'auteur du document ?</li>
+                                <li><strong>Quand ?</strong> De quelle époque date-t-il ?</li>
+                                <li><strong>Où ?</strong> Où a-t-il été produit ?</li>
+                                <li><strong>Quelle forme ?</strong> Est-ce un original ou une copie ?</li>
+                                <li><strong>Est-il authentique ?</strong> N'est-ce pas un faux ?</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📖 B. La Critique Interne</h4>
+                            <p>Elle porte sur le contenu du document :</p>
+                            <ul>
+                                <li><strong>De quoi parle-t-il ?</strong> Quel est le sujet ?</li>
+                                <li><strong>Pourquoi ?</strong> Dans quel but a-t-il été écrit ?</li>
+                                <li><strong>L'auteur dit-il la vérité ?</strong> Y a-t-il des partis pris ?</li>
+                                <li><strong>Est-ce cohérent ?</strong> Les informations sont-elles logiques ?</li>
+                                <li><strong>Est-ce confirmé ?</strong> D'autres sources disent-elles la même chose ?</li>
+                            </ul>
+                        </div>
+
+                        <h3>⚠️ III - Les Limites des Sources</h3>
+
+                        <div class="observation-box">
+                            <h4>🚨 Attention aux pièges !</h4>
+                            <ul>
+                                <li><strong>Partialité :</strong> L'auteur peut avoir un point de vue orienté</li>
+                                <li><strong>Erreurs :</strong> Les témoins peuvent se tromper</li>
+                                <li><strong>Lacunes :</strong> Certaines périodes ont peu de sources</li>
+                                <li><strong>Faux :</strong> Des documents peuvent être falsifiés</li>
+                                <li><strong>Interprétation :</strong> Les sources peuvent être mal comprises</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • L'historien doit toujours critiquer ses sources<br>
+                            • Critique externe : vérifier l'authenticité<br>
+                            • Critique interne : analyser le contenu<br>
+                            • Toujours croiser plusieurs sources<br>
+                            • Une seule source ne suffit pas pour établir la vérité
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: UTILITÉ DES SOURCES -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>📚 L'Utilité des Sources de l'Histoire</h2>
+                        <p class="subtitle">Pourquoi étudier les sources historiques ?</p>
+
+                        <h3>📌 I - Reconstituer le Passé</h3>
+
+                        <div class="definition-box">
+                            <h4>🏛️ Reconstruire l'histoire</h4>
+                            <p>Les sources permettent de <strong>reconstituer</strong> les événements passés, de comprendre comment vivaient nos ancêtres, leurs coutumes, leurs croyances et leur organisation sociale.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔍 Exemples de reconstitution</h4>
+                            <ul>
+                                <li><strong>La vie quotidienne :</strong> Comment mangeait-on ? Comment s'habillait-on ?</li>
+                                <li><strong>L'organisation politique :</strong> Qui gouvernait ? Quelles étaient les lois ?</li>
+                                <li><strong>L'économie :</strong> Quels métiers existaient ? Comment commerçait-on ?</li>
+                                <li><strong>Les croyances :</strong> Quelles religions pratiquait-on ?</li>
+                            </ul>
+                        </div>
+
+                        <h3>📖 II - Comprendre le Présent</h3>
+
+                        <div class="category-box">
+                            <h4>🔗 Le lien passé-présent</h4>
+                            <p>L'étude des sources historiques nous aide à :</p>
+                            <ul>
+                                <li><strong>Comprendre nos origines :</strong> D'où venons-nous ?</li>
+                                <li><strong>Expliquer le présent :</strong> Pourquoi notre société est-elle ainsi ?</li>
+                                <li><strong>Éviter les erreurs :</strong> Apprendre des erreurs du passé</li>
+                                <li><strong>Construire notre identité :</strong> Connaître notre patrimoine culturel</li>
+                            </ul>
+                        </div>
+
+                        <h3>🎓 III - Développer l'Esprit Critique</h3>
+
+                        <div class="observation-box">
+                            <h4>🧠 Apprendre à réfléchir</h4>
+                            <p>L'étude des sources historiques développe des compétences importantes :</p>
+                            <ul>
+                                <li><strong>Analyser :</strong> Examiner un document en détail</li>
+                                <li><strong>Comparer :</strong> Mettre en relation différentes sources</li>
+                                <li><strong>Questionner :</strong> Se poser des questions sur ce qu'on lit</li>
+                                <li><strong>Argumenter :</strong> Défendre un point de vue avec des preuves</li>
+                                <li><strong>Relativiser :</strong> Comprendre que la vérité n'est pas toujours simple</li>
+                            </ul>
+                        </div>
+
+                        <h3>🌍 IV - Préserver le Patrimoine</h3>
+
+                        <div class="category-box">
+                            <h4>🏛️ Conserver pour les générations futures</h4>
+                            <ul>
+                                <li><strong>Les archives :</strong> Conserver les documents anciens</li>
+                                <li><strong>Les musées :</strong> Exposer les objets du passé</li>
+                                <li><strong>Les monuments historiques :</strong> Protéger les bâtiments anciens</li>
+                                <li><strong>La numérisation :</strong> Sauvegarder les documents fragiles</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les sources permettent de reconstituer le passé<br>
+                            • Elles nous aident à comprendre le présent<br>
+                            • Elles développent notre esprit critique<br>
+                            • Il est important de préserver le patrimoine<br>
+                            • "Celui qui ne connaît pas l'histoire est condamné à la revivre"
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Les Sources de l'Histoire</h2>
+
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Une lettre ancienne est une source :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Écrite
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Orale
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Archéologique
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Les poteries et les outils anciens sont des sources :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Archéologiques (ou muettes)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Orales
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Audiovisuelles
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Un témoignage recueilli auprès d'un ancien est une source :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Orale
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Écrite
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Archéologique
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Que vérifie la critique externe d'une source ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> L'authenticité du document
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Le contenu du document
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> La longueur du document
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Une photographie ancienne est une source :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Audiovisuelle
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Écrite
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Orale
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function navigateToTab(tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+                if (tabbuttons[i].getAttribute('onclick').includes(tabName)) {
+                    tabbuttons[i].classList.add("active");
+                }
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+
+        const quizAnswers = {
+            q1: 'a',
+            q2: 'a',
+            q3: 'a',
+            q4: 'a',
+            q5: 'a'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent travail ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bien joué ! Continue ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

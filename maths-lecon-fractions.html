@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Les Fractions - Cours de Mathématiques</title>
+<link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>🔢 Les Fractions</h1>
+<p>Mathématiques - Nombres et Calculs</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Introduction</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Fractions Égales</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Opérations</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<!-- TAB 1: INTRODUCTION AUX FRACTIONS -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Qu'est-ce qu'une Fraction ?</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Une <strong>fraction</strong> est une manière d'écrire un nombre qui représente une partie d'un tout. Elle s'écrit sous la forme <strong>a/b</strong> où :</p>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li><strong>a</strong> est le <strong>numérateur</strong> (nombre du haut) - il indique combien de parties on prend</li>
+<li><strong>b</strong> est le <strong>dénominateur</strong> (nombre du bas) - il indique en combien de parties égales on a divisé le tout</li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Représentation visuelle d'une fraction</h4>
+<svg height="200" viewbox="0 0 600 200" width="100%">
+<!-- Représentation de 3/4 avec un rectangle -->
+<rect x="50" y="40" width="200" height="80" fill="#FFE4EC" stroke="#FF69B4" stroke-width="2"></rect>
+<line x1="100" y1="40" x2="100" y2="120" stroke="#FF69B4" stroke-width="2"></line>
+<line x1="150" y1="40" x2="150" y2="120" stroke="#FF69B4" stroke-width="2"></line>
+<line x1="200" y1="40" x2="200" y2="120" stroke="#FF69B4" stroke-width="2"></line>
+<!-- Parties colorées (3 sur 4) -->
+<rect x="50" y="40" width="50" height="80" fill="#FF69B4" stroke="#FF69B4" stroke-width="2"></rect>
+<rect x="100" y="40" width="50" height="80" fill="#FF69B4" stroke="#FF69B4" stroke-width="2"></rect>
+<rect x="150" y="40" width="50" height="80" fill="#FF69B4" stroke="#FF69B4" stroke-width="2"></rect>
+<text fill="#333" font-size="16" font-weight="bold" x="125" y="160">3/4 (trois quarts)</text>
+<!-- Représentation de 1/2 avec un cercle -->
+<circle cx="450" cy="80" r="60" fill="#FFE4EC" stroke="#FF69B4" stroke-width="2"></circle>
+<path d="M 450 80 L 450 20 A 60 60 0 0 1 450 140 Z" fill="#FF69B4"></path>
+<text fill="#333" font-size="16" font-weight="bold" x="435" y="170">1/2 (un demi)</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Vocabulaire des fractions</h4>
+<svg height="150" viewbox="0 0 600 150" width="100%">
+<text fill="#333" font-size="40" font-weight="bold" x="250" y="50">3</text>
+<line x1="230" y1="65" x2="310" y2="65" stroke="#333" stroke-width="3"></line>
+<text fill="#333" font-size="40" font-weight="bold" x="250" y="110">4</text>
+<!-- Flèches et légendes -->
+<text fill="#4CAF50" font-size="16" font-weight="bold" x="330" y="50">← Numérateur</text>
+<text fill="#2196F3" font-size="16" font-weight="bold" x="330" y="110">← Dénominateur</text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Types de fractions</h4>
+<p><strong>1. Fraction propre :</strong> Le numérateur est plus petit que le dénominateur (ex: 2/5, 3/7)</p>
+<p><strong>2. Fraction impropre :</strong> Le numérateur est plus grand ou égal au dénominateur (ex: 5/3, 8/4)</p>
+<p><strong>3. Nombre mixte :</strong> Un nombre entier plus une fraction (ex: 1 ½, 2 ¼)</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Le numérateur est au-dessus de la barre<br/>
+• Le dénominateur est en-dessous de la barre<br/>
+• Le dénominateur ne peut jamais être égal à zéro<br/>
+• Une fraction représente une partie d'un tout
+</div>
+
+<!-- Section Quiz -->
+<div id="quiz-tab1"></div></div>
+</div>
+
+<!-- TAB 2: FRACTIONS ÉGALES -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Fractions Égales et Simplification</h2>
+<div class="definition-box">
+<h4>📘 Fractions égales (équivalentes)</h4>
+<p>Deux fractions sont <strong>égales</strong> si elles représentent la même quantité. On obtient une fraction égale en multipliant ou divisant le numérateur et le dénominateur par le même nombre (non nul).</p>
+</div>
+<div class="example-box">
+<h4>💡 Exemple de fractions égales</h4>
+<svg height="180" viewbox="0 0 600 180" width="100%">
+<!-- 1/2 -->
+<rect x="50" y="40" width="100" height="60" fill="#FFE4EC" stroke="#FF69B4" stroke-width="2"></rect>
+<rect x="50" y="40" width="50" height="60" fill="#FF69B4" stroke="#FF69B4" stroke-width="2"></rect>
+<text fill="#333" font-size="14" font-weight="bold" x="85" y="130">1/2</text>
+<!-- 2/4 -->
+<rect x="200" y="40" width="100" height="60" fill="#FFE4EC" stroke="#FF69B4" stroke-width="2"></rect>
+<line x1="225" y1="40" x2="225" y2="100" stroke="#FF69B4" stroke-width="2"></line>
+<line x1="250" y1="40" x2="250" y2="100" stroke="#FF69B4" stroke-width="2"></line>
+<line x1="275" y1="40" x2="275" y2="100" stroke="#FF69B4" stroke-width="2"></line>
+<rect x="200" y="40" width="25" height="60" fill="#FF69B4" stroke="#FF69B4" stroke-width="2"></rect>
+<rect x="225" y="40" width="25" height="60" fill="#FF69B4" stroke="#FF69B4" stroke-width="2"></rect>
+<text fill="#333" font-size="14" font-weight="bold" x="235" y="130">2/4</text>
+<!-- 4/8 -->
+<rect x="350" y="40" width="100" height="60" fill="#FFE4EC" stroke="#FF69B4" stroke-width="2"></rect>
+<line x1="362.5" y1="40" x2="362.5" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<line x1="375" y1="40" x2="375" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<line x1="387.5" y1="40" x2="387.5" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<line x1="400" y1="40" x2="400" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<line x1="412.5" y1="40" x2="412.5" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<line x1="425" y1="40" x2="425" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<line x1="437.5" y1="40" x2="437.5" y2="100" stroke="#FF69B4" stroke-width="1"></line>
+<rect x="350" y="40" width="50" height="60" fill="#FF69B4"></rect>
+<text fill="#333" font-size="14" font-weight="bold" x="385" y="130">4/8</text>
+<!-- Signes égal -->
+<text fill="#333" font-size="24" font-weight="bold" x="165" y="80">=</text>
+<text fill="#333" font-size="24" font-weight="bold" x="315" y="80">=</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="300" y="170">1/2 = 2/4 = 4/8 (même quantité colorée)</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Simplifier une fraction</h4>
+<p><strong>Simplifier</strong> une fraction, c'est trouver une fraction égale avec des nombres plus petits. On divise le numérateur et le dénominateur par leur <strong>plus grand diviseur commun (PGCD)</strong>.</p>
+<div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p><strong>Exemple :</strong> Simplifier 6/8</p>
+<p>PGCD de 6 et 8 = 2</p>
+<p>6 ÷ 2 = 3 et 8 ÷ 2 = 4</p>
+<p>Donc <strong>6/8 = 3/4</strong></p>
+</div>
+</div>
+<div class="property-box">
+<h4>✓ Règles importantes</h4>
+<p><strong>1.</strong> Pour obtenir une fraction égale : multiplier ou diviser par le même nombre en haut et en bas</p>
+<p><strong>2.</strong> Une fraction est irréductible quand on ne peut plus la simplifier</p>
+<p><strong>3.</strong> Le numérateur et le dénominateur d'une fraction irréductible n'ont que 1 comme diviseur commun</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Fractions égales = même valeur, écriture différente<br/>
+• Simplifier = diviser en haut et en bas par le même nombre<br/>
+• Une fraction irréductible ne peut plus être simplifiée
+</div>
+
+<!-- Section Quiz -->
+<div id="quiz-tab2"></div></div>
+</div>
+
+<!-- TAB 3: OPÉRATIONS -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Opérations sur les Fractions</h2>
+<div class="definition-box">
+<h4>📘 Addition et soustraction de fractions</h4>
+<p><strong>Même dénominateur :</strong> On additionne ou soustrait les numérateurs et on garde le même dénominateur.</p>
+<div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p style="font-size: 18px; text-align: center;"><strong>a/c + b/c = (a+b)/c</strong></p>
+<p style="font-size: 18px; text-align: center;"><strong>a/c - b/c = (a-b)/c</strong></p>
+<p style="margin-top: 10px;">Exemple : 2/5 + 1/5 = 3/5</p>
+</div>
+<p style="margin-top: 15px;"><strong>Dénominateurs différents :</strong> On met d'abord les fractions au même dénominateur.</p>
+<div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p>Exemple : 1/2 + 1/4</p>
+<p>1/2 = 2/4 (on multiplie par 2 en haut et en bas)</p>
+<p>Donc : 2/4 + 1/4 = 3/4</p>
+</div>
+</div>
+<div class="definition-box">
+<h4>📘 Multiplication de fractions</h4>
+<p>On multiplie les numérateurs entre eux et les dénominateurs entre eux.</p>
+<div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p style="font-size: 18px; text-align: center;"><strong>a/b × c/d = (a×c)/(b×d)</strong></p>
+<p style="margin-top: 10px;">Exemple : 2/3 × 4/5 = 8/15</p>
+</div>
+</div>
+<div class="definition-box">
+<h4>📘 Division de fractions</h4>
+<p>Pour diviser par une fraction, on multiplie par son <strong>inverse</strong>.</p>
+<div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p style="font-size: 18px; text-align: center;"><strong>a/b ÷ c/d = a/b × d/c</strong></p>
+<p style="margin-top: 10px;">Exemple : 3/4 ÷ 2/5 = 3/4 × 5/2 = 15/8</p>
+</div>
+</div>
+<div class="property-box">
+<h4>✓ Résumé des opérations</h4>
+<p><strong>Addition/Soustraction :</strong> Même dénominateur → additionner/soustraire les numérateurs</p>
+<p><strong>Multiplication :</strong> Multiplier numérateurs entre eux et dénominateurs entre eux</p>
+<p><strong>Division :</strong> Multiplier par l'inverse (retourner la deuxième fraction)</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Pour additionner : même dénominateur obligatoire<br/>
+• Pour multiplier : numérateurs ensemble, dénominateurs ensemble<br/>
+• Pour diviser : on inverse et on multiplie<br/>
+• Toujours simplifier le résultat quand c'est possible
+</div>
+
+<!-- Section Quiz -->
+<div id="quiz-tab3"></div></div>
+</div>
+
+<!-- TAB 4: QUIZ -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Les Fractions</h2>
+<p>Testez vos connaissances sur les fractions</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Dans la fraction 3/5, le numérateur est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> 5
+</label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> 3
+</label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> 8
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Quelle fraction est égale à 1/2 ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> 2/4
+</label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> 1/4
+</label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> 3/4
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">2/5 + 1/5 = ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> 3/10
+</label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> 3/5
+</label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> 2/5
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">La simplification de 6/9 donne :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> 2/3
+</label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> 3/4
+</label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> 1/3
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">2/3 × 3/4 = ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> 6/7
+</label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> 1/2
+</label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> 5/7
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Le dénominateur d'une fraction peut être égal à :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> 0
+</label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> N'importe quel nombre sauf 0
+</label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> Seulement des nombres pairs
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Pour diviser par une fraction, on :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q7" type="radio" value="a"/> Multiplie par cette fraction
+</label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="b"/> Multiplie par l'inverse de cette fraction
+</label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="c"/> Additionne cette fraction
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q7"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Une fraction est irréductible quand :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q8" type="radio" value="a"/> Elle est égale à 1
+</label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="b"/> Elle ne peut plus être simplifiée
+</label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="c"/> Le numérateur est plus grand que le dénominateur
+</label>
+</div>
+<div class="quiz-feedback" id="feedback-q8"></div>
+</div>
+
+<button class="quiz-button" onclick="submitQuiz('quiz-fractions')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+function submitQuiz(quizId) {
+    const answers = {
+        q1: 'b',
+        q2: 'a',
+        q3: 'b',
+        q4: 'a',
+        q5: 'b',
+        q6: 'b',
+        q7: 'b',
+        q8: 'b'
+    };
+
+    let score = 0;
+    let totalQuestions = Object.keys(answers).length;
+
+    for (let question in answers) {
+        const selected = document.querySelector(`input[name="${question}"]:checked`);
+        const feedback = document.getElementById(`feedback-${question}`);
+
+        if (selected) {
+            if (selected.value === answers[question]) {
+                score++;
+                feedback.style.color = '#4caf50';
+                feedback.textContent = '✓ Correct !';
+            } else {
+                feedback.style.color = '#f44336';
+                feedback.textContent = '✗ Incorrect';
+            }
+            feedback.style.display = 'block';
+            feedback.style.marginTop = '8px';
+            feedback.style.fontWeight = 'bold';
+        } else {
+            feedback.style.color = '#f44336';
+            feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+            feedback.style.display = 'block';
+            feedback.style.marginTop = '8px';
+            feedback.style.fontWeight = 'bold';
+        }
+    }
+
+    const resultsDiv = document.getElementById('quiz-results');
+    const percentage = Math.round((score / totalQuestions) * 100);
+    resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+    resultsDiv.style.marginTop = '20px';
+    resultsDiv.style.padding = '15px';
+    resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+    resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+    resultsDiv.style.borderRadius = '8px';
+    resultsDiv.style.display = 'block';
+}
+</script>
+</body>
+</html>
