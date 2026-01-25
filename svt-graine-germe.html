@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT - La Graine qui Germe</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🌱';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🌻';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6); border: 2px solid #C71585;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #2ecc71;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #2ecc71;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            border-bottom: 3px solid #ffed4e;
+            color: white;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #2ecc71;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #1b5e20;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .observation-box {
+            background: #FFFFFF;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .observation-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons between tabs */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="svt-lecons.html" class="btn-back">← Retour</a>
+        <h1>🌱 La Graine qui Germe 🌻</h1>
+        <p>Comment une graine devient-elle une plante ?</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ La Graine</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ La Germination</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Conditions</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: LA GRAINE -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>🌱 Qu'est-ce qu'une Graine ?</h2>
+                        <p class="subtitle">Découvrir la structure et le rôle de la graine</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce qu'une graine ?</h4>
+                            <p>Une <strong>graine</strong> est un organe végétal qui contient un <strong>embryon</strong> (future plante) et des <strong>réserves nutritives</strong>. Elle est protégée par une enveloppe appelée <strong>tégument</strong>.</p>
+                            <p>La graine permet à la plante de se <strong>reproduire</strong> et de se <strong>disperser</strong>.</p>
+                        </div>
+
+                        <h3>🔬 II - Structure de la Graine</h3>
+
+                        <div class="category-box">
+                            <h4>🏗️ Les parties de la graine</h4>
+                            <ul>
+                                <li><strong>Le tégument :</strong> Enveloppe externe qui protège la graine</li>
+                                <li><strong>Les cotylédons :</strong> Réserves nutritives pour l'embryon (1 ou 2 selon la plante)</li>
+                                <li><strong>L'embryon :</strong> La future plante miniature qui comprend :
+                                    <ul>
+                                        <li><strong>La radicule :</strong> Deviendra la racine</li>
+                                        <li><strong>La tigelle :</strong> Deviendra la tige</li>
+                                        <li><strong>La gemmule :</strong> Deviendra les premières feuilles</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="observation-box">
+                            <h4>🔬 Observation d'une graine de haricot</h4>
+                            <p>Si tu ouvres une graine de haricot trempée dans l'eau :</p>
+                            <ul>
+                                <li>Tu verras les <strong>deux cotylédons</strong> (réserves)</li>
+                                <li>Entre eux, tu trouveras le petit <strong>embryon</strong></li>
+                                <li>L'enveloppe externe est le <strong>tégument</strong></li>
+                            </ul>
+                        </div>
+
+                        <h3>🌿 III - Types de Graines</h3>
+
+                        <div class="category-box">
+                            <h4>🌾 A. Monocotylédones</h4>
+                            <p>Graines avec <strong>un seul cotylédon</strong></p>
+                            <p><strong>Exemples :</strong> Maïs, blé, riz, palmier</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌻 B. Dicotylédones</h4>
+                            <p>Graines avec <strong>deux cotylédons</strong></p>
+                            <p><strong>Exemples :</strong> Haricot, tournesol, tomate, pommier</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La graine contient un embryon (future plante)<br>
+                            • Les cotylédons sont les réserves nutritives<br>
+                            • Le tégument protège la graine<br>
+                            • La radicule deviendra la racine<br>
+                            • La tigelle deviendra la tige
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LA GERMINATION -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🌱 La Germination</h2>
+                        <p class="subtitle">Comment la graine se transforme en plante</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que la germination ?</h4>
+                            <p>La <strong>germination</strong> est le processus par lequel une graine se développe pour donner une nouvelle plante. C'est le passage de l'état de <strong>vie ralentie</strong> (dormance) à l'état de <strong>vie active</strong>.</p>
+                        </div>
+
+                        <h3>🔄 II - Les Étapes de la Germination</h3>
+
+                        <ol>
+                            <li><strong>L'absorption d'eau :</strong> La graine gonfle en absorbant l'eau</li>
+                            <li><strong>Le ramollissement du tégument :</strong> L'enveloppe se ramollit</li>
+                            <li><strong>La sortie de la radicule :</strong> La racine sort en premier et s'enfonce dans le sol</li>
+                            <li><strong>La sortie de la tigelle :</strong> La tige pousse vers le haut</li>
+                            <li><strong>L'apparition des premières feuilles :</strong> Les cotylédons ou les vraies feuilles sortent</li>
+                            <li><strong>La photosynthèse :</strong> La plantule devient autonome</li>
+                        </ol>
+
+                        <div class="observation-box">
+                            <h4>🔬 Expérience de germination</h4>
+                            <p>Pour observer la germination :</p>
+                            <ul>
+                                <li>Place des graines de haricot sur du coton humide</li>
+                                <li>Garde-les dans un endroit chaud et lumineux</li>
+                                <li>Observe chaque jour les changements</li>
+                                <li>En quelques jours, tu verras la radicule puis la tige sortir !</li>
+                            </ul>
+                        </div>
+
+                        <h3>🌿 III - La Plantule</h3>
+
+                        <div class="category-box">
+                            <h4>🌱 Qu'est-ce qu'une plantule ?</h4>
+                            <p>La <strong>plantule</strong> est la jeune plante qui vient de germer. Elle comprend :</p>
+                            <ul>
+                                <li><strong>Les racines :</strong> Absorbent l'eau et les sels minéraux</li>
+                                <li><strong>La tige :</strong> Soutient la plante et transporte la sève</li>
+                                <li><strong>Les feuilles :</strong> Fabriquent la nourriture par photosynthèse</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La germination commence par l'absorption d'eau<br>
+                            • La radicule (racine) sort en premier<br>
+                            • La tigelle (tige) pousse vers la lumière<br>
+                            • Les cotylédons nourrissent la plantule au début<br>
+                            • La plantule devient autonome grâce à la photosynthèse
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: CONDITIONS DE GERMINATION -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🌡️ Les Conditions de Germination</h2>
+                        <p class="subtitle">Ce dont la graine a besoin pour germer</p>
+
+                        <h3>📌 I - Les Facteurs Indispensables</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Les trois conditions essentielles</h4>
+                            <p>Pour germer, une graine a besoin de trois éléments indispensables :</p>
+                            <ul>
+                                <li><strong>L'eau :</strong> Pour gonfler et activer les réactions</li>
+                                <li><strong>L'oxygène :</strong> Pour la respiration de l'embryon</li>
+                                <li><strong>Une température favorable :</strong> Ni trop chaud, ni trop froid</li>
+                            </ul>
+                        </div>
+
+                        <h3>💧 II - Le Rôle de l'Eau</h3>
+
+                        <div class="category-box">
+                            <h4>💧 Pourquoi l'eau est-elle importante ?</h4>
+                            <ul>
+                                <li>L'eau fait <strong>gonfler</strong> la graine</li>
+                                <li>Elle <strong>ramollit</strong> le tégument</li>
+                                <li>Elle active les <strong>enzymes</strong> qui transforment les réserves</li>
+                                <li>Elle permet les <strong>réactions chimiques</strong> de la germination</li>
+                            </ul>
+                            <p><strong>⚠️ Attention :</strong> Trop d'eau peut noyer la graine !</p>
+                        </div>
+
+                        <h3>🌡️ III - Le Rôle de la Température</h3>
+
+                        <div class="category-box">
+                            <h4>🌡️ Quelle température pour germer ?</h4>
+                            <p>Chaque espèce a une température optimale de germination :</p>
+                            <ul>
+                                <li><strong>Graines de pays tempérés :</strong> 15-25°C (blé, haricot)</li>
+                                <li><strong>Graines de pays chauds :</strong> 25-35°C (maïs, riz)</li>
+                                <li><strong>Température minimale :</strong> En dessous, la graine ne germe pas</li>
+                                <li><strong>Température maximale :</strong> Au-dessus, la graine meurt</li>
+                            </ul>
+                        </div>
+
+                        <h3>💨 IV - Le Rôle de l'Oxygène</h3>
+
+                        <div class="observation-box">
+                            <h4>🔬 Pourquoi l'oxygène est-il nécessaire ?</h4>
+                            <p>L'embryon <strong>respire</strong> même avant de sortir de la graine :</p>
+                            <ul>
+                                <li>Il utilise l'oxygène pour libérer l'énergie des réserves</li>
+                                <li>Cette énergie permet la croissance</li>
+                                <li>C'est pourquoi une graine immergée dans l'eau ne germe pas (manque d'oxygène)</li>
+                            </ul>
+                        </div>
+
+                        <h3>🌞 V - Et la Lumière ?</h3>
+
+                        <div class="definition-box">
+                            <h4>💡 La lumière est-elle nécessaire ?</h4>
+                            <p><strong>Non</strong>, la lumière n'est pas indispensable pour la germination !</p>
+                            <ul>
+                                <li>La graine peut germer dans l'obscurité</li>
+                                <li>Les réserves (cotylédons) nourrissent l'embryon au début</li>
+                                <li><strong>MAIS :</strong> La lumière devient indispensable après, pour la photosynthèse</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les 3 conditions indispensables : eau, oxygène, température<br>
+                            • L'eau fait gonfler la graine et active les enzymes<br>
+                            • La température doit être adaptée à l'espèce<br>
+                            • L'oxygène permet la respiration de l'embryon<br>
+                            • La lumière n'est pas nécessaire pour germer (mais après, oui !)
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - La Germination</h2>
+                <p>Teste tes connaissances !</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Quelle partie de la graine deviendra la racine ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> La radicule
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> La tigelle
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Le cotylédon
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">À quoi servent les cotylédons ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Ce sont des réserves nutritives
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Ils protègent la graine
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Ils absorbent l'eau
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Quelles sont les 3 conditions indispensables à la germination ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Eau, oxygène, température
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Eau, lumière, terre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Lumière, chaleur, engrais
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quelle partie sort en premier lors de la germination ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> La radicule (racine)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> La tige
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Les feuilles
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">La lumière est-elle indispensable pour la germination ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Non, la graine peut germer dans l'obscurité
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Oui, sans lumière rien ne pousse
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Seulement la nuit
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab navigation
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function navigateToTab(tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+                if (tabbuttons[i].getAttribute('onclick').includes(tabName)) {
+                    tabbuttons[i].classList.add("active");
+                }
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'a',
+            q2: 'a',
+            q3: 'a',
+            q4: 'a',
+            q5: 'a'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+            let answers = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    answers.push(`Question ${i}: Pas de réponse`);
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                    answers.push(`Question ${i}: Correcte`);
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                    answers.push(`Question ${i}: Incorrecte`);
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu connais bien la germination ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue à apprendre ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

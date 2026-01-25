@@ -3,17 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physique - Cours Complets</title>
-    
-    <!-- PWA Configuration -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#FF69B4">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Karniella">
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
-    <meta name="description" content="Cours de Physique pour Karniella - Circuits électriques, court-circuits, solides et liquides">
-    
+    <title>Français - Cours Complets</title>
     <style>
         * {
             margin: 0;
@@ -31,7 +21,7 @@
         }
 
         body::before {
-            content: '⚡';
+            content: '📚';
             position: fixed;
             font-size: 100px;
             opacity: 0.1;
@@ -237,92 +227,28 @@
     <div class="container">
         <header>
             <a href="index.html" class="btn-back">← Retour à l'accueil</a>
-            <h1>⚡ Physique</h1>
+            <h1>📖 Français</h1>
             <p>Cours Complets avec Explications, Quiz et Exercices</p>
         </header>
 
         <h2 class="section-title">📚 Leçons Disponibles</h2>
 
         <div class="lessons-grid">
-            <!-- Leçon 1: Le Circuit Électrique -->
+            <!-- Leçon 1: Le Groupe Nominal -->
             <div class="lesson-card">
-                <a href="le-circuit-electrique.html">
-                    <span class="lesson-icon">⚡</span>
-                    <h2>1. Le Circuit Électrique</h2>
-                    <p>Comprendre les circuits électriques, le moteur, les isolants, conducteurs et les types de piles.</p>
-                    <button class="lesson-button">Commencer →</button>
-                </a>
-            </div>
-
-            <!-- Leçon 2: Les Commandes Électriques -->
-            <div class="lesson-card">
-                <a href="les-commandes-electriques.html">
-                    <span class="lesson-icon">🔌</span>
-                    <h2>2. Les Commandes Électriques</h2>
-                    <p>Maîtriser les interrupteurs simples et comment ils contrôlent les circuits électriques pour allumer ou éteindre les lampes.</p>
-                    <button class="lesson-button">Commencer →</button>
-                </a>
-            </div>
-
-            <!-- Leçon 3: Court-Circuit et Protection -->
-            <div class="lesson-card">
-                <a href="lecon-3-court-circuit.html">
-                    <span class="lesson-icon">⚠️</span>
-                    <h2>3. Court-Circuit et Protection</h2>
-                    <p>Comprendre les dangers des courts-circuits, leurs causes et les systèmes de protection des installations électriques.</p>
-                    <button class="lesson-button">Commencer →</button>
-                </a>
-            </div>
-
-            <!-- Leçon 4: Les Solides et les Liquides -->
-            <div class="lesson-card">
-                <a href="lecon-4-solides-liquides.html">
-                    <span class="lesson-icon">🧪</span>
-                    <h2>4. Les Solides et les Liquides</h2>
-                    <p>Découvrir les propriétés des solides et liquides, la verrerie de laboratoire et les pictogrammes de sécurité.</p>
-                    <button class="lesson-button">Commencer →</button>
-                </a>
-            </div>
-
-            <!-- Leçon 5: La Température d'un Corps -->
-            <div class="lesson-card">
-                <a href="lecon-temperature-corps.html">
-                    <span class="lesson-icon">🌡️</span>
-                    <h2>5. La Température d'un Corps</h2>
-                    <p>Comprendre la température, les unités de mesure, le thermomètre et les transferts de chaleur.</p>
-                    <button class="lesson-button">Commencer →</button>
-                </a>
-            </div>
-
-            <!-- Leçon 6: Les États de la Matière -->
-            <div class="lesson-card">
-                <a href="lecon-etats-matiere.html">
-                    <span class="lesson-icon">💨</span>
-                    <h2>6. Les États de la Matière</h2>
-                    <p>Les trois états de la matière : solides, liquides et gaz. Propriétés et changements d'état.</p>
+                <a href="francais-groupe-nominal.html">
+                    <span class="lesson-icon">📝</span>
+                    <h2>1. Le Groupe Nominal</h2>
+                    <p>Découvrir le groupe nominal, sa structure et tous les types de groupes nominaux avec des exemples simples.</p>
                     <button class="lesson-button">Commencer →</button>
                 </a>
             </div>
         </div>
 
         <footer>
-            <p>💡 Cours interactifs avec schémas animés | Facile à comprendre</p>
+            <p>💡 Cours interactifs avec explications détaillées, quiz et exercices</p>
+            <p>Créé avec ❤️ pour l'apprentissage du français</p>
         </footer>
     </div>
-
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('Service Worker enregistré avec succès:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('Échec de l\'enregistrement du Service Worker:', error);
-                    });
-            });
-        }
-    </script>
 </body>
 </html>
