@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT - Croissance des Plantes à Fleurs</title>
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FF69B4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Karniella">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <meta name="description" content="Facteurs influençant la croissance des plantes à fleurs : eau, sels minéraux et lumière">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFE8F5 0%, #FFB6D9 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .content-area { flex: 6; min-width: 0; }
+        .quiz-area { flex: 4; min-width: 350px; max-width: 500px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 40px rgba(199, 21, 133, 0.4);
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .btn-back:hover { background: white; color: #C71585; }
+
+        header h1 { font-size: 32px; margin-bottom: 10px; }
+        header p { font-size: 16px; opacity: 0.95; }
+
+        .lesson-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.2);
+            border-left: 5px solid #FF1493;
+        }
+
+        .lesson-section h2 {
+            color: #C71585;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .lesson-section h3 {
+            color: #FF1493;
+            font-size: 20px;
+            margin: 20px 0 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid #FF69B4;
+        }
+        .lesson-section h4 { color: #C71585; font-size: 17px; margin: 15px 0 10px 0; }
+        .lesson-section p { color: #333; line-height: 1.8; margin-bottom: 15px; font-size: 16px; }
+
+        .definition-box {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .definition-box h4 { color: #C71585; margin-bottom: 10px; font-size: 18px; }
+
+        .experiment-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .experiment-box h4 { color: #2E7D32; margin-bottom: 10px; font-size: 18px; }
+
+        .result-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE4B5 100%);
+            border: 3px solid #FFA500;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .result-box h4 { color: #E65100; margin-bottom: 10px; font-size: 18px; }
+
+        .analysis-box {
+            background: linear-gradient(135deg, #E6F3FF 0%, #B8D4E8 100%);
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .analysis-box h4 { color: #1E3A8A; margin-bottom: 10px; font-size: 18px; }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+            border: 3px solid #9C27B0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .conclusion-box h4 { color: #6A1B9A; margin-bottom: 10px; font-size: 18px; }
+
+        .nb-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border-left: 5px solid #F44336;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        .nb-box strong { color: #C62828; }
+
+        .info-list { list-style: none; padding: 0; margin: 15px 0; }
+        .info-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border-radius: 10px;
+            border-left: 4px solid #FF69B4;
+            color: #333;
+            font-size: 15px;
+        }
+        .info-list li::before { content: '🌸 '; }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+        }
+        .comparison-table th {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+        }
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #FFE5F0;
+            text-align: center;
+            font-size: 14px;
+        }
+        .comparison-table tr:nth-child(even) { background: #FFF0F5; }
+        .comparison-table tr:hover { background: #FFE5F0; }
+
+        /* Quiz */
+        .quiz-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.25);
+            border: 3px solid #FF1493;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        .quiz-section h2 { color: #C71585; text-align: center; margin-bottom: 20px; font-size: 22px; }
+        .quiz-question {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 2px solid #FFE5F0;
+        }
+        .quiz-question h4 { color: #333; margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+        .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #FFF5FA;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+        .quiz-options label:hover { background: #FFE5F0; }
+        .quiz-options input[type="radio"] { margin-right: 10px; accent-color: #FF1493; }
+
+        .quiz-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        .quiz-submit:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(199, 21, 133, 0.5); }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .quiz-result.show { display: block; animation: fadeIn 0.5s ease; }
+        .quiz-result.success { background: #E8F5E9; color: #2E7D32; border: 3px solid #4CAF50; }
+        .quiz-result.partial { background: #FFF3E0; color: #E65100; border: 3px solid #FF9800; }
+        .quiz-result.fail { background: #FFEBEE; color: #C62828; border: 3px solid #F44336; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1200px) {
+            .main-wrapper { flex-direction: column; }
+            .quiz-area { max-width: 100%; }
+            .quiz-section { position: static; max-height: none; }
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 24px; }
+            .lesson-section { padding: 15px; }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            border-radius: 15px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="svt-lecons.html" class="btn-back">← Retour aux leçons</a>
+        <h1>🌻 Croissance des Plantes à Fleurs</h1>
+        <p>Comment expliquer l'influence de certains facteurs sur la croissance des plantes à fleurs ?</p>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+
+            <!-- Introduction -->
+            <section class="lesson-section">
+                <h2>📖 Introduction</h2>
+                <p>Les plantes à fleurs ont besoin de plusieurs facteurs pour assurer leur <strong>croissance</strong> : l'eau, les sels minéraux et la lumière. Dans cette leçon, nous allons étudier, à travers des expériences, comment chacun de ces éléments influence le développement des végétaux.</p>
+                <div class="definition-box">
+                    <h4>🎯 Problématique</h4>
+                    <p>Comment peut-on expliquer l'influence de certains facteurs sur la croissance des plantes à fleurs ?</p>
+                </div>
+            </section>
+
+            <!-- GRAND I : L'EAU -->
+            <section class="lesson-section">
+                <h2>💧 I. L'influence de l'eau</h2>
+
+                <h3>1. Présentation de l'expérience</h3>
+                <div class="experiment-box">
+                    <h4>🔬 Dispositif expérimental</h4>
+                    <p>On prend <strong>deux pots</strong> identiques (A et B) contenant de la terre et une jeune plante à fleurs du même âge.</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Pot A :</strong> on arrose la plante régulièrement avec de l'eau</li>
+                        <li><strong>Pot B :</strong> on n'apporte pas d'eau à la plante</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Les deux pots sont placés dans les mêmes conditions (même lumière, même température). On observe pendant plusieurs jours.</p>
+                </div>
+
+                <h3>2. Résultats</h3>
+                <div class="result-box">
+                    <h4>📊 Observations</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Pot A (arrosé) :</strong> la plante grandit, ses feuilles sont vertes et fermes</li>
+                        <li><strong>Pot B (non arrosé) :</strong> la plante se fane, ses feuilles jaunissent puis la plante meurt</li>
+                    </ul>
+                </div>
+
+                <h3>3. Analyse</h3>
+                <div class="analysis-box">
+                    <h4>🔍 Comparaison</h4>
+                    <p>La seule différence entre les deux pots est <strong>la présence ou l'absence d'eau</strong>. La plante arrosée (A) se développe bien, celle non arrosée (B) meurt.</p>
+                </div>
+
+                <h3>4. Interprétation</h3>
+                <div class="analysis-box">
+                    <h4>💡 Explication</h4>
+                    <p>L'eau est <strong>indispensable</strong> à la plante : elle permet de transporter les sels minéraux puisés dans le sol et participe à toutes les réactions vitales de la plante.</p>
+                </div>
+
+                <div class="nb-box">
+                    <strong>N.B. :</strong> Sans eau, la plante ne peut pas absorber les sels minéraux du sol et se dessèche rapidement.
+                </div>
+
+                <h3>5. Conclusion</h3>
+                <div class="conclusion-box">
+                    <h4>✅ Conclusion</h4>
+                    <p>L'<strong>eau</strong> est un facteur indispensable à la croissance des plantes à fleurs.</p>
+                </div>
+            </section>
+
+            <!-- GRAND II : LES SELS MINERAUX -->
+            <section class="lesson-section">
+                <h2>🧪 II. L'influence des sels minéraux</h2>
+
+                <h3>1. Présentation de l'expérience</h3>
+                <div class="experiment-box">
+                    <h4>🔬 Dispositif expérimental</h4>
+                    <p>On prend <strong>deux pots</strong> identiques (C et D) contenant une jeune plante à fleurs.</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Pot C :</strong> plante arrosée avec de l'<strong>eau contenant des sels minéraux</strong> (eau + engrais)</li>
+                        <li><strong>Pot D :</strong> plante arrosée avec de l'<strong>eau distillée</strong> (sans sels minéraux)</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Les deux pots reçoivent la même quantité d'eau, la même lumière et la même température.</p>
+                </div>
+
+                <h3>2. Résultats</h3>
+                <div class="result-box">
+                    <h4>📊 Observations</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Pot C (avec sels minéraux) :</strong> la plante grandit normalement, avec de belles feuilles vertes</li>
+                        <li><strong>Pot D (eau distillée) :</strong> la plante pousse peu, devient chétive et ses feuilles jaunissent</li>
+                    </ul>
+                </div>
+
+                <h3>3. Analyse</h3>
+                <div class="analysis-box">
+                    <h4>🔍 Comparaison</h4>
+                    <p>Les deux plantes reçoivent de l'eau, mais seule celle du pot C reçoit des <strong>sels minéraux</strong>. C'est celle-ci qui se développe bien.</p>
+                </div>
+
+                <h3>4. Interprétation</h3>
+                <div class="analysis-box">
+                    <h4>💡 Explication</h4>
+                    <p>Les sels minéraux (azote, phosphore, potassium…) sont des éléments <strong>nutritifs</strong> nécessaires à la fabrication de la matière vivante de la plante.</p>
+                </div>
+
+                <div class="nb-box">
+                    <strong>N.B. :</strong> L'eau seule ne suffit pas ; elle doit contenir des sels minéraux pour nourrir la plante.
+                </div>
+
+                <h3>5. Conclusion</h3>
+                <div class="conclusion-box">
+                    <h4>✅ Conclusion</h4>
+                    <p>Les <strong>sels minéraux</strong> sont indispensables à la croissance des plantes à fleurs.</p>
+                </div>
+            </section>
+
+            <!-- GRAND III : LA LUMIERE -->
+            <section class="lesson-section">
+                <h2>☀️ III. L'influence de la lumière</h2>
+
+                <h3>1. Présentation de l'expérience</h3>
+                <div class="experiment-box">
+                    <h4>🔬 Dispositif expérimental</h4>
+                    <p>On prend <strong>deux pots</strong> identiques (E et F) avec une jeune plante à fleurs arrosée régulièrement.</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Pot E :</strong> placé à la <strong>lumière</strong> (près d'une fenêtre)</li>
+                        <li><strong>Pot F :</strong> placé à l'<strong>obscurité</strong> (dans un placard fermé)</li>
+                    </ul>
+                </div>
+
+                <h3>2. Résultats</h3>
+                <div class="result-box">
+                    <h4>📊 Observations</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Pot E (lumière) :</strong> plante verte, solide, croissance normale</li>
+                        <li><strong>Pot F (obscurité) :</strong> plante pâle (jaune), tige longue et fragile (étiolée), feuilles peu développées</li>
+                    </ul>
+                </div>
+
+                <h3>3. Analyse</h3>
+                <div class="analysis-box">
+                    <h4>🔍 Comparaison</h4>
+                    <p>Les deux plantes sont arrosées et reçoivent des sels minéraux, mais seule celle du pot E reçoit de la <strong>lumière</strong>. Elle est la seule à se développer normalement.</p>
+                </div>
+
+                <h3>4. Interprétation</h3>
+                <div class="analysis-box">
+                    <h4>💡 Explication</h4>
+                    <p>La lumière est nécessaire à la <strong>photosynthèse</strong> : c'est grâce à elle que la plante fabrique sa matière organique (sa nourriture) et sa <strong>chlorophylle</strong> (pigment vert).</p>
+                </div>
+
+                <div class="nb-box">
+                    <strong>N.B. :</strong> Une plante privée de lumière devient jaune et étiolée : on dit qu'elle est <em>chlorotique</em>.
+                </div>
+
+                <h3>5. Conclusion</h3>
+                <div class="conclusion-box">
+                    <h4>✅ Conclusion</h4>
+                    <p>La <strong>lumière</strong> est un facteur indispensable à la croissance des plantes à fleurs.</p>
+                </div>
+            </section>
+
+            <!-- Tableau récapitulatif -->
+            <section class="lesson-section">
+                <h2>📋 Tableau récapitulatif</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Facteur</th>
+                            <th>Rôle</th>
+                            <th>Sans ce facteur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>💧 Eau</strong></td>
+                            <td>Transport des sels minéraux, réactions vitales</td>
+                            <td>La plante se fane et meurt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🧪 Sels minéraux</strong></td>
+                            <td>Nutrition, fabrication de la matière vivante</td>
+                            <td>Plante chétive, feuilles jaunes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>☀️ Lumière</strong></td>
+                            <td>Photosynthèse, production de chlorophylle</td>
+                            <td>Plante pâle, étiolée, fragile</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Conclusion generale -->
+            <section class="lesson-section">
+                <h2>🎯 Conclusion générale</h2>
+                <div class="conclusion-box">
+                    <h4>🌻 Ce qu'il faut retenir</h4>
+                    <p>La croissance des plantes à fleurs dépend de <strong>trois facteurs principaux</strong> : l'<strong>eau</strong>, les <strong>sels minéraux</strong> et la <strong>lumière</strong>. L'absence de l'un de ces éléments entraîne un mauvais développement, voire la mort de la plante. C'est pourquoi un bon jardinier veille à ce que ses plantes soient bien arrosées, nourries et exposées à la lumière.</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>💡 Leçon SVT - Les facteurs de croissance des plantes à fleurs</p>
+            </footer>
+        </div>
+
+        <!-- Zone Quiz -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz</h2>
+
+                <div class="quiz-question">
+                    <h4>1. Quels sont les trois facteurs principaux de croissance des plantes à fleurs ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Air, terre, vent</label>
+                        <label><input type="radio" name="q1" value="b"> Eau, sels minéraux, lumière</label>
+                        <label><input type="radio" name="q1" value="c"> Soleil, pluie, engrais</label>
+                        <label><input type="radio" name="q1" value="d"> Chaleur, humidité, air</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Que devient une plante privée d'eau ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Elle devient plus verte</label>
+                        <label><input type="radio" name="q2" value="b"> Elle grandit plus vite</label>
+                        <label><input type="radio" name="q2" value="c"> Elle se fane et meurt</label>
+                        <label><input type="radio" name="q2" value="d"> Elle change de couleur</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. À quoi servent les sels minéraux ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> À donner le goût à la plante</label>
+                        <label><input type="radio" name="q3" value="b"> À nourrir la plante</label>
+                        <label><input type="radio" name="q3" value="c"> À faire pousser les racines uniquement</label>
+                        <label><input type="radio" name="q3" value="d"> À chauffer la plante</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Une plante placée à l'obscurité devient :</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Verte et solide</label>
+                        <label><input type="radio" name="q4" value="b"> Pâle et étiolée</label>
+                        <label><input type="radio" name="q4" value="c"> Plus résistante</label>
+                        <label><input type="radio" name="q4" value="d"> Plus grande et plus forte</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Quel processus nécessite la lumière chez la plante ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> La respiration</label>
+                        <label><input type="radio" name="q5" value="b"> La digestion</label>
+                        <label><input type="radio" name="q5" value="c"> La photosynthèse</label>
+                        <label><input type="radio" name="q5" value="d"> La germination</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Dans l'expérience sur l'eau, quelle est la différence entre les deux pots ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> La lumière</label>
+                        <label><input type="radio" name="q6" value="b"> La présence ou l'absence d'eau</label>
+                        <label><input type="radio" name="q6" value="c"> La température</label>
+                        <label><input type="radio" name="q6" value="d"> Le type de plante</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Le pigment vert fabriqué grâce à la lumière s'appelle :</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> La chlorophylle</label>
+                        <label><input type="radio" name="q7" value="b"> La sève</label>
+                        <label><input type="radio" name="q7" value="c"> Le pollen</label>
+                        <label><input type="radio" name="q7" value="d"> Le nectar</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Que transporte l'eau dans la plante ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> La chaleur</label>
+                        <label><input type="radio" name="q8" value="b"> Les sels minéraux</label>
+                        <label><input type="radio" name="q8" value="c"> La lumière</label>
+                        <label><input type="radio" name="q8" value="d"> L'air</label>
+                    </div>
+                </div>
+
+                <button class="quiz-submit" onclick="submitQuiz()">Vérifier mes réponses</button>
+                <div id="quiz-result" class="quiz-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b', q2: 'c', q3: 'b', q4: 'b',
+            q5: 'c', q6: 'b', q7: 'a', q8: 'b'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            const total = Object.keys(quizAnswers).length;
+            for (let q in quizAnswers) {
+                const sel = document.querySelector(`input[name="${q}"]:checked`);
+                if (sel && sel.value === quizAnswers[q]) score++;
+            }
+            const r = document.getElementById('quiz-result');
+            const pct = (score / total) * 100;
+            r.classList.remove('success', 'partial', 'fail');
+            if (pct >= 80) {
+                r.classList.add('success');
+                r.innerHTML = `🎉 Excellent ! ${score}/${total} (${pct.toFixed(0)}%)`;
+            } else if (pct >= 50) {
+                r.classList.add('partial');
+                r.innerHTML = `👍 ${score}/${total} (${pct.toFixed(0)}%). Relis la leçon !`;
+            } else {
+                r.classList.add('fail');
+                r.innerHTML = `📚 ${score}/${total} (${pct.toFixed(0)}%). Relis attentivement.`;
+            }
+            r.classList.add('show');
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+        }
+    </script>
+</body>
+</html>

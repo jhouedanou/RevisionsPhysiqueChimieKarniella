@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.0.0
 
-const CACHE_NAME = 'karniella-cache-v3';
+const CACHE_NAME = 'karniella-cache-v4';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -39,6 +39,14 @@ const FILES_TO_CACHE = [
     '/le-circuit-electrique-quiz.html',
     '/les-commandes-electriques-quiz.html',
     '/lecon-3-court-circuit-quiz.html',
+
+    // Leçons de SVT
+    '/svt-lecons.html',
+    '/svt-graine-germe.html',
+    '/svt-reproduction-mammiferes.html',
+    '/svt-reproduction-oiseaux.html',
+    '/svt-croissance-plantes.html',
+    '/svt-croissance-vertebres.html',
 
     // CSS
     '/css/section-quiz.css',

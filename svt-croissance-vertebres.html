@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVT - Croissance des Vertébrés</title>
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FF69B4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Karniella">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <meta name="description" content="Comment les aliments influencent-ils la croissance des vertébrés : composition, quantité et qualité">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFE8F5 0%, #FFB6D9 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .content-area { flex: 6; min-width: 0; }
+        .quiz-area { flex: 4; min-width: 350px; max-width: 500px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 40px rgba(199, 21, 133, 0.4);
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .btn-back:hover { background: white; color: #C71585; }
+
+        header h1 { font-size: 32px; margin-bottom: 10px; }
+        header p { font-size: 16px; opacity: 0.95; }
+
+        .lesson-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.2);
+            border-left: 5px solid #FF1493;
+        }
+
+        .lesson-section h2 {
+            color: #C71585;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .lesson-section h3 {
+            color: #FF1493;
+            font-size: 20px;
+            margin: 20px 0 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid #FF69B4;
+        }
+        .lesson-section h4 { color: #C71585; font-size: 17px; margin: 15px 0 10px 0; }
+        .lesson-section p { color: #333; line-height: 1.8; margin-bottom: 15px; font-size: 16px; }
+
+        .definition-box {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .definition-box h4 { color: #C71585; margin-bottom: 10px; font-size: 18px; }
+
+        .experiment-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .experiment-box h4 { color: #2E7D32; margin-bottom: 10px; font-size: 18px; }
+
+        .result-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE4B5 100%);
+            border: 3px solid #FFA500;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .result-box h4 { color: #E65100; margin-bottom: 10px; font-size: 18px; }
+
+        .analysis-box {
+            background: linear-gradient(135deg, #E6F3FF 0%, #B8D4E8 100%);
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .analysis-box h4 { color: #1E3A8A; margin-bottom: 10px; font-size: 18px; }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+            border: 3px solid #9C27B0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .conclusion-box h4 { color: #6A1B9A; margin-bottom: 10px; font-size: 18px; }
+
+        .nb-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border-left: 5px solid #F44336;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        .nb-box strong { color: #C62828; }
+
+        .info-list { list-style: none; padding: 0; margin: 15px 0; }
+        .info-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border-radius: 10px;
+            border-left: 4px solid #FF69B4;
+            color: #333;
+            font-size: 15px;
+        }
+        .info-list li::before { content: '🐾 '; }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+        }
+        .comparison-table th {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+        }
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #FFE5F0;
+            text-align: center;
+            font-size: 14px;
+        }
+        .comparison-table tr:nth-child(even) { background: #FFF0F5; }
+
+        /* Quiz */
+        .quiz-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.25);
+            border: 3px solid #FF1493;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        .quiz-section h2 { color: #C71585; text-align: center; margin-bottom: 20px; font-size: 22px; }
+        .quiz-question {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 2px solid #FFE5F0;
+        }
+        .quiz-question h4 { color: #333; margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+        .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #FFF5FA;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+        .quiz-options label:hover { background: #FFE5F0; }
+        .quiz-options input[type="radio"] { margin-right: 10px; accent-color: #FF1493; }
+
+        .quiz-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        .quiz-submit:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(199, 21, 133, 0.5); }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .quiz-result.show { display: block; animation: fadeIn 0.5s ease; }
+        .quiz-result.success { background: #E8F5E9; color: #2E7D32; border: 3px solid #4CAF50; }
+        .quiz-result.partial { background: #FFF3E0; color: #E65100; border: 3px solid #FF9800; }
+        .quiz-result.fail { background: #FFEBEE; color: #C62828; border: 3px solid #F44336; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1200px) {
+            .main-wrapper { flex-direction: column; }
+            .quiz-area { max-width: 100%; }
+            .quiz-section { position: static; max-height: none; }
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 24px; }
+            .lesson-section { padding: 15px; }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            border-radius: 15px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="svt-lecons.html" class="btn-back">← Retour aux leçons</a>
+        <h1>🐾 Croissance des Vertébrés</h1>
+        <p>Comment les aliments influencent-ils la croissance des vertébrés ?</p>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+
+            <!-- Introduction -->
+            <section class="lesson-section">
+                <h2>📖 Introduction</h2>
+                <p>Les vertébrés (poissons, oiseaux, mammifères…) ont besoin de <strong>se nourrir</strong> pour grandir. Mais tous les aliments n'ont pas le même effet sur leur croissance. Nous allons étudier l'influence de la <strong>composition</strong>, de la <strong>quantité</strong> et de la <strong>qualité</strong> des aliments.</p>
+                <div class="definition-box">
+                    <h4>🎯 Problématique</h4>
+                    <p>Comment les aliments influencent-ils la croissance des vertébrés ?</p>
+                </div>
+            </section>
+
+            <!-- GRAND I : COMPOSITION -->
+            <section class="lesson-section">
+                <h2>🥘 I. Influence de la composition des aliments</h2>
+
+                <h3>1. Présentation de l'expérience</h3>
+                <div class="experiment-box">
+                    <h4>🔬 Dispositif expérimental</h4>
+                    <p>On prend <strong>deux lots</strong> de jeunes rats de même âge et de même poids.</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Lot A :</strong> nourri avec un régime <strong>complet</strong> (glucides, lipides, protides, vitamines, sels minéraux, eau)</li>
+                        <li><strong>Lot B :</strong> nourri avec un régime <strong>incomplet</strong> (par exemple, sans protides)</li>
+                    </ul>
+                    <p style="margin-top: 10px;">On pèse régulièrement les rats pendant plusieurs semaines.</p>
+                </div>
+
+                <h3>2. Résultats</h3>
+                <div class="result-box">
+                    <h4>📊 Observations</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Lot A (régime complet) :</strong> les rats grandissent et grossissent normalement</li>
+                        <li><strong>Lot B (régime incomplet) :</strong> les rats ne grandissent presque pas, restent maigres et tombent malades</li>
+                    </ul>
+                </div>
+
+                <h3>3. Analyse</h3>
+                <div class="analysis-box">
+                    <h4>🔍 Comparaison</h4>
+                    <p>Les deux lots mangent, mais seul le lot A reçoit <strong>tous les nutriments</strong>. C'est celui-ci qui grandit normalement.</p>
+                </div>
+
+                <h3>4. Interprétation</h3>
+                <div class="analysis-box">
+                    <h4>💡 Explication</h4>
+                    <p>La croissance nécessite une alimentation dont la <strong>composition est équilibrée</strong>. Chaque nutriment joue un rôle précis : les protides construisent les muscles, les glucides et lipides fournissent l'énergie, les vitamines et sels minéraux assurent le bon fonctionnement de l'organisme.</p>
+                </div>
+
+                <div class="nb-box">
+                    <strong>N.B. :</strong> L'absence d'un seul nutriment essentiel (comme les protides) suffit à bloquer la croissance.
+                </div>
+
+                <h3>5. Conclusion</h3>
+                <div class="conclusion-box">
+                    <h4>✅ Conclusion</h4>
+                    <p>La <strong>composition</strong> des aliments influence la croissance : un régime doit être <strong>complet et équilibré</strong>.</p>
+                </div>
+            </section>
+
+            <!-- GRAND II : QUANTITE -->
+            <section class="lesson-section">
+                <h2>⚖️ II. Influence de la quantité des aliments</h2>
+
+                <h3>1. Présentation de l'expérience</h3>
+                <div class="experiment-box">
+                    <h4>🔬 Dispositif expérimental</h4>
+                    <p>On prend <strong>deux lots</strong> de poussins de même race et de même âge.</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Lot C :</strong> reçoit une <strong>quantité suffisante</strong> d'aliments</li>
+                        <li><strong>Lot D :</strong> reçoit une <strong>faible quantité</strong> d'aliments (ration insuffisante)</li>
+                    </ul>
+                    <p style="margin-top: 10px;">La composition des aliments est identique dans les deux lots. On pèse les poussins chaque semaine.</p>
+                </div>
+
+                <h3>2. Résultats</h3>
+                <div class="result-box">
+                    <h4>📊 Observations</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Lot C (quantité suffisante) :</strong> les poussins grandissent rapidement et prennent du poids</li>
+                        <li><strong>Lot D (quantité insuffisante) :</strong> les poussins grandissent très lentement, restent petits et maigres</li>
+                    </ul>
+                </div>
+
+                <h3>3. Analyse</h3>
+                <div class="analysis-box">
+                    <h4>🔍 Comparaison</h4>
+                    <p>Avec la même nourriture, seuls les poussins qui en reçoivent <strong>assez</strong> grandissent normalement.</p>
+                </div>
+
+                <h3>4. Interprétation</h3>
+                <div class="analysis-box">
+                    <h4>💡 Explication</h4>
+                    <p>Même si la composition est bonne, la <strong>quantité</strong> doit être suffisante pour fournir toute l'énergie et les matériaux nécessaires à la croissance.</p>
+                </div>
+
+                <div class="nb-box">
+                    <strong>N.B. :</strong> Un animal sous-alimenté reste petit même si la nourriture est de bonne qualité.
+                </div>
+
+                <h3>5. Conclusion</h3>
+                <div class="conclusion-box">
+                    <h4>✅ Conclusion</h4>
+                    <p>La <strong>quantité</strong> des aliments influence la croissance : la ration doit être <strong>suffisante</strong>.</p>
+                </div>
+            </section>
+
+            <!-- GRAND III : QUALITE -->
+            <section class="lesson-section">
+                <h2>🌟 III. Influence de la qualité des aliments</h2>
+
+                <h3>1. Présentation de l'expérience</h3>
+                <div class="experiment-box">
+                    <h4>🔬 Dispositif expérimental</h4>
+                    <p>On prend <strong>deux lots</strong> de jeunes veaux.</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Lot E :</strong> nourri avec des aliments <strong>frais et sains</strong> (bonne qualité)</li>
+                        <li><strong>Lot F :</strong> nourri avec des aliments <strong>avariés ou de mauvaise qualité</strong></li>
+                    </ul>
+                    <p style="margin-top: 10px;">La composition et la quantité sont identiques dans les deux lots.</p>
+                </div>
+
+                <h3>2. Résultats</h3>
+                <div class="result-box">
+                    <h4>📊 Observations</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Lot E (bonne qualité) :</strong> les veaux sont en bonne santé et grandissent normalement</li>
+                        <li><strong>Lot F (mauvaise qualité) :</strong> les veaux tombent malades, maigrissent et leur croissance est ralentie</li>
+                    </ul>
+                </div>
+
+                <h3>3. Analyse</h3>
+                <div class="analysis-box">
+                    <h4>🔍 Comparaison</h4>
+                    <p>Seuls les veaux qui consomment des aliments de <strong>bonne qualité</strong> grandissent correctement.</p>
+                </div>
+
+                <h3>4. Interprétation</h3>
+                <div class="analysis-box">
+                    <h4>💡 Explication</h4>
+                    <p>Des aliments avariés ou contaminés contiennent des <strong>microbes</strong> et des <strong>toxines</strong> qui rendent l'animal malade et empêchent son organisme de bien assimiler les nutriments.</p>
+                </div>
+
+                <div class="nb-box">
+                    <strong>N.B. :</strong> Une bonne hygiène alimentaire est indispensable à la croissance et à la santé.
+                </div>
+
+                <h3>5. Conclusion</h3>
+                <div class="conclusion-box">
+                    <h4>✅ Conclusion</h4>
+                    <p>La <strong>qualité</strong> des aliments influence la croissance : ils doivent être <strong>sains et frais</strong>.</p>
+                </div>
+            </section>
+
+            <!-- Tableau recap -->
+            <section class="lesson-section">
+                <h2>📋 Tableau récapitulatif</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Critère</th>
+                            <th>Condition favorable</th>
+                            <th>Condition défavorable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🥘 Composition</strong></td>
+                            <td>Régime complet et équilibré</td>
+                            <td>Régime incomplet → croissance bloquée</td>
+                        </tr>
+                        <tr>
+                            <td><strong>⚖️ Quantité</strong></td>
+                            <td>Ration suffisante</td>
+                            <td>Ration insuffisante → animal maigre</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🌟 Qualité</strong></td>
+                            <td>Aliments frais et sains</td>
+                            <td>Aliments avariés → maladie</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Conclusion generale -->
+            <section class="lesson-section">
+                <h2>🎯 Conclusion générale</h2>
+                <div class="conclusion-box">
+                    <h4>🐾 Ce qu'il faut retenir</h4>
+                    <p>La croissance des vertébrés dépend de l'alimentation. Pour bien grandir, un animal a besoin d'aliments qui soient <strong>équilibrés en composition</strong>, présents en <strong>quantité suffisante</strong> et de <strong>bonne qualité</strong>. Ces trois conditions réunies permettent un développement harmonieux de l'organisme.</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>💡 Leçon SVT - L'influence des aliments sur la croissance des vertébrés</p>
+            </footer>
+        </div>
+
+        <!-- Quiz -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz</h2>
+
+                <div class="quiz-question">
+                    <h4>1. Quels sont les trois critères d'une bonne alimentation ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Couleur, odeur, goût</label>
+                        <label><input type="radio" name="q1" value="b"> Composition, quantité, qualité</label>
+                        <label><input type="radio" name="q1" value="c"> Prix, poids, volume</label>
+                        <label><input type="radio" name="q1" value="d"> Chaud, froid, tiède</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Quel nutriment sert à construire les muscles ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Les glucides</label>
+                        <label><input type="radio" name="q2" value="b"> Les lipides</label>
+                        <label><input type="radio" name="q2" value="c"> Les protides</label>
+                        <label><input type="radio" name="q2" value="d"> Les vitamines</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Un rat nourri avec un régime incomplet :</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Grandit plus vite</label>
+                        <label><input type="radio" name="q3" value="b"> Reste maigre et tombe malade</label>
+                        <label><input type="radio" name="q3" value="c"> Devient plus fort</label>
+                        <label><input type="radio" name="q3" value="d"> Ne change pas</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Que se passe-t-il pour un poussin qui reçoit une ration insuffisante ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Il grandit très vite</label>
+                        <label><input type="radio" name="q4" value="b"> Il reste petit et maigre</label>
+                        <label><input type="radio" name="q4" value="c"> Il devient plus solide</label>
+                        <label><input type="radio" name="q4" value="d"> Il change de couleur</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Que contiennent les aliments avariés ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Plus de vitamines</label>
+                        <label><input type="radio" name="q5" value="b"> Des microbes et toxines</label>
+                        <label><input type="radio" name="q5" value="c"> Plus de protides</label>
+                        <label><input type="radio" name="q5" value="d"> Plus d'énergie</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. La croissance nécessite une alimentation :</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Uniquement en grande quantité</label>
+                        <label><input type="radio" name="q6" value="b"> Complète, suffisante et de qualité</label>
+                        <label><input type="radio" name="q6" value="c"> Uniquement sucrée</label>
+                        <label><input type="radio" name="q6" value="d"> Sans protides</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Que fournissent les glucides et les lipides ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Des muscles</label>
+                        <label><input type="radio" name="q7" value="b"> De l'énergie</label>
+                        <label><input type="radio" name="q7" value="c"> De l'eau</label>
+                        <label><input type="radio" name="q7" value="d"> Des os</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Pour bien grandir, il faut avoir une alimentation :</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Pauvre en nutriments</label>
+                        <label><input type="radio" name="q8" value="b"> Équilibrée</label>
+                        <label><input type="radio" name="q8" value="c"> Rare</label>
+                        <label><input type="radio" name="q8" value="d"> Uniquement liquide</label>
+                    </div>
+                </div>
+
+                <button class="quiz-submit" onclick="submitQuiz()">Vérifier mes réponses</button>
+                <div id="quiz-result" class="quiz-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b', q2: 'c', q3: 'b', q4: 'b',
+            q5: 'b', q6: 'b', q7: 'b', q8: 'b'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            const total = Object.keys(quizAnswers).length;
+            for (let q in quizAnswers) {
+                const sel = document.querySelector(`input[name="${q}"]:checked`);
+                if (sel && sel.value === quizAnswers[q]) score++;
+            }
+            const r = document.getElementById('quiz-result');
+            const pct = (score / total) * 100;
+            r.classList.remove('success', 'partial', 'fail');
+            if (pct >= 80) {
+                r.classList.add('success');
+                r.innerHTML = `🎉 Excellent ! ${score}/${total} (${pct.toFixed(0)}%)`;
+            } else if (pct >= 50) {
+                r.classList.add('partial');
+                r.innerHTML = `👍 ${score}/${total} (${pct.toFixed(0)}%). Relis la leçon !`;
+            } else {
+                r.classList.add('fail');
+                r.innerHTML = `📚 ${score}/${total} (${pct.toFixed(0)}%). Relis attentivement.`;
+            }
+            r.classList.add('show');
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+        }
+    </script>
+</body>
+</html>
