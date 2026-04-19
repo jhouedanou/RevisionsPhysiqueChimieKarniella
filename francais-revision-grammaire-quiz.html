@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Révision - Grammaire Française</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🎯';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+            border: 2px solid #C71585;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF1493;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 65%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 35%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #FF1493;
+            padding-bottom: 8px;
+        }
+
+        /* Quiz Section Styles - in content area */
+        .quiz-section-main {
+            background: #fff9fb;
+            border: 2px solid #FF1493;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #FFB6D9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(255, 20, 147, 0.2);
+            border-color: #FF69B4;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #FF1493;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 13px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-size: 14px;
+            display: inline;
+        }
+
+        .quiz-options {
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px 12px;
+            border: 2px solid #FFB6D9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #FFE5F0;
+            border-color: #FF1493;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #FF1493;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 13px;
+        }
+
+        .quiz-feedback {
+            font-size: 12px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Sidebar stats panel */
+        .stats-panel {
+            background: #fff;
+            border: 2px solid #FF1493;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.2);
+        }
+
+        .stats-panel h3 {
+            color: #C71585;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            border-bottom: 2px solid #FFB6D9;
+            padding-bottom: 8px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background: #FFE5F0;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .stat-item .stat-label {
+            font-weight: 600;
+            color: #C71585;
+        }
+
+        .stat-item .stat-value {
+            font-weight: bold;
+            color: #FF1493;
+        }
+
+        .overall-score {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .lessons-panel {
+            background: #fff;
+            border: 2px solid #FF69B4;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+
+        .lessons-panel h3 {
+            color: #C71585;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            border-bottom: 2px solid #FFB6D9;
+            padding-bottom: 8px;
+        }
+
+        .lesson-link {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .lesson-link:hover {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            color: white;
+            transform: translateX(5px);
+            border-color: #ffed4e;
+        }
+
+        .info-box {
+            background: #fff0f7;
+            border: 2px dashed #FF69B4;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 12px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: #C71585;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="francais-lecons.html" class="btn-back">← Retour</a>
+        <h1>🎯 Quiz de Révision - Grammaire 🎀</h1>
+        <p>Révise toute la grammaire française avec 24 questions !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Comparaison & Superlatifs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Déterminants & Adjectifs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Expansion du Nom & GN</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: Comparaison et Superlatifs -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>🔍 Comparaison et Superlatifs</h2>
+                        <p class="subtitle">8 questions pour tester tes connaissances</p>
+
+                        <div class="quiz-section-main">
+                            <!-- Q1 -->
+                            <div class="quiz-question">
+                                <span class="question-number">1</span>
+                                <span class="question-text">"Pierre est plus fort que Jean" est un comparatif de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a1" value="a"> d'infériorité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a1" value="b"> de supériorité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a1" value="c"> d'égalité</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a1"></div>
+                            </div>
+                            <!-- Q2 -->
+                            <div class="quiz-question">
+                                <span class="question-number">2</span>
+                                <span class="question-text">Quel est le superlatif de supériorité de "bon" ?</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a2" value="a"> le plus bon</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a2" value="b"> le meilleur</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a2" value="c"> le mieux</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a2"></div>
+                            </div>
+                            <!-- Q3 -->
+                            <div class="quiz-question">
+                                <span class="question-number">3</span>
+                                <span class="question-text">"Marie est aussi intelligente que Léa" est un comparatif...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a3" value="a"> de supériorité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a3" value="b"> d'infériorité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a3" value="c"> d'égalité</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a3"></div>
+                            </div>
+                            <!-- Q4 -->
+                            <div class="quiz-question">
+                                <span class="question-number">4</span>
+                                <span class="question-text">"C'est le moins cher" est un superlatif de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a4" value="a"> supériorité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a4" value="b"> infériorité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a4" value="c"> égalité</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a4"></div>
+                            </div>
+                            <!-- Q5 -->
+                            <div class="quiz-question">
+                                <span class="question-number">5</span>
+                                <span class="question-text">"Il court mieux que moi" — "mieux" est le comparatif de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a5" value="a"> bon</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a5" value="b"> bien</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a5" value="c"> beaucoup</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a5"></div>
+                            </div>
+                            <!-- Q6 -->
+                            <div class="quiz-question">
+                                <span class="question-number">6</span>
+                                <span class="question-text">"Très beau" est un superlatif...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a6" value="a"> relatif</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a6" value="b"> absolu</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a6" value="c"> comparatif</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a6"></div>
+                            </div>
+                            <!-- Q7 -->
+                            <div class="quiz-question">
+                                <span class="question-number">7</span>
+                                <span class="question-text">"Elle a moins de courage que toi" — on compare...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a7" value="a"> des adjectifs</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a7" value="b"> des adverbes</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a7" value="c"> des noms</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a7"></div>
+                            </div>
+                            <!-- Q8 -->
+                            <div class="quiz-question">
+                                <span class="question-number">8</span>
+                                <span class="question-text">Quelle forme est incorrecte ?</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a8" value="a"> plus bon</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a8" value="b"> meilleur</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a8" value="c"> le meilleur</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a8"></div>
+                            </div>
+
+                            <button class="quiz-button" onclick="checkQuiz1()">✅ Vérifier mes réponses</button>
+                            <div id="quiz-result-1" class="quiz-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Déterminants et Adjectifs -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🔤 Déterminants et Adjectifs</h2>
+                        <p class="subtitle">8 questions pour maîtriser les déterminants</p>
+
+                        <div class="quiz-section-main">
+                            <!-- Q1 -->
+                            <div class="quiz-question">
+                                <span class="question-number">1</span>
+                                <span class="question-text">"Le, la, les" sont des articles...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a1" value="a"> indéfinis</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a1" value="b"> définis</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a1" value="c"> partitifs</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a1"></div>
+                            </div>
+                            <!-- Q2 -->
+                            <div class="quiz-question">
+                                <span class="question-number">2</span>
+                                <span class="question-text">"Cet" s'emploie devant un nom masculin commençant par...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a2" value="a"> une consonne</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a2" value="b"> une voyelle</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a2" value="c"> un chiffre</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a2"></div>
+                            </div>
+                            <!-- Q3 -->
+                            <div class="quiz-question">
+                                <span class="question-number">3</span>
+                                <span class="question-text">"Ses" correspond à quelle personne ?</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a3" value="a"> 1re pers. sing.</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a3" value="b"> 2e pers. sing.</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a3" value="c"> 3e pers. sing.</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a3"></div>
+                            </div>
+                            <!-- Q4 -->
+                            <div class="quiz-question">
+                                <span class="question-number">4</span>
+                                <span class="question-text">"Du pain" — "du" est un article...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a4" value="a"> défini</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a4" value="b"> indéfini</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a4" value="c"> partitif</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a4"></div>
+                            </div>
+                            <!-- Q5 -->
+                            <div class="quiz-question">
+                                <span class="question-number">5</span>
+                                <span class="question-text">Quel déterminant possessif emploie-t-on devant "amie" (féminin) ?</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a5" value="a"> ma amie</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a5" value="b"> mon amie</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a5" value="c"> mes amie</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a5"></div>
+                            </div>
+                            <!-- Q6 -->
+                            <div class="quiz-question">
+                                <span class="question-number">6</span>
+                                <span class="question-text">"Ces livres" — "ces" est un déterminant...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a6" value="a"> possessif</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a6" value="b"> indéfini</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a6" value="c"> démonstratif</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a6"></div>
+                            </div>
+                            <!-- Q7 -->
+                            <div class="quiz-question">
+                                <span class="question-number">7</span>
+                                <span class="question-text">"Je ne bois pas DE lait" — à la forme négative, le partitif devient...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a7" value="a"> du</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a7" value="b"> de</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a7" value="c"> des</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a7"></div>
+                            </div>
+                            <!-- Q8 -->
+                            <div class="quiz-question">
+                                <span class="question-number">8</span>
+                                <span class="question-text">"Votre" est de la...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a8" value="a"> 1re pers. pl.</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a8" value="b"> 2e pers. pl.</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a8" value="c"> 3e pers. pl.</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a8"></div>
+                            </div>
+
+                            <button class="quiz-button" onclick="checkQuiz2()">✅ Vérifier mes réponses</button>
+                            <div id="quiz-result-2" class="quiz-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Expansion du Nom et GN -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>📝 Expansion du Nom et GN</h2>
+                        <p class="subtitle">8 questions sur le groupe nominal</p>
+
+                        <div class="quiz-section-main">
+                            <!-- Q1 -->
+                            <div class="quiz-question">
+                                <span class="question-number">1</span>
+                                <span class="question-text">Le GN minimal est composé de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a1" value="a"> nom + adjectif</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a1" value="b"> déterminant + nom</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a1" value="c"> nom + verbe</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a1"></div>
+                            </div>
+                            <!-- Q2 -->
+                            <div class="quiz-question">
+                                <span class="question-number">2</span>
+                                <span class="question-text">Dans "le livre de contes", "de contes" est...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a2" value="a"> un adjectif épithète</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a2" value="b"> un complément du nom</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a2" value="c"> une apposition</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a2"></div>
+                            </div>
+                            <!-- Q3 -->
+                            <div class="quiz-question">
+                                <span class="question-number">3</span>
+                                <span class="question-text">Dans "la fille qui chante", "qui chante" est...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a3" value="a"> un adjectif</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a3" value="b"> un complément du nom</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a3" value="c"> une proposition subordonnée relative</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a3"></div>
+                            </div>
+                            <!-- Q4 -->
+                            <div class="quiz-question">
+                                <span class="question-number">4</span>
+                                <span class="question-text">Quel est le nom noyau de "une jolie robe rouge" ?</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a4" value="a"> jolie</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a4" value="b"> robe</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a4" value="c"> rouge</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a4"></div>
+                            </div>
+                            <!-- Q5 -->
+                            <div class="quiz-question">
+                                <span class="question-number">5</span>
+                                <span class="question-text">"Mon, ma, mes" sont des déterminants...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a5" value="a"> démonstratifs</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a5" value="b"> possessifs</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a5" value="c"> indéfinis</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a5"></div>
+                            </div>
+                            <!-- Q6 -->
+                            <div class="quiz-question">
+                                <span class="question-number">6</span>
+                                <span class="question-text">"Paris, capitale de la France" — "capitale de la France" est...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a6" value="a"> un complément du nom</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a6" value="b"> une proposition relative</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a6" value="c"> une apposition</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a6"></div>
+                            </div>
+                            <!-- Q7 -->
+                            <div class="quiz-question">
+                                <span class="question-number">7</span>
+                                <span class="question-text">Quelle expansion du nom peut généralement être supprimée sans changer le sens principal ?</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a7" value="a"> le déterminant</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a7" value="b"> le nom noyau</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a7" value="c"> l'adjectif épithète</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a7"></div>
+                            </div>
+                            <!-- Q8 -->
+                            <div class="quiz-question">
+                                <span class="question-number">8</span>
+                                <span class="question-text">Dans "la maison en briques", "en briques" est...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a8" value="a"> un adjectif</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a8" value="b"> un complément du nom</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a8" value="c"> une apposition</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a8"></div>
+                            </div>
+
+                            <button class="quiz-button" onclick="checkQuiz3()">✅ Vérifier mes réponses</button>
+                            <div id="quiz-result-3" class="quiz-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="quiz-area">
+            <div class="stats-panel">
+                <h3>📊 Statistiques</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Tab 1 - Comparaison</span>
+                    <span class="stat-value" id="score-tab1">— / 8</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Tab 2 - Déterminants</span>
+                    <span class="stat-value" id="score-tab2">— / 8</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Tab 3 - Expansion du nom</span>
+                    <span class="stat-value" id="score-tab3">— / 8</span>
+                </div>
+                <div class="overall-score" id="overall-score">
+                    Score global : — / 24
+                </div>
+            </div>
+
+            <div class="lessons-panel">
+                <h3>📚 Réviser les leçons</h3>
+                <a href="francais-comparaison-superlatifs.html" class="lesson-link">📘 Comparaison et Superlatifs</a>
+                <a href="francais-determinants-adjectifs.html" class="lesson-link">📗 Déterminants et Adjectifs</a>
+                <a href="francais-groupe-nominal.html" class="lesson-link">📙 Le Groupe Nominal</a>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Astuce :</strong> Réponds à toutes les questions d'un onglet avant de cliquer sur "Vérifier mes réponses". Tu peux refaire le quiz autant de fois que tu veux !
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Answer keys for each tab
+        const answersQ1 = { q1a1: 'b', q1a2: 'b', q1a3: 'c', q1a4: 'b', q1a5: 'b', q1a6: 'b', q1a7: 'c', q1a8: 'a' };
+        const answersQ2 = { q2a1: 'b', q2a2: 'b', q2a3: 'c', q2a4: 'c', q2a5: 'b', q2a6: 'c', q2a7: 'b', q2a8: 'b' };
+        const answersQ3 = { q3a1: 'b', q3a2: 'b', q3a3: 'c', q3a4: 'b', q3a5: 'b', q3a6: 'c', q3a7: 'c', q3a8: 'b' };
+
+        const explanations = {
+            // Tab 1
+            q1a1: { correct: '✅ Exact ! "plus... que" marque la supériorité.', wrong: '❌ "plus... que" = comparatif de supériorité.' },
+            q1a2: { correct: '✅ Bravo ! "bon" → "meilleur" (forme irrégulière).', wrong: '❌ Le superlatif de "bon" est "le meilleur", pas "le plus bon".' },
+            q1a3: { correct: '✅ Parfait ! "aussi... que" = comparatif d\'égalité.', wrong: '❌ "aussi... que" marque l\'égalité.' },
+            q1a4: { correct: '✅ Très bien ! "le moins" = superlatif d\'infériorité.', wrong: '❌ "le moins" exprime l\'infériorité.' },
+            q1a5: { correct: '✅ Exact ! "mieux" est le comparatif irrégulier de "bien".', wrong: '❌ "mieux" est le comparatif de l\'adverbe "bien".' },
+            q1a6: { correct: '✅ Bien ! "très + adjectif" est un superlatif absolu.', wrong: '❌ "très beau" est un superlatif absolu (sans comparaison).' },
+            q1a7: { correct: '✅ Oui ! "moins de + nom" compare des noms (quantités).', wrong: '❌ On compare ici un nom (courage) avec "moins de".' },
+            q1a8: { correct: '✅ Bravo ! On ne dit pas "plus bon" mais "meilleur".', wrong: '❌ La forme incorrecte est "plus bon" (on dit "meilleur").' },
+            // Tab 2
+            q2a1: { correct: '✅ Exact ! "le, la, les" sont des articles définis.', wrong: '❌ "le, la, les" = articles définis.' },
+            q2a2: { correct: '✅ Bien ! "cet" s\'utilise devant un nom masculin commençant par une voyelle ou un h muet.', wrong: '❌ "cet" devant voyelle (ex: cet arbre, cet homme).' },
+            q2a3: { correct: '✅ Parfait ! "ses" = 3e personne du singulier (il/elle).', wrong: '❌ "ses" correspond à la 3e pers. sing. (son, sa, ses).' },
+            q2a4: { correct: '✅ Très bien ! "du" (= de + le) est un article partitif.', wrong: '❌ "du pain" : "du" est un article partitif.' },
+            q2a5: { correct: '✅ Bravo ! Devant une voyelle, "ma" devient "mon" pour l\'euphonie.', wrong: '❌ On dit "mon amie" (euphonie), jamais "ma amie".' },
+            q2a6: { correct: '✅ Exact ! "ces" est un déterminant démonstratif pluriel.', wrong: '❌ "ces" est démonstratif (ce/cet/cette/ces).' },
+            q2a7: { correct: '✅ Parfait ! À la forme négative, le partitif devient "de".', wrong: '❌ À la forme négative : "pas de lait" (pas "pas du lait").' },
+            q2a8: { correct: '✅ Bravo ! "votre" correspond à la 2e pers. du pluriel (vous).', wrong: '❌ "votre" = 2e pers. pl. (votre/vos).' },
+            // Tab 3
+            q3a1: { correct: '✅ Exact ! GN minimal = déterminant + nom.', wrong: '❌ Le GN minimal est déterminant + nom (ex: le chat).' },
+            q3a2: { correct: '✅ Bravo ! "de contes" est un complément du nom introduit par "de".', wrong: '❌ "de contes" est un complément du nom.' },
+            q3a3: { correct: '✅ Parfait ! "qui chante" est une proposition subordonnée relative.', wrong: '❌ "qui chante" est une proposition subordonnée relative (pronom relatif + verbe).' },
+            q3a4: { correct: '✅ Exact ! "robe" est le nom noyau du groupe.', wrong: '❌ Le nom noyau est "robe", les autres mots sont des expansions.' },
+            q3a5: { correct: '✅ Oui ! "mon, ma, mes" indiquent la possession.', wrong: '❌ "mon, ma, mes" sont des déterminants possessifs.' },
+            q3a6: { correct: '✅ Bravo ! "capitale de la France" est une apposition (séparée par une virgule).', wrong: '❌ "capitale de la France" est une apposition au nom "Paris".' },
+            q3a7: { correct: '✅ Exact ! L\'adjectif épithète est facultatif, on peut le supprimer.', wrong: '❌ L\'adjectif épithète peut être supprimé (le déterminant et le nom sont obligatoires).' },
+            q3a8: { correct: '✅ Parfait ! "en briques" est un complément du nom (préposition + nom).', wrong: '❌ "en briques" est un complément du nom introduit par "en".' }
+        };
+
+        function evaluateQuiz(answers, resultElId, quizLabel, scoreStatId) {
+            let score = 0;
+            const total = Object.keys(answers).length;
+            let answersDetail = [];
+
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-${q}`);
+
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        score++;
+                        feedbackEl.innerHTML = explanations[q].correct;
+                        feedbackEl.style.background = '#c8e6c9';
+                        feedbackEl.style.color = '#2e7d32';
+                        answersDetail.push(`${q}: ✅ Correct`);
+                    } else {
+                        feedbackEl.innerHTML = explanations[q].wrong;
+                        feedbackEl.style.background = '#ffcdd2';
+                        feedbackEl.style.color = '#c62828';
+                        answersDetail.push(`${q}: ❌ Incorrect (réponse : ${selected.value}, attendu : ${answers[q]})`);
+                    }
+                } else {
+                    feedbackEl.innerHTML = '⚠️ Tu n\'as pas répondu à cette question.';
+                    feedbackEl.style.background = '#fff3e0';
+                    feedbackEl.style.color = '#e65100';
+                    answersDetail.push(`${q}: ⚠️ Sans réponse`);
+                }
+            }
+
+            const percentage = Math.round((score / total) * 100);
+            const resultEl = document.getElementById(resultElId);
+            resultEl.style.display = 'block';
+
+            let message = '';
+            if (percentage === 100) message = '🌟 Parfait ! Sans faute !';
+            else if (percentage >= 80) message = '👏 Très bien ! Presque tout juste !';
+            else if (percentage >= 60) message = '👍 Pas mal ! Continue à réviser !';
+            else message = '💪 Courage ! Relis la leçon et réessaie !';
+
+            resultEl.innerHTML = `<p>Score : ${score}/${total} (${percentage}%)</p><p>${message}</p>`;
+
+            // Update sidebar stats
+            const scoreStatEl = document.getElementById(scoreStatId);
+            if (scoreStatEl) scoreStatEl.textContent = `${score} / ${total}`;
+            scoreStatEl.dataset.score = score;
+            scoreStatEl.dataset.total = total;
+            updateOverallScore();
+
+            // Send results via email
+            sendQuizResults(`Français - Quiz de Révision Grammaire (${quizLabel})`, score, total, percentage, answersDetail);
+        }
+
+        function checkQuiz1() { evaluateQuiz(answersQ1, 'quiz-result-1', 'Comparaison & Superlatifs', 'score-tab1'); }
+        function checkQuiz2() { evaluateQuiz(answersQ2, 'quiz-result-2', 'Déterminants & Adjectifs', 'score-tab2'); }
+        function checkQuiz3() { evaluateQuiz(answersQ3, 'quiz-result-3', 'Expansion du Nom & GN', 'score-tab3'); }
+
+        function updateOverallScore() {
+            const ids = ['score-tab1', 'score-tab2', 'score-tab3'];
+            let totalScore = 0;
+            let totalMax = 0;
+            let anyAnswered = false;
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.dataset.score !== undefined) {
+                    totalScore += parseInt(el.dataset.score, 10);
+                    totalMax += parseInt(el.dataset.total, 10);
+                    anyAnswered = true;
+                } else {
+                    totalMax += 8;
+                }
+            });
+            const overallEl = document.getElementById('overall-score');
+            if (anyAnswered) {
+                const pct = Math.round((totalScore / totalMax) * 100);
+                overallEl.innerHTML = `Score global : ${totalScore} / ${totalMax} (${pct}%)`;
+            }
+        }
+
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', {
+                    year: 'numeric', month: 'long', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Révision - Histoire</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fadbd8 0%, #e74c3c 50%, #fdf2e9 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🎯';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🏛️';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #fadbd8;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.6);
+            border: 2px solid #c0392b;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #fadbd8;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #fadbd8 0%, #f5b7b1 100%);
+            color: #c0392b;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 65%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 35%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #c0392b;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #e74c3c;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+
+        .quiz-section-main {
+            background: #fdf2f0;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #f5b7b1;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.2);
+            border-color: #e74c3c;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 13px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-size: 14px;
+            display: inline;
+        }
+
+        .quiz-options {
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px 12px;
+            border: 2px solid #f5b7b1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fff;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #fadbd8;
+            border-color: #e74c3c;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #e74c3c;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 13px;
+        }
+
+        .quiz-feedback {
+            font-size: 12px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.5);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .stats-panel {
+            background: #fff;
+            border: 2px solid #e74c3c;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
+        }
+
+        .stats-panel h3 {
+            color: #c0392b;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            border-bottom: 2px solid #f5b7b1;
+            padding-bottom: 8px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background: #fadbd8;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .stat-item .stat-label {
+            font-weight: 600;
+            color: #c0392b;
+        }
+
+        .stat-item .stat-value {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .overall-score {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .lessons-panel {
+            background: #fff;
+            border: 2px solid #ec7063;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(236, 112, 99, 0.2);
+        }
+
+        .lessons-panel h3 {
+            color: #c0392b;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            border-bottom: 2px solid #f5b7b1;
+            padding-bottom: 8px;
+        }
+
+        .lesson-link {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fadbd8 0%, #f5b7b1 100%);
+            color: #c0392b;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .lesson-link:hover {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            transform: translateX(5px);
+            border-color: #ffed4e;
+        }
+
+        .info-box {
+            background: #fdf2f0;
+            border: 2px dashed #ec7063;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 12px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: #c0392b;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="histoire-geographie-lecons.html" class="btn-back">← Retour</a>
+        <h1>🎯 Quiz de Révision - Histoire 🏛️</h1>
+        <p>Révise toute l'histoire avec 24 questions !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Sources & Dignité</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Chronologie</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Grandes Périodes</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: Sources d'Information et Dignité Humaine -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📰 Sources d'Information et Dignité Humaine</h2>
+                        <p class="subtitle">8 questions pour tester tes connaissances</p>
+
+                        <div class="quiz-section-main">
+                            <div class="quiz-question">
+                                <span class="question-number">1</span>
+                                <span class="question-text">Une source d'information est...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a1" value="a"> un livre d'histoire uniquement</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a1" value="b"> tout moyen d'obtenir des informations</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a1" value="c"> un témoin oculaire seulement</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a1"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">2</span>
+                                <span class="question-text">La télévision est un média...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a2" value="a"> écrit</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a2" value="b"> audiovisuel</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a2" value="c"> numérique</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a2"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">3</span>
+                                <span class="question-text">Le droit international humanitaire protège...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a3" value="a"> uniquement les soldats</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a3" value="b"> les civils en temps de guerre</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a3" value="c"> les gouvernements</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a3"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">4</span>
+                                <span class="question-text">Les Conventions de Genève datent de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a4" value="a"> 1918</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a4" value="b"> 1939</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a4" value="c"> 1949</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a4"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">5</span>
+                                <span class="question-text">La Déclaration Universelle des Droits de l'Homme date de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a5" value="a"> 1945</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a5" value="b"> 1948</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a5" value="c"> 1950</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a5"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">6</span>
+                                <span class="question-text">Un prisonnier de guerre doit être traité avec...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a6" value="a"> sévérité</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a6" value="b"> indifférence</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a6" value="c"> dignité et humanité</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a6"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">7</span>
+                                <span class="question-text">Les réseaux sociaux sont des sources...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a7" value="a"> toujours fiables</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a7" value="b"> à vérifier</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a7" value="c"> jamais utiles</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a7"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">8</span>
+                                <span class="question-text">Le Comité International de la Croix-Rouge veille au respect...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1a8" value="a"> des frontières</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a8" value="b"> du droit humanitaire</label>
+                                    <label class="quiz-option"><input type="radio" name="q1a8" value="c"> des traités commerciaux</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q1a8"></div>
+                            </div>
+
+                            <button class="quiz-button" onclick="checkQuiz1()">✅ Vérifier mes réponses</button>
+                            <div id="quiz-result-1" class="quiz-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: La Chronologie -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>⏳ La Chronologie</h2>
+                        <p class="subtitle">8 questions pour maîtriser le temps en histoire</p>
+
+                        <div class="quiz-section-main">
+                            <div class="quiz-question">
+                                <span class="question-number">1</span>
+                                <span class="question-text">Un siècle = ...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a1" value="a"> 10 ans</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a1" value="b"> 100 ans</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a1" value="c"> 1000 ans</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a1"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">2</span>
+                                <span class="question-text">L'an 476 appartient au...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a2" value="a"> 4e siècle</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a2" value="b"> 5e siècle</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a2" value="c"> 6e siècle</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a2"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">3</span>
+                                <span class="question-text">"Avant J.-C." signifie...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a3" value="a"> avant Jésus-Christ</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a3" value="b"> après Jésus-Christ</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a3" value="c"> année zéro</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a3"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">4</span>
+                                <span class="question-text">Un millénaire = ...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a4" value="a"> 10 ans</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a4" value="b"> 100 ans</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a4" value="c"> 1000 ans</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a4"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">5</span>
+                                <span class="question-text">L'année 2000 appartient au...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a5" value="a"> 19e siècle</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a5" value="b"> 20e siècle</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a5" value="c"> 21e siècle</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a5"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">6</span>
+                                <span class="question-text">Une frise chronologique sert à...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a6" value="a"> dessiner des cartes</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a6" value="b"> situer des événements dans le temps</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a6" value="c"> calculer des distances</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a6"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">7</span>
+                                <span class="question-text">L'an 1 marque...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a7" value="a"> la création du monde</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a7" value="b"> la naissance traditionnelle de J.-C.</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a7" value="c"> la chute de Rome</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a7"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">8</span>
+                                <span class="question-text">Une décennie = ...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2a8" value="a"> 10 ans</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a8" value="b"> 100 ans</label>
+                                    <label class="quiz-option"><input type="radio" name="q2a8" value="c"> 1000 ans</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q2a8"></div>
+                            </div>
+
+                            <button class="quiz-button" onclick="checkQuiz2()">✅ Vérifier mes réponses</button>
+                            <div id="quiz-result-2" class="quiz-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Les Grandes Périodes -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🏛️ Les Grandes Périodes de l'Histoire</h2>
+                        <p class="subtitle">8 questions pour connaître les grandes périodes</p>
+
+                        <div class="quiz-section-main">
+                            <div class="quiz-question">
+                                <span class="question-number">1</span>
+                                <span class="question-text">La Préhistoire se termine avec l'invention de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a1" value="a"> la roue</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a1" value="b"> l'écriture</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a1" value="c"> l'imprimerie</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a1"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">2</span>
+                                <span class="question-text">L'Antiquité se termine en...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a2" value="a"> 395</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a2" value="b"> 476</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a2" value="c"> 800</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a2"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">3</span>
+                                <span class="question-text">Le Moyen Âge s'étend de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a3" value="a"> 476 à 1492</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a3" value="b"> 1000 à 1500</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a3" value="c"> 800 à 1789</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a3"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">4</span>
+                                <span class="question-text">La Révolution française marque le début de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a4" value="a"> l'Antiquité</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a4" value="b"> les Temps Modernes</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a4" value="c"> l'Époque Contemporaine</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a4"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">5</span>
+                                <span class="question-text">La Renaissance est une période des...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a5" value="a"> Temps Modernes</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a5" value="b"> Moyen Âge</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a5" value="c"> Époque Contemporaine</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a5"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">6</span>
+                                <span class="question-text">Les pyramides d'Égypte datent de...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a6" value="a"> la Préhistoire</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a6" value="b"> l'Antiquité</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a6" value="c"> le Moyen Âge</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a6"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">7</span>
+                                <span class="question-text">Le système féodal caractérise...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a7" value="a"> l'Antiquité</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a7" value="b"> le Moyen Âge</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a7" value="c"> les Temps Modernes</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a7"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <span class="question-number">8</span>
+                                <span class="question-text">Christophe Colomb découvre l'Amérique en...</span>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3a8" value="a"> 1453</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a8" value="b"> 1789</label>
+                                    <label class="quiz-option"><input type="radio" name="q3a8" value="c"> 1492</label>
+                                </div>
+                                <div class="quiz-feedback" id="feedback-q3a8"></div>
+                            </div>
+
+                            <button class="quiz-button" onclick="checkQuiz3()">✅ Vérifier mes réponses</button>
+                            <div id="quiz-result-3" class="quiz-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="quiz-area">
+            <div class="stats-panel">
+                <h3>📊 Statistiques</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Tab 1 - Sources & Dignité</span>
+                    <span class="stat-value" id="score-tab1">— / 8</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Tab 2 - Chronologie</span>
+                    <span class="stat-value" id="score-tab2">— / 8</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Tab 3 - Grandes Périodes</span>
+                    <span class="stat-value" id="score-tab3">— / 8</span>
+                </div>
+                <div class="overall-score" id="overall-score">
+                    Score global : — / 24
+                </div>
+            </div>
+
+            <div class="lessons-panel">
+                <h3>📚 Réviser les leçons</h3>
+                <a href="histoire-sources-information.html" class="lesson-link">📰 Sources d'Information & Dignité</a>
+                <a href="histoire-sources-histoire.html" class="lesson-link">📜 Les Sources de l'Histoire</a>
+                <a href="histoire-chronologie-periodes.html" class="lesson-link">⏳ Chronologie & Grandes Périodes</a>
+                <a href="histoire-geographie.html" class="lesson-link">🌍 Histoire & Géographie</a>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Astuce :</strong> Réponds à toutes les questions d'un onglet avant de cliquer sur "Vérifier mes réponses". Tu peux refaire le quiz autant de fois que tu veux !
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answersQ1 = { q1a1: 'b', q1a2: 'b', q1a3: 'b', q1a4: 'c', q1a5: 'b', q1a6: 'c', q1a7: 'b', q1a8: 'b' };
+        const answersQ2 = { q2a1: 'b', q2a2: 'b', q2a3: 'a', q2a4: 'c', q2a5: 'b', q2a6: 'b', q2a7: 'b', q2a8: 'a' };
+        const answersQ3 = { q3a1: 'b', q3a2: 'b', q3a3: 'a', q3a4: 'c', q3a5: 'a', q3a6: 'b', q3a7: 'b', q3a8: 'c' };
+
+        const explanations = {
+            // Tab 1
+            q1a1: { correct: '✅ Exact ! Une source d\'information est tout moyen d\'obtenir des informations.', wrong: '❌ Une source d\'information est tout moyen d\'obtenir des informations (livres, médias, témoins...).' },
+            q1a2: { correct: '✅ Bravo ! La TV combine image et son → média audiovisuel.', wrong: '❌ La télévision est un média audiovisuel (image + son).' },
+            q1a3: { correct: '✅ Parfait ! Le DIH protège surtout les civils et les personnes hors combat.', wrong: '❌ Le droit international humanitaire protège les civils en temps de guerre.' },
+            q1a4: { correct: '✅ Exact ! Les 4 Conventions de Genève ont été signées en 1949.', wrong: '❌ Les Conventions de Genève datent de 1949.' },
+            q1a5: { correct: '✅ Bravo ! La DUDH a été adoptée par l\'ONU le 10 décembre 1948.', wrong: '❌ La Déclaration Universelle des Droits de l\'Homme date de 1948.' },
+            q1a6: { correct: '✅ Très bien ! Tout prisonnier doit être traité avec dignité et humanité.', wrong: '❌ Un prisonnier de guerre doit être traité avec dignité et humanité.' },
+            q1a7: { correct: '✅ Exact ! Les réseaux sociaux sont des sources à vérifier soigneusement.', wrong: '❌ Les réseaux sociaux sont des sources à vérifier (risque de fausses informations).' },
+            q1a8: { correct: '✅ Bravo ! Le CICR veille au respect du droit international humanitaire.', wrong: '❌ Le CICR veille au respect du droit humanitaire.' },
+            // Tab 2
+            q2a1: { correct: '✅ Exact ! Un siècle = 100 ans.', wrong: '❌ Un siècle équivaut à 100 ans.' },
+            q2a2: { correct: '✅ Bravo ! L\'an 476 est au 5e siècle (années 401 à 500).', wrong: '❌ L\'an 476 appartient au 5e siècle.' },
+            q2a3: { correct: '✅ Parfait ! "av. J.-C." = avant Jésus-Christ.', wrong: '❌ "Avant J.-C." signifie avant Jésus-Christ.' },
+            q2a4: { correct: '✅ Exact ! Un millénaire = 1000 ans.', wrong: '❌ Un millénaire équivaut à 1000 ans.' },
+            q2a5: { correct: '✅ Bravo ! L\'année 2000 est au 20e siècle (le 21e commence en 2001).', wrong: '❌ L\'année 2000 appartient au 20e siècle.' },
+            q2a6: { correct: '✅ Très bien ! La frise sert à situer les événements dans le temps.', wrong: '❌ Une frise chronologique sert à situer des événements dans le temps.' },
+            q2a7: { correct: '✅ Exact ! L\'an 1 marque la naissance traditionnelle de Jésus-Christ.', wrong: '❌ L\'an 1 marque la naissance traditionnelle de J.-C.' },
+            q2a8: { correct: '✅ Bravo ! Une décennie = 10 ans.', wrong: '❌ Une décennie équivaut à 10 ans.' },
+            // Tab 3
+            q3a1: { correct: '✅ Exact ! La Préhistoire se termine avec l\'invention de l\'écriture (≈ 3500 av. J.-C.).', wrong: '❌ La Préhistoire se termine avec l\'invention de l\'écriture.' },
+            q3a2: { correct: '✅ Bravo ! L\'Antiquité se termine en 476 (chute de l\'Empire romain d\'Occident).', wrong: '❌ L\'Antiquité se termine en 476 (chute de Rome).' },
+            q3a3: { correct: '✅ Parfait ! Le Moyen Âge va de 476 (chute de Rome) à 1492 (découverte de l\'Amérique).', wrong: '❌ Le Moyen Âge s\'étend de 476 à 1492.' },
+            q3a4: { correct: '✅ Exact ! 1789 (Révolution française) marque le début de l\'Époque Contemporaine.', wrong: '❌ La Révolution française marque le début de l\'Époque Contemporaine.' },
+            q3a5: { correct: '✅ Bravo ! La Renaissance (15e-16e s.) appartient aux Temps Modernes.', wrong: '❌ La Renaissance est une période des Temps Modernes.' },
+            q3a6: { correct: '✅ Exact ! Les pyramides d\'Égypte datent de l\'Antiquité.', wrong: '❌ Les pyramides d\'Égypte datent de l\'Antiquité.' },
+            q3a7: { correct: '✅ Très bien ! Le système féodal (seigneurs/vassaux) caractérise le Moyen Âge.', wrong: '❌ Le système féodal caractérise le Moyen Âge.' },
+            q3a8: { correct: '✅ Bravo ! Christophe Colomb découvre l\'Amérique en 1492.', wrong: '❌ Christophe Colomb découvre l\'Amérique en 1492.' }
+        };
+
+        function evaluateQuiz(answers, resultElId, quizLabel, scoreStatId) {
+            let score = 0;
+            const total = Object.keys(answers).length;
+            let answersDetail = [];
+
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-${q}`);
+
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        score++;
+                        feedbackEl.innerHTML = explanations[q].correct;
+                        feedbackEl.style.background = '#c8e6c9';
+                        feedbackEl.style.color = '#2e7d32';
+                        answersDetail.push(`${q}: ✅ Correct`);
+                    } else {
+                        feedbackEl.innerHTML = explanations[q].wrong;
+                        feedbackEl.style.background = '#ffcdd2';
+                        feedbackEl.style.color = '#c62828';
+                        answersDetail.push(`${q}: ❌ Incorrect (réponse : ${selected.value}, attendu : ${answers[q]})`);
+                    }
+                } else {
+                    feedbackEl.innerHTML = '⚠️ Tu n\'as pas répondu à cette question.';
+                    feedbackEl.style.background = '#fff3e0';
+                    feedbackEl.style.color = '#e65100';
+                    answersDetail.push(`${q}: ⚠️ Sans réponse`);
+                }
+            }
+
+            const percentage = Math.round((score / total) * 100);
+            const resultEl = document.getElementById(resultElId);
+            resultEl.style.display = 'block';
+
+            let message = '';
+            if (percentage === 100) message = '🌟 Parfait ! Sans faute !';
+            else if (percentage >= 80) message = '👏 Très bien ! Presque tout juste !';
+            else if (percentage >= 60) message = '👍 Pas mal ! Continue à réviser !';
+            else message = '💪 Courage ! Relis la leçon et réessaie !';
+
+            resultEl.innerHTML = `<p>Score : ${score}/${total} (${percentage}%)</p><p>${message}</p>`;
+
+            const scoreStatEl = document.getElementById(scoreStatId);
+            if (scoreStatEl) {
+                scoreStatEl.textContent = `${score} / ${total}`;
+                scoreStatEl.dataset.score = score;
+                scoreStatEl.dataset.total = total;
+            }
+            updateOverallScore();
+
+            sendQuizResults(`Histoire - Quiz de Révision (${quizLabel})`, score, total, percentage, answersDetail);
+        }
+
+        function checkQuiz1() { evaluateQuiz(answersQ1, 'quiz-result-1', 'Sources & Dignité', 'score-tab1'); }
+        function checkQuiz2() { evaluateQuiz(answersQ2, 'quiz-result-2', 'Chronologie', 'score-tab2'); }
+        function checkQuiz3() { evaluateQuiz(answersQ3, 'quiz-result-3', 'Grandes Périodes', 'score-tab3'); }
+
+        function updateOverallScore() {
+            const ids = ['score-tab1', 'score-tab2', 'score-tab3'];
+            let totalScore = 0;
+            let totalMax = 0;
+            let anyAnswered = false;
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.dataset.score !== undefined) {
+                    totalScore += parseInt(el.dataset.score, 10);
+                    totalMax += parseInt(el.dataset.total, 10);
+                    anyAnswered = true;
+                } else {
+                    totalMax += 8;
+                }
+            });
+            const overallEl = document.getElementById('overall-score');
+            if (anyAnswered) {
+                const pct = Math.round((totalScore / totalMax) * 100);
+                overallEl.innerHTML = `Score global : ${totalScore} / ${totalMax} (${pct}%)`;
+            }
+        }
+
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', {
+                    year: 'numeric', month: 'long', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.0.0
 
-const CACHE_NAME = 'karniella-cache-v2';
+const CACHE_NAME = 'karniella-cache-v3';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -24,6 +24,20 @@ const FILES_TO_CACHE = [
     '/le-circuit-electrique-quiz.html',
     '/les-commandes-electriques-quiz.html',
     '/lecon-3-court-circuit-quiz.html',
+
+    // Leçons et quiz de Français
+    '/francais-lecons.html',
+    '/francais-groupe-nominal.html',
+    '/francais-comparaison-superlatifs.html',
+    '/francais-determinants-adjectifs.html',
+    '/francais-revision-grammaire-quiz.html',
+
+    // Leçons et quiz d'Histoire
+    '/histoire-geographie-lecons.html',
+    '/histoire-sources-information.html',
+    '/histoire-sources-histoire.html',
+    '/histoire-chronologie-periodes.html',
+    '/histoire-revision-quiz.html',
 
     // CSS
     '/css/section-quiz.css',

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déterminants et Adjectifs - Français</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📖';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6); border: 2px solid #C71585;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            color: #0d47a1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box .example {
+            background: #c8e6c9;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+
+        .example-box .example strong {
+            color: #1b5e20;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 12px;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons between tabs */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        table.lesson-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table.lesson-table th,
+        table.lesson-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        table.lesson-table th {
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="francais-lecons.html" class="btn-back">← Retour</a>
+        <h1>📖 Les Déterminants et Adjectifs 🎀</h1>
+        <p>Apprends à utiliser les déterminants, adjectifs démonstratifs et possessifs !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Les Déterminants</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Adj. Démonstratifs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Adj. Possessifs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Exercices &amp; Résumé</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: LES DÉTERMINANTS -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📝 Les Déterminants</h2>
+                        <p class="subtitle">Les petits mots qui accompagnent le nom</p>
+
+                        <h3>📌 I - Définition</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Un <strong>déterminant</strong> est un mot qui précède le nom. Il indique le <strong>genre</strong> (masculin ou féminin) et le <strong>nombre</strong> (singulier ou pluriel) du nom qu'il accompagne.</p>
+                        </div>
+
+                        <h3>📌 II - Les Articles</h3>
+
+                        <div class="category-box">
+                            <h4>📍 A. Les articles définis : <em>le, la, l', les</em></h4>
+                            <p>Ils désignent une <strong>chose précise</strong>, connue ou déjà citée.</p>
+                            <ul>
+                                <li><em><strong>le</strong> garçon</em> (masculin singulier)</li>
+                                <li><em><strong>la</strong> fille</em> (féminin singulier)</li>
+                                <li><em><strong>l'</strong>école</em> (devant voyelle ou h muet)</li>
+                                <li><em><strong>les</strong> enfants</em> (pluriel)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📍 B. Les articles indéfinis : <em>un, une, des</em></h4>
+                            <p>Ils désignent une chose <strong>non précise</strong>, inconnue ou nouvelle.</p>
+                            <ul>
+                                <li><em><strong>un</strong> livre</em> (masculin singulier)</li>
+                                <li><em><strong>une</strong> table</em> (féminin singulier)</li>
+                                <li><em><strong>des</strong> amis</em> (pluriel)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📍 C. Les articles partitifs : <em>du, de la, de l'</em></h4>
+                            <p>Ils désignent une <strong>quantité non comptable</strong> (une partie d'un tout).</p>
+                            <ul>
+                                <li><em>Je mange <strong>du</strong> pain.</em></li>
+                                <li><em>Je bois <strong>de la</strong> limonade.</em></li>
+                                <li><em>Je veux <strong>de l'</strong>eau.</em></li>
+                            </ul>
+                        </div>
+
+                        <h3>📌 III - Tableau Récapitulatif</h3>
+                        <table class="lesson-table">
+                            <tr>
+                                <th>Type</th>
+                                <th>Masculin sing.</th>
+                                <th>Féminin sing.</th>
+                                <th>Pluriel</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Défini</strong></td>
+                                <td>le / l'</td>
+                                <td>la / l'</td>
+                                <td>les</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Indéfini</strong></td>
+                                <td>un</td>
+                                <td>une</td>
+                                <td>des</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Partitif</strong></td>
+                                <td>du / de l'</td>
+                                <td>de la / de l'</td>
+                                <td>des</td>
+                            </tr>
+                        </table>
+
+                        <div class="info">
+                            <strong>💡 Règle importante :</strong><br>
+                            À la <strong>forme négative</strong>, les articles <strong>indéfinis</strong> (un, une, des) et <strong>partitifs</strong> (du, de la, de l') deviennent <strong>"de"</strong> (ou "d'" devant une voyelle).<br><br>
+                            <strong>Exemples :</strong><br>
+                            • <em>Je mange <strong>du</strong> pain.</em> → <em>Je ne mange pas <strong>de</strong> pain.</em><br>
+                            • <em>J'ai <strong>des</strong> amis.</em> → <em>Je n'ai pas <strong>d'</strong>amis.</em>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LES ADJECTIFS DÉMONSTRATIFS -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>👉 Les Adjectifs Démonstratifs</h2>
+                        <p class="subtitle">Montrer, désigner quelque chose ou quelqu'un</p>
+
+                        <h3>📌 I - Définition</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Les <strong>adjectifs démonstratifs</strong> servent à <strong>montrer</strong> ou <strong>désigner</strong> une personne, un animal ou une chose. Ils correspondent en français à "ce / cet / cette / ces" (this / that / these / those en anglais).</p>
+                        </div>
+
+                        <h3>📌 II - Les Formes</h3>
+                        <div class="category-box">
+                            <h4>📍 Les quatre formes</h4>
+                            <ul>
+                                <li><strong>ce</strong> → devant un nom masculin singulier commençant par une <strong>consonne</strong></li>
+                                <li><strong>cet</strong> → devant un nom masculin singulier commençant par une <strong>voyelle</strong> ou un <strong>h muet</strong></li>
+                                <li><strong>cette</strong> → devant un nom féminin singulier</li>
+                                <li><strong>ces</strong> → devant un nom pluriel (masculin ou féminin)</li>
+                            </ul>
+                        </div>
+
+                        <h3>📌 III - Tableau des Adjectifs Démonstratifs</h3>
+                        <table class="lesson-table">
+                            <tr>
+                                <th>Forme</th>
+                                <th>Emploi</th>
+                                <th>Exemple</th>
+                            </tr>
+                            <tr>
+                                <td><strong>ce</strong></td>
+                                <td>Masc. sing. + consonne</td>
+                                <td><em>ce livre</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>cet</strong></td>
+                                <td>Masc. sing. + voyelle</td>
+                                <td><em>cet arbre</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>cet</strong></td>
+                                <td>Masc. sing. + h muet</td>
+                                <td><em>cet homme</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>cette</strong></td>
+                                <td>Féminin singulier</td>
+                                <td><em>cette fille</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ces</strong></td>
+                                <td>Pluriel (masc. ou fém.)</td>
+                                <td><em>ces enfants</em></td>
+                            </tr>
+                        </table>
+
+                        <div class="example-box">
+                            <h4>✏️ D'autres exemples</h4>
+                            <div class="example"><em><strong>ce</strong> cahier</em> • <em><strong>ce</strong> chien</em> • <em><strong>ce</strong> garçon</em></div>
+                            <div class="example"><em><strong>cet</strong> ami</em> • <em><strong>cet</strong> oiseau</em> • <em><strong>cet</strong> hôtel</em></div>
+                            <div class="example"><em><strong>cette</strong> maison</em> • <em><strong>cette</strong> école</em> • <em><strong>cette</strong> voiture</em></div>
+                            <div class="example"><em><strong>ces</strong> livres</em> • <em><strong>ces</strong> filles</em> • <em><strong>ces</strong> animaux</em></div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 Règle à retenir :</strong><br>
+                            Devant un nom <strong>masculin singulier</strong> commençant par une <strong>voyelle (a, e, i, o, u)</strong> ou un <strong>h muet</strong>, on utilise <strong>"cet"</strong> (et non "ce") pour éviter le choc des voyelles.<br><br>
+                            <strong>Exemples :</strong> <em>cet arbre</em> (et non "ce arbre"), <em>cet homme</em> (et non "ce homme").
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: LES ADJECTIFS POSSESSIFS -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🎁 Les Adjectifs Possessifs</h2>
+                        <p class="subtitle">Indiquer à qui appartient quelque chose</p>
+
+                        <h3>📌 I - Définition</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Les <strong>adjectifs possessifs</strong> indiquent à qui <strong>appartient</strong> la chose ou la personne dont on parle. Ils expriment la <strong>possession</strong> ou l'<strong>appartenance</strong>.</p>
+                        </div>
+
+                        <h3>📌 II - Tableau Complet</h3>
+                        <table class="lesson-table">
+                            <tr>
+                                <th>Personne</th>
+                                <th>Masc. sing.</th>
+                                <th>Fém. sing.</th>
+                                <th>Pluriel</th>
+                            </tr>
+                            <tr>
+                                <td><strong>je</strong></td>
+                                <td>mon</td>
+                                <td>ma</td>
+                                <td>mes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>tu</strong></td>
+                                <td>ton</td>
+                                <td>ta</td>
+                                <td>tes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>il / elle</strong></td>
+                                <td>son</td>
+                                <td>sa</td>
+                                <td>ses</td>
+                            </tr>
+                            <tr>
+                                <td><strong>nous</strong></td>
+                                <td>notre</td>
+                                <td>notre</td>
+                                <td>nos</td>
+                            </tr>
+                            <tr>
+                                <td><strong>vous</strong></td>
+                                <td>votre</td>
+                                <td>votre</td>
+                                <td>vos</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ils / elles</strong></td>
+                                <td>leur</td>
+                                <td>leur</td>
+                                <td>leurs</td>
+                            </tr>
+                        </table>
+
+                        <div class="example-box">
+                            <h4>✏️ Exemples d'emploi</h4>
+                            <div class="example"><em><strong>Mon</strong> frère et <strong>ma</strong> sœur jouent avec <strong>mes</strong> amis.</em></div>
+                            <div class="example"><em><strong>Ton</strong> cahier, <strong>ta</strong> règle et <strong>tes</strong> crayons sont sur la table.</em></div>
+                            <div class="example"><em>Paul aime <strong>son</strong> chien, <strong>sa</strong> maison et <strong>ses</strong> parents.</em></div>
+                            <div class="example"><em><strong>Notre</strong> école et <strong>nos</strong> professeurs sont formidables.</em></div>
+                            <div class="example"><em><strong>Votre</strong> voiture et <strong>vos</strong> valises sont prêtes.</em></div>
+                            <div class="example"><em>Les enfants aiment <strong>leur</strong> maîtresse et <strong>leurs</strong> camarades.</em></div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 Règle importante :</strong><br>
+                            Devant un nom <strong>féminin singulier</strong> qui commence par une <strong>voyelle</strong> ou un <strong>h muet</strong>, on utilise <strong>mon, ton, son</strong> (au lieu de ma, ta, sa) pour faciliter la prononciation.<br><br>
+                            <strong>Exemples :</strong><br>
+                            • <em><strong>mon</strong> amie</em> (et non "ma amie")<br>
+                            • <em><strong>ton</strong> école</em> (et non "ta école")<br>
+                            • <em><strong>son</strong> histoire</em> (et non "sa histoire")
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: EXERCICES ET RÉSUMÉ -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🎯 Exercices et Résumé</h2>
+                        <p class="subtitle">Tout retenir d'un coup d'œil !</p>
+
+                        <h3>📌 I - Tableau Récapitulatif Général</h3>
+                        <table class="lesson-table">
+                            <tr>
+                                <th>Catégorie</th>
+                                <th>Formes</th>
+                                <th>Rôle</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Article défini</strong></td>
+                                <td>le, la, l', les</td>
+                                <td>Désigner une chose précise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Article indéfini</strong></td>
+                                <td>un, une, des</td>
+                                <td>Désigner une chose non précise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Article partitif</strong></td>
+                                <td>du, de la, de l'</td>
+                                <td>Indiquer une quantité non comptable</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adj. démonstratif</strong></td>
+                                <td>ce, cet, cette, ces</td>
+                                <td>Montrer, désigner</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adj. possessif</strong></td>
+                                <td>mon, ma, mes, ton, ta, tes, son, sa, ses, notre, nos, votre, vos, leur, leurs</td>
+                                <td>Indiquer la possession</td>
+                            </tr>
+                        </table>
+
+                        <h3>📌 II - Astuces pour les Distinguer</h3>
+                        <div class="category-box">
+                            <h4>🔎 Comment reconnaître chaque type ?</h4>
+                            <ul>
+                                <li><strong>Article :</strong> petit mot général (le, un, du...) → on sait juste qu'il s'agit d'un nom.</li>
+                                <li><strong>Démonstratif :</strong> on peut ajouter mentalement "celui-ci / celui-là" → <em>ce livre</em> = <em>ce livre-ci</em>.</li>
+                                <li><strong>Possessif :</strong> on peut le remplacer par "à moi / à toi / à lui..." → <em>mon stylo</em> = <em>le stylo à moi</em>.</li>
+                            </ul>
+                        </div>
+
+                        <h3>📌 III - Petits Exercices</h3>
+                        <div class="example-box">
+                            <h4>✏️ Choisis le bon déterminant</h4>
+                            <div class="example"><em>___ arbre est grand.</em> → <strong>Cet</strong> arbre est grand.</div>
+                            <div class="example"><em>J'aime ___ amie Léa.</em> → J'aime <strong>mon</strong> amie Léa.</div>
+                            <div class="example"><em>Je ne mange pas ___ pain.</em> → Je ne mange pas <strong>de</strong> pain.</div>
+                            <div class="example"><em>Les enfants jouent avec ___ jouets.</em> → Les enfants jouent avec <strong>leurs</strong> jouets.</div>
+                            <div class="example"><em>___ fille chante bien.</em> → <strong>Cette</strong> fille chante bien.</div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Tout nom commun a presque toujours un déterminant devant lui.<br>
+                            • Le déterminant s'accorde en genre et en nombre avec le nom.<br>
+                            • Devant une voyelle ou un h muet : on utilise <strong>l', cet, mon/ton/son</strong>.<br>
+                            • Après une négation : les articles indéfinis et partitifs deviennent <strong>"de"</strong>.<br>
+                            • Les démonstratifs <em>montrent</em>, les possessifs <em>indiquent à qui c'est</em>.
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Déterminants et Adjectifs</h2>
+                <p>Teste tes connaissances !</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">"Le" est un article...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> indéfini
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> défini
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> partitif
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Devant un nom masculin commençant par une voyelle, on utilise :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> ce
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> cet
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> cette
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">"Ses" est un adjectif possessif de la...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> 1re personne du singulier
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> 2e personne du singulier
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> 3e personne du singulier
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">"Du" est un article...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> défini
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> indéfini
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> partitif
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Devant "amie" (féminin), on dit :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> ma amie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> mon amie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> mes amie
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">"Ces" est un adjectif...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> possessif singulier
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> démonstratif pluriel
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> démonstratif singulier
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">"Notre" est un possessif de la...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> 1re personne du pluriel
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> 2e personne du pluriel
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> 3e personne du pluriel
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Après une négation, "du" devient...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> des
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> de
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> le
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="quiz-question">
+                    <span class="question-number">9</span>
+                    <span class="question-text">"L'" est utilisé devant un nom commençant par...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="a"> une consonne
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="b"> une voyelle ou un h muet
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="c"> un h aspiré
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q9"></div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="quiz-question">
+                    <span class="question-number">10</span>
+                    <span class="question-text">"Leurs" est le pluriel de...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="a"> leur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="b"> notre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="c"> votre
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q10"></div>
+                </div>
+
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier mes réponses</button>
+                <div id="quiz-result" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'c',
+            q4: 'c',
+            q5: 'b',
+            q6: 'b',
+            q7: 'a',
+            q8: 'b',
+            q9: 'b',
+            q10: 'a'
+        };
+
+        const explanations = {
+            q1: {
+                correct: '✅ Bravo ! "Le" est un article défini (il désigne quelque chose de précis).',
+                wrong: '❌ Non. "Le" est un article DÉFINI (comme "la", "l\'", "les").'
+            },
+            q2: {
+                correct: '✅ Excellent ! Devant une voyelle, on utilise "cet" (ex : cet arbre, cet homme).',
+                wrong: '❌ Non. Devant un nom masculin commençant par une voyelle ou un h muet, on utilise "cet".'
+            },
+            q3: {
+                correct: '✅ Parfait ! "Ses" correspond à "il/elle" → 3e personne du singulier.',
+                wrong: '❌ Non. "Ses" est le pluriel de "son/sa" (3e personne du singulier : il/elle).'
+            },
+            q4: {
+                correct: '✅ Très bien ! "Du" est un article partitif (il désigne une quantité non comptable).',
+                wrong: '❌ Non. "Du" est un article PARTITIF (ex : je mange du pain).'
+            },
+            q5: {
+                correct: '✅ Super ! Devant un nom féminin commençant par une voyelle, on utilise "mon".',
+                wrong: '❌ Non. On dit "MON amie" car "amie" commence par une voyelle (règle d\'euphonie).'
+            },
+            q6: {
+                correct: '✅ Exact ! "Ces" est un adjectif démonstratif au pluriel (ex : ces enfants).',
+                wrong: '❌ Non. "Ces" est un adjectif DÉMONSTRATIF PLURIEL (ex : ces livres, ces filles).'
+            },
+            q7: {
+                correct: '✅ Très bien ! "Notre" correspond à "nous" → 1re personne du pluriel.',
+                wrong: '❌ Non. "Notre" correspond à "nous" → 1re personne du pluriel.'
+            },
+            q8: {
+                correct: '✅ Parfait ! Après une négation, "du" devient "de" (ex : je ne mange pas DE pain).',
+                wrong: '❌ Non. Après la négation, les partitifs et indéfinis deviennent "de".'
+            },
+            q9: {
+                correct: '✅ Excellent ! "L\'" s\'utilise devant une voyelle ou un h muet (ex : l\'école, l\'homme).',
+                wrong: '❌ Non. "L\'" s\'utilise devant un nom commençant par une voyelle ou un h muet.'
+            },
+            q10: {
+                correct: '✅ Bravo ! "Leurs" est le pluriel de "leur" (3e personne du pluriel : ils/elles).',
+                wrong: '❌ Non. "Leurs" est simplement le pluriel de "leur" (ex : leur ami → leurs amis).'
+            }
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const total = Object.keys(answers).length;
+            let answersDetail = [];
+
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-${q}`);
+
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        score++;
+                        feedbackEl.innerHTML = explanations[q].correct;
+                        feedbackEl.style.background = '#c8e6c9';
+                        feedbackEl.style.color = '#2e7d32';
+                        answersDetail.push(`${q}: ✅ Correct`);
+                    } else {
+                        feedbackEl.innerHTML = explanations[q].wrong;
+                        feedbackEl.style.background = '#ffcdd2';
+                        feedbackEl.style.color = '#c62828';
+                        answersDetail.push(`${q}: ❌ Incorrect`);
+                    }
+                } else {
+                    feedbackEl.innerHTML = '⚠️ Tu n\'as pas répondu à cette question.';
+                    feedbackEl.style.background = '#fff3e0';
+                    feedbackEl.style.color = '#e65100';
+                    answersDetail.push(`${q}: ⚠️ Sans réponse`);
+                }
+            }
+
+            const percentage = Math.round((score / total) * 100);
+            const resultEl = document.getElementById('quiz-result');
+            resultEl.style.display = 'block';
+
+            let message = '';
+            if (percentage === 100) {
+                message = '🌟 Parfait ! Tu maîtrises les déterminants et adjectifs !';
+            } else if (percentage >= 80) {
+                message = '👏 Très bien ! Tu as presque tout compris !';
+            } else if (percentage >= 60) {
+                message = '👍 Pas mal ! Continue à réviser !';
+            } else {
+                message = '💪 Courage ! Relis la leçon et réessaie !';
+            }
+
+            resultEl.innerHTML = `
+                <p>Score : ${score}/${total} (${percentage}%)</p>
+                <p>${message}</p>
+            `;
+
+            // Envoyer les résultats par email
+            sendQuizResults('Français - Déterminants et Adjectifs', score, total, percentage, answersDetail);
+        }
+
+        // Fonction pour envoyer les résultats par email
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Navigate to a specific tab programmatically
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            // Find and activate the corresponding tab button
+            const targetButton = Array.from(buttons).find(button =>
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - La Chronologie et les Grandes Périodes</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📅';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🏛️';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-bottom: 3px solid #ffed4e;
+            color: white;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #e74c3c;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #e74c3c;
+            border-left: 4px solid #c0392b;
+            border-radius: 8px;
+            color: #922b21;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .observation-box {
+            background: #FFFFFF;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .observation-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #fef9e7;
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #d68910;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .danger-box {
+            background: #fdedec;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .danger-box h4 {
+            color: #c0392b;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        table th, table td {
+            border: 2px solid #e74c3c;
+            padding: 10px;
+            text-align: left;
+            color: #333;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #fdedec;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="histoire-geographie-lecons.html" class="btn-back">← Retour</a>
+        <h1>📅 La Chronologie et les Grandes Périodes de l'Histoire 🏛️</h1>
+        <p>Comprendre le temps historique et les grandes époques</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Chronologie</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Préhistoire & Antiquité</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Moyen Âge</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Temps Modernes & Contemporaine</button>
+        <button class="tab-button" onclick="openTab(event, 'tab5')">5️⃣ Résumé & Exercices</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: CHRONOLOGIE -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📅 La Notion de Chronologie</h2>
+                        <p class="subtitle">Mesurer et ordonner le temps en histoire</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que la chronologie ?</h4>
+                            <p>La <strong>chronologie</strong> est la science qui permet de <strong>classer les événements dans l'ordre où ils se sont produits dans le temps</strong>. Elle aide l'historien à comprendre l'enchaînement des faits.</p>
+                        </div>
+
+                        <h3>🕰️ II - Le Vocabulaire du Temps</h3>
+
+                        <div class="category-box">
+                            <h4>📏 Les unités de mesure du temps</h4>
+                            <ul>
+                                <li><strong>Une décennie :</strong> période de <strong>10 ans</strong></li>
+                                <li><strong>Un siècle :</strong> période de <strong>100 ans</strong></li>
+                                <li><strong>Un millénaire :</strong> période de <strong>1 000 ans</strong></li>
+                            </ul>
+                        </div>
+
+                        <h3>✝️ III - Avant J.-C. et Après J.-C.</h3>
+
+                        <div class="observation-box">
+                            <h4>🗓️ Le point de repère : la naissance de Jésus-Christ</h4>
+                            <p>Dans notre calendrier, on compte le temps à partir de la naissance de Jésus-Christ :</p>
+                            <ul>
+                                <li><strong>Avant J.-C. (av. J.-C.) :</strong> les années se comptent à rebours (plus le nombre est grand, plus c'est ancien).</li>
+                                <li><strong>Après J.-C. (ap. J.-C.) :</strong> les années avancent normalement (plus le nombre est grand, plus c'est récent).</li>
+                            </ul>
+                        </div>
+
+                        <h3>📊 IV - La Frise Chronologique</h3>
+
+                        <div class="category-box">
+                            <h4>📐 Comment lire une frise chronologique ?</h4>
+                            <ul>
+                                <li>Une <strong>frise chronologique</strong> est une ligne du temps orientée de gauche à droite.</li>
+                                <li>Le <strong>passé</strong> se trouve à gauche, le <strong>présent</strong> à droite.</li>
+                                <li>On y place les événements, les périodes et les dates importantes.</li>
+                                <li>Une <strong>échelle</strong> (ex. : 1 cm = 100 ans) permet de mesurer la durée.</li>
+                            </ul>
+                        </div>
+
+                        <h3>🔢 V - Calculer le Siècle d'une Date</h3>
+
+                        <div class="definition-box">
+                            <h4>🧮 La règle de calcul</h4>
+                            <p>Pour trouver le siècle, on prend les <strong>deux premiers chiffres</strong> de l'année et on ajoute <strong>1</strong> (sauf si l'année se termine par 00).</p>
+                            <ul>
+                                <li>Année <strong>476</strong> → 4 + 1 = <strong>V<sup>e</sup> siècle</strong> (chute de Rome)</li>
+                                <li>Année <strong>1492</strong> → 14 + 1 = <strong>XV<sup>e</sup> siècle</strong> (découverte de l'Amérique)</li>
+                                <li>Année <strong>1789</strong> → 17 + 1 = <strong>XVIII<sup>e</sup> siècle</strong> (Révolution française)</li>
+                                <li>Année <strong>2000</strong> → <strong>XX<sup>e</sup> siècle</strong> (fin du siècle)</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La chronologie classe les événements dans l'ordre du temps<br>
+                            • 1 décennie = 10 ans, 1 siècle = 100 ans, 1 millénaire = 1 000 ans<br>
+                            • On utilise les repères « avant J.-C. » et « après J.-C. »<br>
+                            • La frise chronologique se lit du passé (gauche) vers le présent (droite)<br>
+                            • Pour trouver le siècle : 2 premiers chiffres + 1
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" disabled>← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: PRÉHISTOIRE ET ANTIQUITÉ -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🦴 La Préhistoire et l'Antiquité</h2>
+                        <p class="subtitle">Les deux premières grandes périodes de l'histoire</p>
+
+                        <h3>🦣 I - La Préhistoire</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>La <strong>Préhistoire</strong> commence avec l'<strong>apparition des premiers êtres humains</strong> (il y a environ 3 millions d'années) et se termine avec l'<strong>invention de l'écriture</strong>, vers <strong>3 300 av. J.-C.</strong></p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🪨 Les deux grandes époques de la Préhistoire</h4>
+                            <ul>
+                                <li><strong>Le Paléolithique (âge de la pierre taillée) :</strong> les hommes sont <strong>nomades</strong>, ils chassent, pêchent et cueillent. Ils <strong>maîtrisent le feu</strong> et fabriquent des outils en pierre taillée.</li>
+                                <li><strong>Le Néolithique (âge de la pierre polie) :</strong> les hommes deviennent <strong>sédentaires</strong>. Ils inventent l'<strong>agriculture</strong> et l'<strong>élevage</strong>, polissent la pierre et fabriquent de la poterie.</li>
+                            </ul>
+                        </div>
+
+                        <div class="observation-box">
+                            <h4>🎨 Les grandes inventions de la Préhistoire</h4>
+                            <ul>
+                                <li>La maîtrise du <strong>feu</strong></li>
+                                <li>Les premiers <strong>outils</strong> (silex, haches, lances)</li>
+                                <li>L'<strong>agriculture</strong> et l'<strong>élevage</strong> (Néolithique)</li>
+                                <li>Les <strong>peintures rupestres</strong> (grotte de Lascaux, Chauvet)</li>
+                            </ul>
+                        </div>
+
+                        <h3>🏺 II - L'Antiquité</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>L'<strong>Antiquité</strong> commence vers <strong>3 300 av. J.-C.</strong> avec l'<strong>invention de l'écriture</strong> et se termine en <strong>476 ap. J.-C.</strong> avec la <strong>chute de l'Empire romain d'Occident</strong>.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌍 Les grandes civilisations de l'Antiquité</h4>
+                            <ul>
+                                <li><strong>L'Égypte ancienne :</strong> pharaons, pyramides, hiéroglyphes, fleuve du Nil.</li>
+                                <li><strong>La Mésopotamie :</strong> berceau de l'écriture (cunéiforme), premières cités.</li>
+                                <li><strong>La Grèce antique :</strong> invention de la <strong>démocratie</strong> à Athènes, philosophie, jeux Olympiques.</li>
+                                <li><strong>Rome antique :</strong> Empire romain, <strong>droit romain</strong>, routes, aqueducs.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Préhistoire : de l'apparition de l'homme (~3 M d'années) à ~3 300 av. J.-C.<br>
+                            • Paléolithique = pierre taillée, nomade ; Néolithique = pierre polie, sédentaire<br>
+                            • Antiquité : de ~3 300 av. J.-C. à 476 ap. J.-C.<br>
+                            • Grandes civilisations : Égypte, Mésopotamie, Grèce, Rome<br>
+                            • L'écriture marque le passage de la Préhistoire à l'Antiquité
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: MOYEN ÂGE -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🏰 Le Moyen Âge</h2>
+                        <p class="subtitle">Une longue période de 1 000 ans (476 - 1492)</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Les bornes du Moyen Âge</h4>
+                            <p>Le <strong>Moyen Âge</strong> s'étend de <strong>476</strong> (chute de l'Empire romain d'Occident) à <strong>1492</strong> (découverte de l'Amérique par Christophe Colomb). C'est une période d'environ <strong>1 000 ans</strong>.</p>
+                        </div>
+
+                        <h3>⚔️ II - La Société Féodale</h3>
+
+                        <div class="category-box">
+                            <h4>🛡️ Le système féodal</h4>
+                            <p>La société du Moyen Âge est organisée autour de liens de dépendance entre les personnes :</p>
+                            <ul>
+                                <li><strong>Le roi :</strong> il est au sommet de la société et donne des terres à ses seigneurs.</li>
+                                <li><strong>Les seigneurs :</strong> nobles qui possèdent des terres (les fiefs) et des châteaux.</li>
+                                <li><strong>Les vassaux :</strong> chevaliers au service d'un seigneur, ils lui jurent fidélité.</li>
+                                <li><strong>Les serfs :</strong> paysans attachés à la terre du seigneur, ils travaillent pour lui.</li>
+                            </ul>
+                        </div>
+
+                        <h3>🏰 III - La Vie au Moyen Âge</h3>
+
+                        <div class="observation-box">
+                            <h4>🏛️ Châteaux, cathédrales et monastères</h4>
+                            <ul>
+                                <li><strong>Les châteaux forts :</strong> forteresses des seigneurs, protégés par des murailles et des douves.</li>
+                                <li><strong>Les cathédrales :</strong> immenses églises construites dans les villes (art roman puis gothique).</li>
+                                <li><strong>Les monastères :</strong> lieux de vie des moines, centres de savoir et de copie des livres.</li>
+                            </ul>
+                        </div>
+
+                        <h3>⚔️ IV - Les Grands Événements</h3>
+
+                        <div class="category-box">
+                            <h4>📜 Dates à retenir</h4>
+                            <ul>
+                                <li><strong>800 :</strong> couronnement de <strong>Charlemagne</strong> empereur.</li>
+                                <li><strong>1096 - 1270 :</strong> les <strong>Croisades</strong>, expéditions militaires chrétiennes vers Jérusalem.</li>
+                                <li><strong>1337 - 1453 :</strong> la <strong>guerre de Cent Ans</strong> entre la France et l'Angleterre (Jeanne d'Arc).</li>
+                                <li><strong>1492 :</strong> Christophe Colomb découvre l'Amérique → fin du Moyen Âge.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Moyen Âge : de 476 (chute de Rome) à 1492 (découverte de l'Amérique)<br>
+                            • Société féodale : roi, seigneurs, vassaux, serfs<br>
+                            • Châteaux forts, cathédrales et monastères marquent la période<br>
+                            • Charlemagne est couronné empereur en 800<br>
+                            • Croisades (1096-1270) et guerre de Cent Ans (1337-1453)
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: TEMPS MODERNES ET CONTEMPORAINE -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🌍 Les Temps Modernes et l'Époque Contemporaine</h2>
+                        <p class="subtitle">De la Renaissance à notre époque</p>
+
+                        <h3>🎨 I - Les Temps Modernes (1492 - 1789)</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Les <strong>Temps Modernes</strong> s'étendent de <strong>1492</strong> (découverte de l'Amérique) à <strong>1789</strong> (Révolution française). Cette période dure environ <strong>3 siècles</strong>.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🖼️ La Renaissance et les grandes inventions</h4>
+                            <ul>
+                                <li><strong>La Renaissance :</strong> renouveau des arts et des sciences en Europe (XV<sup>e</sup> - XVI<sup>e</sup> siècles).</li>
+                                <li><strong>1450 :</strong> <strong>Gutenberg</strong> invente l'<strong>imprimerie</strong>, qui permet la diffusion des livres.</li>
+                                <li><strong>Les grandes explorations :</strong> Christophe Colomb, Magellan, Vasco de Gama découvrent de nouveaux continents.</li>
+                                <li><strong>Le Siècle des Lumières (XVIII<sup>e</sup>) :</strong> philosophes (Voltaire, Rousseau, Diderot) défendent la raison, la liberté et l'égalité.</li>
+                            </ul>
+                        </div>
+
+                        <h3>⚡ II - L'Époque Contemporaine (depuis 1789)</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>L'<strong>Époque Contemporaine</strong> commence en <strong>1789</strong> avec la <strong>Révolution française</strong> et continue jusqu'à <strong>aujourd'hui</strong>.</p>
+                        </div>
+
+                        <div class="observation-box">
+                            <h4>🏭 Les grands bouleversements</h4>
+                            <ul>
+                                <li><strong>La Révolution française (1789) :</strong> fin de la monarchie absolue, déclaration des Droits de l'Homme.</li>
+                                <li><strong>La Révolution industrielle (XIX<sup>e</sup> siècle) :</strong> machines à vapeur, chemin de fer, usines.</li>
+                                <li><strong>Les deux guerres mondiales :</strong> <strong>1914-1918</strong> (Première Guerre mondiale) et <strong>1939-1945</strong> (Seconde Guerre mondiale).</li>
+                                <li><strong>La décolonisation (après 1945) :</strong> les colonies d'Afrique et d'Asie deviennent indépendantes.</li>
+                                <li><strong>Le monde d'aujourd'hui :</strong> mondialisation, technologies numériques, enjeux climatiques.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Temps Modernes : 1492 → 1789 (Renaissance, Lumières)<br>
+                            • Gutenberg invente l'imprimerie en 1450<br>
+                            • Époque Contemporaine : depuis 1789 jusqu'à aujourd'hui<br>
+                            • Révolution industrielle au XIX<sup>e</sup> siècle<br>
+                            • Deux guerres mondiales au XX<sup>e</sup> siècle puis décolonisation
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab5')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: RÉSUMÉ ET EXERCICES -->
+                <div id="tab5" class="tab-content">
+                    <div class="container">
+                        <h2>📝 Résumé et Exercices</h2>
+                        <p class="subtitle">Tableau récapitulatif des 5 grandes périodes</p>
+
+                        <h3>📊 I - Tableau Récapitulatif</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Période</th>
+                                    <th>Dates</th>
+                                    <th>Événements et points clés</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>🦣 Préhistoire</strong></td>
+                                    <td>~3 M d'années → 3 300 av. J.-C.</td>
+                                    <td>Apparition de l'homme, feu, outils, agriculture, peintures rupestres</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>🏺 Antiquité</strong></td>
+                                    <td>3 300 av. J.-C. → 476 ap. J.-C.</td>
+                                    <td>Invention de l'écriture, Égypte, Grèce, Rome, démocratie, droit romain</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>🏰 Moyen Âge</strong></td>
+                                    <td>476 → 1492</td>
+                                    <td>Féodalité, châteaux, cathédrales, Charlemagne (800), Croisades, guerre de Cent Ans</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>🎨 Temps Modernes</strong></td>
+                                    <td>1492 → 1789</td>
+                                    <td>Renaissance, Gutenberg (1450), grandes explorations, Lumières</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>⚡ Époque Contemporaine</strong></td>
+                                    <td>1789 → aujourd'hui</td>
+                                    <td>Révolution française, Révolution industrielle, guerres mondiales, décolonisation</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>🎯 II - Les 4 Dates Repères à Retenir</h3>
+
+                        <div class="category-box">
+                            <h4>📌 Les dates qui marquent la fin d'une période</h4>
+                            <ul>
+                                <li><strong>~3 300 av. J.-C. :</strong> invention de l'écriture → fin de la Préhistoire.</li>
+                                <li><strong>476 ap. J.-C. :</strong> chute de l'Empire romain d'Occident → fin de l'Antiquité.</li>
+                                <li><strong>1492 :</strong> découverte de l'Amérique → fin du Moyen Âge.</li>
+                                <li><strong>1789 :</strong> Révolution française → fin des Temps Modernes.</li>
+                            </ul>
+                        </div>
+
+                        <h3>✏️ III - À Toi de Jouer !</h3>
+
+                        <div class="observation-box">
+                            <h4>🧠 Entraîne-toi</h4>
+                            <p>Utilise le quiz à droite pour vérifier tes connaissances sur les 5 grandes périodes de l'histoire. Bonne chance ! 🍀</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • 5 périodes : Préhistoire, Antiquité, Moyen Âge, Temps Modernes, Époque Contemporaine<br>
+                            • 4 dates repères : ~3 300 av. J.-C., 476, 1492, 1789<br>
+                            • Chaque période est marquée par un grand événement qui la termine<br>
+                            • L'Époque Contemporaine est la période dans laquelle nous vivons aujourd'hui
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab4')">← Précédent</button>
+                            <button class="nav-button" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Chronologie et Grandes Périodes</h2>
+
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Un siècle correspond à...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> 10 ans
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> 100 ans
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> 1 000 ans
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">L'Antiquité se termine en...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> 1492
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> 476 après J.-C.
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> 1789
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Le Moyen Âge s'étend de...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> 476 à 1492
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> 1492 à 1789
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> 3 300 av. J.-C. à 476
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">L'invention de l'écriture marque le début de...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> la Préhistoire
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> l'Antiquité
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> le Moyen Âge
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">La Révolution française a eu lieu en...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> 1492
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> 1789
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> 1914
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">L'année 1492 correspond à...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> la découverte de l'Amérique
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> la chute de Rome
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> la Révolution française
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Le système féodal est caractéristique du...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Moyen Âge
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Préhistoire
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Époque Contemporaine
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">L'Époque Contemporaine commence en...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> 1492
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> 1789
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> 1945
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">9</span>
+                    <span class="question-text">Les Temps Modernes s'étendent de...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="a"> 476 à 1492
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="b"> 1492 à 1789
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="c"> 1789 à aujourd'hui
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q9"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">10</span>
+                    <span class="question-text">La Préhistoire se termine avec l'invention de...</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="a"> la roue
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="b"> l'écriture
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="c"> l'imprimerie
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q10"></div>
+                </div>
+
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Navigate to a specific tab programmatically
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            const targetButton = Array.from(buttons).find(button =>
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Quiz answers
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'a',
+            q4: 'b',
+            q5: 'b',
+            q6: 'a',
+            q7: 'a',
+            q8: 'b',
+            q9: 'b',
+            q10: 'b'
+        };
+
+        // Explanations for each question
+        const quizExplanations = {
+            q1: 'Un siècle correspond à 100 ans. Une décennie = 10 ans, un millénaire = 1 000 ans.',
+            q2: "L'Antiquité se termine en 476 après J.-C. avec la chute de l'Empire romain d'Occident.",
+            q3: 'Le Moyen Âge commence en 476 (chute de Rome) et se termine en 1492 (découverte de l\'Amérique).',
+            q4: "L'invention de l'écriture vers 3 300 av. J.-C. marque le début de l'Antiquité (et la fin de la Préhistoire).",
+            q5: 'La Révolution française a eu lieu en 1789. Elle marque le début de l\'Époque Contemporaine.',
+            q6: "En 1492, Christophe Colomb découvre l'Amérique. Cet événement marque la fin du Moyen Âge.",
+            q7: 'Le système féodal (roi, seigneurs, vassaux, serfs) est caractéristique du Moyen Âge.',
+            q8: "L'Époque Contemporaine commence en 1789 avec la Révolution française.",
+            q9: 'Les Temps Modernes s\'étendent de 1492 (découverte de l\'Amérique) à 1789 (Révolution française).',
+            q10: "La Préhistoire se termine avec l'invention de l'écriture, vers 3 300 av. J.-C."
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(quizAnswers).length;
+            const answers = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    answers.push(`Question ${i}: Pas de réponse`);
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span> <span style="color:#333;">' + quizExplanations[questionName] + '</span>';
+                    }
+                    answers.push(`Question ${i}: Correcte`);
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span> <span style="color:#333;">' + quizExplanations[questionName] + '</span>';
+                    }
+                    answers.push(`Question ${i}: Incorrecte`);
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent ! Tu maîtrises la chronologie ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bien joué ! Continue à t\'entraîner ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            sendQuizResults('Histoire - Chronologie et Périodes', score, totalQuestions, percentage, answers);
+        }
+
+        // Alias for compatibility
+        function submitQuiz() {
+            checkQuiz();
+        }
+
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+    </script>
+</body>
+</html>
