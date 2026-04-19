@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.0.0
 
-const CACHE_NAME = 'karniella-cache-v2';
+const CACHE_NAME = 'karniella-cache-v3';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -13,6 +13,21 @@ const FILES_TO_CACHE = [
     '/svt.html',
     '/histoire-geographie.html',
     '/education-civique.html',
+
+    // Leçons ECM
+    '/ecm-lecon-8-securite-routiere.html',
+    '/ecm-lecon-9-secteur-primaire.html',
+    '/ecm-lecon-10-puberte.html',
+    '/ecm-lecon-11-abstinence.html',
+
+    // Leçons Informatique
+    '/informatique-lecon-3-apercu-impression.html',
+    '/informatique-culture-numerique-internet.html',
+
+    // Leçons de Mathématiques
+    '/maths-lecon-geometrie-triangle.html',
+    '/maths-lecon-proportionnalite.html',
+    '/maths-lecon-symetrie-centrale.html',
 
     // Leçons de Physique
     '/le-circuit-electrique.html',
