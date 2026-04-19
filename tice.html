@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TICE - Technologies de l'Information</title>
     <link rel="stylesheet" href="css/karniella-theme.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
         (function() {
             emailjs.init("pnQD7VPc6oODwjB-L");
         })();
@@ -40,7 +40,7 @@
         }
 
         body::after {
-            content: '💕';
+            content: '🎀';
             position: fixed;
             font-size: 100px;
             opacity: 0.08;
@@ -60,7 +60,7 @@
             text-align: center;
             border-bottom: 3px solid #FFE5F0;
             position: relative;
-            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6); border: 2px solid #C71585;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
         }
 
         .btn-back {
@@ -69,31 +69,34 @@
             top: 50%;
             transform: translateY(-50%);
             padding: 10px 20px;
-            background: linear-gradient(135deg, #9c27b0 0%, #673ab7 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            border: none;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 14px;
             display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
         }
 
         .btn-back:hover {
             transform: translateY(-50%) translateX(-5px);
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
         }
 
         header h1 {
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             font-size: 32px;
             margin-bottom: 5px;
         }
 
         header p {
-            color: #bbb;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
         }
 
@@ -104,7 +107,7 @@
             gap: 5px;
             padding: 15px 20px;
             flex-wrap: wrap;
-            border-bottom: 3px solid #9c27b0;
+            border-bottom: 3px solid #FF69B4;
         }
 
         .tab-button {
@@ -120,13 +123,15 @@
         }
 
         .tab-button:hover {
-            background: #9c27b0;
+            background: #FF69B4;
+            color: white;
             transform: translateY(-2px);
         }
 
         .tab-button.active {
-            background: linear-gradient(135deg, #9c27b0 0%, #673ab7 100%);
-            border-bottom: 3px solid #ffed4e;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
         }
 
         .main-wrapper {
@@ -180,7 +185,7 @@
 
         h2 {
             text-align: center;
-            color: #333;
+            color: #C71585;
             margin-bottom: 10px;
             font-size: 26px;
         }
@@ -193,17 +198,11 @@
         }
 
         h3 {
-            color: #9c27b0;
+            color: #FF1493;
             margin: 25px 0 15px 0;
             font-size: 20px;
-            border-bottom: 2px solid #9c27b0;
+            border-bottom: 2px solid #FF69B4;
             padding-bottom: 8px;
-        }
-
-        h4 {
-            color: #6a1b9a;
-            margin: 20px 0 10px 0;
-            font-size: 16px;
         }
 
         p {
@@ -225,43 +224,53 @@
             font-size: 14px;
         }
 
-        strong {
-            color: #6a1b9a;
-        }
-
         .info {
             margin-top: 25px;
             padding: 20px;
             background: #FFFFFF;
-            border: 3px solid #9c27b0;
-            border-left: 4px solid #9c27b0;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #FF69B4;
             border-radius: 8px;
-            color: #4a148c;
+            color: #1b5e20;
             font-size: 13px;
             line-height: 1.6;
         }
 
         .info strong {
-            color: #4a148c;
+            color: #C71585;
         }
 
         .definition-box {
             background: #FFFFFF;
-            border: 2px solid #ff9800;
+            border: 3px solid #2196f3;
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
         }
 
         .definition-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
             color: #ff6f00;
             margin-bottom: 10px;
             font-size: 16px;
         }
 
         .category-box {
-            background: #f3e5f5;
-            border: 2px solid #9c27b0;
+            background: #FFFFFF;
+            border: 3px solid #9c27b0;
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
@@ -273,32 +282,43 @@
             font-size: 16px;
         }
 
-        .hardware-box {
-            background: #e3f2fd;
-            border: 2px solid #2196f3;
-            border-radius: 10px;
-            padding: 20px;
+        /* Component Cards */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
             margin: 20px 0;
         }
 
-        .hardware-box h4 {
-            color: #0d47a1;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .software-box {
-            background: #e8f5e9;
-            border: 2px solid #4caf50;
-            border-radius: 10px;
+        .component-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
             padding: 20px;
-            margin: 20px 0;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .software-box h4 {
-            color: #2e7d32;
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .component-card .icon {
+            font-size: 40px;
             margin-bottom: 10px;
-            font-size: 16px;
+        }
+
+        .component-card h5 {
+            color: #C71585;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .component-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
         }
 
         /* Quiz Section Styles */
@@ -345,7 +365,7 @@
         .question-number {
             display: inline-block;
             background: #ff9800;
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
             width: 25px;
             height: 25px;
             border-radius: 50%;
@@ -394,13 +414,6 @@
             accent-color: #ff9800;
         }
 
-        .quiz-option label {
-            cursor: pointer;
-            margin: 0;
-            flex: 1;
-            font-size: 12px;
-        }
-
         .quiz-feedback {
             font-size: 11px;
             margin-top: 8px;
@@ -411,7 +424,7 @@
 
         .quiz-button {
             background: #ff9800;
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
             border: none;
             padding: 12px 20px;
             border-radius: 8px;
@@ -431,7 +444,7 @@
 
         .quiz-result {
             background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
             padding: 15px;
             border-radius: 8px;
             text-align: center;
@@ -451,8 +464,8 @@
 
         .nav-button {
             padding: 12px 25px;
-            background: linear-gradient(135deg, #9c27b0 0%, #673ab7 100%);
-            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -467,7 +480,7 @@
 
         .nav-button:hover {
             transform: translateX(0) scale(1.05);
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
         }
 
         .nav-button.prev:hover {
@@ -506,13 +519,17 @@
                 width: fit-content;
                 margin-bottom: 20px;
             }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html" class="btn-back">← Retour</a>
-        <h1>💻 TICE - Technologies 🎀</h1>
+        <h1>💻 TICE - Technologies de l'Information 🖥️</h1>
         <p>Découvre le monde de l'informatique !</p>
     </header>
 
@@ -520,71 +537,71 @@
         <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Système Informatique</button>
         <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Partie Matérielle</button>
         <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Partie Logicielle</button>
-        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Micro-ordinateur</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Micro-Ordinateur</button>
     </div>
 
     <div class="main-wrapper">
         <div class="content-area">
             <div class="content">
-                <!-- TAB 1: COMPOSANTES D'UN SYSTÈME INFORMATIQUE -->
+                <!-- TAB 1: SYSTÈME INFORMATIQUE -->
                 <div id="tab1" class="tab-content active">
                     <div class="container">
                         <h2>💻 Composantes d'un Système Informatique</h2>
-                        <p class="subtitle">Comprendre ce qu'est un système informatique</p>
+                        <p class="subtitle">Comprendre l'organisation d'un système informatique</p>
 
-                        <h3>📌 I - Définition</h3>
+                        <h3>📌 Introduction</h3>
+                        <p>Un <strong>système informatique</strong> est un ensemble d'éléments (matériels et logiciels) qui permettent de traiter automatiquement les informations. Il est composé de deux grandes parties : la partie matérielle (hardware) et la partie logicielle (software).</p>
 
                         <div class="definition-box">
-                            <h4>📖 Qu'est-ce qu'un système informatique ?</h4>
-                            <p><strong>Un système informatique</strong> est un ensemble d'éléments (matériels et logiciels) qui permettent de traiter automatiquement des informations.</p>
-                            <p>Il est composé de deux grandes parties :</p>
-                            <ul>
-                                <li><strong>La partie matérielle (Hardware) :</strong> Ce sont les éléments physiques qu'on peut toucher</li>
-                                <li><strong>La partie logicielle (Software) :</strong> Ce sont les programmes qui font fonctionner l'ordinateur</li>
-                            </ul>
+                            <h4>📖 Définition</h4>
+                            <p><strong>L'informatique</strong> est la science du traitement automatique de l'information à l'aide d'un ordinateur. Le mot "informatique" vient de "information" et "automatique".</p>
                         </div>
 
-                        <h3>🖥️ II - Les Deux Composantes Principales</h3>
+                        <h3>🔧 Les Deux Composantes Principales</h3>
+                        <p>Un système informatique se compose de :</p>
 
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🖥️</span>
+                                <h5>Partie Matérielle</h5>
+                                <p>Hardware - Les composants physiques qu'on peut voir et toucher</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">💿</span>
+                                <h5>Partie Logicielle</h5>
+                                <p>Software - Les programmes qui font fonctionner l'ordinateur</p>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Analogie</h4>
+                            <p>Imagine un orchestre :</p>
+                            <ul>
+                                <li><strong>Le matériel</strong> = les instruments de musique (piano, violon, trompette...)</li>
+                                <li><strong>Le logiciel</strong> = les partitions et le chef d'orchestre</li>
+                            </ul>
+                            <p>Sans instruments, on ne peut pas jouer. Sans partitions, les instruments ne servent à rien !</p>
+                        </div>
+
+                        <h3>📊 Schéma d'un Système Informatique</h3>
                         <div class="category-box">
-                            <h4>🔧 1. La Partie Matérielle (Hardware)</h4>
-                            <p>La partie matérielle comprend tous les composants physiques de l'ordinateur :</p>
+                            <h4>🏗️ Architecture Générale</h4>
                             <ul>
-                                <li><strong>L'unité centrale :</strong> Le "cerveau" de l'ordinateur qui contient le processeur et la mémoire</li>
-                                <li><strong>Les périphériques d'entrée :</strong> Clavier, souris, scanner, microphone</li>
-                                <li><strong>Les périphériques de sortie :</strong> Écran, imprimante, haut-parleurs</li>
-                                <li><strong>Les périphériques de stockage :</strong> Disque dur, clé USB, CD/DVD</li>
+                                <li><strong>Entrées</strong> → Clavier, souris, scanner, microphone</li>
+                                <li><strong>Traitement</strong> → Unité centrale (processeur)</li>
+                                <li><strong>Stockage</strong> → Disque dur, mémoire</li>
+                                <li><strong>Sorties</strong> → Écran, imprimante, haut-parleurs</li>
                             </ul>
                         </div>
-
-                        <div class="category-box">
-                            <h4>💾 2. La Partie Logicielle (Software)</h4>
-                            <p>La partie logicielle comprend tous les programmes :</p>
-                            <ul>
-                                <li><strong>Les programmes de base :</strong> Le système d'exploitation (Windows, Linux, macOS)</li>
-                                <li><strong>Les programmes d'application :</strong> Word, Excel, jeux, navigateurs web</li>
-                            </ul>
-                        </div>
-
-                        <h3>🔄 III - Fonctionnement d'un Système Informatique</h3>
-                        <p>Un système informatique fonctionne selon le schéma suivant :</p>
-                        <ol>
-                            <li><strong>Entrée :</strong> L'utilisateur entre des données (clavier, souris)</li>
-                            <li><strong>Traitement :</strong> L'ordinateur traite les données (processeur)</li>
-                            <li><strong>Sortie :</strong> L'ordinateur affiche le résultat (écran, imprimante)</li>
-                            <li><strong>Stockage :</strong> Les données peuvent être sauvegardées (disque dur)</li>
-                        </ol>
 
                         <div class="info">
                             <strong>💡 À retenir :</strong><br>
                             • Un système informatique = Matériel + Logiciel<br>
-                            • Le matériel (Hardware) est la partie physique qu'on peut toucher<br>
-                            • Le logiciel (Software) est la partie immatérielle (les programmes)<br>
-                            • Sans logiciel, le matériel ne peut pas fonctionner<br>
-                            • Sans matériel, le logiciel n'a pas de support pour s'exécuter
+                            • Le matériel (hardware) est la partie physique<br>
+                            • Le logiciel (software) est la partie programmée<br>
+                            • Les deux parties sont indispensables et complémentaires
                         </div>
 
-                        <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" disabled>← Précédent</button>
                             <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
@@ -592,92 +609,114 @@
                     </div>
                 </div>
 
-                <!-- TAB 2: LA PARTIE MATÉRIELLE -->
+                <!-- TAB 2: PARTIE MATÉRIELLE -->
                 <div id="tab2" class="tab-content">
                     <div class="container">
-                        <h2>🔧 La Partie Matérielle</h2>
+                        <h2>🖥️ La Partie Matérielle (Hardware)</h2>
                         <p class="subtitle">Les composants physiques de l'ordinateur</p>
 
-                        <h3>📌 I - L'Unité Centrale</h3>
-
-                        <div class="hardware-box">
-                            <h4>🖥️ Définition</h4>
-                            <p><strong>L'unité centrale</strong> est le boîtier qui contient les composants essentiels de l'ordinateur. C'est le "cœur" de l'ordinateur.</p>
-                        </div>
-
-                        <h4>Composants de l'Unité Centrale</h4>
-                        <ul>
-                            <li><strong>Le processeur (CPU) :</strong> Le "cerveau" qui exécute les instructions</li>
-                            <li><strong>La mémoire vive (RAM) :</strong> Mémoire temporaire pour le travail en cours</li>
-                            <li><strong>Le disque dur :</strong> Mémoire permanente pour stocker les fichiers</li>
-                            <li><strong>La carte mère :</strong> Circuit qui relie tous les composants</li>
-                            <li><strong>L'alimentation :</strong> Fournit l'électricité à tous les composants</li>
-                            <li><strong>La carte graphique :</strong> Gère l'affichage sur l'écran</li>
-                        </ul>
-
-                        <h3>🔌 II - Les Périphériques</h3>
-
+                        <h3>📌 Définition</h3>
                         <div class="definition-box">
-                            <h4>📖 Définition</h4>
-                            <p><strong>Un périphérique</strong> est un appareil externe connecté à l'unité centrale qui permet d'entrer ou de sortir des informations.</p>
+                            <h4>📖 Qu'est-ce que le matériel ?</h4>
+                            <p>Le <strong>matériel informatique</strong> (hardware en anglais) désigne l'ensemble des éléments physiques d'un ordinateur. Ce sont tous les composants qu'on peut voir et toucher.</p>
                         </div>
 
-                        <div class="hardware-box">
-                            <h4>⬇️ A. Les Périphériques d'Entrée</h4>
-                            <p>Ils permettent d'<strong>envoyer des informations</strong> vers l'ordinateur :</p>
-                            <ul>
-                                <li><strong>Le clavier :</strong> Pour taper du texte et des commandes</li>
-                                <li><strong>La souris :</strong> Pour pointer et cliquer</li>
-                                <li><strong>Le scanner :</strong> Pour numériser des documents</li>
-                                <li><strong>Le microphone :</strong> Pour enregistrer du son</li>
-                                <li><strong>La webcam :</strong> Pour capturer des images et vidéos</li>
-                                <li><strong>La manette de jeu :</strong> Pour jouer aux jeux vidéo</li>
-                            </ul>
+                        <h3>🔌 Les Périphériques</h3>
+                        <p>Les <strong>périphériques</strong> sont les appareils connectés à l'unité centrale. Ils sont classés en trois catégories :</p>
+
+                        <div class="category-box">
+                            <h4>📥 Périphériques d'Entrée</h4>
+                            <p>Ils permettent d'envoyer des informations vers l'ordinateur :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">⌨️</span>
+                                    <h5>Clavier</h5>
+                                    <p>Saisie de texte et commandes</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🖱️</span>
+                                    <h5>Souris</h5>
+                                    <p>Pointage et sélection</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📷</span>
+                                    <h5>Scanner</h5>
+                                    <p>Numérisation de documents</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎤</span>
+                                    <h5>Microphone</h5>
+                                    <p>Entrée audio</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📸</span>
+                                    <h5>Webcam</h5>
+                                    <p>Capture vidéo</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="hardware-box">
-                            <h4>⬆️ B. Les Périphériques de Sortie</h4>
-                            <p>Ils permettent à l'ordinateur de <strong>communiquer des informations</strong> à l'utilisateur :</p>
-                            <ul>
-                                <li><strong>L'écran (moniteur) :</strong> Pour afficher les informations</li>
-                                <li><strong>L'imprimante :</strong> Pour imprimer sur papier</li>
-                                <li><strong>Les haut-parleurs :</strong> Pour produire du son</li>
-                                <li><strong>Le casque audio :</strong> Pour écouter individuellement</li>
-                                <li><strong>Le vidéoprojecteur :</strong> Pour projeter sur un grand écran</li>
-                            </ul>
+                        <div class="category-box">
+                            <h4>📤 Périphériques de Sortie</h4>
+                            <p>Ils permettent de recevoir des informations de l'ordinateur :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">🖥️</span>
+                                    <h5>Écran</h5>
+                                    <p>Affichage visuel</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🖨️</span>
+                                    <h5>Imprimante</h5>
+                                    <p>Impression de documents</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🔊</span>
+                                    <h5>Haut-parleurs</h5>
+                                    <p>Sortie audio</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📽️</span>
+                                    <h5>Vidéoprojecteur</h5>
+                                    <p>Projection d'images</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="hardware-box">
-                            <h4>💽 C. Les Périphériques de Stockage</h4>
-                            <p>Ils permettent de <strong>sauvegarder des données</strong> de façon permanente :</p>
-                            <ul>
-                                <li><strong>Le disque dur externe :</strong> Grande capacité de stockage</li>
-                                <li><strong>La clé USB :</strong> Petite et portable</li>
-                                <li><strong>Le CD/DVD :</strong> Stockage optique</li>
-                                <li><strong>La carte mémoire :</strong> Pour appareils photo et téléphones</li>
-                            </ul>
-                        </div>
-
-                        <div class="hardware-box">
-                            <h4>↔️ D. Les Périphériques Mixtes (Entrée/Sortie)</h4>
-                            <p>Ils peuvent <strong>envoyer et recevoir</strong> des informations :</p>
-                            <ul>
-                                <li><strong>L'écran tactile :</strong> Affiche et reçoit des touches</li>
-                                <li><strong>La clé USB :</strong> Lecture et écriture de données</li>
-                                <li><strong>Le modem :</strong> Envoie et reçoit des données internet</li>
-                            </ul>
+                        <div class="category-box">
+                            <h4>↔️ Périphériques d'Entrée/Sortie</h4>
+                            <p>Ils peuvent à la fois envoyer et recevoir des informations :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">💾</span>
+                                    <h5>Clé USB</h5>
+                                    <p>Stockage portable</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">💿</span>
+                                    <h5>Graveur CD/DVD</h5>
+                                    <p>Lecture et écriture</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📱</span>
+                                    <h5>Écran tactile</h5>
+                                    <p>Affichage et saisie</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🌐</span>
+                                    <h5>Modem</h5>
+                                    <p>Connexion internet</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="info">
                             <strong>💡 À retenir :</strong><br>
-                            • L'unité centrale contient le processeur, la mémoire et le disque dur<br>
-                            • Les périphériques d'entrée envoient des informations à l'ordinateur<br>
-                            • Les périphériques de sortie reçoivent des informations de l'ordinateur<br>
-                            • Les périphériques de stockage conservent les données<br>
-                            • Certains périphériques sont mixtes (entrée et sortie)
+                            • Périphériques d'entrée → vers l'ordinateur (clavier, souris...)<br>
+                            • Périphériques de sortie → depuis l'ordinateur (écran, imprimante...)<br>
+                            • Périphériques mixtes → dans les deux sens (clé USB, écran tactile...)
                         </div>
 
-                        <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
                             <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
@@ -685,103 +724,102 @@
                     </div>
                 </div>
 
-                <!-- TAB 3: LA PARTIE LOGICIELLE -->
+                <!-- TAB 3: PARTIE LOGICIELLE -->
                 <div id="tab3" class="tab-content">
                     <div class="container">
-                        <h2>💾 La Partie Logicielle</h2>
+                        <h2>💿 La Partie Logicielle (Software)</h2>
                         <p class="subtitle">Les programmes qui font fonctionner l'ordinateur</p>
 
-                        <h3>📌 I - Définition</h3>
-
+                        <h3>📌 Définition</h3>
                         <div class="definition-box">
                             <h4>📖 Qu'est-ce qu'un logiciel ?</h4>
-                            <p><strong>Un logiciel</strong> (ou software) est un ensemble de programmes qui permettent à l'ordinateur d'effectuer des tâches spécifiques.</p>
-                            <p>Sans logiciel, l'ordinateur ne peut rien faire !</p>
+                            <p>Un <strong>logiciel</strong> (software en anglais) est un ensemble de programmes qui permettent à l'ordinateur de fonctionner et d'exécuter des tâches. On distingue deux types de logiciels.</p>
                         </div>
 
-                        <h3>🖥️ II - Les Programmes de Base (Système d'Exploitation)</h3>
-
-                        <div class="software-box">
-                            <h4>⚙️ Le Système d'Exploitation (OS)</h4>
-                            <p><strong>Le système d'exploitation</strong> est le programme principal qui fait fonctionner l'ordinateur. Il gère le matériel et permet d'utiliser les autres programmes.</p>
-                            
-                            <h4>Rôles du Système d'Exploitation :</h4>
-                            <ul>
-                                <li><strong>Gérer le matériel :</strong> Fait fonctionner le clavier, la souris, l'écran</li>
-                                <li><strong>Gérer les fichiers :</strong> Permet de créer, copier, supprimer des fichiers</li>
-                                <li><strong>Exécuter les programmes :</strong> Permet de lancer les applications</li>
-                                <li><strong>Interface utilisateur :</strong> Affiche le bureau, les icônes, les fenêtres</li>
-                            </ul>
-                            
-                            <h4>Exemples de Systèmes d'Exploitation :</h4>
-                            <ul>
-                                <li><strong>Windows :</strong> Le plus utilisé sur les PC (Microsoft)</li>
-                                <li><strong>macOS :</strong> Pour les ordinateurs Apple (Mac)</li>
-                                <li><strong>Linux :</strong> Système libre et gratuit</li>
-                                <li><strong>Android :</strong> Pour les téléphones et tablettes</li>
-                                <li><strong>iOS :</strong> Pour les iPhone et iPad (Apple)</li>
-                            </ul>
-                        </div>
-
-                        <h3>📱 III - Les Programmes d'Application (Applicatifs)</h3>
-
-                        <div class="software-box">
-                            <h4>📊 Définition</h4>
-                            <p><strong>Les programmes d'application</strong> (ou logiciels applicatifs) sont des programmes que l'utilisateur utilise pour effectuer des tâches spécifiques.</p>
-                        </div>
-
+                        <h3>🔧 Les Programmes de Base (Systèmes d'Exploitation)</h3>
                         <div class="category-box">
-                            <h4>📝 A. Logiciels de Bureautique</h4>
+                            <h4>💻 Le Système d'Exploitation</h4>
+                            <p>Le <strong>système d'exploitation</strong> (OS - Operating System) est le logiciel principal qui gère l'ordinateur. Il fait le lien entre le matériel et les autres logiciels.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">🪟</span>
+                                    <h5>Windows</h5>
+                                    <p>Microsoft (le plus utilisé)</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🍎</span>
+                                    <h5>macOS</h5>
+                                    <p>Apple (pour Mac)</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🐧</span>
+                                    <h5>Linux</h5>
+                                    <p>Gratuit et libre</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📱</span>
+                                    <h5>Android</h5>
+                                    <p>Pour smartphones</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Rôles du système d'exploitation</h4>
                             <ul>
-                                <li><strong>Traitement de texte :</strong> Microsoft Word, LibreOffice Writer (pour écrire des documents)</li>
-                                <li><strong>Tableur :</strong> Microsoft Excel, LibreOffice Calc (pour les calculs et tableaux)</li>
-                                <li><strong>Présentation :</strong> Microsoft PowerPoint, LibreOffice Impress (pour les diaporamas)</li>
+                                <li><strong>Gestion des fichiers :</strong> Créer, copier, supprimer des fichiers</li>
+                                <li><strong>Gestion de la mémoire :</strong> Répartir la mémoire entre les programmes</li>
+                                <li><strong>Gestion des périphériques :</strong> Faire fonctionner les appareils connectés</li>
+                                <li><strong>Interface utilisateur :</strong> Permettre à l'utilisateur d'interagir avec l'ordinateur</li>
                             </ul>
                         </div>
 
+                        <h3>📦 Les Programmes d'Application (Applicatifs)</h3>
                         <div class="category-box">
-                            <h4>🌐 B. Logiciels de Navigation Internet</h4>
-                            <ul>
-                                <li><strong>Navigateurs web :</strong> Google Chrome, Mozilla Firefox, Microsoft Edge, Safari</li>
-                                <li><strong>Messagerie :</strong> Gmail, Outlook, Yahoo Mail</li>
-                            </ul>
-                        </div>
-
-                        <div class="category-box">
-                            <h4>🎨 C. Logiciels de Création</h4>
-                            <ul>
-                                <li><strong>Dessin et retouche photo :</strong> Paint, Photoshop, GIMP</li>
-                                <li><strong>Montage vidéo :</strong> Windows Movie Maker, iMovie</li>
-                                <li><strong>Musique :</strong> Audacity, GarageBand</li>
-                            </ul>
-                        </div>
-
-                        <div class="category-box">
-                            <h4>🎮 D. Logiciels de Divertissement</h4>
-                            <ul>
-                                <li><strong>Jeux vidéo :</strong> Minecraft, Fortnite, etc.</li>
-                                <li><strong>Lecteurs multimédia :</strong> VLC, Windows Media Player</li>
-                            </ul>
-                        </div>
-
-                        <div class="category-box">
-                            <h4>🛡️ E. Logiciels de Sécurité</h4>
-                            <ul>
-                                <li><strong>Antivirus :</strong> Avast, Norton, Kaspersky</li>
-                                <li><strong>Pare-feu (Firewall) :</strong> Protection contre les intrusions</li>
-                            </ul>
+                            <h4>🛠️ Les Applications</h4>
+                            <p>Les <strong>applications</strong> (ou logiciels applicatifs) sont des programmes qui permettent d'effectuer des tâches spécifiques. Ils fonctionnent grâce au système d'exploitation.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">📝</span>
+                                    <h5>Traitement de texte</h5>
+                                    <p>Word, LibreOffice Writer</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📊</span>
+                                    <h5>Tableur</h5>
+                                    <p>Excel, LibreOffice Calc</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🌐</span>
+                                    <h5>Navigateur Web</h5>
+                                    <p>Chrome, Firefox, Edge</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎮</span>
+                                    <h5>Jeux</h5>
+                                    <p>Applications ludiques</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎨</span>
+                                    <h5>Dessin/Photo</h5>
+                                    <p>Paint, Photoshop</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📧</span>
+                                    <h5>Messagerie</h5>
+                                    <p>Outlook, Gmail</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="info">
                             <strong>💡 À retenir :</strong><br>
-                            • Le système d'exploitation est le programme de base indispensable<br>
-                            • Windows, macOS et Linux sont les principaux systèmes d'exploitation<br>
-                            • Les logiciels applicatifs permettent d'effectuer des tâches précises<br>
-                            • Il existe des logiciels gratuits et des logiciels payants<br>
-                            • Les antivirus protègent l'ordinateur contre les virus
+                            • Logiciels de base = Systèmes d'exploitation (Windows, macOS, Linux...)<br>
+                            • Logiciels d'application = Programmes pour des tâches spécifiques<br>
+                            • Le système d'exploitation est indispensable pour faire fonctionner les applications<br>
+                            • Sans logiciel, le matériel ne peut rien faire
                         </div>
 
-                        <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
                             <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
@@ -789,125 +827,123 @@
                     </div>
                 </div>
 
-                <!-- TAB 4: CONSTITUANTS D'UN MICRO-ORDINATEUR -->
+                <!-- TAB 4: MICRO-ORDINATEUR -->
                 <div id="tab4" class="tab-content">
                     <div class="container">
-                        <h2>🖥️ Les Constituants d'un Micro-ordinateur</h2>
-                        <p class="subtitle">Découvrir les éléments qui composent un ordinateur personnel</p>
+                        <h2>🖥️ Les Constituants d'un Micro-Ordinateur</h2>
+                        <p class="subtitle">L'intérieur de l'unité centrale</p>
 
-                        <h3>📌 I - Définition</h3>
-
+                        <h3>📌 L'Unité Centrale</h3>
                         <div class="definition-box">
-                            <h4>📖 Qu'est-ce qu'un micro-ordinateur ?</h4>
-                            <p><strong>Un micro-ordinateur</strong> (ou ordinateur personnel) est un ordinateur de petite taille destiné à un usage individuel. Il peut être fixe (ordinateur de bureau) ou portable (laptop).</p>
+                            <h4>📖 Définition</h4>
+                            <p>L'<strong>unité centrale</strong> est le boîtier qui contient les composants principaux de l'ordinateur. C'est le "cerveau" de la machine où sont effectués tous les calculs et traitements.</p>
                         </div>
 
-                        <h3>🖥️ II - Les Types de Micro-ordinateurs</h3>
+                        <h3>🔧 Les Composants Internes</h3>
 
                         <div class="category-box">
-                            <h4>🏠 A. L'Ordinateur de Bureau (Desktop)</h4>
+                            <h4>🧠 Le Processeur (CPU)</h4>
+                            <p>Le <strong>processeur</strong> (CPU - Central Processing Unit) est le "cerveau" de l'ordinateur. Il exécute les instructions des programmes et effectue les calculs.</p>
                             <ul>
-                                <li>Composé d'une unité centrale séparée</li>
-                                <li>Écran, clavier et souris externes</li>
-                                <li>Plus puissant et évolutif</li>
-                                <li>Reste à un endroit fixe</li>
-                            </ul>
-                        </div>
-
-                        <div class="category-box">
-                            <h4>💼 B. L'Ordinateur Portable (Laptop)</h4>
-                            <ul>
-                                <li>Tout intégré dans un seul boîtier</li>
-                                <li>Écran, clavier et touchpad intégrés</li>
-                                <li>Fonctionne sur batterie</li>
-                                <li>Transportable facilement</li>
-                            </ul>
-                        </div>
-
-                        <h3>⚙️ III - Les Constituants Internes</h3>
-
-                        <div class="hardware-box">
-                            <h4>🧠 A. Le Processeur (CPU - Central Processing Unit)</h4>
-                            <p>C'est le "cerveau" de l'ordinateur qui exécute toutes les instructions.</p>
-                            <ul>
-                                <li><strong>Rôle :</strong> Effectue les calculs et traite les données</li>
                                 <li><strong>Vitesse :</strong> Mesurée en GHz (gigahertz)</li>
-                                <li><strong>Exemples :</strong> Intel Core, AMD Ryzen</li>
+                                <li><strong>Marques connues :</strong> Intel, AMD</li>
+                                <li><strong>Rôle :</strong> Traiter les données et exécuter les programmes</li>
                             </ul>
                         </div>
-
-                        <div class="hardware-box">
-                            <h4>📊 B. La Mémoire Vive (RAM - Random Access Memory)</h4>
-                            <p>Mémoire temporaire utilisée pendant le fonctionnement de l'ordinateur.</p>
-                            <ul>
-                                <li><strong>Rôle :</strong> Stocke temporairement les données en cours d'utilisation</li>
-                                <li><strong>Caractéristique :</strong> Les données s'effacent quand on éteint l'ordinateur</li>
-                                <li><strong>Capacité :</strong> Mesurée en Go (gigaoctets) - ex: 4 Go, 8 Go, 16 Go</li>
-                            </ul>
-                        </div>
-
-                        <div class="hardware-box">
-                            <h4>💽 C. Le Disque Dur (HDD ou SSD)</h4>
-                            <p>Mémoire permanente pour stocker les fichiers.</p>
-                            <ul>
-                                <li><strong>HDD (Hard Disk Drive) :</strong> Disque dur mécanique, grande capacité, moins cher</li>
-                                <li><strong>SSD (Solid State Drive) :</strong> Plus rapide, plus résistant, plus cher</li>
-                                <li><strong>Capacité :</strong> Mesurée en Go ou To (téraoctets) - ex: 500 Go, 1 To</li>
-                            </ul>
-                        </div>
-
-                        <div class="hardware-box">
-                            <h4>🔌 D. La Carte Mère (Motherboard)</h4>
-                            <p>Circuit imprimé principal qui relie tous les composants.</p>
-                            <ul>
-                                <li><strong>Rôle :</strong> Permet la communication entre tous les composants</li>
-                                <li><strong>Ports :</strong> USB, HDMI, Ethernet, audio</li>
-                            </ul>
-                        </div>
-
-                        <div class="hardware-box">
-                            <h4>🎮 E. La Carte Graphique (GPU)</h4>
-                            <p>Gère l'affichage des images sur l'écran.</p>
-                            <ul>
-                                <li><strong>Intégrée :</strong> Dans le processeur (pour usage basique)</li>
-                                <li><strong>Dédiée :</strong> Carte séparée (pour jeux et graphisme)</li>
-                                <li><strong>Exemples :</strong> NVIDIA GeForce, AMD Radeon</li>
-                            </ul>
-                        </div>
-
-                        <div class="hardware-box">
-                            <h4>⚡ F. L'Alimentation (Power Supply)</h4>
-                            <p>Fournit l'électricité à tous les composants.</p>
-                            <ul>
-                                <li><strong>Rôle :</strong> Convertit le courant électrique pour l'ordinateur</li>
-                                <li><strong>Puissance :</strong> Mesurée en Watts (W)</li>
-                            </ul>
-                        </div>
-
-                        <h3>🔢 IV - Les Unités de Mesure</h3>
 
                         <div class="category-box">
-                            <h4>📏 Capacité de Stockage</h4>
+                            <h4>💾 La Mémoire RAM</h4>
+                            <p>La <strong>mémoire vive</strong> (RAM - Random Access Memory) est une mémoire temporaire qui stocke les données en cours d'utilisation.</p>
                             <ul>
-                                <li><strong>1 octet (o) :</strong> 8 bits (un caractère)</li>
-                                <li><strong>1 Ko (kilooctet) :</strong> 1 024 octets</li>
-                                <li><strong>1 Mo (mégaoctet) :</strong> 1 024 Ko (environ une photo)</li>
-                                <li><strong>1 Go (gigaoctet) :</strong> 1 024 Mo (environ un film)</li>
-                                <li><strong>1 To (téraoctet) :</strong> 1 024 Go (beaucoup de données !)</li>
+                                <li><strong>Caractéristique :</strong> Rapide mais volatile (s'efface à l'arrêt)</li>
+                                <li><strong>Capacité :</strong> Mesurée en Go (gigaoctets)</li>
+                                <li><strong>Rôle :</strong> Stocker temporairement les données des programmes actifs</li>
                             </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💿 Le Disque Dur (HDD/SSD)</h4>
+                            <p>Le <strong>disque dur</strong> est une mémoire de stockage permanente qui conserve les données même quand l'ordinateur est éteint.</p>
+                            <ul>
+                                <li><strong>HDD :</strong> Disque dur mécanique (moins cher, plus lent)</li>
+                                <li><strong>SSD :</strong> Disque électronique (plus rapide, plus cher)</li>
+                                <li><strong>Capacité :</strong> Mesurée en Go ou To (téraoctets)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔲 La Carte Mère</h4>
+                            <p>La <strong>carte mère</strong> est le circuit imprimé principal qui relie tous les composants entre eux.</p>
+                            <ul>
+                                <li>Accueille le processeur et la mémoire RAM</li>
+                                <li>Connecte les périphériques via les ports (USB, HDMI...)</li>
+                                <li>Contient le BIOS qui démarre l'ordinateur</li>
+                            </ul>
+                        </div>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🔌</span>
+                                <h5>Alimentation</h5>
+                                <p>Fournit l'électricité</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🎮</span>
+                                <h5>Carte Graphique</h5>
+                                <p>Affichage vidéo</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🔊</span>
+                                <h5>Carte Son</h5>
+                                <p>Gestion audio</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">❄️</span>
+                                <h5>Ventilateur</h5>
+                                <p>Refroidissement</p>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>📊 Tableau Récapitulatif</h4>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                                <tr style="background: #FF69B4; color: white;">
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Composant</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Rôle</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Unité</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Processeur</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Calculs et traitements</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">GHz</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">RAM</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Mémoire temporaire</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Go</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Disque dur</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Stockage permanent</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Go/To</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Carte mère</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Connexion des composants</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">-</td>
+                                </tr>
+                            </table>
                         </div>
 
                         <div class="info">
                             <strong>💡 À retenir :</strong><br>
-                            • Le processeur (CPU) est le cerveau de l'ordinateur<br>
-                            • La RAM est la mémoire temporaire (s'efface à l'extinction)<br>
-                            • Le disque dur est la mémoire permanente (conserve les fichiers)<br>
-                            • La carte mère relie tous les composants<br>
-                            • Le SSD est plus rapide que le HDD<br>
-                            • 1 Go = 1 024 Mo
+                            • Le processeur (CPU) est le "cerveau" qui fait les calculs<br>
+                            • La RAM est la mémoire rapide mais temporaire<br>
+                            • Le disque dur stocke les données de façon permanente<br>
+                            • La carte mère relie tous les composants ensemble<br>
+                            • Plus la RAM et le processeur sont puissants, plus l'ordinateur est rapide
                         </div>
 
-                        <!-- Navigation -->
                         <div class="tab-navigation">
                             <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
                             <button class="nav-button next" disabled>Suivant →</button>
@@ -921,21 +957,21 @@
         <div class="quiz-area">
             <div class="quiz-section">
                 <h2>📝 Quiz - TICE</h2>
-                <p>Teste tes connaissances !</p>
+                <p>Testez vos connaissances !</p>
 
                 <!-- Question 1 -->
                 <div class="quiz-question">
                     <span class="question-number">1</span>
-                    <span class="question-text">Quelles sont les deux composantes d'un système informatique ?</span>
+                    <span class="question-text">Un système informatique est composé de :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="a"> Clavier et Souris
+                            <input type="radio" name="q1" value="a"> Matériel uniquement
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="b"> Écran et Imprimante
+                            <input type="radio" name="q1" value="b"> Logiciel uniquement
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="c"> Matériel (Hardware) et Logiciel (Software)
+                            <input type="radio" name="q1" value="c"> Matériel et Logiciel
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q1"></div>
@@ -944,16 +980,16 @@
                 <!-- Question 2 -->
                 <div class="quiz-question">
                     <span class="question-number">2</span>
-                    <span class="question-text">Qu'est-ce qu'un périphérique d'entrée ?</span>
+                    <span class="question-text">Le clavier est un périphérique de :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="a"> Le disque dur
+                            <input type="radio" name="q2" value="a"> Entrée
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="b"> Un appareil qui envoie des informations à l'ordinateur
+                            <input type="radio" name="q2" value="b"> Sortie
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="c"> Un appareil qui reçoit des informations de l'ordinateur
+                            <input type="radio" name="q2" value="c"> Entrée/Sortie
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q2"></div>
@@ -962,16 +998,16 @@
                 <!-- Question 3 -->
                 <div class="quiz-question">
                     <span class="question-number">3</span>
-                    <span class="question-text">Quel est le rôle du processeur (CPU) ?</span>
+                    <span class="question-text">Windows est un exemple de :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="a"> Stocker les fichiers
+                            <input type="radio" name="q3" value="a"> Périphérique
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="b"> Exécuter les instructions et effectuer les calculs
+                            <input type="radio" name="q3" value="b"> Système d'exploitation
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="c"> Afficher les images sur l'écran
+                            <input type="radio" name="q3" value="c"> Processeur
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q3"></div>
@@ -980,16 +1016,16 @@
                 <!-- Question 4 -->
                 <div class="quiz-question">
                     <span class="question-number">4</span>
-                    <span class="question-text">Qu'est-ce que le système d'exploitation ?</span>
+                    <span class="question-text">Le "cerveau" de l'ordinateur s'appelle :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="a"> Un jeu vidéo
+                            <input type="radio" name="q4" value="a"> La RAM
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="b"> L'écran de l'ordinateur
+                            <input type="radio" name="q4" value="b"> Le processeur (CPU)
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="c"> Le programme principal qui fait fonctionner l'ordinateur
+                            <input type="radio" name="q4" value="c"> Le disque dur
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q4"></div>
@@ -998,16 +1034,16 @@
                 <!-- Question 5 -->
                 <div class="quiz-question">
                     <span class="question-number">5</span>
-                    <span class="question-text">Quelle est la différence entre RAM et disque dur ?</span>
+                    <span class="question-text">Quelle mémoire s'efface quand on éteint l'ordinateur ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="a"> Ils font la même chose
+                            <input type="radio" name="q5" value="a"> Le disque dur
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="b"> La RAM est un périphérique externe
+                            <input type="radio" name="q5" value="b"> La RAM
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="c"> La RAM est temporaire, le disque dur est permanent
+                            <input type="radio" name="q5" value="c"> La clé USB
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q5"></div>
@@ -1016,16 +1052,16 @@
                 <!-- Question 6 -->
                 <div class="quiz-question">
                     <span class="question-number">6</span>
-                    <span class="question-text">Lequel est un périphérique de sortie ?</span>
+                    <span class="question-text">L'imprimante est un périphérique de :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="a"> L'imprimante
+                            <input type="radio" name="q6" value="a"> Entrée
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="b"> Le clavier
+                            <input type="radio" name="q6" value="b"> Sortie
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="c"> La souris
+                            <input type="radio" name="q6" value="c"> Stockage
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q6"></div>
@@ -1034,16 +1070,16 @@
                 <!-- Question 7 -->
                 <div class="quiz-question">
                     <span class="question-number">7</span>
-                    <span class="question-text">Quel exemple est un logiciel d'application ?</span>
+                    <span class="question-text">La carte mère sert à :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="a"> Microsoft Word
+                            <input type="radio" name="q7" value="a"> Stocker les fichiers
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="b"> Windows
+                            <input type="radio" name="q7" value="b"> Afficher l'image
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="c"> Le processeur
+                            <input type="radio" name="q7" value="c"> Relier tous les composants
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q7"></div>
@@ -1052,16 +1088,16 @@
                 <!-- Question 8 -->
                 <div class="quiz-question">
                     <span class="question-number">8</span>
-                    <span class="question-text">Que signifie 1 Go (gigaoctet) ?</span>
+                    <span class="question-text">Word est un exemple de :</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="a"> 100 Mo
+                            <input type="radio" name="q8" value="a"> Système d'exploitation
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="b"> 1 024 Mo (mégaoctets)
+                            <input type="radio" name="q8" value="b"> Logiciel d'application
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="c"> 1 000 Ko
+                            <input type="radio" name="q8" value="c"> Périphérique
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q8"></div>
@@ -1075,16 +1111,16 @@
     </div>
 
     <script>
-        // Quiz answers and validation
+        // Quiz answers
         const quizAnswers = {
             q1: 'c', // Matériel et Logiciel
-            q2: 'b', // Envoie des informations
-            q3: 'b', // Exécuter les instructions
-            q4: 'c', // Programme principal
-            q5: 'c', // RAM temporaire, disque dur permanent
-            q6: 'a', // L'imprimante (sortie)
-            q7: 'a', // Microsoft Word (application)
-            q8: 'b'  // 1 024 Mo
+            q2: 'a', // Entrée
+            q3: 'b', // Système d'exploitation
+            q4: 'b', // Processeur
+            q5: 'b', // RAM
+            q6: 'b', // Sortie
+            q7: 'c', // Relier tous les composants
+            q8: 'b'  // Logiciel d'application
         };
 
         function submitQuiz() {
@@ -1092,7 +1128,6 @@
             let totalQuestions = Object.keys(quizAnswers).length;
             let answers = [];
 
-            // Check each answer
             for (let i = 1; i <= totalQuestions; i++) {
                 const questionName = 'q' + i;
                 const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
@@ -1122,7 +1157,6 @@
                 }
             }
 
-            // Display results
             const resultsDiv = document.getElementById('quiz-results');
             const percentage = Math.round((score / totalQuestions) * 100);
 
@@ -1131,24 +1165,21 @@
             `;
 
             if (percentage >= 80) {
-                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu es un pro de l\'informatique ! 🌟</span>';
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu maîtrises l\'informatique ! 🌟</span>';
             } else if (percentage >= 60) {
-                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue à apprendre ! 💪</span>';
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
             } else {
                 resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
             }
 
             resultsDiv.innerHTML = resultMessage;
             resultsDiv.style.display = 'block';
-
-            // Scroll to results
             resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-            // Envoyer les résultats par email
-            sendQuizResults('TICE - Technologies', score, totalQuestions, percentage, answers);
+            // Send results by email
+            sendQuizResults('TICE - Technologies de l\'Information', score, totalQuestions, percentage, answers);
         }
 
-        // Fonction pour envoyer les résultats par email
         function sendQuizResults(quizName, score, total, percentage, answers) {
             const templateParams = {
                 to_email: 'jhouedanou@gmail.com',
@@ -1186,7 +1217,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // Navigate to a specific tab programmatically
         function navigateToTab(tabName) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
@@ -1196,7 +1226,6 @@
 
             document.getElementById(tabName).classList.add('active');
             
-            // Find and activate the corresponding tab button
             const targetButton = Array.from(buttons).find(button => 
                 button.getAttribute('onclick').includes(tabName)
             );
@@ -1204,7 +1233,6 @@
                 targetButton.classList.add('active');
             }
 
-            // Scroll to top of content
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
