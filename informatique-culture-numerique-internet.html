@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Numérique - Le réseau Internet</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🌐';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💻';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #FF69B4;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #FF69B4;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #C71585;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #FFFFFF;
+            border: 3px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .component-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .component-card h5 {
+            color: #C71585;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .component-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="tice.html" class="btn-back">← Retour</a>
+        <h1>🌐 Le Réseau Internet 💻</h1>
+        <p>Culture Numérique - Cours du 17 avril</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Introduction</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Les Services</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Sécurité</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Quiz</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: INTRODUCTION -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>🌐 Introduction à Internet</h2>
+                        <p class="subtitle">Découvre le plus grand réseau du monde</p>
+
+                        <h3>📌 Qu'est-ce qu'Internet ?</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Internet</strong> est un réseau mondial qui interconnecte des millions d'ordinateurs à travers le monde. Grâce à lui, on peut échanger des informations (textes, images, vidéos, sons) entre des appareils situés partout sur la planète, de la Côte d'Ivoire au Japon !</p>
+                        </div>
+
+                        <p>Le mot "Internet" vient de l'anglais <strong>"INTERconnected NETworks"</strong>, ce qui veut dire "réseaux interconnectés". C'est donc un immense réseau formé de milliers de petits réseaux reliés entre eux.</p>
+
+                        <h3>📜 Un peu d'histoire</h3>
+                        <div class="category-box">
+                            <h4>🕰️ Les grandes étapes</h4>
+                            <ul>
+                                <li><strong>Années 1960 :</strong> Naissance d'<strong>ARPANET</strong> aux États-Unis. C'était un réseau militaire créé par l'armée américaine pour partager des informations entre ordinateurs distants.</li>
+                                <li><strong>Années 1980 :</strong> Le réseau s'ouvre aux universités et aux chercheurs dans le monde entier.</li>
+                                <li><strong>1989 :</strong> <strong>Tim Berners-Lee</strong>, un chercheur britannique, invente le <strong>World Wide Web (WWW)</strong> au <strong>CERN</strong> (Suisse). C'est le système des pages web que l'on consulte avec un navigateur.</li>
+                                <li><strong>Années 1990-2000 :</strong> Internet se développe dans le monde entier et devient accessible au grand public.</li>
+                            </ul>
+                        </div>
+
+                        <h3>🔎 Internet ou Web : quelle différence ?</h3>
+                        <p>Beaucoup de personnes confondent <strong>Internet</strong> et le <strong>Web</strong>. Pourtant, ce sont deux choses différentes !</p>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🛣️</span>
+                                <h5>Internet</h5>
+                                <p>C'est l'<strong>infrastructure</strong>, le réseau de câbles, satellites et antennes qui relie les ordinateurs.</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">📄</span>
+                                <h5>Le Web</h5>
+                                <p>C'est un <strong>service</strong> : les pages web (sites) qui utilisent Internet pour être consultées.</p>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Analogie simple</h4>
+                            <p>Imagine les routes et les voitures :</p>
+                            <ul>
+                                <li><strong>Internet</strong> = le réseau de routes (l'autoroute)</li>
+                                <li><strong>Le Web</strong> = les voitures qui circulent sur les routes</li>
+                            </ul>
+                            <p>Le Web n'est qu'un des services qui utilisent Internet. Il en existe d'autres (email, messagerie, streaming...).</p>
+                        </div>
+
+                        <h3>⚙️ Comment fonctionne Internet ?</h3>
+                        <div class="category-box">
+                            <h4>🔧 Les éléments essentiels</h4>
+                            <ul>
+                                <li><strong>Les serveurs :</strong> de gros ordinateurs puissants qui stockent les sites web, les vidéos, les emails...</li>
+                                <li><strong>Les clients :</strong> les appareils des utilisateurs (ordinateur, smartphone, tablette) qui demandent des informations aux serveurs.</li>
+                                <li><strong>Les protocoles (TCP/IP) :</strong> les règles qui permettent aux machines de communiquer entre elles, comme une langue commune.</li>
+                                <li><strong>Les adresses IP :</strong> chaque appareil connecté possède une adresse unique (ex : 192.168.1.10), comme une adresse postale.</li>
+                                <li><strong>Les FAI (Fournisseurs d'Accès Internet) :</strong> en Côte d'Ivoire : Orange, MTN, Moov, Canal Box... Ce sont les sociétés qui nous vendent la connexion Internet.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Internet est un <strong>réseau mondial</strong> d'ordinateurs interconnectés.<br>
+                            • Il est né dans les <strong>années 1960</strong> avec ARPANET.<br>
+                            • Le <strong>Web</strong> a été inventé par <strong>Tim Berners-Lee en 1989</strong>.<br>
+                            • Internet = infrastructure ; Web = service de pages web.<br>
+                            • Pour se connecter, il faut un <strong>FAI</strong> (Orange, MTN, Moov...).
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LES SERVICES -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>📡 Les Services d'Internet</h2>
+                        <p class="subtitle">Tout ce qu'Internet permet de faire</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>Internet offre de nombreux <strong>services</strong> qui facilitent notre vie quotidienne : s'informer, communiquer, se divertir, étudier, travailler... Voyons les principaux !</p>
+
+                        <div class="category-box">
+                            <h4>🌐 Le World Wide Web (WWW)</h4>
+                            <p>C'est le service qui permet de consulter des <strong>pages web</strong> grâce à un <strong>navigateur</strong>.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">🟢</span>
+                                    <h5>Chrome</h5>
+                                    <p>Navigateur de Google</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🦊</span>
+                                    <h5>Firefox</h5>
+                                    <p>Navigateur libre de Mozilla</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🔷</span>
+                                    <h5>Edge</h5>
+                                    <p>Navigateur de Microsoft</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📧 Le Courrier Électronique (Email)</h4>
+                            <p>L'<strong>email</strong> permet d'envoyer et de recevoir des messages écrits (avec pièces jointes) à travers le monde, en quelques secondes.</p>
+                            <ul>
+                                <li><strong>Gmail</strong> (Google)</li>
+                                <li><strong>Yahoo Mail</strong></li>
+                                <li><strong>Outlook</strong> (Microsoft)</li>
+                            </ul>
+                            <p>Une adresse email ressemble à : <em>monnom@gmail.com</em></p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💬 La Messagerie Instantanée</h4>
+                            <p>Elle permet de <strong>discuter en temps réel</strong> avec ses amis et sa famille, d'envoyer des photos, des vidéos ou de passer des appels.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">💚</span>
+                                    <h5>WhatsApp</h5>
+                                    <p>Très utilisée en Côte d'Ivoire</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">💙</span>
+                                    <h5>Messenger</h5>
+                                    <p>La messagerie de Facebook</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>👥 Les Réseaux Sociaux</h4>
+                            <p>Ils permettent de partager sa vie, ses photos et ses idées avec d'autres personnes.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">📘</span>
+                                    <h5>Facebook</h5>
+                                    <p>Le plus ancien</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">📸</span>
+                                    <h5>Instagram</h5>
+                                    <p>Photos et vidéos</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎵</span>
+                                    <h5>TikTok</h5>
+                                    <p>Courtes vidéos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🎬 Le Streaming</h4>
+                            <p>Le <strong>streaming</strong> permet de regarder des vidéos ou d'écouter de la musique <strong>en direct</strong>, sans télécharger.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">▶️</span>
+                                    <h5>YouTube</h5>
+                                    <p>Vidéos en ligne</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎥</span>
+                                    <h5>Netflix</h5>
+                                    <p>Films et séries</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎧</span>
+                                    <h5>Spotify</h5>
+                                    <p>Musique en streaming</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>☁️ Le Cloud (Nuage)</h4>
+                            <p>Le <strong>cloud</strong> permet de <strong>stocker des fichiers en ligne</strong> et d'y accéder depuis n'importe quel appareil connecté.</p>
+                            <ul>
+                                <li><strong>Google Drive</strong></li>
+                                <li><strong>Dropbox</strong></li>
+                                <li><strong>OneDrive</strong> (Microsoft)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔍 Les Moteurs de Recherche</h4>
+                            <p>Ils aident à <strong>trouver des informations</strong> sur le Web en tapant des mots-clés.</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">🔎</span>
+                                    <h5>Google</h5>
+                                    <p>Le plus utilisé au monde</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🅱️</span>
+                                    <h5>Bing</h5>
+                                    <p>Le moteur de Microsoft</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Internet propose de <strong>nombreux services</strong> : Web, email, messagerie, réseaux sociaux, streaming, cloud...<br>
+                            • Chaque service répond à un <strong>besoin différent</strong> (communiquer, se divertir, stocker, rechercher).<br>
+                            • Les <strong>moteurs de recherche</strong> nous aident à trouver l'information.
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SÉCURITÉ -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🛡️ Sécurité et Bonne Utilisation</h2>
+                        <p class="subtitle">Protéger sa vie et rester en sécurité sur Internet</p>
+
+                        <h3>📌 Internet : un outil formidable mais risqué</h3>
+                        <p>Internet est très utile, mais il comporte aussi des <strong>dangers</strong>. Il est donc essentiel de connaître les bonnes règles pour l'utiliser en toute sécurité.</p>
+
+                        <h3>⚠️ Les principaux dangers</h3>
+
+                        <div class="category-box">
+                            <h4>🚨 Attention à ces risques</h4>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">😢</span>
+                                    <h5>Cyberharcèlement</h5>
+                                    <p>Insultes, moqueries ou menaces en ligne</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">💸</span>
+                                    <h5>Arnaques</h5>
+                                    <p>Faux messages qui réclament de l'argent</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🦠</span>
+                                    <h5>Virus</h5>
+                                    <p>Programmes qui endommagent l'ordinateur</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🕵️</span>
+                                    <h5>Vol de données</h5>
+                                    <p>Mots de passe, photos, infos personnelles</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🚫</span>
+                                    <h5>Contenus inappropriés</h5>
+                                    <p>Violence, contenus choquants, fausses infos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>✅ Les règles de bonne utilisation</h3>
+
+                        <div class="example-box">
+                            <h4>🔐 Protège tes informations personnelles</h4>
+                            <ul>
+                                <li>Ne partage <strong>jamais</strong> ton nom complet, ton adresse, ton numéro de téléphone ou le nom de ton école avec des inconnus.</li>
+                                <li>Ne publie pas de photos personnelles sans réfléchir : une fois en ligne, elles peuvent y rester à vie.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>🔑 Utilise des mots de passe forts</h4>
+                            <ul>
+                                <li>Un bon mot de passe a au moins <strong>8 caractères</strong>, avec des lettres, des chiffres et des symboles.</li>
+                                <li>Utilise un <strong>mot de passe différent</strong> pour chaque compte.</li>
+                                <li>Ne le partage jamais, même avec tes amis.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>👥 Fais attention aux inconnus</h4>
+                            <ul>
+                                <li><strong>N'accepte pas</strong> les demandes d'amis ou les messages d'inconnus sur les réseaux sociaux.</li>
+                                <li>Ne donne jamais rendez-vous à une personne rencontrée seulement en ligne.</li>
+                                <li>Parle à un adulte de confiance si quelque chose te met mal à l'aise.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>🔎 Vérifie les sources d'information</h4>
+                            <ul>
+                                <li>Tout ce qui est écrit sur Internet n'est pas vrai ! Méfie-toi des <strong>fake news</strong> (fausses informations).</li>
+                                <li>Compare plusieurs sites avant de croire une information.</li>
+                                <li>Privilégie les sites sérieux (journaux, écoles, institutions).</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>❤️ Respecte les autres</h4>
+                            <ul>
+                                <li>Ne publie pas de photos ou d'informations sur quelqu'un sans son accord.</li>
+                                <li>Ne tiens pas de propos insultants, racistes ou moqueurs en ligne.</li>
+                                <li>Signale les contenus choquants ou le harcèlement aux modérateurs ou à un adulte.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Internet comporte des <strong>dangers</strong> : harcèlement, arnaques, virus, vol de données.<br>
+                            • Protège tes <strong>informations personnelles</strong> et utilise des <strong>mots de passe forts</strong>.<br>
+                            • Ne fais pas confiance aux <strong>inconnus</strong> sur les réseaux sociaux.<br>
+                            • Vérifie toujours la <strong>fiabilité des sources</strong>.<br>
+                            • <strong>Respecte les autres</strong> et <strong>signale</strong> les contenus choquants.
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: QUIZ -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>📝 Quiz</h2>
+                        <p class="subtitle">Teste tes connaissances sur Internet !</p>
+
+                        <div class="definition-box">
+                            <h4>➡️ Instructions</h4>
+                            <p>Les <strong>8 questions du quiz</strong> se trouvent dans la zone de droite (ou plus bas sur téléphone). Lis bien chaque question, choisis une réponse, puis clique sur le bouton <strong>"Vérifier les Réponses"</strong> pour voir ton score !</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 Conseil :</strong><br>
+                            Si tu ne te souviens pas d'une réponse, retourne dans les onglets précédents pour relire la leçon. Bonne chance ! 🍀
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Le Réseau Internet</h2>
+                <p>Testez vos connaissances !</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Que signifie le mot "Internet" ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Un seul gros ordinateur
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Un réseau mondial d'ordinateurs interconnectés
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Une application mobile
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Qui a inventé le World Wide Web en 1989 ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Bill Gates
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Tim Berners-Lee
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Steve Jobs
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Quelle est la différence entre Internet et le Web ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> C'est exactement la même chose
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Internet est l'infrastructure, le Web est un service qui l'utilise
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Internet sert à envoyer des emails et le Web à regarder la télé
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Que signifie FAI ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Fichier d'Accès Informatique
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Fournisseur d'Accès Internet
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Format d'Adresse IP
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Lequel de ces services est un navigateur web ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Gmail
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Chrome
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> WhatsApp
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Google Drive est un service de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> Streaming vidéo
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> Stockage en ligne (cloud)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> Messagerie instantanée
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Que doit-on faire si un inconnu nous envoie un message étrange sur les réseaux sociaux ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Lui répondre et donner son adresse
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Ignorer, bloquer et en parler à un adulte
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Lui envoyer une photo de soi
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Qu'est-ce qu'un bon mot de passe ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> Le prénom de son meilleur ami
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> "1234" parce que c'est facile
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> Au moins 8 caractères avec lettres, chiffres et symboles, unique pour chaque compte
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'b',
+            q8: 'c'
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu maîtrises Internet ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            const targetButton = Array.from(buttons).find(button =>
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

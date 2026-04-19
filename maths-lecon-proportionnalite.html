@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Proportionnalité - Cours de Mathématiques</title>
+<link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>📊 Proportionnalité</h1>
+<p>Leçon 9: Organisation et traitement de données</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">La Proportionnalité</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Les Pourcentages</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Les Échelles</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+
+<!-- TAB 1: PROPORTIONNALITÉ -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>La Proportionnalité</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Deux grandeurs sont <strong>proportionnelles</strong> si l'on passe de l'une à l'autre en multipliant toujours par le même nombre (le <strong>coefficient de proportionnalité k</strong>).</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Exemple : prix du riz au marché</h4>
+<p>Au marché d'Abidjan, 1 kg de riz coûte 500 F CFA. Le tableau ci-dessous montre le prix selon la quantité achetée :</p>
+<table style="border-collapse: collapse; width: 100%; border: 2px solid #FF69B4; margin-top: 10px;">
+<tr>
+<th style="background: #FF69B4; color: white; padding: 10px;">Masse (kg)</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">1</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">2</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">3</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">5</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">10</th>
+</tr>
+<tr>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;"><strong>Prix (F CFA)</strong></td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">500</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">1 000</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">1 500</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">2 500</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">5 000</td>
+</tr>
+</table>
+<p style="margin-top: 10px;">On passe de la masse au prix en multipliant toujours par <strong>500</strong>. Le prix et la masse sont donc proportionnels.</p>
+</div>
+
+<div class="property-box">
+<h4>✓ Coefficient de proportionnalité</h4>
+<p>Le coefficient de proportionnalité est donné par la formule :</p>
+<p style="text-align: center; font-size: 18px;"><strong>k = y / x</strong></p>
+<p>Dans l'exemple précédent : k = 500 ÷ 1 = 1 000 ÷ 2 = 1 500 ÷ 3 = <strong>500</strong> (prix par kg).</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Tableau proportionnel ou non ?</h4>
+<p>Étudions ce tableau :</p>
+<table style="border-collapse: collapse; width: 100%; border: 2px solid #FF69B4; margin-top: 10px;">
+<tr>
+<th style="background: #FF69B4; color: white; padding: 10px;">x</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">2</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">4</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">6</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">8</th>
+</tr>
+<tr>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;"><strong>y</strong></td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">6</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">12</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">18</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">24</td>
+</tr>
+</table>
+<p style="margin-top: 10px;">On calcule y/x : 6/2 = 3 ; 12/4 = 3 ; 18/6 = 3 ; 24/8 = 3.<br/>Le quotient est toujours le même (k = 3), donc ce tableau est <strong>proportionnel</strong>.</p>
+<p style="margin-top: 10px;">Par contre, dans le tableau {(1 ; 2), (2 ; 5), (3 ; 8)} : 2/1 = 2 mais 5/2 = 2,5. Ce tableau <strong>n'est pas proportionnel</strong>.</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir — reconnaître la proportionnalité :</strong><br/>
+• On calcule les quotients y/x pour chaque colonne<br/>
+• Si tous les quotients sont égaux → tableau proportionnel, le quotient commun est le coefficient k<br/>
+• Si un seul quotient diffère → le tableau n'est pas proportionnel<br/>
+• Dans un tableau proportionnel : y = k × x
+</div>
+</div>
+</div>
+
+<!-- TAB 2: POURCENTAGES -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Les Pourcentages</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Un <strong>pourcentage</strong> est une fraction dont le dénominateur est 100. On écrit :</p>
+<p style="text-align: center; font-size: 18px;"><strong>x % = x / 100</strong></p>
+<p>Exemples : 25 % = 25/100 = 0,25 ; 50 % = 50/100 = 0,5 ; 100 % = 1.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Calculer un pourcentage d'une quantité</h4>
+<p>Pour calculer <strong>x % d'une quantité Q</strong>, on applique : (x/100) × Q.</p>
+<p><strong>Exemple 1 :</strong> Calculer 25 % de 200.<br/>
+25 % de 200 = (25/100) × 200 = 0,25 × 200 = <strong>50</strong></p>
+<p><strong>Exemple 2 :</strong> Dans une classe de 40 élèves, 60 % sont des filles.<br/>
+Nombre de filles = (60/100) × 40 = <strong>24 filles</strong></p>
+</div>
+
+<div class="property-box">
+<h4>✓ Augmentation et réduction</h4>
+<p><strong>Augmentation</strong> d'un taux t % :</p>
+<p style="text-align: center; font-size: 17px;"><strong>Nouveau prix = prix × (1 + t/100)</strong></p>
+<p><strong>Réduction (remise)</strong> d'un taux t % :</p>
+<p style="text-align: center; font-size: 17px;"><strong>Nouveau prix = prix × (1 − t/100)</strong></p>
+</div>
+
+<div class="example-box">
+<h4>💡 Exemple : les soldes</h4>
+<p>Dans un magasin d'Abidjan, un article coûte <strong>5 000 F CFA</strong>. Il est soldé à <strong>−30 %</strong>. Quel est le nouveau prix ?</p>
+<p>Prix soldé = 5 000 × (1 − 30/100)<br/>
+Prix soldé = 5 000 × (1 − 0,30)<br/>
+Prix soldé = 5 000 × 0,70 = <strong>3 500 F CFA</strong></p>
+<p>On peut aussi calculer directement la remise : 30 % de 5 000 = (30/100) × 5 000 = 1 500 F CFA, puis 5 000 − 1 500 = 3 500 F CFA.</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir — pourcentages dans la vie courante :</strong><br/>
+• <strong>Commerce</strong> : soldes, remises, promotions dans les magasins<br/>
+• <strong>Impôts et taxes</strong> : TVA, droits de douane<br/>
+• <strong>Banque</strong> : taux d'intérêt sur un prêt ou une épargne<br/>
+• <strong>Statistiques</strong> : répartition d'une population, résultats d'une enquête<br/>
+• <strong>École</strong> : moyennes et notes (ex. 15/20 = 75 %)
+</div>
+</div>
+</div>
+
+<!-- TAB 3: ÉCHELLES -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Les Échelles</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Une <strong>échelle</strong> est le rapport entre une <strong>distance représentée</strong> (sur la carte ou le plan) et la <strong>distance réelle</strong> (sur le terrain). Les deux distances doivent être exprimées dans la même unité.</p>
+<p>Une échelle s'écrit sous la forme <strong>1/n</strong>. Exemple : 1/100 000 signifie que 1 cm sur la carte représente 100 000 cm en réalité.</p>
+</div>
+
+<div class="property-box">
+<h4>✓ Formule</h4>
+<p style="text-align: center; font-size: 18px;"><strong>Échelle = distance sur la carte / distance réelle</strong></p>
+<p>On en déduit :</p>
+<p style="text-align: center;"><strong>Distance réelle = distance sur la carte ÷ échelle</strong></p>
+<p style="text-align: center;"><strong>Distance sur la carte = distance réelle × échelle</strong></p>
+</div>
+
+<div class="example-box">
+<h4>💡 Exemple 1 : de la carte vers la réalité</h4>
+<p>Sur une carte à l'échelle <strong>1/100 000</strong>, deux villages sont distants de <strong>5 cm</strong>. Quelle est la distance réelle entre eux ?</p>
+<p>Distance réelle = 5 × 100 000 = <strong>500 000 cm</strong><br/>
+Conversion : 500 000 cm = 5 000 m = <strong>5 km</strong>.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Exemple 2 : de la réalité vers la carte</h4>
+<p>La distance réelle entre Abidjan et un village est de <strong>20 km</strong>. Sur une carte à l'échelle <strong>1/500 000</strong>, quelle sera la distance mesurée sur la carte ?</p>
+<p>On convertit : 20 km = 20 × 100 000 = 2 000 000 cm.<br/>
+Distance sur la carte = 2 000 000 ÷ 500 000 = <strong>4 cm</strong>.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Tableau de conversion des longueurs</h4>
+<table style="border-collapse: collapse; width: 100%; border: 2px solid #FF69B4;">
+<tr>
+<th style="background: #FF69B4; color: white; padding: 10px;">Unité</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">km</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">hm</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">dam</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">m</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">dm</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">cm</th>
+<th style="background: #FF69B4; color: white; padding: 10px;">mm</th>
+</tr>
+<tr>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;"><strong>1 km</strong></td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">1</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">10</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">100</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">1 000</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">10 000</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">100 000</td>
+<td style="border: 1px solid #FF69B4; padding: 8px; text-align: center;">1 000 000</td>
+</tr>
+</table>
+<p style="margin-top: 10px;"><strong>À retenir :</strong> 1 km = 1 000 m = 100 000 cm = 1 000 000 mm.</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir — les échelles :</strong><br/>
+• Une échelle compare la carte au terrain : toujours dans la même unité<br/>
+• Échelle 1/n → plus n est grand, plus la carte est « petite » par rapport à la réalité<br/>
+• Sur un plan de maison (ex. 1/100) : 1 cm sur le plan = 1 m en réalité<br/>
+• Sur une carte routière (ex. 1/1 000 000) : 1 cm = 10 km en réalité<br/>
+• Bien convertir les unités avant tout calcul !
+</div>
+</div>
+</div>
+
+<!-- TAB 4: QUIZ -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Proportionnalité</h2>
+<p>Testez vos connaissances sur la proportionnalité, les pourcentages et les échelles.</p>
+<div class="quiz-section">
+
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Deux grandeurs sont proportionnelles lorsque l'on passe de l'une à l'autre :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q1" type="radio" value="a"/> En ajoutant toujours le même nombre</label>
+<label class="quiz-option"><input name="q1" type="radio" value="b"/> En multipliant toujours par le même nombre</label>
+<label class="quiz-option"><input name="q1" type="radio" value="c"/> En soustrayant toujours le même nombre</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q1', 'b', 'Correct ! On multiplie toujours par le coefficient de proportionnalité k.')">Vérifier</button>
+<div class="feedback" id="feedback-q1"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Si 1 kg de riz coûte 500 F CFA, combien coûtent 7 kg ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q2" type="radio" value="a"/> 2 500 F CFA</label>
+<label class="quiz-option"><input name="q2" type="radio" value="b"/> 3 500 F CFA</label>
+<label class="quiz-option"><input name="q2" type="radio" value="c"/> 5 000 F CFA</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q2', 'b', 'Correct ! 7 × 500 = 3 500 F CFA. Le coefficient de proportionnalité est 500.')">Vérifier</button>
+<div class="feedback" id="feedback-q2"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Dans un tableau proportionnel, le coefficient de proportionnalité k est donné par :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q3" type="radio" value="a"/> k = x + y</label>
+<label class="quiz-option"><input name="q3" type="radio" value="b"/> k = x × y</label>
+<label class="quiz-option"><input name="q3" type="radio" value="c"/> k = y / x</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q3', 'c', 'Correct ! k = y / x, et ce quotient est le même pour toutes les colonnes.')">Vérifier</button>
+<div class="feedback" id="feedback-q3"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Combien font 25 % de 200 ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q4" type="radio" value="a"/> 25</label>
+<label class="quiz-option"><input name="q4" type="radio" value="b"/> 50</label>
+<label class="quiz-option"><input name="q4" type="radio" value="c"/> 75</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q4', 'b', 'Correct ! (25/100) × 200 = 0,25 × 200 = 50.')">Vérifier</button>
+<div class="feedback" id="feedback-q4"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Un article coûte 5 000 F CFA. Il est soldé à −30 %. Quel est le nouveau prix ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q5" type="radio" value="a"/> 1 500 F CFA</label>
+<label class="quiz-option"><input name="q5" type="radio" value="b"/> 3 500 F CFA</label>
+<label class="quiz-option"><input name="q5" type="radio" value="c"/> 4 700 F CFA</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q5', 'b', 'Correct ! 5 000 × (1 − 0,30) = 5 000 × 0,70 = 3 500 F CFA.')">Vérifier</button>
+<div class="feedback" id="feedback-q5"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Dans une classe de 50 élèves, 40 % sont des garçons. Combien y a-t-il de garçons ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q6" type="radio" value="a"/> 10</label>
+<label class="quiz-option"><input name="q6" type="radio" value="b"/> 20</label>
+<label class="quiz-option"><input name="q6" type="radio" value="c"/> 25</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q6', 'b', 'Correct ! (40/100) × 50 = 0,40 × 50 = 20 garçons.')">Vérifier</button>
+<div class="feedback" id="feedback-q6"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Sur une carte à l'échelle 1/100 000, 3 cm représentent quelle distance réelle ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q7" type="radio" value="a"/> 300 m</label>
+<label class="quiz-option"><input name="q7" type="radio" value="b"/> 3 km</label>
+<label class="quiz-option"><input name="q7" type="radio" value="c"/> 30 km</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q7', 'b', 'Correct ! 3 × 100 000 = 300 000 cm = 3 000 m = 3 km.')">Vérifier</button>
+<div class="feedback" id="feedback-q7"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Deux villes sont distantes de 50 km. Sur une carte à l'échelle 1/1 000 000, quelle distance y a-t-il entre elles ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q8" type="radio" value="a"/> 5 cm</label>
+<label class="quiz-option"><input name="q8" type="radio" value="b"/> 50 cm</label>
+<label class="quiz-option"><input name="q8" type="radio" value="c"/> 0,5 cm</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q8', 'a', 'Correct ! 50 km = 5 000 000 cm. 5 000 000 ÷ 1 000 000 = 5 cm.')">Vérifier</button>
+<div class="feedback" id="feedback-q8"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function openTab(event, tabName) {
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(tc => tc.classList.remove('active'));
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(tb => tb.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+function checkAnswer(qid, correct, explanation) {
+    const selected = document.querySelector(`input[name="${qid}"]:checked`);
+    const feedback = document.getElementById(`feedback-${qid}`);
+    feedback.style.display = 'block';
+    feedback.style.marginTop = '10px';
+    feedback.style.padding = '10px';
+    feedback.style.borderRadius = '6px';
+    feedback.style.fontWeight = 'bold';
+
+    if (!selected) {
+        feedback.style.background = '#fff3e0';
+        feedback.style.color = '#e65100';
+        feedback.textContent = '⚠ Veuillez sélectionner une réponse.';
+        return;
+    }
+
+    if (selected.value === correct) {
+        feedback.style.background = '#e8f5e9';
+        feedback.style.color = '#2e7d32';
+        feedback.textContent = '✓ ' + explanation;
+    } else {
+        feedback.style.background = '#ffebee';
+        feedback.style.color = '#c62828';
+        feedback.textContent = '✗ Incorrect. Réessaie ! Indice : ' + explanation;
+    }
+}
+</script>
+</body>
+</html>

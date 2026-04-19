@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 11 : Santé de la reproduction - L'Abstinence</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🛡️';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💪';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #FF69B4;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #FF69B4;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #C71585;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #FFFFFF;
+            border: 3px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .component-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .component-card h5 {
+            color: #C71585;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .component-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="education-civique.html" class="btn-back">← Retour</a>
+        <h1>🛡️ L'Abstinence 💪</h1>
+        <p>Santé de la reproduction - Un choix pour ton avenir</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Définition</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Savoir dire non</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Pour mon avenir</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Quiz</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: DÉFINITION DE L'ABSTINENCE -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>🛡️ Définition de l'abstinence</h2>
+                        <p class="subtitle">Comprendre ce qu'est l'abstinence sexuelle</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>À ton âge, ton corps change et tu commences à te poser beaucoup de questions sur la sexualité. C'est tout à fait normal ! Apprendre à prendre soin de sa <strong>santé de la reproduction</strong>, c'est apprendre à faire des choix responsables pour soi-même.</p>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que l'abstinence sexuelle ?</h4>
+                            <p>L'<strong>abstinence sexuelle</strong> est le <strong>choix volontaire</strong> de ne pas avoir de rapports sexuels. C'est une décision personnelle, libre et réfléchie. Chaque jeune a le droit de dire : « Je ne suis pas prêt(e), j'attends le bon moment. »</p>
+                        </div>
+
+                        <h3>💯 La méthode la plus sûre</h3>
+                        <p>Parmi toutes les façons de se protéger, l'abstinence est la <strong>seule méthode efficace à 100 %</strong>. En choisissant l'abstinence, on évite totalement :</p>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">👶</span>
+                                <h5>Les grossesses précoces</h5>
+                                <p>Aucun risque de grossesse non désirée</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🦠</span>
+                                <h5>Les IST</h5>
+                                <p>Aucune infection sexuellement transmissible</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🎗️</span>
+                                <h5>Le VIH/SIDA</h5>
+                                <p>Aucun risque de contamination par voie sexuelle</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">💔</span>
+                                <h5>Les blessures du cœur</h5>
+                                <p>On évite beaucoup de souffrances affectives</p>
+                            </div>
+                        </div>
+
+                        <h3>✊ Un droit et un choix personnel</h3>
+                        <div class="category-box">
+                            <h4>🌟 Mon corps m'appartient</h4>
+                            <p>Choisir l'abstinence, c'est exercer un <strong>droit fondamental</strong> : celui de décider ce qui est bon pour soi.</p>
+                            <ul>
+                                <li><strong>C'est un choix libre :</strong> personne ne peut t'obliger à quoi que ce soit</li>
+                                <li><strong>C'est un choix courageux :</strong> il faut parfois savoir résister à la pression</li>
+                                <li><strong>C'est un choix responsable :</strong> on pense à son avenir et à sa santé</li>
+                                <li><strong>C'est un choix respectable :</strong> tous les jeunes ont le droit d'attendre</li>
+                            </ul>
+                        </div>
+
+                        <h3>🔍 Différence avec les autres méthodes</h3>
+                        <div class="example-box">
+                            <h4>💡 Comparer pour mieux comprendre</h4>
+                            <p>Il existe différentes méthodes de prévention. Comparons-les :</p>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                                <tr style="background: #FF69B4; color: white;">
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Méthode</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Protège des grossesses ?</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Protège des IST ?</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Abstinence</strong></td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">✅ Oui, 100 %</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">✅ Oui, 100 %</td>
+                                </tr>
+                                <tr style="background: #FFF0F5;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Préservatif</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Partiellement</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Partiellement</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Autres contraceptifs</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Partiellement</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">❌ Non</td>
+                                </tr>
+                            </table>
+                            <p style="margin-top: 10px;">Pour un(e) adolescent(e) de ton âge, l'abstinence reste la solution la plus simple, la plus sûre et la plus adaptée.</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • L'abstinence = choix volontaire de ne pas avoir de rapports sexuels<br>
+                            • C'est la seule méthode efficace à 100 %<br>
+                            • Elle protège à la fois des grossesses précoces et des IST/VIH<br>
+                            • C'est un droit et un choix personnel totalement respectable
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: SAVOIR DIRE NON -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🙅 Savoir dire non</h2>
+                        <p class="subtitle">Prendre de bonnes décisions et s'affirmer</p>
+
+                        <h3>📌 Pourquoi c'est important ?</h3>
+                        <p>À ton âge, tu peux être exposé(e) à beaucoup de pressions : les copains, les copines, parfois même un garçon ou une fille plus âgé(e). Savoir <strong>dire non</strong>, c'est une compétence qui s'apprend et qui te protège toute ta vie.</p>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que s'affirmer ?</h4>
+                            <p><strong>S'affirmer</strong>, c'est exprimer clairement ce que l'on pense, ce que l'on ressent et ce que l'on veut, avec calme et respect, sans se laisser influencer par les autres.</p>
+                        </div>
+
+                        <h3>🧭 Les 3 étapes d'une bonne décision</h3>
+
+                        <div class="category-box">
+                            <h4>1️⃣ Réfléchir aux conséquences</h4>
+                            <p>Avant d'agir, pose-toi les bonnes questions :</p>
+                            <ul>
+                                <li>Qu'est-ce qui peut arriver si je dis oui ?</li>
+                                <li>Est-ce que ça peut avoir des conséquences sur ma santé ?</li>
+                                <li>Est-ce que ça peut gâcher mes études ou mes rêves ?</li>
+                                <li>Comment je me sentirai demain, dans un mois, dans un an ?</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>2️⃣ Identifier ses valeurs</h4>
+                            <p>Tes <strong>valeurs</strong>, ce sont les choses qui comptent le plus pour toi :</p>
+                            <ul>
+                                <li>Le respect de toi-même et de ton corps</li>
+                                <li>La réussite à l'école et tes projets d'avenir</li>
+                                <li>Ta famille et ce qu'elle t'a enseigné</li>
+                                <li>Ta foi ou tes convictions personnelles</li>
+                            </ul>
+                            <p>Une bonne décision, c'est une décision qui respecte tes valeurs.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>3️⃣ S'affirmer clairement</h4>
+                            <p>Dire non, ça s'apprend. Voici comment :</p>
+                            <ul>
+                                <li><strong>Regarde la personne dans les yeux</strong></li>
+                                <li><strong>Parle d'une voix calme mais ferme</strong></li>
+                                <li><strong>Utilise le « je »</strong> : « Je ne veux pas », « Je ne suis pas prêt(e) »</li>
+                                <li><strong>Ne te justifie pas trop</strong> : un non est un non</li>
+                                <li><strong>Quitte les lieux</strong> si la personne insiste</li>
+                            </ul>
+                        </div>
+
+                        <h3>⚠️ Situations à risque</h3>
+                        <div class="example-box">
+                            <h4>🚨 Attention à ces situations</h4>
+                            <ul>
+                                <li><strong>Les fêtes avec de l'alcool ou des drogues :</strong> on perd le contrôle et on fait des choses qu'on regrette</li>
+                                <li><strong>Se retrouver seul(e) avec un(e) partenaire</strong> dans une maison ou un endroit isolé</li>
+                                <li><strong>Le chantage affectif :</strong> « Si tu m'aimes, tu dois le prouver »</li>
+                                <li><strong>La pression des pairs :</strong> « Tout le monde l'a déjà fait, sauf toi »</li>
+                                <li><strong>Les cadeaux et faveurs</strong> d'une personne qui attend « quelque chose » en retour</li>
+                                <li><strong>Les adultes qui te proposent de l'argent</strong> ou des cadeaux : c'est interdit par la loi et c'est dangereux</li>
+                            </ul>
+                        </div>
+
+                        <h3>💬 Des phrases pour dire non avec assurance</h3>
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🛑</span>
+                                <h5>Être clair</h5>
+                                <p>« Non, je ne veux pas, c'est mon choix. »</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">⏳</span>
+                                <h5>Parler d'avenir</h5>
+                                <p>« Je ne suis pas prêt(e), j'attends le bon moment. »</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">📚</span>
+                                <h5>Mettre en avant ses priorités</h5>
+                                <p>« Je veux d'abord réussir mes études. »</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">💔</span>
+                                <h5>Répondre au chantage</h5>
+                                <p>« Si tu m'aimes vraiment, tu respectes mon choix. »</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">👥</span>
+                                <h5>Répondre à la pression</h5>
+                                <p>« Je ne fais pas comme les autres, je fais ce qui est bien pour moi. »</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🚪</span>
+                                <h5>Partir</h5>
+                                <p>« Cette discussion est finie, je m'en vais. »</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Savoir dire non, ça s'apprend et ça se prépare<br>
+                            • Réfléchis aux conséquences avant d'agir<br>
+                            • Identifie tes valeurs et respecte-les<br>
+                            • Un vrai ami ou un vrai amoureux respecte ton « non »<br>
+                            • En cas de pression ou de danger, parle à un adulte de confiance (parent, enseignant, infirmière scolaire)
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: L'IMPORTANCE POUR L'AVENIR -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🌟 L'importance pour mon avenir</h2>
+                        <p class="subtitle">Pourquoi l'abstinence est un choix gagnant</p>
+
+                        <h3>📌 Un choix qui change tout</h3>
+                        <p>L'abstinence n'est pas une « privation » : c'est un <strong>investissement pour ton avenir</strong>. Chaque jeune Ivoirien(ne) qui fait ce choix se donne plus de chances de réussir sa vie.</p>
+
+                        <h3>🦠 Se protéger des IST et du VIH/SIDA</h3>
+                        <div class="category-box">
+                            <h4>🎗️ Les IST, une réalité dangereuse</h4>
+                            <p>Les <strong>Infections Sexuellement Transmissibles (IST)</strong> sont des maladies qui se transmettent lors des rapports sexuels. Certaines, comme le <strong>VIH/SIDA</strong>, peuvent être très graves.</p>
+                            <ul>
+                                <li>Certaines IST ne se guérissent pas</li>
+                                <li>Le VIH reste dans le corps toute la vie</li>
+                                <li>Plusieurs IST peuvent rendre stérile (ne plus pouvoir avoir d'enfant plus tard)</li>
+                                <li>L'abstinence élimine totalement ce risque</li>
+                            </ul>
+                        </div>
+
+                        <h3>👶 Prévenir les grossesses précoces</h3>
+                        <div class="category-box">
+                            <h4>⚠️ Une grossesse à l'adolescence, c'est dangereux</h4>
+                            <p>Une grossesse à ton âge peut avoir des conséquences très lourdes :</p>
+                            <ul>
+                                <li><strong>Pour la santé :</strong> le corps d'une adolescente n'est pas encore prêt, les accouchements sont plus risqués</li>
+                                <li><strong>Pour les études :</strong> beaucoup de filles sont obligées d'arrêter l'école</li>
+                                <li><strong>Pour le bébé :</strong> les bébés de mères très jeunes ont souvent plus de problèmes de santé</li>
+                                <li><strong>Pour la famille :</strong> c'est une grande responsabilité, difficile à assumer à 12 ou 14 ans</li>
+                            </ul>
+                        </div>
+
+                        <h3>🎓 Se concentrer sur ses études et ses rêves</h3>
+                        <div class="example-box">
+                            <h4>🚀 Ton avenir t'attend</h4>
+                            <p>En choisissant l'abstinence, tu gardes toute ton énergie et ton temps pour :</p>
+                            <div class="component-grid">
+                                <div class="component-card">
+                                    <span class="icon">📚</span>
+                                    <h5>Réussir à l'école</h5>
+                                    <p>Travailler pour avoir ton BEPC, ton BAC</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">⚽</span>
+                                    <h5>Faire du sport</h5>
+                                    <p>Garder un corps et un esprit sains</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🎨</span>
+                                    <h5>Cultiver tes passions</h5>
+                                    <p>Musique, dessin, lecture, danse...</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">👨‍⚕️</span>
+                                    <h5>Choisir un métier</h5>
+                                    <p>Médecin, ingénieur, enseignant, artisan...</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">👨‍👩‍👧</span>
+                                    <h5>Profiter de ta famille</h5>
+                                    <p>Vivre ton adolescence pleinement</p>
+                                </div>
+                                <div class="component-card">
+                                    <span class="icon">🌍</span>
+                                    <h5>Servir ton pays</h5>
+                                    <p>Devenir un(e) citoyen(ne) utile à la Côte d'Ivoire</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>💖 Construire une estime de soi solide</h3>
+                        <div class="category-box">
+                            <h4>🌱 Être fier(e) de soi</h4>
+                            <p>L'<strong>estime de soi</strong>, c'est la valeur que tu t'accordes. Quand tu fais des choix qui respectent tes valeurs, tu te sens fort(e) :</p>
+                            <ul>
+                                <li>Tu sais que tu es capable de résister à la pression</li>
+                                <li>Tu apprends à te connaître et à te respecter</li>
+                                <li>Tu développes ta personnalité, ton caractère</li>
+                                <li>Tu deviens un modèle pour tes camarades</li>
+                            </ul>
+                        </div>
+
+                        <h3>🏡 Une responsabilité envers soi et sa famille</h3>
+                        <div class="category-box">
+                            <h4>💞 Pensez aux personnes qui vous aiment</h4>
+                            <p>Ta famille a beaucoup d'espoir en toi. Tes parents, tes frères et sœurs, tes tantes et oncles veulent le meilleur pour toi.</p>
+                            <ul>
+                                <li>En faisant de bons choix, tu les rends fiers</li>
+                                <li>Tu préserves l'honneur et la sérénité de ton foyer</li>
+                                <li>Tu te prépares à fonder plus tard une famille solide, au bon moment</li>
+                                <li>Tu participes à construire une société plus saine</li>
+                            </ul>
+                        </div>
+
+                        <h3>🌈 Préparer une vie adulte épanouie</h3>
+                        <div class="example-box">
+                            <h4>🕊️ Un jour viendra…</h4>
+                            <p>Un jour, tu seras adulte. Tu trouveras une personne que tu aimes, avec qui tu pourras construire une vie. Ce moment sera d'autant plus beau que tu l'auras attendu, préparé, choisi.</p>
+                            <p>L'abstinence aujourd'hui, ce n'est pas un « non » pour toujours. C'est un « <strong>pas maintenant, je me prépare</strong> ».</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • L'abstinence protège ta santé (IST, VIH/SIDA, grossesses précoces)<br>
+                            • Elle te permet de te concentrer sur tes études et tes rêves<br>
+                            • Elle renforce ton estime de toi et ta personnalité<br>
+                            • Elle honore ta famille et prépare un avenir solide<br>
+                            • En cas de doute ou de problème, parles-en à un adulte de confiance
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: QUIZ -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>📝 Quiz - L'Abstinence</h2>
+                        <p class="subtitle">Teste tes connaissances sur la leçon</p>
+
+                        <div class="definition-box">
+                            <h4>👉 Comment ça marche ?</h4>
+                            <p>Le quiz se trouve dans <strong>l'encadré à droite de la page</strong> (ou en bas si tu es sur téléphone).</p>
+                            <p>Réponds aux <strong>8 questions</strong> en cochant la bonne réponse, puis clique sur « <strong>Vérifier les Réponses</strong> » pour voir ton score.</p>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Conseils pour réussir</h4>
+                            <ul>
+                                <li>Relis les 3 premiers onglets avant de répondre</li>
+                                <li>Prends ton temps pour bien lire chaque question</li>
+                                <li>Si tu te trompes, relis la leçon et recommence</li>
+                                <li>L'objectif, ce n'est pas d'avoir 20/20, c'est de <strong>comprendre</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💪 Courage !</strong><br>
+                            Ce que tu apprends ici, ce n'est pas juste pour l'école : c'est pour ta vie. Chaque bonne réponse, c'est un pas de plus vers un avenir en bonne santé.
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - L'Abstinence</h2>
+                <p>Testez vos connaissances !</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">L'abstinence sexuelle, c'est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Une maladie
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Le choix volontaire de ne pas avoir de rapports sexuels
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Une punition donnée par les parents
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quelle méthode est efficace à 100 % contre les grossesses et les IST ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Le préservatif
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> La pilule
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> L'abstinence
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Choisir l'abstinence, c'est avant tout :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Un droit et un choix personnel
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Une obligation imposée par la loi
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Une mode passagère
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Avant de prendre une décision importante, il faut d'abord :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Faire comme les copains
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Réfléchir aux conséquences
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Dire oui pour faire plaisir
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Si quelqu'un te dit « Si tu m'aimes, tu dois me le prouver », c'est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Une preuve d'amour sincère
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Du chantage affectif, il faut dire non
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Une façon normale de parler
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Une grossesse à l'adolescence peut entraîner :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> L'arrêt des études et des risques pour la santé
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> Aucun problème particulier
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> De meilleures notes à l'école
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Parmi ces situations, laquelle est la plus à risque ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Réviser avec des camarades chez soi
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Une fête avec alcool et isolement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Faire du sport à l'école
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Pratiquer l'abstinence permet surtout de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> Se concentrer sur ses études et préparer son avenir
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> Être populaire au collège
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> Gagner de l'argent facilement
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'a',
+            q4: 'b',
+            q5: 'b',
+            q6: 'a',
+            q7: 'b',
+            q8: 'a'
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait... Relis la leçon !</span>';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat : ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu as bien compris la leçon ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            const targetButton = Array.from(buttons).find(button =>
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
