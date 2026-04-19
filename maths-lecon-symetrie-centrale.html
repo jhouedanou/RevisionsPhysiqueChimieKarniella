@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Symétrie Centrale - Cours de Mathématiques</title>
+<link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>🔄 Symétrie Centrale</h1>
+<p>Leçon 10 : Transformations du plan - Niveau 5ème</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Symétrique d'un point</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Propriétés</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Centre de symétrie</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+
+<!-- TAB 1: LE SYMÉTRIQUE D'UN POINT -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Le symétrique d'un point</h2>
+
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Le <strong>symétrique d'un point A</strong> par rapport à un point O (appelé <strong>centre de symétrie</strong>) est le point A' tel que <strong>O est le milieu du segment [AA']</strong>.</p>
+<p style="margin-top: 10px;"><strong>Notation :</strong> A' = S<sub>O</sub>(A)</p>
+<p>On lit : « A' est l'image de A par la symétrie de centre O ».</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Illustration</h4>
+<svg height="250" viewbox="0 0 500 250" width="100%">
+<!-- segment [AA'] -->
+<line x1="80" y1="125" x2="420" y2="125" stroke="#FF69B4" stroke-width="2"/>
+<!-- petits traits indiquant l'égalité OA = OA' -->
+<line x1="160" y1="115" x2="160" y2="135" stroke="#4CAF50" stroke-width="2"/>
+<line x1="340" y1="115" x2="340" y2="135" stroke="#4CAF50" stroke-width="2"/>
+<!-- point A -->
+<circle cx="80" cy="125" r="6" fill="#2196F3"/>
+<text fill="#2196F3" font-size="20" font-weight="bold" x="65" y="110">A</text>
+<!-- centre O -->
+<circle cx="250" cy="125" r="7" fill="#FF1744"/>
+<circle cx="250" cy="125" r="12" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="20" font-weight="bold" x="240" y="105">O</text>
+<!-- point A' -->
+<circle cx="420" cy="125" r="6" fill="#2196F3"/>
+<text fill="#2196F3" font-size="20" font-weight="bold" x="410" y="110">A'</text>
+<!-- légendes des distances -->
+<text fill="#4CAF50" font-size="14" font-weight="bold" x="140" y="160">OA</text>
+<text fill="#4CAF50" font-size="14" font-weight="bold" x="320" y="160">OA'</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="250" y="200">O est le milieu de [AA'] : OA = OA'</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✓ Étapes de construction de A'</h4>
+<p><strong>1.</strong> Tracer la droite (AO) qui passe par les points A et O.</p>
+<p><strong>2.</strong> Mesurer la distance OA avec la règle (ou le compas).</p>
+<p><strong>3.</strong> Reporter cette distance de l'autre côté de O sur la droite (AO) : on obtient le point A'.</p>
+<p style="margin-top: 10px;">→ On vérifie que <strong>O est bien au milieu</strong> de [AA'].</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Autre exemple : symétrique d'un point hors de l'horizontale</h4>
+<svg height="280" viewbox="0 0 500 280" width="100%">
+<!-- droite (AO) prolongée -->
+<line x1="60" y1="60" x2="440" y2="220" stroke="#FF69B4" stroke-width="2" stroke-dasharray="4,4"/>
+<!-- point B -->
+<circle cx="100" cy="77" r="6" fill="#2196F3"/>
+<text fill="#2196F3" font-size="20" font-weight="bold" x="75" y="70">B</text>
+<!-- centre O -->
+<circle cx="250" cy="140" r="7" fill="#FF1744"/>
+<circle cx="250" cy="140" r="12" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="20" font-weight="bold" x="260" y="135">O</text>
+<!-- point B' (symétrique) -->
+<circle cx="400" cy="203" r="6" fill="#2196F3"/>
+<text fill="#2196F3" font-size="20" font-weight="bold" x="410" y="210">B'</text>
+<!-- marqueurs d'égalité de distance -->
+<line x1="170" y1="103" x2="180" y2="113" stroke="#4CAF50" stroke-width="2"/>
+<line x1="320" y1="170" x2="330" y2="180" stroke="#4CAF50" stroke-width="2"/>
+<text fill="#333" font-size="14" text-anchor="middle" x="250" y="260">B' = S_O(B), avec OB = OB'</text>
+</svg>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Le symétrique d'un point A par rapport à O est noté <strong>A' = S<sub>O</sub>(A)</strong><br/>
+• <strong>O est le milieu</strong> du segment [AA']<br/>
+• Les points A, O et A' sont <strong>alignés</strong><br/>
+• Le symétrique du point O par rapport à lui-même est <strong>O lui-même</strong>
+</div>
+</div>
+</div>
+
+<!-- TAB 2: PROPRIÉTÉS DE CONSERVATION -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Propriétés de la symétrie centrale</h2>
+
+<div class="definition-box">
+<h4>📘 Conservation</h4>
+<p>La symétrie centrale est une transformation du plan qui <strong>conserve</strong> beaucoup de choses : les longueurs, les angles, les aires, le parallélisme, le milieu, l'alignement…</p>
+</div>
+
+<div class="property-box">
+<h4>✓ Propriété 1 : Conservation des longueurs</h4>
+<p>La symétrie centrale <strong>conserve les distances (longueurs)</strong>.</p>
+<p>Si A' et B' sont les symétriques de A et B par rapport à O, alors :</p>
+<p style="text-align: center; font-size: 18px;"><strong>A'B' = AB</strong></p>
+</div>
+
+<div class="property-box">
+<h4>✓ Propriété 2 : Conservation des angles</h4>
+<p>La symétrie centrale <strong>conserve la mesure des angles</strong>.</p>
+<p>Si trois points A, B, C ont pour symétriques A', B', C', alors :</p>
+<p style="text-align: center; font-size: 18px;"><strong>angle A'B'C' = angle ABC</strong></p>
+</div>
+
+<div class="property-box">
+<h4>✓ Propriété 3 : Image d'une droite</h4>
+<p>Le symétrique d'une <strong>droite</strong> par rapport à O est une <strong>droite parallèle</strong> à la première.</p>
+<svg height="220" viewbox="0 0 500 220" width="100%">
+<!-- droite d -->
+<line x1="40" y1="50" x2="460" y2="50" stroke="#2196F3" stroke-width="3"/>
+<text fill="#2196F3" font-size="18" font-weight="bold" x="20" y="55">(d)</text>
+<!-- centre O -->
+<circle cx="250" cy="110" r="7" fill="#FF1744"/>
+<circle cx="250" cy="110" r="12" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="20" font-weight="bold" x="260" y="115">O</text>
+<!-- droite d' (parallèle, en dessous) -->
+<line x1="40" y1="170" x2="460" y2="170" stroke="#4CAF50" stroke-width="3"/>
+<text fill="#4CAF50" font-size="18" font-weight="bold" x="20" y="175">(d')</text>
+<!-- petits indicateurs de parallélisme -->
+<text fill="#333" font-size="14" text-anchor="middle" x="250" y="210">(d') est l'image de (d) par S_O : (d') // (d)</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✓ Propriété 4 : Image d'un segment</h4>
+<p>Le symétrique d'un <strong>segment</strong> est un segment de <strong>même longueur</strong>.</p>
+<p>De plus, le <strong>milieu</strong> du segment a pour image le milieu du segment image.</p>
+<svg height="250" viewbox="0 0 500 250" width="100%">
+<!-- segment [AB] -->
+<line x1="60" y1="60" x2="200" y2="100" stroke="#2196F3" stroke-width="3"/>
+<circle cx="60" cy="60" r="5" fill="#2196F3"/>
+<circle cx="200" cy="100" r="5" fill="#2196F3"/>
+<text fill="#2196F3" font-size="18" font-weight="bold" x="40" y="55">A</text>
+<text fill="#2196F3" font-size="18" font-weight="bold" x="200" y="95">B</text>
+<!-- milieu I -->
+<circle cx="130" cy="80" r="4" fill="#FF9800"/>
+<text fill="#FF9800" font-size="14" font-weight="bold" x="135" y="75">I</text>
+<!-- centre O -->
+<circle cx="250" cy="125" r="7" fill="#FF1744"/>
+<circle cx="250" cy="125" r="12" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="18" font-weight="bold" x="260" y="125">O</text>
+<!-- segment [A'B'] symétrique -->
+<line x1="440" y1="190" x2="300" y2="150" stroke="#4CAF50" stroke-width="3"/>
+<circle cx="440" cy="190" r="5" fill="#4CAF50"/>
+<circle cx="300" cy="150" r="5" fill="#4CAF50"/>
+<text fill="#4CAF50" font-size="18" font-weight="bold" x="445" y="200">A'</text>
+<text fill="#4CAF50" font-size="18" font-weight="bold" x="280" y="170">B'</text>
+<!-- milieu I' -->
+<circle cx="370" cy="170" r="4" fill="#FF9800"/>
+<text fill="#FF9800" font-size="14" font-weight="bold" x="375" y="180">I'</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="250" y="240">[A'B'] = S_O([AB]) : A'B' = AB et I' est le milieu de [A'B']</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✓ Propriété 5 : Image d'un cercle</h4>
+<p>Le symétrique d'un <strong>cercle</strong> est un cercle de <strong>même rayon</strong>.</p>
+<p>Le centre du cercle image est le <strong>symétrique du centre</strong> du cercle initial.</p>
+<svg height="240" viewbox="0 0 500 240" width="100%">
+<!-- cercle 1 -->
+<circle cx="120" cy="120" r="55" fill="none" stroke="#2196F3" stroke-width="3"/>
+<circle cx="120" cy="120" r="4" fill="#2196F3"/>
+<text fill="#2196F3" font-size="18" font-weight="bold" x="105" y="115">C</text>
+<!-- centre O -->
+<circle cx="250" cy="120" r="7" fill="#FF1744"/>
+<circle cx="250" cy="120" r="12" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="18" font-weight="bold" x="240" y="105">O</text>
+<!-- cercle 2 (image) -->
+<circle cx="380" cy="120" r="55" fill="none" stroke="#4CAF50" stroke-width="3"/>
+<circle cx="380" cy="120" r="4" fill="#4CAF50"/>
+<text fill="#4CAF50" font-size="18" font-weight="bold" x="385" y="115">C'</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="250" y="220">Le cercle image a le même rayon, son centre C' est le symétrique de C</text>
+</svg>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• La symétrie centrale conserve : <strong>longueurs, angles, aires, parallélisme</strong><br/>
+• Image d'une droite → droite <strong>parallèle</strong><br/>
+• Image d'un segment → segment de <strong>même longueur</strong><br/>
+• Image d'un cercle → cercle de <strong>même rayon</strong><br/>
+• Le milieu se transforme en milieu, l'alignement est conservé
+</div>
+</div>
+</div>
+
+<!-- TAB 3: CENTRE DE SYMÉTRIE D'UNE FIGURE -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Centre de symétrie d'une figure</h2>
+
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Un point <strong>O</strong> est un <strong>centre de symétrie</strong> d'une figure F si le symétrique de chaque point de F par rapport à O appartient aussi à F.</p>
+<p>Autrement dit : la figure « se superpose » à elle-même par la symétrie centrale de centre O.</p>
+</div>
+
+<div class="property-box">
+<h4>✓ Figures ayant un centre de symétrie</h4>
+<p><strong>• Le parallélogramme :</strong> son centre de symétrie est l'intersection de ses diagonales.</p>
+<p><strong>• Le rectangle :</strong> son centre est l'intersection des diagonales.</p>
+<p><strong>• Le losange :</strong> son centre est l'intersection des diagonales.</p>
+<p><strong>• Le carré :</strong> son centre est l'intersection des diagonales.</p>
+<p><strong>• Le cercle :</strong> son centre de symétrie est… son centre !</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Le parallélogramme</h4>
+<svg height="240" viewbox="0 0 500 240" width="100%">
+<!-- parallélogramme -->
+<polygon points="80,180 200,60 420,60 300,180" fill="#FFE4EC" stroke="#FF69B4" stroke-width="3"/>
+<!-- diagonales -->
+<line x1="80" y1="180" x2="420" y2="60" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+<line x1="200" y1="60" x2="300" y2="180" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+<!-- centre O (intersection) -->
+<circle cx="250" cy="120" r="6" fill="#FF1744"/>
+<circle cx="250" cy="120" r="11" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="18" font-weight="bold" x="260" y="115">O</text>
+<!-- sommets -->
+<text fill="#333" font-size="16" font-weight="bold" x="60" y="200">A</text>
+<text fill="#333" font-size="16" font-weight="bold" x="190" y="50">B</text>
+<text fill="#333" font-size="16" font-weight="bold" x="425" y="55">C</text>
+<text fill="#333" font-size="16" font-weight="bold" x="305" y="200">D</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="250" y="225">O, intersection des diagonales, est le centre de symétrie</text>
+</svg>
+</div>
+
+<div class="example-box">
+<h4>💡 Le cercle</h4>
+<svg height="220" viewbox="0 0 500 220" width="100%">
+<circle cx="250" cy="110" r="80" fill="#FFE4EC" stroke="#FF69B4" stroke-width="3"/>
+<!-- diamètres -->
+<line x1="170" y1="110" x2="330" y2="110" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+<line x1="250" y1="30" x2="250" y2="190" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+<!-- centre O -->
+<circle cx="250" cy="110" r="6" fill="#FF1744"/>
+<circle cx="250" cy="110" r="11" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="18" font-weight="bold" x="260" y="105">O</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="250" y="210">Le centre du cercle est son centre de symétrie</text>
+</svg>
+</div>
+
+<div class="example-box">
+<h4>💡 Le rectangle</h4>
+<svg height="240" viewbox="0 0 500 240" width="100%">
+<rect x="100" y="60" width="300" height="120" fill="#FFE4EC" stroke="#FF69B4" stroke-width="3"/>
+<!-- diagonales -->
+<line x1="100" y1="60" x2="400" y2="180" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+<line x1="400" y1="60" x2="100" y2="180" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+<!-- centre O -->
+<circle cx="250" cy="120" r="6" fill="#FF1744"/>
+<circle cx="250" cy="120" r="11" fill="none" stroke="#FF1744" stroke-width="2"/>
+<text fill="#FF1744" font-size="18" font-weight="bold" x="260" y="115">O</text>
+<!-- sommets -->
+<text fill="#333" font-size="16" font-weight="bold" x="80" y="55">A</text>
+<text fill="#333" font-size="16" font-weight="bold" x="405" y="55">B</text>
+<text fill="#333" font-size="16" font-weight="bold" x="405" y="200">C</text>
+<text fill="#333" font-size="16" font-weight="bold" x="80" y="200">D</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="250" y="225">Le point d'intersection des diagonales est le centre de symétrie</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✗ Figures sans centre de symétrie</h4>
+<p>Certaines figures n'ont <strong>aucun centre de symétrie</strong> :</p>
+<p><strong>• Le triangle isocèle</strong> : il a seulement un axe de symétrie, mais pas de centre.</p>
+<p><strong>• Le triangle équilatéral</strong> : il a 3 axes de symétrie, mais pas de centre.</p>
+<p><strong>• Le triangle quelconque</strong> : ni axe, ni centre de symétrie.</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Un <strong>parallélogramme</strong> a toujours un centre de symétrie : l'intersection de ses diagonales<br/>
+• Le <strong>cercle</strong> a pour centre de symétrie son centre<br/>
+• Les <strong>triangles</strong> n'ont jamais de centre de symétrie<br/>
+• Avoir un centre de symétrie ≠ avoir un axe de symétrie
+</div>
+</div>
+</div>
+
+<!-- TAB 4: QUIZ -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Symétrie Centrale</h2>
+<p>Testez vos connaissances sur la symétrie centrale</p>
+
+<div class="quiz-section">
+
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Si A' est le symétrique de A par rapport à O, alors :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q1" type="radio" value="a"/> O est le milieu de [AA']</label>
+<label class="quiz-option"><input name="q1" type="radio" value="b"/> A est le milieu de [OA']</label>
+<label class="quiz-option"><input name="q1" type="radio" value="c"/> A' est le milieu de [OA]</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q1', 'a', 'Par définition, le centre O est le milieu du segment [AA\'].')">Vérifier</button>
+<div class="feedback" id="feedback-q1"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Le symétrique d'un point O par rapport à lui-même est :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q2" type="radio" value="a"/> Un point différent de O</label>
+<label class="quiz-option"><input name="q2" type="radio" value="b"/> Le point O lui-même</label>
+<label class="quiz-option"><input name="q2" type="radio" value="c"/> Cela n'existe pas</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q2', 'b', 'Le centre de symétrie est invariant : son symétrique est lui-même.')">Vérifier</button>
+<div class="feedback" id="feedback-q2"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">La symétrie centrale conserve :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q3" type="radio" value="a"/> Uniquement les longueurs</label>
+<label class="quiz-option"><input name="q3" type="radio" value="b"/> Uniquement les angles</label>
+<label class="quiz-option"><input name="q3" type="radio" value="c"/> Les longueurs, les angles, les aires et le parallélisme</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q3', 'c', 'La symétrie centrale conserve toutes ces propriétés géométriques.')">Vérifier</button>
+<div class="feedback" id="feedback-q3"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Le symétrique d'une droite (d) par symétrie centrale est :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q4" type="radio" value="a"/> Une droite perpendiculaire à (d)</label>
+<label class="quiz-option"><input name="q4" type="radio" value="b"/> Une droite parallèle à (d)</label>
+<label class="quiz-option"><input name="q4" type="radio" value="c"/> Un segment</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q4', 'b', 'L\'image d\'une droite par une symétrie centrale est toujours une droite parallèle.')">Vérifier</button>
+<div class="feedback" id="feedback-q4"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Le symétrique d'un cercle de rayon 4 cm est :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q5" type="radio" value="a"/> Un cercle de rayon 8 cm</label>
+<label class="quiz-option"><input name="q5" type="radio" value="b"/> Un cercle de rayon 4 cm</label>
+<label class="quiz-option"><input name="q5" type="radio" value="c"/> Un cercle de rayon 2 cm</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q5', 'b', 'La symétrie centrale conserve les longueurs, donc le rayon est inchangé.')">Vérifier</button>
+<div class="feedback" id="feedback-q5"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Le centre de symétrie d'un parallélogramme est :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q6" type="radio" value="a"/> Un de ses sommets</label>
+<label class="quiz-option"><input name="q6" type="radio" value="b"/> Le milieu d'un côté</label>
+<label class="quiz-option"><input name="q6" type="radio" value="c"/> L'intersection de ses diagonales</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q6', 'c', 'Les diagonales d\'un parallélogramme se coupent en leur milieu, ce point est le centre de symétrie.')">Vérifier</button>
+<div class="feedback" id="feedback-q6"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Parmi ces figures, laquelle n'a PAS de centre de symétrie ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q7" type="radio" value="a"/> Le rectangle</label>
+<label class="quiz-option"><input name="q7" type="radio" value="b"/> Le triangle équilatéral</label>
+<label class="quiz-option"><input name="q7" type="radio" value="c"/> Le cercle</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q7', 'b', 'Le triangle équilatéral a 3 axes de symétrie mais aucun centre de symétrie.')">Vérifier</button>
+<div class="feedback" id="feedback-q7"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Si AB = 5 cm et A'B' est le symétrique de [AB] par symétrie centrale, alors A'B' = ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q8" type="radio" value="a"/> 10 cm</label>
+<label class="quiz-option"><input name="q8" type="radio" value="b"/> 2,5 cm</label>
+<label class="quiz-option"><input name="q8" type="radio" value="c"/> 5 cm</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q8', 'c', 'La symétrie centrale conserve les longueurs : A\'B\' = AB = 5 cm.')">Vérifier</button>
+<div class="feedback" id="feedback-q8"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function openTab(event, tabName) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(t => t.classList.remove('active'));
+    const buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(b => b.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+function checkAnswer(qid, correct, explanation) {
+    const selected = document.querySelector(`input[name="${qid}"]:checked`);
+    const feedback = document.getElementById(`feedback-${qid}`);
+    if (!selected) {
+        feedback.style.color = '#f44336';
+        feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+    } else if (selected.value === correct) {
+        feedback.style.color = '#4caf50';
+        feedback.textContent = '✓ Correct ! ' + explanation;
+    } else {
+        feedback.style.color = '#f44336';
+        feedback.textContent = '✗ Incorrect. ' + explanation;
+    }
+    feedback.style.display = 'block';
+    feedback.style.marginTop = '8px';
+    feedback.style.fontWeight = 'bold';
+}
+</script>
+</body>
+</html>

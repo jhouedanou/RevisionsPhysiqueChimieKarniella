@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 8 : La Sécurité et Circulation Routière - ECM</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🚦';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🚗';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #FF69B4;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #FF69B4;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #C71585;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #FFFFFF;
+            border: 3px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .component-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .component-card h5 {
+            color: #C71585;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .component-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="education-civique.html" class="btn-back">← Retour</a>
+        <h1>🚦 La Sécurité et Circulation Routière 🚗</h1>
+        <p>Leçon 8 - Éducation Civique et Morale - 5ème</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ 🚶 Les Usagers</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ 🚸 La Signalisation</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ 📜 Les Règles</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ ✏️ Quiz</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: LES USAGERS DE LA ROUTE -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>🚶 Les Usagers de la Route</h2>
+                        <p class="subtitle">Qui sont ceux qui utilisent la voie publique ?</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>Chaque jour, en Côte d'Ivoire, des milliers de personnes se déplacent sur les routes et les rues : pour aller à l'école, au marché, au travail. Tous ces déplacements doivent se faire dans l'ordre et la sécurité. Pour cela, il est important de connaître les différents <strong>usagers de la route</strong> et leurs responsabilités.</p>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Un <strong>usager de la route</strong> est toute personne qui utilise la voie publique (route, rue, trottoir, piste cyclable) pour se déplacer, qu'elle soit à pied ou avec un véhicule.</p>
+                        </div>
+
+                        <h3>🧑‍🤝‍🧑 Les Différents Usagers</h3>
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🚶</span>
+                                <h5>Les piétons</h5>
+                                <p>Personnes qui marchent à pied sur le trottoir ou traversent la route</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🚴</span>
+                                <h5>Les cyclistes</h5>
+                                <p>Personnes qui circulent à vélo ou à bicyclette</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🏍️</span>
+                                <h5>Les motocyclistes</h5>
+                                <p>Conducteurs de motos et de mobylettes</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🚗</span>
+                                <h5>Les automobilistes</h5>
+                                <p>Conducteurs de voitures et de taxis</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🚚</span>
+                                <h5>Véhicules lourds</h5>
+                                <p>Conducteurs de camions, cars et autobus (SOTRA, gbakas)</p>
+                            </div>
+                        </div>
+
+                        <h3>⚖️ Droits et Devoirs des Usagers</h3>
+
+                        <div class="category-box">
+                            <h4>✅ Droits de chaque usager</h4>
+                            <ul>
+                                <li>Circuler librement sur la voie publique</li>
+                                <li>Être protégé par la loi et la police</li>
+                                <li>Utiliser les espaces qui lui sont réservés (trottoir, passage clouté, piste cyclable)</li>
+                                <li>Être respecté par les autres usagers</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📋 Devoirs de chaque usager</h4>
+                            <ul>
+                                <li><strong>Le piéton</strong> : marcher sur le trottoir, traverser au passage clouté, regarder à gauche et à droite avant de traverser</li>
+                                <li><strong>Le cycliste</strong> : rouler à droite, tendre le bras pour indiquer un changement de direction, porter un casque</li>
+                                <li><strong>Le motocycliste</strong> : porter obligatoirement le casque, avoir un permis de conduire, respecter les limitations de vitesse</li>
+                                <li><strong>L'automobiliste</strong> : avoir un permis de conduire, attacher sa ceinture, respecter le code de la route</li>
+                                <li><strong>Le conducteur de véhicule lourd</strong> : être très vigilant, respecter les distances de sécurité, ne pas surcharger son véhicule</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Exemple</h4>
+                            <p>À Abidjan, quand tu vas à l'école, tu es un <strong>piéton</strong>. Tu dois marcher sur le trottoir, attendre le feu vert au passage clouté et vérifier que les voitures s'arrêtent avant de traverser.</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Un usager de la route = toute personne qui utilise la voie publique<br>
+                            • Il existe cinq grands types d'usagers : piétons, cyclistes, motocyclistes, automobilistes, conducteurs de véhicules lourds<br>
+                            • Chaque usager a des droits mais aussi des devoirs à respecter<br>
+                            • Le respect mutuel entre usagers permet d'éviter les accidents
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LA SIGNALISATION ROUTIÈRE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🚸 La Signalisation Routière</h2>
+                        <p class="subtitle">Les panneaux et signaux qui organisent la circulation</p>
+
+                        <h3>📌 Qu'est-ce que la signalisation ?</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>La <strong>signalisation routière</strong> est l'ensemble des panneaux, feux, marquages et signaux qui permettent aux usagers de circuler en toute sécurité. Elle donne des informations, des avertissements et impose des règles.</p>
+                        </div>
+
+                        <h3>🪧 Les Panneaux de Signalisation</h3>
+                        <p>Les panneaux sont classés en plusieurs catégories selon leur forme et leur couleur :</p>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">⛔</span>
+                                <h5>Panneaux d'interdiction</h5>
+                                <p>Forme : rond rouge à fond blanc.<br>Ex : Sens interdit, stationnement interdit</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🔵</span>
+                                <h5>Panneaux d'obligation</h5>
+                                <p>Forme : rond bleu.<br>Ex : Obligation de tourner à droite, sens obligatoire</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">⚠️</span>
+                                <h5>Panneaux de danger</h5>
+                                <p>Forme : triangle rouge ou jaune.<br>Ex : Virage dangereux, passage d'enfants</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">ℹ️</span>
+                                <h5>Panneaux d'information</h5>
+                                <p>Forme : rectangle ou carré (bleu ou vert).<br>Ex : Hôpital, station-service, parking</p>
+                            </div>
+                        </div>
+
+                        <h3>🚦 Les Feux Tricolores</h3>
+                        <p>Les feux tricolores contrôlent la circulation aux carrefours importants. Il faut toujours respecter leurs couleurs :</p>
+
+                        <div class="category-box">
+                            <h4>🔴🟡🟢 Les trois couleurs</h4>
+                            <ul>
+                                <li><strong>🔴 Feu rouge</strong> : <em>STOP</em> — Il faut obligatoirement s'arrêter avant la ligne blanche</li>
+                                <li><strong>🟡 Feu orange (jaune)</strong> : <em>Ralentir</em> — Le feu va passer au rouge, il faut ralentir et s'arrêter si possible</li>
+                                <li><strong>🟢 Feu vert</strong> : <em>Passer</em> — La voie est libre, on peut passer en restant prudent</li>
+                            </ul>
+                        </div>
+
+                        <h3>🛣️ Les Potences</h3>
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce qu'une potence ?</h4>
+                            <p>Les <strong>potences</strong> sont de grands panneaux de signalisation suspendus au-dessus de la chaussée, surtout sur les autoroutes et les grandes voies (comme le boulevard Giscard d'Estaing à Abidjan). Elles indiquent les directions, les sorties et les voies à emprunter.</p>
+                        </div>
+
+                        <h3>〰️ Les Marquages au Sol</h3>
+                        <div class="category-box">
+                            <h4>🖌️ Les lignes peintes sur la route</h4>
+                            <ul>
+                                <li><strong>Ligne blanche continue</strong> : interdiction de la franchir ou de doubler</li>
+                                <li><strong>Ligne blanche discontinue (pointillés)</strong> : on peut la franchir pour doubler si c'est prudent</li>
+                                <li><strong>Passage clouté (bandes blanches)</strong> : zone réservée aux piétons pour traverser</li>
+                                <li><strong>Flèches directionnelles</strong> : indiquent le sens obligatoire des voies</li>
+                                <li><strong>Stop peint au sol</strong> : obligation de marquer l'arrêt</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Exemple à Abidjan</h4>
+                            <p>Devant ton école, il y a souvent un panneau triangulaire avec deux enfants qui marchent ⚠️ : c'est un panneau de <strong>danger</strong> qui avertit les conducteurs de la présence d'élèves. Il y a aussi un passage clouté pour que vous traversiez en sécurité.</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • 4 types de panneaux : interdiction (rond rouge), obligation (rond bleu), danger (triangle), information (rectangle)<br>
+                            • Feu rouge = STOP, feu orange = ralentir, feu vert = passer<br>
+                            • Les potences sont de grands panneaux au-dessus des voies<br>
+                            • Les marquages au sol complètent la signalisation verticale
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: LES RÈGLES DE CIRCULATION -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>📜 Les Règles de Circulation</h2>
+                        <p class="subtitle">Le code de la route pour circuler en sécurité</p>
+
+                        <h3>📌 Qu'est-ce que le Code de la Route ?</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>Le <strong>Code de la route</strong> est l'ensemble des lois et règles qui organisent la circulation des personnes et des véhicules sur les voies publiques. En Côte d'Ivoire, il est obligatoire pour tous les usagers.</p>
+                        </div>
+
+                        <h3>⚖️ Les Règles Principales</h3>
+
+                        <div class="category-box">
+                            <h4>➡️ La priorité à droite</h4>
+                            <p>Quand deux véhicules arrivent à un carrefour sans feu ni panneau, celui qui vient de la droite a la priorité : il passe le premier.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🚶 La traversée des piétons</h4>
+                            <p>Les piétons doivent traverser uniquement au <strong>passage clouté</strong>. Avant de traverser, ils doivent :</p>
+                            <ul>
+                                <li>Regarder à gauche, puis à droite, puis encore à gauche</li>
+                                <li>S'assurer que les véhicules s'arrêtent</li>
+                                <li>Traverser calmement, sans courir</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>↔️ Le sens de circulation</h4>
+                            <p>En Côte d'Ivoire, comme dans la plupart des pays, on roule à <strong>droite</strong>. Il faut respecter les sens interdits et les sens uniques indiqués par les panneaux.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏁 Les limitations de vitesse</h4>
+                            <ul>
+                                <li><strong>En ville</strong> : 50 km/h maximum</li>
+                                <li><strong>Sur route</strong> : 80 à 90 km/h</li>
+                                <li><strong>Sur autoroute</strong> : 110 km/h</li>
+                                <li><strong>Près des écoles</strong> : 30 km/h</li>
+                            </ul>
+                        </div>
+
+                        <h3>🛡️ Les Mesures de Sécurité</h3>
+
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">🪖</span>
+                                <h5>Port du casque</h5>
+                                <p>Obligatoire pour les motocyclistes et cyclistes</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🔒</span>
+                                <h5>Ceinture de sécurité</h5>
+                                <p>Obligatoire pour le conducteur et tous les passagers</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">📏</span>
+                                <h5>Distance de sécurité</h5>
+                                <p>Garder une distance suffisante avec le véhicule de devant</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">📵</span>
+                                <h5>Pas de téléphone</h5>
+                                <p>Interdiction d'utiliser le téléphone au volant</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🚫🍺</span>
+                                <h5>Pas d'alcool</h5>
+                                <p>Interdiction de conduire après avoir bu de l'alcool</p>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Exemple</h4>
+                            <p>Quand tu montes dans la voiture de ton papa ou dans un taxi, tu dois <strong>toujours attacher ta ceinture de sécurité</strong>, même à l'arrière. En cas d'accident, elle peut te sauver la vie !</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le Code de la route organise la circulation pour protéger tout le monde<br>
+                            • Priorité à droite dans un carrefour sans feu<br>
+                            • Traverser uniquement au passage clouté<br>
+                            • Casque + ceinture + distance = sécurité<br>
+                            • Pas de téléphone ni d'alcool au volant !
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: QUIZ -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>✏️ Teste tes Connaissances</h2>
+                        <p class="subtitle">Il est temps de vérifier ce que tu as appris !</p>
+
+                        <h3>🚦 Comment utiliser le quiz ?</h3>
+                        <p>Le quiz se trouve dans la colonne de droite 👉. Il comporte <strong>8 questions</strong> sur la sécurité et la circulation routière.</p>
+
+                        <div class="example-box">
+                            <h4>💡 Conseils</h4>
+                            <ul>
+                                <li>Lis attentivement chaque question</li>
+                                <li>Choisis une seule réponse par question</li>
+                                <li>Clique sur <em>« Vérifier les Réponses »</em> à la fin</li>
+                                <li>Si tu te trompes, relis la leçon et réessaie !</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>🎯 Objectif :</strong><br>
+                            Obtenir au moins 6 bonnes réponses sur 8 pour bien maîtriser la leçon sur la sécurité routière.
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>🎯 Quiz - Sécurité Routière</h2>
+                <p>Réponds aux 8 questions puis clique sur le bouton en bas pour voir ton score.</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce qu'un usager de la route ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> Seulement les automobilistes
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Toute personne qui utilise la voie publique
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Seulement les piétons
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="d"> Seulement les policiers
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Que signifie le feu rouge ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Passer rapidement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Ralentir
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> S'arrêter obligatoirement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="d"> Accélérer
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Quelle est la forme d'un panneau d'interdiction ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Un triangle rouge
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Un rond rouge
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Un rectangle bleu
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="d"> Un carré vert
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Où le piéton doit-il traverser la route ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> N'importe où
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Au passage clouté
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Au milieu de la route
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="d"> Sur le terre-plein central
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Le motocycliste doit obligatoirement porter :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Des lunettes de soleil
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Un casque
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Une cravate
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="d"> Un chapeau
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Dans un carrefour sans feu ni panneau, la priorité est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> À gauche
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> À droite
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> Au plus gros véhicule
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="d"> Au plus rapide
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">La vitesse maximale autorisée en ville est de :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> 30 km/h
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> 50 km/h
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> 90 km/h
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="d"> 110 km/h
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">En voiture, la ceinture de sécurité est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> Facultative
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> Obligatoire pour le conducteur seulement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> Obligatoire pour tous les passagers
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="d"> Interdite
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'b',
+            q8: 'c'
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat : ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu es un champion de la sécurité routière ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            const targetButton = Array.from(buttons).find(button =>
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leçon 8 : Géométrie - Le Triangle</title>
+<link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>📐 Leçon 8 : Le Triangle</h1>
+<p>Mathématiques - Géométrie (5ème)</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Présentation &amp; Construction</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Périmètre &amp; Aire</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Lignes &amp; Cas particuliers</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+
+<!-- TAB 1: PRÉSENTATION ET CONSTRUCTION -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Le Triangle</h2>
+<p style="font-style: italic; color: #555;">Polygone à 3 côtés, 3 sommets et 3 angles.</p>
+
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Un <strong>triangle</strong> est un <strong>polygone</strong> qui possède :</p>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li><strong>3 côtés</strong> (segments de droite)</li>
+<li><strong>3 sommets</strong> (points)</li>
+<li><strong>3 angles</strong></li>
+</ul>
+<p>On nomme un triangle à partir des lettres de ses sommets. Par exemple, un triangle dont les sommets sont A, B et C s'appelle le <strong>triangle ABC</strong>.</p>
+</div>
+
+<div class="definition-box">
+<h4>📘 Nommage des côtés et des angles</h4>
+<p>Dans le triangle ABC :</p>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li>Les <strong>côtés</strong> sont les segments : <strong>[AB]</strong>, <strong>[BC]</strong> et <strong>[CA]</strong>.</li>
+<li>Les <strong>sommets</strong> sont les points : <strong>A</strong>, <strong>B</strong> et <strong>C</strong>.</li>
+<li>Les <strong>angles</strong> sont notés : <strong>BÂC</strong> (au sommet A), <strong>ABĈ</strong> (au sommet B) et <strong>BCÂ</strong> (au sommet C).</li>
+</ul>
+</div>
+
+<div class="example-box">
+<h4>💡 Le triangle ABC</h4>
+<svg height="260" viewbox="0 0 400 250" width="100%">
+<polygon points="80,200 340,200 200,40" fill="#FFE4EC" stroke="#FF69B4" stroke-width="3"></polygon>
+<!-- Sommets -->
+<circle cx="80" cy="200" r="5" fill="#333"></circle>
+<circle cx="340" cy="200" r="5" fill="#333"></circle>
+<circle cx="200" cy="40" r="5" fill="#333"></circle>
+<!-- Labels sommets -->
+<text fill="#333" font-size="22" font-weight="bold" x="55" y="225">B</text>
+<text fill="#333" font-size="22" font-weight="bold" x="350" y="225">C</text>
+<text fill="#333" font-size="22" font-weight="bold" x="193" y="30">A</text>
+<!-- Labels côtés -->
+<text fill="#D81B60" font-size="16" font-weight="bold" x="110" y="120">[AB]</text>
+<text fill="#D81B60" font-size="16" font-weight="bold" x="275" y="120">[AC]</text>
+<text fill="#D81B60" font-size="16" font-weight="bold" x="195" y="220">[BC]</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✓ Construire un triangle connaissant la longueur de ses 3 côtés</h4>
+<p>Pour tracer le triangle ABC tel que AB = 5 cm, BC = 6 cm et AC = 4 cm, on utilise une <strong>règle graduée</strong> et un <strong>compas</strong>.</p>
+<p><strong>Étape 1 :</strong> Avec la règle, je trace le segment [BC] de longueur 6 cm. Je place et nomme les points B et C.</p>
+<p><strong>Étape 2 :</strong> J'écarte mon compas de 5 cm (longueur AB). Je pique la pointe sèche sur B et je trace un arc de cercle.</p>
+<p><strong>Étape 3 :</strong> J'écarte mon compas de 4 cm (longueur AC). Je pique la pointe sèche sur C et je trace un second arc de cercle.</p>
+<p><strong>Étape 4 :</strong> Les deux arcs se coupent en un point. C'est le sommet <strong>A</strong>. Je le nomme.</p>
+<p><strong>Étape 5 :</strong> Avec la règle, je trace les segments [AB] et [AC]. Le triangle ABC est construit.</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Un triangle a toujours 3 côtés, 3 sommets et 3 angles.<br/>
+• On nomme un triangle avec les 3 lettres de ses sommets (ex : ABC).<br/>
+• La somme des 3 angles d'un triangle est toujours égale à <strong>180°</strong>.<br/>
+• Pour construire un triangle, on a besoin d'une règle et d'un compas.
+</div>
+
+<!-- Section Quiz -->
+<div id="quiz-tab1"></div></div>
+</div>
+
+<!-- TAB 2: PÉRIMÈTRE ET AIRE -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Périmètre et Aire du Triangle</h2>
+
+<div class="definition-box">
+<h4>📘 Périmètre d'un triangle</h4>
+<p>Le <strong>périmètre</strong> d'un triangle est la <strong>longueur totale de son contour</strong>. On l'obtient en additionnant les longueurs de ses trois côtés.</p>
+<div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p style="font-size: 20px; text-align: center;"><strong>P = AB + BC + CA</strong></p>
+</div>
+</div>
+
+<div class="example-box">
+<h4>💡 Exemple de calcul du périmètre</h4>
+<p>Soit un triangle ABC tel que : <strong>AB = 3 cm</strong>, <strong>BC = 4 cm</strong> et <strong>CA = 5 cm</strong>.</p>
+<p>On calcule :</p>
+<p style="text-align: center; font-size: 18px;"><strong>P = 3 + 4 + 5 = 12 cm</strong></p>
+<p>Le périmètre du triangle ABC est <strong>12 cm</strong>.</p>
+</div>
+
+<div class="definition-box">
+<h4>📘 Aire d'un triangle</h4>
+<p>L'<strong>aire</strong> d'un triangle est la mesure de la <strong>surface</strong> qu'il occupe. Elle s'obtient avec la formule :</p>
+<div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 10px;">
+<p style="font-size: 20px; text-align: center;"><strong>A = (base × hauteur) ÷ 2</strong></p>
+</div>
+<p style="margin-top: 10px;">La <strong>hauteur</strong> est le segment perpendiculaire à la base, qui part du sommet opposé à cette base.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Base et hauteur d'un triangle</h4>
+<svg height="260" viewbox="0 0 400 250" width="100%">
+<!-- Triangle -->
+<polygon points="60,210 340,210 220,50" fill="#FFE4EC" stroke="#FF69B4" stroke-width="3"></polygon>
+<!-- Hauteur (pointillé) -->
+<line x1="220" y1="50" x2="220" y2="210" stroke="#1976D2" stroke-width="2" stroke-dasharray="6,4"></line>
+<!-- Petit carré d'angle droit -->
+<polyline points="210,210 210,200 220,200" fill="none" stroke="#1976D2" stroke-width="2"></polyline>
+<!-- Base annotée -->
+<line x1="60" y1="230" x2="340" y2="230" stroke="#4CAF50" stroke-width="2"></line>
+<text fill="#4CAF50" font-size="16" font-weight="bold" x="170" y="248">base</text>
+<text fill="#1976D2" font-size="16" font-weight="bold" x="230" y="135">hauteur</text>
+<!-- Sommets -->
+<text fill="#333" font-size="20" font-weight="bold" x="40" y="220">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="345" y="220">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="213" y="40">A</text>
+</svg>
+</div>
+
+<div class="example-box">
+<h4>💡 Exemple de calcul de l'aire</h4>
+<p>Soit un triangle ayant une <strong>base de 6 cm</strong> et une <strong>hauteur de 4 cm</strong>.</p>
+<p>On calcule :</p>
+<p style="text-align: center; font-size: 18px;"><strong>A = (6 × 4) ÷ 2 = 24 ÷ 2 = 12 cm²</strong></p>
+<p>L'aire de ce triangle est <strong>12 cm²</strong>.</p>
+</div>
+
+<div class="property-box">
+<h4>✓ Attention aux unités</h4>
+<p><strong>Périmètre :</strong> exprimé en unité de longueur (cm, m, km…).</p>
+<p><strong>Aire :</strong> exprimée en unité de surface (cm², m², km²…).</p>
+<p>La base et la hauteur doivent toujours être dans la <strong>même unité</strong> avant de calculer l'aire.</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• Périmètre : <strong>P = somme des 3 côtés</strong>.<br/>
+• Aire : <strong>A = (base × hauteur) ÷ 2</strong>.<br/>
+• La hauteur est perpendiculaire à la base.<br/>
+• Le périmètre s'exprime en cm, l'aire en cm².
+</div>
+
+<!-- Section Quiz -->
+<div id="quiz-tab2"></div></div>
+</div>
+
+<!-- TAB 3: LIGNES REMARQUABLES ET CAS PARTICULIERS -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Lignes Remarquables et Cas Particuliers</h2>
+
+<h3>Les lignes remarquables</h3>
+
+<div class="definition-box">
+<h4>📘 La médiane</h4>
+<p>Une <strong>médiane</strong> d'un triangle est un segment qui relie un <strong>sommet</strong> au <strong>milieu du côté opposé</strong>. Un triangle a donc 3 médianes.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Médiane issue de A</h4>
+<svg height="250" viewbox="0 0 400 250" width="100%">
+<polygon points="80,200 340,200 200,40" fill="#FFF3E0" stroke="#FF9800" stroke-width="3"></polygon>
+<!-- Milieu M de [BC] -->
+<circle cx="210" cy="200" r="4" fill="#333"></circle>
+<!-- Médiane [AM] -->
+<line x1="200" y1="40" x2="210" y2="200" stroke="#D81B60" stroke-width="2"></line>
+<!-- Labels -->
+<text fill="#333" font-size="20" font-weight="bold" x="60" y="220">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="345" y="220">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="193" y="30">A</text>
+<text fill="#333" font-size="18" font-weight="bold" x="215" y="220">M</text>
+<text fill="#D81B60" font-size="14" font-weight="bold" x="220" y="130">médiane</text>
+</svg>
+<p><em>M est le milieu de [BC], donc [AM] est la médiane issue de A.</em></p>
+</div>
+
+<div class="definition-box">
+<h4>📘 La médiatrice</h4>
+<p>La <strong>médiatrice</strong> d'un côté d'un triangle est la <strong>droite perpendiculaire</strong> à ce côté et qui passe par son <strong>milieu</strong>.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Médiatrice du côté [BC]</h4>
+<svg height="250" viewbox="0 0 400 250" width="100%">
+<polygon points="80,200 340,200 200,40" fill="#E3F2FD" stroke="#1976D2" stroke-width="3"></polygon>
+<!-- Milieu M de [BC] -->
+<circle cx="210" cy="200" r="4" fill="#333"></circle>
+<!-- Médiatrice : droite perpendiculaire à [BC] passant par M -->
+<line x1="210" y1="20" x2="210" y2="240" stroke="#D81B60" stroke-width="2" stroke-dasharray="6,4"></line>
+<!-- Petit carré d'angle droit -->
+<polyline points="210,195 215,195 215,200" fill="none" stroke="#D81B60" stroke-width="2"></polyline>
+<!-- Labels -->
+<text fill="#333" font-size="20" font-weight="bold" x="60" y="220">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="345" y="220">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="193" y="30">A</text>
+<text fill="#333" font-size="18" font-weight="bold" x="215" y="220">M</text>
+<text fill="#D81B60" font-size="14" font-weight="bold" x="220" y="35">médiatrice</text>
+</svg>
+<p><em>La médiatrice de [BC] passe par M (milieu) et est perpendiculaire à [BC].</em></p>
+</div>
+
+<div class="definition-box">
+<h4>📘 La hauteur</h4>
+<p>Une <strong>hauteur</strong> d'un triangle est la <strong>droite</strong> (ou le segment) qui passe par un <strong>sommet</strong> et qui est <strong>perpendiculaire</strong> au côté opposé.</p>
+</div>
+
+<div class="example-box">
+<h4>💡 Hauteur issue de A</h4>
+<svg height="250" viewbox="0 0 400 250" width="100%">
+<polygon points="80,200 340,200 220,50" fill="#E8F5E9" stroke="#4CAF50" stroke-width="3"></polygon>
+<!-- Hauteur issue de A -->
+<line x1="220" y1="50" x2="220" y2="200" stroke="#D81B60" stroke-width="2" stroke-dasharray="6,4"></line>
+<!-- Pied de la hauteur -->
+<circle cx="220" cy="200" r="4" fill="#333"></circle>
+<!-- Angle droit -->
+<polyline points="210,200 210,190 220,190" fill="none" stroke="#D81B60" stroke-width="2"></polyline>
+<!-- Labels -->
+<text fill="#333" font-size="20" font-weight="bold" x="60" y="220">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="345" y="220">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="213" y="40">A</text>
+<text fill="#333" font-size="18" font-weight="bold" x="225" y="220">H</text>
+<text fill="#D81B60" font-size="14" font-weight="bold" x="230" y="130">hauteur</text>
+</svg>
+<p><em>[AH] est la hauteur issue de A ; elle est perpendiculaire à [BC].</em></p>
+</div>
+
+<h3 style="margin-top: 30px;">Cas particuliers de triangles</h3>
+
+<div class="property-box">
+<h4>✓ Le triangle rectangle</h4>
+<p>Un <strong>triangle rectangle</strong> est un triangle qui possède un <strong>angle droit</strong> (un angle de 90°).</p>
+<p>Le côté opposé à l'angle droit est appelé l'<strong>hypoténuse</strong>. C'est le plus long côté.</p>
+<svg height="220" viewbox="0 0 400 220" width="100%">
+<polygon points="80,180 320,180 80,40" fill="#FFEBEE" stroke="#E53935" stroke-width="3"></polygon>
+<!-- Petit carré d'angle droit en B -->
+<polyline points="80,170 90,170 90,180" fill="none" stroke="#E53935" stroke-width="2"></polyline>
+<!-- Labels -->
+<text fill="#333" font-size="20" font-weight="bold" x="60" y="200">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="325" y="200">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="60" y="35">A</text>
+<text fill="#E53935" font-size="14" font-weight="bold" x="175" y="115">hypoténuse</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✓ Le triangle isocèle</h4>
+<p>Un <strong>triangle isocèle</strong> est un triangle qui a <strong>deux côtés de même longueur</strong>.</p>
+<p>Les deux angles à la base de ce triangle sont <strong>égaux</strong>.</p>
+<svg height="220" viewbox="0 0 400 220" width="100%">
+<polygon points="80,180 320,180 200,30" fill="#E8F5E9" stroke="#43A047" stroke-width="3"></polygon>
+<!-- Petites marques pour indiquer côtés égaux -->
+<line x1="135" y1="100" x2="145" y2="110" stroke="#43A047" stroke-width="2"></line>
+<line x1="255" y1="110" x2="265" y2="100" stroke="#43A047" stroke-width="2"></line>
+<!-- Labels -->
+<text fill="#333" font-size="20" font-weight="bold" x="60" y="200">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="325" y="200">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="193" y="25">A</text>
+<text fill="#43A047" font-size="14" font-weight="bold" x="150" y="210">AB = AC</text>
+</svg>
+</div>
+
+<div class="property-box">
+<h4>✓ Le triangle équilatéral</h4>
+<p>Un <strong>triangle équilatéral</strong> est un triangle qui a <strong>trois côtés de même longueur</strong>.</p>
+<p>Ses <strong>trois angles</strong> sont égaux et mesurent chacun <strong>60°</strong>.</p>
+<svg height="220" viewbox="0 0 400 220" width="100%">
+<polygon points="100,180 300,180 200,30" fill="#E3F2FD" stroke="#1E88E5" stroke-width="3"></polygon>
+<!-- Marques côtés égaux -->
+<line x1="145" y1="100" x2="155" y2="110" stroke="#1E88E5" stroke-width="2"></line>
+<line x1="245" y1="110" x2="255" y2="100" stroke="#1E88E5" stroke-width="2"></line>
+<line x1="195" y1="175" x2="205" y2="185" stroke="#1E88E5" stroke-width="2"></line>
+<!-- Labels angles 60° -->
+<text fill="#1E88E5" font-size="12" font-weight="bold" x="105" y="170">60°</text>
+<text fill="#1E88E5" font-size="12" font-weight="bold" x="275" y="170">60°</text>
+<text fill="#1E88E5" font-size="12" font-weight="bold" x="190" y="55">60°</text>
+<!-- Sommets -->
+<text fill="#333" font-size="20" font-weight="bold" x="80" y="200">B</text>
+<text fill="#333" font-size="20" font-weight="bold" x="305" y="200">C</text>
+<text fill="#333" font-size="20" font-weight="bold" x="193" y="25">A</text>
+</svg>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+• <strong>Médiane</strong> : relie un sommet au milieu du côté opposé.<br/>
+• <strong>Médiatrice</strong> : perpendiculaire qui passe par le milieu d'un côté.<br/>
+• <strong>Hauteur</strong> : perpendiculaire à un côté passant par le sommet opposé.<br/>
+• <strong>Triangle rectangle</strong> : un angle droit.<br/>
+• <strong>Triangle isocèle</strong> : deux côtés égaux.<br/>
+• <strong>Triangle équilatéral</strong> : trois côtés égaux et trois angles de 60°.
+</div>
+
+<!-- Section Quiz -->
+<div id="quiz-tab3"></div></div>
+</div>
+
+<!-- TAB 4: QUIZ -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Le Triangle</h2>
+<p>Teste tes connaissances sur le triangle !</p>
+<div class="quiz-section">
+
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Combien de côtés possède un triangle ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q1" type="radio" value="a"/> 2 côtés</label>
+<label class="quiz-option"><input name="q1" type="radio" value="b"/> 3 côtés</label>
+<label class="quiz-option"><input name="q1" type="radio" value="c"/> 4 côtés</label>
+<label class="quiz-option"><input name="q1" type="radio" value="d"/> 5 côtés</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q1', 'b', 'Un triangle possède toujours 3 côtés, 3 sommets et 3 angles.')">Vérifier</button>
+<div class="feedback" id="feedback-q1"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Pour construire un triangle connaissant la longueur de ses 3 côtés, on utilise :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q2" type="radio" value="a"/> Une équerre seulement</label>
+<label class="quiz-option"><input name="q2" type="radio" value="b"/> Un rapporteur seulement</label>
+<label class="quiz-option"><input name="q2" type="radio" value="c"/> Une règle et un compas</label>
+<label class="quiz-option"><input name="q2" type="radio" value="d"/> Une calculatrice</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q2', 'c', 'On trace un côté à la règle, puis on reporte les deux autres longueurs avec le compas pour trouver le troisième sommet.')">Vérifier</button>
+<div class="feedback" id="feedback-q2"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Un triangle a pour côtés 5 cm, 7 cm et 8 cm. Quel est son périmètre ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q3" type="radio" value="a"/> 15 cm</label>
+<label class="quiz-option"><input name="q3" type="radio" value="b"/> 20 cm</label>
+<label class="quiz-option"><input name="q3" type="radio" value="c"/> 25 cm</label>
+<label class="quiz-option"><input name="q3" type="radio" value="d"/> 40 cm</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q3', 'b', 'P = 5 + 7 + 8 = 20 cm. Le périmètre est la somme des 3 côtés.')">Vérifier</button>
+<div class="feedback" id="feedback-q3"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Quelle est la formule de l'aire d'un triangle ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q4" type="radio" value="a"/> A = base × hauteur</label>
+<label class="quiz-option"><input name="q4" type="radio" value="b"/> A = (base × hauteur) ÷ 2</label>
+<label class="quiz-option"><input name="q4" type="radio" value="c"/> A = base + hauteur</label>
+<label class="quiz-option"><input name="q4" type="radio" value="d"/> A = côté × côté</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q4', 'b', 'L&apos;aire d&apos;un triangle est égale à la moitié du produit de la base par la hauteur.')">Vérifier</button>
+<div class="feedback" id="feedback-q4"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Un triangle a une base de 10 cm et une hauteur de 6 cm. Quelle est son aire ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q5" type="radio" value="a"/> 16 cm²</label>
+<label class="quiz-option"><input name="q5" type="radio" value="b"/> 60 cm²</label>
+<label class="quiz-option"><input name="q5" type="radio" value="c"/> 30 cm²</label>
+<label class="quiz-option"><input name="q5" type="radio" value="d"/> 120 cm²</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q5', 'c', 'A = (10 × 6) ÷ 2 = 60 ÷ 2 = 30 cm².')">Vérifier</button>
+<div class="feedback" id="feedback-q5"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Comment appelle-t-on un triangle qui a deux côtés de même longueur ?</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q6" type="radio" value="a"/> Un triangle rectangle</label>
+<label class="quiz-option"><input name="q6" type="radio" value="b"/> Un triangle isocèle</label>
+<label class="quiz-option"><input name="q6" type="radio" value="c"/> Un triangle équilatéral</label>
+<label class="quiz-option"><input name="q6" type="radio" value="d"/> Un triangle quelconque</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q6', 'b', 'Un triangle isocèle a deux côtés de même longueur et deux angles à la base égaux.')">Vérifier</button>
+<div class="feedback" id="feedback-q6"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Dans un triangle équilatéral, chaque angle mesure :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q7" type="radio" value="a"/> 45°</label>
+<label class="quiz-option"><input name="q7" type="radio" value="b"/> 60°</label>
+<label class="quiz-option"><input name="q7" type="radio" value="c"/> 90°</label>
+<label class="quiz-option"><input name="q7" type="radio" value="d"/> 180°</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q7', 'b', 'Un triangle équilatéral a ses 3 angles égaux. Comme leur somme vaut 180°, chaque angle mesure 180 ÷ 3 = 60°.')">Vérifier</button>
+<div class="feedback" id="feedback-q7"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Une médiane d'un triangle est un segment qui :</span>
+<div class="quiz-options">
+<label class="quiz-option"><input name="q8" type="radio" value="a"/> Est perpendiculaire à un côté</label>
+<label class="quiz-option"><input name="q8" type="radio" value="b"/> Relie un sommet au milieu du côté opposé</label>
+<label class="quiz-option"><input name="q8" type="radio" value="c"/> Passe par les 3 sommets</label>
+<label class="quiz-option"><input name="q8" type="radio" value="d"/> Mesure 60°</label>
+</div>
+<button class="check-btn" onclick="checkAnswer('q8', 'b', 'La médiane relie un sommet au milieu du côté opposé. Un triangle possède 3 médianes.')">Vérifier</button>
+<div class="feedback" id="feedback-q8"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function openTab(event, tabName) {
+    var tabContents = document.getElementsByClassName('tab-content');
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+    }
+    var tabButtons = document.getElementsByClassName('tab-button');
+    for (var j = 0; j < tabButtons.length; j++) {
+        tabButtons[j].classList.remove('active');
+    }
+    document.getElementById(tabName).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+function checkAnswer(qid, correct, explanation) {
+    var selected = document.querySelector('input[name="' + qid + '"]:checked');
+    var feedback = document.getElementById('feedback-' + qid);
+    if (!selected) {
+        feedback.style.color = '#f44336';
+        feedback.textContent = '⚠ Veuillez sélectionner une réponse.';
+    } else if (selected.value === correct) {
+        feedback.style.color = '#4caf50';
+        feedback.textContent = '✓ Correct ! ' + explanation;
+    } else {
+        feedback.style.color = '#f44336';
+        feedback.textContent = '✗ Incorrect. ' + explanation;
+    }
+    feedback.style.display = 'block';
+    feedback.style.marginTop = '8px';
+    feedback.style.fontWeight = 'bold';
+}
+</script>
+</body>
+</html>

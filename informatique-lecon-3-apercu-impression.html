@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 3 : Aperçu et Impression - Informatique</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🖨️';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '📄';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #C71585;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #FF69B4;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #4caf50;
+            border-left: 4px solid #FF69B4;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #C71585;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .example-box {
+            background: #FFFFFF;
+            border: 3px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #FFFFFF;
+            border: 3px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .component-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 3px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .component-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .component-card h5 {
+            color: #C71585;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .component-card p {
+            color: #555;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="tice.html" class="btn-back">← Retour</a>
+        <h1>🖨️ Aperçu et Impression 📄</h1>
+        <p>Traitement de texte - Cours des 10 et 18 avril</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Aperçu avant impression</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ L'impression</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Méthodes d'impression</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Quiz</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: APERÇU AVANT IMPRESSION -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>👁️ L'Aperçu avant Impression</h2>
+                        <p class="subtitle">Vérifier son document avant de l'imprimer</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>Avant d'imprimer un document sur du papier, il est très important de le vérifier à l'écran pour éviter les erreurs. C'est le rôle de <strong>l'aperçu avant impression</strong>.</p>
+
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>L'<strong>aperçu avant impression</strong> est une fonctionnalité du logiciel de traitement de texte qui permet de <strong>visualiser le document tel qu'il apparaîtra une fois imprimé</strong> sur le papier.</p>
+                        </div>
+
+                        <h3>🎯 Utilité de l'aperçu</h3>
+                        <p>L'aperçu est une étape de <strong>vérification finale</strong> qui permet de contrôler :</p>
+                        <ul>
+                            <li>📐 La <strong>mise en page</strong> du document</li>
+                            <li>📏 Les <strong>marges</strong> (haut, bas, gauche, droite)</li>
+                            <li>📄 Les <strong>sauts de page</strong> (où commence et finit chaque page)</li>
+                            <li>🔝 Les <strong>en-têtes</strong> (texte en haut de chaque page)</li>
+                            <li>🔽 Les <strong>pieds de page</strong> (texte en bas de chaque page)</li>
+                            <li>🖼️ La position des images et des tableaux</li>
+                        </ul>
+
+                        <div class="example-box">
+                            <h4>💡 Pourquoi c'est important ?</h4>
+                            <p>L'aperçu avant impression permet de faire des <strong>économies de papier et d'encre</strong> en détectant les erreurs à l'écran, avant de lancer l'impression. Tu évites ainsi de gaspiller des feuilles !</p>
+                        </div>
+
+                        <h3>⚙️ Procédure technique</h3>
+                        <div class="category-box">
+                            <h4>🖱️ Comment afficher l'aperçu ?</h4>
+                            <ol>
+                                <li>Ouvrir le menu <strong>Fichier</strong></li>
+                                <li>Cliquer sur <strong>Aperçu avant impression</strong></li>
+                                <li>OU utiliser le raccourci clavier <strong>Ctrl + P</strong> (dans les versions récentes, l'aperçu s'affiche directement dans la fenêtre d'impression)</li>
+                            </ol>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔍 Outils disponibles dans l'aperçu</h4>
+                            <ul>
+                                <li><strong>Boutons de zoom</strong> (+ / −) : pour agrandir ou réduire la vue</li>
+                                <li><strong>Boutons de navigation</strong> : pour passer d'une page à l'autre</li>
+                                <li><strong>Afficher plusieurs pages</strong> : voir 2, 4 ou 6 pages en même temps</li>
+                                <li><strong>Fermer l'aperçu</strong> : pour revenir au document et faire des corrections</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • L'aperçu avant impression sert à <strong>visualiser</strong> le document avant impression<br>
+                            • Il permet de <strong>vérifier</strong> la mise en page et les marges<br>
+                            • Il évite le <strong>gaspillage</strong> de papier et d'encre<br>
+                            • On y accède par <strong>Fichier → Aperçu avant impression</strong> ou <strong>Ctrl + P</strong>
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: L'IMPRESSION -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>🖨️ L'Impression</h2>
+                        <p class="subtitle">Transférer le document numérique sur papier</p>
+
+                        <h3>📌 Définition</h3>
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que l'impression ?</h4>
+                            <p>L'<strong>impression</strong> est le processus qui consiste à <strong>transférer un document numérique</strong> (affiché à l'écran) <strong>sur un support papier</strong>, grâce à un appareil appelé <strong>imprimante</strong>.</p>
+                        </div>
+
+                        <h3>🖨️ Les différents types d'imprimantes</h3>
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">💧</span>
+                                <h5>Imprimante à jet d'encre</h5>
+                                <p>Projette de minuscules gouttes d'encre. Utilisée à la maison pour les documents et les photos.</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">⚡</span>
+                                <h5>Imprimante laser</h5>
+                                <p>Utilise du toner (poudre) et un laser. Très rapide, idéale pour les bureaux.</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🎛️</span>
+                                <h5>Imprimante matricielle</h5>
+                                <p>Ancienne technologie à aiguilles. Encore utilisée pour les factures et les tickets.</p>
+                            </div>
+                        </div>
+
+                        <h3>📋 Les étapes de l'impression</h3>
+                        <div class="category-box">
+                            <h4>🖱️ Comment imprimer un document ?</h4>
+                            <ol>
+                                <li>Cliquer sur le menu <strong>Fichier</strong></li>
+                                <li>Choisir l'option <strong>Imprimer</strong> (ou faire <strong>Ctrl + P</strong>)</li>
+                                <li><strong>Choisir l'imprimante</strong> (si plusieurs sont connectées)</li>
+                                <li>Indiquer le <strong>nombre de copies</strong> (1, 2, 3…)</li>
+                                <li>Définir la <strong>plage de pages</strong> à imprimer (toutes, de 2 à 5, etc.)</li>
+                                <li>Choisir la <strong>qualité</strong> d'impression (brouillon, normale, haute)</li>
+                                <li>Cliquer sur <strong>OK</strong> ou <strong>Imprimer</strong> pour valider</li>
+                            </ol>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Exemple concret</h4>
+                            <p>Tu veux imprimer ton devoir de 3 pages en 2 exemplaires : tu ouvres la fenêtre d'impression, tu choisis l'imprimante de la salle, tu mets "Copies : 2" et tu cliques sur Imprimer. L'imprimante sortira 6 feuilles au total !</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • L'impression transforme un document <strong>numérique en document papier</strong><br>
+                            • Les principaux types : <strong>jet d'encre, laser et matricielle</strong><br>
+                            • On accède à l'impression par <strong>Fichier → Imprimer</strong> ou <strong>Ctrl + P</strong><br>
+                            • Il faut toujours vérifier : imprimante, copies, pages et qualité
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: MÉTHODES D'IMPRESSION -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>📑 Les Méthodes d'Impression</h2>
+                        <p class="subtitle">Les différentes façons d'imprimer un document</p>
+
+                        <h3>📌 Introduction</h3>
+                        <p>Selon nos besoins, on peut imprimer un document de plusieurs manières différentes. Découvrons les principales méthodes.</p>
+
+                        <h3>📄 Impression standard</h3>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p>L'<strong>impression standard</strong> consiste à imprimer <strong>tout le document</strong>, de la première à la dernière page, sur des feuilles séparées (une page par feuille, en recto).</p>
+                        </div>
+
+                        <h3>✂️ Impression partielle</h3>
+                        <div class="category-box">
+                            <h4>🎯 Choisir ce que l'on imprime</h4>
+                            <p>On peut n'imprimer qu'une partie du document :</p>
+                            <ul>
+                                <li><strong>Pages sélectionnées</strong> : indiquer les numéros (ex. : 1, 3, 5-8)</li>
+                                <li><strong>Page courante</strong> : seulement la page où se trouve le curseur</li>
+                                <li><strong>Sélection</strong> : uniquement la partie de texte surlignée à la souris</li>
+                            </ul>
+                        </div>
+
+                        <h3>🔄 Impression recto-verso (duplex)</h3>
+                        <div class="example-box">
+                            <h4>♻️ Économique et écologique</h4>
+                            <p>L'<strong>impression recto-verso</strong>, aussi appelée <strong>duplex</strong>, consiste à imprimer <strong>sur les deux côtés</strong> d'une même feuille. C'est très pratique pour :</p>
+                            <ul>
+                                <li>Économiser du papier (2 fois moins de feuilles)</li>
+                                <li>Réduire l'épaisseur des documents longs</li>
+                                <li>Protéger l'environnement 🌍</li>
+                            </ul>
+                        </div>
+
+                        <h3>📚 Impression multiple</h3>
+                        <div class="category-box">
+                            <h4>📰 Plusieurs pages par feuille</h4>
+                            <p>On peut imprimer <strong>plusieurs pages sur une seule feuille</strong> : 2, 4, 6 pages ou plus. Les pages sont alors réduites pour tenir sur la même feuille.</p>
+                            <p>C'est utile pour faire des <strong>fiches de révision</strong>, des <strong>brouillons</strong> ou économiser le papier.</p>
+                        </div>
+
+                        <h3>📐 Paramètres de mise en page</h3>
+                        <div class="component-grid">
+                            <div class="component-card">
+                                <span class="icon">📱</span>
+                                <h5>Orientation</h5>
+                                <p><strong>Portrait</strong> (vertical) ou <strong>Paysage</strong> (horizontal)</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">📏</span>
+                                <h5>Taille du papier</h5>
+                                <p><strong>A4</strong> (standard), <strong>A5</strong> (moitié), <strong>Letter</strong> (USA)</p>
+                            </div>
+                            <div class="component-card">
+                                <span class="icon">🔲</span>
+                                <h5>Marges</h5>
+                                <p>Espaces blancs autour du texte (haut, bas, gauche, droite)</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • <strong>Standard</strong> : tout le document, une page par feuille<br>
+                            • <strong>Partielle</strong> : pages choisies, page courante ou sélection<br>
+                            • <strong>Recto-verso (duplex)</strong> : les deux côtés de la feuille<br>
+                            • <strong>Multiple</strong> : plusieurs pages sur une même feuille<br>
+                            • Toujours vérifier l'<strong>orientation</strong>, la <strong>taille</strong> et les <strong>marges</strong>
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: QUIZ -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>🎯 Passe au Quiz !</h2>
+                        <p class="subtitle">Teste tes connaissances sur l'aperçu et l'impression</p>
+
+                        <div class="example-box">
+                            <h4>👉 Où trouver le quiz ?</h4>
+                            <p>Le <strong>quiz de 8 questions</strong> se trouve sur le côté droit de ta page (ou en bas sur téléphone) 📱💻.</p>
+                            <p>Réponds à toutes les questions en cochant la bonne case, puis clique sur le bouton <strong>"Vérifier les réponses"</strong> pour voir ton score !</p>
+                        </div>
+
+                        <div class="info">
+                            <strong>🌟 Bon courage !</strong><br>
+                            Relis bien les trois premières parties si tu as un doute. Tu peux toujours revenir en arrière avec les onglets en haut de la page.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Aperçu et Impression</h2>
+                <p>Réponds aux 8 questions puis clique sur "Vérifier les réponses".</p>
+
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Que permet l'aperçu avant impression ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> D'imprimer plus vite
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> De visualiser le document tel qu'il sera imprimé
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> De changer l'imprimante
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quel est le principal intérêt de l'aperçu avant impression ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Économiser du papier et de l'encre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Rendre le texte plus grand
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Allumer l'ordinateur
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Quel raccourci clavier ouvre la fenêtre d'impression ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Ctrl + S
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Ctrl + P
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Ctrl + C
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Quel type d'imprimante est le plus rapide et utilisé au bureau ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Imprimante à jet d'encre
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Imprimante laser
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Imprimante matricielle
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Comment appelle-t-on l'impression sur les deux côtés de la feuille ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> Impression standard
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Impression partielle
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> Impression recto-verso (duplex)
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Quelle est la taille de papier standard utilisée à l'école ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> A4
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> A10
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> Z5
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Une orientation "paysage" signifie :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Feuille à la verticale
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Feuille à l'horizontale
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Feuille en diagonale
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Si tu veux imprimer seulement les pages 2, 3 et 4 d'un document, tu utilises :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> L'impression standard
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> L'impression partielle (plage de pages)
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> L'impression multiple
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <button class="quiz-button" onclick="checkQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizAnswers = {
+            q1: 'b',
+            q2: 'a',
+            q3: 'b',
+            q4: 'b',
+            q5: 'c',
+            q6: 'a',
+            q7: 'b',
+            q8: 'b'
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat : ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu maîtrises l\'impression ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue comme ça ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+
+            const targetButton = Array.from(buttons).find(button =>
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
