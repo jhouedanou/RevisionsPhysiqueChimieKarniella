@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Diviseurs d'un Nombre - Cours de Mathématiques</title>
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FF69B4;
+            position: relative;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FF69B4;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            background: #444;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .tab-button:hover {
+            background: #FF69B4;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4); border: 4px solid #FF69B4;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 3px solid #FF69B4;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #FF69B4;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .definition-box {
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 5px solid #FF69B4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #C71585; font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .definition-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .example-box {
+            background: #FFFFFF; border: 3px solid #ff9800;
+            border-left: 5px solid #FF69B4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #C71585; font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .example-box p, .example-box ul {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .example-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .property-box {
+            background: #FFFFFF; border: 3px solid #4caf50;
+            border-left: 5px solid #FF69B4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .property-box h4 {
+            color: #C71585; font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .property-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .remark-box {
+            background: #f3e5f5;
+            border-left: 5px solid #9c27b0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .remark-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .remark-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+            border: 2px dashed #FF69B4;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .interactive-demo {
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+        }
+
+        .interactive-demo input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            font-size: 16px;
+            border: 3px solid #FF1493;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .interactive-demo button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-demo button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .result-box {
+            background: #FFFFFF; border: 3px solid #4caf50;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-box p {
+            color: #C71585; font-weight: 700;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .info {
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 4px solid #FF69B4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info strong {
+            color: #C71585; font-weight: 700;
+        }
+
+        .quiz-question {
+            background: #ffffff;
+            border: 2px solid #FF69B4;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .quiz-question p {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-options label:hover {
+            background: #fff0f5;
+            border-color: #FF69B4;
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #FF69B4;
+        }
+        .check-answer-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+        .check-answer-btn:hover {
+            transform: scale(1.05);
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>➗ Diviseurs d'un Nombre</h1>
+<p>Leçon 2 - Divisibilité et critères</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Définition</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Remarques</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Critères de Divisibilité</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Exercices</button>
+</div>
+<div class="content">
+<!-- TAB 1: Définition -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Diviseur d'un Nombre Entier Naturel</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Un nombre entier naturel <strong>a</strong> est un <strong>diviseur</strong> d'un nombre entier naturel <strong>b</strong> si la division de <strong>b</strong> par <strong>a</strong> donne un résultat exact (reste = 0).</p>
+<div class="formula">b = a × k où k est un entier naturel</div>
+<p style="margin-top: 10px;">On dit aussi que :</p>
+<ul style="margin-left: 30px; margin-top: 10px;">
+<li><strong>a</strong> divise <strong>b</strong></li>
+<li><strong>b</strong> est divisible par <strong>a</strong></li>
+<li><strong>b</strong> est un multiple de <strong>a</strong></li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Exemples</h4>
+<p><strong>Diviseurs de 12 :</strong></p>
+<ul>
+<li>1 divise 12 car 12 = 1 × 12</li>
+<li>2 divise 12 car 12 = 2 × 6</li>
+<li>3 divise 12 car 12 = 3 × 4</li>
+<li>4 divise 12 car 12 = 4 × 3</li>
+<li>6 divise 12 car 12 = 6 × 2</li>
+<li>12 divise 12 car 12 = 12 × 1</li>
+</ul>
+<p style="margin-top: 15px;"><strong>Donc les diviseurs de 12 sont : 1, 2, 3, 4, 6, 12</strong></p>
+</div>
+<div class="example-box">
+<h4>💡 Autres exemples</h4>
+<p><strong>Diviseurs de 20 :</strong> 1, 2, 4, 5, 10, 20</p>
+<p><strong>Diviseurs de 30 :</strong> 1, 2, 3, 5, 6, 10, 15, 30</p>
+<p><strong>Diviseurs de 17 :</strong> 1, 17 (nombre premier)</p>
+</div>
+<div class="interactive-demo">
+<h3 style="margin-top: 0; color: #FF69B4;">🎮 Outil Interactif</h3>
+<p>Trouve tous les diviseurs d'un nombre :</p>
+<div style="margin: 20px 0;">
+<label>Nombre : <input id="divisor-number" min="1" type="number" value="24"/></label>
+<button onclick="findDivisors()">Trouver les diviseurs</button>
+</div>
+<div class="result-box" id="divisors-result">
+<p id="divisors-list"></p>
+<p id="divisors-count"></p>
+</div>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Tout nombre a au moins deux diviseurs : 1 et lui-même<br/>
+                    • Les diviseurs d'un nombre sont toujours en nombre fini<br/>
+                    • Pour trouver les diviseurs, on teste tous les nombres de 1 jusqu'au nombre lui-même<br/>
+                    • Si a divise b, alors b est un multiple de a
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<!-- TAB 2: Remarques -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Remarques sur les Diviseurs</h2>
+<div class="remark-box">
+<h4>📌 Remarque 1 : Le nombre 1</h4>
+<p><strong>1 est un diviseur de tous les nombres entiers naturels.</strong></p>
+<p>En effet, pour tout nombre n : n = 1 × n</p>
+</div>
+<div class="remark-box">
+<h4>📌 Remarque 2 : Le nombre lui-même</h4>
+<p><strong>Tout nombre est un diviseur de lui-même.</strong></p>
+<p>Pour tout nombre n : n = n × 1</p>
+</div>
+<div class="remark-box">
+<h4>📌 Remarque 3 : Nombres premiers</h4>
+<p>Un <strong>nombre premier</strong> est un nombre qui n'a que deux diviseurs : 1 et lui-même.</p>
+<p><strong>Exemples de nombres premiers :</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, ...</p>
+<p style="margin-top: 10px;"><strong>Note :</strong> 1 n'est pas considéré comme un nombre premier.</p>
+</div>
+<div class="remark-box">
+<h4>📌 Remarque 4 : Nombres composés</h4>
+<p>Un <strong>nombre composé</strong> est un nombre qui a plus de deux diviseurs.</p>
+<p><strong>Exemples :</strong></p>
+<ul style="margin-left: 20px; margin-top: 10px;">
+<li>4 a trois diviseurs : 1, 2, 4</li>
+<li>6 a quatre diviseurs : 1, 2, 3, 6</li>
+<li>12 a six diviseurs : 1, 2, 3, 4, 6, 12</li>
+</ul>
+</div>
+<div class="remark-box">
+<h4>📌 Remarque 5 : Le nombre 0</h4>
+<p><strong>0 est divisible par tous les nombres (sauf 0).</strong></p>
+<p>Car : 0 = n × 0 pour tout nombre n ≠ 0</p>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés importantes</h4>
+<p><strong>1.</strong> Si a divise b et b divise c, alors a divise c (transitivité)</p>
+<p><strong>2.</strong> Si a divise b et a divise c, alors a divise (b + c) et (b - c)</p>
+<p><strong>3.</strong> Si a divise b, alors a divise tous les multiples de b</p>
+<p><strong>4.</strong> Le plus grand diviseur d'un nombre est le nombre lui-même</p>
+<p><strong>5.</strong> Le plus petit diviseur (non nul) d'un nombre est toujours 1</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Chaque nombre a au minimum 2 diviseurs (1 et lui-même)<br/>
+                    • Les nombres premiers n'ont que 2 diviseurs<br/>
+                    • Les nombres composés ont plus de 2 diviseurs
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<!-- TAB 3: Critères de Divisibilité -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Critères de Divisibilité</h2>
+<p style="font-size: 16px; color: #333; margin-bottom: 20px;">Les critères de divisibilité permettent de savoir rapidement si un nombre est divisible par un autre sans faire la division.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Diviseur</th>
+<th>Critère de Divisibilité</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2</strong></td>
+<td>Le nombre se termine par 0, 2, 4, 6 ou 8</td>
+<td>124 est divisible par 2 (se termine par 4)</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>La somme des chiffres est divisible par 3</td>
+<td>123 → 1+2+3=6 → divisible par 3</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Les deux derniers chiffres forment un nombre divisible par 4</td>
+<td>316 → 16 divisible par 4</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Le nombre se termine par 0 ou 5</td>
+<td>245 est divisible par 5 (se termine par 5)</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Le nombre est divisible par 2 ET par 3</td>
+<td>18 → pair ET 1+8=9 divisible par 3</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>La somme des chiffres est divisible par 9</td>
+<td>729 → 7+2+9=18 → divisible par 9</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Le nombre se termine par 0</td>
+<td>1230 est divisible par 10 (se termine par 0)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Exemples Détaillés</h3>
+<div class="example-box">
+<h4>💡 Test de divisibilité par 3</h4>
+<p><strong>Nombre : 456</strong></p>
+<p>Somme des chiffres : 4 + 5 + 6 = 15</p>
+<p>15 est divisible par 3 (15 = 3 × 5)</p>
+<p><strong>Conclusion : 456 est divisible par 3</strong></p>
+</div>
+<div class="example-box">
+<h4>💡 Test de divisibilité par 9</h4>
+<p><strong>Nombre : 837</strong></p>
+<p>Somme des chiffres : 8 + 3 + 7 = 18</p>
+<p>18 est divisible par 9 (18 = 9 × 2)</p>
+<p><strong>Conclusion : 837 est divisible par 9</strong></p>
+</div>
+<div class="interactive-demo">
+<h3 style="margin-top: 0; color: #FF69B4;">🎮 Testeur de Divisibilité</h3>
+<p>Vérifie si un nombre est divisible par 2, 3, 5, 9, ou 10 :</p>
+<div style="margin: 20px 0;">
+<label>Nombre : <input id="divisibility-test" min="1" type="number" value="180"/></label>
+<button onclick="testDivisibility()">Tester</button>
+</div>
+<div class="result-box" id="divisibility-result">
+<p id="divisibility-details"></p>
+</div>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Les critères de divisibilité permettent de gagner du temps<br/>
+                    • Apprends ces critères par cœur, ils sont très utiles !<br/>
+                    • Pour tester la divisibilité par 6, vérifie d'abord par 2, puis par 3
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab3"></div></div>
+</div>
+<!-- TAB 4: Exercices -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>🎯 Quiz : Diviseurs et Critères</h2>
+<!-- Question 1 -->
+<div class="quiz-question" id="q1">
+<p>1. Quel est l'ensemble des diviseurs de 15 ?</p>
+<div class="quiz-options">
+<label><input name="q1" type="radio" value="a"/> a) 1, 3, 5</label>
+<label><input name="q1" type="radio" value="b"/> b) 1, 3, 5, 15</label>
+<label><input name="q1" type="radio" value="c"/> c) 3, 5</label>
+<label><input name="q1" type="radio" value="d"/> d) 1, 15</label>
+</div>
+<button class="check-answer-btn" onclick="checkAnswer('q1', 'b', 'Les diviseurs de 15 sont 1, 3, 5 et 15.')" type="button">Vérifier</button>
+<div class="feedback" id="feedback-q1"></div>
+</div>
+<!-- Question 2 -->
+<div class="quiz-question" id="q2">
+<p>2. Le nombre 123 est-il divisible par 3 ?</p>
+<div class="quiz-options">
+<label><input name="q2" type="radio" value="a"/> a) Oui, car 1+2+3=6 et 6 est divisible par 3</label>
+<label><input name="q2" type="radio" value="b"/> b) Non, car il se termine par 3</label>
+<label><input name="q2" type="radio" value="c"/> c) Non, car la somme fait 5</label>
+<label><input name="q2" type="radio" value="d"/> d) Oui, car il est impair</label>
+</div>
+<button class="check-answer-btn" onclick="checkAnswer('q2', 'a', 'La somme des chiffres est 6, qui est un multiple de 3.')" type="button">Vérifier</button>
+<div class="feedback" id="feedback-q2"></div>
+</div>
+<!-- Question 3 -->
+<div class="quiz-question" id="q3">
+<p>3. Quel chiffre peut remplacer le ? pour que 4?2 soit divisible par 9 ?</p>
+<div class="quiz-options">
+<label><input name="q3" type="radio" value="a"/> a) 1</label>
+<label><input name="q3" type="radio" value="b"/> b) 2</label>
+<label><input name="q3" type="radio" value="c"/> c) 3</label>
+<label><input name="q3" type="radio" value="d"/> d) 4</label>
+</div>
+<button class="check-answer-btn" onclick="checkAnswer('q3', 'c', '4 + 3 + 2 = 9, qui est divisible par 9.')" type="button">Vérifier</button>
+<div class="feedback" id="feedback-q3"></div>
+</div>
+<!-- Question 4 -->
+<div class="quiz-question" id="q4">
+<p>4. Un nombre est divisible par 6 si :</p>
+<div class="quiz-options">
+<label><input name="q4" type="radio" value="a"/> a) Il est divisible par 2</label>
+<label><input name="q4" type="radio" value="b"/> b) Il est divisible par 3</label>
+<label><input name="q4" type="radio" value="c"/> c) Il est divisible par 2 et par 3</label>
+<label><input name="q4" type="radio" value="d"/> d) Il se termine par 6</label>
+</div>
+<button class="check-answer-btn" onclick="checkAnswer('q4', 'c', 'La règle de divisibilité par 6 exige la divisibilité par 2 et 3.')" type="button">Vérifier</button>
+<div class="feedback" id="feedback-q4"></div>
+</div>
+<!-- Question 5 -->
+<div class="quiz-question" id="q5">
+<p>5. Lequel de ces nombres est un nombre premier ?</p>
+<div class="quiz-options">
+<label><input name="q5" type="radio" value="a"/> a) 21</label>
+<label><input name="q5" type="radio" value="b"/> b) 27</label>
+<label><input name="q5" type="radio" value="c"/> c) 29</label>
+<label><input name="q5" type="radio" value="d"/> d) 33</label>
+</div>
+<button class="check-answer-btn" onclick="checkAnswer('q5', 'c', '29 n\'a que deux diviseurs : 1 et 29.')" type="button">Vérifier</button>
+<div class="feedback" id="feedback-q5"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Find divisors
+        function findDivisors() {
+            const num = parseInt(document.getElementById('divisor-number').value);
+            const divisors = [];
+            
+            for (let i = 1; i <= num; i++) {
+                if (num % i === 0) {
+                    divisors.push(i);
+                }
+            }
+
+            document.getElementById('divisors-list').textContent = 
+                `Diviseurs de ${num} : ${divisors.join(', ')}`;
+            document.getElementById('divisors-count').textContent = 
+                `Nombre de diviseurs : ${divisors.length}`;
+            document.getElementById('divisors-result').classList.add('show');
+        }
+
+        // Test divisibility
+        function testDivisibility() {
+            const num = parseInt(document.getElementById('divisibility-test').value);
+            let results = [];
+
+            // Test divisibility by 2
+            if (num % 2 === 0) {
+                results.push(`✓ Divisible par 2 (se termine par ${num % 10})`);
+            } else {
+                results.push(`✗ PAS divisible par 2`);
+            }
+
+            // Test divisibility by 3
+            const sumDigits3 = num.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            if (num % 3 === 0) {
+                results.push(`✓ Divisible par 3 (somme des chiffres = ${sumDigits3})`);
+            } else {
+                results.push(`✗ PAS divisible par 3 (somme des chiffres = ${sumDigits3})`);
+            }
+
+            // Test divisibility by 5
+            if (num % 5 === 0) {
+                results.push(`✓ Divisible par 5 (se termine par ${num % 10})`);
+            } else {
+                results.push(`✗ PAS divisible par 5`);
+            }
+
+            // Test divisibility by 9
+            const sumDigits9 = num.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            if (num % 9 === 0) {
+                results.push(`✓ Divisible par 9 (somme des chiffres = ${sumDigits9})`);
+            } else {
+                results.push(`✗ PAS divisible par 9 (somme des chiffres = ${sumDigits9})`);
+            }
+
+            // Test divisibility by 10
+            if (num % 10 === 0) {
+                results.push(`✓ Divisible par 10 (se termine par 0)`);
+            } else {
+                results.push(`✗ PAS divisible par 10`);
+            }
+
+            document.getElementById('divisibility-details').innerHTML = results.join('<br>');
+            document.getElementById('divisibility-result').classList.add('show');
+        }
+
+        // Check Answer Function
+        function checkAnswer(questionId, correctAnswer, explanation) {
+            const options = document.getElementsByName(questionId);
+            let selectedValue = null;
+            
+            for (const option of options) {
+                if (option.checked) {
+                    selectedValue = option.value;
+                    break;
+                }
+            }
+
+            const feedbackElement = document.getElementById(`feedback-${questionId}`);
+            
+            if (!selectedValue) {
+                alert("Veuillez sélectionner une réponse !");
+                return;
+            }
+
+            feedbackElement.className = 'feedback';
+            
+            if (selectedValue === correctAnswer) {
+                feedbackElement.innerHTML = `<strong>✅ Correct !</strong><br>${explanation}`;
+                feedbackElement.classList.add('correct');
+            } else {
+                feedbackElement.innerHTML = `<strong>❌ Incorrect.</strong><br>La bonne réponse était la réponse ${correctAnswer}.<br>${explanation}`;
+                feedbackElement.classList.add('incorrect');
+            }
+        }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-2-diviseurs'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-2-diviseurs');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
+</body>
+</html>

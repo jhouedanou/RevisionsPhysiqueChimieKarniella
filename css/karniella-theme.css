@@ -1,0 +1,312 @@
+/**
+ * Karniella Theme - Thème Rose Standard
+ * Couleurs et styles cohérents pour toutes les leçons
+ */
+
+/* ============================================
+   VARIABLES CSS - PALETTE KARNIELLA
+   ============================================ */
+:root {
+    /* Couleurs Roses Principales */
+    --karniella-pink-light: #FFB6D9;
+    --karniella-pink-medium: #FF69B4;
+    --karniella-pink-pale: #FFE5F0;
+    --karniella-pink-dark: #FF1493;
+    --karniella-pink-intense: #C71585;
+
+    /* Gradients */
+    --karniella-gradient-main: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+    --karniella-gradient-header: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+    --karniella-gradient-button: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+    --karniella-gradient-card: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+
+    /* Couleurs Sémantiques (à conserver) */
+    --color-success: #4CAF50;
+    --color-success-dark: #2E7D32;
+    --color-info: #2196F3;
+    --color-info-dark: #1565C0;
+    --color-warning: #FF9800;
+    --color-warning-dark: #E65100;
+    --color-error: #F44336;
+    --color-error-dark: #C62828;
+
+    /* Ombres */
+    --shadow-pink: 0 10px 40px rgba(255, 105, 180, 0.4);
+    --shadow-pink-hover: 0 20px 60px rgba(255, 105, 180, 0.5);
+}
+
+/* ============================================
+   BODY & BACKGROUNDS
+   ============================================ */
+body.karniella-theme {
+    background: var(--karniella-gradient-main);
+    background-attachment: fixed;
+    font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.karniella-header {
+    background: var(--karniella-gradient-header);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--karniella-pink-light);
+    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+}
+
+.karniella-header h1 {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+/* ============================================
+   BOUTONS
+   ============================================ */
+.btn-karniella {
+    background: var(--karniella-gradient-button);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+}
+
+.btn-karniella:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+}
+
+.btn-back-karniella {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+    color: var(--karniella-pink-intense);
+    font-weight: 700;
+    border: 3px solid var(--karniella-pink-dark);
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-back-karniella:hover {
+    background: var(--karniella-gradient-button);
+    color: white;
+}
+
+/* ============================================
+   ONGLETS / TABS
+   ============================================ */
+.karniella-tabs {
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 15px 20px;
+    border-bottom: 3px solid var(--karniella-pink-light);
+}
+
+.tab-button-karniella {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+    color: var(--karniella-pink-intense);
+    font-weight: 700;
+    border: 3px solid var(--karniella-pink-dark);
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+
+.tab-button-karniella:hover {
+    background: var(--karniella-gradient-button);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.tab-button-karniella.active {
+    background: var(--karniella-gradient-header);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #FFE5F0;
+}
+
+/* ============================================
+   CONTENEURS
+   ============================================ */
+.karniella-container {
+    background: var(--karniella-gradient-card);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-pink);
+    max-width: 1000px;
+    width: 100%;
+    border: 4px solid var(--karniella-pink-medium);
+}
+
+/* ============================================
+   TITRES
+   ============================================ */
+.karniella-h2 {
+    color: var(--karniella-pink-intense);
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 28px;
+    border-bottom: 3px solid var(--karniella-pink-medium);
+    padding-bottom: 10px;
+}
+
+.karniella-h3 {
+    color: var(--karniella-pink-intense);
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* ============================================
+   BOXES - Garder les couleurs sémantiques
+   mais harmoniser les bordures
+   ============================================ */
+
+/* Definition Box - Bleu avec accent rose */
+.definition-box-karniella {
+    background: #FFFFFF;
+    border: 3px solid var(--color-info);
+    border-left: 5px solid var(--karniella-pink-medium);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.definition-box-karniella h4 {
+    color: var(--color-info-dark);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Example Box - Orange avec accent rose */
+.example-box-karniella {
+    background: #FFFFFF;
+    border: 3px solid var(--color-warning);
+    border-left: 5px solid var(--karniella-pink-medium);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.example-box-karniella h4 {
+    color: var(--color-warning-dark);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Property Box - Vert avec accent rose */
+.property-box-karniella {
+    background: #FFFFFF;
+    border: 3px solid var(--color-success);
+    border-left: 5px solid var(--karniella-pink-medium);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.property-box-karniella h4 {
+    color: var(--color-success-dark);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* ============================================
+   FORMULES
+   ============================================ */
+.formula-karniella {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
+    border: 2px dashed var(--karniella-pink-medium);
+}
+
+/* ============================================
+   INFO BOX
+   ============================================ */
+.info-karniella {
+    background: #FFFFFF;
+    border: 3px solid var(--color-info);
+    border-left: 4px solid var(--karniella-pink-medium);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.info-karniella strong {
+    color: var(--karniella-pink-intense);
+}
+
+/* ============================================
+   INTERACTIVE DEMO
+   ============================================ */
+.interactive-demo-karniella {
+    background: #fafafa;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+}
+
+.interactive-demo-karniella h3 {
+    margin-top: 0;
+    color: var(--karniella-pink-medium);
+}
+
+.interactive-demo-karniella button {
+    background: var(--karniella-gradient-button);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.interactive-demo-karniella button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .karniella-container {
+        padding: 20px;
+    }
+
+    .karniella-h2 {
+        font-size: 24px;
+    }
+
+    .tab-button-karniella {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Droites et Points - Cours de Mathématiques</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>📏 Droites et Points</h1>
+<p>Leçon 3 - Géométrie de base</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Présentation</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Appartenance</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Demi-droites</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Présentation des Droites et Points</h2>
+<div class="definition-box">
+<h4>📘 Point</h4>
+<p>Un <strong>point</strong> est un objet géométrique sans dimension. Il est représenté par une petite croix ou un petit rond et désigné par une lettre majuscule.</p>
+</div>
+<div class="definition-box">
+<h4>📘 Droite</h4>
+<p>Une <strong>droite</strong> est une ligne illimitée dans les deux sens. Elle est désignée par une lettre minuscule (d, d', etc.) ou par deux points qu'elle contient.</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation</h4>
+<svg height="200" viewbox="0 0 600 200" width="100%">
+<line stroke="#FF69B4" stroke-width="2" x1="50" x2="550" y1="100" y2="100"></line>
+<text fill="#FF69B4" font-size="16" x="560" y="105">d</text>
+<circle cx="200" cy="100" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="16" x="195" y="85">A</text>
+<circle cx="400" cy="100" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="16" x="395" y="85">B</text>
+</svg>
+<p>On note cette droite (AB) ou d</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Un point n'a pas de dimension<br/>
+                    • Une droite est infinie dans les deux sens<br/>
+                    • Une droite peut être nommée par une lettre ou deux points
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Appartenance d'un Point à une Droite</h2>
+<div class="definition-box">
+<h4>📘 Point appartenant à une droite</h4>
+<p>Un point <strong>appartient</strong> à une droite s'il est situé sur cette droite.</p>
+<p>Notation : A ∈ d (A appartient à d)</p>
+</div>
+<div class="definition-box">
+<h4>📘 Points alignés</h4>
+<p>Plusieurs points sont <strong>alignés</strong> s'ils appartiennent à une même droite.</p>
+</div>
+<div class="example-box">
+<h4>💡 Exemple</h4>
+<svg height="200" viewbox="0 0 600 200" width="100%">
+<line stroke="#FF69B4" stroke-width="2" x1="50" x2="550" y1="100" y2="100"></line>
+<circle cx="150" cy="100" fill="#FF69B4" r="4"></circle>
+<text fill="#FF69B4" font-size="16" x="145" y="85">A</text>
+<circle cx="300" cy="100" fill="#FF69B4" r="4"></circle>
+<text fill="#FF69B4" font-size="16" x="295" y="85">B</text>
+<circle cx="450" cy="100" fill="#FF69B4" r="4"></circle>
+<text fill="#FF69B4" font-size="16" x="445" y="85">C</text>
+<circle cx="300" cy="50" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="16" x="295" y="35">D</text>
+</svg>
+<p>A, B et C sont alignés (appartiennent à la même droite)</p>
+<p>D n'appartient pas à la droite (AB)</p>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés</h4>
+<p><strong>1.</strong> Par deux points distincts, il passe une seule droite</p>
+<p><strong>2.</strong> Une droite contient une infinité de points</p>
+<p><strong>3.</strong> Par un point donné, il passe une infinité de droites</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Pour tracer une droite, il faut au minimum 2 points<br/>
+                    • Deux points déterminent une unique droite<br/>
+                    • Des points alignés appartiennent à la même droite
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Demi-droites</h2>
+<div class="definition-box">
+<h4>📘 Demi-droite</h4>
+<p>Une <strong>demi-droite</strong> est une partie d'une droite limitée d'un côté par un point appelé <strong>origine</strong>, et illimitée de l'autre côté.</p>
+<p>Notation : [AB) (demi-droite d'origine A passant par B)</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation</h4>
+<svg height="150" viewbox="0 0 600 150" width="100%">
+<line marker-end="url(#arrowblue)" stroke="#FF69B4" stroke-width="2" x1="150" x2="550" y1="75" y2="75"></line>
+<circle cx="150" cy="75" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="145" y="60">A</text>
+<circle cx="350" cy="75" fill="#FF69B4" r="4"></circle>
+<text fill="#FF69B4" font-size="16" x="345" y="60">B</text>
+<text fill="#FF69B4" font-size="14" x="250" y="100">[AB)</text>
+</svg>
+<p>Demi-droite [AB) : origine A, passe par B, se prolonge vers la droite</p>
+</div>
+<div class="example-box">
+<h4>💡 Différence avec un segment</h4>
+<p><strong>Segment [AB] :</strong> limité aux deux extrémités A et B</p>
+<p><strong>Demi-droite [AB) :</strong> origine A, illimitée après B</p>
+<p><strong>Droite (AB) :</strong> illimitée des deux côtés</p>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés des demi-droites</h4>
+<p><strong>1.</strong> Une demi-droite a une origine mais pas de fin</p>
+<p><strong>2.</strong> Deux demi-droites de même origine peuvent former une droite</p>
+<p><strong>3.</strong> Une droite est formée de deux demi-droites opposées</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Demi-droite : limitée d'un côté (origine), illimitée de l'autre<br/>
+                    • Notation [AB) : crochet à l'origine, parenthèse de l'autre côté<br/>
+                    • Une droite = deux demi-droites opposées
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab3"></div></div>
+</div>
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Droites et Points</h2>
+<p>Testez vos connaissances sur les droites et les points</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Combien de droites peuvent passer par un seul point ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Une seule
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Deux
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Une infinité
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="d"/> Aucune
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Si trois points A, B et C sont alignés, alors :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> Ils forment un triangle
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> Ils appartiennent à la même droite
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> AB = BC
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="d"/> Ils sont confondus
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">La notation [AB) désigne :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> Le segment d'extrémités A et B
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> La droite passant par A et B
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> La demi-droite d'origine A passant par B
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="d"/> La demi-droite d'origine B passant par A
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Deux droites distinctes peuvent avoir au maximum :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> 0 point commun
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> 1 point commun
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> 2 points communs
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="d"/> Une infinité de points communs
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Si M appartient au segment [AB], alors :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> A, M et B sont alignés
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> AM + MB = AB
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> M est entre A et B
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="d"/> Toutes les réponses ci-dessus
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+<span class="question-number">🎨</span>
+<span class="question-text">Exercice de dessin : Tracez deux points A et B, puis tracez la droite passant par ces deux points.</span>
+<div style="margin-top: 15px;">
+<p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer les éléments.
+                            </p>
+<canvas height="300" id="drawingCanvas" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;" width="600"></canvas>
+<div style="text-align: center; margin-top: 10px;">
+<button class="quiz-button" onclick="clearCanvas()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+<button class="quiz-button" onclick="saveDrawing()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+</div>
+<div id="drawing-feedback" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+</div>
+</div>
+<button class="quiz-button" onclick="submitQuiz('quiz3')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+        // Variables pour le dessin
+        let canvas = document.getElementById('drawingCanvas');
+        let ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let drawingData = null;
+
+        // Initialiser le canvas
+        if (canvas) {
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Support tactile
+            canvas.addEventListener('touchstart', handleTouch);
+            canvas.addEventListener('touchmove', handleTouch);
+            canvas.addEventListener('touchend', stopDrawing);
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            lastX = e.clientX - rect.left;
+            lastY = e.clientY - rect.top;
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx.strokeStyle = '#FF69B4';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+
+            lastX = x;
+            lastY = y;
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function handleTouch(e) {
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+
+            if (e.type === 'touchstart') {
+                lastX = touch.clientX - rect.left;
+                lastY = touch.clientY - rect.top;
+                isDrawing = true;
+            } else if (e.type === 'touchmove') {
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx.strokeStyle = '#FF69B4';
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                lastX = x;
+                lastY = y;
+            }
+            e.preventDefault();
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('drawing-feedback').innerHTML = '';
+        }
+
+        function saveDrawing() {
+            // Enregistrer les données du dessin
+            drawingData = canvas.toDataURL();
+            document.getElementById('drawing-feedback').innerHTML = '<span style="color: #4caf50;">✓ Dessin enregistré !</span>';
+        }
+
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'a',
+                q2: 'c',
+                q3: 'b',
+                q4: 'a',
+                q5: 'c'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-3-droites-points'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-3-droites-points');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droites et Points - Cours de Mathématiques</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>📏 Droites et Points</h1>
+        <p>Leçon 3 - Géométrie de base</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Présentation</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Appartenance</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Demi-droites</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Présentation des Droites et Points</h2>
+                
+                <div class="definition-box">
+                    <h4>📘 Point</h4>
+                    <p>Un <strong>point</strong> est un objet géométrique sans dimension. Il est représenté par une petite croix ou un petit rond et désigné par une lettre majuscule.</p>
+                </div>
+
+                <div class="definition-box">
+                    <h4>📘 Droite</h4>
+                    <p>Une <strong>droite</strong> est une ligne illimitée dans les deux sens. Elle est désignée par une lettre minuscule (d, d', etc.) ou par deux points qu'elle contient.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="200" viewBox="0 0 600 200">
+                        <line x1="50" y1="100" x2="550" y2="100" stroke="#2196f3" stroke-width="2"/>
+                        <text x="560" y="105" fill="#2196f3" font-size="16">d</text>
+                        <circle cx="200" cy="100" r="4" fill="#f44336"/>
+                        <text x="195" y="85" fill="#f44336" font-size="16">A</text>
+                        <circle cx="400" cy="100" r="4" fill="#f44336"/>
+                        <text x="395" y="85" fill="#f44336" font-size="16">B</text>
+                    </svg>
+                    <p>On note cette droite (AB) ou d</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Un point n'a pas de dimension<br>
+                    • Une droite est infinie dans les deux sens<br>
+                    • Une droite peut être nommée par une lettre ou deux points
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Appartenance d'un Point à une Droite</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Point appartenant à une droite</h4>
+                    <p>Un point <strong>appartient</strong> à une droite s'il est situé sur cette droite.</p>
+                    <p>Notation : A ∈ d (A appartient à d)</p>
+                </div>
+
+                <div class="definition-box">
+                    <h4>📘 Points alignés</h4>
+                    <p>Plusieurs points sont <strong>alignés</strong> s'ils appartiennent à une même droite.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemple</h4>
+                    <svg width="100%" height="200" viewBox="0 0 600 200">
+                        <line x1="50" y1="100" x2="550" y2="100" stroke="#2196f3" stroke-width="2"/>
+                        <circle cx="150" cy="100" r="4" fill="#4caf50"/>
+                        <text x="145" y="85" fill="#4caf50" font-size="16">A</text>
+                        <circle cx="300" cy="100" r="4" fill="#4caf50"/>
+                        <text x="295" y="85" fill="#4caf50" font-size="16">B</text>
+                        <circle cx="450" cy="100" r="4" fill="#4caf50"/>
+                        <text x="445" y="85" fill="#4caf50" font-size="16">C</text>
+                        <circle cx="300" cy="50" r="4" fill="#f44336"/>
+                        <text x="295" y="35" fill="#f44336" font-size="16">D</text>
+                    </svg>
+                    <p>A, B et C sont alignés (appartiennent à la même droite)</p>
+                    <p>D n'appartient pas à la droite (AB)</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Par deux points distincts, il passe une seule droite</p>
+                    <p><strong>2.</strong> Une droite contient une infinité de points</p>
+                    <p><strong>3.</strong> Par un point donné, il passe une infinité de droites</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Pour tracer une droite, il faut au minimum 2 points<br>
+                    • Deux points déterminent une unique droite<br>
+                    • Des points alignés appartiennent à la même droite
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>Demi-droites</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Demi-droite</h4>
+                    <p>Une <strong>demi-droite</strong> est une partie d'une droite limitée d'un côté par un point appelé <strong>origine</strong>, et illimitée de l'autre côté.</p>
+                    <p>Notation : [AB) (demi-droite d'origine A passant par B)</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="150" viewBox="0 0 600 150">
+                        <line x1="150" y1="75" x2="550" y2="75" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowblue)"/>
+                        <circle cx="150" cy="75" r="5" fill="#f44336"/>
+                        <text x="145" y="60" fill="#f44336" font-size="16" font-weight="bold">A</text>
+                        <circle cx="350" cy="75" r="4" fill="#4caf50"/>
+                        <text x="345" y="60" fill="#4caf50" font-size="16">B</text>
+                        <text x="250" y="100" fill="#2196f3" font-size="14">[AB)</text>
+                    </svg>
+                    <p>Demi-droite [AB) : origine A, passe par B, se prolonge vers la droite</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Différence avec un segment</h4>
+                    <p><strong>Segment [AB] :</strong> limité aux deux extrémités A et B</p>
+                    <p><strong>Demi-droite [AB) :</strong> origine A, illimitée après B</p>
+                    <p><strong>Droite (AB) :</strong> illimitée des deux côtés</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés des demi-droites</h4>
+                    <p><strong>1.</strong> Une demi-droite a une origine mais pas de fin</p>
+                    <p><strong>2.</strong> Deux demi-droites de même origine peuvent former une droite</p>
+                    <p><strong>3.</strong> Une droite est formée de deux demi-droites opposées</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Demi-droite : limitée d'un côté (origine), illimitée de l'autre<br>
+                    • Notation [AB) : crochet à l'origine, parenthèse de l'autre côté<br>
+                    • Une droite = deux demi-droites opposées
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+</body>
+</html>

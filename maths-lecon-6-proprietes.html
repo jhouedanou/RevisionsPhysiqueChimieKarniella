@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Propriétés des Droites</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>📐 Propriétés des Droites Parallèles et Perpendiculaires</h1>
+<p>Leçon 6 - Théorèmes et propriétés</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Propriétés Parallèles</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Parallèles et Perpendiculaires</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Quiz</button>
+</div>
+<div class="content">
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Propriétés des Droites Parallèles</h2>
+<div class="property-box">
+<h4>✓ Propriété 1 : Transitivité</h4>
+<p><strong>Si d // d' et d' // d'', alors d // d''</strong></p>
+<p>Si deux droites sont parallèles à une même troisième droite, alors elles sont parallèles entre elles.</p>
+</div>
+<div class="example-box">
+<h4>💡 Illustration</h4>
+<svg height="180" viewbox="0 0 600 180" width="100%">
+<line stroke="#FF69B4" stroke-width="2" x1="50" x2="550" y1="40" y2="40"></line>
+<text fill="#FF69B4" font-size="14" x="560" y="45">d</text>
+<line stroke="#f44336" stroke-width="2" x1="50" x2="550" y1="90" y2="90"></line>
+<text fill="#f44336" font-size="14" x="560" y="95">d'</text>
+<line stroke="#FF69B4" stroke-width="2" x1="50" x2="550" y1="140" y2="140"></line>
+<text fill="#FF69B4" font-size="14" x="560" y="145">d''</text>
+<text fill="#666" font-size="12" x="250" y="65">d // d'</text>
+<text fill="#666" font-size="12" x="250" y="115">d' // d''</text>
+<text fill="#FF69B4" font-size="12" font-weight="bold" x="240" y="25">donc d // d''</text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Propriété 2 : Unicité</h4>
+<p><strong>Par un point donné, il passe une seule parallèle à une droite donnée.</strong></p>
+</div>
+<div class="property-box">
+<h4>✓ Propriété 3 : Distance constante</h4>
+<p><strong>Deux droites parallèles sont toujours à la même distance l'une de l'autre.</strong></p>
+<p>Cette distance est mesurée perpendiculairement aux deux droites.</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • La transitivité est très utile pour démontrer des parallélismes<br/>
+                    • L'unicité garantit qu'il n'y a qu'une seule solution<br/>
+                    • La distance constante caractérise les parallèles
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Propriétés de Deux Droites Parallèles et d'une Perpendiculaire</h2>
+<div class="property-box">
+<h4>✓ Propriété fondamentale</h4>
+<p><strong>Si deux droites sont parallèles, alors toute perpendiculaire à l'une est perpendiculaire à l'autre.</strong></p>
+<p>Si d // d' et d'' ⊥ d, alors d'' ⊥ d'</p>
+</div>
+<div class="example-box">
+<h4>💡 Illustration</h4>
+<svg height="250" viewbox="0 0 600 250" width="100%">
+<line stroke="#FF69B4" stroke-width="2" x1="50" x2="550" y1="80" y2="80"></line>
+<text fill="#FF69B4" font-size="14" x="560" y="85">d</text>
+<line stroke="#f44336" stroke-width="2" x1="50" x2="550" y1="170" y2="170"></line>
+<text fill="#f44336" font-size="14" x="560" y="175">d'</text>
+<line stroke="#FF69B4" stroke-width="2" x1="300" x2="300" y1="30" y2="220"></line>
+<text fill="#FF69B4" font-size="14" x="310" y="40">d''</text>
+<rect fill="none" height="20" stroke="#FF69B4" stroke-width="2" width="20" x="290" y="70"></rect>
+<rect fill="none" height="20" stroke="#FF69B4" stroke-width="2" width="20" x="290" y="160"></rect>
+<text fill="#666" font-size="12" x="200" y="120">d // d'</text>
+<text fill="#FF69B4" font-size="12" x="320" y="120">d'' ⊥ d et d'' ⊥ d'</text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Réciproque</h4>
+<p><strong>Si deux droites sont perpendiculaires à une même troisième droite, alors elles sont parallèles entre elles.</strong></p>
+<p>Si d ⊥ d'' et d' ⊥ d'', alors d // d'</p>
+</div>
+<div class="example-box">
+<h4>💡 Application pratique</h4>
+<p>Cette propriété est très utile pour :</p>
+<ul style="margin-left: 20px;">
+<li>Tracer des droites parallèles</li>
+<li>Vérifier le parallélisme de deux droites</li>
+<li>Construire des figures géométriques</li>
+</ul>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Perpendiculaire à l'une = perpendiculaire à l'autre (si parallèles)<br/>
+                    • Perpendiculaires à une même droite = parallèles entre elles<br/>
+                    • Ces propriétés permettent de démontrer beaucoup de résultats
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>📝 Quiz - Propriétés des Droites</h2>
+<p>Testez vos connaissances sur les théorèmes et propriétés</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Si d // d' et d' // d'', alors :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> d ⊥ d''
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> d // d''
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> d et d'' sont sécantes
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Cette propriété s'appelle :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> La symétrie
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> La transitivité
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> La réflexivité
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Par un point P, il existe une seule droite parallèle à une droite d. C'est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> Le postulat d'Euclide
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> Le théorème de Thalès
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> La propriété de Pythagore
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Si deux droites sont parallèles, alors toute perpendiculaire à l'une est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> Parallèle à l'autre
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> Perpendiculaire à l'autre
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> Sécante avec l'autre
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Si d ⊥ d'' et d' ⊥ d'', alors :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> d // d'
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> d ⊥ d'
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> d = d'
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Deux droites parallèles sont toujours :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> À distance variable
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> Équidistantes (même distance constante)
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> À angle droit
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+<div class="quiz-question" style="margin-top: 30px; border-top: 2px solid #ddd; padding-top: 20px;">
+<span class="question-number">🎨</span>
+<span class="question-text">Exercice de dessin : Utilisez les propriétés apprises pour construire une figure géométrique (droites parallèles, perpendiculaires, points).</span>
+<div style="margin-top: 15px;">
+<p style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                                ✏️ Utilisez la souris pour dessiner. Cliquez et glissez pour tracer votre figure.
+                            </p>
+<canvas height="300" id="drawingCanvas6" style="border: 2px solid #FF69B4; border-radius: 8px; background: white; cursor: crosshair; display: block; margin: 10px auto; touch-action: none;" width="600"></canvas>
+<div style="text-align: center; margin-top: 10px;">
+<button class="quiz-button" onclick="clearCanvas6()" style="margin-right: 10px; background: #ff9800;">🗑️ Effacer</button>
+<button class="quiz-button" onclick="saveDrawing6()" style="background: #4caf50;">💾 Enregistrer mon dessin</button>
+</div>
+<div id="drawing-feedback6" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+</div>
+</div>
+<button class="quiz-button" onclick="submitQuiz('quiz6')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+        // Variables pour le dessin
+        let canvas6 = document.getElementById('drawingCanvas6');
+        let ctx6 = canvas6.getContext('2d');
+        let isDrawing6 = false;
+        let lastX6 = 0;
+        let lastY6 = 0;
+        let drawingData6 = null;
+
+        // Initialiser le canvas
+        if (canvas6) {
+            canvas6.addEventListener('mousedown', startDrawing6);
+            canvas6.addEventListener('mousemove', draw6);
+            canvas6.addEventListener('mouseup', stopDrawing6);
+            canvas6.addEventListener('mouseout', stopDrawing6);
+
+            // Support tactile
+            canvas6.addEventListener('touchstart', handleTouch6);
+            canvas6.addEventListener('touchmove', handleTouch6);
+            canvas6.addEventListener('touchend', stopDrawing6);
+        }
+
+        function startDrawing6(e) {
+            isDrawing6 = true;
+            const rect = canvas6.getBoundingClientRect();
+            lastX6 = e.clientX - rect.left;
+            lastY6 = e.clientY - rect.top;
+        }
+
+        function draw6(e) {
+            if (!isDrawing6) return;
+
+            const rect = canvas6.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            ctx6.strokeStyle = '#FF69B4';
+            ctx6.lineWidth = 2;
+            ctx6.lineCap = 'round';
+            ctx6.lineJoin = 'round';
+
+            ctx6.beginPath();
+            ctx6.moveTo(lastX6, lastY6);
+            ctx6.lineTo(x, y);
+            ctx6.stroke();
+
+            lastX6 = x;
+            lastY6 = y;
+        }
+
+        function stopDrawing6() {
+            isDrawing6 = false;
+        }
+
+        function handleTouch6(e) {
+            const touch = e.touches[0];
+            const rect = canvas6.getBoundingClientRect();
+
+            if (e.type === 'touchstart') {
+                lastX6 = touch.clientX - rect.left;
+                lastY6 = touch.clientY - rect.top;
+                isDrawing6 = true;
+            } else if (e.type === 'touchmove') {
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                ctx6.strokeStyle = '#FF69B4';
+                ctx6.lineWidth = 2;
+                ctx6.lineCap = 'round';
+                ctx6.lineJoin = 'round';
+
+                ctx6.beginPath();
+                ctx6.moveTo(lastX6, lastY6);
+                ctx6.lineTo(x, y);
+                ctx6.stroke();
+
+                lastX6 = x;
+                lastY6 = y;
+            }
+            e.preventDefault();
+        }
+
+        function clearCanvas6() {
+            ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
+            document.getElementById('drawing-feedback6').innerHTML = '';
+        }
+
+        function saveDrawing6() {
+            // Enregistrer les données du dessin
+            drawingData6 = canvas6.toDataURL();
+            document.getElementById('drawing-feedback6').innerHTML = '<span style="color: #4caf50;">✓ Dessin enregistré !</span>';
+        }
+
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'a',
+                q2: 'c',
+                q3: 'b',
+                q4: 'a',
+                q5: 'c',
+                q6: 'a'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-6-proprietes'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-6-proprietes');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
+</body>
+</html>

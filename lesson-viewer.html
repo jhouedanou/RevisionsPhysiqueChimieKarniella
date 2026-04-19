@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargement... - Karniella Révisions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/lesson-viewer.css">
+    <link rel="stylesheet" href="css/quiz-viewer.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1 id="lesson-title">Chargement...</h1>
+        <p id="lesson-description">...</p>
+    </header>
+
+    <div class="tabs" id="tabs-container">
+        <!-- Tabs will be generated here -->
+    </div>
+
+    <div class="content">
+        <div class="container" id="lesson-content">
+            <div class="loading">Chargement de la leçon...</div>
+        </div>
+    </div>
+
+    <!-- Section Quiz -->
+    <div class="content" id="quiz-section" style="display: none;">
+        <div class="container">
+            <section class="quiz-section">
+                <h2 id="quiz-header">📝 Quiz</h2>
+                <p class="subtitle" id="quiz-subtitle">Testez vos connaissances</p>
+
+                <div id="questions-list">
+                    <!-- Questions will be generated here -->
+                </div>
+
+                <button id="submit-quiz" class="quiz-button">Vérifier mes réponses</button>
+
+                <div id="quiz-result" class="quiz-result"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/lesson-viewer.js"></script>
+</body>
+
+</html>

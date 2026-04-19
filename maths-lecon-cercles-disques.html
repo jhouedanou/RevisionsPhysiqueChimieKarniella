@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cercles et Disques - Cours de Mathématiques</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>⭕ Cercles et Disques</h1>
+<p>Géométrie - Figures circulaires</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Le Cercle</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Le Disque</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Vocabulaire</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<!-- TAB 1: LE CERCLE -->
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Présentation du Cercle</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Soit un point <strong>A</strong> et un nombre positif <strong>r</strong>. Le cercle de centre <strong>A</strong> et de rayon <strong>r</strong> est l'<strong>ensemble des points situés à la distance r du point A</strong>.</p>
+<p><strong>Notation :</strong> On note ce cercle <strong>ℭ(A, r)</strong> ou simplement <strong>(C)</strong>.</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation d'un cercle</h4>
+<svg height="250" viewbox="0 0 600 250" width="100%">
+<!-- Cercle -->
+<circle cx="300" cy="125" r="80" stroke="#FF69B4" stroke-width="3" fill="none"></circle>
+<!-- Centre O -->
+<circle cx="300" cy="125" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="310" y="120">O</text>
+<!-- Rayon -->
+<line stroke="#4CAF50" stroke-width="2" x1="300" x2="380" y1="125" y2="125"></line>
+<text fill="#4CAF50" font-size="14" font-weight="bold" x="335" y="115">r</text>
+<!-- Légende -->
+<text fill="#333" font-size="14" text-anchor="middle" x="300" y="230">Cercle de centre O et de rayon r</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Vocabulaire spécifique</h4>
+<p>Le terme « rayon » ou « diamètre » peut désigner soit un segment, soit une longueur selon le contexte.</p>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li><strong>Rayon :</strong> Segment joignant le centre à un point du cercle (ex: [OA]). Tous les rayons ont la même longueur.</li>
+<li><strong>Corde :</strong> Segment joignant deux points distincts du cercle (ex: [CD]).</li>
+<li><strong>Diamètre :</strong> Corde passant par le centre du cercle (ex: [BC]).</li>
+<li><strong>Propriété :</strong> La longueur du diamètre est le <strong>double</strong> de celle du rayon : <strong>d = 2 × r</strong></li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Méthode de construction</h4>
+<p>On utilise un <strong>compas</strong>. On place la pointe sèche sur le centre A, et on règle l'écartement pour qu'il soit égal au rayon r avant de tracer la ligne fermée.</p>
+</div>
+<div class="definition-box">
+<h4>📘 Caractérisation d'un point</h4>
+<p>Un point <strong>M</strong> appartient au cercle de centre <strong>A</strong> et de rayon <strong>r</strong> <strong>si et seulement si</strong> la distance AM est égale au rayon r (<strong>AM = r</strong>).</p>
+<p>Si cette distance est différente (plus petite ou plus grande), le point n'appartient pas au cercle.</p>
+</div>
+<div class="property-box">
+<h4>✓ Périmètre du Cercle</h4>
+<p>Le périmètre est la longueur de la ligne obtenue « lorsqu'on déroule le cercle ».</p>
+<p><strong>Le nombre π (pi) :</strong> C'est le coefficient de proportionnalité entre le périmètre et le diamètre. On utilise souvent les valeurs approchées <strong>3</strong>, <strong>3,1</strong> ou <strong>3,14</strong>.</p>
+<div class="formula" style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #2196F3;">
+<p style="font-size: 18px; text-align: center;"><strong>Périmètre = π × diamètre</strong></p>
+<p style="font-size: 18px; text-align: center;"><strong>Périmètre = 2 × π × rayon</strong></p>
+</div>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Le cercle est l'ensemble des points à égale distance du centre<br/>
+                    • Un point M appartient au cercle si AM = r<br/>
+                    • Le périmètre = π × diamètre = 2 × π × rayon<br/>
+                    • On trace un cercle avec un compas
+                </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab1"></div></div>
+</div>
+
+<!-- TAB 2: LE DISQUE -->
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Présentation du Disque</h2>
+<div class="definition-box">
+<h4>📘 Définition du Disque</h4>
+<p>Le disque de centre <strong>A</strong> et de rayon <strong>r</strong> est l'<strong>ensemble des points situés sur le cercle et à l'intérieur de ce cercle</strong>.</p>
+<p><strong>Notation :</strong> On le note <strong>𝒟(A, r)</strong>.</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation d'un disque</h4>
+<svg height="250" viewbox="0 0 600 250" width="100%">
+<!-- Disque (surface remplie) -->
+<circle cx="300" cy="125" r="80" stroke="#FF69B4" stroke-width="3" fill="#FFE4EC"></circle>
+<!-- Centre O -->
+<circle cx="300" cy="125" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="310" y="120">O</text>
+<!-- Rayon -->
+<line stroke="#4CAF50" stroke-width="2" x1="300" x2="380" y1="125" y2="125"></line>
+<text fill="#4CAF50" font-size="14" font-weight="bold" x="335" y="115">r</text>
+<!-- Légende -->
+<text fill="#333" font-size="14" text-anchor="middle" x="300" y="230">Disque de centre O et de rayon r</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Différence entre cercle et disque</h4>
+<svg height="180" viewbox="0 0 600 180" width="100%">
+<!-- Cercle (non rempli) -->
+<circle cx="150" cy="90" r="60" stroke="#FF69B4" stroke-width="3" fill="none"></circle>
+<text fill="#333" font-size="14" font-weight="bold" text-anchor="middle" x="150" y="170">CERCLE = ligne</text>
+<!-- Disque (rempli) -->
+<circle cx="450" cy="90" r="60" stroke="#FF69B4" stroke-width="3" fill="#FFE4EC"></circle>
+<text fill="#333" font-size="14" font-weight="bold" text-anchor="middle" x="450" y="170">DISQUE = surface</text>
+</svg>
+
+<div style="margin-top: 20px; overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden;">
+<thead>
+<tr style="background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%); color: white;">
+<th style="padding: 12px; text-align: left; border: 2px solid #FF69B4;">Caractéristique</th>
+<th style="padding: 12px; text-align: left; border: 2px solid #FF69B4;">Cercle</th>
+<th style="padding: 12px; text-align: left; border: 2px solid #FF69B4;">Disque</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #FFF0F5;">
+<td style="padding: 10px; border: 2px solid #FFB6D9; font-weight: bold;">Nature</td>
+<td style="padding: 10px; border: 2px solid #FFB6D9;">Une ligne (le contour)</td>
+<td style="padding: 10px; border: 2px solid #FFB6D9;">Une surface (intérieur + contour)</td>
+</tr>
+<tr style="background: white;">
+<td style="padding: 10px; border: 2px solid #FFB6D9; font-weight: bold;">Mesure principale</td>
+<td style="padding: 10px; border: 2px solid #FFB6D9;"><strong>Périmètre</strong> (2 × π × r)</td>
+<td style="padding: 10px; border: 2px solid #FFB6D9;"><strong>Aire</strong> (π × r × r)</td>
+</tr>
+<tr style="background: #FFF0F5;">
+<td style="padding: 10px; border: 2px solid #FFB6D9; font-weight: bold;">Exemple visuel</td>
+<td style="padding: 10px; border: 2px solid #FFB6D9;">Une bague ou un cerceau</td>
+<td style="padding: 10px; border: 2px solid #FFB6D9;">Un jeton ou une pièce de monnaie</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="example-box">
+<h4>💡 Exemples concrets</h4>
+<div style="background: #fff3e0; padding: 20px; border-radius: 8px; border-left: 4px solid #ff9800;">
+<p><strong>🔴 Cercle :</strong> Un cerceau, un anneau, le bord d'une assiette</p>
+<p><strong>🔵 Disque :</strong> Une pièce de monnaie, une pizza, un CD, une roue pleine</p>
+</div>
+</div>
+<div class="example-box" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+<h4>💡 Analogie pour bien comprendre</h4>
+<p style="line-height: 1.8;">Imaginez une <strong>clôture circulaire</strong> entourant un jardin. La clôture elle-même (le fil de fer) représente le <strong>cercle</strong> ; on mesure sa longueur (périmètre). Le jardin à l'intérieur, incluant la clôture, représente le <strong>disque</strong> ; on mesure l'espace qu'il occupe pour savoir combien de gazon y semer (aire).</p>
+</div>
+<div class="property-box">
+<h4>✓ Vocabulaire et Propriétés</h4>
+<p>Le disque partage le même vocabulaire que le cercle (rayon, diamètre, corde) et la même propriété fondamentale : le diamètre est le double du rayon.</p>
+</div>
+<div class="definition-box">
+<h4>📘 Aire du Disque</h4>
+<p>L'aire mesure la surface intérieure du disque.</p>
+<div class="formula" style="background: #fff3e0; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #ff9800;">
+<p style="font-size: 20px; text-align: center;"><strong>Aire = π × r × r</strong></p>
+<p style="font-size: 16px; text-align: center; margin-top: 10px;"><strong>Aire = π × r²</strong></p>
+</div>
+<p style="margin-top: 10px;"><strong>Exemple d'application :</strong> Pour comparer les surfaces de figures complexes (comme une couronne circulaire ou des disques concentriques), on calcule l'aire de chaque disque séparément avant d'effectuer des soustractions si nécessaire.</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Le disque = cercle + intérieur<br/>
+                    • Le cercle est la limite (bord) du disque<br/>
+                    • Aire du disque = π × r × r<br/>
+                    • Le disque a une surface, le cercle est juste une ligne
+                </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab2"></div></div>
+</div>
+
+<!-- TAB 3: VOCABULAIRE -->
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Vocabulaire du Cercle et du Disque</h2>
+<div class="definition-box">
+<h4>📘 Les éléments principaux</h4>
+<svg height="350" viewbox="0 0 600 350" width="100%">
+<!-- Cercle -->
+<circle cx="300" cy="150" r="100" stroke="#FF69B4" stroke-width="3" fill="none"></circle>
+<!-- Centre O -->
+<circle cx="300" cy="150" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="310" y="145">O</text>
+<!-- Rayon OA -->
+<line stroke="#4CAF50" stroke-width="2" x1="300" x2="400" y1="150" y2="150"></line>
+<circle cx="400" cy="150" fill="#4CAF50" r="4"></circle>
+<text fill="#4CAF50" font-size="14" font-weight="bold" x="405" y="145">A</text>
+<text fill="#4CAF50" font-size="12" x="340" y="140">rayon</text>
+<!-- Diamètre BC -->
+<line stroke="#2196F3" stroke-width="2" x1="200" x2="400" y1="150" y2="150"></line>
+<circle cx="200" cy="150" fill="#2196F3" r="4"></circle>
+<text fill="#2196F3" font-size="14" font-weight="bold" x="190" y="145">B</text>
+<!-- Corde DE -->
+<line stroke="#9C27B0" stroke-width="2" x1="230" x2="370" y1="80" y2="80"></line>
+<circle cx="230" cy="80" fill="#9C27B0" r="4"></circle>
+<text fill="#9C27B0" font-size="14" font-weight="bold" x="220" y="70">D</text>
+<circle cx="370" cy="80" fill="#9C27B0" r="4"></circle>
+<text fill="#9C27B0" font-size="14" font-weight="bold" x="375" y="70">E</text>
+<text fill="#9C27B0" font-size="12" x="290" y="70">corde</text>
+<!-- Arc -->
+<path d="M 370 80 A 100 100 0 0 1 400 150" stroke="#FF9800" stroke-width="3" fill="none"></path>
+<text fill="#FF9800" font-size="12" x="390" y="110">arc</text>
+<!-- Légende -->
+<text fill="#333" font-size="13" x="50" y="290">• Rayon (vert) : segment du centre au cercle</text>
+<text fill="#333" font-size="13" x="50" y="310">• Diamètre (bleu) : segment passant par le centre, d'un bord à l'autre</text>
+<text fill="#333" font-size="13" x="50" y="330">• Corde (violet) : segment reliant deux points du cercle</text>
+<text fill="#333" font-size="13" x="50" y="350">• Arc (orange) : portion du cercle entre deux points</text>
+</svg>
+</div>
+
+<div class="definition-box">
+<h4>📘 Définitions importantes</h4>
+<ul style="margin-left: 20px; line-height: 2;">
+<li><strong>Rayon :</strong> Segment qui relie le centre à un point du cercle</li>
+<li><strong>Diamètre :</strong> Segment qui passe par le centre et relie deux points du cercle. <em>Le diamètre = 2 × rayon</em></li>
+<li><strong>Corde :</strong> Segment qui relie deux points du cercle (sans forcément passer par le centre)</li>
+<li><strong>Arc de cercle :</strong> Portion du cercle comprise entre deux points</li>
+</ul>
+</div>
+
+<div class="example-box">
+<h4>💡 Relation entre rayon et diamètre</h4>
+<div style="background: #e8f5e9; padding: 20px; border-radius: 8px; border-left: 4px solid #4caf50;">
+<p style="font-size: 18px; text-align: center;"><strong>Diamètre = 2 × Rayon</strong></p>
+<p style="font-size: 18px; text-align: center;"><strong>d = 2 × r</strong></p>
+<p style="margin-top: 10px;">Exemple : Si le rayon r = 5 cm, alors le diamètre d = 2 × 5 = 10 cm</p>
+</div>
+</div>
+
+<div class="property-box">
+<h4>✓ Propriétés importantes</h4>
+<p><strong>1.</strong> Le diamètre est la plus grande corde du cercle</p>
+<p><strong>2.</strong> Le diamètre passe toujours par le centre</p>
+<p><strong>3.</strong> Tous les rayons d'un même cercle ont la même longueur</p>
+<p><strong>4.</strong> Une corde qui ne passe pas par le centre est plus courte que le diamètre</p>
+</div>
+
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Le rayon va du centre au cercle<br/>
+                    • Le diamètre = 2 × rayon<br/>
+                    • Le diamètre est la plus grande corde<br/>
+                    • Une corde relie deux points du cercle
+                </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab3"></div></div>
+</div>
+
+<!-- TAB 4: QUIZ -->
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Cercles et Disques</h2>
+<p>Testez vos connaissances sur les cercles et les disques</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Un cercle est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Un segment courbé
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Une surface ronde
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Une ligne courbe fermée dont tous les points sont à égale distance du centre
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Quelle est la différence entre un cercle et un disque ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> Le cercle est la ligne, le disque est la surface
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> Le disque est plus grand que le cercle
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> Il n'y a pas de différence
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Le rayon d'un cercle est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> Le segment qui relie le centre à un point du cercle
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> La ligne courbe du cercle
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> Le segment qui relie deux points du cercle
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Si le rayon d'un cercle est de 6 cm, quel est son diamètre ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> 12 cm
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> 3 cm
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> 6 cm
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Une corde est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> Une portion du cercle
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> Un segment qui relie le centre au cercle
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> Un segment qui relie deux points du cercle
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Avec quel instrument trace-t-on un cercle ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> Un compas
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> Une équerre
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> Une règle
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Le diamètre d'un cercle :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q7" type="radio" value="a"/> Passe toujours par le centre
+                            </label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="b"/> Est plus petit que le rayon
+                            </label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="c"/> Est toujours égal au rayon
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q7"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Un disque comprend :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q8" type="radio" value="a"/> Le cercle et son intérieur
+                            </label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="b"/> Seulement l'intérieur
+                            </label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="c"/> Seulement le cercle (le bord)
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q8"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">9</span>
+<span class="question-text">Le nombre π (pi) est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q9" type="radio" value="a"/> Le coefficient de proportionnalité entre le périmètre et le diamètre
+                            </label>
+<label class="quiz-option">
+<input name="q9" type="radio" value="b"/> Égal à 2
+                            </label>
+<label class="quiz-option">
+<input name="q9" type="radio" value="c"/> Le double du rayon
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q9"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">10</span>
+<span class="question-text">Quelle valeur approchée de π peut-on utiliser ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q10" type="radio" value="a"/> 3,14
+                            </label>
+<label class="quiz-option">
+<input name="q10" type="radio" value="b"/> 2,5
+                            </label>
+<label class="quiz-option">
+<input name="q10" type="radio" value="c"/> 4
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q10"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">11</span>
+<span class="question-text">La formule du périmètre d'un cercle est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q11" type="radio" value="a"/> Périmètre = π × r × r
+                            </label>
+<label class="quiz-option">
+<input name="q11" type="radio" value="b"/> Périmètre = 2 × π × r
+                            </label>
+<label class="quiz-option">
+<input name="q11" type="radio" value="c"/> Périmètre = π × r
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q11"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">12</span>
+<span class="question-text">La formule de l'aire d'un disque est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q12" type="radio" value="a"/> Aire = 2 × π × r
+                            </label>
+<label class="quiz-option">
+<input name="q12" type="radio" value="b"/> Aire = π × r × r
+                            </label>
+<label class="quiz-option">
+<input name="q12" type="radio" value="c"/> Aire = π × d
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q12"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">13</span>
+<span class="question-text">Un point M appartient au cercle ℭ(A, r) si et seulement si :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q13" type="radio" value="a"/> AM = r
+                            </label>
+<label class="quiz-option">
+<input name="q13" type="radio" value="b"/> AM &lt; r
+                            </label>
+<label class="quiz-option">
+<input name="q13" type="radio" value="c"/> AM &gt; r
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q13"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">14</span>
+<span class="question-text">Si un cercle a un rayon de 4 cm, quel est son périmètre approximatif (avec π ≈ 3) ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q14" type="radio" value="a"/> 24 cm
+                            </label>
+<label class="quiz-option">
+<input name="q14" type="radio" value="b"/> 12 cm
+                            </label>
+<label class="quiz-option">
+<input name="q14" type="radio" value="c"/> 48 cm
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q14"></div>
+</div>
+
+<div class="quiz-question">
+<span class="question-number">15</span>
+<span class="question-text">Si un disque a un rayon de 5 cm, quelle est son aire approximative (avec π ≈ 3) ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q15" type="radio" value="a"/> 75 cm²
+                            </label>
+<label class="quiz-option">
+<input name="q15" type="radio" value="b"/> 30 cm²
+                            </label>
+<label class="quiz-option">
+<input name="q15" type="radio" value="c"/> 15 cm²
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q15"></div>
+</div>
+
+<button class="quiz-button" onclick="submitQuiz('quiz-cercles')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'c',
+                q2: 'a',
+                q3: 'a',
+                q4: 'a',
+                q5: 'c',
+                q6: 'a',
+                q7: 'a',
+                q8: 'a',
+                q9: 'a',
+                q10: 'a',
+                q11: 'b',
+                q12: 'b',
+                q13: 'a',
+                q14: 'a',
+                q15: 'a'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

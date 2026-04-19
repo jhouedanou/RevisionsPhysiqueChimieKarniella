@@ -1,0 +1,58 @@
+{
+    "subjects": [
+        {
+            "id": "mathematiques",
+            "icon": "🔢",
+            "name": "Mathématiques",
+            "description": "Apprends les calculs, la géométrie et les nombres de façon simple !",
+            "order": 1,
+            "isActive": true,
+            "url": "mathematiques.html"
+        },
+        {
+            "id": "physique",
+            "icon": "⚡",
+            "name": "Physique",
+            "description": "Découvre l'électricité et les circuits avec des expériences fun !",
+            "order": 2,
+            "isActive": true,
+            "url": "physique.html"
+        },
+        {
+            "id": "svt",
+            "icon": "🌱",
+            "name": "SVT",
+            "description": "Explore la nature : plantes, animaux et comment ils vivent !",
+            "order": 3,
+            "isActive": true,
+            "url": "svt-lecons.html"
+        },
+        {
+            "id": "histoire-geo",
+            "icon": "🌍",
+            "name": "Histoire-Géographie",
+            "description": "Voyage dans le temps et découvre le monde !",
+            "order": 4,
+            "isActive": true,
+            "url": "histoire-geographie-lecons.html"
+        },
+        {
+            "id": "education-civique",
+            "icon": "⚖️",
+            "name": "Éducation Civique",
+            "description": "Découvre tes droits, tes devoirs et comment fonctionne la démocratie !",
+            "order": 5,
+            "isActive": true,
+            "url": "education-civique.html"
+        },
+        {
+            "id": "francais",
+            "icon": "📖",
+            "name": "Français",
+            "description": "Maîtrise la grammaire, l'orthographe et l'expression française !",
+            "order": 6,
+            "isActive": true,
+            "url": "francais-lecons.html"
+        }
+    ]
+}

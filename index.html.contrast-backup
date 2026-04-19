@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révisions Karniella</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '🎀';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.1;
+            bottom: 10%;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+            letter-spacing: 2px;
+        }
+
+        header h1::before {
+            content: '🎀 ';
+        }
+
+        header h1::after {
+            content: ' 🎀';
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .lesson-card {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+            cursor: pointer;
+            border: 3px solid #FFB6D9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card::before {
+            content: '💖';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            opacity: 0.3;
+        }
+
+        .lesson-card:nth-child(1) { animation-delay: 0.1s; }
+        .lesson-card:nth-child(2) { animation-delay: 0.2s; }
+        .lesson-card:nth-child(3) { animation-delay: 0.3s; }
+        .lesson-card:nth-child(4) { animation-delay: 0.4s; }
+        .lesson-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+            border-color: #FF69B4;
+        }
+
+        .lesson-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .lesson-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .lesson-card h2 {
+            color: #FF1493;
+            font-size: 20px;
+            margin-bottom: 12px;
+            border-bottom: 3px solid;
+            padding-bottom: 8px;
+        }
+
+        /* Couleurs différentes pour chaque leçon */
+        .lesson-card.lesson-1 h2 { border-color: #FF69B4; }
+        .lesson-card.lesson-2 h2 { border-color: #FFB6D9; }
+        .lesson-card.lesson-3 h2 { border-color: #FF1493; }
+        .lesson-card.lesson-4 h2 { border-color: #FF85C1; }
+        .lesson-card.lesson-5 h2 { border-color: #FFC0CB; }
+
+        .lesson-card p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .lesson-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .lesson-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .subject-section {
+            margin-bottom: 50px;
+        }
+
+        .subject-title {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid #FFE5F0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.5);
+        }
+
+        .subject-title:hover {
+            transform: translateX(10px);
+            opacity: 0.9;
+        }
+
+        .subject-title a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .subject-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .status-coming-soon {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .status-available {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            .lessons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📚 Objectif 15/20</h1>
+            <p>Apprends en t'amusant avec tes matières préférées ! 🌸</p>
+        </header>
+
+        <!-- Lessons Grid -->
+        <div class="lessons-grid" id="lessonsContainer">
+            <!-- Les leçons sont générées par JavaScript -->
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>� Apprends facilement avec des cours amusants et des quiz super cool ! 🎀</p>
+        </footer>
+    </div>
+
+    <script>
+        // Configuration des matières et leurs leçons
+        const subjects = [
+            {
+                id: "mathematiques",
+                icon: "🔢",
+                name: "Mathématiques",
+                description: "Apprends les calculs, la géométrie et les nombres de façon simple !",
+                url: "mathematiques.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📐",
+                        title: "Mathématiques",
+                        description: "Calculs, droites, nombres avec des explications faciles et des quiz amusants.",
+                        url: "mathematiques.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "physique",
+                icon: "⚡",
+                name: "Physique",
+                description: "Découvre l'électricité et les circuits avec des expériences fun !",
+                url: "physique.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "⚡",
+                        title: "Physique",
+                        description: "Circuits électriques, interrupteurs et sécurité avec des explications simples et des quiz.",
+                        url: "physique.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "svt",
+                icon: "🌱",
+                name: "SVT",
+                description: "Explore la nature : plantes, animaux et comment ils vivent !",
+                url: "svt-lecons.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "🌸",
+                        title: "La Vie des Plantes",
+                        description: "Comment les plantes se reproduisent et grandissent, expliqué simplement.",
+                        url: "svt-lecons.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "histoire-geo",
+                icon: "🌍",
+                name: "Histoire-Géographie",
+                description: "Voyage dans le temps et découvre le monde !",
+                url: "histoire-geographie-lecons.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📜",
+                        title: "Histoire et Géographie",
+                        description: "Découvre le passé et les paysages de notre planète.",
+                        url: "histoire-geographie-lecons.html",
+                        status: "available"
+                    }
+                ]
+            }
+        ];
+
+        // Générer les sections par matière
+        function renderSubjects() {
+            const container = document.getElementById('lessonsContainer');
+            container.innerHTML = '';
+
+            subjects.forEach(subject => {
+                // Créer la section de la matière
+                const section = document.createElement('div');
+                section.className = 'subject-section';
+
+                // Titre de la matière
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'subject-title';
+                
+                if (subject.url) {
+                    // Si une URL existe, rendre le titre cliquable
+                    const titleLink = document.createElement('a');
+                    titleLink.href = subject.url;
+                    titleLink.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                    titleDiv.appendChild(titleLink);
+                } else {
+                    // Sinon, afficher le titre normalement
+                    titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                }
+                section.appendChild(titleDiv);
+
+                // Description de la matière
+                const descDiv = document.createElement('div');
+                descDiv.className = 'subject-description';
+                descDiv.textContent = subject.description;
+                section.appendChild(descDiv);
+
+                // Grille de leçons
+                const lessonsGrid = document.createElement('div');
+                lessonsGrid.className = 'lessons-grid';
+
+                if (subject.lessons.length === 0) {
+                    // Carte "Bientôt disponible" si pas de leçons
+                    const card = document.createElement('div');
+                    card.className = 'lesson-card';
+                    card.innerHTML = `
+                        <span class="lesson-icon">${subject.icon}</span>
+                        <span class="status-coming-soon">Bientôt</span>
+                        <h2>Cours en préparation</h2>
+                        <p>Les leçons de ${subject.name.toLowerCase()} seront bientôt disponibles.</p>
+                        <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
+                    `;
+                    lessonsGrid.appendChild(card);
+                } else {
+                    // Ajouter les leçons disponibles
+                    subject.lessons.forEach((lesson, index) => {
+                        const card = document.createElement('div');
+                        card.className = `lesson-card lesson-${index + 1}`;
+
+                        if (lesson.status === 'available') {
+                            card.innerHTML = `
+                                <a href="${lesson.url}">
+                                    <span class="lesson-icon">${lesson.icon}</span>
+                                    <h2>${lesson.title}</h2>
+                                    <p>${lesson.description}</p>
+                                    <button class="lesson-button">Accéder →</button>
+                                </a>
+                            `;
+                        } else {
+                            card.innerHTML = `
+                                <span class="lesson-icon">${lesson.icon}</span>
+                                <span class="status-coming-soon">Bientôt</span>
+                                <h2>${lesson.title}</h2>
+                                <p>${lesson.description}</p>
+                                <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
+                            `;
+                        }
+
+                        lessonsGrid.appendChild(card);
+                    });
+                }
+
+                section.appendChild(lessonsGrid);
+                container.appendChild(section);
+            });
+        }
+
+        // Initialiser les sections au chargement
+        renderSubjects();
+    </script>
+</body>
+</html>

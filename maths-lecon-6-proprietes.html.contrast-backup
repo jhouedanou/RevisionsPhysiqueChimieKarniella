@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriétés des Droites</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>📐 Propriétés des Droites Parallèles et Perpendiculaires</h1>
+        <p>Leçon 6 - Théorèmes et propriétés</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Propriétés Parallèles</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Parallèles et Perpendiculaires</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Propriétés des Droites Parallèles</h2>
+                
+                <div class="property-box">
+                    <h4>✓ Propriété 1 : Transitivité</h4>
+                    <p><strong>Si d // d' et d' // d'', alors d // d''</strong></p>
+                    <p>Si deux droites sont parallèles à une même troisième droite, alors elles sont parallèles entre elles.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Illustration</h4>
+                    <svg width="100%" height="180" viewBox="0 0 600 180">
+                        <line x1="50" y1="40" x2="550" y2="40" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="560" y="45" fill="#FF69B4" font-size="14">d</text>
+                        <line x1="50" y1="90" x2="550" y2="90" stroke="#f44336" stroke-width="2"/>
+                        <text x="560" y="95" fill="#f44336" font-size="14">d'</text>
+                        <line x1="50" y1="140" x2="550" y2="140" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="560" y="145" fill="#FF69B4" font-size="14">d''</text>
+                        <text x="250" y="65" fill="#666" font-size="12">d // d'</text>
+                        <text x="250" y="115" fill="#666" font-size="12">d' // d''</text>
+                        <text x="240" y="25" fill="#FF69B4" font-size="12" font-weight="bold">donc d // d''</text>
+                    </svg>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriété 2 : Unicité</h4>
+                    <p><strong>Par un point donné, il passe une seule parallèle à une droite donnée.</strong></p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriété 3 : Distance constante</h4>
+                    <p><strong>Deux droites parallèles sont toujours à la même distance l'une de l'autre.</strong></p>
+                    <p>Cette distance est mesurée perpendiculairement aux deux droites.</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • La transitivité est très utile pour démontrer des parallélismes<br>
+                    • L'unicité garantit qu'il n'y a qu'une seule solution<br>
+                    • La distance constante caractérise les parallèles
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Propriétés de Deux Droites Parallèles et d'une Perpendiculaire</h2>
+
+                <div class="property-box">
+                    <h4>✓ Propriété fondamentale</h4>
+                    <p><strong>Si deux droites sont parallèles, alors toute perpendiculaire à l'une est perpendiculaire à l'autre.</strong></p>
+                    <p>Si d // d' et d'' ⊥ d, alors d'' ⊥ d'</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Illustration</h4>
+                    <svg width="100%" height="250" viewBox="0 0 600 250">
+                        <line x1="50" y1="80" x2="550" y2="80" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="560" y="85" fill="#FF69B4" font-size="14">d</text>
+                        <line x1="50" y1="170" x2="550" y2="170" stroke="#f44336" stroke-width="2"/>
+                        <text x="560" y="175" fill="#f44336" font-size="14">d'</text>
+                        <line x1="300" y1="30" x2="300" y2="220" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="310" y="40" fill="#FF69B4" font-size="14">d''</text>
+                        <rect x="290" y="70" width="20" height="20" fill="none" stroke="#FF69B4" stroke-width="2"/>
+                        <rect x="290" y="160" width="20" height="20" fill="none" stroke="#FF69B4" stroke-width="2"/>
+                        <text x="200" y="120" fill="#666" font-size="12">d // d'</text>
+                        <text x="320" y="120" fill="#FF69B4" font-size="12">d'' ⊥ d et d'' ⊥ d'</text>
+                    </svg>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Réciproque</h4>
+                    <p><strong>Si deux droites sont perpendiculaires à une même troisième droite, alors elles sont parallèles entre elles.</strong></p>
+                    <p>Si d ⊥ d'' et d' ⊥ d'', alors d // d'</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Application pratique</h4>
+                    <p>Cette propriété est très utile pour :</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Tracer des droites parallèles</li>
+                        <li>Vérifier le parallélisme de deux droites</li>
+                        <li>Construire des figures géométriques</li>
+                    </ul>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Perpendiculaire à l'une = perpendiculaire à l'autre (si parallèles)<br>
+                    • Perpendiculaires à une même droite = parallèles entre elles<br>
+                    • Ces propriétés permettent de démontrer beaucoup de résultats
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+</body>
+</html>

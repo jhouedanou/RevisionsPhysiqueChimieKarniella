@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nombres Décimaux Relatifs</title>
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>± Nombres Décimaux Relatifs</h1>
+<p>Leçon 7 - Nombres positifs et négatifs</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Définition</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Droite Graduée</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Comparaison</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Les Nombres Décimaux Relatifs</h2>
+<div class="definition-box">
+<h4>📘 Définition</h4>
+<p>Un <strong>nombre décimal relatif</strong> est un nombre qui peut être positif, négatif ou nul.</p>
+<ul style="margin-left: 20px; margin-top: 10px;">
+<li><strong>Nombres positifs :</strong> +5, +3.2, +0.5 (ou simplement 5, 3.2, 0.5)</li>
+<li><strong>Nombres négatifs :</strong> -5, -3.2, -0.5</li>
+<li><strong>Zéro :</strong> 0 (ni positif ni négatif)</li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Exemples dans la vie courante</h4>
+<ul style="margin-left: 20px;">
+<li><strong>Température :</strong> +25°C (chaud), -10°C (froid)</li>
+<li><strong>Altitude :</strong> +500m (au-dessus du niveau de la mer), -50m (sous le niveau de la mer)</li>
+<li><strong>Argent :</strong> +100€ (crédit), -50€ (débit)</li>
+<li><strong>Temps :</strong> +2 ans (dans 2 ans), -3 ans (il y a 3 ans)</li>
+</ul>
+</div>
+<div class="definition-box">
+<h4>📘 Distance à zéro</h4>
+<p>La <strong>distance à zéro</strong> (ou valeur absolue) d'un nombre relatif est sa distance par rapport à 0, sans tenir compte du signe.</p>
+<div class="formula">|+5| = 5 et |-5| = 5</div>
+</div>
+<div class="definition-box">
+<h4>📘 Opposé d'un nombre</h4>
+<p>L'<strong>opposé</strong> d'un nombre relatif est le nombre qui a la même distance à zéro mais un signe contraire.</p>
+<p><strong>Exemples :</strong></p>
+<ul style="margin-left: 20px; margin-top: 10px;">
+<li>L'opposé de +7 est -7</li>
+<li>L'opposé de -3 est +3</li>
+<li>L'opposé de 0 est 0</li>
+</ul>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Un nombre relatif a un signe (+ ou -)<br/>
+                    • 0 n'est ni positif ni négatif<br/>
+                    • La distance à zéro est toujours positive
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Droite Graduée et Repérage</h2>
+<div class="definition-box">
+<h4>📘 Droite graduée</h4>
+<p>Une <strong>droite graduée</strong> est une droite sur laquelle on a choisi :</p>
+<ul style="margin-left: 20px; margin-top: 10px;">
+<li>Un point origine O (correspondant à 0)</li>
+<li>Une unité de longueur</li>
+<li>Un sens positif (généralement vers la droite)</li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Représentation</h4>
+<svg height="120" viewbox="0 0 700 120" width="100%">
+<defs>
+<marker id="arrow" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#333"></path>
+</marker>
+</defs>
+<line marker-end="url(#arrow)" stroke="#333" stroke-width="2" x1="50" x2="650" y1="60" y2="60"></line>
+<line stroke="#333" stroke-width="2" x1="150" x2="150" y1="50" y2="70"></line>
+<text fill="#333" font-size="14" x="145" y="90">-3</text>
+<line stroke="#333" stroke-width="2" x1="225" x2="225" y1="50" y2="70"></line>
+<text fill="#333" font-size="14" x="220" y="90">-2</text>
+<line stroke="#333" stroke-width="2" x1="300" x2="300" y1="50" y2="70"></line>
+<text fill="#333" font-size="14" x="295" y="90">-1</text>
+<line stroke="#f44336" stroke-width="3" x1="375" x2="375" y1="45" y2="75"></line>
+<text fill="#f44336" font-size="16" font-weight="bold" x="370" y="90">0</text>
+<line stroke="#333" stroke-width="2" x1="450" x2="450" y1="50" y2="70"></line>
+<text fill="#333" font-size="14" x="445" y="90">+1</text>
+<line stroke="#333" stroke-width="2" x1="525" x2="525" y1="50" y2="70"></line>
+<text fill="#333" font-size="14" x="520" y="90">+2</text>
+<line stroke="#333" stroke-width="2" x1="600" x2="600" y1="50" y2="70"></line>
+<text fill="#333" font-size="14" x="595" y="90">+3</text>
+<text fill="#FF69B4" font-size="12" x="100" y="30">Nombres négatifs</text>
+<text fill="#FF69B4" font-size="12" x="500" y="30">Nombres positifs</text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Repérage sur la droite</h4>
+<p><strong>1.</strong> Les nombres négatifs sont à gauche de 0</p>
+<p><strong>2.</strong> Les nombres positifs sont à droite de 0</p>
+<p><strong>3.</strong> Plus on va vers la droite, plus les nombres sont grands</p>
+<p><strong>4.</strong> Deux nombres opposés sont symétriques par rapport à 0</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • La droite graduée permet de visualiser les nombres relatifs<br/>
+                    • 0 sépare les positifs (à droite) des négatifs (à gauche)<br/>
+                    • Les opposés sont à égale distance de 0
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Comparaison de Nombres Relatifs</h2>
+<h3>Nombres de signes contraires</h3>
+<div class="property-box">
+<h4>✓ Règle</h4>
+<p><strong>Tout nombre positif est supérieur à tout nombre négatif.</strong></p>
+<p>Exemples : +2 &gt; -5 ; +0,1 &gt; -100</p>
+</div>
+<h3>Nombres de mêmes signes</h3>
+<div class="property-box">
+<h4>✓ Nombres positifs</h4>
+<p><strong>Le plus grand est celui qui a la plus grande distance à zéro.</strong></p>
+<p>Exemples : +7 &gt; +3 ; +5,2 &gt; +5,1</p>
+</div>
+<div class="property-box">
+<h4>✓ Nombres négatifs</h4>
+<p><strong>Le plus grand est celui qui a la plus petite distance à zéro.</strong></p>
+<p>Exemples : -2 &gt; -5 ; -0,3 &gt; -0,8</p>
+</div>
+<div class="example-box">
+<h4>💡 Exemples</h4>
+<p><strong>1.</strong> Comparer +3 et -7 :</p>
+<p>+3 &gt; -7 (positif &gt; négatif)</p>
+<p><strong>2.</strong> Comparer -4 et -9 :</p>
+<p>-4 &gt; -9 (plus proche de zéro)</p>
+<p><strong>3.</strong> Ranger dans l'ordre croissant : -5, +3, -1, 0, +7</p>
+<p>-5 &lt; -1 &lt; 0 &lt; +3 &lt; +7</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Positif &gt; Négatif toujours<br/>
+                    • Pour les positifs : plus grand nombre = plus loin de 0<br/>
+                    • Pour les négatifs : plus grand nombre = plus près de 0<br/>
+                    • Sur la droite graduée : plus à droite = plus grand
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab3"></div></div>
+</div>
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Nombres Décimaux Relatifs</h2>
+<p>Testez vos connaissances sur les nombres relatifs</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Qu'est-ce qu'un nombre décimal relatif?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Un nombre qui peut être positif, négatif ou nul
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Seulement un nombre positif
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Un nombre sans virgule
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Le nombre 0 est-il positif ou négatif?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> Il est positif
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> Il est négatif
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> Il est ni positif ni négatif
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">Quel est l'opposé du nombre +7?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> +7
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> -7
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> 0
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Quelle est la distance à zéro du nombre -5?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> -5
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> 5
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> 0
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Sur une droite graduée, où se trouvent les nombres négatifs?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> À droite de 0
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> À gauche de 0
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> Au-dessus de 0
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Comparer +3 et -7. Lequel est le plus grand?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> +3 est plus grand
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> -7 est plus grand
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> Ils sont égaux
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">7</span>
+<span class="question-text">Comparer -4 et -9. Lequel est le plus grand?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q7" type="radio" value="a"/> -4 est plus grand
+                            </label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="b"/> -9 est plus grand
+                            </label>
+<label class="quiz-option">
+<input name="q7" type="radio" value="c"/> Ils sont égaux
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q7"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">8</span>
+<span class="question-text">Quel est l'opposé de 0?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q8" type="radio" value="a"/> 0
+                            </label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="b"/> -1
+                            </label>
+<label class="quiz-option">
+<input name="q8" type="radio" value="c"/> +1
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q8"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">9</span>
+<span class="question-text">Ranger dans l'ordre croissant: -5, +3, -1, 0</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q9" type="radio" value="a"/> -5 &lt; -1 &lt; 0 &lt; +3
+                            </label>
+<label class="quiz-option">
+<input name="q9" type="radio" value="b"/> +3 &lt; 0 &lt; -1 &lt; -5
+                            </label>
+<label class="quiz-option">
+<input name="q9" type="radio" value="c"/> 0 &lt; -1 &lt; -5 &lt; +3
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q9"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">10</span>
+<span class="question-text">Une température de -10°C représente:</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q10" type="radio" value="a"/> Une température au-dessus de 0
+                            </label>
+<label class="quiz-option">
+<input name="q10" type="radio" value="b"/> Une température en-dessous de 0
+                            </label>
+<label class="quiz-option">
+<input name="q10" type="radio" value="c"/> Une température égale à 0
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q10"></div>
+</div>
+<button class="quiz-button" onclick="submitQuiz('quiz7')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'a',
+                q2: 'c',
+                q3: 'b',
+                q4: 'b',
+                q5: 'b',
+                q6: 'a',
+                q7: 'a',
+                q8: 'a',
+                q9: 'a',
+                q10: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-7-nombres-relatifs'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-7-nombres-relatifs');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
+</body>
+</html>

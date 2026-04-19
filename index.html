@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physique-Chimie</title>
+    <title>Révisions Karniella</title>
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FF69B4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Karniella">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <meta name="description"
+        content="Site de révisions scolaires pour Karniella - Mathématiques, Physique, SVT et plus">
+
     <style>
         * {
             margin: 0;
@@ -13,9 +25,43 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 40px 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '🎀';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.1;
+            bottom: 10%;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .container {
@@ -26,6 +72,7 @@
         header {
             text-align: center;
             color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-bottom: 60px;
             animation: slideDown 0.8s ease-out;
         }
@@ -33,7 +80,16 @@
         header h1 {
             font-size: 48px;
             margin-bottom: 10px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+            letter-spacing: 2px;
+        }
+
+        header h1::before {
+            content: '🎀 ';
+        }
+
+        header h1::after {
+            content: ' 🎀';
         }
 
         header p {
@@ -49,27 +105,54 @@
         }
 
         .lesson-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border-radius: 25px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: scaleIn 0.6s ease-out forwards;
             opacity: 0;
             cursor: pointer;
+            border: 4px solid #FF69B4;
+            position: relative;
+            overflow: hidden;
         }
 
-        .lesson-card:nth-child(1) { animation-delay: 0.1s; }
-        .lesson-card:nth-child(2) { animation-delay: 0.2s; }
-        .lesson-card:nth-child(3) { animation-delay: 0.3s; }
-        .lesson-card:nth-child(4) { animation-delay: 0.4s; }
-        .lesson-card:nth-child(5) { animation-delay: 0.5s; }
+        .lesson-card::before {
+            content: '💖';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            opacity: 0.3;
+        }
+
+        .lesson-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .lesson-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .lesson-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .lesson-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .lesson-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
 
         @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -81,6 +164,7 @@
                 opacity: 0;
                 transform: scale(0.8);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -89,7 +173,8 @@
 
         .lesson-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.5);
+            border-color: #FF69B4;
         }
 
         .lesson-card a {
@@ -105,22 +190,38 @@
         }
 
         .lesson-card h2 {
-            color: #333;
+            color: #C71585;
             font-size: 20px;
             margin-bottom: 12px;
             border-bottom: 3px solid;
             padding-bottom: 8px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(199, 21, 133, 0.2);
         }
 
         /* Couleurs différentes pour chaque leçon */
-        .lesson-card.lesson-1 h2 { border-color: #667eea; }
-        .lesson-card.lesson-2 h2 { border-color: #764ba2; }
-        .lesson-card.lesson-3 h2 { border-color: #2196f3; }
-        .lesson-card.lesson-4 h2 { border-color: #ff9800; }
-        .lesson-card.lesson-5 h2 { border-color: #4caf50; }
+        .lesson-card.lesson-1 h2 {
+            border-color: #FF69B4;
+        }
+
+        .lesson-card.lesson-2 h2 {
+            border-color: #FFB6D9;
+        }
+
+        .lesson-card.lesson-3 h2 {
+            border-color: #FF1493;
+        }
+
+        .lesson-card.lesson-4 h2 {
+            border-color: #FF85C1;
+        }
+
+        .lesson-card.lesson-5 h2 {
+            border-color: #FFC0CB;
+        }
 
         .lesson-card p {
-            color: #666;
+            color: #333;
             font-size: 13px;
             line-height: 1.6;
             margin-bottom: 15px;
@@ -129,9 +230,9 @@
         .lesson-button {
             display: inline-block;
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF69B4 0%, #C71585 100%);
             color: white;
-            border: none;
+            border: 2px solid #C71585;
             border-radius: 25px;
             font-size: 14px;
             font-weight: bold;
@@ -140,21 +241,66 @@
             text-decoration: none;
             width: 100%;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(199, 21, 133, 0.6);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .lesson-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.6);
         }
 
         footer {
             text-align: center;
             color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 12px;
             opacity: 0.7;
+        }
+
+        .subject-section {
+            margin-bottom: 50px;
+        }
+
+        .subject-title {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid #FFE5F0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.5);
+        }
+
+        .subject-title:hover {
+            transform: translateX(10px);
+            opacity: 0.9;
+        }
+
+        .subject-title a {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .subject-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 25px;
+            padding-left: 20px;
         }
 
         .status-coming-soon {
@@ -172,6 +318,7 @@
             display: inline-block;
             background: #4caf50;
             color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 11px;
@@ -194,12 +341,13 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <header>
-            <h1>📚 Physique-Chimie</h1>
-            <p>Cours Interactifs et Animés</p>
+            <h1>📚 Objectif 15/20</h1>
+            <p>Apprends en t'amusant avec tes matières préférées ! 🌸</p>
         </header>
 
         <!-- Lessons Grid -->
@@ -209,95 +357,242 @@
 
         <!-- Footer -->
         <footer>
-            <p>💡 Cours interactifs avec schémas animés | Facile à étendre</p>
+            <p>� Apprends facilement avec des cours amusants et des quiz super cool ! 🎀</p>
         </footer>
     </div>
 
     <script>
-        // Configuration des leçons
-        const lessons = [
+        // Configuration des matières et leurs leçons
+        const subjects = [
             {
-                id: 1,
+                id: "mathematiques",
+                icon: "🔢",
+                name: "Mathématiques",
+                description: "Apprends les calculs, la géométrie et les nombres de façon simple !",
+                url: "mathematiques.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📐",
+                        title: "Mathématiques",
+                        description: "Calculs, droites, nombres avec des explications faciles et des quiz amusants.",
+                        url: "mathematiques.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "physique",
                 icon: "⚡",
-                title: "Le Circuit Électrique",
-                description: "Comprendre les circuits électriques, le moteur, les isolants, conducteurs et les types de piles.",
-                url: "le-circuit-electrique.html",
-                status: "available"
+                name: "Physique",
+                description: "Découvre l'électricité et les circuits avec des expériences fun !",
+                url: "physique.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "⚡",
+                        title: "Physique",
+                        description: "Circuits électriques, interrupteurs et sécurité avec des explications simples et des quiz.",
+                        url: "physique.html",
+                        status: "available"
+                    }
+                ]
             },
             {
-                id: 2,
-                icon: "🔌",
-                title: "Les Commandes Électriques",
-                description: "Maîtriser les interrupteurs simples et comment ils contrôlent les circuits électriques pour allumer ou éteindre les lampes.",
-                url: "les-commandes-electriques.html",
-                status: "available"
+                id: "svt",
+                icon: "🌱",
+                name: "SVT",
+                description: "Explore la nature : plantes, animaux et comment ils vivent !",
+                url: "svt-lecons.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "🌸",
+                        title: "La Vie des Plantes",
+                        description: "Comment les plantes se reproduisent et grandissent, expliqué simplement.",
+                        url: "svt-lecons.html",
+                        status: "available"
+                    }
+                ]
             },
             {
-                id: 3,
-                icon: "⚠️",
-                title: "Court-Circuit et Protection",
-                description: "Comprendre les dangers des courts-circuits, leurs causes et les systèmes de protection des installations électriques.",
-                url: "lecon-3-court-circuit.html",
-                status: "available"
+                id: "histoire-geo",
+                icon: "🌍",
+                name: "Histoire-Géographie",
+                description: "Voyage dans le temps et découvre le monde !",
+                url: "histoire-geographie-lecons.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📜",
+                        title: "Histoire et Géographie",
+                        description: "Découvre le passé et les paysages de notre planète.",
+                        url: "histoire-geographie-lecons.html",
+                        status: "available"
+                    }
+                ]
             },
-            // AJOUTER D'AUTRES LEÇONS ICI
-            // Exemple:
-            // {
-            //     id: 2,
-            //     icon: "🧲",
-            //     title: "Le Magnétisme",
-            //     description: "Découvrir les propriétés magnétiques et les champs magnétiques.",
-            //     url: "le-magnetisme.html",
-            //     status: "available"
-            // },
-            // {
-            //     id: 3,
-            //     icon: "⚛️",
-            //     title: "La Chimie Générale",
-            //     description: "Bases de la chimie, atomes et molécules.",
-            //     url: "chimie-generale.html",
-            //     status: "coming-soon"
-            // }
+            {
+                id: "education-civique",
+                icon: "⚖️",
+                name: "Éducation Civique",
+                description: "Découvre tes droits, tes devoirs et comment fonctionne la démocratie !",
+                url: "education-civique.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📜",
+                        title: "Éducation Civique",
+                        description: "Droits humains, Constitution et Démocratie expliqués simplement.",
+                        url: "education-civique.html",
+                        status: "available"
+                    },
+                    {
+                        id: 2,
+                        icon: "🎓",
+                        title: "Quiz Compréhensif",
+                        description: "Teste tes connaissances avec 23 questions couvrant tous les thèmes !",
+                        url: "education-civique-quiz.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "tice",
+                icon: "💻",
+                name: "TICE - Technologies",
+                description: "Découvre l'informatique : ordinateurs, logiciels et composants !",
+                url: "tice.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "🖥️",
+                        title: "Système Informatique",
+                        description: "Comprendre l'ordinateur : matériel, logiciels et composants.",
+                        url: "tice.html",
+                        status: "available"
+                    }
+                ]
+            },
+            {
+                id: "francais",
+                icon: "📖",
+                name: "Français",
+                description: "Maîtrise la grammaire, l'orthographe et l'expression française !",
+                url: "francais-lecons.html",
+                lessons: [
+                    {
+                        id: 1,
+                        icon: "📝",
+                        title: "Le Groupe Nominal",
+                        description: "Découvre le groupe nominal, sa structure et tous les types de groupes nominaux.",
+                        url: "francais-groupe-nominal.html",
+                        status: "available"
+                    }
+                ]
+            }
         ];
 
-        // Générer les cartes de leçons
-        function renderLessons() {
+        // Générer les sections par matière
+        function renderSubjects() {
             const container = document.getElementById('lessonsContainer');
             container.innerHTML = '';
 
-            lessons.forEach((lesson, index) => {
-                const card = document.createElement('div');
-                card.className = `lesson-card lesson-${index + 1}`;
+            subjects.forEach(subject => {
+                // Créer la section de la matière
+                const section = document.createElement('div');
+                section.className = 'subject-section';
 
-                const statusBadge = lesson.status === 'available'
-                    ? '<span class="status-available">Disponible</span>'
-                    : '<span class="status-coming-soon">Bientôt</span>';
+                // Titre de la matière
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'subject-title';
 
-                if (lesson.status === 'available') {
-                    card.innerHTML = `
-                        <a href="${lesson.url}">
-                            <span class="lesson-icon">${lesson.icon}</span>
-                            <h2>${lesson.title}</h2>
-                            <p>${lesson.description}</p>
-                            <button class="lesson-button">Accéder →</button>
-                        </a>
-                    `;
+                if (subject.url) {
+                    // Si une URL existe, rendre le titre cliquable
+                    const titleLink = document.createElement('a');
+                    titleLink.href = subject.url;
+                    titleLink.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                    titleDiv.appendChild(titleLink);
                 } else {
+                    // Sinon, afficher le titre normalement
+                    titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                }
+                section.appendChild(titleDiv);
+
+                // Description de la matière
+                const descDiv = document.createElement('div');
+                descDiv.className = 'subject-description';
+                descDiv.textContent = subject.description;
+                section.appendChild(descDiv);
+
+                // Grille de leçons
+                const lessonsGrid = document.createElement('div');
+                lessonsGrid.className = 'lessons-grid';
+
+                if (subject.lessons.length === 0) {
+                    // Carte "Bientôt disponible" si pas de leçons
+                    const card = document.createElement('div');
+                    card.className = 'lesson-card';
                     card.innerHTML = `
-                        <span class="lesson-icon">${lesson.icon}</span>
-                        ${statusBadge}
-                        <h2>${lesson.title}</h2>
-                        <p>${lesson.description}</p>
+                        <span class="lesson-icon">${subject.icon}</span>
+                        <span class="status-coming-soon">Bientôt</span>
+                        <h2>Cours en préparation</h2>
+                        <p>Les leçons de ${subject.name.toLowerCase()} seront bientôt disponibles.</p>
                         <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
                     `;
+                    lessonsGrid.appendChild(card);
+                } else {
+                    // Ajouter les leçons disponibles
+                    subject.lessons.forEach((lesson, index) => {
+                        const card = document.createElement('div');
+                        card.className = `lesson-card lesson-${index + 1}`;
+
+                        if (lesson.status === 'available') {
+                            card.innerHTML = `
+                                <a href="${lesson.url}">
+                                    <span class="lesson-icon">${lesson.icon}</span>
+                                    <h2>${lesson.title}</h2>
+                                    <p>${lesson.description}</p>
+                                    <button class="lesson-button">Accéder →</button>
+                                </a>
+                            `;
+                        } else {
+                            card.innerHTML = `
+                                <span class="lesson-icon">${lesson.icon}</span>
+                                <span class="status-coming-soon">Bientôt</span>
+                                <h2>${lesson.title}</h2>
+                                <p>${lesson.description}</p>
+                                <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
+                            `;
+                        }
+
+                        lessonsGrid.appendChild(card);
+                    });
                 }
 
-                container.appendChild(card);
+                section.appendChild(lessonsGrid);
+                container.appendChild(section);
             });
         }
 
-        // Initialiser les leçons au chargement
-        renderLessons();
+        // Initialiser les sections au chargement
+        renderSubjects();
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker enregistré:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('❌ Erreur Service Worker:', error);
+                    });
+            });
+        }
     </script>
 </body>
+
 </html>

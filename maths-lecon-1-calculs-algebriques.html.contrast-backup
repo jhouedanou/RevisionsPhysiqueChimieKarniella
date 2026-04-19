@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculs Algébriques - Cours de Mathématiques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body::before {
+            content: "🔢";
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            font-size: 120px;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: "💕";
+            position: fixed;
+            bottom: 10%;
+            right: 5%;
+            font-size: 100px;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFB6D9;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+        }
+        
+        header h1::before {
+            content: "🎀 ";
+        }
+        
+        header h1::after {
+            content: " 🎀";
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #FF1493;
+            border: 2px solid #FF69B4;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%);
+            color: white;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #FFB6D9;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #FF1493;
+            border: 2px solid #FF69B4;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .tab-button:hover {
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border-bottom: 3px solid #FFE5F0;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5F0 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4);
+            max-width: 1000px;
+            width: 100%;
+            border: 3px solid #FFB6D9;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: #FF1493;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 3px solid #FF69B4;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #FF1493;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .definition-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .definition-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .example-box {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .example-box p, .example-box ul {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .example-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .property-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .property-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .property-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+            border: 2px dashed #FF69B4;
+        }
+
+        .interactive-demo {
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+        }
+
+        .interactive-demo input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #FF69B4;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .interactive-demo button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-demo button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .result-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-box p {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .quiz-section {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .quiz-section h3 {
+            color: #FF69B4;
+            margin-top: 0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+        }
+
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .quiz-options label {
+            display: block;
+            padding: 10px;
+            margin: 8px 0;
+            background: #fafafa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-options label:hover {
+            background: #e3f2fd;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .check-answer-btn {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .check-answer-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #4caf50;
+        }
+
+        .feedback.incorrect {
+            background: #ffebee;
+            color: #c62828;
+            border: 2px solid #f44336;
+        }
+
+        .info {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info strong {
+            color: #1565c0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>➕ Calculs Algébriques</h1>
+        <p>Leçon 1 - Nombres entiers naturels</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Nombres Consécutifs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Multiples</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Pairs et Impairs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+    </div>
+
+    <div class="content">
+        <!-- TAB 1: Nombres Consécutifs -->
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Nombres Entiers Naturels Consécutifs</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Des <strong>nombres entiers naturels consécutifs</strong> sont des nombres qui se suivent dans l'ordre croissant, c'est-à-dire qu'ils diffèrent de 1.</p>
+                    <div class="formula">n, n+1, n+2, n+3, ...</div>
+                    <p style="margin-top: 10px;">où <strong>n</strong> est un nombre entier naturel.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemples</h4>
+                    <ul>
+                        <li><strong>5, 6, 7, 8</strong> sont quatre nombres consécutifs</li>
+                        <li><strong>12, 13, 14</strong> sont trois nombres consécutifs</li>
+                        <li><strong>100, 101, 102, 103, 104</strong> sont cinq nombres consécutifs</li>
+                    </ul>
+                </div>
+
+                <h3>Détermination des nombres consécutifs de m à n</h3>
+
+                <div class="definition-box">
+                    <h4>📐 Formule</h4>
+                    <p>Pour déterminer tous les nombres entiers naturels consécutifs de <strong>m</strong> à <strong>n</strong> (avec m < n) :</p>
+                    <div class="formula">m, m+1, m+2, ..., n-1, n</div>
+                    <p style="margin-top: 10px;"><strong>Nombre total de termes :</strong> n - m + 1</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemple</h4>
+                    <p>Déterminer les nombres consécutifs de 5 à 12 :</p>
+                    <p><strong>Résultat :</strong> 5, 6, 7, 8, 9, 10, 11, 12</p>
+                    <p><strong>Nombre de termes :</strong> 12 - 5 + 1 = 8 nombres</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3 style="margin-top: 0; color: #FF69B4;">🎮 Outil Interactif</h3>
+                    <p>Trouve les nombres consécutifs de m à n :</p>
+                    <div style="margin: 20px 0;">
+                        <label>De m = <input type="number" id="m-value" value="1" min="0"> </label>
+                        <label style="margin-left: 20px;">à n = <input type="number" id="n-value" value="10" min="0"></label>
+                        <button onclick="calculateConsecutive()">Calculer</button>
+                    </div>
+                    <div class="result-box" id="consecutive-result">
+                        <p id="consecutive-numbers"></p>
+                        <p id="consecutive-count"></p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Les nombres consécutifs diffèrent toujours de 1<br>
+                    • Pour obtenir le nombre suivant, on ajoute 1 au nombre précédent<br>
+                    • Le nombre de termes entre m et n (inclus) est : n - m + 1
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: Multiples -->
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Multiple d'un Nombre Entier Naturel</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Un nombre <strong>a</strong> est un <strong>multiple</strong> d'un nombre <strong>b</strong> s'il existe un nombre entier naturel <strong>k</strong> tel que :</p>
+                    <div class="formula">a = b × k</div>
+                    <p style="margin-top: 10px;">On dit aussi que <strong>a</strong> est divisible par <strong>b</strong>.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemples</h4>
+                    <ul>
+                        <li><strong>12</strong> est un multiple de <strong>3</strong> car 12 = 3 × 4</li>
+                        <li><strong>20</strong> est un multiple de <strong>5</strong> car 20 = 5 × 4</li>
+                        <li><strong>35</strong> est un multiple de <strong>7</strong> car 35 = 7 × 5</li>
+                        <li><strong>0</strong> est un multiple de tout nombre (0 = n × 0)</li>
+                    </ul>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Tout nombre est un multiple de lui-même (n = n × 1)</p>
+                    <p><strong>2.</strong> Tout nombre est un multiple de 1 (n = 1 × n)</p>
+                    <p><strong>3.</strong> 0 est un multiple de tous les nombres</p>
+                    <p><strong>4.</strong> Les multiples d'un nombre sont infinis</p>
+                    <p><strong>5.</strong> Si a est un multiple de b et b est un multiple de c, alors a est un multiple de c</p>
+                </div>
+
+                <h3>Liste des premiers multiples</h3>
+
+                <div class="example-box">
+                    <h4>💡 Exemples de multiples</h4>
+                    <p><strong>Multiples de 2 :</strong> 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, ...</p>
+                    <p><strong>Multiples de 3 :</strong> 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, ...</p>
+                    <p><strong>Multiples de 5 :</strong> 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, ...</p>
+                    <p><strong>Multiples de 10 :</strong> 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, ...</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3 style="margin-top: 0; color: #FF69B4;">🎮 Outil Interactif</h3>
+                    <p>Trouve les 10 premiers multiples d'un nombre :</p>
+                    <div style="margin: 20px 0;">
+                        <label>Nombre : <input type="number" id="multiple-base" value="3" min="1"></label>
+                        <button onclick="calculateMultiples()">Calculer</button>
+                    </div>
+                    <div class="result-box" id="multiples-result">
+                        <p id="multiples-list"></p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Pour trouver les multiples d'un nombre, on le multiplie par 0, 1, 2, 3, ...<br>
+                    • Les multiples d'un nombre forment une suite infinie<br>
+                    • Le plus petit multiple non nul d'un nombre est le nombre lui-même
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: Pairs et Impairs -->
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>Nombres Pairs et Impairs</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Définition - Nombre Pair</h4>
+                    <p>Un <strong>nombre pair</strong> est un nombre entier naturel qui est divisible par 2.</p>
+                    <div class="formula">n = 2k où k est un entier naturel</div>
+                    <p style="margin-top: 10px;">Un nombre pair se termine toujours par 0, 2, 4, 6 ou 8.</p>
+                </div>
+
+                <div class="definition-box">
+                    <h4>📘 Définition - Nombre Impair</h4>
+                    <p>Un <strong>nombre impair</strong> est un nombre entier naturel qui n'est pas divisible par 2.</p>
+                    <div class="formula">n = 2k + 1 où k est un entier naturel</div>
+                    <p style="margin-top: 10px;">Un nombre impair se termine toujours par 1, 3, 5, 7 ou 9.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemples</h4>
+                    <p><strong>Nombres pairs :</strong> 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, ...</p>
+                    <p><strong>Nombres impairs :</strong> 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, ...</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Pair + Pair = Pair (exemple : 4 + 6 = 10)</p>
+                    <p><strong>2.</strong> Impair + Impair = Pair (exemple : 3 + 5 = 8)</p>
+                    <p><strong>3.</strong> Pair + Impair = Impair (exemple : 4 + 5 = 9)</p>
+                    <p><strong>4.</strong> Pair × Pair = Pair (exemple : 4 × 6 = 24)</p>
+                    <p><strong>5.</strong> Pair × Impair = Pair (exemple : 4 × 5 = 20)</p>
+                    <p><strong>6.</strong> Impair × Impair = Impair (exemple : 3 × 5 = 15)</p>
+                </div>
+
+                <h3>Reconnaissance rapide</h3>
+
+                <div class="example-box">
+                    <h4>💡 Astuce</h4>
+                    <p>Pour savoir si un nombre est pair ou impair, il suffit de regarder son dernier chiffre :</p>
+                    <ul>
+                        <li><strong>Dernier chiffre 0, 2, 4, 6, 8</strong> → Nombre PAIR</li>
+                        <li><strong>Dernier chiffre 1, 3, 5, 7, 9</strong> → Nombre IMPAIR</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Exemples :</strong></p>
+                    <ul>
+                        <li>1234 est pair (se termine par 4)</li>
+                        <li>5678 est pair (se termine par 8)</li>
+                        <li>9871 est impair (se termine par 1)</li>
+                        <li>4567 est impair (se termine par 7)</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3 style="margin-top: 0; color: #FF69B4;">🎮 Outil Interactif</h3>
+                    <p>Vérifie si un nombre est pair ou impair :</p>
+                    <div style="margin: 20px 0;">
+                        <label>Nombre : <input type="number" id="parity-number" value="12" min="0"></label>
+                        <button onclick="checkParity()">Vérifier</button>
+                    </div>
+                    <div class="result-box" id="parity-result">
+                        <p id="parity-text"></p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Un nombre pair est divisible par 2<br>
+                    • Un nombre impair n'est pas divisible par 2<br>
+                    • Le dernier chiffre détermine si un nombre est pair ou impair<br>
+                    • 0 est considéré comme un nombre pair
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: Quiz -->
+        <div id="tab4" class="tab-content">
+            <div class="container">
+                <h2>🎯 Quiz - Calculs Algébriques</h2>
+
+                <div class="quiz-section">
+                    <h3>Teste tes connaissances !</h3>
+
+                    <!-- Question 1 -->
+                    <div class="quiz-question" id="q1">
+                        <p>1. Combien y a-t-il de nombres entiers consécutifs de 7 à 15 (inclus) ?</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q1" value="a"> a) 8 nombres</label>
+                            <label><input type="radio" name="q1" value="b"> b) 9 nombres</label>
+                            <label><input type="radio" name="q1" value="c"> c) 10 nombres</label>
+                            <label><input type="radio" name="q1" value="d"> d) 7 nombres</label>
+                        </div>
+                        <button class="check-answer-btn" onclick="checkAnswer('q1', 'b', '15 - 7 + 1 = 9 nombres')">Vérifier</button>
+                        <div class="feedback" id="feedback-q1"></div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-question" id="q2">
+                        <p>2. Quel nombre est un multiple de 7 ?</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q2" value="a"> a) 45</label>
+                            <label><input type="radio" name="q2" value="b"> b) 48</label>
+                            <label><input type="radio" name="q2" value="c"> c) 49</label>
+                            <label><input type="radio" name="q2" value="d"> d) 50</label>
+                        </div>
+                        <button class="check-answer-btn" onclick="checkAnswer('q2', 'c', '49 = 7 × 7')">Vérifier</button>
+                        <div class="feedback" id="feedback-q2"></div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-question" id="q3">
+                        <p>3. Quel est le résultat de l'addition de deux nombres impairs ?</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q3" value="a"> a) Toujours pair</label>
+                            <label><input type="radio" name="q3" value="b"> b) Toujours impair</label>
+                            <label><input type="radio" name="q3" value="c"> c) Parfois pair, parfois impair</label>
+                            <label><input type="radio" name="q3" value="d"> d) Toujours 0</label>
+                        </div>
+                        <button class="check-answer-btn" onclick="checkAnswer('q3', 'a', 'Impair + Impair = Pair (ex: 3 + 5 = 8)')">Vérifier</button>
+                        <div class="feedback" id="feedback-q3"></div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-question" id="q4">
+                        <p>4. Le nombre 1456 est-il pair ou impair ?</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q4" value="a"> a) Pair</label>
+                            <label><input type="radio" name="q4" value="b"> b) Impair</label>
+                        </div>
+                        <button class="check-answer-btn" onclick="checkAnswer('q4', 'a', 'Le nombre se termine par 6, donc il est pair')">Vérifier</button>
+                        <div class="feedback" id="feedback-q4"></div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-question" id="q5">
+                        <p>5. Quel est le 5ème multiple de 9 (en excluant 0) ?</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q5" value="a"> a) 36</label>
+                            <label><input type="radio" name="q5" value="b"> b) 45</label>
+                            <label><input type="radio" name="q5" value="c"> c) 54</label>
+                            <label><input type="radio" name="q5" value="d"> d) 63</label>
+                        </div>
+                        <button class="check-answer-btn" onclick="checkAnswer('q5', 'b', '9 × 5 = 45')">Vérifier</button>
+                        <div class="feedback" id="feedback-q5"></div>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <strong>💡 Astuce :</strong><br>
+                    Reviens aux leçons précédentes si tu as des difficultés avec certaines questions !
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Consecutive numbers calculator
+        function calculateConsecutive() {
+            const m = parseInt(document.getElementById('m-value').value);
+            const n = parseInt(document.getElementById('n-value').value);
+            
+            if (m > n) {
+                alert('m doit être inférieur ou égal à n');
+                return;
+            }
+
+            const numbers = [];
+            for (let i = m; i <= n; i++) {
+                numbers.push(i);
+            }
+
+            const count = n - m + 1;
+            
+            document.getElementById('consecutive-numbers').textContent = 
+                `Nombres consécutifs : ${numbers.join(', ')}`;
+            document.getElementById('consecutive-count').textContent = 
+                `Nombre total : ${count} nombres`;
+            document.getElementById('consecutive-result').classList.add('show');
+        }
+
+        // Multiples calculator
+        function calculateMultiples() {
+            const base = parseInt(document.getElementById('multiple-base').value);
+            const multiples = [];
+            
+            for (let i = 0; i <= 10; i++) {
+                multiples.push(base * i);
+            }
+
+            document.getElementById('multiples-list').textContent = 
+                `Les 11 premiers multiples de ${base} : ${multiples.join(', ')}`;
+            document.getElementById('multiples-result').classList.add('show');
+        }
+
+        // Parity checker
+        function checkParity() {
+            const num = parseInt(document.getElementById('parity-number').value);
+            const isPair = num % 2 === 0;
+            
+            document.getElementById('parity-text').innerHTML = 
+                `Le nombre <strong>${num}</strong> est <strong>${isPair ? 'PAIR' : 'IMPAIR'}</strong>` +
+                `<br>Dernièr chiffre : ${num % 10} → ${isPair ? 'Pair' : 'Impair'}`;
+            document.getElementById('parity-result').classList.add('show');
+        }
+
+        // Quiz answer checker
+        function checkAnswer(questionId, correctAnswer, explanation) {
+            const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (!selected) {
+                alert('Veuillez sélectionner une réponse');
+                return;
+            }
+
+            feedback.classList.add('show');
+            
+            if (selected.value === correctAnswer) {
+                feedback.className = 'feedback show correct';
+                feedback.innerHTML = `✓ <strong>Correct !</strong><br>${explanation}`;
+            } else {
+                feedback.className = 'feedback show incorrect';
+                feedback.innerHTML = `✗ <strong>Incorrect.</strong><br>Bonne réponse : ${correctAnswer.toUpperCase()}<br>${explanation}`;
+            }
+        }
+    </script>
+</body>
+</html>

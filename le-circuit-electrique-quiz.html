@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Le Circuit Électrique</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
     <style>
         * {
             margin: 0;
@@ -15,16 +16,16 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
         }
 
         header {
-            background: rgba(0, 0, 0, 0.9);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
             padding: 20px;
             text-align: center;
-            border-bottom: 3px solid #e74c3c;
+            border-bottom: 3px solid #FF1493;
             position: relative;
         }
 
@@ -34,8 +35,8 @@
             top: 50%;
             transform: translateY(-50%);
             padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -52,7 +53,7 @@
         }
 
         header h1 {
-            color: white;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             font-size: 32px;
             margin-bottom: 5px;
         }
@@ -64,10 +65,10 @@
 
         h2 {
             text-align: center;
-            color: #e74c3c;
+            color: #C71585; font-weight: 700;
             margin-bottom: 10px;
             font-size: 28px;
-            border-bottom: 3px solid #e74c3c;
+            border-bottom: 3px solid #FF1493;
             padding-bottom: 15px;
         }
 
@@ -81,17 +82,17 @@
         }
 
         .container {
-            background: white;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 80px rgba(255, 105, 180, 0.4); border: 4px solid #FF69B4;
             max-width: 900px;
             width: 100%;
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #333;
             margin-bottom: 30px;
             font-size: 14px;
         }
@@ -103,8 +104,8 @@
         }
 
         .quiz-question {
-            background: white;
-            border: 2px solid #e74c3c;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+            border: 2px solid #FF1493;
             border-radius: 8px;
             padding: 20px;
             transition: all 0.3s ease;
@@ -118,8 +119,8 @@
 
         .question-number {
             display: inline-block;
-            background: #e74c3c;
-            color: white;
+            background: #FF1493;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             width: 30px;
             height: 30px;
             border-radius: 50%;
@@ -147,7 +148,7 @@
 
         .quiz-option {
             padding: 12px;
-            border: 2px solid #e74c3c;
+            border: 2px solid #FF1493;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -165,7 +166,7 @@
         .quiz-option input[type="radio"] {
             margin-right: 10px;
             cursor: pointer;
-            accent-color: #e74c3c;
+            accent-color: #C71585; font-weight: 700;
         }
 
         .quiz-option label {
@@ -184,8 +185,8 @@
         }
 
         .quiz-button {
-            background: #e74c3c;
-            color: white;
+            background: #FF1493;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             border: none;
             padding: 15px 30px;
             border-radius: 8px;
@@ -208,8 +209,8 @@
         }
 
         .quiz-result {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
+            background: linear-gradient(135deg, #FF1493 0%, #c0392b 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             padding: 20px;
             border-radius: 8px;
             text-align: center;
@@ -243,25 +244,25 @@
     <div class="content">
         <div class="container">
             <section class="quiz-section">
-                <h2>📝 Quiz - Leçon 1: Le Circuit Électrique</h2>
+                <h2>📝 Quiz - Leçon 1: Le Circuit Électrique (Nouvelles Questions)</h2>
                 <p class="subtitle">10 questions pour évaluer votre compréhension</p>
 
                 <!-- Question 1 -->
                 <div class="quiz-question">
                     <span class="question-number">1</span>
-                    <span class="question-text">Qu'est-ce qu'un circuit électrique complet?</span>
+                    <span class="question-text">Quel composant permet d'ouvrir ou de fermer un circuit à volonté ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="a"> Une boucle fermée permettant au courant de circuler sans interruption
+                            <input type="radio" name="q1" value="a"> La pile
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="b"> Un circuit avec beaucoup de fils
+                            <input type="radio" name="q1" value="b"> L'interrupteur
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="c"> Une prise de courant en muraille
+                            <input type="radio" name="q1" value="c"> La lampe
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q1" value="d"> Un fil qui n'est pas connecté
+                            <input type="radio" name="q1" value="d"> Le fil de connexion
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q1"></div>
@@ -270,19 +271,19 @@
                 <!-- Question 2 -->
                 <div class="quiz-question">
                     <span class="question-number">2</span>
-                    <span class="question-text">Quels sont les composants essentiels d'un circuit électrique simple?</span>
+                    <span class="question-text">Quelle est l'unité de mesure de la tension électrique ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="a"> Une pile, des fils et un appareil (lampe, moteur, etc.)
+                            <input type="radio" name="q2" value="a"> L'Ampère
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="b"> Seulement une pile
+                            <input type="radio" name="q2" value="b"> Le Watt
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="c"> Des fils sans aucune source d'énergie
+                            <input type="radio" name="q2" value="c"> Le Volt
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q2" value="d"> Un transformateur et une lampe
+                            <input type="radio" name="q2" value="d"> Le Joule
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q2"></div>
@@ -291,19 +292,19 @@
                 <!-- Question 3 -->
                 <div class="quiz-question">
                     <span class="question-number">3</span>
-                    <span class="question-text">Quel est le rôle de la pile dans un circuit électrique?</span>
+                    <span class="question-text">Dans un circuit en série, si une lampe grille, que font les autres lampes ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="a"> Elle fournit l'énergie électrique pour faire fonctionner le circuit
+                            <input type="radio" name="q3" value="a"> Elles brillent plus fort
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="b"> Elle éteint le circuit
+                            <input type="radio" name="q3" value="b"> Elles restent allumées normalement
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="c"> Elle stocke seulement l'énergie sans la fournir
+                            <input type="radio" name="q3" value="c"> Elles s'éteignent toutes
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q3" value="d"> Elle dirige le courant uniquement vers la lampe
+                            <input type="radio" name="q3" value="d"> Elles clignotent
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q3"></div>
@@ -312,19 +313,19 @@
                 <!-- Question 4 -->
                 <div class="quiz-question">
                     <span class="question-number">4</span>
-                    <span class="question-text">Que se passe-t-il si le circuit électrique est ouvert (cassé)?</span>
+                    <span class="question-text">Quel matériau est un bon conducteur électrique ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="a"> Le courant circule toujours normalement
+                            <input type="radio" name="q4" value="a"> Le plastique
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="b"> Le courant ne circule pas et la lampe s'éteint
+                            <input type="radio" name="q4" value="b"> Le bois sec
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="c"> La pile explose
+                            <input type="radio" name="q4" value="c"> Le cuivre
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q4" value="d"> Le courant augmente énormément
+                            <input type="radio" name="q4" value="d"> Le verre
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q4"></div>
@@ -333,19 +334,19 @@
                 <!-- Question 5 -->
                 <div class="quiz-question">
                     <span class="question-number">5</span>
-                    <span class="question-text">Comment le courant circule-t-il dans un circuit fermé?</span>
+                    <span class="question-text">Quel est le symbole normalisé de la lampe dans un schéma électrique ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="a"> De la borne positive à la borne négative en passant par l'appareil
+                            <input type="radio" name="q5" value="a"> Un rectangle
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="b"> Aléatoirement dans toutes les directions
+                            <input type="radio" name="q5" value="b"> Un cercle avec une croix à l'intérieur
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="c"> Uniquement dans un seul fil
+                            <input type="radio" name="q5" value="c"> Deux traits parallèles
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q5" value="d"> Il ne circule pas du tout
+                            <input type="radio" name="q5" value="d"> Un triangle
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q5"></div>
@@ -354,19 +355,19 @@
                 <!-- Question 6 -->
                 <div class="quiz-question">
                     <span class="question-number">6</span>
-                    <span class="question-text">Quel symbole représente un interrupteur dans un circuit électrique?</span>
+                    <span class="question-text">Quel appareil permet de mesurer la tension électrique ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="a"> Un cercle avec une croix
+                            <input type="radio" name="q6" value="a"> L'Ampèremètre
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="b"> Une droite oblique qui peut se basculer pour ouvrir/fermer
+                            <input type="radio" name="q6" value="b"> Le Voltmètre
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="c"> Un carré vide
+                            <input type="radio" name="q6" value="c"> Le Thermomètre
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q6" value="d"> Un triangle pointu
+                            <input type="radio" name="q6" value="d"> Le Baromètre
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q6"></div>
@@ -375,19 +376,19 @@
                 <!-- Question 7 -->
                 <div class="quiz-question">
                     <span class="question-number">7</span>
-                    <span class="question-text">Que représente un schéma électrique?</span>
+                    <span class="question-text">Quel est le rôle principal d'un générateur (comme une pile) ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="a"> Une représentation graphique simplifiée d'un circuit utilisant des symboles normalisés
+                            <input type="radio" name="q7" value="a"> Consommer de l'énergie
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="b"> Une photo exacte du circuit
+                            <input type="radio" name="q7" value="b"> Fournir le courant électrique
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="c"> Un dessin artistique d'une lampe
+                            <input type="radio" name="q7" value="c"> Interrompre le courant
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q7" value="d"> Un graphique montrant l'énergie consommée
+                            <input type="radio" name="q7" value="d"> Mesurer le courant
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q7"></div>
@@ -396,19 +397,19 @@
                 <!-- Question 8 -->
                 <div class="quiz-question">
                     <span class="question-number">8</span>
-                    <span class="question-text">Qu'est-ce qu'un dipôle dans un circuit électrique?</span>
+                    <span class="question-text">Le corps humain est-il conducteur d'électricité ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="a"> Un composant ayant deux bornes permettant au courant de circuler
+                            <input type="radio" name="q8" value="a"> Non, jamais
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="b"> Un appareil qui double la tension
+                            <input type="radio" name="q8" value="b"> Oui, c'est un conducteur (attention au danger !)
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="c"> Un fil sans utilité
+                            <input type="radio" name="q8" value="c"> Seulement les cheveux
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q8" value="d"> Une pile qui a deux pôles seulement
+                            <input type="radio" name="q8" value="d"> Seulement les pieds
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q8"></div>
@@ -417,19 +418,19 @@
                 <!-- Question 9 -->
                 <div class="quiz-question">
                     <span class="question-number">9</span>
-                    <span class="question-text">Quelle est la différence entre un circuit en série et un circuit en parallèle?</span>
+                    <span class="question-text">Qu'est-ce qu'un isolant électrique ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q9" value="a"> En série: les éléments se succèdent | En parallèle: les éléments sont branchés côte à côte
+                            <input type="radio" name="q9" value="a"> Un matériau qui laisse passer le courant facilement
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q9" value="b"> En parallèle: il y a plus de tension
+                            <input type="radio" name="q9" value="b"> Un matériau qui ne laisse pas passer le courant électrique
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q9" value="c"> En série: le courant s'arrête quand un composant grille
+                            <input type="radio" name="q9" value="c"> Une sorte de pile
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q9" value="d"> Les deux sont exactement pareils
+                            <input type="radio" name="q9" value="d"> Un type d'ampoule
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q9"></div>
@@ -438,19 +439,19 @@
                 <!-- Question 10 -->
                 <div class="quiz-question">
                     <span class="question-number">10</span>
-                    <span class="question-text">Si deux lampes sont branchées en parallèle et qu'une grille, que se passe-t-il?</span>
+                    <span class="question-text">Quelle est la tension approximative du secteur (prises murales) en Côte d'Ivoire ?</span>
                     <div class="quiz-options">
                         <label class="quiz-option">
-                            <input type="radio" name="q10" value="a"> L'autre lampe s'éteint aussi
+                            <input type="radio" name="q10" value="a"> 12 Volts
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q10" value="b"> L'autre lampe reste allumée car elle a son propre circuit
+                            <input type="radio" name="q10" value="b"> 110 Volts
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q10" value="c"> Les deux lampes deviennent plus brillantes
+                            <input type="radio" name="q10" value="c"> 220 Volts
                         </label>
                         <label class="quiz-option">
-                            <input type="radio" name="q10" value="d"> La tension augmente
+                            <input type="radio" name="q10" value="d"> 1000 Volts
                         </label>
                     </div>
                     <div class="quiz-feedback" id="feedback-q10"></div>
@@ -466,16 +467,16 @@
     <script>
         // Réponses correctes du quiz
         const quizAnswers = {
-            q1: 'a', // Boucle fermée
-            q2: 'a', // Pile, fils, appareil
-            q3: 'a', // Fournit l'énergie
-            q4: 'b', // Courant ne circule pas
-            q5: 'a', // De + à - via l'appareil
-            q6: 'b', // Droite oblique basculante
-            q7: 'a', // Représentation graphique simplifiée
-            q8: 'a', // Composant à deux bornes
-            q9: 'a', // Série vs parallèle
-            q10: 'b' // L'autre reste allumée
+            q1: 'c', // L'interrupteur
+            q2: 'a', // Le Volt
+            q3: 'b', // Elles s'éteignent toutes
+            q4: 'a', // Le cuivre
+            q5: 'c', // Un cercle avec une croix
+            q6: 'a', // Le Voltmètre
+            q7: 'c', // Fournir le courant
+            q8: 'a', // Oui, c'est un conducteur
+            q9: 'c', // Ne laisse pas passer le courant
+            q10: 'a' // 220 Volts
         };
 
         // Fonction pour vérifier le quiz
@@ -491,7 +492,7 @@
 
                 if (!selectedAnswer) {
                     if (feedbackElement) {
-                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Réponse manquante</span>';
+                        feedbackElement.innerHTML = '<span style="color: #FF69B4; font-weight: bold;">⚠️ Réponse manquante</span>';
                     }
                     continue;
                 }
@@ -505,7 +506,7 @@
                     }
                 } else {
                     if (feedbackElement) {
-                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Incorrect</span>';
+                        feedbackElement.innerHTML = '<span style="color: #FF1493; font-weight: bold;">❌ Incorrect</span>';
                     }
                 }
             }
@@ -523,7 +524,7 @@
             } else if (percentage >= 60) {
                 resultMessage += '<span style="color: #f39c12;">👍 Bon travail! Continuez à réviser.</span>';
             } else {
-                resultMessage += '<span style="color: #e74c3c;">📚 À relire! Revisitez le contenu.</span>';
+                resultMessage += '<span style="color: #FF1493;">📚 À relire! Revisitez le contenu.</span>';
             }
 
             resultsDiv.innerHTML = resultMessage;

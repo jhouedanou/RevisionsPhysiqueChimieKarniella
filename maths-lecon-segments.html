@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Les Segments - Cours de Mathématiques</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+<link href="css/section-quiz.css" rel="stylesheet"/>
+<link href="styles-math-lessons.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<a class="btn-back" href="mathematiques.html">← Retour</a>
+<h1>📏 Les Segments</h1>
+<p>Géométrie de base - Introduction</p>
+</header>
+<div class="tabs">
+<button class="tab-button active" onclick="openTab(event, 'tab1')">Présentation</button>
+<button class="tab-button" onclick="openTab(event, 'tab2')">Notation</button>
+<button class="tab-button" onclick="openTab(event, 'tab3')">Mesure d'un Segment</button>
+<button class="tab-button" onclick="openTab(event, 'tab4')">Quiz</button>
+</div>
+<div class="content">
+<div class="tab-content active" id="tab1">
+<div class="container">
+<h2>Présentation des Segments</h2>
+<div class="definition-box">
+<h4>📘 Qu'est-ce qu'un segment ?</h4>
+<p>Un <strong>segment</strong> est une portion de droite limitée par deux points appelés <strong>extrémités</strong>. C'est la plus courte distance entre deux points.</p>
+</div>
+<div class="example-box">
+<h4>💡 Représentation</h4>
+<svg height="200" viewbox="0 0 600 200" width="100%">
+<!-- Segment -->
+<line stroke="#FF69B4" stroke-width="3" x1="100" x2="400" y1="100" y2="100"></line>
+<!-- Points extrémités -->
+<circle cx="100" cy="100" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="90" y="75">A</text>
+<circle cx="400" cy="100" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="395" y="75">B</text>
+<!-- Flèches pour montrer les extrémités -->
+<text fill="#FF69B4" font-size="14" text-anchor="middle" x="250" y="140">Segment [AB]</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Caractéristiques d'un segment</h4>
+<ul style="margin-left: 20px; line-height: 1.8;">
+<li><strong>Longueur finie :</strong> Un segment a une longueur mesurable</li>
+<li><strong>Deux extrémités :</strong> Le segment commence et se termine à deux points</li>
+<li><strong>Plus courte distance :</strong> C'est le chemin le plus direct entre deux points</li>
+</ul>
+</div>
+<div class="example-box">
+<h4>💡 Différence avec d'autres objets géométriques</h4>
+<svg height="220" viewbox="0 0 600 220" width="100%">
+<!-- Point -->
+<circle cx="50" cy="40" fill="#f44336" r="4"></circle>
+<text fill="#333" font-size="14" text-anchor="middle" x="50" y="65">Point</text>
+<!-- Segment -->
+<line stroke="#FF69B4" stroke-width="3" x1="120" x2="200" y1="40" y2="40"></line>
+<circle cx="120" cy="40" fill="#f44336" r="4"></circle>
+<circle cx="200" cy="40" fill="#f44336" r="4"></circle>
+<text fill="#333" font-size="14" text-anchor="middle" x="160" y="65">Segment [AB]</text>
+<!-- Demi-droite -->
+<line marker-end="url(#arrowgreen)" stroke="#4CAF50" stroke-width="2" x1="270" x2="380" y1="40" y2="40"></line>
+<circle cx="270" cy="40" fill="#f44336" r="4"></circle>
+<text fill="#333" font-size="14" text-anchor="middle" x="325" y="65">Demi-droite [AB)</text>
+<!-- Droite -->
+<line stroke="#2196F3" stroke-width="2" x1="50" x2="500" y1="120" y2="120"></line>
+<circle cx="200" cy="120" fill="#f44336" r="4"></circle>
+<text fill="#333" font-size="14" text-anchor="middle" x="275" y="145">Droite (AB)</text>
+<!-- Définitions -->
+<text fill="#333" font-size="12" x="50" y="190"><tspan x="50">✓ Point : position sans dimension</tspan></text>
+<text fill="#333" font-size="12" x="50" y="210"><tspan x="50">✓ Segment : limité aux deux extrémités</tspan></text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés importantes</h4>
+<p><strong>1.</strong> Un segment est toujours plus court (ou égal) qu'une droite</p>
+<p><strong>2.</strong> Un segment peut être comparé en longueur avec d'autres segments</p>
+<p><strong>3.</strong> Deux segments de même longueur sont appelés <strong>segments égaux</strong></p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • Un segment est une portion de droite limitée par deux points<br/>
+                    • Le segment [AB] a une longueur mesurable<br/>
+                    • A et B sont les extrémités du segment
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab1"></div></div>
+</div>
+<div class="tab-content" id="tab2">
+<div class="container">
+<h2>Notation des Segments</h2>
+<div class="definition-box">
+<h4>📘 Comment noter un segment ?</h4>
+<p>Un segment ayant pour extrémités les points A et B se note <strong>[AB]</strong> ou <strong>[BA]</strong></p>
+<p>Les crochets fermés <strong>[</strong> et <strong>]</strong> indiquent que les extrémités A et B appartiennent au segment.</p>
+</div>
+<div class="example-box">
+<h4>💡 Notation correcte</h4>
+<svg height="180" viewbox="0 0 600 180" width="100%">
+<!-- Segment 1 -->
+<line stroke="#FF69B4" stroke-width="3" x1="80" x2="280" y1="50" y2="50"></line>
+<circle cx="80" cy="50" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="75" y="30">A</text>
+<circle cx="280" cy="50" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="275" y="30">B</text>
+<text fill="#333" font-size="16" font-weight="bold" text-anchor="middle" x="180" y="90">[AB] ou [BA]</text>
+<!-- Segment 2 -->
+<line stroke="#FF69B4" stroke-width="3" x1="350" x2="520" y1="50" y2="50"></line>
+<circle cx="350" cy="50" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="345" y="30">C</text>
+<circle cx="520" cy="50" fill="#f44336" r="5"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="515" y="30">D</text>
+<text fill="#333" font-size="16" font-weight="bold" text-anchor="middle" x="435" y="90">[CD] ou [DC]</text>
+</svg>
+</div>
+<div class="definition-box">
+<h4>📘 Notation de la longueur</h4>
+<p>La <strong>longueur</strong> du segment [AB] se note <strong>AB</strong> (sans crochets)</p>
+<p>Exemple : AB = 5 cm signifie "la longueur du segment [AB] est 5 cm"</p>
+</div>
+<div class="example-box">
+<h4>💡 Distinction importante</h4>
+<div style="background: #fff3e0; padding: 20px; border-radius: 8px; border-left: 4px solid #ff9800;">
+<p><strong>[AB]</strong> = le segment (ensemble des points entre A et B)</p>
+<p><strong>AB</strong> = la longueur du segment (mesure en cm, m, etc.)</p>
+<p style="margin-top: 10px; color: #666;"><em>Exemple : [AB] est un segment de 5 cm, donc AB = 5 cm</em></p>
+</div>
+</div>
+<div class="property-box">
+<h4>✓ Règles de notation</h4>
+<p><strong>1.</strong> [AB] et [BA] représentent le même segment</p>
+<p><strong>2.</strong> AB et BA représentent la même longueur</p>
+<p><strong>3.</strong> Les crochets <strong>[</strong> <strong>]</strong> signifient que les extrémités sont incluses</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • [AB] = segment avec les points A et B<br/>
+                    • AB = longueur du segment (nombre)<br/>
+                    • Ne pas confondre segment et longueur !
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab2"></div></div>
+</div>
+<div class="tab-content" id="tab3">
+<div class="container">
+<h2>Mesure d'un Segment</h2>
+<div class="definition-box">
+<h4>📘 Qu'est-ce que la mesure d'un segment ?</h4>
+<p>La <strong>mesure</strong> (ou <strong>longueur</strong>) d'un segment est la distance entre ses deux extrémités.</p>
+<p>Elle s'exprime avec une <strong>unité de longueur</strong> : millimètres (mm), centimètres (cm), mètres (m), kilomètres (km), etc.</p>
+</div>
+<div class="example-box">
+<h4>💡 Mesure avec une règle</h4>
+<svg height="120" viewbox="0 0 600 120" width="100%">
+<!-- Règle -->
+<line stroke="#333" stroke-width="2" x1="50" x2="550" y1="30" y2="30"></line>
+<!-- Graduations -->
+<line stroke="#333" stroke-width="1" x1="50" x2="50" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="100" x2="100" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="150" x2="150" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="200" x2="200" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="250" x2="250" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="300" x2="300" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="350" x2="350" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="400" x2="400" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="450" x2="450" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="500" x2="500" y1="20" y2="40"></line>
+<line stroke="#333" stroke-width="1" x1="550" x2="550" y1="20" y2="40"></line>
+<!-- Nombres -->
+<text fill="#333" font-size="12" text-anchor="middle" x="50" y="55">0</text>
+<text fill="#333" font-size="12" text-anchor="middle" x="150" y="55">2</text>
+<text fill="#333" font-size="12" text-anchor="middle" x="250" y="55">4</text>
+<text fill="#333" font-size="12" text-anchor="middle" x="350" y="55">6</text>
+<text fill="#333" font-size="12" text-anchor="middle" x="450" y="55">8</text>
+<text fill="#333" font-size="12" text-anchor="middle" x="550" y="55">10</text>
+<text fill="#333" font-size="14" font-weight="bold" text-anchor="middle" x="300" y="100">cm</text>
+</svg>
+</div>
+<div class="example-box">
+<h4>💡 Étapes pour mesurer un segment</h4>
+<ol style="margin-left: 20px; line-height: 2;">
+<li>Placer une règle graduée sous le segment</li>
+<li>Aligner le zéro (ou un trait) de la règle avec le point A</li>
+<li>Lire la mesure au point B</li>
+<li>Exprimer la longueur avec l'unité appropriée</li>
+</ol>
+</div>
+<div class="definition-box">
+<h4>📘 Segments égaux et segments comparables</h4>
+<p><strong>Segments égaux :</strong> Deux segments sont égaux s'ils ont la même longueur.</p>
+<p>Notation : [AB] = [CD] signifie AB = CD</p>
+</div>
+<div class="example-box">
+<h4>💡 Comparaison de segments</h4>
+<svg height="200" viewbox="0 0 600 200" width="100%">
+<!-- Segment 1 -->
+<line stroke="#FF69B4" stroke-width="3" x1="80" x2="280" y1="50" y2="50"></line>
+<circle cx="80" cy="50" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="14" font-weight="bold" x="75" y="30">A</text>
+<circle cx="280" cy="50" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="14" font-weight="bold" x="275" y="30">B</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="180" y="85">AB = 4 cm</text>
+<!-- Segment 2 -->
+<line stroke="#FF69B4" stroke-width="3" x1="80" x2="280" y1="130" y2="130"></line>
+<circle cx="80" cy="130" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="14" font-weight="bold" x="75" y="110">C</text>
+<circle cx="280" cy="130" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="14" font-weight="bold" x="275" y="110">D</text>
+<text fill="#333" font-size="13" text-anchor="middle" x="180" y="165">CD = 4 cm</text>
+<!-- Résultat -->
+<text fill="#4CAF50" font-size="16" font-weight="bold" x="350" y="100">[AB] = [CD]</text>
+</svg>
+</div>
+<div class="property-box">
+<h4>✓ Propriétés des mesures</h4>
+<p><strong>1.</strong> La longueur d'un segment est toujours positive</p>
+<p><strong>2.</strong> Si AB = 0, alors A et B sont le même point</p>
+<p><strong>3.</strong> AB = BA (la longueur ne dépend pas de l'ordre)</p>
+<p><strong>4.</strong> AB + BC = AC si B est sur le segment [AC]</p>
+</div>
+<div class="info">
+<strong>💡 À retenir :</strong><br/>
+                    • La mesure d'un segment est sa longueur<br/>
+                    • On utilise une règle graduée pour mesurer<br/>
+                    • Toujours exprimer le résultat avec une unité (cm, m, etc.)<br/>
+                    • Deux segments de même longueur sont égaux
+                </div>
+
+
+                &lt;!-- Section Quiz --&gt;
+                <div id="quiz-tab3"></div></div>
+</div>
+<div class="tab-content" id="tab4">
+<div class="container">
+<h2>📝 Quiz - Les Segments</h2>
+<p>Testez vos connaissances sur les segments</p>
+<div class="quiz-section">
+<div class="quiz-question">
+<span class="question-number">1</span>
+<span class="question-text">Un segment est :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q1" type="radio" value="a"/> Une droite infinie
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="b"/> Une portion de droite limitée par deux points
+                            </label>
+<label class="quiz-option">
+<input name="q1" type="radio" value="c"/> Un angle entre deux points
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q1"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">2</span>
+<span class="question-text">Comment note-t-on un segment ayant pour extrémités A et B ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q2" type="radio" value="a"/> [AB]
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="b"/> (AB)
+                            </label>
+<label class="quiz-option">
+<input name="q2" type="radio" value="c"/> [AB)
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q2"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">3</span>
+<span class="question-text">[AB] et [BA] représentent :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q3" type="radio" value="a"/> Deux segments différents
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="b"/> Un segment et une droite
+                            </label>
+<label class="quiz-option">
+<input name="q3" type="radio" value="c"/> Le même segment
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q3"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">4</span>
+<span class="question-text">Quelle est la différence entre [AB] et AB ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q4" type="radio" value="a"/> [AB] est le segment, AB est sa longueur
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="b"/> Il n'y a pas de différence
+                            </label>
+<label class="quiz-option">
+<input name="q4" type="radio" value="c"/> [AB] est une droite, AB est un segment
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q4"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">5</span>
+<span class="question-text">Avec quel outil mesure-t-on la longueur d'un segment ?</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q5" type="radio" value="a"/> Une règle graduée
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="b"/> Un compas
+                            </label>
+<label class="quiz-option">
+<input name="q5" type="radio" value="c"/> Une équerre
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q5"></div>
+</div>
+<div class="quiz-question">
+<span class="question-number">6</span>
+<span class="question-text">Deux segments sont égaux si :</span>
+<div class="quiz-options">
+<label class="quiz-option">
+<input name="q6" type="radio" value="a"/> Ils ont la même longueur
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="b"/> Ils ont les mêmes extrémités
+                            </label>
+<label class="quiz-option">
+<input name="q6" type="radio" value="c"/> Ils sont tracés à la même position
+                            </label>
+</div>
+<div class="quiz-feedback" id="feedback-q6"></div>
+</div>
+<button class="quiz-button" onclick="submitQuiz('quiz-segments')">Vérifier les Réponses</button>
+<div class="quiz-result" id="quiz-results"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="math-lessons-script.js"></script>
+<script>
+        function submitQuiz(quizId) {
+            const answers = {
+                q1: 'b',
+                q2: 'a',
+                q3: 'c',
+                q4: 'a',
+                q5: 'a',
+                q6: 'a'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const feedback = document.getElementById(`feedback-${question}`);
+
+                if (selected) {
+                    if (selected.value === answers[question]) {
+                        score++;
+                        feedback.style.color = '#4caf50';
+                        feedback.textContent = '✓ Correct !';
+                    } else {
+                        feedback.style.color = '#f44336';
+                        feedback.textContent = '✗ Incorrect';
+                    }
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                } else {
+                    feedback.style.color = '#f44336';
+                    feedback.textContent = '⚠ Veuillez sélectionner une réponse';
+                    feedback.style.display = 'block';
+                    feedback.style.marginTop = '8px';
+                    feedback.style.fontWeight = 'bold';
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+            resultsDiv.innerHTML = `<h3>Résultats: ${score}/${totalQuestions} (${percentage}%)</h3>`;
+            resultsDiv.style.marginTop = '20px';
+            resultsDiv.style.padding = '15px';
+            resultsDiv.style.backgroundColor = percentage >= 70 ? '#e8f5e9' : '#fff3e0';
+            resultsDiv.style.border = `3px solid ${percentage >= 70 ? '#4caf50' : '#ff9800'}`;
+            resultsDiv.style.borderRadius = '8px';
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+
+    <!-- Section Quiz Component -->
+    <script src="js/section-quiz.js"></script>
+    <script>
+        // Load quiz questions from JSON
+        fetch('data/section-questions.json')
+            .then(response => response.json())
+            .then(data => {
+                const lessonQuestions = data['maths-lecon-segments'];
+                
+                if (!lessonQuestions) {
+                    console.warn('No questions found for lesson: maths-lecon-segments');
+                    return;
+                }
+                
+                // Initialize quizzes for each tab
+                if (lessonQuestions['tab1']) {
+                    initSectionQuiz('quiz-tab1', lessonQuestions['tab1']);
+                }
+                
+                if (lessonQuestions['tab2']) {
+                    initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
+                }
+                
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
+                
+            })
+            .catch(error => {
+                console.error('Erreur chargement questions:', error);
+            });
+    </script>
+</body>
+</html>

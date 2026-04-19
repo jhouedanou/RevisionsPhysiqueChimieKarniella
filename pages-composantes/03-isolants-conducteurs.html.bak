@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolants et Conducteurs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #667eea;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background: #764ba2;
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            margin-right: auto !important;
+            padding: 10px 20px !important;
+        }
+
+        .btn-back:hover {
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .definitions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .definition-box {
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+
+        .definition-box.conductor {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .definition-box.insulator {
+            background: #fff3e0;
+            border-color: #ff9800;
+        }
+
+        .definition-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .definition-box p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .comparison-table tbody tr:nth-child(odd) {
+            background-color: #fafafa;
+        }
+
+        .material-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .conductor-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #2196f3;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .insulator-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #ff9800;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .lamp-state {
+            text-align: center;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .lamp-on {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .lamp-off {
+            background: #f5f5f5;
+            color: #999;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #fafafa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .schemas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .schema-container {
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+
+        .schema-container h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+            color: #1565c0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        @keyframes electronFlow {
+            0% { transform: translateX(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        .electron {
+            animation: electronFlow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="../index.html" class="btn-back">← Retour</a>
+        <a href="01-circuitelectrique.html">⚡ Circuit Électrique</a>
+        <a href="02-sens-courant.html">🔄 Sens du Courant</a>
+        <a href="03-isolants-conducteurs.html" class="active">🔌 Isolants &amp; Conducteurs</a>
+        <a href="04-types-piles.html">🔋 Types de Piles</a>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>🔌 Isolants et Conducteurs</h1>
+            <p class="subtitle">Comprendre la différence entre les matériaux conducteurs et isolants</p>
+
+            <!-- Définitions -->
+            <div class="definitions">
+                <div class="definition-box conductor">
+                    <h3>⚡ Conducteur</h3>
+                    <p>Un conducteur est un matériau qui laisse passer facilement le courant électrique. Il possède des électrons libres qui peuvent se déplacer facilement.</p>
+                    <p style="margin-top: 10px;"><strong>Exemples :</strong> cuivre, fer, aluminium, argent</p>
+                </div>
+
+                <div class="definition-box insulator">
+                    <h3>🛡️ Isolant</h3>
+                    <p>Un isolant est un matériau qui n'laisse pas passer le courant électrique. Ses électrons sont fortement liés aux atomes et ne peuvent pas se déplacer librement.</p>
+                    <p style="margin-top: 10px;"><strong>Exemples :</strong> plastique, bois, caoutchouc, verre</p>
+                </div>
+            </div>
+
+            <!-- Tableau comparatif -->
+            <h3 style="margin-bottom: 15px; color: #333;">Teste avec différents matériaux :</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Matériau</th>
+                        <th>Type</th>
+                        <th>État de la Lampe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="material-name">Mine de crayon (graphite)</td>
+                        <td><span class="conductor-badge">CONDUCTEUR</span></td>
+                        <td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
+                    </tr>
+                    <tr>
+                        <td class="material-name">Fil de fer</td>
+                        <td><span class="conductor-badge">CONDUCTEUR</span></td>
+                        <td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
+                    </tr>
+                    <tr>
+                        <td class="material-name">Cuivre</td>
+                        <td><span class="conductor-badge">CONDUCTEUR</span></td>
+                        <td><div class="lamp-state lamp-on">💡 ALLUMÉE</div></td>
+                    </tr>
+                    <tr>
+                        <td class="material-name">Gomme</td>
+                        <td><span class="insulator-badge">ISOLANT</span></td>
+                        <td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
+                    </tr>
+                    <tr>
+                        <td class="material-name">Règle en plastique</td>
+                        <td><span class="insulator-badge">ISOLANT</span></td>
+                        <td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
+                    </tr>
+                    <tr>
+                        <td class="material-name">Bois sec</td>
+                        <td><span class="insulator-badge">ISOLANT</span></td>
+                        <td><div class="lamp-state lamp-off">⚫ ÉTEINTE</div></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Schémas -->
+            <h3 style="margin-bottom: 15px; color: #333;">Schématisation des concepts :</h3>
+            <div class="schemas">
+                <!-- Conducteur -->
+                <div class="schema-container">
+                    <h4>⚡ Conducteur (Passage du courant)</h4>
+                    <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Matériau conducteur -->
+                        <rect x="30" y="60" width="240" height="100" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5"/>
+
+                        <!-- Atomes -->
+                        <circle cx="60" cy="100" r="15" fill="none" stroke="#2196f3" stroke-width="2"/>
+                        <text x="60" y="105" text-anchor="middle" font-size="12" fill="#2196f3" font-weight="bold">+</text>
+
+                        <circle cx="110" cy="100" r="15" fill="none" stroke="#2196f3" stroke-width="2"/>
+                        <text x="110" y="105" text-anchor="middle" font-size="12" fill="#2196f3" font-weight="bold">+</text>
+
+                        <circle cx="160" cy="100" r="15" fill="none" stroke="#2196f3" stroke-width="2"/>
+                        <text x="160" y="105" text-anchor="middle" font-size="12" fill="#2196f3" font-weight="bold">+</text>
+
+                        <circle cx="210" cy="100" r="15" fill="none" stroke="#2196f3" stroke-width="2"/>
+                        <text x="210" y="105" text-anchor="middle" font-size="12" fill="#2196f3" font-weight="bold">+</text>
+
+                        <!-- Électrons libres -->
+                        <circle class="electron" cx="70" cy="120" r="4" fill="#ff6b6b"/>
+                        <circle class="electron" cx="120" cy="130" r="4" fill="#ff6b6b" style="animation-delay: 0.5s;"/>
+                        <circle class="electron" cx="170" cy="125" r="4" fill="#ff6b6b" style="animation-delay: 1s;"/>
+                        <circle class="electron" cx="220" cy="135" r="4" fill="#ff6b6b" style="animation-delay: 1.5s;"/>
+
+                        <!-- Pile -->
+                        <rect x="20" y="180" width="40" height="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="2"/>
+                        <text x="40" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
+
+                        <rect x="240" y="180" width="40" height="30" fill="#34495e" stroke="#2c3e50" stroke-width="2" rx="2"/>
+                        <text x="260" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">−</text>
+
+                        <!-- Flux de courant -->
+                        <path d="M 60 185 Q 110 170 160 185" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <text x="150" y="160" font-size="12" fill="#ff6b6b" font-weight="bold">Courant ➜</text>
+
+                        <!-- Label -->
+                        <text x="150" y="230" text-anchor="middle" font-size="14" fill="#2196f3" font-weight="bold">Électrons libres → Courant passe</text>
+                    </svg>
+                </div>
+
+                <!-- Isolant -->
+                <div class="schema-container">
+                    <h4>🛡️ Isolant (Blocage du courant)</h4>
+                    <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Matériau isolant -->
+                        <rect x="30" y="60" width="240" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"/>
+
+                        <!-- Atomes avec électrons liés -->
+                        <circle cx="60" cy="100" r="15" fill="none" stroke="#ff9800" stroke-width="2"/>
+                        <text x="60" y="105" text-anchor="middle" font-size="12" fill="#ff9800" font-weight="bold">+</text>
+                        <circle cx="62" cy="95" r="3" fill="#ff9800"/>
+                        <circle cx="58" cy="105" r="3" fill="#ff9800"/>
+
+                        <circle cx="110" cy="100" r="15" fill="none" stroke="#ff9800" stroke-width="2"/>
+                        <text x="110" y="105" text-anchor="middle" font-size="12" fill="#ff9800" font-weight="bold">+</text>
+                        <circle cx="112" cy="95" r="3" fill="#ff9800"/>
+                        <circle cx="108" cy="105" r="3" fill="#ff9800"/>
+
+                        <circle cx="160" cy="100" r="15" fill="none" stroke="#ff9800" stroke-width="2"/>
+                        <text x="160" y="105" text-anchor="middle" font-size="12" fill="#ff9800" font-weight="bold">+</text>
+                        <circle cx="162" cy="95" r="3" fill="#ff9800"/>
+                        <circle cx="158" cy="105" r="3" fill="#ff9800"/>
+
+                        <circle cx="210" cy="100" r="15" fill="none" stroke="#ff9800" stroke-width="2"/>
+                        <text x="210" y="105" text-anchor="middle" font-size="12" fill="#ff9800" font-weight="bold">+</text>
+                        <circle cx="212" cy="95" r="3" fill="#ff9800"/>
+                        <circle cx="208" cy="105" r="3" fill="#ff9800"/>
+
+                        <!-- Pile -->
+                        <rect x="20" y="180" width="40" height="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="2"/>
+                        <text x="40" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">+</text>
+
+                        <rect x="240" y="180" width="40" height="30" fill="#34495e" stroke="#2c3e50" stroke-width="2" rx="2"/>
+                        <text x="260" y="200" text-anchor="middle" font-size="11" fill="white" font-weight="bold">−</text>
+
+                        <!-- Barrière -->
+                        <line x1="150" y1="150" x2="150" y2="200" stroke="#f44336" stroke-width="3" stroke-dasharray="5,5"/>
+                        <text x="165" y="175" font-size="12" fill="#f44336" font-weight="bold">✗ Bloqué</text>
+
+                        <!-- Label -->
+                        <text x="150" y="230" text-anchor="middle" font-size="14" fill="#ff9800" font-weight="bold">Électrons liés → Pas de courant</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="info">
+                <strong>💡 À retenir :</strong><br>
+                • Les <strong>conducteurs</strong> permettent au courant électrique de circuler facilement<br>
+                • Les <strong>isolants</strong> empêchent le courant électrique de passer<br>
+                • Les fils électriques sont faits de <strong>cuivre (conducteur)</strong> entourés de <strong>plastique (isolant)</strong><br>
+                • On utilise les isolants pour <strong>protéger</strong> et les conducteurs pour <strong>transporter</strong> l'électricité<br>
+                • Plus la résistance est grande, moins le courant passe
+            </div>
+        </div>
+    </div>
+</body>
+</html>

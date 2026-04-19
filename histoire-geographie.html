@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire-Géographie</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '🌍';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '💕';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6); border: 2px solid #C71585;
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%); color: #C71585; font-weight: 700;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-bottom: 3px solid #ffed4e;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF; border: 3px solid #2196f3;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            color: #0d47a1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0d47a1;
+        }
+
+        .definition-box {
+            background: #FFFFFF; border: 3px solid #ff9800;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-section p {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            accent-color: #ff9800;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+            font-size: 12px;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons between tabs */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateX(0) scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-button.prev:hover {
+            transform: translateX(-5px) scale(1.05);
+        }
+
+        .nav-button.next:hover {
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .nav-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="btn-back">← Retour</a>
+        <h1>🌍 Histoire-Géographie 🎀</h1>
+        <p>Voyage dans le temps et découvre le monde !</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ C'est quoi l'Histoire ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Comment on connaît le passé ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ C'est quoi la Géographie ?</button>
+        <button class="tab-button" onclick="openTab(event, 'tab4')">4️⃣ Les différents reliefs</button>
+        <button class="tab-button" onclick="openTab(event, 'tab5')">5️⃣ Le Climat</button>
+        <button class="tab-button" onclick="openTab(event, 'tab6')">6️⃣ Le Relief Sous-marin</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: L'HISTOIRE ET SON OBJET -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📜 L'Histoire et son Objet</h2>
+                        <p class="subtitle">Comprendre ce qu'est l'histoire et pourquoi elle est importante</p>
+
+                        <h3>📌 I - Objet et Intérêt de l'Histoire</h3>
+
+                        <h4>1. Objet de l'Histoire</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>L'histoire</strong> est la science qui étudie le passé de l'humanité. Elle s'intéresse aux événements, aux sociétés et aux civilisations qui ont existé avant nous.</p>
+                        </div>
+
+                        <p>L'histoire étudie :</p>
+                        <ul>
+                            <li><strong>Les événements du passé :</strong> guerres, découvertes, inventions</li>
+                            <li><strong>Les sociétés humaines :</strong> modes de vie, organisations sociales</li>
+                            <li><strong>Les personnages historiques :</strong> rois, chefs, inventeurs</li>
+                            <li><strong>Les civilisations :</strong> leur développement, leur apogée et leur déclin</li>
+                            <li><strong>Les changements :</strong> comment les sociétés évoluent au fil du temps</li>
+                        </ul>
+
+                        <h4>2. Intérêt de l'Étude de l'Histoire</h4>
+                        <p>Pourquoi étudier l'histoire ? L'histoire nous permet de :</p>
+                        <ul>
+                            <li><strong>Comprendre le présent :</strong> Le passé explique pourquoi notre monde est comme il est aujourd'hui</li>
+                            <li><strong>Connaître nos origines :</strong> D'où venons-nous ? Comment nos ancêtres vivaient-ils ?</li>
+                            <li><strong>Apprendre des erreurs du passé :</strong> Pour ne pas les répéter</li>
+                            <li><strong>Préserver notre identité :</strong> Connaître notre culture et nos traditions</li>
+                            <li><strong>Développer notre esprit critique :</strong> Analyser les faits et comprendre les causes et conséquences</li>
+                            <li><strong>Inspirer l'avenir :</strong> Les grandes réalisations du passé nous montrent ce qui est possible</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 Citation importante :</strong><br>
+                            "Un peuple qui ne connaît pas son histoire est condamné à la revivre." Cette phrase montre l'importance de l'histoire pour éviter de répéter les erreurs du passé.
+                        </div>
+
+                        <h3>🎯 Exemples Concrets</h3>
+                        <p>L'histoire nous aide à comprendre :</p>
+                        <ul>
+                            <li>Pourquoi nous parlons français dans certains pays d'Afrique (colonisation)</li>
+                            <li>Comment les grandes inventions ont changé notre vie (roue, écriture, électricité)</li>
+                            <li>Les origines de nos fêtes et traditions</li>
+                            <li>Les causes des conflits et comment les éviter</li>
+                        </ul>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" disabled>← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: LES SOURCES DE L'HISTOIRE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>📚 Les Sources de l'Histoire</h2>
+                        <p class="subtitle">Comment les historiens reconstituent-ils le passé ?</p>
+
+                        <h3>📌 II - Les Sources de l'Histoire</h3>
+
+                        <h4>1. Diverses Sources pour Reconstituer l'Histoire</h4>
+                        <p>Pour connaître le passé, les historiens utilisent des <strong>sources historiques</strong>. Ce sont des traces laissées par les hommes du passé.</p>
+
+                        <p>Les historiens sont comme des détectives qui cherchent des indices pour reconstituer ce qui s'est passé il y a longtemps. Ils utilisent toutes les traces disponibles pour comprendre comment vivaient nos ancêtres.</p>
+
+                        <h4>2. Classification des Sources de l'Histoire</h4>
+                        <p>Il existe différents types de sources historiques :</p>
+
+                        <div class="category-box">
+                            <h4>📝 A. Les Sources Écrites</h4>
+                            <p>Ce sont tous les documents écrits qui nous renseignent sur le passé :</p>
+                            <ul>
+                                <li><strong>Manuscrits :</strong> Livres anciens écrits à la main</li>
+                                <li><strong>Journaux et chroniques :</strong> Récits des événements de l'époque</li>
+                                <li><strong>Lettres et correspondances :</strong> Échanges entre personnes</li>
+                                <li><strong>Documents administratifs :</strong> Registres, actes officiels</li>
+                                <li><strong>Inscriptions :</strong> Textes gravés sur pierre ou métal</li>
+                                <li><strong>Livres sacrés :</strong> Bible, Coran, etc.</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les hiéroglyphes égyptiens nous renseignent sur la vie dans l'Égypte ancienne.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗿 B. Les Sources Archéologiques</h4>
+                            <p>Ce sont les vestiges matériels découverts lors de fouilles :</p>
+                            <ul>
+                                <li><strong>Monuments :</strong> Pyramides, temples, châteaux</li>
+                                <li><strong>Objets du quotidien :</strong> Poteries, outils, bijoux</li>
+                                <li><strong>Armes :</strong> Épées, lances, flèches</li>
+                                <li><strong>Pièces de monnaie :</strong> Qui montrent l'économie de l'époque</li>
+                                <li><strong>Restes humains :</strong> Squelettes, momies</li>
+                                <li><strong>Œuvres d'art :</strong> Sculptures, peintures, mosaïques</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les fouilles archéologiques au Bénin ont révélé les palais royaux d'Abomey.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗣️ C. Les Sources Orales</h4>
+                            <p>Ce sont les témoignages transmis de bouche à oreille :</p>
+                            <ul>
+                                <li><strong>Traditions orales :</strong> Histoires racontées de génération en génération</li>
+                                <li><strong>Contes et légendes :</strong> Récits populaires</li>
+                                <li><strong>Chansons historiques :</strong> Qui relatent des événements</li>
+                                <li><strong>Proverbes :</strong> Sagesse ancestrale</li>
+                                <li><strong>Témoignages :</strong> Récits de personnes ayant vécu les événements</li>
+                                <li><strong>Généalogies :</strong> Histoires des familles et lignées</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les griots en Afrique de l'Ouest sont des gardiens de l'histoire orale.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🎨 D. Les Sources Iconographiques</h4>
+                            <p>Ce sont les images et représentations visuelles :</p>
+                            <ul>
+                                <li><strong>Peintures :</strong> Tableaux, fresques murales</li>
+                                <li><strong>Dessins et gravures :</strong> Illustrations anciennes</li>
+                                <li><strong>Photographies :</strong> À partir du 19e siècle</li>
+                                <li><strong>Films documentaires :</strong> Pour l'histoire récente</li>
+                                <li><strong>Cartes anciennes :</strong> Qui montrent la géographie du passé</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les peintures rupestres dans les grottes nous montrent la vie préhistorique.</p>
+                        </div>
+
+                        <h3>🔍 Le Travail de l'Historien</h3>
+                        <p>L'historien doit :</p>
+                        <ol>
+                            <li><strong>Collecter</strong> les sources disponibles</li>
+                            <li><strong>Vérifier</strong> leur authenticité</li>
+                            <li><strong>Comparer</strong> différentes sources</li>
+                            <li><strong>Analyser</strong> et interpréter les informations</li>
+                            <li><strong>Reconstituer</strong> les événements du passé</li>
+                        </ol>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Les sources historiques sont les traces du passé qui permettent de reconstituer l'histoire<br>
+                            • Il existe quatre types principaux de sources : écrites, archéologiques, orales et iconographiques<br>
+                            • L'historien doit croiser plusieurs sources pour être sûr de ses conclusions<br>
+                            • En Afrique, les sources orales sont particulièrement importantes car beaucoup de connaissances étaient transmises oralement
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: LA GÉOGRAPHIE ET SON OBJET -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🌍 La Géographie et son Objet</h2>
+                        <p class="subtitle">Découvrir la géographie et ses domaines d'étude</p>
+
+                        <h3>📌 I - L'Objet et les Grands Domaines de la Géographie</h3>
+
+                        <h4>1. L'Objet de l'Étude de la Géographie</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>La géographie</strong> est la science qui étudie la surface de la Terre, les paysages, les lieux et les relations entre les hommes et leur environnement.</p>
+                        </div>
+
+                        <p>La géographie étudie :</p>
+                        <ul>
+                            <li><strong>Les espaces terrestres :</strong> Continents, océans, pays</li>
+                            <li><strong>Les phénomènes naturels :</strong> Climat, reliefs, végétation</li>
+                            <li><strong>Les activités humaines :</strong> Villes, agriculture, industries</li>
+                            <li><strong>Les interactions :</strong> Comment l'homme transforme son environnement</li>
+                            <li><strong>La localisation :</strong> Où se trouvent les choses sur Terre</li>
+                        </ul>
+
+                        <h4>2. Les Grands Domaines ou Branches de la Géographie</h4>
+                        <p>La géographie se divise en plusieurs branches :</p>
+
+                        <div class="category-box">
+                            <h4>🏔️ A. La Géographie Physique</h4>
+                            <p>Elle étudie les aspects naturels de la Terre :</p>
+                            <ul>
+                                <li><strong>Le relief :</strong> Montagnes, plaines, vallées</li>
+                                <li><strong>Le climat :</strong> Températures, précipitations, vents</li>
+                                <li><strong>L'hydrographie :</strong> Fleuves, lacs, océans</li>
+                                <li><strong>La végétation :</strong> Forêts, savanes, déserts</li>
+                                <li><strong>Les sols :</strong> Types de terres et leur fertilité</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Étudier le fleuve Niger et son importance pour l'Afrique de l'Ouest.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>👥 B. La Géographie Humaine</h4>
+                            <p>Elle étudie les populations et leurs activités :</p>
+                            <ul>
+                                <li><strong>La démographie :</strong> Nombre d'habitants, densité de population</li>
+                                <li><strong>L'urbanisation :</strong> Villes et leur développement</li>
+                                <li><strong>Les activités économiques :</strong> Agriculture, industrie, commerce</li>
+                                <li><strong>Les migrations :</strong> Déplacements de populations</li>
+                                <li><strong>Les cultures :</strong> Langues, religions, traditions</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Étudier la croissance des villes africaines comme Lagos ou Kinshasa.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🗺️ C. La Géographie Régionale</h4>
+                            <p>Elle étudie des espaces particuliers :</p>
+                            <ul>
+                                <li><strong>Un pays :</strong> Le Bénin, le Cameroun, etc.</li>
+                                <li><strong>Une région :</strong> L'Afrique de l'Ouest</li>
+                                <li><strong>Un continent :</strong> L'Afrique, l'Europe</li>
+                                <li><strong>Une ville :</strong> Cotonou, Dakar, etc.</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Étudier les caractéristiques géographiques du Bénin.</p>
+                        </div>
+
+                        <h3>🎯 Pourquoi Étudier la Géographie ?</h3>
+                        <p>La géographie est importante car elle nous permet de :</p>
+                        <ul>
+                            <li><strong>Comprendre notre environnement :</strong> Savoir où nous vivons</li>
+                            <li><strong>Mieux utiliser les ressources :</strong> Eau, sols, forêts</li>
+                            <li><strong>Protéger la nature :</strong> Lutter contre la pollution et la déforestation</li>
+                            <li><strong>Planifier le développement :</strong> Construire des routes, des écoles, des hôpitaux</li>
+                            <li><strong>S'orienter :</strong> Lire des cartes, se repérer dans l'espace</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La géographie étudie la Terre et les relations entre l'homme et son environnement<br>
+                            • Elle se divise en géographie physique (nature) et géographie humaine (sociétés)<br>
+                            • La géographie nous aide à comprendre notre monde et à mieux le gérer<br>
+                            • C'est une science essentielle pour le développement durable
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab4')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: LES RELIEFS -->
+                <div id="tab4" class="tab-content">
+                    <div class="container">
+                        <h2>⛰️ Les Formes de Reliefs</h2>
+                        <p class="subtitle">Découvrir les différentes formes du relief terrestre et sous-marin</p>
+
+                        <h3>📌 II - Les Formes de Reliefs</h3>
+
+                        <h4>Qu'est-ce que le Relief ?</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Le relief</strong> désigne l'ensemble des formes et des irrégularités de la surface terrestre. C'est ce qui fait que la Terre n'est pas plate mais présente des élévations et des creux.</p>
+                        </div>
+
+                        <h3>🏔️ 1. Les Formes Élémentaires de Reliefs</h3>
+                        <p>Les formes élémentaires de reliefs sont les formes de base que l'on retrouve sur la surface de la Terre :</p>
+
+                        <div class="category-box">
+                            <h4>🏞️ A. La Vallée</h4>
+                            <p><strong>Définition :</strong> Une vallée est un espace allongé et creux entre deux reliefs (montagnes ou collines), souvent creusé par un cours d'eau.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Forme allongée et encaissée entre des hauteurs</li>
+                                <li>Souvent traversée par une rivière ou un fleuve</li>
+                                <li>Sols fertiles grâce aux dépôts alluviaux</li>
+                                <li>Zone favorable à l'habitat et à l'agriculture</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La vallée de l'Ouémé au Bénin, la vallée du Nil en Égypte</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏝️ B. La Colline</h4>
+                            <p><strong>Définition :</strong> Une colline est une élévation de terrain de faible ou moyenne altitude (moins de 600 m), aux pentes douces.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Altitude modérée (généralement moins de 600 m)</li>
+                                <li>Sommet arrondi</li>
+                                <li>Pentes douces et accessibles</li>
+                                <li>Plus petite qu'une montagne</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les collines de Kigali au Rwanda</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>📐 C. Le Talus</h4>
+                            <p><strong>Définition :</strong> Un talus est une surface inclinée qui relie deux niveaux de terrain différents.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Pente plus ou moins prononcée</li>
+                                <li>Relie un point haut à un point bas</li>
+                                <li>Peut être naturel ou artificiel</li>
+                                <li>Sujet à l'érosion</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les talus routiers, les bords de terrasses</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🪨 D. La Falaise</h4>
+                            <p><strong>Définition :</strong> Une falaise est une paroi rocheuse abrupte et verticale, souvent située en bord de mer ou le long des vallées.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Paroi verticale ou quasi-verticale</li>
+                                <li>Formée par l'érosion marine ou fluviale</li>
+                                <li>Composée de roches dures</li>
+                                <li>Peut atteindre plusieurs centaines de mètres</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les falaises de la côte du Cap-Vert, les falaises de Bandiagara au Mali</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏔️ E. La Butte</h4>
+                            <p><strong>Définition :</strong> Une butte est une petite élévation de terrain isolée, au sommet souvent plat et aux versants raides.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Élévation isolée de faible étendue</li>
+                                <li>Sommet généralement plat (butte témoin)</li>
+                                <li>Versants assez raides</li>
+                                <li>Reste d'un ancien plateau érodé</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Les buttes témoins de la savane africaine</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🥣 F. La Cuvette</h4>
+                            <p><strong>Définition :</strong> Une cuvette est une dépression fermée du relief, en forme de bassin, entourée de reliefs plus élevés.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Forme de bassin ou de creux fermé</li>
+                                <li>Entourée de terrains plus élevés sur tous les côtés</li>
+                                <li>Peut contenir un lac ou des eaux stagnantes</li>
+                                <li>Souvent zone de drainage des eaux environnantes</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La cuvette du Congo en Afrique centrale</p>
+                        </div>
+
+                        <h3>⛰️ 2. Les Formes Complexes de Reliefs</h3>
+                        <p>Les formes complexes de reliefs sont des ensembles de reliefs de grande étendue :</p>
+
+                        <div class="category-box">
+                            <h4>🏔️ A. Les Montagnes</h4>
+                            <p><strong>Définition :</strong> Une montagne est une élévation importante du sol, généralement supérieure à 600 mètres, formant un ensemble de sommets et de versants.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Altitude élevée (plus de 600 m)</li>
+                                <li>Pentes raides et versants prononcés</li>
+                                <li>Sommet pointu ou arrondi</li>
+                                <li>Climat froid en altitude avec étagement de la végétation</li>
+                                <li>Souvent formée par les mouvements tectoniques</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Le Mont Kilimanjaro en Tanzanie (5 895 m)</li>
+                                <li>Les montagnes de l'Atlas au Maghreb</li>
+                                <li>Le massif de l'Atakora au Bénin et au Togo</li>
+                                <li>Les Alpes en Europe</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏞️ B. Les Plateaux</h4>
+                            <p><strong>Définition :</strong> Un plateau est une surface plane ou légèrement ondulée située en altitude, bordée par des versants escarpés.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Surface relativement plate en hauteur</li>
+                                <li>Altitude moyenne (300 à 1000 m ou plus)</li>
+                                <li>Bordé par des pentes, des falaises ou des escarpements</li>
+                                <li>Bonne visibilité et terrains souvent cultivables</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Le plateau de Jos au Nigeria</li>
+                                <li>Le plateau du Fouta-Djalon en Guinée</li>
+                                <li>Le plateau de l'Adamaoua au Cameroun</li>
+                                <li>Le plateau des Grands Lacs en Afrique de l'Est</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌾 C. La Plaine</h4>
+                            <p><strong>Définition :</strong> Une plaine est une étendue de terre plate ou peu accidentée, généralement de faible altitude.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Surface très plate et étendue</li>
+                                <li>Altitude basse (0 à 200 m)</li>
+                                <li>Peu ou pas de reliefs visibles</li>
+                                <li>Souvent très fertiles et propices à l'agriculture</li>
+                                <li>Zone de concentration des populations</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Les plaines côtières du Golfe de Guinée</li>
+                                <li>La plaine alluviale du fleuve Niger</li>
+                                <li>Les plaines du Sahel</li>
+                            </ul>
+                        </div>
+
+                        <h3>🌊 3. Les Reliefs Sous-Marins</h3>
+                        <p>Le fond des océans présente aussi des reliefs variés. Voici les principales formes de reliefs sous-marins :</p>
+
+                        <div class="category-box">
+                            <h4>📊 A. Le Plateau Continental</h4>
+                            <p><strong>Définition :</strong> Le plateau continental est la partie immergée des continents, une zone peu profonde qui prolonge les terres émergées sous la mer.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur faible (0 à 200 m en moyenne)</li>
+                                <li>Pente douce et progressive</li>
+                                <li>Largeur variable selon les régions (quelques km à plusieurs centaines de km)</li>
+                                <li>Zone riche en ressources (pêche, pétrole, gaz)</li>
+                                <li>Prolongement naturel du continent</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Le plateau continental du Golfe de Guinée</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌊 B. Le Bassin Océanique</h4>
+                            <p><strong>Définition :</strong> Le bassin océanique est la vaste zone plane et profonde qui constitue le fond des océans, située entre le plateau continental et les dorsales.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur importante (3 000 à 6 000 m)</li>
+                                <li>Surface relativement plane (plaines abyssales)</li>
+                                <li>Couvre la plus grande partie des fonds océaniques</li>
+                                <li>Zone de sédimentation des particules fines</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Le bassin de l'océan Atlantique</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🔥 C. La Dorsale Sous-Marine (ou Dorsale Océanique)</h4>
+                            <p><strong>Définition :</strong> Une dorsale sous-marine est une chaîne de montagnes sous-marines qui parcourt les fonds océaniques, où se forme une nouvelle croûte terrestre.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Chaîne montagneuse continue sous l'eau</li>
+                                <li>Zone d'activité volcanique et sismique</li>
+                                <li>Point de création de nouvelle croûte océanique</li>
+                                <li>S'élève de 2 000 à 3 000 m au-dessus des plaines abyssales</li>
+                                <li>Présence de rifts (failles) au sommet</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La dorsale médio-atlantique (au milieu de l'océan Atlantique)</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>⬇️ D. La Fosse Océanique</h4>
+                            <p><strong>Définition :</strong> Une fosse océanique est une dépression très profonde et allongée du fond océanique, située généralement au bord des continents ou des arcs insulaires.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur extrême (plus de 6 000 m, jusqu'à 11 000 m)</li>
+                                <li>Forme allongée et étroite</li>
+                                <li>Zone de subduction (plaque océanique qui plonge sous une autre)</li>
+                                <li>Forte activité sismique et volcanique à proximité</li>
+                                <li>Les points les plus profonds des océans</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La fosse des Mariannes dans le Pacifique (11 034 m de profondeur)</p>
+                        </div>
+
+                        <h3>💡 Importance des Reliefs</h3>
+                        <p>Les reliefs influencent de nombreux aspects de la vie sur Terre :</p>
+                        <ul>
+                            <li><strong>Le climat :</strong> Les montagnes bloquent les vents et créent des zones de pluie</li>
+                            <li><strong>L'agriculture :</strong> Les plaines et vallées sont favorables aux cultures</li>
+                            <li><strong>L'habitat :</strong> Les hommes préfèrent souvent les plaines et vallées pour s'installer</li>
+                            <li><strong>Les communications :</strong> Les montagnes rendent les déplacements difficiles</li>
+                            <li><strong>Le tourisme :</strong> Certains reliefs attirent les visiteurs (montagnes, côtes)</li>
+                            <li><strong>Les ressources :</strong> Les reliefs sous-marins sont riches en ressources (pétrole, minéraux)</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le relief désigne les formes de la surface terrestre et des fonds marins<br>
+                            • <strong>Formes élémentaires :</strong> vallée, colline, talus, falaise, butte, cuvette<br>
+                            • <strong>Formes complexes :</strong> montagnes, plateaux, plaines<br>
+                            • <strong>Reliefs sous-marins :</strong> plateau continental, bassin océanique, dorsale sous-marine, fosse océanique<br>
+                            • Les reliefs influencent le climat, l'agriculture et l'installation humaine<br>
+                            • L'Afrique possède une grande diversité de reliefs terrestres et côtiers
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab3')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab5')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: LE CLIMAT -->
+                <div id="tab5" class="tab-content">
+                    <div class="container">
+                        <h2>🌡️ Le Climat</h2>
+                        <p class="subtitle">Comprendre les éléments du climat et les grandes zones climatiques du monde</p>
+
+                        <h3>📌 I - Éléments de Caractérisation du Climat</h3>
+
+                        <h4>Qu'est-ce que le Climat ?</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Le climat</strong> est l'ensemble des conditions atmosphériques (température, précipitations, vent, humidité) qui caractérisent une région sur une longue période (au moins 30 ans). Il se distingue de la météo qui décrit le temps qu'il fait à un moment donné.</p>
+                        </div>
+
+                        <h4>1. Les Éléments du Climat</h4>
+                        <p>Le climat est caractérisé par plusieurs éléments :</p>
+
+                        <div class="category-box">
+                            <h4>🌡️ A. La Température</h4>
+                            <p>C'est le degré de chaleur ou de froid de l'atmosphère.</p>
+                            <ul>
+                                <li><strong>Température moyenne :</strong> Moyenne des températures sur une période</li>
+                                <li><strong>Amplitude thermique :</strong> Différence entre la température la plus élevée et la plus basse</li>
+                                <li><strong>Facteurs d'influence :</strong> Latitude, altitude, distance à la mer</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> À l'équateur, les températures sont élevées toute l'année (25-30°C), tandis qu'aux pôles, elles peuvent descendre en dessous de -40°C.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💧 B. Les Précipitations</h4>
+                            <p>Ce sont toutes les formes d'eau qui tombent du ciel :</p>
+                            <ul>
+                                <li><strong>La pluie :</strong> Eau liquide</li>
+                                <li><strong>La neige :</strong> Eau gelée en flocons</li>
+                                <li><strong>La grêle :</strong> Eau gelée en grains de glace</li>
+                                <li><strong>La bruine :</strong> Très fines gouttelettes</li>
+                            </ul>
+                            <p>Les précipitations se mesurent en millimètres (mm) par an.</p>
+                            <p><strong>Exemple :</strong> La forêt équatoriale reçoit plus de 2000 mm de pluie par an, alors que le désert du Sahara reçoit moins de 100 mm.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💨 C. Le Vent</h4>
+                            <p>C'est le déplacement horizontal de l'air.</p>
+                            <ul>
+                                <li><strong>Direction :</strong> D'où vient le vent (nord, sud, est, ouest)</li>
+                                <li><strong>Vitesse :</strong> Se mesure en km/h ou m/s</li>
+                                <li><strong>Types de vents :</strong> Alizés, mousson, harmattan</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> L'harmattan est un vent sec et chaud qui souffle du Sahara vers l'Afrique de l'Ouest.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💦 D. L'Humidité</h4>
+                            <p>C'est la quantité de vapeur d'eau contenue dans l'air.</p>
+                            <ul>
+                                <li><strong>Humidité relative :</strong> Se mesure en pourcentage (%)</li>
+                                <li><strong>Air humide :</strong> Proche de la mer ou des forêts</li>
+                                <li><strong>Air sec :</strong> Dans les déserts et les régions continentales</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>☀️ E. L'Ensoleillement</h4>
+                            <p>C'est la durée pendant laquelle le soleil brille.</p>
+                            <ul>
+                                <li><strong>Durée du jour :</strong> Varie selon les saisons et la latitude</li>
+                                <li><strong>Intensité :</strong> Plus forte à l'équateur qu'aux pôles</li>
+                                <li><strong>Influence :</strong> Détermine les températures et les saisons</li>
+                            </ul>
+                        </div>
+
+                        <h3>📌 II - Les Grandes Zones Climatiques du Monde</h3>
+
+                        <p>La Terre est divisée en grandes zones climatiques, déterminées principalement par la latitude :</p>
+
+                        <div class="category-box">
+                            <h4>🌴 1. La Zone Intertropicale (Zone Chaude)</h4>
+                            <p><strong>Localisation :</strong> Entre le Tropique du Cancer et le Tropique du Capricorne</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Températures élevées toute l'année (25-30°C)</li>
+                                <li>Pas de vrai hiver</li>
+                                <li>Précipitations variables selon les régions</li>
+                            </ul>
+                            <p><strong>Sous-types :</strong></p>
+                            <ul>
+                                <li><strong>Climat équatorial :</strong> Chaud et humide toute l'année (forêt amazonienne, bassin du Congo)</li>
+                                <li><strong>Climat tropical humide :</strong> Saison sèche et saison des pluies (Côte d'Ivoire, Ghana)</li>
+                                <li><strong>Climat tropical sec (Sahélien) :</strong> Longue saison sèche (Mali, Niger)</li>
+                                <li><strong>Climat désertique chaud :</strong> Très sec, grandes amplitudes thermiques (Sahara)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌲 2. Les Zones Tempérées</h4>
+                            <p><strong>Localisation :</strong> Entre les tropiques et les cercles polaires (23°27' - 66°33')</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Quatre saisons bien marquées</li>
+                                <li>Températures moyennes (10-20°C)</li>
+                                <li>Précipitations modérées</li>
+                            </ul>
+                            <p><strong>Sous-types :</strong></p>
+                            <ul>
+                                <li><strong>Climat océanique :</strong> Doux et humide toute l'année (France, Angleterre)</li>
+                                <li><strong>Climat continental :</strong> Hivers froids, étés chauds (Russie, Canada)</li>
+                                <li><strong>Climat méditerranéen :</strong> Étés chauds et secs, hivers doux (Italie, Grèce, Maroc)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>❄️ 3. Les Zones Froides (Polaires)</h4>
+                            <p><strong>Localisation :</strong> Au-delà des cercles polaires (arctique et antarctique)</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Températures très basses toute l'année (souvent en dessous de 0°C)</li>
+                                <li>Hivers très longs et rigoureux</li>
+                                <li>Étés courts et frais</li>
+                                <li>Faibles précipitations (souvent sous forme de neige)</li>
+                            </ul>
+                            <p><strong>Sous-types :</strong></p>
+                            <ul>
+                                <li><strong>Climat polaire :</strong> Glace permanente (Antarctique, Groenland)</li>
+                                <li><strong>Climat subpolaire :</strong> Étés courts, forêts de conifères (Sibérie, Alaska)</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏔️ 4. Le Climat de Montagne</h4>
+                            <p><strong>Localisation :</strong> Dans les hautes montagnes, quelle que soit la latitude</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Température qui diminue avec l'altitude (-6°C par 1000 m)</li>
+                                <li>Précipitations abondantes sur les versants exposés</li>
+                                <li>Végétation en étages</li>
+                                <li>Neiges éternelles aux sommets</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Le Mont Kilimanjaro en Tanzanie, bien que situé près de l'équateur, a de la neige à son sommet.</p>
+                        </div>
+
+                        <h3>🎯 Facteurs qui Influencent le Climat</h3>
+                        <ul>
+                            <li><strong>La latitude :</strong> Plus on s'éloigne de l'équateur, plus il fait froid</li>
+                            <li><strong>L'altitude :</strong> Plus on monte, plus il fait froid</li>
+                            <li><strong>La distance à la mer :</strong> Les régions côtières ont un climat plus doux</li>
+                            <li><strong>Les courants marins :</strong> Peuvent réchauffer ou refroidir les côtes</li>
+                            <li><strong>Le relief :</strong> Les montagnes bloquent les vents et créent des zones de pluie</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le climat est caractérisé par la température, les précipitations, le vent, l'humidité et l'ensoleillement<br>
+                            • Il existe trois grandes zones climatiques : chaude (tropicale), tempérée et froide (polaire)<br>
+                            • L'Afrique connaît principalement des climats équatorial, tropical et désertique<br>
+                            • La latitude est le principal facteur qui détermine le climat d'une région<br>
+                            • Le changement climatique modifie actuellement ces zones
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab4')">← Précédent</button>
+                            <button class="nav-button next" onclick="navigateToTab('tab6')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: LE RELIEF SOUS-MARIN -->
+                <div id="tab6" class="tab-content">
+                    <div class="container">
+                        <h2>🌊 Le Relief Sous-marin</h2>
+                        <p class="subtitle">Découvrir les formes du relief au fond des océans</p>
+
+                        <h3>📌 I - Les Éléments et Formes du Relief Terrestre (Rappel)</h3>
+
+                        <h4>Le Relief Terrestre</h4>
+                        <div class="definition-box">
+                            <h4>📖 Rappel</h4>
+                            <p>Le relief terrestre comprend les montagnes, les plateaux, les plaines, les vallées et les collines. Mais la Terre est aussi couverte à 71% par les océans, et sous l'eau se cache un relief tout aussi varié !</p>
+                        </div>
+
+                        <h3>📌 II - Le Relief Sous-marin</h3>
+
+                        <h4>Qu'est-ce que le Relief Sous-marin ?</h4>
+                        <div class="definition-box">
+                            <h4>📖 Définition</h4>
+                            <p><strong>Le relief sous-marin</strong> désigne l'ensemble des formes du fond des océans et des mers. Il est aussi varié que le relief terrestre, avec ses montagnes, ses plaines et ses vallées.</p>
+                        </div>
+
+                        <h4>Les Différentes Formes du Relief Sous-marin</h4>
+
+                        <div class="category-box">
+                            <h4>🏖️ 1. Le Plateau Continental</h4>
+                            <p><strong>Définition :</strong> C'est le prolongement du continent sous la mer, une zone peu profonde qui borde les côtes.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur : 0 à 200 mètres</li>
+                                <li>Pente douce</li>
+                                <li>Largeur variable (de quelques km à plusieurs centaines de km)</li>
+                                <li>Zone la plus éclairée et la plus riche en vie marine</li>
+                                <li>Zone de pêche importante</li>
+                            </ul>
+                            <p><strong>Importance :</strong> C'est là que se trouvent les ressources pétrolières offshore et la majorité des poissons pêchés.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>⛷️ 2. Le Talus Continental</h4>
+                            <p><strong>Définition :</strong> C'est la pente abrupte qui relie le plateau continental aux grandes profondeurs.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur : 200 à 2000-3000 mètres</li>
+                                <li>Pente forte (5 à 25 degrés)</li>
+                                <li>Présence de canyons sous-marins</li>
+                                <li>Zone de transition</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌊 3. La Plaine Abyssale</h4>
+                            <p><strong>Définition :</strong> C'est la vaste étendue plate qui constitue le fond des océans.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur : 3000 à 6000 mètres</li>
+                                <li>Surface très plate</li>
+                                <li>Couvre environ 50% du fond des océans</li>
+                                <li>Obscurité totale, eau très froide</li>
+                                <li>Faible vie marine</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La plaine abyssale du Pacifique Nord est l'une des plus vastes au monde.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🏔️ 4. Les Dorsales Océaniques</h4>
+                            <p><strong>Définition :</strong> Ce sont des chaînes de montagnes sous-marines qui traversent tous les océans.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Altitude : s'élèvent à 2000-3000 m au-dessus des plaines abyssales</li>
+                                <li>Longueur totale : environ 65 000 km (la plus longue chaîne de montagnes sur Terre !)</li>
+                                <li>Lieu de création de la nouvelle croûte océanique</li>
+                                <li>Activité volcanique et sismique importante</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> La dorsale médio-atlantique traverse l'océan Atlantique du nord au sud.</p>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>⬇️ 5. Les Fosses Océaniques</h4>
+                            <p><strong>Définition :</strong> Ce sont des dépressions longues et étroites, les zones les plus profondes des océans.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Profondeur : plus de 6000 mètres, jusqu'à 11 000 m</li>
+                                <li>Forme allongée et étroite</li>
+                                <li>Situées souvent près des côtes, au bord des continents</li>
+                                <li>Zones de subduction (où une plaque océanique plonge sous une autre)</li>
+                                <li>Forte activité sismique</li>
+                            </ul>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>La fosse des Mariannes (Pacifique) : 11 034 m - le point le plus profond de la Terre</li>
+                                <li>La fosse des Philippines : 10 540 m</li>
+                                <li>La fosse du Pérou-Chili : 8 065 m</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>🌋 6. Les Monts Sous-marins et Volcans</h4>
+                            <p><strong>Définition :</strong> Ce sont des élévations isolées du fond océanique, souvent d'origine volcanique.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Peuvent atteindre plusieurs milliers de mètres de hauteur</li>
+                                <li>Certains émergent pour former des îles (Hawaï, Açores)</li>
+                                <li>Les guyots sont des volcans sous-marins à sommet plat</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Le Mauna Kea à Hawaï, mesuré depuis sa base sous-marine, est plus haut que l'Everest !</p>
+                        </div>
+
+                        <h3>🎯 Comparaison Relief Terrestre et Sous-marin</h3>
+                        <div class="info">
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                                <tr style="background: #e3f2fd;">
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Relief Terrestre</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px;">Relief Sous-marin</th>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Montagnes (Everest : 8 849 m)</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Dorsales océaniques</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Plaines continentales</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Plaines abyssales</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Vallées</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Fosses océaniques</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Volcans terrestres</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Volcans et monts sous-marins</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h3>💡 Importance du Relief Sous-marin</h3>
+                        <ul>
+                            <li><strong>Ressources naturelles :</strong> Pétrole, gaz, minerais sur le plateau continental</li>
+                            <li><strong>Pêche :</strong> Les zones peu profondes sont riches en poissons</li>
+                            <li><strong>Biodiversité :</strong> Chaque zone abrite des espèces adaptées</li>
+                            <li><strong>Navigation :</strong> La connaissance du relief est essentielle pour les sous-marins et les câbles</li>
+                            <li><strong>Risques naturels :</strong> Les fosses et dorsales sont liées aux séismes et tsunamis</li>
+                        </ul>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le relief sous-marin est aussi varié que le relief terrestre<br>
+                            • Les principales formes sont : plateau continental, talus, plaine abyssale, dorsales et fosses<br>
+                            • La fosse des Mariannes (11 034 m) est le point le plus profond de la Terre<br>
+                            • Les dorsales océaniques forment la plus longue chaîne de montagnes du monde<br>
+                            • Le plateau continental est la zone la plus importante pour les activités humaines
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="tab-navigation">
+                            <button class="nav-button prev" onclick="navigateToTab('tab5')">← Précédent</button>
+                            <button class="nav-button next" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Histoire-Géographie</h2>
+                <p>Testez vos connaissances!</p>
+
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Qu'est-ce que l'histoire ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> La science qui étudie le passé de l'humanité
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> L'étude des animaux
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> L'étude des plantes
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Quels sont les quatre types de sources historiques ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> Écrites, archéologiques, orales et iconographiques
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> Anciennes, modernes, récentes et futures
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> Vraies, fausses, douteuses et certaines
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Qu'est-ce que la géographie ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> La science qui étudie la surface de la Terre et les relations entre l'homme et son environnement
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> L'étude des mathématiques
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> L'étude de la physique
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">Qu'est-ce qu'une montagne ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Une élévation importante du sol, généralement supérieure à 600 mètres
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Une surface plate
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Un cours d'eau
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Quelle est la différence entre géographie physique et géographie humaine ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> La géographie physique étudie la nature, la géographie humaine étudie les populations
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> Elles étudient la même chose
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> La géographie physique étudie les sports
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <!-- Question 6 - Reliefs -->
+                <div class="quiz-question">
+                    <span class="question-number">6</span>
+                    <span class="question-text">Qu'est-ce qu'une vallée ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="a"> Un espace allongé et creux entre deux reliefs, souvent creusé par un cours d'eau
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="b"> Une élévation de terrain très haute
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q6" value="c"> Une surface plane en altitude
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q6"></div>
+                </div>
+
+                <!-- Question 7 - Reliefs -->
+                <div class="quiz-question">
+                    <span class="question-number">7</span>
+                    <span class="question-text">Qu'est-ce qu'une cuvette ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="a"> Une paroi rocheuse verticale
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="b"> Une dépression fermée en forme de bassin entourée de reliefs plus élevés
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q7" value="c"> Une montagne très haute
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q7"></div>
+                </div>
+
+                <!-- Question 8 - Reliefs -->
+                <div class="quiz-question">
+                    <span class="question-number">8</span>
+                    <span class="question-text">Qu'est-ce qu'une falaise ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="a"> Une surface plane de faible altitude
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="b"> Une petite colline isolée
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q8" value="c"> Une paroi rocheuse abrupte et verticale, souvent en bord de mer
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q8"></div>
+                </div>
+
+                <!-- Question 9 - Reliefs sous-marins -->
+                <div class="quiz-question">
+                    <span class="question-number">9</span>
+                    <span class="question-text">Qu'est-ce que le plateau continental ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="a"> La partie la plus profonde de l'océan
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="b"> La partie immergée des continents, une zone peu profonde qui prolonge les terres sous la mer
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q9" value="c"> Une chaîne de montagnes terrestres
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q9"></div>
+                </div>
+
+                <!-- Question 10 - Reliefs sous-marins -->
+                <div class="quiz-question">
+                    <span class="question-number">10</span>
+                    <span class="question-text">Qu'est-ce qu'une fosse océanique ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="a"> Une dépression très profonde et allongée du fond océanique
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="b"> Un volcan sous-marin
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q10" value="c"> Une île au milieu de l'océan
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q10"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz answers and validation
+        const quizAnswers = {
+            q1: 'a', // Science du passé
+            q2: 'a', // 4 types de sources
+            q3: 'a', // Géographie définition
+            q4: 'a', // Montagne
+            q5: 'a', // Différence physique/humaine
+            q6: 'a', // Vallée
+            q7: 'b', // Cuvette
+            q8: 'c', // Falaise
+            q9: 'b', // Plateau continental
+            q10: 'a' // Fosse océanique
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+            let answers = [];
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    answers.push(`Question ${i}: Pas de réponse`);
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                    answers.push(`Question ${i}: Correcte`);
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                    answers.push(`Question ${i}: Incorrecte`);
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `
+                <strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>
+            `;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Super ! Tu connais super bien l\'histoire et la géo ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 C\'est bien ! Continue à apprendre ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Pas de souci ! Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Envoyer les résultats par email
+            sendQuizResults('Histoire-Géographie', score, totalQuestions, percentage, answers);
+        }
+
+        // Fonction pour envoyer les résultats par email
+        function sendQuizResults(quizName, score, total, percentage, answers) {
+            const templateParams = {
+                to_email: 'jhouedanou@gmail.com',
+                quiz_name: quizName,
+                score: score,
+                total: total,
+                percentage: percentage,
+                answers_detail: answers.join('\n'),
+                date: new Date().toLocaleDateString('fr-FR', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            emailjs.send('service_6bxomgg', 'template_wnq8xtl', templateParams)
+                .then(function(response) {
+                    console.log('Email envoyé !', response.status, response.text);
+                }, function(error) {
+                    console.log('Erreur d\'envoi...', error);
+                });
+        }
+
+        // Tab switching
+        function openTab(evt, tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Navigate to a specific tab programmatically
+        function navigateToTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            
+            // Find and activate the corresponding tab button
+            const targetButton = Array.from(buttons).find(button => 
+                button.getAttribute('onclick').includes(tabName)
+            );
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handle URL hash to open specific tab on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#tab')) {
+                const tabName = hash.substring(1); // Remove the # character
+                const tabElement = document.getElementById(tabName);
+                if (tabElement) {
+                    navigateToTab(tabName);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

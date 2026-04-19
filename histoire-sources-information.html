@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Les Sources d'Information et la Dignité Humaine</title>
+    <link rel="stylesheet" href="css/karniella-theme.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '📰';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '⚖️';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C71585;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.5);
+            background: white;
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #FFE5F0;
+            font-size: 14px;
+        }
+
+        .tabs {
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFE5F0 0%, #FFB6D9 100%);
+            color: #C71585;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-bottom: 3px solid #ffed4e;
+            color: white;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 0 0 60%;
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            flex: 0 0 40%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-y: visible;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        h3 {
+            color: #e74c3c;
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #FFFFFF;
+            border: 3px solid #e74c3c;
+            border-left: 4px solid #c0392b;
+            border-radius: 8px;
+            color: #922b21;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .definition-box {
+            background: #FFFFFF;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .definition-box h4 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .observation-box {
+            background: #FFFFFF;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .observation-box h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .category-box {
+            background: #fef9e7;
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .category-box h4 {
+            color: #d68910;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .danger-box {
+            background: #fdedec;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .danger-box h4 {
+            color: #c0392b;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            background: #fff9e6;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-section h2 {
+            color: #ff6f00;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .quiz-question {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0;
+            font-size: 13px;
+            display: block;
+        }
+
+        .quiz-options {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f9f9f9;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option:hover {
+            background: #ffe8e8;
+            border-color: #ff6f00;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 8px;
+            accent-color: #ff9800;
+        }
+
+        .quiz-feedback {
+            font-size: 11px;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .quiz-button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .quiz-button:hover {
+            background: #ff6f00;
+            transform: scale(1.02);
+        }
+
+        .quiz-result {
+            background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Navigation buttons */
+        .tab-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .content-area, .quiz-area {
+                flex: 1;
+            }
+
+            .btn-back {
+                position: static;
+                transform: none;
+                display: block;
+                width: fit-content;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="histoire-geographie-lecons.html" class="btn-back">← Retour</a>
+        <h1>📰 Les Sources d'Information et la Dignité Humaine ⚖️</h1>
+        <p>En temps de guerre et de violence</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">1️⃣ Sources d'Information</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">2️⃣ Droit Humanitaire</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">3️⃣ Dignité Humaine</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="content-area">
+            <div class="content">
+                <!-- TAB 1: SOURCES D'INFORMATION -->
+                <div id="tab1" class="tab-content active">
+                    <div class="container">
+                        <h2>📰 Les Sources d'Information</h2>
+                        <p class="subtitle">Comprendre les différents types de sources d'information</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce qu'une source d'information ?</h4>
+                            <p>Une <strong>source d'information</strong> est tout moyen par lequel on peut obtenir des informations, des nouvelles ou des connaissances sur un événement, une personne ou un sujet.</p>
+                        </div>
+
+                        <h3>📺 II - Les Différents Types de Sources d'Information</h3>
+
+                        <div class="category-box">
+                            <h4>📻 A. Les Médias Traditionnels</h4>
+                            <ul>
+                                <li><strong>La télévision :</strong> Informations visuelles et audiovisuelles en temps réel</li>
+                                <li><strong>La radio :</strong> Informations audio, accessible partout</li>
+                                <li><strong>Les journaux :</strong> Informations écrites et détaillées</li>
+                                <li><strong>Les magazines :</strong> Analyses et reportages approfondis</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>💻 B. Les Médias Numériques</h4>
+                            <ul>
+                                <li><strong>Internet :</strong> Sites web d'information, encyclopédies en ligne</li>
+                                <li><strong>Réseaux sociaux :</strong> Facebook, Twitter, Instagram (attention aux fausses informations !)</li>
+                                <li><strong>Applications mobiles :</strong> Applications d'actualités</li>
+                                <li><strong>Podcasts :</strong> Émissions audio téléchargeables</li>
+                            </ul>
+                        </div>
+
+                        <div class="category-box">
+                            <h4>👥 C. Les Sources Directes</h4>
+                            <ul>
+                                <li><strong>Témoignages :</strong> Personnes ayant vécu un événement</li>
+                                <li><strong>Documents officiels :</strong> Rapports gouvernementaux, lois</li>
+                                <li><strong>Conférences de presse :</strong> Communications officielles</li>
+                            </ul>
+                        </div>
+
+                        <h3>⚠️ III - Fiabilité des Sources</h3>
+
+                        <div class="observation-box">
+                            <h4>🔍 Comment vérifier une information ?</h4>
+                            <ul>
+                                <li><strong>Vérifier l'auteur :</strong> Qui a publié l'information ?</li>
+                                <li><strong>Croiser les sources :</strong> L'information est-elle confirmée ailleurs ?</li>
+                                <li><strong>Vérifier la date :</strong> L'information est-elle récente ?</li>
+                                <li><strong>Attention aux émotions :</strong> Une information qui provoque de fortes émotions peut être fausse</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Il existe plusieurs types de sources d'information<br>
+                            • Les médias traditionnels : TV, radio, journaux<br>
+                            • Les médias numériques : internet, réseaux sociaux<br>
+                            • Toujours vérifier la fiabilité d'une information<br>
+                            • Croiser plusieurs sources pour confirmer une information
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" disabled>← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab2')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: DROIT INTERNATIONAL HUMANITAIRE -->
+                <div id="tab2" class="tab-content">
+                    <div class="container">
+                        <h2>⚖️ Le Droit International Humanitaire</h2>
+                        <p class="subtitle">Les règles qui protègent les personnes pendant les conflits</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que le droit international humanitaire (DIH) ?</h4>
+                            <p>Le <strong>droit international humanitaire</strong> est un ensemble de règles internationales qui visent à <strong>limiter les effets des conflits armés</strong> et à <strong>protéger les personnes</strong> qui ne participent pas ou plus aux combats.</p>
+                        </div>
+
+                        <h3>📜 II - Les Principes Fondamentaux</h3>
+
+                        <div class="category-box">
+                            <h4>🛡️ Les 4 principes du DIH</h4>
+                            <ol>
+                                <li><strong>Humanité :</strong> Traiter tous les êtres humains avec respect</li>
+                                <li><strong>Distinction :</strong> Distinguer les combattants des civils</li>
+                                <li><strong>Proportionnalité :</strong> Les attaques ne doivent pas causer de dommages excessifs</li>
+                                <li><strong>Précaution :</strong> Prendre toutes les mesures pour protéger les civils</li>
+                            </ol>
+                        </div>
+
+                        <h3>🔴 III - Les Conventions de Genève</h3>
+
+                        <div class="observation-box">
+                            <h4>📋 Les 4 Conventions de Genève (1949)</h4>
+                            <ul>
+                                <li><strong>1ère Convention :</strong> Protection des blessés et malades des forces armées sur terre</li>
+                                <li><strong>2ème Convention :</strong> Protection des blessés, malades et naufragés en mer</li>
+                                <li><strong>3ème Convention :</strong> Traitement des prisonniers de guerre</li>
+                                <li><strong>4ème Convention :</strong> Protection des civils en temps de guerre</li>
+                            </ul>
+                        </div>
+
+                        <h3>👥 IV - Personnes Protégées</h3>
+
+                        <div class="category-box">
+                            <h4>🛡️ Qui est protégé par le DIH ?</h4>
+                            <ul>
+                                <li><strong>Les civils :</strong> Toutes les personnes qui ne combattent pas</li>
+                                <li><strong>Les blessés et malades :</strong> Même s'ils sont combattants</li>
+                                <li><strong>Les prisonniers de guerre :</strong> Combattants capturés</li>
+                                <li><strong>Le personnel médical :</strong> Médecins, infirmiers, secouristes</li>
+                                <li><strong>Les journalistes :</strong> Quand ils ne participent pas au combat</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • Le DIH protège les personnes pendant les guerres<br>
+                            • Les 4 Conventions de Genève sont la base du DIH<br>
+                            • Les civils et les personnes hors combat doivent être protégés<br>
+                            • La Croix-Rouge veille au respect du DIH
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab1')">← Précédent</button>
+                            <button class="nav-button" onclick="navigateToTab('tab3')">Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: DIGNITÉ HUMAINE -->
+                <div id="tab3" class="tab-content">
+                    <div class="container">
+                        <h2>🕊️ La Dignité Humaine</h2>
+                        <p class="subtitle">Les atteintes à la dignité humaine en temps de guerre et de violence</p>
+
+                        <h3>📌 I - Définition</h3>
+
+                        <div class="definition-box">
+                            <h4>📖 Qu'est-ce que la dignité humaine ?</h4>
+                            <p>La <strong>dignité humaine</strong> est le respect dû à tout être humain, simplement parce qu'il est humain. C'est un droit fondamental et inaliénable (qu'on ne peut pas retirer).</p>
+                        </div>
+
+                        <h3>⚠️ II - Les Atteintes à la Dignité Humaine</h3>
+
+                        <div class="danger-box">
+                            <h4>❌ Exemples d'atteintes à la dignité</h4>
+                            <ul>
+                                <li><strong>La torture :</strong> Faire souffrir intentionnellement une personne</li>
+                                <li><strong>Les traitements inhumains :</strong> Humiliations, violences</li>
+                                <li><strong>L'esclavage :</strong> Traiter une personne comme un objet</li>
+                                <li><strong>Le génocide :</strong> Extermination d'un groupe de personnes</li>
+                                <li><strong>Les crimes de guerre :</strong> Violations graves du DIH</li>
+                                <li><strong>Les crimes contre l'humanité :</strong> Attaques généralisées contre les civils</li>
+                            </ul>
+                        </div>
+
+                        <h3>🏛️ III - Protection de la Dignité Humaine</h3>
+
+                        <div class="category-box">
+                            <h4>📜 Les textes qui protègent la dignité humaine</h4>
+                            <ul>
+                                <li><strong>Déclaration universelle des droits de l'homme (1948) :</strong> "Tous les êtres humains naissent libres et égaux en dignité"</li>
+                                <li><strong>Conventions de Genève :</strong> Protection pendant les conflits</li>
+                                <li><strong>Cour pénale internationale :</strong> Juge les crimes contre l'humanité</li>
+                                <li><strong>Constitutions nationales :</strong> Protection dans chaque pays</li>
+                            </ul>
+                        </div>
+
+                        <h3>🤝 IV - Que Faire Face aux Atteintes ?</h3>
+
+                        <div class="observation-box">
+                            <h4>💪 Actions possibles</h4>
+                            <ul>
+                                <li><strong>S'informer :</strong> Connaître ses droits et ceux des autres</li>
+                                <li><strong>Dénoncer :</strong> Signaler les abus aux autorités compétentes</li>
+                                <li><strong>Soutenir les victimes :</strong> Apporter aide et réconfort</li>
+                                <li><strong>Promouvoir la paix :</strong> Favoriser le dialogue et la tolérance</li>
+                                <li><strong>Éduquer :</strong> Enseigner le respect de la dignité humaine</li>
+                            </ul>
+                        </div>
+
+                        <div class="info">
+                            <strong>💡 À retenir :</strong><br>
+                            • La dignité humaine est un droit fondamental<br>
+                            • Torture, esclavage et génocide sont des atteintes graves<br>
+                            • Des textes internationaux protègent la dignité humaine<br>
+                            • Chacun peut agir pour défendre la dignité humaine<br>
+                            • Le respect de l'autre est la base d'une société en paix
+                        </div>
+
+                        <div class="tab-navigation">
+                            <button class="nav-button" onclick="navigateToTab('tab2')">← Précédent</button>
+                            <button class="nav-button" disabled>Suivant →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ AREA -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - Sources d'Information et Dignité Humaine</h2>
+
+                <div class="quiz-question">
+                    <span class="question-number">1</span>
+                    <span class="question-text">Quel est un exemple de média traditionnel ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="a"> La télévision
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="b"> Facebook
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="c"> Twitter
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">2</span>
+                    <span class="question-text">Combien y a-t-il de Conventions de Genève ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="a"> 4 Conventions
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="b"> 2 Conventions
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="c"> 10 Conventions
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">3</span>
+                    <span class="question-text">Que protège le droit international humanitaire ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="a"> Les personnes pendant les conflits armés
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="b"> Les animaux
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="c"> Les monuments
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">4</span>
+                    <span class="question-text">La dignité humaine est :</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="a"> Un droit fondamental inaliénable
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="b"> Un privilège réservé à certains
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="c"> Une option facultative
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <span class="question-number">5</span>
+                    <span class="question-text">Qu'est-ce qui est interdit par le droit humanitaire ?</span>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="a"> La torture et les traitements inhumains
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="b"> La lecture des journaux
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" value="c"> L'utilisation d'internet
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+
+                <button class="quiz-button" onclick="submitQuiz()">Vérifier les Réponses</button>
+                <div id="quiz-results" class="quiz-result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function navigateToTab(tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+                if (tabbuttons[i].getAttribute('onclick').includes(tabName)) {
+                    tabbuttons[i].classList.add("active");
+                }
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+
+        const quizAnswers = {
+            q1: 'a',
+            q2: 'a',
+            q3: 'a',
+            q4: 'a',
+            q5: 'a'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = Object.keys(quizAnswers).length;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById(`feedback-${questionName}`);
+
+                if (!selectedAnswer) {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #ff9800; font-weight: bold;">⚠️ Tu as oublié de répondre !</span>';
+                    }
+                    continue;
+                }
+
+                const isCorrect = selectedAnswer.value === quizAnswers[questionName];
+
+                if (isCorrect) {
+                    score++;
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #27ae60; font-weight: bold;">✅ Bravo !</span>';
+                    }
+                } else {
+                    if (feedbackElement) {
+                        feedbackElement.innerHTML = '<span style="color: #e74c3c; font-weight: bold;">❌ Pas tout à fait...</span>';
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('quiz-results');
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let resultMessage = `<strong>Ton résultat: ${score}/${totalQuestions} (${percentage}%)</strong><br>`;
+
+            if (percentage >= 80) {
+                resultMessage += '<span style="color: #ffd700;">🎉 Excellent travail ! 🌟</span>';
+            } else if (percentage >= 60) {
+                resultMessage += '<span style="color: #fff;">👍 Bien joué ! Continue ! 💪</span>';
+            } else {
+                resultMessage += '<span style="color: #fff;">📚 Relis la leçon et réessaie ! 💖</span>';
+            }
+
+            resultsDiv.innerHTML = resultMessage;
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

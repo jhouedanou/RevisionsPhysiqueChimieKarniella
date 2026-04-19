@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombres Décimaux Relatifs</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>± Nombres Décimaux Relatifs</h1>
+        <p>Leçon 7 - Nombres positifs et négatifs</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Définition</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Droite Graduée</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Comparaison</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Les Nombres Décimaux Relatifs</h2>
+                
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Un <strong>nombre décimal relatif</strong> est un nombre qui peut être positif, négatif ou nul.</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Nombres positifs :</strong> +5, +3.2, +0.5 (ou simplement 5, 3.2, 0.5)</li>
+                        <li><strong>Nombres négatifs :</strong> -5, -3.2, -0.5</li>
+                        <li><strong>Zéro :</strong> 0 (ni positif ni négatif)</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemples dans la vie courante</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Température :</strong> +25°C (chaud), -10°C (froid)</li>
+                        <li><strong>Altitude :</strong> +500m (au-dessus du niveau de la mer), -50m (sous le niveau de la mer)</li>
+                        <li><strong>Argent :</strong> +100€ (crédit), -50€ (débit)</li>
+                        <li><strong>Temps :</strong> +2 ans (dans 2 ans), -3 ans (il y a 3 ans)</li>
+                    </ul>
+                </div>
+
+                <div class="definition-box">
+                    <h4>📘 Distance à zéro</h4>
+                    <p>La <strong>distance à zéro</strong> (ou valeur absolue) d'un nombre relatif est sa distance par rapport à 0, sans tenir compte du signe.</p>
+                    <div class="formula">|+5| = 5 et |-5| = 5</div>
+                </div>
+
+                <div class="definition-box">
+                    <h4>📘 Opposé d'un nombre</h4>
+                    <p>L'<strong>opposé</strong> d'un nombre relatif est le nombre qui a la même distance à zéro mais un signe contraire.</p>
+                    <p><strong>Exemples :</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>L'opposé de +7 est -7</li>
+                        <li>L'opposé de -3 est +3</li>
+                        <li>L'opposé de 0 est 0</li>
+                    </ul>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Un nombre relatif a un signe (+ ou -)<br>
+                    • 0 n'est ni positif ni négatif<br>
+                    • La distance à zéro est toujours positive
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Droite Graduée et Repérage</h2>
+
+                <div class="definition-box">
+                    <h4>📘 Droite graduée</h4>
+                    <p>Une <strong>droite graduée</strong> est une droite sur laquelle on a choisi :</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Un point origine O (correspondant à 0)</li>
+                        <li>Une unité de longueur</li>
+                        <li>Un sens positif (généralement vers la droite)</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="120" viewBox="0 0 700 120">
+                        <defs>
+                            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+                            </marker>
+                        </defs>
+                        <line x1="50" y1="60" x2="650" y2="60" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                        
+                        <line x1="150" y1="50" x2="150" y2="70" stroke="#333" stroke-width="2"/>
+                        <text x="145" y="90" fill="#333" font-size="14">-3</text>
+                        
+                        <line x1="225" y1="50" x2="225" y2="70" stroke="#333" stroke-width="2"/>
+                        <text x="220" y="90" fill="#333" font-size="14">-2</text>
+                        
+                        <line x1="300" y1="50" x2="300" y2="70" stroke="#333" stroke-width="2"/>
+                        <text x="295" y="90" fill="#333" font-size="14">-1</text>
+                        
+                        <line x1="375" y1="45" x2="375" y2="75" stroke="#f44336" stroke-width="3"/>
+                        <text x="370" y="90" fill="#f44336" font-size="16" font-weight="bold">0</text>
+                        
+                        <line x1="450" y1="50" x2="450" y2="70" stroke="#333" stroke-width="2"/>
+                        <text x="445" y="90" fill="#333" font-size="14">+1</text>
+                        
+                        <line x1="525" y1="50" x2="525" y2="70" stroke="#333" stroke-width="2"/>
+                        <text x="520" y="90" fill="#333" font-size="14">+2</text>
+                        
+                        <line x1="600" y1="50" x2="600" y2="70" stroke="#333" stroke-width="2"/>
+                        <text x="595" y="90" fill="#333" font-size="14">+3</text>
+                        
+                        <text x="100" y="30" fill="#FF69B4" font-size="12">Nombres négatifs</text>
+                        <text x="500" y="30" fill="#FF69B4" font-size="12">Nombres positifs</text>
+                    </svg>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Repérage sur la droite</h4>
+                    <p><strong>1.</strong> Les nombres négatifs sont à gauche de 0</p>
+                    <p><strong>2.</strong> Les nombres positifs sont à droite de 0</p>
+                    <p><strong>3.</strong> Plus on va vers la droite, plus les nombres sont grands</p>
+                    <p><strong>4.</strong> Deux nombres opposés sont symétriques par rapport à 0</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • La droite graduée permet de visualiser les nombres relatifs<br>
+                    • 0 sépare les positifs (à droite) des négatifs (à gauche)<br>
+                    • Les opposés sont à égale distance de 0
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>Comparaison de Nombres Relatifs</h2>
+
+                <h3>Nombres de signes contraires</h3>
+                <div class="property-box">
+                    <h4>✓ Règle</h4>
+                    <p><strong>Tout nombre positif est supérieur à tout nombre négatif.</strong></p>
+                    <p>Exemples : +2 > -5 ; +0,1 > -100</p>
+                </div>
+
+                <h3>Nombres de mêmes signes</h3>
+                <div class="property-box">
+                    <h4>✓ Nombres positifs</h4>
+                    <p><strong>Le plus grand est celui qui a la plus grande distance à zéro.</strong></p>
+                    <p>Exemples : +7 > +3 ; +5,2 > +5,1</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Nombres négatifs</h4>
+                    <p><strong>Le plus grand est celui qui a la plus petite distance à zéro.</strong></p>
+                    <p>Exemples : -2 > -5 ; -0,3 > -0,8</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Exemples</h4>
+                    <p><strong>1.</strong> Comparer +3 et -7 :</p>
+                    <p>+3 > -7 (positif > négatif)</p>
+                    <p><strong>2.</strong> Comparer -4 et -9 :</p>
+                    <p>-4 > -9 (plus proche de zéro)</p>
+                    <p><strong>3.</strong> Ranger dans l'ordre croissant : -5, +3, -1, 0, +7</p>
+                    <p>-5 < -1 < 0 < +3 < +7</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Positif > Négatif toujours<br>
+                    • Pour les positifs : plus grand nombre = plus loin de 0<br>
+                    • Pour les négatifs : plus grand nombre = plus près de 0<br>
+                    • Sur la droite graduée : plus à droite = plus grand
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+</body>
+</html>

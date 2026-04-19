@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droites Parallèles</title>
+    <link rel="stylesheet" href="styles-math-lessons.css">
+</head>
+<body>
+    <header>
+        <a href="mathematiques.html" class="btn-back">← Retour</a>
+        <h1>║ Droites Parallèles</h1>
+        <p>Leçon 5 - Parallélisme</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Définition</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Construction</button>
+        <button class="tab-button" onclick="openTab(event, 'tab3')">Exercices</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <div class="container">
+                <h2>Droites Parallèles</h2>
+                
+                <div class="definition-box">
+                    <h4>📘 Définition</h4>
+                    <p>Deux droites sont <strong>parallèles</strong> si elles n'ont aucun point commun ou si elles sont confondues.</p>
+                    <p>Notation : d // d' (d est parallèle à d')</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 Représentation</h4>
+                    <svg width="100%" height="200" viewBox="0 0 600 200">
+                        <line x1="50" y1="70" x2="550" y2="70" stroke="#2196f3" stroke-width="2"/>
+                        <text x="560" y="75" fill="#2196f3" font-size="16">d</text>
+                        <line x1="50" y1="130" x2="550" y2="130" stroke="#f44336" stroke-width="2"/>
+                        <text x="560" y="135" fill="#f44336" font-size="16">d'</text>
+                        <line x1="200" y1="55" x2="200" y2="145" stroke="#888" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="400" y1="55" x2="400" y2="145" stroke="#888" stroke-width="1" stroke-dasharray="5,5"/>
+                        <text x="250" y="100" fill="#4caf50" font-size="14">d // d'</text>
+                    </svg>
+                    <p>Les droites d et d' ne se coupent jamais</p>
+                    <p>Elles restent toujours à la même distance l'une de l'autre</p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Propriétés</h4>
+                    <p><strong>1.</strong> Deux droites parallèles ne se rencontrent jamais</p>
+                    <p><strong>2.</strong> Par un point hors d'une droite, il passe une seule parallèle à cette droite</p>
+                    <p><strong>3.</strong> Si d // d', alors d' // d (propriété symétrique)</p>
+                    <p><strong>4.</strong> Si d // d' et d' // d'', alors d // d'' (transitivité)</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • Parallèles = pas de point commun<br>
+                    • Symbole : //<br>
+                    • Les droites parallèles restent équidistantes
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="container">
+                <h2>Construction de Droites Parallèles</h2>
+
+                <h3>Méthode 1 : Avec une équerre et une règle</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Placer la règle le long de la droite d</p>
+                    <p><strong>2.</strong> Placer l'équerre contre la règle</p>
+                    <p><strong>3.</strong> Faire glisser l'équerre le long de la règle jusqu'au point A</p>
+                    <p><strong>4.</strong> Tracer la parallèle en suivant l'équerre</p>
+                </div>
+
+                <h3>Méthode 2 : Avec un compas (méthode des perpendiculaires)</h3>
+                <div class="example-box">
+                    <h4>🔧 Étapes de construction</h4>
+                    <p><strong>1.</strong> Tracer une perpendiculaire à d passant par A</p>
+                    <p><strong>2.</strong> Marquer un point B sur cette perpendiculaire</p>
+                    <p><strong>3.</strong> Tracer une perpendiculaire à (AB) passant par B</p>
+                    <p><strong>4.</strong> Cette dernière droite est parallèle à d</p>
+                    <p style="margin-top: 10px;"><em>Rappel : Si deux droites sont perpendiculaires à une même droite, alors elles sont parallèles</em></p>
+                </div>
+
+                <div class="property-box">
+                    <h4>✓ Parallèle passant par un point</h4>
+                    <p>Par un point donné A, il existe une seule droite parallèle à une droite d donnée.</p>
+                </div>
+
+                <div class="info">
+                    <strong>💡 À retenir :</strong><br>
+                    • L'équerre + règle est la méthode la plus simple<br>
+                    • On peut aussi utiliser deux perpendiculaires successives<br>
+                    • Par un point, une seule parallèle à une droite donnée
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="container">
+                <h2>🎯 Exercices</h2>
+
+                <div class="example-box">
+                    <h4>Exercice 1</h4>
+                    <p>Vrai ou Faux ?</p>
+                    <ul>
+                        <li>a) Si d // d' et d' // d'', alors d // d''</li>
+                        <li>b) Deux droites parallèles se coupent en un point à l'infini</li>
+                        <li>c) Par un point, on peut tracer plusieurs parallèles à une droite</li>
+                    </ul>
+                    <button onclick="document.getElementById('sol1').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Solution</button>
+                    <div id="sol1" style="display: none; margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 5px;">
+                        <p>a) <strong>VRAI</strong> - Propriété de transitivité</p>
+                        <p>b) <strong>FAUX</strong> - Les parallèles ne se coupent jamais</p>
+                        <p>c) <strong>FAUX</strong> - Une seule parallèle par un point</p>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Exercice 2</h4>
+                    <p>Complète avec les symboles corrects (// ou ⊥) :</p>
+                    <ul>
+                        <li>a) Si d ⊥ d' et d' ⊥ d'', alors d ___ d''</li>
+                        <li>b) Si d // d' et d' // d'', alors d ___ d''</li>
+                    </ul>
+                    <button onclick="document.getElementById('sol2').style.display='block'" style="margin-top: 10px; padding: 8px 15px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Solution</button>
+                    <div id="sol2" style="display: none; margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 5px;">
+                        <p>a) d <strong>//</strong> d'' (deux droites perpendiculaires à une même droite sont parallèles)</p>
+                        <p>b) d <strong>//</strong> d'' (transitivité du parallélisme)</p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <strong>💡 Pour bien comprendre :</strong><br>
+                    • Pratique en dessinant beaucoup de figures<br>
+                    • Utilise tes instruments de géométrie<br>
+                    • Vérifie toujours avec une règle graduée
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="math-lessons-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Éducation Civique - Récapitulatif</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("pnQD7VPc6oODwjB-L");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFE5F0 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '⚖️';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.08;
+            top: 20%;
+            left: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '🎓';
+            position: fixed;
+            font-size: 100px;
+            opacity: 0.08;
+            bottom: 15%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFE5F0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-back {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .quiz-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-category {
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            background: white;
+            color: #3498db;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-category:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-category.active {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transition: width 0.3s ease;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .question-text {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 18px 20px;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .option.selected {
+            border-color: #3498db;
+            background: #3498db;
+            color: white;
+        }
+
+        .option.correct {
+            border-color: #2ecc71;
+            background: #2ecc71;
+            color: white;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: #e74c3c;
+            color: white;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 18px;
+            display: none;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct-feedback {
+            background: #d4edda;
+            border: 3px solid #2ecc71;
+            color: #155724;
+        }
+
+        .feedback.incorrect-feedback {
+            background: #f8d7da;
+            border: 3px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .results {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .score-display {
+            font-size: 72px;
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .score-text {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .score-message {
+            font-size: 22px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: #FFFFFF;
+            border: 3px solid #2196f3;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            color: #0d47a1;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .info-box strong {
+            color: #0d47a1;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .quiz-controls {
+                flex-direction: column;
+            }
+
+            .btn-category {
+                width: 100%;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .score-display {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="education-civique.html" class="btn-back">← Retour</a>
+        <h1>🎓 Quiz - Éducation Civique</h1>
+        <p>Teste tes connaissances sur les droits, les lois et la démocratie</p>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>🌟 Quiz d'Éducation Civique</h2>
+            <p class="subtitle">Teste tes connaissances sur les concepts clés d'éducation civique</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn-category active" onclick="filterByCategory('all')">Toutes les questions</button>
+                <button class="btn-category" onclick="filterByCategory('human-rights')">⚖️ Droits Humains</button>
+                <button class="btn-category" onclick="filterByCategory('dih')">🌍 DIH</button>
+                <button class="btn-category" onclick="filterByCategory('constitution')">📜 Constitution</button>
+                <button class="btn-category" onclick="filterByCategory('democracy')">🗳️ Démocratie</button>
+            </div>
+
+            <div id="quiz-content"></div>
+
+            <div class="quiz-buttons">
+                <button class="btn btn-submit" onclick="submitQuiz()">📊 Vérifier mes réponses</button>
+                <button class="btn btn-reset" onclick="resetQuiz()">🔄 Recommencer</button>
+            </div>
+
+            <div class="results" id="results">
+                <div class="score-display" id="scoreDisplay"></div>
+                <div class="score-text" id="scoreText"></div>
+                <div class="score-message" id="scoreMessage"></div>
+                <button class="btn btn-reset" onclick="resetQuiz()">🔄 Recommencer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions - Niveau 13 ans (éducation civique)
+        const quizData = [
+            // DROITS HUMAINS
+            {
+                category: 'human-rights',
+                id: 1,
+                question: 'Qu\'est-ce que les droits humains ?',
+                options: [
+                    'Des lois uniquement pour les adultes',
+                    'Les droits et libertés fondamentaux auxquels tout être humain a droit',
+                    'Des règles créées par les gouvernements',
+                    'Des privilèges accordés aux citoyens riches'
+                ],
+                correct: 1,
+                explanation: 'Les droits humains sont les droits et libertés fondamentaux auxquels tout être humain a droit, sans distinction. Ils sont universels et inaliénables.'
+            },
+            {
+                category: 'human-rights',
+                id: 2,
+                question: 'Quel est le principe fondamental de l\'universalité des droits humains ?',
+                options: [
+                    'Les droits diffèrent selon le pays',
+                    'Les droits dépendent de la religion',
+                    'Les droits appartiennent à tous, sans distinction',
+                    'Les droits sont donnés par le gouvernement'
+                ],
+                correct: 2,
+                explanation: 'L\'universalité signifie que les droits appartiennent à tous les êtres humains, indépendamment de leur nationalité, race, religion ou sexe.'
+            },
+            {
+                category: 'human-rights',
+                id: 3,
+                question: 'Quels sont les droits de première génération ?',
+                options: [
+                    'Droit à l\'éducation et à la santé',
+                    'Droits civils et politiques (liberté d\'expression, droit de vote)',
+                    'Droits environnementaux',
+                    'Droits des enfants'
+                ],
+                correct: 1,
+                explanation: 'Les droits de première génération (civils et politiques) protègent la liberté individuelle contre les abus de l\'État, comme la liberté d\'expression et le droit de vote.'
+            },
+            {
+                category: 'human-rights',
+                id: 4,
+                question: 'Quels sont les droits de deuxième génération ?',
+                options: [
+                    'Liberté d\'expression et de religion',
+                    'Droit à la paix et à l\'environnement sain',
+                    'Droits économiques, sociaux et culturels (travail, éducation, santé)',
+                    'Droit à l\'autodétermination'
+                ],
+                correct: 2,
+                explanation: 'Les droits de deuxième génération garantissent des conditions de vie décentes : le droit au travail, à l\'éducation, à la santé, à un niveau de vie suffisant.'
+            },
+            {
+                category: 'human-rights',
+                id: 5,
+                question: 'Quels sont les droits de troisième génération ?',
+                options: [
+                    'Droits civils et politiques',
+                    'Droits économiques et sociaux',
+                    'Droits de solidarité (développement, paix, environnement)',
+                    'Droits culturels'
+                ],
+                correct: 2,
+                explanation: 'Les droits de troisième génération concernent les peuples et l\'humanité dans son ensemble : droit au développement, à la paix, à un environnement sain.'
+            },
+            {
+                category: 'human-rights',
+                id: 6,
+                question: 'Qu\'est-ce que la Déclaration Universelle des Droits de l\'Homme ?',
+                options: [
+                    'Une loi française',
+                    'Un document adopté par l\'ONU en 1948 énoncant les droits fondamentaux',
+                    'Un accord entre pays riches',
+                    'Une constitution européenne'
+                ],
+                correct: 1,
+                explanation: 'Adoptée par l\'Assemblée générale de l\'ONU le 10 décembre 1948, elle énonce les 30 droits fondamentaux que tout être humain possède.'
+            },
+            {
+                category: 'human-rights',
+                id: 7,
+                question: 'Quel droit spécifique ont les enfants selon les droits humains ?',
+                options: [
+                    'Aucun, ils doivent obéir aux adultes',
+                    'Droits à la survie et à la protection',
+                    'Seulement le droit à l\'école',
+                    'Le droit de choisir leurs parents'
+                ],
+                correct: 1,
+                explanation: 'Les enfants ont des droits spécifiques : droit à la vie, à la santé, à l\'alimentation, à l\'eau potable, à la protection contre la violence et l\'exploitation.'
+            },
+            {
+                category: 'human-rights',
+                id: 8,
+                question: 'Quel principe garantit que les droits humains ne peuvent pas être enlevés ?',
+                options: [
+                    'La flexibilité',
+                    'L\'inaliénabilité',
+                    'La révision',
+                    'La relativité'
+                ],
+                correct: 1,
+                explanation: 'L\'inaliénabilité signifie que les droits humains ne peuvent pas être enlevés ou cédés. Ils appartiennent à la personne dès sa naissance.'
+            },
+
+            // DROIT INTERNATIONAL HUMANITAIRE
+            {
+                category: 'dih',
+                id: 9,
+                question: 'Qu\'est-ce que le Droit International Humanitaire ?',
+                options: [
+                    'Les lois du commerce international',
+                    'Un ensemble de règles limitant les effets des conflits armés',
+                    'Les traités commerciaux entre pays',
+                    'Les lois environnementales mondiales'
+                ],
+                correct: 1,
+                explanation: 'Le DIH (droit des conflits armés) est l\'ensemble des règles qui cherchent à limiter les effets des conflits armés et protéger les civils et les blessés.'
+            },
+            {
+                category: 'dih',
+                id: 10,
+                question: 'Qui a fondé le Comité International de la Croix-Rouge ?',
+                options: [
+                    'Albert Einstein',
+                    'Henry Dunant',
+                    'Karl Marx',
+                    'Florence Nightingale'
+                ],
+                correct: 1,
+                explanation: 'Henry Dunant a fondé le Comité International de la Croix-Rouge en 1864 après avoir été témoin des souffrances des blessés à la Bataille de Solférino.'
+            },
+            {
+                category: 'dih',
+                id: 11,
+                question: 'En quelle année a été adoptée la première Convention de Genève ?',
+                options: [
+                    '1848',
+                    '1859',
+                    '1864',
+                    '1899'
+                ],
+                correct: 2,
+                explanation: 'La première Convention de Genève a été adoptée en 1864 pour protéger les soldats blessés sur le champ de bataille.'
+            },
+            {
+                category: 'dih',
+                id: 12,
+                question: 'Combien de Conventions de Genève ont été adoptées en 1949 ?',
+                options: [
+                    'Deux',
+                    'Trois',
+                    'Quatre',
+                    'Cinq'
+                ],
+                correct: 2,
+                explanation: 'Quatre Conventions de Genève ont été adoptées en 1949 : protection des blessés en campagne, sur mer, traitement des prisonniers, et protection des civils.'
+            },
+            {
+                category: 'dih',
+                id: 13,
+                question: 'Quel est le principal objectif du DIH ?',
+                options: [
+                    'Arrêter toutes les guerres',
+                    'Protéger les personnes ne participant pas aux combats',
+                    'Augmenter la puissance des armées',
+                    'Interdire tous les armements'
+                ],
+                correct: 1,
+                explanation: 'Le DIH vise à protéger les civils, les blessés, les malades et les prisonniers de guerre, tout en limitant les moyens et les méthodes de guerre.'
+            },
+            {
+                category: 'dih',
+                id: 14,
+                question: 'Quel est le principe fondamental de "distinction" en DIH ?',
+                options: [
+                    'Distinguer les pauvres des riches',
+                    'Distinguer les combattants des civils',
+                    'Distinguer les jeunes des vieux',
+                    'Distinguer les hommes des femmes'
+                ],
+                correct: 1,
+                explanation: 'Le principe de distinction exige de faire la différence entre les combattants et les civils, et de protéger spécialement les civils.'
+            },
+            {
+                category: 'dih',
+                id: 15,
+                question: 'Quand la Convention Internationale des Droits de l\'Enfant a-t-elle été adoptée ?',
+                options: [
+                    '1948',
+                    '1964',
+                    '1989',
+                    '2000'
+                ],
+                correct: 2,
+                explanation: 'La Convention Internationale des Droits de l\'Enfant a été adoptée en 1989. Elle est ratifiée par presque tous les pays du monde.'
+            },
+            {
+                category: 'dih',
+                id: 16,
+                question: 'Quels types d\'armes sont interdites par le DIH ?',
+                options: [
+                    'Toutes les armes',
+                    'Les armes trop cruelles (mines antipersonnel, armes chimiques)',
+                    'Seulement les fusils',
+                    'Aucune, toutes les armes sont permises'
+                ],
+                correct: 1,
+                explanation: 'Le DIH interdit certaines armes jugées trop cruelles : mines antipersonnel, armes chimiques, armes à sous-munitions, qui causent des souffrances inutiles.'
+            },
+
+            // CONSTITUTION DE CÔTE D\'IVOIRE
+            {
+                category: 'constitution',
+                id: 17,
+                question: 'Qu\'est-ce que la Constitution ?',
+                options: [
+                    'Un ensemble de règles de politesse',
+                    'La loi fondamentale et suprême d\'un État',
+                    'Un traité de commerce',
+                    'Une décision du roi'
+                ],
+                correct: 1,
+                explanation: 'La Constitution est le texte juridique fondamental qui définit l\'organisation de l\'État, le fonctionnement des institutions et les droits des citoyens.'
+            },
+            {
+                category: 'constitution',
+                id: 18,
+                question: 'Quelle est la devise de la Côte d\'Ivoire selon sa Constitution ?',
+                options: [
+                    'Liberté, Égalité, Fraternité',
+                    'Union, Discipline, Travail',
+                    'Paix, Justice, Travail',
+                    'Égalité, Fraternité, Liberté'
+                ],
+                correct: 1,
+                explanation: 'La devise officielle de la Côte d\'Ivoire est "Union - Discipline - Travail" inscrite dans sa Constitution.'
+            },
+            {
+                category: 'constitution',
+                id: 19,
+                question: 'Quelle est la capitale politique de la Côte d\'Ivoire ?',
+                options: [
+                    'Abidjan',
+                    'Yamoussoukro',
+                    'Bouaké',
+                    'Daloa'
+                ],
+                correct: 1,
+                explanation: 'Yamoussoukro est la capitale politique de la Côte d\'Ivoire, tandis qu\'Abidjan est la capitale économique.'
+            },
+            {
+                category: 'constitution',
+                id: 20,
+                question: 'En quelle année la Constitution actuelle de la Côte d\'Ivoire a-t-elle été adoptée ?',
+                options: [
+                    '1960',
+                    '1990',
+                    '2000',
+                    '2016'
+                ],
+                correct: 3,
+                explanation: 'La Constitution actuelle de la Côte d\'Ivoire a été adoptée le 30 octobre 2016 par référendum.'
+            },
+            {
+                category: 'constitution',
+                id: 21,
+                question: 'Quel est le rôle principal du Président de la République ?',
+                options: [
+                    'Écrire les lois',
+                    'Juger les crimes',
+                    'Chef de l\'État et garant de la Constitution',
+                    'Gérer les écoles'
+                ],
+                correct: 2,
+                explanation: 'Le Président de la République est le chef de l\'État et le garant de la Constitution. Il nomme le Premier Ministre, dissout l\'Assemblée Nationale et promulgue les lois.'
+            },
+            {
+                category: 'constitution',
+                id: 22,
+                question: 'Quel est le rôle principal du Parlement ?',
+                options: [
+                    'Commander l\'armée',
+                    'Voter les lois et contrôler l\'action du Gouvernement',
+                    'Interpréter les lois',
+                    'Nommer les juges'
+                ],
+                correct: 1,
+                explanation: 'Le Parlement (Assemblée Nationale et Sénat) vote les lois et contrôle l\'action du Gouvernement. Il représente le peuple.'
+            },
+            {
+                category: 'constitution',
+                id: 23,
+                question: 'Quel est le rôle principal du Pouvoir Judiciaire ?',
+                options: [
+                    'Créer les lois',
+                    'Exécuter les lois',
+                    'Appliquer les lois et rendre la justice',
+                    'Négocier avec les pays étrangers'
+                ],
+                correct: 2,
+                explanation: 'Le Pouvoir Judiciaire applique les lois et rend la justice au nom du peuple. Il est composé de tribunaux et de cours, et doit être indépendant.'
+            },
+            {
+                category: 'constitution',
+                id: 24,
+                question: 'Qu\'est-ce que la séparation des pouvoirs ?',
+                options: [
+                    'L\'absence de lois',
+                    'La répartition du pouvoir entre le Président, le Parlement et la Justice',
+                    'L\'augmentation du pouvoir du Président',
+                    'L\'abolition des partis politiques'
+                ],
+                correct: 1,
+                explanation: 'La séparation des pouvoirs signifie que le pouvoir est divisé entre trois branches : le Pouvoir Exécutif (Président), le Pouvoir Législatif (Parlement) et le Pouvoir Judiciaire.'
+            },
+
+            // PRINCIPES DE LA DÉMOCRATIE
+            {
+                category: 'democracy',
+                id: 25,
+                question: 'Qu\'est-ce que la démocratie ?',
+                options: [
+                    'Le gouvernement d\'un seul homme',
+                    'Un système où le pouvoir appartient au peuple',
+                    'Un gouvernement de militaires',
+                    'Un pouvoir sans lois'
+                ],
+                correct: 1,
+                explanation: 'La démocratie vient du grec "demos" (peuple) et "kratos" (pouvoir). C\'est un système où le pouvoir appartient au peuple.'
+            },
+            {
+                category: 'democracy',
+                id: 26,
+                question: 'Qu\'est-ce que la souveraineté populaire ?',
+                options: [
+                    'Le pouvoir du Président',
+                    'Le pouvoir de la police',
+                    'Le fait que le pouvoir appartient au peuple',
+                    'L\'autorité de l\'armée'
+                ],
+                correct: 2,
+                explanation: 'La souveraineté populaire signifie que le pouvoir ultime appartient au peuple, qui peut l\'exercer par le vote et les élections.'
+            },
+            {
+                category: 'democracy',
+                id: 27,
+                question: 'Qu\'est-ce que le suffrage universel ?',
+                options: [
+                    'Le droit de quelques riches de voter',
+                    'Le droit de tous les citoyens majeurs de voter',
+                    'Le droit des militaires de voter',
+                    'Le droit du Président de voter plusieurs fois'
+                ],
+                correct: 1,
+                explanation: 'Le suffrage universel signifie que tous les citoyens majeurs ont le droit de participer aux élections en votant.'
+            },
+            {
+                category: 'democracy',
+                id: 28,
+                question: 'Quel est un principe fondamental de la démocratie ?',
+                options: [
+                    'La concentration du pouvoir',
+                    'L\'égalité devant la loi et les libertés fondamentales',
+                    'L\'absence de partis politiques',
+                    'La dictature du Président'
+                ],
+                correct: 1,
+                explanation: 'Un des principes fondamentaux de la démocratie est l\'égalité devant la loi : tous les citoyens sont égaux et jouissent des mêmes droits.'
+            },
+            {
+                category: 'democracy',
+                id: 29,
+                question: 'Quel est le rôle de l\'opposition dans une démocratie ?',
+                options: [
+                    'Elle ne doit pas exister',
+                    'Elle critique le gouvernement et contrôle son action',
+                    'Elle doit obéir silencieusement',
+                    'Elle est toujours traître'
+                ],
+                correct: 1,
+                explanation: 'L\'opposition a un rôle légitime : elle critique le gouvernement, défend des idées alternatives et contrôle l\'exercice du pouvoir.'
+            },
+            {
+                category: 'democracy',
+                id: 30,
+                question: 'Qu\'est-ce que l\'État de droit ?',
+                options: [
+                    'Un État sans lois',
+                    'Un État où la loi s\'applique à tous, même aux dirigeants',
+                    'Un État dirigé par l\'armée',
+                    'Un État sans Président'
+                ],
+                correct: 1,
+                explanation: 'L\'État de droit signifie que tous, y compris les gouvernants, sont soumis au respect de la loi et que les droits fondamentaux sont garantis.'
+            },
+            {
+                category: 'democracy',
+                id: 31,
+                question: 'Qu\'est-ce que le pluralisme politique ?',
+                options: [
+                    'L\'existence d\'un seul parti politique',
+                    'L\'interdiction des partis',
+                    'L\'existence de plusieurs partis politiques',
+                    'L\'absence de politique'
+                ],
+                correct: 2,
+                explanation: 'Le pluralisme politique signifie qu\'il existe plusieurs partis politiques qui peuvent présenter des idées différentes et participer aux élections.'
+            },
+            {
+                category: 'democracy',
+                id: 32,
+                question: 'Quel est un devoir citoyen important en démocratie ?',
+                options: [
+                    'Rester ignorant des affaires politiques',
+                    'Voter et participer à la vie démocratique',
+                    'Obéir sans discuter',
+                    'Ignorer les lois'
+                ],
+                correct: 1,
+                explanation: 'Un devoir important du citoyen en démocratie est de voter, de participer à la vie publique et de contribuer au fonctionnement démocratique.'
+            }
+        ];
+
+        let currentCategory = 'all';
+        let userAnswers = {};
+        let quizSubmitted = false;
+
+        // Initialize quiz
+        function initQuiz() {
+            renderQuiz();
+            updateProgress();
+        }
+
+        // Filter questions by category
+        function filterByCategory(category) {
+            currentCategory = category;
+            quizSubmitted = false;
+            document.getElementById('results').classList.remove('show');
+
+            // Update button states
+            document.querySelectorAll('.btn-category').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            renderQuiz();
+            updateProgress();
+        }
+
+        // Get filtered questions
+        function getFilteredQuestions() {
+            if (currentCategory === 'all') {
+                return quizData;
+            }
+            return quizData.filter(q => q.category === currentCategory);
+        }
+
+        // Render quiz
+        function renderQuiz() {
+            const filtered = getFilteredQuestions();
+            const quizContent = document.getElementById('quiz-content');
+            quizContent.innerHTML = '';
+
+            filtered.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                questionDiv.id = `question-${q.id}`;
+
+                let html = `
+                    <div class="question-number">Question ${index + 1} sur ${filtered.length}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                `;
+
+                q.options.forEach((option, optIndex) => {
+                    const optionId = `option-${q.id}-${optIndex}`;
+                    const isSelected = userAnswers[q.id] === optIndex;
+                    const classes = isSelected ? 'option selected' : 'option';
+
+                    html += `
+                        <div class="${classes}" onclick="selectAnswer(${q.id}, ${optIndex}, event)">
+                            <input type="radio" name="question-${q.id}" id="${optionId}"
+                                   value="${optIndex}" ${isSelected ? 'checked' : ''} style="display:none;">
+                            ${option}
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                if (quizSubmitted && userAnswers[q.id] !== undefined) {
+                    const isCorrect = userAnswers[q.id] === q.correct;
+                    const feedbackClass = isCorrect ? 'feedback show correct-feedback' : 'feedback show incorrect-feedback';
+                    const feedbackText = isCorrect ? '✓ Correct !' : '✗ Incorrect';
+                    html += `
+                        <div class="${feedbackClass}">
+                            <strong>${feedbackText}</strong><br>
+                            ${q.explanation}
+                        </div>
+                    `;
+                }
+
+                questionDiv.innerHTML = html;
+                quizContent.appendChild(questionDiv);
+            });
+        }
+
+        // Select answer
+        function selectAnswer(questionId, optionIndex, event) {
+            if (quizSubmitted) return;
+
+            userAnswers[questionId] = optionIndex;
+
+            // Update UI
+            const questionDiv = document.getElementById(`question-${questionId}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                if (index === optionIndex) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+
+            updateProgress();
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const filtered = getFilteredQuestions();
+            const answered = filtered.filter(q => userAnswers[q.id] !== undefined).length;
+            const progress = (answered / filtered.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            const filtered = getFilteredQuestions();
+            const unanswered = filtered.filter(q => userAnswers[q.id] === undefined).length;
+
+            if (unanswered > 0) {
+                alert(`Oups ! Tu n'as pas répondu à ${unanswered} question(s). Réponds à toutes pour jouer ! 😊`);
+                return;
+            }
+
+            quizSubmitted = true;
+            renderQuiz();
+
+            // Calculate score
+            let correct = 0;
+            filtered.forEach(q => {
+                if (userAnswers[q.id] === q.correct) {
+                    correct++;
+                }
+            });
+
+            const percentage = Math.round((correct / filtered.length) * 100);
+            displayResults(correct, filtered.length, percentage);
+        }
+
+        // Display results
+        function displayResults(correct, total, percentage) {
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreText = document.getElementById('scoreText');
+            const scoreMessage = document.getElementById('scoreMessage');
+
+            scoreDisplay.textContent = `${percentage}%`;
+            scoreText.textContent = `Tu as réussi ${correct} sur ${total} réponses ! 🎉`;
+
+            let message = '';
+            if (percentage === 100) {
+                message = '⭐ Excellent ! Tu maîtrises parfaitement les concepts d\'éducation civique ! Bravo ! 👏';
+            } else if (percentage >= 80) {
+                message = '🌟 Très bien ! Tu as une très bonne compréhension de l\'éducation civique. Continue tes efforts ! 📚';
+            } else if (percentage >= 60) {
+                message = '👍 Bien joué ! Tu comprends les concepts principaux. Révise les sujets les plus difficiles. 🔍';
+            } else if (percentage >= 40) {
+                message = '💪 Tu progresses ! Relis attentivement la leçon et réessaie d\'améliorer tes résultats. 📖';
+            } else {
+                message = '📚 C\'est un bon début ! Prends le temps d\'étudier la leçon complète et réessaie. Tu peux réussir ! 🎯';
+            }
+
+            scoreMessage.textContent = message;
+            resultsDiv.classList.add('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Reset quiz
+        function resetQuiz() {
+            userAnswers = {};
+            quizSubmitted = false;
+            document.getElementById('results').classList.remove('show');
+            renderQuiz();
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+</body>
+</html>

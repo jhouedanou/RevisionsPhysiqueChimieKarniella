@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon : Les États de la Matière - Physique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #E8F4FD 0%, #B8D4E8 50%, #87CEEB 100%);
+            background-attachment: fixed;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        /* Layout principal */
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 6;
+            min-width: 0;
+        }
+
+        .quiz-area {
+            flex: 4;
+            min-width: 350px;
+            max-width: 500px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 40px rgba(30, 144, 255, 0.4);
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: #4169E1;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Sections de cours */
+        .lesson-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(30, 144, 255, 0.15);
+            border-left: 5px solid #4169E1;
+        }
+
+        .lesson-section h2 {
+            color: #4169E1;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lesson-section h3 {
+            color: #1E90FF;
+            font-size: 20px;
+            margin: 20px 0 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid #1E90FF;
+        }
+
+        .lesson-section p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Boîtes d'information */
+        .definition-box {
+            background: linear-gradient(135deg, #E6F3FF 0%, #B8D4E8 100%);
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .definition-box h4 {
+            color: #4169E1;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE4B5 100%);
+            border: 3px solid #FFA500;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .info-box h4 {
+            color: #FF8C00;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #A5D6A7 100%);
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .example-box h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .state-box {
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .state-solid {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 3px solid #2196F3;
+        }
+
+        .state-liquid {
+            background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%);
+            border: 3px solid #00BCD4;
+        }
+
+        .state-gas {
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+            border: 3px solid #9C27B0;
+        }
+
+        /* Listes */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .info-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 100%);
+            border-radius: 10px;
+            border-left: 4px solid #4169E1;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .info-list li::before {
+            content: '✓ ';
+            color: #4169E1;
+            font-weight: bold;
+        }
+
+        /* Grille de cartes */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30, 144, 255, 0.3);
+        }
+
+        .info-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .info-card h4 {
+            color: #4169E1;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .info-card p {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Tableau comparatif */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.2);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #E0E0E0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #F0F8FF;
+        }
+
+        .comparison-table tr:hover {
+            background: #E6F3FF;
+        }
+
+        /* Section Quiz */
+        .quiz-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(30, 144, 255, 0.2);
+            border: 3px solid #4169E1;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .quiz-section h2 {
+            color: #4169E1;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 2px solid #E0E0E0;
+            transition: border-color 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            border-color: #4169E1;
+        }
+
+        .quiz-question h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #F5F5F5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .quiz-options label:hover {
+            background: #E6F3FF;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #4169E1;
+        }
+
+        .quiz-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .quiz-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(30, 144, 255, 0.5);
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .quiz-result.show {
+            display: block;
+        }
+
+        .quiz-result.success {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            color: #2E7D32;
+            border: 3px solid #4CAF50;
+        }
+
+        .quiz-result.partial {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            color: #E65100;
+            border: 3px solid #FF9800;
+        }
+
+        .quiz-result.fail {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            color: #C62828;
+            border: 3px solid #F44336;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+
+            .quiz-area {
+                max-width: 100%;
+            }
+
+            .quiz-section {
+                position: static;
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .lesson-section {
+                padding: 15px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+            border-radius: 15px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="physique.html" class="btn-back">← Retour aux leçons</a>
+        <h1>🧪 Les États de la Matière : Solides, Liquides et Gaz</h1>
+        <p>Comprendre les trois états physiques de la matière</p>
+    </header>
+
+    <div class="main-wrapper">
+        <!-- Zone de contenu -->
+        <div class="content-area">
+            
+            <!-- Section 1: Introduction -->
+            <section class="lesson-section">
+                <h2>📖 1. Introduction</h2>
+                <div class="definition-box">
+                    <h4>📚 Qu'est-ce que la matière ?</h4>
+                    <p>La <strong>matière</strong> est tout ce qui nous entoure, tout ce qui a une masse et occupe un espace. Elle peut exister sous <strong>trois états physiques</strong> principaux :</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>L'état <strong>solide</strong></li>
+                        <li>L'état <strong>liquide</strong></li>
+                        <li>L'état <strong>gazeux</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>💡 L'exemple de l'eau</h4>
+                    <p>L'eau est un excellent exemple car elle peut exister sous les trois états :</p>
+                    <ul class="info-list" style="margin: 0;">
+                        <li><strong>Glace</strong> = eau à l'état solide</li>
+                        <li><strong>Eau liquide</strong> = eau à l'état liquide</li>
+                        <li><strong>Vapeur d'eau</strong> = eau à l'état gazeux</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 2: L'État Solide -->
+            <section class="lesson-section">
+                <h2>🧊 2. L'État Solide</h2>
+                
+                <div class="state-box state-solid">
+                    <h4 style="color: #1565C0;">📚 Définition</h4>
+                    <p>Un <strong>solide</strong> est un corps qui possède une <strong>forme propre</strong> et un <strong>volume propre</strong> (constant). Les particules sont très rapprochées et ordonnées.</p>
+                </div>
+
+                <h3>2.1 Propriétés des solides</h3>
+                <ul class="info-list">
+                    <li><strong>Forme propre :</strong> Le solide garde sa forme, même s'il change de récipient</li>
+                    <li><strong>Volume constant :</strong> Le volume ne change pas</li>
+                    <li><strong>Incompressible :</strong> On ne peut pas réduire son volume en appuyant dessus</li>
+                    <li><strong>Particules fixes :</strong> Les molécules vibrent mais restent en place</li>
+                </ul>
+
+                <h3>2.2 Exemples de solides</h3>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <span class="icon">🧊</span>
+                        <h4>Glace</h4>
+                        <p>Eau gelée</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🪨</span>
+                        <h4>Pierre</h4>
+                        <p>Roche naturelle</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🔩</span>
+                        <h4>Métal</h4>
+                        <p>Fer, cuivre, aluminium</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🪵</span>
+                        <h4>Bois</h4>
+                        <p>Matériau naturel</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: L'État Liquide -->
+            <section class="lesson-section">
+                <h2>💧 3. L'État Liquide</h2>
+                
+                <div class="state-box state-liquid">
+                    <h4 style="color: #00838F;">📚 Définition</h4>
+                    <p>Un <strong>liquide</strong> n'a pas de <strong>forme propre</strong> (il prend la forme du récipient), mais il possède un <strong>volume propre</strong> (constant). Les particules sont rapprochées mais peuvent glisser les unes sur les autres.</p>
+                </div>
+
+                <h3>3.1 Propriétés des liquides</h3>
+                <ul class="info-list">
+                    <li><strong>Pas de forme propre :</strong> Le liquide prend la forme du récipient</li>
+                    <li><strong>Volume constant :</strong> Le volume reste le même</li>
+                    <li><strong>Incompressible :</strong> On ne peut pas réduire son volume</li>
+                    <li><strong>Surface libre horizontale :</strong> Au repos, la surface est plane et horizontale</li>
+                    <li><strong>Peut s'écouler :</strong> Les liquides coulent</li>
+                </ul>
+
+                <h3>3.2 Exemples de liquides</h3>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <span class="icon">💧</span>
+                        <h4>Eau</h4>
+                        <p>Liquide essentiel</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🥛</span>
+                        <h4>Lait</h4>
+                        <p>Boisson nutritive</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🫒</span>
+                        <h4>Huile</h4>
+                        <p>Liquide gras</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🧴</span>
+                        <h4>Alcool</h4>
+                        <p>Liquide volatil</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: L'État Gazeux -->
+            <section class="lesson-section">
+                <h2>💨 4. L'État Gazeux</h2>
+                
+                <div class="state-box state-gas">
+                    <h4 style="color: #7B1FA2;">📚 Définition</h4>
+                    <p>Un <strong>gaz</strong> n'a ni <strong>forme propre</strong> ni <strong>volume propre</strong>. Il occupe tout l'espace disponible. Les particules sont très éloignées et se déplacent librement dans toutes les directions.</p>
+                </div>
+
+                <h3>4.1 Propriétés des gaz</h3>
+                <ul class="info-list">
+                    <li><strong>Pas de forme propre :</strong> Le gaz occupe tout le récipient</li>
+                    <li><strong>Pas de volume propre :</strong> Le volume dépend du récipient</li>
+                    <li><strong>Compressible :</strong> On peut réduire son volume en appuyant</li>
+                    <li><strong>Expansible :</strong> Le gaz se répand dans tout l'espace disponible</li>
+                    <li><strong>Invisible :</strong> La plupart des gaz sont invisibles</li>
+                </ul>
+
+                <h3>4.2 Exemples de gaz</h3>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <span class="icon">🌬️</span>
+                        <h4>Air</h4>
+                        <p>Mélange de gaz</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">💨</span>
+                        <h4>Oxygène</h4>
+                        <p>Gaz vital (O₂)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🎈</span>
+                        <h4>Hélium</h4>
+                        <p>Gaz léger (ballons)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">♨️</span>
+                        <h4>Vapeur d'eau</h4>
+                        <p>Eau gazeuse</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Tableau Comparatif -->
+            <section class="lesson-section">
+                <h2>📊 5. Tableau Comparatif</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Propriété</th>
+                            <th>🧊 Solide</th>
+                            <th>💧 Liquide</th>
+                            <th>💨 Gaz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Forme propre</strong></td>
+                            <td>✅ Oui</td>
+                            <td>❌ Non</td>
+                            <td>❌ Non</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Volume propre</strong></td>
+                            <td>✅ Oui</td>
+                            <td>✅ Oui</td>
+                            <td>❌ Non</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compressible</strong></td>
+                            <td>❌ Non</td>
+                            <td>❌ Non</td>
+                            <td>✅ Oui</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Peut s'écouler</strong></td>
+                            <td>❌ Non</td>
+                            <td>✅ Oui</td>
+                            <td>✅ Oui</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Particules</strong></td>
+                            <td>Très rapprochées, fixes</td>
+                            <td>Rapprochées, mobiles</td>
+                            <td>Très éloignées, libres</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 6: Changements d'état -->
+            <section class="lesson-section">
+                <h2>🔄 6. Les Changements d'État</h2>
+                
+                <div class="definition-box">
+                    <h4>📚 Définition</h4>
+                    <p>Un <strong>changement d'état</strong> est le passage de la matière d'un état physique à un autre, sous l'effet de la température ou de la pression.</p>
+                </div>
+
+                <h3>6.1 Les différents changements d'état</h3>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <span class="icon">🧊➡️💧</span>
+                        <h4>Fusion</h4>
+                        <p>Solide → Liquide<br>(glace qui fond)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">💧➡️🧊</span>
+                        <h4>Solidification</h4>
+                        <p>Liquide → Solide<br>(eau qui gèle)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">💧➡️💨</span>
+                        <h4>Vaporisation</h4>
+                        <p>Liquide → Gaz<br>(eau qui bout)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">💨➡️💧</span>
+                        <h4>Liquéfaction</h4>
+                        <p>Gaz → Liquide<br>(buée sur une vitre)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🧊➡️💨</span>
+                        <h4>Sublimation</h4>
+                        <p>Solide → Gaz<br>(neige carbonique)</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">💨➡️🧊</span>
+                        <h4>Condensation</h4>
+                        <p>Gaz → Solide<br>(givre)</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>💡 À retenir</h4>
+                    <ul class="info-list" style="margin: 0;">
+                        <li>La matière existe sous 3 états : solide, liquide et gaz</li>
+                        <li>Seul le solide a une forme propre</li>
+                        <li>Seuls les gaz sont compressibles</li>
+                        <li>Les changements d'état se font par chauffage ou refroidissement</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Zone Quiz -->
+        <div class="quiz-area">
+            <div class="quiz-section">
+                <h2>📝 Quiz - États de la Matière</h2>
+                
+                <div class="quiz-question">
+                    <h4>1. Quel état possède une forme propre et un volume propre ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Le gaz</label>
+                        <label><input type="radio" name="q1" value="b"> Le liquide</label>
+                        <label><input type="radio" name="q1" value="c"> Le solide</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Quel état est compressible ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Le solide</label>
+                        <label><input type="radio" name="q2" value="b"> Le liquide</label>
+                        <label><input type="radio" name="q2" value="c"> Le gaz</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Comment s'appelle le passage de solide à liquide ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> La solidification</label>
+                        <label><input type="radio" name="q3" value="b"> La fusion</label>
+                        <label><input type="radio" name="q3" value="c"> La vaporisation</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Quel état prend la forme du récipient mais a un volume constant ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Le liquide</label>
+                        <label><input type="radio" name="q4" value="b"> Le gaz</label>
+                        <label><input type="radio" name="q4" value="c"> Le solide</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Comment s'appelle le passage de liquide à gaz ?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> La liquéfaction</label>
+                        <label><input type="radio" name="q5" value="b"> La solidification</label>
+                        <label><input type="radio" name="q5" value="c"> La vaporisation</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. La glace est de l'eau à l'état :</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Solide</label>
+                        <label><input type="radio" name="q6" value="b"> Liquide</label>
+                        <label><input type="radio" name="q6" value="c"> Gazeux</label>
+                    </div>
+                </div>
+
+                <button class="quiz-submit" onclick="checkQuiz()">Vérifier mes réponses</button>
+                <div id="quiz-result" class="quiz-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>💡 Cours interactif sur les états de la matière | Physique-Chimie</p>
+    </footer>
+
+    <script>
+        function checkQuiz() {
+            const answers = {
+                q1: 'c',
+                q2: 'c',
+                q3: 'b',
+                q4: 'a',
+                q5: 'c',
+                q6: 'a'
+            };
+
+            let score = 0;
+            const total = Object.keys(answers).length;
+
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+            const percentage = Math.round((score / total) * 100);
+
+            resultDiv.className = 'quiz-result show';
+            
+            if (percentage >= 80) {
+                resultDiv.classList.add('success');
+                resultDiv.innerHTML = `🎉 Excellent ! ${score}/${total} (${percentage}%)<br>Tu maîtrises les états de la matière !`;
+            } else if (percentage >= 60) {
+                resultDiv.classList.add('partial');
+                resultDiv.innerHTML = `👍 Bien ! ${score}/${total} (${percentage}%)<br>Continue à réviser !`;
+            } else {
+                resultDiv.classList.add('fail');
+                resultDiv.innerHTML = `📚 ${score}/${total} (${percentage}%)<br>Relis la leçon et réessaie !`;
+            }
+        }
+    </script>
+</body>
+</html>
