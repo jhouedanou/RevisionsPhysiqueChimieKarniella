@@ -8,7 +8,7 @@
 
     <!-- PWA Configuration -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#FF69B4">
+    <meta name="theme-color" content="#B9366C">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Karniella">
@@ -343,21 +343,83 @@
 <link rel="stylesheet" href="css/horse-theme.css"/>
 </head>
 
-<body>
-    <div class="container">
+<body class="home-page">
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <div class="container home-shell">
         <!-- Header -->
-        <header>
-            <h1>📚 Objectif 15/20</h1>
-            <p>Apprends en t'amusant avec tes matières préférées ! 🌸</p>
+        <header class="home-hero">
+            <nav class="home-nav" aria-label="Navigation principale">
+                <a class="brand" href="index.html" aria-label="Accueil Objectif 15 sur 20">
+                    <span class="brand-mark" aria-hidden="true">🐴</span>
+                    <span>Révisions Karniella</span>
+                </a>
+                <div class="home-nav-links">
+                    <a href="#matieres">Matières</a>
+                    <a href="#programme">Programme</a>
+                </div>
+            </nav>
+
+            <div class="hero-layout">
+                <div class="hero-copy">
+                    <span class="hero-eyebrow">Ton espace de révision</span>
+                    <h1>Objectif <strong>15/20</strong></h1>
+                    <p>Des cours clairs, des exercices et des quiz pour avancer à ton rythme — sans pression, mais avec méthode.</p>
+                    <div class="hero-actions">
+                        <a class="primary-cta" href="#matieres">Choisir une matière <span aria-hidden="true">↓</span></a>
+                        <a class="secondary-cta" href="#programme">Voir tout le programme</a>
+                    </div>
+                    <ul class="hero-stats" aria-label="Contenu disponible">
+                        <li><strong>7</strong><span>matières</span></li>
+                        <li><strong>39</strong><span>leçons</span></li>
+                        <li><strong>100 %</strong><span>à ton rythme</span></li>
+                    </ul>
+                </div>
+
+                <aside class="revision-plan" aria-label="Méthode de révision">
+                    <span class="plan-label">Ta session en 3 étapes</span>
+                    <ol>
+                        <li><span>01</span><div><strong>Choisis</strong><small>une matière à travailler</small></div></li>
+                        <li><span>02</span><div><strong>Comprends</strong><small>avec une leçon illustrée</small></div></li>
+                        <li><span>03</span><div><strong>Teste-toi</strong><small>avec un quiz interactif</small></div></li>
+                    </ol>
+                    <p>Un petit pas aujourd'hui, un meilleur résultat lundi.</p>
+                </aside>
+            </div>
         </header>
 
-        <!-- Lessons Grid -->
-        <div class="lessons-grid" id="lessonsContainer">
-            <!-- Les leçons sont générées par JavaScript -->
-        </div>
+        <main id="main-content">
+            <section class="subjects-section" id="matieres" aria-labelledby="subjects-title">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">Commence ici</span>
+                        <h2 id="subjects-title">Que veux-tu réviser ?</h2>
+                        <p>Choisis une matière ou recherche directement un thème.</p>
+                    </div>
 
-        <!-- Programme complet, organisé par matière -->
-        <section class="programme-section" id="programme">
+                    <div class="subject-search">
+                        <label for="subjectSearch">Rechercher une matière ou une leçon</label>
+                        <div class="search-field">
+                            <span aria-hidden="true">⌕</span>
+                            <input id="subjectSearch" type="search" placeholder="Ex. fractions, circuit, SVT…" autocomplete="off">
+                        </div>
+                        <p id="searchResults" class="search-results" aria-live="polite">7 matières disponibles</p>
+                    </div>
+                </div>
+
+                <!-- Lessons Grid -->
+                <div class="subjects-list" id="lessonsContainer">
+                    <!-- Les leçons sont générées par JavaScript -->
+                </div>
+                <div class="search-empty" id="searchEmpty" hidden>
+                    <span aria-hidden="true">🔎</span>
+                    <h3>Aucun résultat pour cette recherche</h3>
+                    <p>Essaie avec un nom de matière ou un mot plus court.</p>
+                    <button type="button" id="clearSearch">Effacer la recherche</button>
+                </div>
+            </section>
+
+            <!-- Programme complet, organisé par matière -->
+            <section class="programme-section" id="programme">
             <h2>🐴 Programme</h2>
             <p class="programme-intro">Toutes les leçons du site, matière par matière. Suis le parcours dans
                 l'ordre ou choisis directement ce que tu veux réviser !</p>
@@ -447,11 +509,14 @@
                     </ol>
                 </div>
             </div>
-        </section>
+            </section>
+        </main>
 
         <!-- Footer -->
         <footer>
-            <p>🐴 Apprends facilement avec des cours amusants et des quiz super cool ! 🏇</p>
+            <div class="footer-brand"><span aria-hidden="true">🐴</span><strong>Révisions Karniella</strong></div>
+            <p>Apprendre, s'entraîner, progresser — une leçon à la fois.</p>
+            <a href="#main-content">Retour en haut <span aria-hidden="true">↑</span></a>
         </footer>
     </div>
 
@@ -642,18 +707,23 @@
 
             subjects.forEach(subject => {
                 // Créer la section de la matière
-                const section = document.createElement('div');
+                const section = document.createElement('article');
                 section.className = 'subject-section';
+                section.dataset.search = [
+                    subject.name,
+                    subject.description,
+                    ...subject.lessons.map(lesson => `${lesson.title} ${lesson.description}`)
+                ].join(' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
                 // Titre de la matière
-                const titleDiv = document.createElement('div');
+                const titleDiv = document.createElement('h3');
                 titleDiv.className = 'subject-title';
 
                 if (subject.url) {
                     // Si une URL existe, rendre le titre cliquable
                     const titleLink = document.createElement('a');
                     titleLink.href = subject.url;
-                    titleLink.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
+                    titleLink.innerHTML = `<span class="subject-icon" aria-hidden="true">${subject.icon}</span><span>${subject.name}</span><span class="subject-arrow" aria-hidden="true">↗</span>`;
                     titleDiv.appendChild(titleLink);
                 } else {
                     // Sinon, afficher le titre normalement
@@ -678,7 +748,7 @@
                     card.innerHTML = `
                         <span class="lesson-icon">${subject.icon}</span>
                         <span class="status-coming-soon">Bientôt</span>
-                        <h2>Cours en préparation</h2>
+                        <h4>Cours en préparation</h4>
                         <p>Les leçons de ${subject.name.toLowerCase()} seront bientôt disponibles.</p>
                         <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
                     `;
@@ -686,23 +756,24 @@
                 } else {
                     // Ajouter les leçons disponibles
                     subject.lessons.forEach((lesson, index) => {
-                        const card = document.createElement('div');
+                        const card = document.createElement('article');
                         card.className = `lesson-card lesson-${index + 1}`;
+                        card.dataset.search = `${lesson.title} ${lesson.description}`.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
                         if (lesson.status === 'available') {
                             card.innerHTML = `
-                                <a href="${lesson.url}">
-                                    <span class="lesson-icon">${lesson.icon}</span>
-                                    <h2>${lesson.title}</h2>
+                                <a href="${lesson.url}" aria-label="Ouvrir ${lesson.title}">
+                                    <span class="lesson-icon" aria-hidden="true">${lesson.icon}</span>
+                                    <h4>${lesson.title}</h4>
                                     <p>${lesson.description}</p>
-                                    <button class="lesson-button">Accéder →</button>
+                                    <span class="lesson-button">Accéder <span aria-hidden="true">→</span></span>
                                 </a>
                             `;
                         } else {
                             card.innerHTML = `
                                 <span class="lesson-icon">${lesson.icon}</span>
                                 <span class="status-coming-soon">Bientôt</span>
-                                <h2>${lesson.title}</h2>
+                                <h4>${lesson.title}</h4>
                                 <p>${lesson.description}</p>
                                 <button class="lesson-button" disabled style="opacity: 0.6; cursor: not-allowed;">Bientôt disponible</button>
                             `;
@@ -719,6 +790,43 @@
 
         // Initialiser les sections au chargement
         renderSubjects();
+
+        const searchInput = document.getElementById('subjectSearch');
+        const searchResults = document.getElementById('searchResults');
+        const searchEmpty = document.getElementById('searchEmpty');
+        const clearSearchButton = document.getElementById('clearSearch');
+
+        function normalizeSearch(value) {
+            return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+        }
+
+        function filterSubjects() {
+            const query = normalizeSearch(searchInput.value);
+            const sections = [...document.querySelectorAll('.subject-section')];
+            const programmeSubjects = [...document.querySelectorAll('.programme-matiere')];
+            let visibleSubjects = 0;
+
+            sections.forEach((section, index) => {
+                const programmeSearch = normalizeSearch(programmeSubjects[index]?.textContent || '');
+                const isVisible = !query
+                    || section.dataset.search.includes(query)
+                    || programmeSearch.includes(query);
+                section.hidden = !isVisible;
+                if (isVisible) visibleSubjects += 1;
+            });
+
+            searchEmpty.hidden = visibleSubjects !== 0;
+            searchResults.textContent = query
+                ? `${visibleSubjects} matière${visibleSubjects > 1 ? 's' : ''} trouvée${visibleSubjects > 1 ? 's' : ''}`
+                : `${sections.length} matières disponibles`;
+        }
+
+        searchInput.addEventListener('input', filterSubjects);
+        clearSearchButton.addEventListener('click', () => {
+            searchInput.value = '';
+            filterSubjects();
+            searchInput.focus();
+        });
     </script>
 
     <!-- Service Worker Registration -->

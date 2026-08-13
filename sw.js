@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
-// Version 1.0.0
+// Version 1.1.0
 
-const CACHE_NAME = 'karniella-cache-v5';
+const CACHE_NAME = 'karniella-cache-v7';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -156,7 +156,27 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Pour le reste : Cache First, Network Fallback
+    // Pour les pages : Network First afin qu'une mise à jour soit visible
+    // dès la prochaine ouverture, avec le cache comme secours hors-ligne.
+    if (event.request.mode === 'navigate' || event.request.destination === 'document') {
+        event.respondWith(
+            fetch(event.request)
+                .then((response) => {
+                    if (response && response.status === 200) {
+                        const responseToCache = response.clone();
+                        caches.open(CACHE_NAME)
+                            .then((cache) => cache.put(event.request, responseToCache));
+                    }
+                    return response;
+                })
+                .catch(async () => {
+                    return (await caches.match(event.request)) || caches.match('/index.html');
+                })
+        );
+        return;
+    }
+
+    // Pour les ressources statiques : Cache First, Network Fallback
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
