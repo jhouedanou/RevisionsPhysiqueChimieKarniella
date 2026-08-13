@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/karniella-theme.css">
 <link href="css/section-quiz.css" rel="stylesheet"/>
 <link href="styles-math-lessons.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/horse-theme.css"/>
 </head>
 <body>
 <header>
@@ -342,16 +343,16 @@
 <script>
         function submitQuiz(quizId) {
             const answers = {
-                q1: 'c',
-                q2: 'a',
-                q3: 'c',
-                q4: 'a',
-                q5: 'c',
-                q6: 'b',
-                q7: 'c',
-                q8: 'b',
-                q9: 'c',
-                q10: 'a'
+                q1: 'a',   // un relatif peut etre positif, negatif ou nul
+                q2: 'c',   // 0 n'est ni positif ni negatif
+                q3: 'b',   // l'oppose de +7 est -7
+                q4: 'b',   // la distance a zero de -5 vaut 5
+                q5: 'b',   // les negatifs sont a gauche de 0
+                q6: 'a',   // +3 est plus grand que -7
+                q7: 'a',   // -4 est plus grand que -9
+                q8: 'a',   // l'oppose de 0 est 0
+                q9: 'a',   // -5 < -1 < 0 < +3
+                q10: 'b'   // -10 degres est en dessous de 0
             };
 
             let score = 0;
@@ -426,5 +427,6 @@
                 console.error('Erreur chargement questions:', error);
             });
     </script>
+<script src="js/chat-assistant.js" defer></script>
 </body>
 </html>

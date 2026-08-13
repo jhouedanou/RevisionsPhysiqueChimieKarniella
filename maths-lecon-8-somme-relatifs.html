@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/karniella-theme.css">
 <link href="css/section-quiz.css" rel="stylesheet"/>
 <link href="styles-math-lessons.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/horse-theme.css"/>
 </head>
 <body>
 <header>
@@ -126,141 +127,91 @@
 </div>
 <div class="tab-content" id="tab3">
 <div class="container">
-<h2>📝 Quiz - Somme de Nombres Relatifs</h2>
-<p>Testez vos connaissances sur l'addition de nombres positifs et négatifs</p>
-<div class="quiz-section">
-<div class="quiz-question">
-<span class="question-number">1</span>
-<span class="question-text">Calculer : (+6) + (+9)</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q1" type="radio" value="a"/> +3
-                            </label>
-<label class="quiz-option">
-<input name="q1" type="radio" value="b"/> +15
-                            </label>
-<label class="quiz-option">
-<input name="q1" type="radio" value="c"/> -15
-                            </label>
+<h2>✏️ Exercices - Somme de Nombres Relatifs</h2>
+<p>Entraîne-toi ! Cherche d'abord la réponse sur ton cahier, puis affiche la correction. 🐴</p>
+<div class="property-box">
+<h4>✓ Rappel des deux règles</h4>
+<p><strong>Mêmes signes :</strong> on additionne les distances à zéro, on garde le signe commun.</p>
+<p><strong>Signes contraires :</strong> on soustrait les distances à zéro, on prend le signe du nombre le plus éloigné de zéro.</p>
 </div>
-<div class="quiz-feedback" id="feedback-q1"></div>
+<div class="example-box">
+<h4>🌾 Exercice 1 - Mêmes signes</h4>
+<p>Calcule les sommes suivantes :</p>
+<ol style="margin-left: 20px; line-height: 2;">
+<li>(+12) + (+7) = ?</li>
+<li>(-6) + (-8) = ?</li>
+<li>(+3,5) + (+2,5) = ?</li>
+<li>(-1,4) + (-2,3) = ?</li>
+</ol>
+<button class="quiz-button" onclick="toggleCorrection('corr1')" type="button">👀 Voir la correction</button>
+<div class="info" id="corr1" style="display: none; margin-top: 15px;">
+<strong>Correction :</strong><br/>
+                        1. (+12) + (+7) = <strong>+19</strong> — on additionne 12 + 7 = 19, signe commun +<br/>
+                        2. (-6) + (-8) = <strong>-14</strong> — on additionne 6 + 8 = 14, signe commun -<br/>
+                        3. (+3,5) + (+2,5) = <strong>+6</strong> — on additionne 3,5 + 2,5 = 6, signe commun +<br/>
+                        4. (-1,4) + (-2,3) = <strong>-3,7</strong> — on additionne 1,4 + 2,3 = 3,7, signe commun -
+                    </div>
 </div>
-<div class="quiz-question">
-<span class="question-number">2</span>
-<span class="question-text">Calculer : (-4) + (-7)</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q2" type="radio" value="a"/> -11
-                            </label>
-<label class="quiz-option">
-<input name="q2" type="radio" value="b"/> +11
-                            </label>
-<label class="quiz-option">
-<input name="q2" type="radio" value="c"/> -3
-                            </label>
+<div class="example-box">
+<h4>🌾 Exercice 2 - Signes contraires</h4>
+<p>Calcule les sommes suivantes :</p>
+<ol style="margin-left: 20px; line-height: 2;">
+<li>(+14) + (-9) = ?</li>
+<li>(-11) + (+4) = ?</li>
+<li>(+2,8) + (-5,3) = ?</li>
+<li>(-7,5) + (+7,5) = ?</li>
+</ol>
+<button class="quiz-button" onclick="toggleCorrection('corr2')" type="button">👀 Voir la correction</button>
+<div class="info" id="corr2" style="display: none; margin-top: 15px;">
+<strong>Correction :</strong><br/>
+                        1. (+14) + (-9) = <strong>+5</strong> — différence 14 - 9 = 5, le plus éloigné de zéro est +14 donc signe +<br/>
+                        2. (-11) + (+4) = <strong>-7</strong> — différence 11 - 4 = 7, le plus éloigné de zéro est -11 donc signe -<br/>
+                        3. (+2,8) + (-5,3) = <strong>-2,5</strong> — différence 5,3 - 2,8 = 2,5, le plus éloigné de zéro est -5,3 donc signe -<br/>
+                        4. (-7,5) + (+7,5) = <strong>0</strong> — ce sont deux opposés, ils s'annulent
+                    </div>
 </div>
-<div class="quiz-feedback" id="feedback-q2"></div>
+<div class="example-box">
+<h4>🌾 Exercice 3 - Problèmes concrets</h4>
+<ol style="margin-left: 20px; line-height: 2;">
+<li>Le matin il fait -3 °C. Dans la journée la température monte de 9 °C. Quelle température fait-il ?</li>
+<li>Un cheval part d'un point A. Il avance de 12 m, puis recule de 5 m. À quelle distance de A se trouve-t-il ?</li>
+<li>Un ascenseur est au niveau -2. Il descend encore de 3 niveaux. À quel niveau arrive-t-il ?</li>
+<li>Karniella avait 15 points. Elle perd 20 points, puis en gagne 8. Combien a-t-elle de points ?</li>
+</ol>
+<button class="quiz-button" onclick="toggleCorrection('corr3')" type="button">👀 Voir la correction</button>
+<div class="info" id="corr3" style="display: none; margin-top: 15px;">
+<strong>Correction :</strong><br/>
+                        1. (-3) + (+9) = <strong>+6 °C</strong><br/>
+                        2. (+12) + (-5) = <strong>+7 m</strong>, il est à 7 m devant A<br/>
+                        3. (-2) + (-3) = <strong>-5</strong>, il arrive au niveau -5<br/>
+                        4. (+15) + (-20) + (+8) = (-5) + (+8) = <strong>+3 points</strong>
+                    </div>
 </div>
-<div class="quiz-question">
-<span class="question-number">3</span>
-<span class="question-text">Calculer : (+10) + (-3)</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q3" type="radio" value="a"/> +7
-                            </label>
-<label class="quiz-option">
-<input name="q3" type="radio" value="b"/> -7
-                            </label>
-<label class="quiz-option">
-<input name="q3" type="radio" value="c"/> +13
-                            </label>
+<div class="example-box">
+<h4>🌾 Exercice 4 - Trouve le nombre manquant</h4>
+<ol style="margin-left: 20px; line-height: 2;">
+<li>(+8) + ... = +3</li>
+<li>(-4) + ... = -10</li>
+<li>... + (-6) = +2</li>
+<li>(-9) + ... = 0</li>
+</ol>
+<button class="quiz-button" onclick="toggleCorrection('corr4')" type="button">👀 Voir la correction</button>
+<div class="info" id="corr4" style="display: none; margin-top: 15px;">
+<strong>Correction :</strong><br/>
+                        1. <strong>-5</strong> car (+8) + (-5) = +3<br/>
+                        2. <strong>-6</strong> car (-4) + (-6) = -10<br/>
+                        3. <strong>+8</strong> car (+8) + (-6) = +2<br/>
+                        4. <strong>+9</strong> car (-9) + (+9) = 0, c'est l'opposé de -9
+                    </div>
 </div>
-<div class="quiz-feedback" id="feedback-q3"></div>
-</div>
-<div class="quiz-question">
-<span class="question-number">4</span>
-<span class="question-text">Calculer : (-8) + (+12)</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q4" type="radio" value="a"/> -4
-                            </label>
-<label class="quiz-option">
-<input name="q4" type="radio" value="b"/> +4
-                            </label>
-<label class="quiz-option">
-<input name="q4" type="radio" value="c"/> +20
-                            </label>
-</div>
-<div class="quiz-feedback" id="feedback-q4"></div>
-</div>
-<div class="quiz-question">
-<span class="question-number">5</span>
-<span class="question-text">Calculer : (+5) + (-5)</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q5" type="radio" value="a"/> +10
-                            </label>
-<label class="quiz-option">
-<input name="q5" type="radio" value="b"/> 0
-                            </label>
-<label class="quiz-option">
-<input name="q5" type="radio" value="c"/> -10
-                            </label>
-</div>
-<div class="quiz-feedback" id="feedback-q5"></div>
-</div>
-<div class="quiz-question">
-<span class="question-number">6</span>
-<span class="question-text">Quand l'addition de deux nombres relatifs de même signe donne un résultat positif ?</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q6" type="radio" value="a"/> Toujours
-                            </label>
-<label class="quiz-option">
-<input name="q6" type="radio" value="b"/> Seulement si on additionne deux positifs
-                            </label>
-<label class="quiz-option">
-<input name="q6" type="radio" value="c"/> Jamais
-                            </label>
-</div>
-<div class="quiz-feedback" id="feedback-q6"></div>
-</div>
-<div class="quiz-question">
-<span class="question-number">7</span>
-<span class="question-text">Calculer : (+2,5) + (-1,2)</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q7" type="radio" value="a"/> +1,3
-                            </label>
-<label class="quiz-option">
-<input name="q7" type="radio" value="b"/> -1,3
-                            </label>
-<label class="quiz-option">
-<input name="q7" type="radio" value="c"/> +3,7
-                            </label>
-</div>
-<div class="quiz-feedback" id="feedback-q7"></div>
-</div>
-<div class="quiz-question">
-<span class="question-number">8</span>
-<span class="question-text">Un thermomètre indique -5°C. La température monte de 8°C. Quelle est la nouvelle température ?</span>
-<div class="quiz-options">
-<label class="quiz-option">
-<input name="q8" type="radio" value="a"/> -13°C
-                            </label>
-<label class="quiz-option">
-<input name="q8" type="radio" value="b"/> +3°C
-                            </label>
-<label class="quiz-option">
-<input name="q8" type="radio" value="c"/> +13°C
-                            </label>
-</div>
-<div class="quiz-feedback" id="feedback-q8"></div>
-</div>
-<button class="quiz-button" onclick="submitQuiz('quiz8')">Vérifier les Réponses</button>
-<div class="quiz-result" id="quiz-results"></div>
-</div>
-</div>
+<div class="info">
+<strong>💡 Astuce :</strong><br/>
+                    Pour vérifier, imagine un déplacement sur la droite graduée : un nombre positif fait avancer vers la droite, un nombre négatif fait reculer vers la gauche. 🏇
+                </div>
+
+                <!-- Section Quiz -->
+                <div id="quiz-tab3"></div>
+            </div>
 </div>
 <div class="tab-content" id="tab4">
 <div class="container">
@@ -435,18 +386,26 @@
 </div>
 <script src="math-lessons-script.js"></script>
 <script>
+        // Affiche ou masque la correction d'un exercice
+        function toggleCorrection(id) {
+            const bloc = document.getElementById(id);
+            if (!bloc) return;
+            const visible = bloc.style.display !== 'none';
+            bloc.style.display = visible ? 'none' : 'block';
+        }
+
         function submitQuiz(quizId) {
             const answers = {
-                q1: 'b',
-                q2: 'c',
-                q3: 'a',
-                q4: 'b',
-                q5: 'a',
-                q6: 'c',
-                q7: 'b',
-                q8: 'a',
-                q9: 'c',
-                q10: 'a'
+                q1: 'a',   // additionner les distances a zero et garder le signe commun
+                q2: 'b',   // (+5) + (+3) = +8
+                q3: 'c',   // (-7) + (-4) = -11
+                q4: 'a',   // difference des distances a zero, signe du plus eloigne de zero
+                q5: 'c',   // (+8) + (-3) = +5
+                q6: 'b',   // (-9) + (+4) = -5
+                q7: 'a',   // (+7) + (-7) = 0
+                q8: 'c',   // (+10) + (+5) = +15
+                q9: 'b',   // (-5) + (+8) = +3 degres
+                q10: 'c'   // (-6) + (-9) = -15
             };
 
             let score = 0;
@@ -511,11 +470,16 @@
                 if (lessonQuestions['tab2']) {
                     initSectionQuiz('quiz-tab2', lessonQuestions['tab2']);
                 }
+
+                if (lessonQuestions['tab3']) {
+                    initSectionQuiz('quiz-tab3', lessonQuestions['tab3']);
+                }
                 
             })
             .catch(error => {
                 console.error('Erreur chargement questions:', error);
             });
     </script>
+<script src="js/chat-assistant.js" defer></script>
 </body>
 </html>

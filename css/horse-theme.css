@@ -1,0 +1,256 @@
+/**
+ * Thème Chevaux 🐴 - Révisions Karniella
+ *
+ * Couche additive : se charge APRÈS les feuilles existantes et ne remplace
+ * pas la palette rose du site, elle l'accorde à des tons équestres
+ * (cuir, sable, crinière). Aucune règle ne modifie la mise en page :
+ * uniquement couleurs, bordures et décors.
+ */
+
+/* ============================================
+   PALETTE ÉQUESTRE
+   ============================================ */
+:root {
+    /* Tons chevaux */
+    --horse-leather: #8B5A2B;
+    --horse-saddle: #A9743F;
+    --horse-mane: #C89F6D;
+    --horse-sand: #F5E6D3;
+    --horse-cream: #FFF8F0;
+    --horse-hay: #E8C77B;
+    --horse-meadow: #7BA05B;
+
+    /* Accords avec le rose Karniella déjà en place */
+    --horse-accent: #C71585;
+    --horse-accent-soft: #FF69B4;
+
+    /* Ombres et bordures */
+    --horse-shadow: 0 8px 28px rgba(139, 90, 43, 0.28);
+    --horse-border: 3px solid var(--horse-mane);
+}
+
+/* ============================================
+   DÉCOR DE FOND
+   ============================================ */
+body {
+    position: relative;
+}
+
+/* Fers à cheval flottants, purement décoratifs */
+body::before {
+    content: '🐴';
+    position: fixed;
+    top: 12%;
+    left: 4%;
+    font-size: 90px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    animation: horse-float 7s ease-in-out infinite;
+}
+
+body::after {
+    content: '🐎';
+    position: fixed;
+    bottom: 12%;
+    right: 4%;
+    font-size: 80px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    animation: horse-float 6s ease-in-out infinite reverse;
+}
+
+@keyframes horse-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+/* Le contenu passe toujours au-dessus du décor */
+header,
+.container,
+.content,
+.tabs,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   EN-TÊTES
+   ============================================ */
+header h1::before {
+    content: '🐴 ';
+}
+
+header h1::after {
+    content: ' 🏇';
+}
+
+/* ============================================
+   ENCADRÉS DE LEÇON
+   ============================================ */
+.definition-box,
+.example-box,
+.property-box,
+.info {
+    border-left: 6px solid var(--horse-saddle);
+    background: linear-gradient(135deg, var(--horse-cream) 0%, var(--horse-sand) 100%);
+    box-shadow: var(--horse-shadow);
+}
+
+.definition-box h4::before {
+    content: '🐴 ';
+}
+
+.example-box h4::before {
+    content: '🌾 ';
+}
+
+.property-box h4::before {
+    content: '🏇 ';
+}
+
+/* Le titre des encadrés reste très contrasté sur fond sable */
+.definition-box h4,
+.example-box h4,
+.property-box h4 {
+    color: #6B4423;
+}
+
+.definition-box p,
+.example-box p,
+.property-box p,
+.definition-box li,
+.example-box li,
+.property-box li {
+    color: #2E2E2E;
+}
+
+/* ============================================
+   ONGLETS
+   ============================================ */
+.tab-button {
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button.active {
+    border-bottom-color: var(--horse-saddle);
+}
+
+/* ============================================
+   BOUTONS DE QUIZ
+   ============================================ */
+.quiz-button,
+.section-quiz-check-all {
+    background: linear-gradient(135deg, var(--horse-saddle) 0%, var(--horse-leather) 100%);
+    border-color: var(--horse-leather);
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.quiz-button:hover,
+.section-quiz-check-all:hover {
+    background: linear-gradient(135deg, var(--horse-mane) 0%, var(--horse-saddle) 100%);
+}
+
+.section-quiz-header h4::before {
+    content: '🦄 ';
+}
+
+/* ============================================
+   BOUTON RETOUR
+   ============================================ */
+.btn-back::before {
+    content: '🐎 ';
+}
+
+/* ============================================
+   BANDEAU PROGRAMME (page d'accueil)
+   ============================================ */
+.programme-section {
+    background: linear-gradient(135deg, var(--horse-cream) 0%, var(--horse-sand) 100%);
+    border: var(--horse-border);
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 50px;
+    box-shadow: var(--horse-shadow);
+}
+
+.programme-section h2 {
+    color: #6B4423;
+    font-size: 28px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.programme-intro {
+    color: #4A3520;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.programme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.programme-matiere {
+    background: #FFFFFF;
+    border: 2px solid var(--horse-mane);
+    border-radius: 18px;
+    padding: 18px 20px;
+}
+
+.programme-matiere h3 {
+    color: var(--horse-accent);
+    font-size: 18px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--horse-sand);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.programme-matiere ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.programme-matiere li {
+    color: #2E2E2E;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.programme-matiere a {
+    color: #1F1F1F;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--horse-saddle);
+}
+
+.programme-matiere a:hover {
+    color: var(--horse-accent);
+    border-bottom-style: solid;
+}
+
+@media (max-width: 768px) {
+    .programme-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body::before,
+    body::after {
+        font-size: 60px;
+    }
+}

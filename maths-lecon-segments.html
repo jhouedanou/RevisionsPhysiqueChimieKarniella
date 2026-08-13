@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/karniella-theme.css">
 <link href="css/section-quiz.css" rel="stylesheet"/>
 <link href="styles-math-lessons.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/horse-theme.css"/>
 </head>
 <body>
 <header>
@@ -53,7 +54,18 @@
 </div>
 <div class="example-box">
 <h4>💡 Différence avec d'autres objets géométriques</h4>
-<svg height="220" viewbox="0 0 600 220" width="100%">
+<svg height="220" viewBox="0 0 600 220" width="100%">
+<defs>
+<marker id="arrowgreen" markerHeight="6" markerWidth="8" orient="auto" refX="7" refY="3">
+<path d="M0,0 L8,3 L0,6 Z" fill="#4CAF50"></path>
+</marker>
+<marker id="arrowblue2" markerHeight="6" markerWidth="8" orient="auto" refX="7" refY="3">
+<path d="M0,0 L8,3 L0,6 Z" fill="#2196F3"></path>
+</marker>
+<marker id="arrowblue2start" markerHeight="6" markerWidth="8" orient="auto" refX="1" refY="3">
+<path d="M8,0 L0,3 L8,6 Z" fill="#2196F3"></path>
+</marker>
+</defs>
 <!-- Point -->
 <circle cx="50" cy="40" fill="#f44336" r="4"></circle>
 <text fill="#333" font-size="14" text-anchor="middle" x="50" y="65">Point</text>
@@ -67,12 +79,15 @@
 <circle cx="270" cy="40" fill="#f44336" r="4"></circle>
 <text fill="#333" font-size="14" text-anchor="middle" x="325" y="65">Demi-droite [AB)</text>
 <!-- Droite -->
-<line stroke="#2196F3" stroke-width="2" x1="50" x2="500" y1="120" y2="120"></line>
+<line marker-end="url(#arrowblue2)" marker-start="url(#arrowblue2start)" stroke="#2196F3" stroke-width="2" x1="60" x2="495" y1="120" y2="120"></line>
 <circle cx="200" cy="120" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="14" font-weight="bold" x="194" y="108">A</text>
+<circle cx="350" cy="120" fill="#f44336" r="4"></circle>
+<text fill="#f44336" font-size="14" font-weight="bold" x="344" y="108">B</text>
 <text fill="#333" font-size="14" text-anchor="middle" x="275" y="145">Droite (AB)</text>
 <!-- Définitions -->
-<text fill="#333" font-size="12" x="50" y="190"><tspan x="50">✓ Point : position sans dimension</tspan></text>
-<text fill="#333" font-size="12" x="50" y="210"><tspan x="50">✓ Segment : limité aux deux extrémités</tspan></text>
+<text fill="#333" font-size="14" x="50" y="185"><tspan x="50">✓ Segment [AB] : limité aux deux extrémités</tspan></text>
+<text fill="#333" font-size="14" x="50" y="207"><tspan x="50">✓ Demi-droite [AB) : illimitée d'un seul côté — Droite (AB) : illimitée des deux côtés</tspan></text>
 </svg>
 </div>
 <div class="property-box">
@@ -194,6 +209,53 @@
 <li>Lire la mesure au point B</li>
 <li>Exprimer la longueur avec l'unité appropriée</li>
 </ol>
+<svg height="200" viewBox="0 0 600 200" width="100%">
+<line stroke="#FF69B4" stroke-width="4" x1="100" x2="400" y1="55" y2="55"></line>
+<circle cx="100" cy="55" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="93" y="40">A</text>
+<circle cx="400" cy="55" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="16" font-weight="bold" x="393" y="40">B</text>
+<line stroke="#888" stroke-dasharray="4,4" stroke-width="1" x1="100" x2="100" y1="55" y2="100"></line>
+<line stroke="#888" stroke-dasharray="4,4" stroke-width="1" x1="400" x2="400" y1="55" y2="100"></line>
+<rect fill="#FFF8FB" height="45" stroke="#333" stroke-width="2" width="500" x="50" y="100"></rect>
+<line stroke="#333" stroke-width="2" x1="50" x2="50" y1="100" y2="125"></line>
+<line stroke="#333" stroke-width="1" x1="100" x2="100" y1="100" y2="118"></line>
+<line stroke="#333" stroke-width="2" x1="150" x2="150" y1="100" y2="125"></line>
+<line stroke="#333" stroke-width="1" x1="200" x2="200" y1="100" y2="118"></line>
+<line stroke="#333" stroke-width="2" x1="250" x2="250" y1="100" y2="125"></line>
+<line stroke="#333" stroke-width="1" x1="300" x2="300" y1="100" y2="118"></line>
+<line stroke="#333" stroke-width="2" x1="350" x2="350" y1="100" y2="125"></line>
+<line stroke="#333" stroke-width="1" x1="400" x2="400" y1="100" y2="118"></line>
+<line stroke="#333" stroke-width="2" x1="450" x2="450" y1="100" y2="125"></line>
+<line stroke="#333" stroke-width="1" x1="500" x2="500" y1="100" y2="118"></line>
+<line stroke="#333" stroke-width="2" x1="550" x2="550" y1="100" y2="125"></line>
+<text fill="#333" font-size="14" text-anchor="middle" x="50" y="140">0</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="150" y="140">2</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="250" y="140">4</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="350" y="140">6</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="450" y="140">8</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="550" y="140">10</text>
+<text fill="#C71585" font-size="16" font-weight="bold" text-anchor="middle" x="300" y="180">A est sur le 1 et B sur le 7 : AB = 6 cm</text>
+</svg>
+<p>On aligne le zéro de la règle (ou un trait bien repéré) avec l'extrémité A, puis on lit la graduation à l'extrémité B.</p>
+</div>
+<div class="example-box">
+<h4>💡 Le milieu d'un segment</h4>
+<svg height="180" viewBox="0 0 600 180" width="100%">
+<line stroke="#FF69B4" stroke-width="4" x1="100" x2="500" y1="80" y2="80"></line>
+<circle cx="100" cy="80" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="92" y="62">A</text>
+<circle cx="300" cy="80" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="292" y="62">M</text>
+<circle cx="500" cy="80" fill="#f44336" r="6"></circle>
+<text fill="#f44336" font-size="18" font-weight="bold" x="492" y="62">B</text>
+<line stroke="#C71585" stroke-width="2" x1="195" x2="205" y1="68" y2="92"></line>
+<line stroke="#C71585" stroke-width="2" x1="395" x2="405" y1="68" y2="92"></line>
+<text fill="#333" font-size="14" text-anchor="middle" x="200" y="118">AM</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="400" y="118">MB</text>
+<text fill="#C71585" font-size="16" font-weight="bold" text-anchor="middle" x="300" y="155">AM = MB = AB ÷ 2</text>
+</svg>
+<p>Le point M est le <strong>milieu</strong> du segment [AB] : il appartient à [AB] et les deux longueurs AM et MB sont égales. Les petits traits identiques codent cette égalité de longueurs.</p>
 </div>
 <div class="definition-box">
 <h4>📘 Segments égaux et segments comparables</h4>
@@ -209,14 +271,16 @@
 <text fill="#f44336" font-size="14" font-weight="bold" x="75" y="30">A</text>
 <circle cx="280" cy="50" fill="#f44336" r="4"></circle>
 <text fill="#f44336" font-size="14" font-weight="bold" x="275" y="30">B</text>
-<text fill="#333" font-size="13" text-anchor="middle" x="180" y="85">AB = 4 cm</text>
+<line stroke="#C71585" stroke-width="2" x1="175" x2="185" y1="38" y2="62"></line>
+<text fill="#333" font-size="14" text-anchor="middle" x="180" y="85">AB = 4 cm</text>
 <!-- Segment 2 -->
 <line stroke="#FF69B4" stroke-width="3" x1="80" x2="280" y1="130" y2="130"></line>
 <circle cx="80" cy="130" fill="#f44336" r="4"></circle>
 <text fill="#f44336" font-size="14" font-weight="bold" x="75" y="110">C</text>
 <circle cx="280" cy="130" fill="#f44336" r="4"></circle>
 <text fill="#f44336" font-size="14" font-weight="bold" x="275" y="110">D</text>
-<text fill="#333" font-size="13" text-anchor="middle" x="180" y="165">CD = 4 cm</text>
+<line stroke="#C71585" stroke-width="2" x1="175" x2="185" y1="118" y2="142"></line>
+<text fill="#333" font-size="14" text-anchor="middle" x="180" y="165">CD = 4 cm</text>
 <!-- Résultat -->
 <text fill="#4CAF50" font-size="16" font-weight="bold" x="350" y="100">[AB] = [CD]</text>
 </svg>
@@ -432,5 +496,6 @@
                 console.error('Erreur chargement questions:', error);
             });
     </script>
+<script src="js/chat-assistant.js" defer></script>
 </body>
 </html>

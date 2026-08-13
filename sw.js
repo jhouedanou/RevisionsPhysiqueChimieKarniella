@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.0.0
 
-const CACHE_NAME = 'karniella-cache-v4';
+const CACHE_NAME = 'karniella-cache-v5';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -25,6 +25,17 @@ const FILES_TO_CACHE = [
     '/informatique-culture-numerique-internet.html',
 
     // Leçons de Mathématiques
+    '/maths-lecon-1-calculs-algebriques.html',
+    '/maths-lecon-2-diviseurs.html',
+    '/maths-lecon-3-droites-points.html',
+    '/maths-lecon-4-secantes-perpendiculaires.html',
+    '/maths-lecon-5-droites-paralleles.html',
+    '/maths-lecon-6-proprietes.html',
+    '/maths-lecon-7-nombres-relatifs.html',
+    '/maths-lecon-8-somme-relatifs.html',
+    '/maths-lecon-segments.html',
+    '/maths-lecon-cercles-disques.html',
+    '/maths-lecon-fractions.html',
     '/maths-lecon-geometrie-triangle.html',
     '/maths-lecon-proportionnalite.html',
     '/maths-lecon-symetrie-centrale.html',
@@ -48,15 +59,33 @@ const FILES_TO_CACHE = [
     '/svt-croissance-plantes.html',
     '/svt-croissance-vertebres.html',
 
+    // Leçons de Français
+    '/francais-lecons.html',
+    '/francais-groupe-nominal.html',
+    '/francais-dictee.html',
+
+    // Leçons Histoire-Géographie
+    '/histoire-geographie-lecons.html',
+    '/histoire-sources-histoire.html',
+    '/histoire-sources-information.html',
+
+    // TICE
+    '/tice.html',
+
     // CSS
     '/css/section-quiz.css',
     '/css/lesson-viewer.css',
     '/css/quiz-viewer.css',
+    '/css/karniella-theme.css',
+    '/css/horse-theme.css',
+    '/styles-math-lessons.css',
 
     // JavaScript
     '/js/section-quiz.js',
     '/js/lesson-viewer.js',
     '/js/quiz-viewer.js',
+    '/js/chat-assistant.js',
+    '/math-lessons-script.js',
 
     // Data JSON (avec stratégie Network First)
     '/data/subjects.json',
