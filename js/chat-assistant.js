@@ -3,15 +3,39 @@
  * Site de révisions de Karniella (6e/5e).
  *
  * Autonome : une seule balise <script src="js/chat-assistant.js" defer></script>
- * suffit. Le script crée son CSS et son DOM tout seul.
+ * suffit. Le script crée son CSS et son DOM tout seul, et charge lui-même ce
+ * dont il a besoin — aucune page HTML n'a à être modifiée.
  *
- * Aucune dépendance, aucun fetch, aucun appel réseau. Tout est en dur.
+ * Trois niveaux de réponse, du plus rapide au plus rare :
+ *   1. les notions de LA page courante   (data/chat/<slug>.json, hors-ligne)
+ *   2. la base générale ci-dessous        (en dur, hors-ligne)
+ *   3. l'API Claude via /api/chat         (seulement si 1 et 2 échouent ET
+ *                                          qu'il y a du réseau — jamais requis)
+ *
+ * Tout ce qui touche au réseau dégrade en silence : sans connexion, sans clé
+ * API ou sans fichier généré, le chat reste utilisable comme avant.
  */
 (function () {
     'use strict';
 
     // Évite un double chargement si le script est injecté deux fois.
     if (window.KarniellaChat) { return; }
+
+    /**
+     * Racine du site, déduite de l'URL de CE script.
+     *
+     * Les pages de pages-composantes/ nous chargent via « ../js/chat-assistant.js » :
+     * un chemin relatif comme « data/chat/x.json » y viserait
+     * pages-composantes/data/chat/x.json, qui n'existe pas. On repart donc de
+     * l'adresse du script, valable depuis n'importe quelle profondeur.
+     */
+    var RACINE = (function () {
+        var script = document.currentScript;
+        if (script && script.src) {
+            return script.src.replace(/js\/chat-assistant\.js(\?.*)?$/, '');
+        }
+        return '';   // repli : relatif à la page courante
+    })();
 
     /* ============================================================
        1) BASE DE CONNAISSANCES (45 entrées)
@@ -599,6 +623,171 @@
         return utiles;
     }
 
+    /* ============================================================
+       2 bis) CONNAISSANCES DE LA PAGE COURANTE
+       Deux fichiers générés par `npm run build:chat` :
+         js/chat-knowledge-index.js  toutes les pages, titres seuls
+         data/chat/<slug>.json       le détail de CETTE page
+       Les deux sont facultatifs : sans eux on retombe sur BASE.
+       ============================================================ */
+
+    var CONNAISSANCES = {
+        slug: null,        // identifiant de la page, tiré de l'URL
+        index: null,       // window.KarniellaChatKnowledge.pages
+        page: null,        // entrée d'index de la page courante
+        detail: null,      // contenu de data/chat/<slug>.json
+        entrees: [],       // notions de la page, converties en entrées scorables
+        voisines: []       // notions des autres pages de la même matière
+    };
+
+    /** Slug de la page : « /maths-lecon-fractions.html » -> « maths-lecon-fractions ». */
+    function slugPage() {
+        var fichier = window.location.pathname.split('/').pop() || 'index.html';
+        return fichier.replace(/\.html$/, '') || 'index';
+    }
+
+    /** Onglet actuellement ouvert, s'il y en a un (les leçons à onglets). */
+    function ongletActif() {
+        var actif = document.querySelector('.tab-content.active');
+        return actif ? actif.id : null;
+    }
+
+    /**
+     * Mots-clés d'une notion, dérivés de son titre : mots simples + bigrammes.
+     * Volontairement calculés ici plutôt que pré-générés : le générateur et le
+     * navigateur partageraient sinon deux copies de `normaliser()`, qui
+     * finiraient par diverger sans que rien ne le signale.
+     */
+    function motsClesDepuisTitre(titre) {
+        var mots = decouper(normaliser(titre));
+        var cles = mots.slice();
+        for (var i = 0; i < mots.length - 1; i++) {
+            cles.push(mots[i] + ' ' + mots[i + 1]);
+        }
+        return cles;
+    }
+
+    /** Libellé lisible d'un onglet (« Présentation ») à partir de son id. */
+    function libelleOnglet(idOnglet) {
+        var onglets = (CONNAISSANCES.detail && CONNAISSANCES.detail.onglets) || [];
+        for (var i = 0; i < onglets.length; i++) {
+            if (onglets[i].id === idOnglet) { return onglets[i].libelle; }
+        }
+        return null;
+    }
+
+    /** Transforme les notions détaillées de la page en entrées scorables. */
+    function construireEntreesPage() {
+        var detail = CONNAISSANCES.detail;
+        if (!detail || !detail.notions) { return []; }
+
+        return detail.notions.map(function (notion, i) {
+            var libelle = libelleOnglet(notion.onglet);
+            var reponse = '<strong>' + echapper(notion.titre) + '</strong><br>' +
+                echapper(notion.texte);
+            if (libelle) {
+                reponse += '<br><span class="kc-source">📍 Onglet « ' +
+                    echapper(libelle) +' » de cette page</span>';
+            }
+            return {
+                id: 'page:' + detail.slug + ':' + i,
+                matiere: detail.matiere,
+                keywords: motsClesDepuisTitre(notion.titre),
+                reponse: reponse
+            };
+        });
+    }
+
+    /**
+     * Notions des AUTRES pages de la même matière. On ne connaît que leurs
+     * titres (l'index ne porte pas les textes) : la réponse est donc un renvoi
+     * vers la bonne leçon, ce qui vaut mieux qu'un « je ne sais pas ».
+     */
+    function construireEntreesVoisines() {
+        var index = CONNAISSANCES.index;
+        var page = CONNAISSANCES.page;
+        if (!index || !page) { return []; }
+
+        var entrees = [];
+        Object.keys(index).forEach(function (slug) {
+            var autre = index[slug];
+            if (slug === CONNAISSANCES.slug || autre.matiere !== page.matiere) { return; }
+
+            (autre.notions || []).forEach(function (notion, i) {
+                entrees.push({
+                    id: 'voisine:' + slug + ':' + i,
+                    matiere: autre.matiere,
+                    keywords: motsClesDepuisTitre(notion.titre),
+                    reponse: 'Ça, c\'est dans une autre leçon : <strong>' +
+                        echapper(notion.titre) + '</strong>.<br>' +
+                        'Tu la trouveras dans <a href="' + echapper(slug) + '.html">' +
+                        echapper(autre.titre) + '</a> 🐴'
+                });
+            });
+        });
+        return entrees;
+    }
+
+    /** Recalcule les entrées dérivées après un chargement. */
+    function rafraichirEntrees() {
+        CONNAISSANCES.entrees = construireEntreesPage();
+        CONNAISSANCES.voisines = construireEntreesVoisines();
+    }
+
+    /**
+     * Charge l'index (balise <script>, donc servi en cache-first par le service
+     * worker et fonctionnel même sans `fetch`), puis le détail de la page.
+     * Chaque étape échoue en silence : le chat doit rester utilisable.
+     */
+    function chargerConnaissances(quandPret) {
+        CONNAISSANCES.slug = slugPage();
+
+        function suiteIndex() {
+            var base = window.KarniellaChatKnowledge;
+            if (base && base.pages) {
+                CONNAISSANCES.index = base.pages;
+                CONNAISSANCES.page = base.pages[CONNAISSANCES.slug] || null;
+            }
+            chargerDetail(quandPret);
+        }
+
+        if (window.KarniellaChatKnowledge) { suiteIndex(); return; }
+
+        var script = document.createElement('script');
+        script.src = RACINE + 'js/chat-knowledge-index.js';
+        script.onload = suiteIndex;
+        script.onerror = suiteIndex;   // index absent : on continue sans
+        document.head.appendChild(script);
+    }
+
+    function chargerDetail(quandPret) {
+        if (!CONNAISSANCES.page || typeof window.fetch !== 'function') {
+            rafraichirEntrees();
+            if (quandPret) { quandPret(); }
+            return;
+        }
+
+        window.fetch(RACINE + 'data/chat/' + CONNAISSANCES.slug + '.json')
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; })
+            .then(function (detail) {
+                CONNAISSANCES.detail = detail;
+                rafraichirEntrees();
+                if (quandPret) { quandPret(); }
+            });
+    }
+
+    /** Retrouve une entrée par son id, pour rejouer l'historique sans stocker de HTML. */
+    function entreeParId(id) {
+        var groupes = [CONNAISSANCES.entrees, CONNAISSANCES.voisines, BASE];
+        for (var g = 0; g < groupes.length; g++) {
+            for (var i = 0; i < groupes[g].length; i++) {
+                if (groupes[g][i].id === id) { return groupes[g][i]; }
+            }
+        }
+        return null;
+    }
+
     /** Score d'une entrée face à la question de l'utilisateur. */
     function scorer(entree, questionNorm, motsQuestion) {
         var score = 0;
@@ -623,20 +812,47 @@
         return score;
     }
 
-    var SEUIL = 1.9; // en dessous : on ne fait pas confiance au résultat
+    var SEUIL = 1.9;       // en dessous : on ne fait pas confiance au résultat
+    var SEUIL_PAGE = 1.4;  // sur SA propre page, on accorde un peu plus de crédit
 
-    /** Cherche la meilleure réponse ; renvoie null si rien de convaincant. */
+    /**
+     * Cherche la meilleure réponse, en trois cercles concentriques.
+     *
+     * Le seuil filtre sur le score BRUT (« est-ce seulement pertinent ? »), et
+     * le coefficient ne sert qu'à départager les niveaux entre eux. Mélanger
+     * les deux — abaisser le seuil ET multiplier le score — reviendrait à
+     * appliquer le bonus deux fois, et la page courante gagnerait toujours.
+     *
+     * Renvoie null si rien de convaincant : c'est ce null qui déclenche le
+     * repli IA puis, à défaut, le message d'échec.
+     */
     function chercher(question) {
         var qNorm = normaliser(question);
         if (!qNorm) { return null; }
         var mots = decouper(qNorm);
+
+        var niveaux = [
+            { entrees: CONNAISSANCES.entrees,  coef: 2.0, seuil: SEUIL_PAGE },
+            { entrees: CONNAISSANCES.voisines, coef: 1.3, seuil: SEUIL },
+            { entrees: BASE,                   coef: 1.0, seuil: SEUIL }
+        ];
+
         var meilleure = null;
         var meilleurScore = 0;
-        for (var i = 0; i < BASE.length; i++) {
-            var s = scorer(BASE[i], qNorm, mots);
-            if (s > meilleurScore) { meilleurScore = s; meilleure = BASE[i]; }
+
+        for (var n = 0; n < niveaux.length; n++) {
+            var niveau = niveaux[n];
+            for (var i = 0; i < niveau.entrees.length; i++) {
+                var brut = scorer(niveau.entrees[i], qNorm, mots);
+                if (brut < niveau.seuil) { continue; }
+                var pondere = brut * niveau.coef;
+                if (pondere > meilleurScore) {
+                    meilleurScore = pondere;
+                    meilleure = niveau.entrees[i];
+                }
+            }
         }
-        return meilleurScore >= SEUIL ? meilleure : null;
+        return meilleure;
     }
 
     /**
@@ -644,8 +860,23 @@
      * `question` vient de l'utilisateur : elle DOIT passer par echapper().
      */
     function repli(question) {
-        return 'Hop, là je sèche un peu 🐴 ! Je n\'ai rien trouvé sur « ' +
-            echapper(String(question).slice(0, 80)) + ' » dans mon écurie.<br>' +
+        var debut = 'Hop, là je sèche un peu 🐴 ! Je n\'ai rien trouvé sur « ' +
+            echapper(String(question).slice(0, 80)) + ' ».<br>';
+
+        // Si on sait sur quelle leçon on est, on montre ce qu'elle contient :
+        // bien plus utile que la liste des sept matières du site.
+        var notions = (CONNAISSANCES.detail && CONNAISSANCES.detail.notions) || [];
+        if (notions.length) {
+            var titre = CONNAISSANCES.detail.titre;
+            var liste = notions.slice(0, 6).map(function (n) {
+                return '• ' + echapper(n.titre);
+            }).join('<br>');
+            return debut + 'Sur cette page (<strong>' + echapper(titre) + '</strong>), ' +
+                'je connais :<br>' + liste + '<br>' +
+                'Demande-moi l\'une de ces notions, ou reformule ta question. 🏇';
+        }
+
+        return debut +
             'Essaie une autre formulation, ou choisis un sujet :<br>' +
             '• 🔢 <a href="mathematiques.html">Maths</a> — droites, segments, nombres relatifs, fractions, triangle<br>' +
             '• ⚡ <a href="physique.html">Physique</a> — circuit, court-circuit, états de la matière, température<br>' +
@@ -702,6 +933,21 @@
         '.kc-sug:hover{background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
         '.kc-sug:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
 
+        '.kc-source{display:block;margin-top:6px;font-size:11px;opacity:.75;font-style:italic}',
+        '.kc-plus-simple{display:inline-block;margin-top:8px;background:none;border:0;padding:0;',
+        'color:#9D2F5C;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;text-decoration:underline}',
+        '.kc-plus-simple:hover{color:#7F2E53}',
+        '.kc-plus-simple:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        '.kc-attente{opacity:.7;font-style:italic}',
+
+        '#kc-actions{flex:0 0 auto;display:flex;gap:6px;padding:9px 12px 0;background:#F9EAF0}',
+        '.kc-action{flex:1 1 0;background:#fff;border:1px solid rgba(157,47,92,.3);color:#9D2F5C;',
+        'border-radius:10px;padding:8px 6px;font-size:11.5px;font-weight:700;cursor:pointer;',
+        'font-family:inherit;line-height:1.3;transition:all .2s ease}',
+        '.kc-action:hover{background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
+        '.kc-action:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        '#kc-suggestions:empty{display:none}',
+
         '#kc-formulaire{flex:0 0 auto;display:flex;gap:8px;padding:11px 12px;background:#fff;border-top:1px solid rgba(72,40,55,.1)}',
         '#kc-saisie{flex:1 1 auto;min-width:0;border:1px solid rgba(72,40,55,.18);border-radius:12px;padding:10px 13px;',
         'font-family:inherit;font-size:14px;color:#49353F;background:#FFF9FB}',
@@ -726,7 +972,8 @@
        4) CONSTRUCTION DE L'INTERFACE
        ============================================================ */
 
-    var SUGGESTIONS = [
+    // Suggestions générales, servies tant qu'on ne sait rien de la page.
+    var SUGGESTIONS_PAR_DEFAUT = [
         'C\'est quoi une droite ?',
         'Additionner deux nombres négatifs',
         'Le circuit électrique',
@@ -735,11 +982,34 @@
         'Les droits humains'
     ];
 
-    var ACCUEIL = 'Bonjour Karniella ! 🐴 Je suis ton assistant de révision, et je travaille ' +
-        '<strong>sans Internet</strong> : tout est dans ma tête ! 🦄<br>' +
+    /** Suggestions tirées des notions de la page courante, sinon les générales. */
+    function suggestions() {
+        var notions = (CONNAISSANCES.detail && CONNAISSANCES.detail.notions) || [];
+        if (notions.length < 2) { return SUGGESTIONS_PAR_DEFAUT; }
+        return notions.slice(0, 4).map(function (n) { return n.titre; });
+    }
+
+    var ACCUEIL_PAR_DEFAUT = 'Bonjour Karniella ! 🐴 Je suis ton assistant de révision.<br>' +
         'Pose-moi une question sur les <strong>maths</strong>, la <strong>physique</strong>, la <strong>SVT</strong>, ' +
         'le <strong>français</strong>, l\'<strong>histoire-géo</strong>, l\'<strong>éducation civique</strong> ' +
         'ou l\'<strong>informatique</strong>. En selle ! 🏇';
+
+    /** Message d'accueil : il nomme la leçon quand on sait où on est. */
+    function accueil() {
+        var page = CONNAISSANCES.detail || CONNAISSANCES.page;
+        if (!page || !page.titre) { return ACCUEIL_PAR_DEFAUT; }
+
+        var texte = 'Bonjour Karniella ! 🐴 Tu es sur <strong>' + echapper(page.titre) + '</strong>.<br>' +
+            'Demande-moi ce que tu veux sur cette leçon — ou utilise les deux boutons en bas ' +
+            'pour une fiche de révision ou un coup de main sur un exercice. 🏇';
+
+        var notions = (CONNAISSANCES.detail && CONNAISSANCES.detail.notions) || [];
+        if (notions.length) {
+            texte += '<span class="kc-source">Je connais ' + notions.length +
+                ' notions de cette page.</span>';
+        }
+        return texte;
+    }
 
     var elFenetre, elBulle, elMessages, elSaisie, elFermer;
     var dernierFocus = null;
@@ -768,21 +1038,270 @@
         return div;
     }
 
-    /** Traite la question saisie. */
+    /**
+     * Rend du texte NON fiable (réponse du modèle) en construisant des nœuds DOM.
+     *
+     * `ajouterMessage(..., true)` passe par innerHTML : ce drapeau veut dire
+     * « écrit par nous, en dur, dans ce fichier ». Une réponse de modèle ne
+     * remplit pas cette condition, et ne doit jamais emprunter ce chemin — d'où
+     * cette troisième voie, qui gère un markdown minimal sans jamais interpréter
+     * de HTML.
+     */
+    function rendreTexte(div, texte) {
+        div.textContent = '';
+        String(texte).split('\n').forEach(function (ligne, i) {
+            if (i > 0) { div.appendChild(document.createElement('br')); }
+            var propre = ligne.replace(/^\s*[-*•]\s+/, '• ');
+            propre.split('**').forEach(function (morceau, j) {
+                if (!morceau) { return; }
+                if (j % 2 === 1) {
+                    var gras = document.createElement('strong');
+                    gras.textContent = morceau;
+                    div.appendChild(gras);
+                } else {
+                    div.appendChild(document.createTextNode(morceau));
+                }
+            });
+        });
+    }
+
+    /** Message du bot rendu en texte sûr (réponses IA, erreurs). */
+    function ajouterTexteBot(texte) {
+        var div = document.createElement('div');
+        div.className = 'kc-msg kc-bot';
+        rendreTexte(div, texte);
+        elMessages.appendChild(div);
+        elMessages.scrollTop = elMessages.scrollHeight;
+        return div;
+    }
+
+    /** Bouton « Explique plus simplement » sous une réponse. */
+    function ajouterBoutonPlusSimple(div, question) {
+        var bouton = document.createElement('button');
+        bouton.type = 'button';
+        bouton.className = 'kc-plus-simple';
+        bouton.textContent = '🙋 Explique plus simplement';
+        bouton.addEventListener('click', function () {
+            bouton.remove();
+            traiter(question, 'simplifier');
+        });
+        div.appendChild(document.createElement('br'));
+        div.appendChild(bouton);
+    }
+
+    /* ============================================================
+       HISTORIQUE — une conversation par page, dans localStorage.
+       On ne stocke jamais de HTML : seulement de quoi le reconstruire
+       depuis le code. Une entrée trafiquée dans le stockage ne peut donc
+       pas se retrouver injectée en innerHTML au rechargement.
+         { u: texte }      question de Karniella
+         { b: idEntree }   réponse issue d'une entrée (rejouée depuis le code)
+         { f: question }   message d'échec (rejoué en appelant repli())
+         { r: 1 }          fiche de révision (rejouée en appelant ficheDeRevision())
+         { t: texte }      texte brut (réponse IA, erreur)
+       ============================================================ */
+
+    var MAX_HISTORIQUE = 20;
+
+    function cleHistorique() { return 'kc-hist-' + (CONNAISSANCES.slug || 'page'); }
+
+    // localStorage lève dans un iframe cloisonné ou en navigation privée stricte :
+    // aucune de ces fonctions ne doit pouvoir casser le chat.
+    function lireHistorique() {
+        try {
+            return JSON.parse(window.localStorage.getItem(cleHistorique())) || [];
+        } catch (err) { return []; }
+    }
+
+    function noterHistorique(entree) {
+        try {
+            var tout = lireHistorique();
+            tout.push(entree);
+            window.localStorage.setItem(
+                cleHistorique(),
+                JSON.stringify(tout.slice(-MAX_HISTORIQUE))
+            );
+        } catch (err) { /* stockage indisponible : on continue sans */ }
+    }
+
+    function restaurerHistorique() {
+        var tout = lireHistorique();
+        if (!tout.length) { return false; }
+
+        tout.forEach(function (e) {
+            if (e.u !== undefined) { ajouterMessage(e.u, 'user', false); return; }
+            if (e.b !== undefined) {
+                var entree = entreeParId(e.b);
+                if (entree) { ajouterMessage(entree.reponse, 'bot', true); }
+                return;
+            }
+            if (e.f !== undefined) { ajouterMessage(repli(e.f), 'bot', true); return; }
+            if (e.r !== undefined) {
+                var fiche = ficheDeRevision();
+                if (fiche) { ajouterMessage(fiche, 'bot', true); }
+                return;
+            }
+            if (e.t !== undefined) { ajouterTexteBot(e.t); }
+        });
+        return true;
+    }
+
+    /** Les derniers tours, au format attendu par l'API. */
+    function historiquePourIA() {
+        return lireHistorique()
+            .slice(-6)
+            .map(function (e) {
+                if (e.u !== undefined) { return { role: 'user', content: e.u }; }
+                if (e.t !== undefined) { return { role: 'assistant', content: e.t }; }
+                return null;
+            })
+            .filter(Boolean);
+    }
+
+    /* ============================================================
+       REPLI IA — /api/chat, uniquement quand la base locale n'a rien.
+       ============================================================ */
+
+    // Passe à false dès qu'on sait que l'API n'est pas là (pas de clé,
+    // pas de serveur) : inutile de refaire une requête à chaque question.
+    var iaDisponible = true;
+
+    function iaEnvisageable() {
+        return iaDisponible &&
+            typeof window.fetch === 'function' &&
+            window.navigator.onLine !== false;
+    }
+
+    function demanderIA(question, mode, historique, quandFini) {
+        window.fetch(RACINE + 'api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                slug: CONNAISSANCES.slug,
+                question: question,
+                mode: mode || 'explication',
+                historique: historique
+            })
+        })
+            .then(function (r) {
+                if (r.status === 503 || r.status === 404) { iaDisponible = false; }
+                if (!r.ok) { throw new Error('http ' + r.status); }
+                return r.json();
+            })
+            .then(function (data) {
+                quandFini(data && data.reponse ? data.reponse : null);
+            })
+            .catch(function () { quandFini(null); });
+    }
+
+    /* ============================================================
+       FICHE DE RÉVISION — construite localement à partir des notions.
+       Volontairement pas déléguée au modèle : on a déjà le contenu exact
+       de la page, et cette version-là marche hors-ligne et instantanément.
+       ============================================================ */
+
+    function ficheDeRevision() {
+        var detail = CONNAISSANCES.detail;
+        var notions = (detail && detail.notions) || [];
+        if (!notions.length) {
+            return null;
+        }
+
+        var html = '📝 <strong>À retenir — ' + echapper(detail.titre) + '</strong><br><br>';
+        notions.slice(0, 8).forEach(function (n) {
+            html += '<strong>' + echapper(n.titre) + '</strong><br>' +
+                echapper(n.texte) + '<br><br>';
+        });
+        if (detail.quiz && detail.quiz.length) {
+            html += '<span class="kc-source">Cette leçon a aussi ' + detail.quiz.length +
+                ' questions de quiz — demande-moi de t\'en poser une. 🐴</span>';
+        }
+        return html;
+    }
+
+    /* ============================================================
+       TRAITEMENT D'UNE QUESTION
+       ============================================================ */
+
+    var MAX_QUESTION = 500;
+
+    /**
+     * @param question texte saisi (ou libellé de l'action déclenchée)
+     * @param mode     explication | exercice | fiche | simplifier
+     */
+    function traiter(question, mode) {
+        mode = mode || 'explication';
+        question = String(question).trim().slice(0, MAX_QUESTION);
+        if (!question) { return; }
+
+        // Capturé AVANT d'y ajouter la question : sinon elle partirait deux fois,
+        // une fois dans l'historique et une fois comme message final.
+        var tours = historiquePourIA();
+
+        ajouterMessage(question, 'user', false);
+        noterHistorique({ u: question });
+
+        // La fiche de révision se fabrique sur place, sans réseau.
+        if (mode === 'fiche') {
+            var fiche = ficheDeRevision();
+            window.setTimeout(function () {
+                if (fiche) {
+                    ajouterMessage(fiche, 'bot', true);
+                    noterHistorique({ r: 1 });
+                } else {
+                    var msg = 'Je n\'ai pas encore de fiche pour cette page 🐴. ' +
+                        'Va sur une leçon et redemande-moi !';
+                    ajouterTexteBot(msg);
+                    noterHistorique({ t: msg });
+                }
+            }, 200);
+            return;
+        }
+
+        // « Explique plus simplement » et l'aide sur exercice sont génératives :
+        // la base locale ne sait pas les produire, on va directement à l'IA.
+        var generatif = (mode === 'simplifier' || mode === 'exercice');
+        var trouvee = generatif ? null : chercher(question);
+
+        if (trouvee) {
+            window.setTimeout(function () {
+                var div = ajouterMessage(trouvee.reponse, 'bot', true);
+                noterHistorique({ b: trouvee.id });
+                if (iaEnvisageable()) { ajouterBoutonPlusSimple(div, question); }
+            }, 200);
+            return;
+        }
+
+        if (!iaEnvisageable()) {
+            window.setTimeout(function () {
+                ajouterMessage(repli(question), 'bot', true);
+                noterHistorique({ f: question });
+            }, 200);
+            return;
+        }
+
+        var attente = ajouterTexteBot('Je réfléchis… 🐴');
+        attente.classList.add('kc-attente');
+
+        demanderIA(question, mode, tours, function (reponse) {
+            attente.remove();
+            if (reponse) {
+                var div = ajouterTexteBot(reponse);
+                noterHistorique({ t: reponse });
+                if (mode !== 'simplifier') { ajouterBoutonPlusSimple(div, question); }
+            } else {
+                ajouterMessage(repli(question), 'bot', true);
+                noterHistorique({ f: question });
+            }
+        });
+    }
+
+    /** Traite la question saisie dans le champ. */
     function envoyer() {
         var question = elSaisie.value.trim();
         if (!question) { return; }
-
-        ajouterMessage(question, 'user', false);
         elSaisie.value = '';
-
-        var trouvee = chercher(question);
-        var reponse = trouvee ? trouvee.reponse : repli(question);
-
-        // Petit délai pour que l'échange ait l'air vivant.
-        window.setTimeout(function () {
-            ajouterMessage(reponse, 'bot', true);
-        }, 220);
+        traiter(question, 'explication');
     }
 
     function ouvrir() {
@@ -809,6 +1328,35 @@
 
     function basculer() {
         if (elFenetre.classList.contains('kc-ouvert')) { fermer(); } else { ouvrir(); }
+    }
+
+    /** Sous-titre de l'entête : rappelle la leçon et le mode de fonctionnement. */
+    function majSousTitre() {
+        var el = document.getElementById('kc-sous');
+        if (!el) { return; }
+        var page = CONNAISSANCES.detail || CONNAISSANCES.page;
+        el.textContent = page && page.titre
+            ? page.titre
+            : 'Toutes les matières';
+    }
+
+    /** Regarnit les suggestions avec les notions de la page. */
+    function majSuggestions() {
+        var conteneur = document.getElementById('kc-suggestions');
+        if (!conteneur) { return; }
+        conteneur.textContent = '';
+
+        suggestions().forEach(function (texte) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'kc-sug';
+            b.textContent = texte;
+            b.addEventListener('click', function () {
+                traiter(texte, 'explication');
+                elSaisie.focus();
+            });
+            conteneur.appendChild(b);
+        });
     }
 
     /** Crée le CSS, le DOM et branche les événements. */
@@ -847,8 +1395,9 @@
         titre.className = 'kc-titre';
         titre.textContent = '🐴 Mon assistant de révision';
         var sous = document.createElement('div');
+        sous.id = 'kc-sous';
         sous.className = 'kc-sous';
-        sous.textContent = 'Hors-ligne · toutes les matières';
+        sous.textContent = 'Chargement…';
         bloc.appendChild(titre);
         bloc.appendChild(sous);
         elFermer = document.createElement('button');
@@ -866,21 +1415,29 @@
         elMessages.setAttribute('aria-live', 'polite');
         elMessages.setAttribute('aria-label', 'Conversation');
 
-        // Suggestions cliquables
+        // Suggestions cliquables (regarnies une fois la page connue)
         var sugs = document.createElement('div');
         sugs.id = 'kc-suggestions';
         sugs.setAttribute('aria-label', 'Suggestions de questions');
-        SUGGESTIONS.forEach(function (texte) {
+
+        // Deux actions réclamées : la fiche de révision et l'aide sur un exercice.
+        var actions = document.createElement('div');
+        actions.id = 'kc-actions';
+        [
+            { libelle: '📝 Fiche de révision', mode: 'fiche',
+              question: 'Fais-moi la fiche de révision de cette page' },
+            { libelle: '🧮 Aide sur un exercice', mode: 'exercice',
+              question: 'Aide-moi sur un exercice de cette leçon' }
+        ].forEach(function (action) {
             var b = document.createElement('button');
             b.type = 'button';
-            b.className = 'kc-sug';
-            b.textContent = texte;
+            b.className = 'kc-action';
+            b.textContent = action.libelle;
             b.addEventListener('click', function () {
-                elSaisie.value = texte;
-                envoyer();
-                elSaisie.focus();
+                if (!elFenetre.classList.contains('kc-ouvert')) { ouvrir(); }
+                traiter(action.question, action.mode);
             });
-            sugs.appendChild(b);
+            actions.appendChild(b);
         });
 
         // Formulaire de saisie
@@ -902,14 +1459,25 @@
 
         elFenetre.appendChild(entete);
         elFenetre.appendChild(elMessages);
+        elFenetre.appendChild(actions);
         elFenetre.appendChild(sugs);
         elFenetre.appendChild(form);
 
         document.body.appendChild(elBulle);
         document.body.appendChild(elFenetre);
 
-        // Message d'accueil
-        ajouterMessage(ACCUEIL, 'bot', true);
+        // Les connaissances de la page arrivent de façon asynchrone : on affiche
+        // d'abord une fenêtre utilisable, puis on la personnalise à l'arrivée.
+        chargerConnaissances(function () {
+            majSousTitre();
+            majSuggestions();
+
+            // L'historique dépend des entrées de la page (les réponses stockées
+            // sont rejouées depuis leur id), il faut donc attendre ce moment.
+            if (!restaurerHistorique()) {
+                ajouterMessage(accueil(), 'bot', true);
+            }
+        });
 
         // -- Événements
         elBulle.addEventListener('click', basculer);
@@ -937,6 +1505,9 @@
         fermer: fermer,
         basculer: basculer,
         chercher: chercher,
-        base: BASE
+        base: BASE,
+        // Utiles pour vérifier depuis la console qu'une page est bien reconnue.
+        contexte: CONNAISSANCES,
+        fiche: ficheDeRevision
     };
 })();

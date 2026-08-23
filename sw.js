@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.1.0
 
-const CACHE_NAME = 'karniella-cache-v7';
+const CACHE_NAME = 'karniella-cache-v8';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -101,6 +101,36 @@ const FILES_TO_CACHE = [
     '/icons/icon-512x512.png'
 ];
 
+/* ------------------------------------------------------------------
+   Base de connaissances du chat (générée par `npm run build:chat`).
+   On importe l'index pour en déduire la liste des pages : recopier 58
+   chemins à la main ici, c'est se garantir qu'ils divergeront un jour.
+   ------------------------------------------------------------------ */
+let FICHIERS_CHAT = [];
+try {
+    importScripts('/js/chat-knowledge-index.js');
+    const pages = (self.KarniellaChatKnowledge || {}).pages || {};
+    FICHIERS_CHAT = ['/js/chat-knowledge-index.js'].concat(
+        Object.keys(pages).map((slug) => '/data/chat/' + slug + '.json')
+    );
+} catch (err) {
+    // Index pas encore généré : le chat retombera sur sa base en dur.
+    console.warn('[ServiceWorker] base du chat absente', err);
+}
+
+/**
+ * Précache tolérant aux absences : `cache.addAll` échoue en bloc dès qu'une
+ * seule URL renvoie 404. Les fichiers du chat sont facultatifs — ils ne doivent
+ * pas pouvoir faire échouer l'installation du service worker.
+ */
+function mettreEnCacheAuMieux(cache, urls) {
+    return Promise.all(urls.map((url) =>
+        cache.add(url).catch(() => {
+            console.warn('[ServiceWorker] non mis en cache :', url);
+        })
+    ));
+}
+
 // Installation du Service Worker
 self.addEventListener('install', (event) => {
     console.log('[ServiceWorker] Installation');
@@ -109,7 +139,8 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME)
             .then((cache) => {
                 console.log('[ServiceWorker] Mise en cache des fichiers');
-                return cache.addAll(FILES_TO_CACHE);
+                return cache.addAll(FILES_TO_CACHE)
+                    .then(() => mettreEnCacheAuMieux(cache, FICHIERS_CHAT));
             })
             .then(() => {
                 return self.skipWaiting();
@@ -137,6 +168,11 @@ self.addEventListener('activate', (event) => {
 
 // Stratégie de récupération
 self.addEventListener('fetch', (event) => {
+    // L'API (dont le repli IA du chat) ne doit jamais être mise en cache.
+    if (event.request.url.includes('/api/')) {
+        return;
+    }
+
     // Pour les données JSON : Network First, Cache Fallback
     if (event.request.url.includes('/data/')) {
         event.respondWith(
@@ -148,8 +184,11 @@ self.addEventListener('fetch', (event) => {
                         return response;
                     })
                     .catch(() => {
-                        // Si pas de réseau, utiliser le cache
-                        return cache.match(event.request);
+                        // Si pas de réseau, utiliser le cache. `caches.match`
+                        // (global) et non `cache.match` : les fichiers du chat
+                        // sont précachés dans CACHE_NAME, pas dans le cache de
+                        // données, et resteraient introuvables hors-ligne.
+                        return caches.match(event.request);
                     });
             })
         );

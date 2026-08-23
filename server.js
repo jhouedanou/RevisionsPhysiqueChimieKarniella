@@ -28,8 +28,11 @@ app.use('/admin', express.static(path.join(__dirname, 'admin')));
 // API Routes
 const { router: authRouter } = require('./routes/auth');
 const apiRouter = require('./routes/api');
+const chatRouter = require('./routes/chat');
 
 app.use('/api/auth', authRouter);
+// Monté avant le routeur générique /api pour que /api/chat lui parvienne.
+app.use('/api/chat', chatRouter);
 app.use('/api', apiRouter);
 
 // Default route - serve index.html

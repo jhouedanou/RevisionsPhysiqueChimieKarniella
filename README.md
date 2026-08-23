@@ -186,6 +186,50 @@ npm run dev
 ### Scripts disponibles
 - `npm start` : Démarre le serveur
 - `npm run dev` : Mode développement avec nodemon
+- `npm run build:chat` : Régénère la base de connaissances de l'assistant
+
+## 🐴 Assistant de révision
+
+Un chat flottant est présent sur les 60 pages (`js/chat-assistant.js`). Il répond
+en fonction de **la page où se trouve Karniella**, en trois niveaux :
+
+1. **Les notions de la page courante** — instantané, hors-ligne, gratuit.
+2. **La base générale** en dur dans `js/chat-assistant.js`.
+3. **L'API Claude** (`POST /api/chat`) — seulement si 1 et 2 n'ont rien trouvé
+   *et* qu'il y a du réseau. Facultatif : sans clé API, le chat fonctionne
+   simplement sans ce niveau.
+
+### Régénérer la base après avoir modifié une leçon
+
+```bash
+npm run build:chat
+```
+
+Le script lit les pages HTML, `data/quizzes.json` et `data/section-questions.json`,
+puis écrit :
+
+| Fichier | Rôle |
+|---|---|
+| `js/chat-knowledge-index.js` | Index de toutes les pages (titres des notions) |
+| `data/chat/<slug>.json` | Détail d'une page : textes des notions + quiz |
+
+**Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
+car Vercel sert le site en statique, sans étape de build.
+
+⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v8`
+→ `v9`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
+version : les fichiers `/js/` sont servis en cache-first.
+
+### Activer le repli IA
+
+Copier `.env.example` vers `.env` et renseigner `ANTHROPIC_API_KEY`
+(sur Vercel : variable d'environnement du projet).
+
+`CHAT_MODEL` permet de changer de modèle — `claude-opus-5` par défaut,
+`claude-haiku-4-5` pour un coût nettement plus bas.
+
+Le navigateur n'envoie que le **slug** de la page, jamais son contenu : le
+contexte donné au modèle est relu côté serveur depuis `data/chat/`.
 
 ## 📞 Support
 
