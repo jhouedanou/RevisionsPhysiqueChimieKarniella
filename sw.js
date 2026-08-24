@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.1.0
 
-const CACHE_NAME = 'karniella-cache-v8';
+const CACHE_NAME = 'karniella-cache-v9';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -110,7 +110,7 @@ let FICHIERS_CHAT = [];
 try {
     importScripts('/js/chat-knowledge-index.js');
     const pages = (self.KarniellaChatKnowledge || {}).pages || {};
-    FICHIERS_CHAT = ['/js/chat-knowledge-index.js'].concat(
+    FICHIERS_CHAT = ['/js/chat-knowledge-index.js', '/js/progression.js'].concat(
         Object.keys(pages).map((slug) => '/data/chat/' + slug + '.json')
     );
 } catch (err) {

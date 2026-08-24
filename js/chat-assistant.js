@@ -751,12 +751,22 @@
             chargerDetail(quandPret);
         }
 
+        chargerProgression();
+
         if (window.KarniellaChatKnowledge) { suiteIndex(); return; }
 
         var script = document.createElement('script');
         script.src = RACINE + 'js/chat-knowledge-index.js';
         script.onload = suiteIndex;
         script.onerror = suiteIndex;   // index absent : on continue sans
+        document.head.appendChild(script);
+    }
+
+    /** Charge js/progression.js. Facultatif : sans lui, le chat marche pareil. */
+    function chargerProgression() {
+        if (window.KarniellaProgression) { return; }
+        var script = document.createElement('script');
+        script.src = RACINE + 'js/progression.js';
         document.head.appendChild(script);
     }
 
@@ -773,6 +783,9 @@
             .then(function (detail) {
                 CONNAISSANCES.detail = detail;
                 rafraichirEntrees();
+                if (window.KarniellaProgression && detail) {
+                    window.KarniellaProgression.marquerVisite(detail.slug, detail.matiere);
+                }
                 if (quandPret) { quandPret(); }
             });
     }
@@ -940,13 +953,27 @@
         '.kc-plus-simple:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
         '.kc-attente{opacity:.7;font-style:italic}',
 
-        '#kc-actions{flex:0 0 auto;display:flex;gap:6px;padding:9px 12px 0;background:#F9EAF0}',
-        '.kc-action{flex:1 1 0;background:#fff;border:1px solid rgba(157,47,92,.3);color:#9D2F5C;',
+        '#kc-actions{flex:0 0 auto;display:flex;flex-wrap:wrap;gap:6px;padding:9px 12px 0;background:#F9EAF0}',
+        '.kc-action{flex:1 1 45%;background:#fff;border:1px solid rgba(157,47,92,.3);color:#9D2F5C;',
         'border-radius:10px;padding:8px 6px;font-size:11.5px;font-weight:700;cursor:pointer;',
         'font-family:inherit;line-height:1.3;transition:all .2s ease}',
         '.kc-action:hover{background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
         '.kc-action:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
         '#kc-suggestions:empty{display:none}',
+
+        '.kc-options{display:flex;flex-direction:column;gap:5px;margin-top:9px}',
+        '.kc-option{width:100%;text-align:left;background:#FFF9FB;border:1px solid rgba(157,47,92,.28);',
+        'color:#49353F;border-radius:9px;padding:8px 11px;font-size:12.5px;font-family:inherit;',
+        'cursor:pointer;line-height:1.35;transition:all .15s ease}',
+        '.kc-option:hover:not(:disabled){background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
+        '.kc-option:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        '.kc-option:disabled{cursor:default;opacity:.85}',
+        '.kc-option.kc-juste{background:#E4F5E8;border-color:#3C9A57;color:#1F5C33;font-weight:700;opacity:1}',
+        '.kc-option.kc-faux{background:#FBE4E9;border-color:#C0392B;color:#8B2318;opacity:1}',
+        '.kc-verdict{display:block;margin-top:9px;font-weight:700}',
+
+        '.kc-jauge{display:block;height:7px;border-radius:4px;background:rgba(157,47,92,.16);margin:5px 0 9px;overflow:hidden}',
+        '.kc-jauge span{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#C83F76,#9D2F5C)}',
 
         '#kc-formulaire{flex:0 0 auto;display:flex;gap:8px;padding:11px 12px;background:#fff;border-top:1px solid rgba(72,40,55,.1)}',
         '#kc-saisie{flex:1 1 auto;min-width:0;border:1px solid rgba(72,40,55,.18);border-radius:12px;padding:10px 13px;',
@@ -1098,6 +1125,7 @@
          { b: idEntree }   réponse issue d'une entrée (rejouée depuis le code)
          { f: question }   message d'échec (rejoué en appelant repli())
          { r: 1 }          fiche de révision (rejouée en appelant ficheDeRevision())
+         { p: 1 }          bilan de progression (recalculé à l'affichage)
          { t: texte }      texte brut (réponse IA, erreur)
        ============================================================ */
 
@@ -1141,6 +1169,8 @@
                 if (fiche) { ajouterMessage(fiche, 'bot', true); }
                 return;
             }
+            // Recalculé plutôt que stocké : un bilan figé serait périmé.
+            if (e.p !== undefined) { ajouterMessage(bilanProgression(), 'bot', true); return; }
             if (e.t !== undefined) { ajouterTexteBot(e.t); }
         });
         return true;
@@ -1220,6 +1250,194 @@
     }
 
     /* ============================================================
+       MODE « INTERROGE-MOI »
+       Entièrement hors-ligne : les questions sont déjà dans
+       data/chat/<slug>.json. Aucun appel réseau, jamais.
+       ============================================================ */
+
+    var quizEnCours = { posees: [], justes: 0, total: 0, serie: null };
+
+    /** Tire une question encore jamais posée dans cette session. */
+    function questionSuivante() {
+        var questions = (CONNAISSANCES.detail && CONNAISSANCES.detail.quiz) || [];
+        var restantes = [];
+        for (var i = 0; i < questions.length; i++) {
+            if (quizEnCours.posees.indexOf(i) === -1) { restantes.push(i); }
+        }
+        if (!restantes.length) { return null; }
+        var choix = restantes[Math.floor(Math.random() * restantes.length)];
+        quizEnCours.posees.push(choix);
+        return { index: choix, question: questions[choix] };
+    }
+
+    /** Mêmes paliers que les quiz de page (js/section-quiz.js) : un seul ton sur tout le site. */
+    function felicitations(pourcentage) {
+        if (pourcentage === 100) { return '🎉 Parfait !'; }
+        if (pourcentage >= 66) { return '👍 Bien joué !'; }
+        if (pourcentage >= 33) { return '💪 Continue tes efforts !'; }
+        return '📚 Relis la leçon !';
+    }
+
+    /** Clôt la série en cours et enregistre le résultat. */
+    function terminerQuiz() {
+        if (!quizEnCours.total) { return; }
+
+        var pourcentage = Math.round((quizEnCours.justes / quizEnCours.total) * 100);
+        var texte = felicitations(pourcentage) + ' Tu as ' + quizEnCours.justes +
+            ' bonne' + (quizEnCours.justes > 1 ? 's' : '') + ' réponse' +
+            (quizEnCours.justes > 1 ? 's' : '') + ' sur ' + quizEnCours.total + '.';
+
+        // Rien à enregistrer ici : chaque réponse a déjà mis la série à jour.
+        ajouterTexteBot(texte);
+        noterHistorique({ t: texte });
+        quizEnCours = { posees: [], justes: 0, total: 0, serie: null };
+    }
+
+    /** Affiche une question et ses options cliquables. */
+    function poserQuestion() {
+        if (!quizEnCours.serie) { quizEnCours.serie = 's' + Date.now(); }
+        var tirage = questionSuivante();
+
+        if (!tirage) {
+            // Plus rien à poser : soit la page n'a pas de quiz, soit on a fait le tour.
+            if (quizEnCours.total) { terminerQuiz(); return; }
+
+            var msg = 'Cette page n\'a pas encore de quiz 🐴. ' +
+                'Demande-moi plutôt une <strong>fiche de révision</strong>, ou pose-moi ' +
+                'une question sur une notion de la leçon !';
+            ajouterMessage(msg, 'bot', true);
+            return;
+        }
+
+        var q = tirage.question;
+        var div = document.createElement('div');
+        div.className = 'kc-msg kc-bot';
+
+        var enonce = document.createElement('div');
+        enonce.innerHTML = '🎯 <strong>Question ' + (quizEnCours.total + 1) + '</strong><br>' +
+            echapper(q.question);
+        div.appendChild(enonce);
+
+        var liste = document.createElement('div');
+        liste.className = 'kc-options';
+
+        q.options.forEach(function (option) {
+            var bouton = document.createElement('button');
+            bouton.type = 'button';
+            bouton.className = 'kc-option';
+            bouton.textContent = option;
+            bouton.addEventListener('click', function () {
+                repondreQuestion(liste, q, option, div);
+            });
+            liste.appendChild(bouton);
+        });
+
+        div.appendChild(liste);
+        elMessages.appendChild(div);
+        elMessages.scrollTop = elMessages.scrollHeight;
+    }
+
+    /** Corrige la réponse choisie et propose la suite. */
+    function repondreQuestion(liste, q, choisie, div) {
+        var juste = choisie === q.reponse;
+        quizEnCours.total += 1;
+        if (juste) { quizEnCours.justes += 1; }
+
+        // Fige les options et montre où était la bonne réponse.
+        Array.prototype.forEach.call(liste.children, function (bouton) {
+            bouton.disabled = true;
+            if (bouton.textContent === q.reponse) { bouton.classList.add('kc-juste'); }
+            else if (bouton.textContent === choisie) { bouton.classList.add('kc-faux'); }
+        });
+
+        // Enregistré à chaque réponse : Karniella s'arrête quand elle veut, et
+        // n'ira presque jamais au bout des 20 questions d'une leçon.
+        if (window.KarniellaProgression) {
+            window.KarniellaProgression.enregistrerQuiz(
+                CONNAISSANCES.slug, quizEnCours.justes, quizEnCours.total, quizEnCours.serie);
+        }
+
+        var verdict = document.createElement('span');
+        verdict.className = 'kc-verdict';
+        verdict.textContent = juste ? '✅ Bravo, c\'est ça !' : '❌ Pas tout à fait.';
+        div.appendChild(verdict);
+
+        if (q.explication) {
+            var explication = document.createElement('div');
+            explication.className = 'kc-source';
+            explication.textContent = q.explication;
+            div.appendChild(explication);
+        }
+
+        // L'historique ne garde que le résumé : réinjecter des boutons
+        // interactifs au rechargement n'aurait aucun sens.
+        noterHistorique({ t: q.question + '\n' + verdict.textContent +
+            ' Réponse : ' + q.reponse });
+
+        var suite = document.createElement('button');
+        suite.type = 'button';
+        suite.className = 'kc-plus-simple';
+        var reste = ((CONNAISSANCES.detail && CONNAISSANCES.detail.quiz) || []).length -
+            quizEnCours.posees.length;
+        suite.textContent = reste > 0 ? '➡️ Question suivante' : '🏁 Voir mon score';
+        suite.addEventListener('click', function () {
+            suite.remove();
+            poserQuestion();
+        });
+        div.appendChild(document.createElement('br'));
+        div.appendChild(suite);
+
+        elMessages.scrollTop = elMessages.scrollHeight;
+    }
+
+    /* ============================================================
+       « OÙ J'EN SUIS ? »
+       ============================================================ */
+
+    var NOMS_MATIERES = {
+        mathematiques: '🔢 Maths',
+        physique: '⚡ Physique',
+        svt: '🌱 SVT',
+        'histoire-geo': '🌍 Histoire-géo',
+        'education-civique': '⚖️ Éducation civique',
+        francais: '📖 Français',
+        tice: '💻 Informatique'
+    };
+
+    function bilanProgression() {
+        var suivi = window.KarniellaProgression;
+        if (!suivi) { return 'Je n\'arrive pas à lire tes progrès pour le moment 🐴.'; }
+        if (!suivi.disponible()) {
+            return 'Ton navigateur n\'autorise pas la sauvegarde 🐴 : je ne peux pas ' +
+                'retenir tes progrès ici. Tout le reste fonctionne normalement !';
+        }
+
+        var lignes = suivi.resume(CONNAISSANCES.index);
+        if (!lignes.length) {
+            return '📊 On commence tout juste ! Fais un quiz avec le bouton ' +
+                '<strong>🎯 Interroge-moi</strong> et je garderai la trace de tes scores. 🐴';
+        }
+
+        var html = '📊 <strong>Où tu en es</strong><br><br>';
+        lignes.forEach(function (l) {
+            var nom = NOMS_MATIERES[l.matiere] || l.matiere;
+            var part = l.total ? Math.round((l.vues / l.total) * 100) : 0;
+            html += '<strong>' + echapper(nom) + '</strong> — ' + l.vues +
+                (l.total ? ' leçon' + (l.vues > 1 ? 's' : '') + ' vue' +
+                    (l.vues > 1 ? 's' : '') + ' sur ' + l.total : '') +
+                (l.scoreMoyen !== null ? ' · moyenne ' + l.scoreMoyen + '%' : '') +
+                '<span class="kc-jauge"><span style="width:' + part + '%"></span></span>';
+        });
+
+        var page = suivi.pourPage(CONNAISSANCES.slug);
+        if (page && page.meilleurScore !== null) {
+            html += '<span class="kc-source">Sur cette page, ton meilleur score est ' +
+                page.meilleurScore + '%.</span>';
+        }
+        return html;
+    }
+
+    /* ============================================================
        TRAITEMENT D'UNE QUESTION
        ============================================================ */
 
@@ -1240,6 +1458,26 @@
 
         ajouterMessage(question, 'user', false);
         noterHistorique({ u: question });
+        // Seules les vraies questions comptent : un clic sur « Interroge-moi »
+        // ou « Où j'en suis ? » n'est pas une question sur la leçon.
+        if (window.KarniellaProgression && (mode === 'explication' || mode === 'simplifier')) {
+            window.KarniellaProgression.enregistrerQuestion(CONNAISSANCES.slug);
+        }
+
+        // Le mode quiz est purement local : les questions sont déjà chargées.
+        if (mode === 'quiz') {
+            window.setTimeout(poserQuestion, 200);
+            return;
+        }
+
+        if (mode === 'progression') {
+            var bilan = bilanProgression();
+            window.setTimeout(function () {
+                ajouterMessage(bilan, 'bot', true);
+                noterHistorique({ p: 1 });
+            }, 200);
+            return;
+        }
 
         // La fiche de révision se fabrique sur place, sans réseau.
         if (mode === 'fiche') {
@@ -1427,7 +1665,11 @@
             { libelle: '📝 Fiche de révision', mode: 'fiche',
               question: 'Fais-moi la fiche de révision de cette page' },
             { libelle: '🧮 Aide sur un exercice', mode: 'exercice',
-              question: 'Aide-moi sur un exercice de cette leçon' }
+              question: 'Aide-moi sur un exercice de cette leçon' },
+            { libelle: '🎯 Interroge-moi', mode: 'quiz',
+              question: 'Interroge-moi sur cette leçon' },
+            { libelle: '📊 Où j\'en suis ?', mode: 'progression',
+              question: 'Où j\'en suis dans mes révisions ?' }
         ].forEach(function (action) {
             var b = document.createElement('button');
             b.type = 'button';
@@ -1508,6 +1750,8 @@
         base: BASE,
         // Utiles pour vérifier depuis la console qu'une page est bien reconnue.
         contexte: CONNAISSANCES,
-        fiche: ficheDeRevision
+        fiche: ficheDeRevision,
+        quiz: poserQuestion,
+        bilan: bilanProgression
     };
 })();

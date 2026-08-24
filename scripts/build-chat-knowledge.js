@@ -293,11 +293,141 @@ function construireIndexQuiz() {
     return { parSlug, parTitre };
 }
 
+/**
+ * Quiz écrits en dur dans le HTML de la page.
+ *
+ * quizzes.json et section-questions.json ne couvrent que 17 pages, toutes en
+ * physique et en maths. 38 pages portent en réalité leur quiz dans leur propre
+ * HTML, avec le corrigé dans un objet JS — invisible pour les deux fichiers de
+ * données. Sans cette extraction, le mode « interroge-moi » ne fonctionnerait
+ * ni en SVT, ni en ECM, ni en français, histoire-géo ou informatique.
+ *
+ * Deux variantes de balisage coexistent, toutes deux couvertes ici :
+ *   .quiz-question > .question-text + label.quiz-option > input[radio]
+ *   .quiz-question > h4            + .quiz-options > label > input[radio]
+ */
+function extraireQuizInline($, html) {
+    // 1) Le corrigé : { q1: 'b', q2: 'c', … } quelque part dans le <script>.
+    const corrige = corrigeDepuisOnclick(html);
+
+    const bloc = html.match(/(?:quizAnswers|correctAnswers|answers)\s*=\s*\{([^}]*)\}/);
+    if (bloc) {
+        for (const p of bloc[1].matchAll(/(['"]?)(q\d+)\1\s*:\s*['"]([a-z0-9]+)['"]/gi)) {
+            if (!corrige[p[2]]) { corrige[p[2]] = { valeur: p[3], explication: '' }; }
+        }
+    }
+    if (!Object.keys(corrige).length) { return []; }
+
+    // 2) Les énoncés et leurs options.
+    const questions = [];
+    $('.quiz-question').each((_, el) => {
+        const $q = $(el);
+        const enonce = nettoyerTexte(
+            $q.find('.question-text').first().text() ||
+            $q.find('h3, h4').first().text() ||
+            $q.find('p').first().text()
+        ).replace(/^\d+[.)]\s*/, '');      // « 1. Quel état… » -> « Quel état… »
+        if (!enonce) { return; }
+
+        const options = [];
+        let nomGroupe = null;
+
+        $q.find('label').each((__, l) => {
+            const $l = $(l);
+            const input = $l.find('input[type=radio]').first();
+            if (!input.length) { return; }
+            nomGroupe = nomGroupe || input.attr('name');
+            // Certaines pages préfixent le libellé (« a) Des lois… ») : le repère
+            // visuel n'a plus de sens une fois la question posée dans le chat.
+            const texte = nettoyerTexte($l.text()).replace(/^[a-z][.)]\s+/i, '');
+            options.push({ valeur: input.attr('value'), texte: texte });
+        });
+
+        // Sans corrigé pour ce groupe, la question est inutilisable : on ne
+        // saurait pas corriger Karniella. Mieux vaut l'écarter que la deviner.
+        if (options.length < 2 || !nomGroupe || !corrige[nomGroupe]) { return; }
+        const attendu = corrige[nomGroupe];
+        const bonne = options.find((o) => o.valeur === attendu.valeur);
+        if (!bonne) { return; }
+
+        questions.push({
+            question: enonce,
+            options: options.map((o) => o.texte),
+            reponse: bonne.texte,
+            explication: attendu.explication
+        });
+    });
+    return questions;
+}
+
+/**
+ * Variante « corrigé passé en argument » :
+ *   <button onclick="checkAnswer('q1', 'b', 'Parce que …')">
+ *
+ * Six pages font ainsi (education-civique et cinq leçons de maths), et c'est la
+ * seule variante HTML qui porte aussi l'explication — précieux pour corriger
+ * Karniella autrement qu'en lui donnant la bonne case.
+ */
+function corrigeDepuisOnclick(html) {
+    const corrige = {};
+    const motif = /checkAnswer\(\s*['"](q\d+)['"]\s*,\s*['"]([a-z0-9]+)['"]\s*(?:,\s*(['"])([\s\S]*?)\3)?\s*\)/gi;
+    for (const m of html.matchAll(motif)) {
+        corrige[m[1]] = { valeur: m[2], explication: nettoyerTexte(m[4] || '') };
+    }
+    return corrige;
+}
+
+/**
+ * Variante « tableau de données » : `quizData = [{ question, options, correct, explanation }]`
+ * dans le <script> de la page (les deux pages de quiz autonomes).
+ *
+ * Le littéral est évalué plutôt que découpé à la regex : il contient des
+ * apostrophes échappées et des virgules dans les énoncés, qu'une regex
+ * traiterait mal. C'est un script de build qui lit les fichiers du dépôt
+ * lui-même, pas une entrée utilisateur.
+ */
+function extraireQuizTableau(html) {
+    const debut = html.search(/(?:quizData|quizQuestions)\s*=\s*\[/);
+    if (debut === -1) { return []; }
+
+    const ouvrant = html.indexOf('[', debut);
+    let profondeur = 0;
+    let fin = -1;
+    for (let i = ouvrant; i < html.length; i++) {
+        if (html[i] === '[') { profondeur++; }
+        else if (html[i] === ']') { profondeur--; if (!profondeur) { fin = i; break; } }
+    }
+    if (fin === -1) { return []; }
+
+    let donnees;
+    try {
+        donnees = new Function('return ' + html.slice(ouvrant, fin + 1))();
+    } catch (err) {
+        console.warn('  ! tableau de quiz illisible (' + err.message + ')');
+        return [];
+    }
+    if (!Array.isArray(donnees)) { return []; }
+
+    return donnees.map((q) => {
+        const options = Array.isArray(q.options) ? q.options.map(nettoyerTexte) : null;
+        const enonce = nettoyerTexte(q.question || q.text || '');
+        if (!enonce || !options || options.length < 2) { return null; }
+
+        const idx = typeof q.correct === 'number' ? q.correct : q.correctAnswer;
+        return {
+            question: enonce,
+            options: options,
+            reponse: options[idx] !== undefined ? options[idx] : null,
+            explication: nettoyerTexte(q.explanation || q.explication || '')
+        };
+    }).filter((q) => q && q.reponse);
+}
+
 /* ============================================================
    Traitement d'une page
    ============================================================ */
 
-const MAX_QUIZ = 12;
+const MAX_QUIZ = 20;
 
 /** Deux sources peuvent apporter la même question : on la garde une fois. */
 function deduplicerQuiz(questions) {
@@ -357,9 +487,13 @@ function traiterPage(page, indexQuiz) {
         })
         .slice(0, MAX_NOTIONS);
 
+    // Les questions issues des fichiers de données passent en premier : elles
+    // portent souvent une explication, que le HTML n'a pas.
     const quiz = deduplicerQuiz([
         ...(indexQuiz.parSlug[page.slug] || []),
-        ...(indexQuiz.parTitre[normaliser(titre)] || [])
+        ...(indexQuiz.parTitre[normaliser(titre)] || []),
+        ...extraireQuizInline($, html),
+        ...extraireQuizTableau(html)
     ]).slice(0, MAX_QUIZ);
 
     return { slug: page.slug, titre, sousTitre, matiere, retour, onglets, notions, quiz };

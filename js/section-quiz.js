@@ -129,6 +129,13 @@ class SectionQuiz {
         scoreDiv.innerHTML = `
             <p>${emoji} <strong>${message}</strong> - Score : ${correct}/${total} (${percentage}%)</p>
         `;
+
+        // Alimente le suivi des progrès, partagé avec le chat. Le module est
+        // chargé par chat-assistant.js : on ne suppose pas sa présence.
+        if (window.KarniellaProgression) {
+            const slug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+            window.KarniellaProgression.enregistrerQuiz(slug, correct, total);
+        }
     }
 }
 

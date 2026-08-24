@@ -303,6 +303,32 @@
             padding-left: 20px;
         }
 
+        .subject-progress {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(157, 47, 92, 0.12);
+            border: 1px solid rgba(157, 47, 92, 0.28);
+            color: #9D2F5C;
+            font-size: 12px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+
+        /* Pastille de progression, calée sur .status-coming-soon */
+        .lesson-progress {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
         .status-coming-soon {
             display: inline-block;
             background: rgba(255, 255, 255, 0.3);
@@ -729,6 +755,8 @@
                     // Sinon, afficher le titre normalement
                     titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
                 }
+                const avancement = badgeMatiere(subject.id);
+                if (avancement) { titleDiv.appendChild(avancement); }
                 section.appendChild(titleDiv);
 
                 // Description de la matière
@@ -764,6 +792,7 @@
                             card.innerHTML = `
                                 <a href="${lesson.url}" aria-label="Ouvrir ${lesson.title}">
                                     <span class="lesson-icon" aria-hidden="true">${lesson.icon}</span>
+                                    ${badgeProgression(lesson.url)}
                                     <h4>${lesson.title}</h4>
                                     <p>${lesson.description}</p>
                                     <span class="lesson-button">Accéder <span aria-hidden="true">→</span></span>
@@ -788,8 +817,62 @@
             });
         }
 
+        /**
+         * Pastille « déjà vu / score » sur une carte de leçon.
+         *
+         * js/progression.js est chargé par le chat, donc de façon asynchrone :
+         * au premier rendu il n'est en général pas encore là. On rend sans
+         * pastille, puis on redessine à son arrivée (voir plus bas).
+         */
+        /**
+         * Avancement d'une MATIÈRE entière.
+         *
+         * C'est ici que se joue le « ce qui reste » : le catalogue de cette page
+         * ne liste que 15 URL, presque toutes des sommaires — les leçons de maths
+         * ou de physique n'y figurent pas une par une. Une pastille par carte ne
+         * dirait donc rien de l'essentiel du travail.
+         */
+        function badgeMatiere(id) {
+            if (!window.KarniellaProgression || !window.KarniellaChatKnowledge) { return null; }
+
+            const lignes = window.KarniellaProgression.resume(window.KarniellaChatKnowledge.pages);
+            const ligne = lignes.find(l => l.matiere === id);
+            if (!ligne || !ligne.total || !ligne.vues) { return null; }
+
+            const span = document.createElement('span');
+            span.className = 'subject-progress';
+            span.textContent = `${ligne.vues}/${ligne.total} leçons vues` +
+                (ligne.scoreMoyen !== null ? ` · ${ligne.scoreMoyen}%` : '');
+            span.title = 'Ton avancement dans cette matière';
+            return span;
+        }
+
+        function badgeProgression(url) {
+            if (!window.KarniellaProgression) { return ''; }
+            const slug = String(url || '').replace(/\.html$/, '');
+            const suivi = window.KarniellaProgression.pourPage(slug);
+            if (!suivi || !suivi.visites) { return ''; }
+
+            if (suivi.meilleurScore !== null) {
+                return `<span class="lesson-progress" title="Meilleur score au quiz">🎯 ${suivi.meilleurScore}%</span>`;
+            }
+            return '<span class="lesson-progress" title="Leçon déjà ouverte">👀 Déjà vue</span>';
+        }
+
         // Initialiser les sections au chargement
         renderSubjects();
+
+        // Le module de progression arrive après coup : on redessine une fois
+        // qu'il est là, sinon les pastilles n'apparaîtraient qu'au 2e chargement.
+        (function attendreProgression(essais) {
+            // Les deux sont nécessaires : le module pour les scores, l'index du
+            // chat pour savoir combien de leçons compte chaque matière.
+            if (window.KarniellaProgression && window.KarniellaChatKnowledge) {
+                renderSubjects();
+                return;
+            }
+            if (essais > 0) { setTimeout(() => attendreProgression(essais - 1), 300); }
+        })(15);
 
         const searchInput = document.getElementById('subjectSearch');
         const searchResults = document.getElementById('searchResults');
