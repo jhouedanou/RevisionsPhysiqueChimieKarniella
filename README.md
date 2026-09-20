@@ -206,7 +206,7 @@ Anglais, Physique-Chimie, Mathématiques, SVT, Français, Histoire-Géographie, 
 | `data/programme-5e.json` | Les matières et leurs leçons | non — **c'est ici qu'on écrit** |
 | `5e/<matiere>.html` | Sommaire d'une matière | oui |
 | `5e/<lecon>.html` | Une leçon | non — écrite à la main |
-| `index.html` (2 blocs entre marqueurs) | Catalogue + programme de l'accueil | oui |
+| `js/programme-5e.js` | Catalogue lu par l'accueil | oui |
 
 ### Ajouter une leçon
 
@@ -270,6 +270,37 @@ Le générateur récupère les quiz de **quatre sources**, dédoublonnées par �
 Les deux dernières sont indispensables : sans elles, seules 17 pages auraient un quiz, uniquement
 en physique et en maths.
 
+### 🔊 Lecture vocale
+
+`js/lecture-vocale.js` ajoute un bouton 🔊 sur :
+
+- chaque **ligne de vocabulaire** — lit le mot *et* sa définition ;
+- chaque **question de quiz**, avec ses propositions ;
+- chaque **réponse du chat**.
+
+Utilise la **Web Speech API** du navigateur : pas de clé d'API, pas de coût, et
+les voix étant installées sur l'appareil, **ça fonctionne hors-ligne**. Si le
+navigateur ne sait pas parler, aucun bouton n'apparaît et rien ne casse.
+
+Le module est chargé par `js/chat-assistant.js` : **aucune page HTML à modifier**.
+
+#### Faire lire un passage en anglais
+
+Poser `data-lire-langue="en-GB"` sur un élément : tout ce qu'il contient sera lu
+avec une voix anglaise. Sans cet attribut, la langue de la page (`fr-FR`) s'applique.
+
+```html
+<table class="table-vocab" data-lire-langue="en-GB">
+<section class="tab-content" id="tab2" data-lire-langue="en-GB">
+```
+
+`data-lire="texte à lire"` sur n'importe quel élément y ajoute un bouton qui lit
+ce texte — utile pour un dialogue dont l'affichage contient des annotations.
+
+Trois vitesses (normale / lente / très lente) apparaissent au-dessus des onglets
+dès qu'une zone anglaise existe sur la page. Le choix est mémorisé et ne
+s'applique **qu'à l'anglais** : ralentir le français n'a pas d'intérêt.
+
 ### Suivi des progrès
 
 `js/progression.js` retient ce que Karniella a vu et ses scores, dans une clé `localStorage`.
@@ -301,8 +332,8 @@ puis écrit :
 **Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
 car Vercel sert le site en statique, sans étape de build.
 
-⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v10`
-→ `v11`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
+⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v13`
+→ `v14`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
 version : les fichiers `/js/` sont servis en cache-first.
 
 ### Activer le repli IA
@@ -315,6 +346,26 @@ Copier `.env.example` vers `.env` et renseigner `ANTHROPIC_API_KEY`
 
 Le navigateur n'envoie que le **slug** de la page, jamais son contenu : le
 contexte donné au modèle est relu côté serveur depuis `data/chat/`.
+
+## 🏠 La page d'accueil
+
+Volontairement courte : un en-tête, une recherche, le sommaire des leçons groupé
+par matière, un pied de page. Elle est passée de **828 à 66 lignes** — ses
+349 lignes de CSS et 313 lignes de JS vivent maintenant dans `css/accueil.css`,
+`js/accueil.js` et `js/inscrire-sw.js`.
+
+Ce qui a été retiré : la section « Programme », **qui listait une deuxième fois
+les mêmes leçons que les cartes de matières** — c'était la vraie cause de la
+surcharge. Avec elle sont partis le bandeau « Ta session en 3 étapes », le titre
+d'accroche, les deux boutons d'appel à l'action et la ligne de compteurs.
+
+Les matières encore vides ne prennent **pas** un bloc chacune : elles sont
+réunies sur une ligne « Bientôt ». Six blocs vides sur huit alourdiraient la page
+au lieu de l'éclaircir.
+
+La recherche porte sur les noms de matières, les titres de leçons **et les
+notions de chaque page** (via l'index du chat) : taper « canteen » ou
+« dissolution » trouve la bonne leçon.
 
 ## 📞 Support
 

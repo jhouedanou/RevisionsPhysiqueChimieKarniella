@@ -1,0 +1,303 @@
+/**
+ * accueil.css — Mise en page de la page d'accueil.
+ *
+ * L'accueil portait 349 lignes de <style> en dur. Elles vivent ici, comme
+ * celles des leçons vivent dans lecon-5e.css : une seule couleur à changer, un
+ * seul endroit.
+ *
+ * La page est volontairement courte : un en-tête, une recherche, le sommaire
+ * des leçons groupé par matière, un pied de page. Rien d'autre.
+ */
+
+:root {
+    --ac-fond: #FFF9FB;
+    --ac-encre: #49353F;
+    --ac-rose: #9D2F5C;
+    --ac-rose-clair: #C83F76;
+    --ac-bord: rgba(72, 40, 55, 0.14);
+    --ac-ombre: 0 10px 30px rgba(73, 30, 50, 0.12);
+    --ac-doux: #8A7480;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(165deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
+    color: var(--ac-encre);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.enveloppe { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+
+/* ============================================================
+   En-tête
+   ============================================================ */
+
+.accueil-entete {
+    padding: 30px 0 24px;
+    text-align: center;
+}
+
+.marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.marque-signe { font-size: 34px; line-height: 1; }
+
+.marque strong {
+    font-size: clamp(22px, 5vw, 28px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.marque-niveau {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ac-rose);
+}
+
+/* ============================================================
+   Recherche
+   ============================================================ */
+
+.recherche { margin-bottom: 26px; }
+
+.recherche label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ac-doux);
+}
+
+.champ-recherche {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 15px;
+    background: #fff;
+    border: 1px solid var(--ac-bord);
+    border-radius: 14px;
+    box-shadow: var(--ac-ombre);
+}
+
+.champ-recherche:focus-within {
+    border-color: var(--ac-rose-clair);
+    box-shadow: 0 0 0 3px rgba(200, 63, 118, 0.15);
+}
+
+.champ-recherche span { color: var(--ac-rose); font-size: 17px; }
+
+.champ-recherche input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: 15px;
+    color: inherit;
+}
+
+.champ-recherche input:focus { outline: none; }
+
+.effacer-recherche {
+    border: 0;
+    background: none;
+    color: var(--ac-doux);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.effacer-recherche:hover { background: #FBE7EF; color: var(--ac-rose); }
+.effacer-recherche:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+.recherche-vide {
+    padding: 22px 18px;
+    text-align: center;
+    color: var(--ac-doux);
+    background: #fff;
+    border: 1px dashed var(--ac-bord);
+    border-radius: 14px;
+}
+
+/* ============================================================
+   Sommaire, groupé par matière
+   ============================================================ */
+
+.bloc-matiere {
+    margin-bottom: 14px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid var(--ac-bord);
+    border-radius: 16px;
+    box-shadow: var(--ac-ombre);
+}
+
+.titre-matiere {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.titre-matiere .icone { font-size: 24px; line-height: 1; }
+
+.titre-matiere a {
+    color: var(--ac-rose);
+    font-size: 18px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.titre-matiere a:hover { text-decoration: underline; }
+.titre-matiere a:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+
+/* Avancement dans la matière, rempli par js/progression.js */
+.avancement {
+    margin-left: auto;
+    padding: 3px 11px;
+    border-radius: 999px;
+    background: rgba(157, 47, 92, 0.1);
+    border: 1px solid rgba(157, 47, 92, 0.24);
+    color: var(--ac-rose);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.liste-lecons { list-style: none; display: grid; gap: 8px; }
+
+.liste-lecons a {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 14px;
+    background: #FFF6FA;
+    border: 1px solid var(--ac-bord);
+    border-radius: 12px;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.liste-lecons a:hover { background: #FBE7EF; transform: translateX(3px); }
+.liste-lecons a:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+.liste-lecons .icone { font-size: 20px; line-height: 1; flex: 0 0 auto; }
+.liste-lecons .intitule { flex: 1 1 auto; min-width: 0; }
+.liste-lecons .intitule strong { display: block; font-size: 15px; }
+
+.liste-lecons .intitule small {
+    display: block;
+    font-size: 12.5px;
+    color: var(--ac-doux);
+}
+
+/* Meilleur score au quiz de cette leçon. */
+.score-lecon {
+    flex: 0 0 auto;
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #E4F5E8;
+    color: #1F5C33;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+/* Leçon annoncée au programme mais pas encore écrite. */
+.liste-lecons .a-venir {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 14px;
+    border: 1px dashed var(--ac-bord);
+    border-radius: 12px;
+    color: var(--ac-doux);
+    font-size: 14px;
+}
+
+/* ============================================================
+   Les matières encore vides — une seule ligne, pas un bloc chacune
+   ============================================================ */
+
+.a-venir-matieres {
+    margin: 18px 0 8px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px dashed var(--ac-bord);
+    border-radius: 16px;
+    font-size: 14px;
+    color: var(--ac-doux);
+}
+
+.a-venir-matieres strong { color: var(--ac-encre); }
+
+.a-venir-matieres ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.a-venir-matieres a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: #fff;
+    border: 1px solid var(--ac-bord);
+    border-radius: 999px;
+    color: var(--ac-encre);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.a-venir-matieres a:hover { border-color: var(--ac-rose); color: var(--ac-rose); }
+.a-venir-matieres a:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+/* ============================================================
+   Pied de page
+   ============================================================ */
+
+.accueil-pied {
+    margin-top: 26px;
+    padding: 26px 0 40px;
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--ac-doux);
+}
+
+.accueil-pied strong { color: var(--ac-encre); }
+.accueil-pied p { margin-top: 5px; }
+
+/* Lien d'évitement, pour la navigation au clavier. */
+.saut-contenu {
+    position: absolute;
+    left: -9999px;
+    padding: 10px 16px;
+    background: var(--ac-rose);
+    color: #fff;
+    border-radius: 0 0 10px 0;
+    z-index: 10;
+}
+
+.saut-contenu:focus { left: 0; top: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .liste-lecons a:hover { transform: none; }
+}

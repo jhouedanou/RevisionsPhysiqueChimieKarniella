@@ -764,6 +764,7 @@
 
     /** Charge js/progression.js. Facultatif : sans lui, le chat marche pareil. */
     function chargerProgression() {
+        chargerLectureVocale();
         if (window.KarniellaProgression) { return; }
         var script = document.createElement('script');
         script.src = RACINE + 'js/progression.js';
@@ -1102,6 +1103,34 @@
         return div;
     }
 
+    /**
+     * Bouton « Écouter » sous une réponse du chat.
+     *
+     * La langue suit la matière : sur une leçon d'anglais, la réponse contient
+     * du vocabulaire anglais qu'il vaut mieux entendre prononcé en anglais.
+     */
+    function ajouterBoutonEcouter(div) {
+        if (!window.LectureVocale || !window.LectureVocale.disponible()) { return; }
+
+        var matiere = (CONNAISSANCES.detail && CONNAISSANCES.detail.matiere) || '';
+        var langue = matiere === 'anglais' ? 'en-GB' : 'fr-FR';
+
+        var bouton = document.createElement('button');
+        bouton.type = 'button';
+        bouton.className = 'kv-bouton';
+        bouton.textContent = '🔊';
+        bouton.setAttribute('aria-label', 'Écouter cette réponse');
+        bouton.setAttribute('title', 'Écouter cette réponse');
+        bouton.addEventListener('click', function () {
+            // On lit le texte affiché, pas le HTML source : les liens et les
+            // balises ne doivent pas être prononcés.
+            var texte = div.textContent.replace(/🔊|🙋 Explique plus simplement/g, '');
+            window.LectureVocale.lire(texte, langue, bouton);
+        });
+        div.appendChild(document.createTextNode(' '));
+        div.appendChild(bouton);
+    }
+
     /** Bouton « Explique plus simplement » sous une réponse. */
     function ajouterBoutonPlusSimple(div, question) {
         var bouton = document.createElement('button');
@@ -1114,6 +1143,14 @@
         });
         div.appendChild(document.createElement('br'));
         div.appendChild(bouton);
+    }
+
+    /** Charge js/lecture-vocale.js, qui ajoute les boutons « Écouter ». */
+    function chargerLectureVocale() {
+        if (window.LectureVocale) { return; }
+        var script = document.createElement('script');
+        script.src = RACINE + 'js/lecture-vocale.js';
+        document.head.appendChild(script);
     }
 
     /* ============================================================
@@ -1333,6 +1370,7 @@
         });
 
         div.appendChild(liste);
+        ajouterBoutonEcouter(div);
         elMessages.appendChild(div);
         elMessages.scrollTop = elMessages.scrollHeight;
     }
@@ -1505,6 +1543,7 @@
             window.setTimeout(function () {
                 var div = ajouterMessage(trouvee.reponse, 'bot', true);
                 noterHistorique({ b: trouvee.id });
+                ajouterBoutonEcouter(div);
                 if (iaEnvisageable()) { ajouterBoutonPlusSimple(div, question); }
             }, 200);
             return;
@@ -1526,6 +1565,7 @@
             if (reponse) {
                 var div = ajouterTexteBot(reponse);
                 noterHistorique({ t: reponse });
+                ajouterBoutonEcouter(div);
                 if (mode !== 'simplifier') { ajouterBoutonPlusSimple(div, question); }
             } else {
                 ajouterMessage(repli(question), 'bot', true);

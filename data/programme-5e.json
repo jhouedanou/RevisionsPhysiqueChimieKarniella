@@ -30,6 +30,14 @@
           "icone": "🏫",
           "description": "Les lieux de l'école en anglais, et comment demander son chemin.",
           "statut": "prete"
+        },
+        {
+          "id": "anglais-unit1-session2",
+          "titre": "Unit 1 — At school : Session 2",
+          "sousTitre": "Vocabulary & Expressing like and dislike",
+          "icone": "💬",
+          "description": "Les autres lieux de l'école, et dire ce qu'on aime ou pas.",
+          "statut": "prete"
         }
       ]
     },
@@ -84,7 +92,16 @@
       "couleur": "#7B4397",
       "description": "Grammaire, conjugaison, lecture et expression écrite.",
       "ordre": 5,
-      "lecons": []
+      "lecons": [
+        {
+          "id": "francais-exploitation-documents",
+          "titre": "L'exploitation de documents",
+          "sousTitre": "Lire un texte et répondre aux questions",
+          "icone": "🔍",
+          "description": "La méthode en trois gestes, et les formules qui rapportent des points.",
+          "statut": "prete"
+        }
+      ]
     },
     {
       "id": "histoire-geo",
