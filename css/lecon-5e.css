@@ -309,3 +309,72 @@ a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     font-size: 13px;
     opacity: 0.75;
 }
+
+
+/* ============================================================
+   Lecture vocale (js/lecture-vocale.js)
+   Les boutons n'existent que si le navigateur sait parler.
+   ============================================================ */
+
+.kv-bouton {
+    margin-left: 6px;
+    padding: 1px 5px;
+    border: 1px solid rgba(157, 47, 92, 0.3);
+    border-radius: 7px;
+    background: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.kv-bouton:hover { background: #FBE7EF; }
+.kv-bouton:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+/* Pendant la lecture : le bouton pulse, et un second clic arrête. */
+.kv-bouton.kv-parle {
+    background: var(--l5-rose);
+    border-color: var(--l5-rose);
+    animation: kv-pulse 1s ease-in-out infinite;
+}
+
+@keyframes kv-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kv-bouton.kv-parle { animation: none; }
+}
+
+.kv-reglage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    max-width: 900px;
+    margin: 12px auto 0;
+    padding: 0 16px;
+    font-size: 13px;
+}
+
+.kv-vitesse {
+    padding: 5px 12px;
+    border: 1px solid rgba(157, 47, 92, 0.3);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.kv-vitesse:hover { background: #FBE7EF; }
+.kv-vitesse.actif { background: var(--l5-rose); border-color: var(--l5-rose); color: #fff; }
+.kv-vitesse:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+/* Dans un tableau de vocabulaire, le mot ne doit pas passer à la ligne
+   à cause du bouton. */
+.table-vocab td:first-child { white-space: normal; }

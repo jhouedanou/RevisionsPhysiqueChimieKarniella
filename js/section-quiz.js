@@ -37,6 +37,12 @@ class SectionQuiz {
         `;
 
         this.container.innerHTML = quizHTML;
+
+        // Les questions viennent d'être créées : la lecture vocale doit pouvoir
+        // y accrocher ses boutons. Le module est facultatif.
+        if (window.LectureVocale) {
+            window.LectureVocale.equiper(this.container);
+        }
     }
 
     renderQuestion(question, index) {

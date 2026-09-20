@@ -270,6 +270,37 @@ Le générateur récupère les quiz de **quatre sources**, dédoublonnées par �
 Les deux dernières sont indispensables : sans elles, seules 17 pages auraient un quiz, uniquement
 en physique et en maths.
 
+### 🔊 Lecture vocale
+
+`js/lecture-vocale.js` ajoute un bouton 🔊 sur :
+
+- chaque **ligne de vocabulaire** — lit le mot *et* sa définition ;
+- chaque **question de quiz**, avec ses propositions ;
+- chaque **réponse du chat**.
+
+Utilise la **Web Speech API** du navigateur : pas de clé d'API, pas de coût, et
+les voix étant installées sur l'appareil, **ça fonctionne hors-ligne**. Si le
+navigateur ne sait pas parler, aucun bouton n'apparaît et rien ne casse.
+
+Le module est chargé par `js/chat-assistant.js` : **aucune page HTML à modifier**.
+
+#### Faire lire un passage en anglais
+
+Poser `data-lire-langue="en-GB"` sur un élément : tout ce qu'il contient sera lu
+avec une voix anglaise. Sans cet attribut, la langue de la page (`fr-FR`) s'applique.
+
+```html
+<table class="table-vocab" data-lire-langue="en-GB">
+<section class="tab-content" id="tab2" data-lire-langue="en-GB">
+```
+
+`data-lire="texte à lire"` sur n'importe quel élément y ajoute un bouton qui lit
+ce texte — utile pour un dialogue dont l'affichage contient des annotations.
+
+Trois vitesses (normale / lente / très lente) apparaissent au-dessus des onglets
+dès qu'une zone anglaise existe sur la page. Le choix est mémorisé et ne
+s'applique **qu'à l'anglais** : ralentir le français n'a pas d'intérêt.
+
 ### Suivi des progrès
 
 `js/progression.js` retient ce que Karniella a vu et ses scores, dans une clé `localStorage`.
@@ -301,8 +332,8 @@ puis écrit :
 **Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
 car Vercel sert le site en statique, sans étape de build.
 
-⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v10`
-→ `v11`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
+⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v12`
+→ `v13`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
 version : les fichiers `/js/` sont servis en cache-first.
 
 ### Activer le repli IA

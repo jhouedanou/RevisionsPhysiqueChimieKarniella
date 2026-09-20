@@ -1409,5 +1409,189 @@
         "explanation": "C'est la dissolution : le corps se disperse dans le liquide jusqu'à ne plus être visible."
       }
     ]
+  },
+  "anglais-unit1-session2": {
+    "tab3": [
+      {
+        "question": "It's the place where students go to play and practise sports. What is it?",
+        "options": [
+          "A canteen",
+          "A playground",
+          "A school garden",
+          "A toilet"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A playground: it's the place where students go to play and practise sports."
+      },
+      {
+        "question": "It's the work place of the secretary. What is it?",
+        "options": [
+          "The headmaster office",
+          "A staff room",
+          "A secretary's office",
+          "A library"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A secretary's office: it's the work place of the secretary."
+      },
+      {
+        "question": "Where do students go to grow vegetables?",
+        "options": [
+          "The playground",
+          "The school garden",
+          "The canteen",
+          "The laboratory"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A school garden: it's the place where students go to grow vegetables."
+      },
+      {
+        "question": "Après « like », comment écrit-on le verbe qui suit ?",
+        "options": [
+          "like + verbe à l'infinitif",
+          "like + verbe + -ing",
+          "like + verbe au passé",
+          "like + to + verbe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "like + V-ing : I like speaking English. Jamais « I like speak » ni « I like to speak » dans cette leçon."
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "I like speak English.",
+          "I like to speaking English.",
+          "I like speaking English.",
+          "I like spoke English."
+        ],
+        "correctAnswer": 2,
+        "explanation": "like + verbe + -ing → I like speaking English."
+      },
+      {
+        "question": "Complète : « I dislike ____ the board. »",
+        "options": [
+          "clean",
+          "to clean",
+          "cleaning",
+          "cleaned"
+        ],
+        "correctAnswer": 2,
+        "explanation": "dislike + V-ing → I dislike cleaning the board. C'est la même règle qu'avec like."
+      },
+      {
+        "question": "« I like English. » — quelle construction est utilisée ici ?",
+        "options": [
+          "like + V-ing",
+          "like + nom",
+          "like + adjectif",
+          "like + préposition"
+        ],
+        "correctAnswer": 1,
+        "explanation": "English est un nom : c'est la construction like + noun."
+      },
+      {
+        "question": "Laquelle de ces phrases exprime un DISLIKE correctement ?",
+        "options": [
+          "I dislike dogs.",
+          "I dislike to dogs.",
+          "I am dislike dogs.",
+          "I dislike dogging."
+        ],
+        "correctAnswer": 0,
+        "explanation": "dislike + nom → I dislike dogs."
+      }
+    ]
+  },
+  "francais-exploitation-documents": {
+    "tab3": [
+      {
+        "question": "Quel est le PREMIER geste à faire sur le texte ?",
+        "options": [
+          "Répondre aux questions",
+          "Numéroter les lignes",
+          "Souligner les mots clés",
+          "Résumer le texte"
+        ],
+        "correctAnswer": 1,
+        "explanation": "1. Numéroter les lignes — parce que les questions renvoient souvent à « la ligne 12 »."
+      },
+      {
+        "question": "Comment doit-on faire la lecture approfondie ?",
+        "options": [
+          "Rapidement, pour gagner du temps",
+          "À voix haute",
+          "Crayon en main",
+          "En lisant seulement le début et la fin"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Crayon en main : le crayon oblige à s'arrêter et à marquer, donc à vraiment lire."
+      },
+      {
+        "question": "Que faut-il souligner dans le texte ?",
+        "options": [
+          "Seulement les verbes",
+          "Les mots difficiles et les mots clés",
+          "Toutes les phrases",
+          "Les noms propres"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les mots difficiles (à deviner par le contexte) ET les mots clés (qui portent le sujet)."
+      },
+      {
+        "question": "Pour répondre à la question sur l'idée générale, il faut…",
+        "options": [
+          "donner un seul mot",
+          "faire une phrase complète avec une formule",
+          "recopier la première ligne",
+          "citer l'auteur"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une phrase complète, en utilisant l'une des formules du cours."
+      },
+      {
+        "question": "Laquelle est une formule du cours pour l'idée générale ?",
+        "options": [
+          "« Je pense que… »",
+          "« Dans le texte, il s'agit de… »",
+          "« C'est bien parce que… »",
+          "« Le texte est… »"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« Dans le texte, il s'agit de… », « où l'auteur parle de… », « À travers le texte, l'auteur montre que… »"
+      },
+      {
+        "question": "Une question demande l'idée générale. Quelle réponse vaut tous les points ?",
+        "options": [
+          "La protection de l'environnement.",
+          "Dans le texte, il s'agit de la protection de l'environnement.",
+          "L'environnement.",
+          "C'est sur l'environnement."
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'idée juste ne suffit pas : il faut la formule + l'idée, dans une phrase complète."
+      },
+      {
+        "question": "Expliquer un passage, c'est…",
+        "options": [
+          "le recopier",
+          "le répéter avec d'autres mots",
+          "l'expliquer avec ses connaissances et donner la raison",
+          "le résumer en un mot"
+        ],
+        "correctAnswer": 2,
+        "explanation": "L'élève explique à partir de ses connaissances et donne la raison d'une affirmation."
+      },
+      {
+        "question": "Quel mot est souvent le signe qu'on explique vraiment un passage ?",
+        "options": [
+          "« ensuite »",
+          "« parce que »",
+          "« aussi »",
+          "« enfin »"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« Parce que » introduit la raison — c'est justement ce qu'on demande dans une explication."
+      }
+    ]
   }
 }
