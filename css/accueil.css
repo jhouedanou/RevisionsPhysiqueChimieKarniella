@@ -37,7 +37,7 @@ body {
    ============================================================ */
 
 .accueil-entete {
-    padding: 30px 0 24px;
+    padding: 26px 0 20px;
     text-align: center;
 }
 
@@ -139,8 +139,8 @@ body {
    ============================================================ */
 
 .bloc-matiere {
-    margin-bottom: 14px;
-    padding: 18px 20px;
+    margin-bottom: 16px;
+    padding: 18px 20px 20px;
     background: #fff;
     border: 1px solid var(--ac-bord);
     border-radius: 16px;
@@ -179,38 +179,64 @@ body {
     font-weight: 700;
 }
 
-.liste-lecons { list-style: none; display: grid; gap: 8px; }
-
-.liste-lecons a {
+/* Les leçons sont des CARTES en grille, pas des lignes empilées : deux ou
+   trois tiennent côte à côte, la page reste courte et chaque leçon a une
+   surface cliquable franche. */
+.liste-lecons {
+    list-style: none;
     display: flex;
-    align-items: center;
-    gap: 11px;
-    padding: 11px 14px;
-    background: #FFF6FA;
-    border: 1px solid var(--ac-bord);
-    border-radius: 12px;
-    color: inherit;
-    text-decoration: none;
-    transition: transform 0.15s ease, background 0.15s ease;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.liste-lecons a:hover { background: #FBE7EF; transform: translateX(3px); }
-.liste-lecons a:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+/* Flex plutôt que grid : `auto-fill` réserverait une colonne vide, et deux
+   cartes dans une grille de trois laisseraient un trou à droite. Ici elles se
+   partagent la ligne ; une carte seule s'arrête à `max-width` au lieu de
+   s'étirer sur toute la largeur, ce qui la ferait ressembler à une ligne de
+   liste plutôt qu'à une carte. */
+.liste-lecons > li {
+    flex: 1 1 215px;
+    max-width: 340px;
+    display: flex;
+}
 
-.liste-lecons .icone { font-size: 20px; line-height: 1; flex: 0 0 auto; }
-.liste-lecons .intitule { flex: 1 1 auto; min-width: 0; }
-.liste-lecons .intitule strong { display: block; font-size: 15px; }
+.carte {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    padding: 16px;
+    background: #FFF6FA;
+    border: 1px solid var(--ac-bord);
+    border-radius: 14px;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
 
-.liste-lecons .intitule small {
-    display: block;
+a.carte:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(73, 30, 50, 0.16);
+}
+
+a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+
+.carte .icone { font-size: 26px; line-height: 1; }
+.carte .titre { font-size: 15px; font-weight: 800; line-height: 1.3; }
+
+.carte .sous {
     font-size: 12.5px;
+    line-height: 1.4;
     color: var(--ac-doux);
 }
 
-/* Meilleur score au quiz de cette leçon. */
+/* Meilleur score au quiz, poussé en bas de carte pour que les cartes
+   s'alignent quelles que soient les longueurs de titre. */
 .score-lecon {
-    flex: 0 0 auto;
-    padding: 2px 9px;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 3px 10px;
     border-radius: 999px;
     background: #E4F5E8;
     color: #1F5C33;
@@ -219,16 +245,14 @@ body {
 }
 
 /* Leçon annoncée au programme mais pas encore écrite. */
-.liste-lecons .a-venir {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    padding: 11px 14px;
-    border: 1px dashed var(--ac-bord);
-    border-radius: 12px;
+.carte.a-venir {
+    background: rgba(255, 255, 255, 0.5);
+    border-style: dashed;
     color: var(--ac-doux);
-    font-size: 14px;
+    cursor: default;
 }
+
+.carte.a-venir .titre { font-weight: 700; }
 
 /* ============================================================
    Les matières encore vides — une seule ligne, pas un bloc chacune
@@ -300,4 +324,16 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .liste-lecons a:hover { transform: none; }
+}
+
+
+/* Une seule carte sur la ligne en dessous de 430 px : en dessous, deux
+   colonnes tronquent les titres de leçon. */
+@media (max-width: 430px) {
+    /* En dessous, deux colonnes tronqueraient les titres. */
+    .liste-lecons > li { flex-basis: 100%; max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    a.carte:hover { transform: none; }
 }
