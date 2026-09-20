@@ -1201,6 +1201,28 @@
         ],
         "correctAnswer": 2,
         "explanation": "upstairs = à l'étage. Le contraire est downstairs = au rez-de-chaussée."
+      },
+      {
+        "question": "« Where is the school canteen? » — quelle réponse utilise bien une préposition de lieu ?",
+        "options": [
+          "It's canteen.",
+          "It's downstairs, behind the gate.",
+          "It's a place to eat.",
+          "Yes, it is."
+        ],
+        "correctAnswer": 1,
+        "explanation": "On répond avec une préposition de lieu : downstairs, behind, next to, upstairs…"
+      },
+      {
+        "question": "Complète : « A library is a place where students go to borrow books ____ »",
+        "options": [
+          "to eat",
+          "to read",
+          "to sleep",
+          "to play"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A library: it's a place where students go to borrow books TO READ."
       }
     ]
   },
@@ -1293,6 +1315,98 @@
         ],
         "correctAnswer": 1,
         "explanation": "Le liquide prend la forme de son récipient, mais son volume ne change pas."
+      }
+    ]
+  },
+  "physique-chimie-les-melanges": {
+    "tab4": [
+      {
+        "question": "Adja met du sucre dans l'eau et agite. Qu'a-t-elle utilisé pour préparer le mélange ?",
+        "options": [
+          "Seulement le sucre",
+          "Seulement l'eau",
+          "Le sucre et l'eau",
+          "Le sucre et la cuillère"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un mélange se fait avec au moins deux choses : ici le sucre ET l'eau. C'était l'erreur à ne pas refaire."
+      },
+      {
+        "question": "Après avoir agité, on ne voit plus le sucre. A-t-il disparu ?",
+        "options": [
+          "Oui, il a disparu",
+          "Non, il s'est dissous",
+          "Oui, il s'est évaporé",
+          "Non, il est tombé au fond"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Non ! Le sucre ne disparaît pas, il se dissout. Ne plus voir n'est pas disparaître."
+      },
+      {
+        "question": "Quelle preuve montre que le sucre est toujours là ?",
+        "options": [
+          "L'eau a changé de couleur",
+          "L'eau a le goût sucré",
+          "L'eau est devenue plus froide",
+          "Le verre est plus lourd à l'œil"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'eau a le goût sucré : s'il avait vraiment disparu, elle n'aurait aucun goût."
+      },
+      {
+        "question": "Comment appelle-t-on le mélange eau + sucre ?",
+        "options": [
+          "Un mélange hétérogène",
+          "Un mélange homogène",
+          "Une décantation",
+          "Une évaporation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est un mélange homogène : on ne distingue plus les constituants à l'œil nu."
+      },
+      {
+        "question": "Un mélange est HOMOGÈNE quand…",
+        "options": [
+          "on distingue encore les constituants",
+          "on ne distingue plus les constituants à l'œil nu",
+          "il contient de l'eau",
+          "il est de couleur unie"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Homogène = même aspect partout, on ne voit plus les constituants séparément."
+      },
+      {
+        "question": "Lequel de ces mélanges est HÉTÉROGÈNE ?",
+        "options": [
+          "L'eau et le sucre",
+          "L'eau et le sel",
+          "L'eau et le sable",
+          "Le jus de fruit"
+        ],
+        "correctAnswer": 2,
+        "explanation": "On voit encore le sable dans l'eau : c'est hétérogène. Le sucre et le sel, eux, se dissolvent."
+      },
+      {
+        "question": "Que veut dire « le sucre est soluble dans l'eau » ?",
+        "options": [
+          "Il flotte sur l'eau",
+          "Il peut se dissoudre dans l'eau",
+          "Il fait bouillir l'eau",
+          "Il tombe au fond du verre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Soluble = qui peut se dissoudre. Le sucre est soluble dans l'eau, le sable ne l'est pas."
+      },
+      {
+        "question": "Comment s'appelle le phénomène par lequel le sucre se mélange complètement à l'eau ?",
+        "options": [
+          "L'évaporation",
+          "La filtration",
+          "La dissolution",
+          "La décantation"
+        ],
+        "correctAnswer": 2,
+        "explanation": "C'est la dissolution : le corps se disperse dans le liquide jusqu'à ne plus être visible."
       }
     ]
   }

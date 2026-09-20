@@ -48,6 +48,14 @@
           "icone": "🔌",
           "description": "Ce qu'il faut avoir retenu de la 6e avant d'attaquer le programme.",
           "statut": "prete"
+        },
+        {
+          "id": "physique-chimie-les-melanges",
+          "titre": "Les mélanges",
+          "sousTitre": "Dissolution et mélange homogène",
+          "icone": "🥤",
+          "description": "Le sucre dans l'eau : il ne disparaît pas, il se dissout.",
+          "statut": "prete"
         }
       ]
     },
