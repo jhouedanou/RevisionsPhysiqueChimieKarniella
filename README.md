@@ -206,7 +206,7 @@ Anglais, Physique-Chimie, Mathématiques, SVT, Français, Histoire-Géographie, 
 | `data/programme-5e.json` | Les matières et leurs leçons | non — **c'est ici qu'on écrit** |
 | `5e/<matiere>.html` | Sommaire d'une matière | oui |
 | `5e/<lecon>.html` | Une leçon | non — écrite à la main |
-| `index.html` (2 blocs entre marqueurs) | Catalogue + programme de l'accueil | oui |
+| `js/programme-5e.js` | Catalogue lu par l'accueil | oui |
 
 ### Ajouter une leçon
 
@@ -332,8 +332,8 @@ puis écrit :
 **Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
 car Vercel sert le site en statique, sans étape de build.
 
-⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v12`
-→ `v13`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
+⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v13`
+→ `v14`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
 version : les fichiers `/js/` sont servis en cache-first.
 
 ### Activer le repli IA
@@ -346,6 +346,26 @@ Copier `.env.example` vers `.env` et renseigner `ANTHROPIC_API_KEY`
 
 Le navigateur n'envoie que le **slug** de la page, jamais son contenu : le
 contexte donné au modèle est relu côté serveur depuis `data/chat/`.
+
+## 🏠 La page d'accueil
+
+Volontairement courte : un en-tête, une recherche, le sommaire des leçons groupé
+par matière, un pied de page. Elle est passée de **828 à 66 lignes** — ses
+349 lignes de CSS et 313 lignes de JS vivent maintenant dans `css/accueil.css`,
+`js/accueil.js` et `js/inscrire-sw.js`.
+
+Ce qui a été retiré : la section « Programme », **qui listait une deuxième fois
+les mêmes leçons que les cartes de matières** — c'était la vraie cause de la
+surcharge. Avec elle sont partis le bandeau « Ta session en 3 étapes », le titre
+d'accroche, les deux boutons d'appel à l'action et la ligne de compteurs.
+
+Les matières encore vides ne prennent **pas** un bloc chacune : elles sont
+réunies sur une ligne « Bientôt ». Six blocs vides sur huit alourdiraient la page
+au lieu de l'éclaircir.
+
+La recherche porte sur les noms de matières, les titres de leçons **et les
+notions de chaque page** (via l'index du chat) : taper « canteen » ou
+« dissolution » trouve la bonne leçon.
 
 ## 📞 Support
 

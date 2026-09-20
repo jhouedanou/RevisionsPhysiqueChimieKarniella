@@ -114,94 +114,50 @@ ${corps}
 }
 
 /* ============================================================
-   Accueil — deux blocs générés entre marqueurs
+   Catalogue pour l'accueil
    ============================================================ */
 
-const INDEX = path.join(RACINE, 'index.html');
+const FICHIER_PROGRAMME_JS = path.join(RACINE, 'js', 'programme-5e.js');
 
 /**
- * Remplace le contenu entre deux marqueurs HTML ou JS. Les marqueurs restent
- * en place : le fichier peut être régénéré sans repartir d'un gabarit.
+ * Écrit le programme sous forme de fichier JavaScript.
+ *
+ * Un `.js` plutôt qu'un `.json` : l'accueil le charge par une balise <script>,
+ * donc sans `fetch`. Il est servi en cache-first par le service worker et
+ * s'affiche hors-ligne sans dépendre d'une requête réseau — ce qui compte pour
+ * la page d'entrée du site.
+ *
+ * `self` et non `window` : le service worker importe le même fichier.
  */
-function remplacerEntreMarqueurs(source, debut, fin, contenu) {
-    const iDebut = source.indexOf(debut);
-    const iFin = source.indexOf(fin);
-    if (iDebut === -1 || iFin === -1 || iFin < iDebut) {
-        throw new Error('marqueurs « ' + debut + ' » introuvables dans index.html');
-    }
-    return source.slice(0, iDebut + debut.length) + '\n' + contenu + '\n' +
-        source.slice(iFin);
-}
-
-/** Le catalogue que renderSubjects() consomme, au format attendu. */
-function catalogueJS(matieres) {
-    const donnees = matieres.map((matiere) => ({
-        id: matiere.id,
-        icon: matiere.icone,
-        name: matiere.nom,
-        description: matiere.description,
-        url: '5e/' + matiere.id + '.html',
-        lessons: (matiere.lecons || []).map((lecon, i) => ({
-            id: i + 1,
-            icon: lecon.icone || '📄',
-            title: lecon.titre,
-            description: lecon.description || lecon.sousTitre || '',
-            url: '5e/' + lecon.id + '.html',
-            status: lecon.statut === 'prete' ? 'available' : 'coming-soon'
+function ecrireProgrammeJS(programme, matieres) {
+    const donnees = {
+        niveau: programme.niveau,
+        anneeScolaire: programme.anneeScolaire,
+        matieres: matieres.map((m) => ({
+            id: m.id,
+            nom: m.nom,
+            icone: m.icone,
+            description: m.description,
+            lecons: (m.lecons || []).map((l) => ({
+                id: l.id,
+                titre: l.titre,
+                sousTitre: l.sousTitre || '',
+                icone: l.icone || '📄',
+                statut: l.statut
+            }))
         }))
-    }));
+    };
 
-    return '        const subjects = ' +
-        JSON.stringify(donnees, null, 2).split('\n').join('\n        ') + ';';
-}
+    const contenu =
+        '/**\n' +
+        ' * programme-5e.js — GÉNÉRÉ par scripts/build-programme-5e.js\n' +
+        ' * Ne pas éditer à la main : modifier data/programme-5e.json puis\n' +
+        ' * relancer `npm run build:programme`.\n' +
+        ' */\n' +
+        'self.KarniellaProgramme = ' + JSON.stringify(donnees) + ';\n';
 
-/** La liste ordonnée du bas de page, matière par matière. */
-function programmeHTML(matieres) {
-    const blocs = matieres.map((matiere) => {
-        const lecons = matiere.lecons || [];
-
-        const corps = lecons.length
-            ? '                    <ol>\n' + lecons.map((lecon) => {
-                const titre = echapper(lecon.titre);
-                return lecon.statut === 'prete'
-                    ? `                        <li><a href="5e/${echapper(lecon.id)}.html">${titre}</a></li>`
-                    : `                        <li><span class="a-venir-item">${titre} <em>(à venir)</em></span></li>`;
-            }).join('\n') + '\n                    </ol>'
-            : '                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>';
-
-        return `                <div class="programme-matiere">
-                    <h3><span>${echapper(matiere.icone)}</span> <a href="5e/${echapper(matiere.id)}.html">${echapper(matiere.nom)}</a></h3>
-${corps}
-                </div>`;
-    });
-
-    return '            <div class="programme-grid">\n' + blocs.join('\n') + '\n            </div>';
-}
-
-function majAccueil(matieres) {
-    let source = fs.readFileSync(INDEX, 'utf8');
-
-    source = remplacerEntreMarqueurs(
-        source, '// CATALOGUE-5E:DEBUT', '        // CATALOGUE-5E:FIN',
-        catalogueJS(matieres));
-
-    source = remplacerEntreMarqueurs(
-        source,
-        '<!-- PROGRAMME-5E:DEBUT — généré par scripts/build-programme-5e.js, ne pas éditer -->',
-        '            <!-- PROGRAMME-5E:FIN -->',
-        programmeHTML(matieres));
-
-    // Compteur du bandeau d'accueil : compté, pas écrit à la main, sinon il
-    // ment dès la leçon suivante.
-    const pretes = matieres.reduce(
-        (n, m) => n + (m.lecons || []).filter((l) => l.statut === 'prete').length, 0);
-    source = source.replace(
-        /(<strong id="stat-lecons">)\d+(<\/strong>)/, '$1' + pretes + '$2');
-    source = source.replace(
-        /(<strong id="stat-matieres">)\d+(<\/strong>)/, '$1' + matieres.length + '$2');
-
-    fs.writeFileSync(INDEX, source, 'utf8');
-    return pretes;
+    fs.writeFileSync(FICHIER_PROGRAMME_JS, contenu, 'utf8');
+    return Buffer.byteLength(contenu);
 }
 
 function main() {
@@ -238,11 +194,11 @@ function main() {
         }
     }
 
-    majAccueil(matieres);
+    const taille = ecrireProgrammeJS(programme, matieres);
 
     console.log('\n✓ ' + matieres.length + ' sommaires écrits dans 5e/');
     console.log('  ' + totalPretes + ' leçon(s) disponible(s) sur ' + totalLecons + ' annoncée(s)');
-    console.log('  index.html : catalogue et programme régénérés');
+    console.log('  js/programme-5e.js  ' + Math.round(taille / 1024) + ' Ko (catalogue de l\'accueil)');
 }
 
 main();
