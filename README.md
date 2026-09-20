@@ -1,4 +1,10 @@
-# 📚 Révisions Karniella - CMS JSON
+# 📚 Révisions Karniella — Classe de 5<sup>e</sup>
+
+> **Année en cours : 5<sup>e</sup>.** Le site ne propose que le programme de 5<sup>e</sup>.
+> Les ~58 pages de 6<sup>e</sup> restent dans le dépôt à la racine, mais plus rien ne les
+> référence : ni l'accueil, ni le chat, ni le service worker. Pour les remettre en
+> ligne, il suffirait de les réintégrer au programme.
+
 
 Site de révisions scolaires avec système de gestion de contenu (CMS) pour créer et modifier facilement les leçons et quiz.
 
@@ -186,11 +192,54 @@ npm run dev
 ### Scripts disponibles
 - `npm start` : Démarre le serveur
 - `npm run dev` : Mode développement avec nodemon
+- `npm run build:programme` : Régénère les sommaires de 5<sup>e</sup> et l'accueil
 - `npm run build:chat` : Régénère la base de connaissances de l'assistant
+- `npm run build:all` : Les deux, dans le bon ordre
+
+## 🎒 Le programme de 5<sup>e</sup>
+
+Tout part de **`data/programme-5e.json`** : c'est la source unique. Huit matières —
+Anglais, Physique-Chimie, Mathématiques, SVT, Français, Histoire-Géographie, EDHC, TICE.
+
+| Fichier | Rôle | Généré ? |
+|---|---|---|
+| `data/programme-5e.json` | Les matières et leurs leçons | non — **c'est ici qu'on écrit** |
+| `5e/<matiere>.html` | Sommaire d'une matière | oui |
+| `5e/<lecon>.html` | Une leçon | non — écrite à la main |
+| `index.html` (2 blocs entre marqueurs) | Catalogue + programme de l'accueil | oui |
+
+### Ajouter une leçon
+
+1. Écrire la page dans `5e/<slug>.html`. Partir d'une leçon existante :
+   elles chargent `css/lecon-5e.css` et `js/lecon-5e.js`, et n'ont **aucun style
+   propre** (contrairement aux pages de 6<sup>e</sup>, qui embarquaient chacune
+   ~320 lignes de CSS recopié).
+2. Ajouter son entrée dans `lecons` de la bonne matière, avec `"statut": "prete"`.
+3. Pour un quiz : ajouter les questions dans `data/section-questions.json` sous la
+   clé `<slug>`, dans `tab3`. Le chat les reprend automatiquement pour son mode
+   « Interroge-moi », et le score alimente le suivi des progrès.
+4. `npm run build:all`
+5. **Incrémenter `CACHE_NAME` dans `sw.js`** (`v10` → `v11`, …).
+
+Une leçon annoncée `"prete"` dont la page n'existe pas est signalée par le
+générateur — pas de lien mort sur un sommaire.
+
+### Conventions des pages de 5<sup>e</sup>
+
+- Onglets : `<button class="tab-button" data-onglet="tab2">` — `js/lecon-5e.js`
+  branche les clics tout seul, plus de `onclick` à écrire.
+- Encadrés : `.definition-box`, `.example-box`, `.important-box`, `.note-box`.
+- Vocabulaire : `<table class="table-vocab">`. **Chaque ligne devient une notion
+  cherchable par le chat** — « what is a canteen ? » trouve sa réponse.
+- `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
+  À mettre sur les notes qui s'adressent à Karniella (« à compléter depuis ton
+  cahier »), pas sur le contenu du cours.
+- `<span class="a-completer">…</span>` : surligne un passage illisible sur la
+  photo du cahier, pour qu'elle le recopie.
 
 ## 🐴 Assistant de révision
 
-Un chat flottant est présent sur les 60 pages (`js/chat-assistant.js`). Quatre boutons :
+Un chat flottant est présent sur toutes les pages de 5<sup>e</sup> (`js/chat-assistant.js`). Quatre boutons :
 **📝 Fiche de révision**, **🧮 Aide sur un exercice**, **🎯 Interroge-moi** et **📊 Où j'en suis ?**.
 
 Il répond en fonction de **la page où se trouve Karniella**, en trois niveaux :
@@ -241,7 +290,7 @@ dans le chat, qui lui enregistre la progression.
 npm run build:chat
 ```
 
-Le script lit les pages HTML, `data/quizzes.json` et `data/section-questions.json`,
+Le script lit les pages de `5e/`, `data/quizzes.json` et `data/section-questions.json`,
 puis écrit :
 
 | Fichier | Rôle |
@@ -252,8 +301,8 @@ puis écrit :
 **Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
 car Vercel sert le site en statique, sans étape de build.
 
-⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v9`
-→ `v10`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
+⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v10`
+→ `v11`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
 version : les fichiers `/js/` sont servis en cache-first.
 
 ### Activer le repli IA

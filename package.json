@@ -1,14 +1,16 @@
 {
   "name": "revisions-karniella",
   "version": "1.0.0",
-  "description": "Site de révisions pour Karniella avec CMS admin",
+  "description": "Site de révisions de Karniella (5e) avec assistant de chat et CMS admin",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
     "migrate": "node scripts/migrate_content.js",
     "build": "echo 'No build step required'",
-    "build:chat": "node scripts/build-chat-knowledge.js"
+    "build:chat": "node scripts/build-chat-knowledge.js",
+    "build:programme": "node scripts/build-programme-5e.js",
+    "build:all": "npm run build:programme && npm run build:chat"
   },
   "keywords": [
     "education",

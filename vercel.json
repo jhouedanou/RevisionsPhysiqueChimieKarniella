@@ -44,7 +44,7 @@
             "dest": "/$1.html"
         },
         {
-            "src": "/(css|js|icons|public|data|pages-composantes)/(.*)",
+            "src": "/(5e|css|js|icons|public|data|pages-composantes)/(.*)",
             "dest": "/$1/$2"
         },
         {

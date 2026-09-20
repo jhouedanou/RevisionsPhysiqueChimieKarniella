@@ -4,8 +4,14 @@
  *
  *   node scripts/build-chat-knowledge.js      (ou : npm run build:chat)
  *
- * Lit les pages HTML du site et en extrait, pour chacune, ses notions (titre + texte),
- * ses onglets et ses questions de quiz. Produit deux niveaux :
+ * Lit les pages de 5e (dossier 5e/) et en extrait, pour chacune, ses notions
+ * (titre + texte), ses onglets et ses questions de quiz.
+ *
+ * Les ~58 pages de 6e restées à la racine ne sont PLUS scannées : Karniella est
+ * passée en 5e et le site ne propose que le programme de l'année en cours. Les
+ * fichiers restent dans le dépôt, mais rien ne les référence.
+ *
+ * Produit deux niveaux :
  *
  *   js/chat-knowledge-index.js   index léger, chargé sur toutes les pages
  *   data/chat/<slug>.json        détail complet, chargé pour la page courante seulement
@@ -20,34 +26,34 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const RACINE = path.join(__dirname, '..');
+const DOSSIER_5E = path.join(RACINE, '5e');
 const DOSSIER_SORTIE = path.join(RACINE, 'data', 'chat');
 const FICHIER_INDEX = path.join(RACINE, 'js', 'chat-knowledge-index.js');
+const PROGRAMME = path.join(RACINE, 'data', 'programme-5e.json');
 
 /* ============================================================
    Sélection des fichiers
    ============================================================ */
 
 // Le dépôt contient 74 sauvegardes committées (.bak, .contrast-backup,
-// .theme_backup_20251130_133709, .backup_20251130_130839…). Elles ressemblent à
-// des pages mais n'en sont pas : tout glob naïf les embarque.
+// .theme_backup_20251130_133709, .backup_20251130_130839…). Elles ne sont plus
+// dans le périmètre depuis qu'on ne scanne que 5e/, mais le filtre reste : rien
+// ne garantit qu'un script de thème n'en déposera pas là un jour.
 const EST_SAUVEGARDE = /\.(bak|contrast-backup|theme_backup_\d+|backup_\d+)$/;
 
-// Pages qui ne sont pas des leçons : rien d'utile à en extraire pour le chat.
-const SLUGS_IGNORES = new Set(['lesson-viewer', 'quiz-viewer']);
-
 function listerPages() {
-    const dossiers = [RACINE, path.join(RACINE, 'pages-composantes')];
-    const pages = [];
-
-    for (const dossier of dossiers) {
-        for (const nom of fs.readdirSync(dossier)) {
-            if (!nom.endsWith('.html') || EST_SAUVEGARDE.test(nom)) { continue; }
-            const slug = nom.slice(0, -'.html'.length);
-            if (SLUGS_IGNORES.has(slug)) { continue; }
-            pages.push({ slug, chemin: path.join(dossier, nom) });
-        }
+    if (!fs.existsSync(DOSSIER_5E)) {
+        console.error('Dossier 5e/ absent — lance d\'abord `npm run build:programme`.');
+        return [];
     }
-    return pages.sort((a, b) => a.slug.localeCompare(b.slug));
+
+    return fs.readdirSync(DOSSIER_5E)
+        .filter((nom) => nom.endsWith('.html') && !EST_SAUVEGARDE.test(nom))
+        .map((nom) => ({
+            slug: nom.slice(0, -'.html'.length),
+            chemin: path.join(DOSSIER_5E, nom)
+        }))
+        .sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
 /* ============================================================
@@ -108,7 +114,7 @@ function nettoyerTexte(texte) {
         .trim();
 }
 
-const LONGUEUR_MAX = 400;
+const LONGUEUR_MAX = 550;
 
 /** Tronque sur une fin de phrase pour ne pas couper au milieu d'un mot. */
 function tronquer(texte) {
@@ -132,8 +138,12 @@ function extraireNotions($, conteneur, idOnglet) {
     let courante = null;
 
     conteneur.find('script, style, .section-quiz-wrapper, .tabs').remove();
+    // Encadrés destinés à l'œil de Karniella sur la page (« à compléter depuis
+    // ton cahier »), pas au chat : les proposer comme sujet de révision n'a
+    // aucun sens.
+    conteneur.find('[data-hors-chat]').remove();
 
-    conteneur.find(TITRES + ', p, li, td, .definition, .encadre, .important').each((_, el) => {
+    conteneur.find(TITRES + ', p, li, tr, .definition, .encadre, .important').each((_, el) => {
         const $el = $(el);
         const balise = el.tagName ? el.tagName.toLowerCase() : '';
 
@@ -146,11 +156,15 @@ function extraireNotions($, conteneur, idOnglet) {
         }
 
         if (!courante) { return; }
-        // Un <li> dans un <td>, ou un <p> dans un <td> : le parent a déjà
+        // Un <li> dans un <tr>, ou un <p> dans un <tr> : la ligne a déjà
         // apporté ce texte, le reprendre le compterait deux fois.
-        if ($el.parents('p, li, td').length) { return; }
+        if ($el.parents('p, li, tr').length) { return; }
 
-        const texte = nettoyerTexte($el.text());
+        // Le texte brut d'un <tr> colle ses cellules bout à bout
+        // (« ÉtatFormeVolumeExemple ») : on les sépare.
+        const texte = balise === 'tr'
+            ? nettoyerTexte($el.find('th, td').map((_, c) => $(c).text()).get().join(' — '))
+            : nettoyerTexte($el.text());
         if (texte.length < 15) { return; }
         if (courante.morceaux.join(' ').length > LONGUEUR_MAX * 1.5) { return; }
         courante.morceaux.push(texte);
@@ -165,46 +179,79 @@ function extraireNotions($, conteneur, idOnglet) {
         .filter((n) => n.texte.length >= 40 && motsUtiles(n.titre).length > 0);
 }
 
+/**
+ * Lignes d'un tableau de vocabulaire, converties en notions à part entière.
+ *
+ * Les mots-clés d'une notion viennent de son TITRE. Pour une leçon d'anglais,
+ * tout le vocabulaire vit dans un tableau sous un seul titre (« A/ Vocabulary ») :
+ * « what is a canteen ? » ne matchait donc rien. Chaque ligne « mot | définition »
+ * devient ici sa propre notion, et le mot devient cherchable.
+ */
+function extraireVocabulaire($, idOnglet) {
+    const notions = [];
+
+    $('.table-vocab').each((_, table) => {
+        $(table).find('tbody tr').each((__, ligne) => {
+            const cellules = $(ligne).find('td');
+            if (cellules.length < 2) { return; }
+
+            const mot = nettoyerTexte($(cellules[0]).text());
+            const definition = nettoyerTexte(
+                cellules.slice(1).map((i, c) => $(c).text()).get().join(' — ')
+            );
+
+            if (!mot || mot.length > 60 || definition.length < 10) { return; }
+            if (!motsUtiles(mot).length) { return; }
+
+            notions.push({
+                titre: mot,
+                onglet: idOnglet,
+                texte: tronquer(definition)
+            });
+        });
+    });
+    return notions;
+}
+
 /* ============================================================
    Matière
    ============================================================ */
 
-// Le bouton « ← Retour » de chaque leçon pointe vers le sommaire de sa matière :
-// c'est le signal le plus fiable dont on dispose.
-const HUB_VERS_MATIERE = {
-    'mathematiques.html': 'mathematiques',
-    'physique.html': 'physique',
-    'svt-lecons.html': 'svt',
-    'svt.html': 'svt',
-    'histoire-geographie-lecons.html': 'histoire-geo',
-    'histoire-geographie.html': 'histoire-geo',
-    'education-civique.html': 'education-civique',
-    'francais-lecons.html': 'francais',
-    'francais.html': 'francais',
-    'tice.html': 'tice'
-};
+/**
+ * La matière ne se devine plus : elle est lue dans data/programme-5e.json,
+ * qui est la source de vérité du programme. Un slug y est soit l'identifiant
+ * d'une matière (page sommaire), soit celui d'une de ses leçons.
+ */
+function chargerMatieres() {
+    const parSlug = {};
+    let programme;
+    try {
+        programme = JSON.parse(fs.readFileSync(PROGRAMME, 'utf8'));
+    } catch (err) {
+        console.warn('  ! programme-5e.json illisible (' + err.message + ')');
+        return parSlug;
+    }
 
-const PREFIXES_MATIERE = [
-    // pages-composantes/ : fragments interactifs sur le circuit électrique.
-    [/^\d\d-/, 'physique'],
-    [/^maths?-/, 'mathematiques'],
-    [/^svt-/, 'svt'],
-    [/^ecm-/, 'education-civique'],
-    [/^education-civique/, 'education-civique'],
-    [/^francais/, 'francais'],
-    [/^histoire-/, 'histoire-geo'],
-    [/^informatique-/, 'tice'],
-    [/^(le|les|lecon)-/, 'physique']
-];
+    for (const matiere of programme.matieres || []) {
+        parSlug[matiere.id] = matiere.id;                       // la page sommaire
+        for (const lecon of matiere.lecons || []) {
+            parSlug[lecon.id] = matiere.id;                     // ses leçons
+        }
+    }
+    return parSlug;
+}
+
+const MATIERE_PAR_SLUG = chargerMatieres();
 
 function deduireMatiere($, slug) {
-    const retour = $('header .btn-back').attr('href') || $('.btn-back').first().attr('href') || '';
-    const cible = retour.split('/').pop().split('?')[0];
-    if (HUB_VERS_MATIERE[cible]) { return HUB_VERS_MATIERE[cible]; }
-    if (HUB_VERS_MATIERE[slug + '.html']) { return HUB_VERS_MATIERE[slug + '.html']; }
-    for (const [motif, matiere] of PREFIXES_MATIERE) {
-        if (motif.test(slug)) { return matiere; }
-    }
+    if (MATIERE_PAR_SLUG[slug]) { return MATIERE_PAR_SLUG[slug]; }
+
+    // Repli : une page déposée dans 5e/ sans entrée dans le programme. On la
+    // rattache via son bouton Retour, qui pointe vers le sommaire de sa matière.
+    const retour = $('header .btn-back').attr('href') || '';
+    const cible = retour.split('/').pop().split('?')[0].replace(/\.html$/, '');
+    if (MATIERE_PAR_SLUG[cible]) { return MATIERE_PAR_SLUG[cible]; }
+
     return 'general';
 }
 
@@ -457,9 +504,16 @@ function traiterPage(page, indexQuiz) {
     const onglets = [];
     $('.tab-button').each((_, el) => {
         const libelle = nettoyerTitre($(el).text());
+        if (!libelle) { return; }
+
+        // Les pages de 5e déclarent leur cible en data-onglet (js/lecon-5e.js
+        // branche les clics) ; les anciennes la cachaient dans un onclick.
+        const direct = $(el).attr('data-onglet');
+        if (direct) { onglets.push({ id: direct, libelle }); return; }
+
         const onclick = $(el).attr('onclick') || '';
         const trouve = onclick.match(/openTab\s*\([^,]+,\s*['"]([^'"]+)['"]/);
-        if (libelle && trouve) { onglets.push({ id: trouve[1], libelle }); }
+        if (trouve) { onglets.push({ id: trouve[1], libelle }); }
     });
 
     // Notions, onglet par onglet ; à défaut d'onglets, sur le corps entier.
@@ -475,6 +529,10 @@ function traiterPage(page, indexQuiz) {
     if (!notions.length) {
         notions = extraireNotions($, $('main').length ? $('main') : $('body'), null);
     }
+
+    // Le vocabulaire passe en premier : sur une leçon d'anglais, c'est lui que
+    // Karniella vient chercher.
+    notions = extraireVocabulaire(cheerio.load(html), null).concat(notions);
 
     // Doublons : le même titre apparaît parfois dans plusieurs onglets.
     const vus = new Set();
