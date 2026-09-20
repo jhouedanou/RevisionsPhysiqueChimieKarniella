@@ -1,0 +1,311 @@
+/**
+ * lecon-5e.css — Mise en page commune des leçons de 5e.
+ *
+ * Les pages de 6e embarquaient chacune ~320 lignes de <style> recopiées :
+ * changer une couleur voulait dire éditer 58 fichiers. Les pages de 5e
+ * partagent cette feuille et ne portent plus aucun style propre.
+ *
+ * S'appuie sur la palette de css/karniella-theme.css et css/horse-theme.css,
+ * chargées avant celle-ci.
+ */
+
+:root {
+    --l5-fond: #FFF9FB;
+    --l5-encre: #49353F;
+    --l5-rose: #9D2F5C;
+    --l5-rose-clair: #C83F76;
+    --l5-bord: rgba(72, 40, 55, 0.14);
+    --l5-ombre: 0 10px 30px rgba(73, 30, 50, 0.12);
+    --l5-rayon: 16px;
+}
+
+body.lecon-5e {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
+    color: var(--l5-encre);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   En-tête
+   ============================================================ */
+
+.lecon-5e header {
+    position: relative;
+    padding: 26px 20px 22px;
+    text-align: center;
+    background: linear-gradient(125deg, #35212D 0%, #9D2F5C 100%);
+    color: #fff;
+}
+
+.lecon-5e header h1 {
+    margin: 0 0 6px;
+    font-size: clamp(22px, 5vw, 32px);
+    line-height: 1.2;
+}
+
+.lecon-5e header p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.92;
+}
+
+.lecon-5e .btn-back {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.lecon-5e .btn-back:hover { background: rgba(255, 255, 255, 0.3); }
+.lecon-5e .btn-back:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* Bandeau de niveau, pour qu'on sache toujours où l'on est. */
+.badge-niveau {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   Onglets
+   ============================================================ */
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    padding: 14px 16px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tab-button {
+    padding: 9px 16px;
+    border: 1px solid var(--l5-bord);
+    border-radius: 11px;
+    background: #fff;
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover { background: #FBE7EF; }
+.tab-button.active {
+    background: var(--l5-rose);
+    border-color: var(--l5-rose);
+    color: #fff;
+}
+.tab-button:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+.content { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: l5-apparait 0.25s ease; }
+
+@keyframes l5-apparait {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tab-content.active { animation: none; }
+}
+
+/* ============================================================
+   Contenu
+   ============================================================ */
+
+.container {
+    background: #fff;
+    border: 1px solid var(--l5-bord);
+    border-radius: var(--l5-rayon);
+    box-shadow: var(--l5-ombre);
+    padding: 20px;
+}
+
+.lecon-5e h2 {
+    margin: 0 0 14px;
+    color: var(--l5-rose);
+    font-size: 21px;
+    line-height: 1.25;
+}
+
+.lecon-5e h3 {
+    margin: 22px 0 10px;
+    color: var(--l5-rose-clair);
+    font-size: 17px;
+}
+
+.lecon-5e h4 { margin: 0 0 8px; font-size: 15px; }
+.lecon-5e p { margin: 0 0 12px; }
+.lecon-5e ul, .lecon-5e ol { margin: 0 0 12px; padding-left: 22px; }
+.lecon-5e li { margin-bottom: 6px; }
+
+/* Encadrés — un ton par nature d'information. */
+.definition-box,
+.example-box,
+.important-box,
+.note-box {
+    margin: 14px 0;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left: 5px solid;
+}
+
+.definition-box { background: #FBE7EF; border-left-color: var(--l5-rose); }
+.example-box    { background: #E9F3FB; border-left-color: #2F6F9D; }
+.important-box  { background: #FFF3DC; border-left-color: #C98A1E; }
+.note-box       { background: #EAF5EC; border-left-color: #3C9A57; }
+
+.definition-box h4 { color: var(--l5-rose); }
+.example-box h4    { color: #2F6F9D; }
+.important-box h4  { color: #9A6A12; }
+.note-box h4       { color: #2C7742; }
+
+/* Tableau de vocabulaire — le format naturel pour l'anglais. */
+.table-vocab {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 15px;
+}
+
+.table-vocab th,
+.table-vocab td {
+    padding: 10px 12px;
+    border: 1px solid var(--l5-bord);
+    text-align: left;
+    vertical-align: top;
+}
+
+.table-vocab th { background: var(--l5-rose); color: #fff; font-size: 14px; }
+.table-vocab tbody tr:nth-child(even) { background: #FFF4F8; }
+.table-vocab td:first-child { font-weight: 700; color: var(--l5-rose); white-space: nowrap; }
+
+@media (max-width: 560px) {
+    .table-vocab, .table-vocab tbody, .table-vocab tr, .table-vocab td { display: block; width: 100%; }
+    .table-vocab thead { display: none; }
+    .table-vocab tr { margin-bottom: 10px; border: 1px solid var(--l5-bord); border-radius: 10px; overflow: hidden; }
+    .table-vocab td { border: 0; border-bottom: 1px solid var(--l5-bord); }
+    .table-vocab td:last-child { border-bottom: 0; }
+}
+
+/* Dialogue (language function en anglais) */
+.dialogue {
+    margin: 12px 0;
+    padding: 14px 16px;
+    background: #F7F2FA;
+    border: 1px dashed rgba(157, 47, 92, 0.35);
+    border-radius: 12px;
+}
+
+.dialogue p { margin: 0 0 8px; }
+.dialogue p:last-child { margin-bottom: 0; }
+.dialogue .qui { display: inline-block; min-width: 26px; font-weight: 800; color: var(--l5-rose); }
+
+/* Passage que je n'ai pas pu lire sur la photo : à compléter par Karniella. */
+.a-completer {
+    background: #FFF3DC;
+    border-bottom: 2px dotted #C98A1E;
+    padding: 0 4px;
+    font-style: italic;
+}
+
+/* ============================================================
+   Sommaire d'une matière
+   ============================================================ */
+
+.grille-lecons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.carte-lecon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid var(--l5-bord);
+    border-radius: var(--l5-rayon);
+    box-shadow: var(--l5-ombre);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.carte-lecon:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(73, 30, 50, 0.2); }
+a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+
+.carte-lecon .icone { font-size: 28px; line-height: 1; }
+.carte-lecon h3 { margin: 0; color: var(--l5-rose); font-size: 17px; }
+.carte-lecon p { margin: 0; font-size: 14px; opacity: 0.85; }
+
+/* Leçon pas encore saisie : visible, mais clairement inerte. */
+.carte-lecon.a-venir {
+    background: #FBF7F9;
+    border-style: dashed;
+    box-shadow: none;
+    cursor: default;
+}
+
+.carte-lecon.a-venir h3 { color: #8A7480; }
+
+.etiquette {
+    align-self: flex-start;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.etiquette.prete { background: #E4F5E8; color: #1F5C33; }
+.etiquette.attente { background: #F0E9ED; color: #6E5A64; }
+
+.vide {
+    padding: 26px 20px;
+    text-align: center;
+    background: #fff;
+    border: 1px dashed var(--l5-bord);
+    border-radius: var(--l5-rayon);
+}
+
+.vide p { margin: 0 0 6px; }
+.vide .gros { font-size: 34px; }
+
+/* ============================================================
+   Pied de page
+   ============================================================ */
+
+.pied {
+    max-width: 900px;
+    margin: 10px auto 0;
+    padding: 18px 16px 40px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.75;
+}

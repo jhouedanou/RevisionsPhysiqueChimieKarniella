@@ -1,1093 +1,1413 @@
 {
-    "maths-lecon-1-calculs-algebriques": {
-        "tab1-nombres-consecutifs": [
-            {
-                "question": "Combien y a-t-il de nombres consécutifs de 5 à 12 ?",
-                "options": [
-                    "6 nombres",
-                    "7 nombres",
-                    "8 nombres",
-                    "9 nombres"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Formule : n - m + 1 = 12 - 5 + 1 = 8 nombres"
-            },
-            {
-                "question": "Quelle est la formule pour calculer le nombre de termes entre m et n ?",
-                "options": [
-                    "n - m",
-                    "n + m + 1",
-                    "n - m + 1",
-                    "n × m"
-                ],
-                "correctAnswer": 2,
-                "explanation": "La formule est : n - m + 1 (en incluant m et n)"
-            }
+  "maths-lecon-1-calculs-algebriques": {
+    "tab1-nombres-consecutifs": [
+      {
+        "question": "Combien y a-t-il de nombres consécutifs de 5 à 12 ?",
+        "options": [
+          "6 nombres",
+          "7 nombres",
+          "8 nombres",
+          "9 nombres"
         ],
-        "tab2-multiples": [
-            {
-                "question": "24 est un multiple de quel nombre parmi ceux-ci ?",
-                "options": [
-                    "5",
-                    "6",
-                    "7",
-                    "9"
-                ],
-                "correctAnswer": 1,
-                "explanation": "24 = 6 × 4, donc 24 est un multiple de 6"
-            },
-            {
-                "question": "Quel nombre est un multiple de tous les nombres ?",
-                "options": [
-                    "1",
-                    "0",
-                    "10",
-                    "100"
-                ],
-                "correctAnswer": 1,
-                "explanation": "0 est un multiple de tous les nombres car 0 = n × 0"
-            }
+        "correctAnswer": 2,
+        "explanation": "Formule : n - m + 1 = 12 - 5 + 1 = 8 nombres"
+      },
+      {
+        "question": "Quelle est la formule pour calculer le nombre de termes entre m et n ?",
+        "options": [
+          "n - m",
+          "n + m + 1",
+          "n - m + 1",
+          "n × m"
         ],
-        "tab3-pairs-impairs": [
-            {
-                "question": "Le nombre 1357 est-il pair ou impair ?",
-                "options": [
-                    "Pair",
-                    "Impair"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Il se termine par 7, donc il est impair"
-            },
-            {
-                "question": "Que donne : Pair + Impair ?",
-                "options": [
-                    "Toujours pair",
-                    "Toujours impair",
-                    "Parfois pair, parfois impair",
-                    "Toujours 0"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Pair + Impair = Impair (exemple : 4 + 5 = 9)"
-            }
-        ]
-    },
-    "maths-lecon-2-diviseurs": {
-        "tab1": [
-            {
-                "question": "Combien 24 a-t-il de diviseurs ?",
-                "options": [
-                    "4",
-                    "6",
-                    "8",
-                    "12"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Les diviseurs de 24 sont : 1, 2, 3, 4, 6, 8, 12, 24 (8 diviseurs)"
-            },
-            {
-                "question": "Quel est le plus grand diviseur de 15 ?",
-                "options": [
-                    "1",
-                    "3",
-                    "5",
-                    "15"
-                ],
-                "correctAnswer": 3,
-                "explanation": "Le plus grand diviseur d'un nombre est toujours le nombre lui-même"
-            }
+        "correctAnswer": 2,
+        "explanation": "La formule est : n - m + 1 (en incluant m et n)"
+      }
+    ],
+    "tab2-multiples": [
+      {
+        "question": "24 est un multiple de quel nombre parmi ceux-ci ?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "9"
         ],
-        "tab2": [
-            {
-                "question": "Un nombre qui n'a que deux diviseurs (1 et lui-même) est appelé :",
-                "options": [
-                    "Nombre composé",
-                    "Nombre premier",
-                    "Multiple",
-                    "Diviseur"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Un nombre premier n'a que 2 diviseurs : 1 et lui-même"
-            },
-            {
-                "question": "Lequel de ces nombres est premier ?",
-                "options": [
-                    "15",
-                    "17",
-                    "21",
-                    "27"
-                ],
-                "correctAnswer": 1,
-                "explanation": "17 n'a que deux diviseurs : 1 et 17"
-            }
+        "correctAnswer": 1,
+        "explanation": "24 = 6 × 4, donc 24 est un multiple de 6"
+      },
+      {
+        "question": "Quel nombre est un multiple de tous les nombres ?",
+        "options": [
+          "1",
+          "0",
+          "10",
+          "100"
         ],
-        "tab3": [
-            {
-                "question": "345 est-il divisible par 3 ?",
-                "options": [
-                    "Oui",
-                    "Non"
-                ],
-                "correctAnswer": 0,
-                "explanation": "3 + 4 + 5 = 12, et 12 est divisible par 3, donc 345 est divisible par 3"
-            },
-            {
-                "question": "Un nombre divisible par 5 se termine par :",
-                "options": [
-                    "1 ou 5",
-                    "0 ou 5",
-                    "2 ou 7",
-                    "0 ou 2"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Un nombre est divisible par 5 s'il se termine par 0 ou 5"
-            }
-        ]
-    },
-    "le-circuit-electrique": {
-        "tab1": [
-            {
-                "question": "Quel est le symbole normalisé d'une pile dans un schéma électrique ?",
-                "options": [
-                    "Un rectangle",
-                    "Deux traits parallèles de longueurs différentes",
-                    "Un cercle",
-                    "Une flèche"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Le symbole de la pile est constitué de deux traits parallèles : un long (pôle +) et un court (pôle -)"
-            },
-            {
-                "question": "Dans un circuit en série, comment sont branchés les dipôles ?",
-                "options": [
-                    "En parallèle",
-                    "Les uns à la suite des autres",
-                    "En étoile",
-                    "De façon aléatoire"
-                ],
-                "correctAnswer": 1,
-                "explanation": "En série signifie 'à la suite', comme des perles sur un fil"
-            }
+        "correctAnswer": 1,
+        "explanation": "0 est un multiple de tous les nombres car 0 = n × 0"
+      }
+    ],
+    "tab3-pairs-impairs": [
+      {
+        "question": "Le nombre 1357 est-il pair ou impair ?",
+        "options": [
+          "Pair",
+          "Impair"
         ],
-        "tab2": [
-            {
-                "question": "Pour qu'un circuit électrique fonctionne, il faut qu'il soit :",
-                "options": [
-                    "Ouvert",
-                    "Fermé",
-                    "Court-circuité",
-                    "Branché en parallèle"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Un circuit doit être fermé pour que le courant circule"
-            },
-            {
-                "question": "Que se passe-t-il si on enlève une lampe dans un circuit en série ?",
-                "options": [
-                    "Les autres lampes brillent plus fort",
-                    "Toutes les lampes s'éteignent",
-                    "Rien ne change",
-                    "Les lampes clignotent"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Dans un circuit en série, si un dipôle est retiré, le circuit est ouvert et tout s'arrête"
-            }
+        "correctAnswer": 1,
+        "explanation": "Il se termine par 7, donc il est impair"
+      },
+      {
+        "question": "Que donne : Pair + Impair ?",
+        "options": [
+          "Toujours pair",
+          "Toujours impair",
+          "Parfois pair, parfois impair",
+          "Toujours 0"
         ],
-        "tab3": [
-            {
-                "question": "Quelle est la fonction d'un interrupteur dans un circuit ?",
-                "options": [
-                    "Produire du courant",
-                    "Ouvrir ou fermer le circuit",
-                    "Augmenter la tension",
-                    "Transformer l'énergie"
-                ],
-                "correctAnswer": 1,
-                "explanation": "L'interrupteur permet d'ouvrir ou de fermer le circuit, contrôlant ainsi le passage du courant"
-            }
+        "correctAnswer": 1,
+        "explanation": "Pair + Impair = Impair (exemple : 4 + 5 = 9)"
+      }
+    ]
+  },
+  "maths-lecon-2-diviseurs": {
+    "tab1": [
+      {
+        "question": "Combien 24 a-t-il de diviseurs ?",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "12"
         ],
-        "tab4": [
-            {
-                "question": "Dans un circuit en dérivation, que se passe-t-il si une lampe grille ?",
-                "options": [
-                    "Toutes les lampes s'éteignent",
-                    "Les autres lampes continuent de briller",
-                    "Les lampes clignotent",
-                    "Le circuit explose"
-                ],
-                "correctAnswer": 1,
-                "explanation": "En dérivation, chaque branche est indépendante, donc les autres lampes continuent de fonctionner"
-            }
-        ]
-    },
-    "maths-lecon-3-droites-points": {
-        "tab1": [
-            {
-                "question": "Comment désigne-t-on un point en géométrie ?",
-                "options": [
-                    "Par une lettre minuscule",
-                    "Par une lettre majuscule",
-                    "Par un chiffre",
-                    "Par deux lettres"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Un point se nomme toujours avec une lettre MAJUSCULE, comme A ou B."
-            },
-            {
-                "question": "Une droite est une ligne qui est :",
-                "options": [
-                    "limitée aux deux bouts",
-                    "illimitée dans les deux sens",
-                    "limitée d'un seul côté",
-                    "toujours courbée"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Une droite se prolonge à l'infini des deux côtés : elle n'a ni début ni fin."
-            },
-            {
-                "question": "Sur un dessin, la droite qui passe par les points A et B se note :",
-                "options": [
-                    "[AB]",
-                    "(AB)",
-                    "[AB)",
-                    "AB"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Avec des parenthèses : (AB). Une droite peut aussi porter une lettre minuscule comme d."
-            },
-            {
-                "question": "Un point a-t-il une dimension ?",
-                "options": [
-                    "Oui, il a une longueur",
-                    "Oui, il a une largeur",
-                    "Non, il n'a aucune dimension"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Un point est sans dimension : on le dessine juste par une petite croix ou un petit rond."
-            }
+        "correctAnswer": 2,
+        "explanation": "Les diviseurs de 24 sont : 1, 2, 3, 4, 6, 8, 12, 24 (8 diviseurs)"
+      },
+      {
+        "question": "Quel est le plus grand diviseur de 15 ?",
+        "options": [
+          "1",
+          "3",
+          "5",
+          "15"
         ],
-        "tab2": [
-            {
-                "question": "Que veut dire la notation A ∈ d ?",
-                "options": [
-                    "A est parallèle à d",
-                    "A appartient à la droite d",
-                    "A est le milieu de d",
-                    "d appartient à A"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Le symbole ∈ se lit « appartient à » : le point A est situé sur la droite d."
-            },
-            {
-                "question": "Trois points sont dits alignés lorsque :",
-                "options": [
-                    "ils forment un triangle",
-                    "ils appartiennent à une même droite",
-                    "ils sont confondus",
-                    "ils sont très proches"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Des points alignés sont tous posés sur la même droite."
-            },
-            {
-                "question": "Combien de droites passent par deux points distincts A et B ?",
-                "options": [
-                    "Aucune",
-                    "Une seule",
-                    "Deux",
-                    "Une infinité"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Par deux points distincts, il passe une seule droite. Deux points suffisent donc pour la tracer !"
-            },
-            {
-                "question": "Combien de droites peut-on tracer en passant par un seul point ?",
-                "options": [
-                    "Une seule",
-                    "Deux",
-                    "Une infinité",
-                    "Aucune"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Par un seul point, on peut faire passer une infinité de droites en les faisant tourner autour de lui."
-            }
+        "correctAnswer": 3,
+        "explanation": "Le plus grand diviseur d'un nombre est toujours le nombre lui-même"
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Un nombre qui n'a que deux diviseurs (1 et lui-même) est appelé :",
+        "options": [
+          "Nombre composé",
+          "Nombre premier",
+          "Multiple",
+          "Diviseur"
         ],
-        "tab3": [
-            {
-                "question": "Une demi-droite est limitée :",
-                "options": [
-                    "des deux côtés",
-                    "d'un seul côté, par son origine",
-                    "d'aucun côté"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Une demi-droite part d'un point appelé origine et se prolonge à l'infini de l'autre côté."
-            },
-            {
-                "question": "Que désigne la notation [AB) ?",
-                "options": [
-                    "Le segment d'extrémités A et B",
-                    "La droite passant par A et B",
-                    "La demi-droite d'origine A passant par B",
-                    "La demi-droite d'origine B passant par A"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Le crochet est du côté de l'origine : [AB) a pour origine A et passe par B."
-            },
-            {
-                "question": "Lequel de ces objets est illimité des DEUX côtés ?",
-                "options": [
-                    "Le segment [AB]",
-                    "La demi-droite [AB)",
-                    "La droite (AB)"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Seule la droite (AB) se prolonge à l'infini des deux côtés."
-            },
-            {
-                "question": "Une droite peut être vue comme :",
-                "options": [
-                    "deux segments",
-                    "deux demi-droites opposées",
-                    "trois demi-droites"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Un point d'une droite la partage en deux demi-droites opposées."
-            }
-        ]
-    },
-    "maths-lecon-4-secantes-perpendiculaires": {
-        "tab1": [
-            {
-                "question": "Deux droites sécantes sont deux droites qui :",
-                "options": [
-                    "ne se rencontrent jamais",
-                    "ont un point commun",
-                    "sont confondues",
-                    "forment toujours un angle droit"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Sécantes veut dire « qui se coupent » : elles ont un point commun."
-            },
-            {
-                "question": "Combien de points communs ont deux droites sécantes ?",
-                "options": [
-                    "Aucun",
-                    "Exactement un",
-                    "Deux",
-                    "Une infinité"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Deux droites sécantes se coupent en un seul point, appelé point d'intersection."
-            },
-            {
-                "question": "Comment appelle-t-on le point où deux droites sécantes se coupent ?",
-                "options": [
-                    "Le milieu",
-                    "Le point d'intersection",
-                    "L'origine",
-                    "L'extrémité"
-                ],
-                "correctAnswer": 1,
-                "explanation": "C'est le point d'intersection, souvent noté I sur les figures."
-            },
-            {
-                "question": "Combien d'angles forment deux droites sécantes autour de leur point d'intersection ?",
-                "options": [
-                    "2",
-                    "3",
-                    "4",
-                    "6"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Deux droites sécantes forment 4 angles. Les angles opposés par le sommet sont égaux."
-            }
+        "correctAnswer": 1,
+        "explanation": "Un nombre premier n'a que 2 diviseurs : 1 et lui-même"
+      },
+      {
+        "question": "Lequel de ces nombres est premier ?",
+        "options": [
+          "15",
+          "17",
+          "21",
+          "27"
         ],
-        "tab2": [
-            {
-                "question": "Deux droites perpendiculaires sont sécantes et forment un angle de :",
-                "options": [
-                    "45°",
-                    "60°",
-                    "90°",
-                    "180°"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Perpendiculaires = sécantes en formant un angle droit, c'est-à-dire 90°."
-            },
-            {
-                "question": "Quel symbole utilise-t-on pour dire « est perpendiculaire à » ?",
-                "options": [
-                    "//",
-                    "⊥",
-                    "∈",
-                    "="
-                ],
-                "correctAnswer": 1,
-                "explanation": "On écrit d ⊥ d' pour dire que d est perpendiculaire à d'."
-            },
-            {
-                "question": "Sur une figure, que signifie le petit carré dessiné au point d'intersection ?",
-                "options": [
-                    "Que les droites sont parallèles",
-                    "Qu'il y a un angle droit",
-                    "Que le point est un milieu"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Le petit carré est le code qui signale un angle droit de 90°."
-            },
-            {
-                "question": "Si d ⊥ d', que peut-on dire aussi ?",
-                "options": [
-                    "d' ⊥ d",
-                    "d' // d",
-                    "d' est plus longue que d"
-                ],
-                "correctAnswer": 0,
-                "explanation": "La perpendicularité est symétrique : si d ⊥ d', alors d' ⊥ d."
-            }
+        "correctAnswer": 1,
+        "explanation": "17 n'a que deux diviseurs : 1 et 17"
+      }
+    ],
+    "tab3": [
+      {
+        "question": "345 est-il divisible par 3 ?",
+        "options": [
+          "Oui",
+          "Non"
         ],
-        "tab3": [
-            {
-                "question": "Quel instrument est le plus simple pour tracer une perpendiculaire ?",
-                "options": [
-                    "Le compas",
-                    "L'équerre",
-                    "Le rapporteur",
-                    "La calculatrice"
-                ],
-                "correctAnswer": 1,
-                "explanation": "L'équerre possède déjà un angle droit : c'est l'outil le plus pratique."
-            },
-            {
-                "question": "Par un point donné, combien de perpendiculaires à une droite peut-on tracer ?",
-                "options": [
-                    "Aucune",
-                    "Une seule",
-                    "Deux",
-                    "Une infinité"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Par un point, il n'existe qu'une seule perpendiculaire à une droite donnée."
-            },
-            {
-                "question": "Avec l'équerre, quelle est la première étape ?",
-                "options": [
-                    "Tracer un arc de cercle",
-                    "Placer l'équerre sur la droite d",
-                    "Mesurer la longueur de la droite"
-                ],
-                "correctAnswer": 1,
-                "explanation": "On place d'abord l'équerre sur la droite d, puis on fait coïncider un côté de l'angle droit avec d."
-            },
-            {
-                "question": "Le point est situé en dehors de la droite. Peut-on tracer la perpendiculaire ?",
-                "options": [
-                    "Non, c'est impossible",
-                    "Oui, et il n'y en a qu'une seule",
-                    "Oui, il y en a plusieurs"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Que le point soit sur la droite ou en dehors, il existe toujours une seule perpendiculaire."
-            }
-        ]
-    },
-    "maths-lecon-5-droites-paralleles": {
-        "tab1": [
-            {
-                "question": "Deux droites parallèles :",
-                "options": [
-                    "se coupent en un point",
-                    "n'ont aucun point commun",
-                    "forment un angle droit"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Des droites parallèles ne se rencontrent jamais (ou alors elles sont confondues)."
-            },
-            {
-                "question": "Quel symbole note le parallélisme ?",
-                "options": [
-                    "⊥",
-                    "//",
-                    "∈",
-                    "≠"
-                ],
-                "correctAnswer": 1,
-                "explanation": "On écrit d // d' pour dire que d est parallèle à d'."
-            },
-            {
-                "question": "Par un point situé hors d'une droite, combien de parallèles à cette droite peut-on tracer ?",
-                "options": [
-                    "Aucune",
-                    "Une seule",
-                    "Deux",
-                    "Une infinité"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Par un point, il passe une seule parallèle à une droite donnée."
-            },
-            {
-                "question": "Si d // d' et d' // d'', alors :",
-                "options": [
-                    "d ⊥ d''",
-                    "d // d''",
-                    "on ne peut rien dire"
-                ],
-                "correctAnswer": 1,
-                "explanation": "C'est la transitivité : deux droites parallèles à une même droite sont parallèles entre elles."
-            }
+        "correctAnswer": 0,
+        "explanation": "3 + 4 + 5 = 12, et 12 est divisible par 3, donc 345 est divisible par 3"
+      },
+      {
+        "question": "Un nombre divisible par 5 se termine par :",
+        "options": [
+          "1 ou 5",
+          "0 ou 5",
+          "2 ou 7",
+          "0 ou 2"
         ],
-        "tab2": [
-            {
-                "question": "Quels instruments utilise-t-on dans la méthode la plus simple ?",
-                "options": [
-                    "Un compas seul",
-                    "Une équerre et une règle",
-                    "Un rapporteur seul"
-                ],
-                "correctAnswer": 1,
-                "explanation": "On pose la règle le long de la droite, puis on fait glisser l'équerre contre la règle."
-            },
-            {
-                "question": "Dans la méthode de l'équerre, on fait glisser l'équerre :",
-                "options": [
-                    "le long de la règle",
-                    "au hasard sur la feuille",
-                    "en la faisant tourner"
-                ],
-                "correctAnswer": 0,
-                "explanation": "On la fait glisser le long de la règle jusqu'au point A, puis on trace."
-            },
-            {
-                "question": "Si deux droites sont perpendiculaires à une même droite, alors elles sont :",
-                "options": [
-                    "sécantes",
-                    "parallèles",
-                    "confondues"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Deux perpendiculaires à une même droite sont parallèles entre elles : c'est la 2e méthode de construction."
-            },
-            {
-                "question": "Par un point A donné, combien de droites parallèles à d peut-on tracer ?",
-                "options": [
-                    "Une seule",
-                    "Deux",
-                    "Une infinité"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Il existe toujours une seule parallèle à d passant par A."
-            }
+        "correctAnswer": 1,
+        "explanation": "Un nombre est divisible par 5 s'il se termine par 0 ou 5"
+      }
+    ]
+  },
+  "le-circuit-electrique": {
+    "tab1": [
+      {
+        "question": "Quel est le symbole normalisé d'une pile dans un schéma électrique ?",
+        "options": [
+          "Un rectangle",
+          "Deux traits parallèles de longueurs différentes",
+          "Un cercle",
+          "Une flèche"
         ],
-        "tab3": [
-            {
-                "question": "Vrai ou faux : « Si d // d' et d' // d'', alors d // d'' ».",
-                "options": [
-                    "Vrai",
-                    "Faux"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Vrai, c'est la propriété de transitivité du parallélisme."
-            },
-            {
-                "question": "Vrai ou faux : « Deux droites parallèles se coupent en un point à l'infini ».",
-                "options": [
-                    "Vrai",
-                    "Faux"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Faux : des droites parallèles ne se coupent jamais, nulle part."
-            },
-            {
-                "question": "Complète : si d ⊥ d' et d' ⊥ d'', alors d ___ d''.",
-                "options": [
-                    "⊥",
-                    "//",
-                    "∈"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Deux droites perpendiculaires à une même droite sont parallèles : d // d''."
-            },
-            {
-                "question": "Complète : si d // d' et d' // d'', alors d ___ d''.",
-                "options": [
-                    "//",
-                    "⊥"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Par transitivité du parallélisme, d // d''."
-            }
-        ]
-    },
-    "maths-lecon-6-proprietes": {
-        "tab1": [
-            {
-                "question": "Comment s'appelle la propriété « si d // d' et d' // d'', alors d // d'' » ?",
-                "options": [
-                    "L'unicité",
-                    "La transitivité",
-                    "La symétrie"
-                ],
-                "correctAnswer": 1,
-                "explanation": "C'est la transitivité : elle sert souvent à démontrer que deux droites sont parallèles."
-            },
-            {
-                "question": "Par un point donné, il passe combien de parallèles à une droite donnée ?",
-                "options": [
-                    "Aucune",
-                    "Une seule",
-                    "Une infinité"
-                ],
-                "correctAnswer": 1,
-                "explanation": "C'est la propriété d'unicité : une seule parallèle par un point."
-            },
-            {
-                "question": "Deux droites parallèles sont :",
-                "options": [
-                    "de plus en plus proches",
-                    "toujours à la même distance",
-                    "de plus en plus écartées"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Les parallèles gardent une distance constante : elles ne se rapprochent jamais."
-            },
-            {
-                "question": "Comment mesure-t-on la distance entre deux droites parallèles ?",
-                "options": [
-                    "N'importe comment",
-                    "Perpendiculairement aux deux droites",
-                    "En suivant les droites"
-                ],
-                "correctAnswer": 1,
-                "explanation": "La distance se mesure perpendiculairement aux deux droites."
-            }
+        "correctAnswer": 1,
+        "explanation": "Le symbole de la pile est constitué de deux traits parallèles : un long (pôle +) et un court (pôle -)"
+      },
+      {
+        "question": "Dans un circuit en série, comment sont branchés les dipôles ?",
+        "options": [
+          "En parallèle",
+          "Les uns à la suite des autres",
+          "En étoile",
+          "De façon aléatoire"
         ],
-        "tab2": [
-            {
-                "question": "Si d // d' et d'' ⊥ d, que peut-on dire ?",
-                "options": [
-                    "d'' ⊥ d'",
-                    "d'' // d'",
-                    "On ne peut rien dire"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Si deux droites sont parallèles, toute perpendiculaire à l'une est perpendiculaire à l'autre."
-            },
-            {
-                "question": "Si d ⊥ d'' et d' ⊥ d'', que peut-on dire ?",
-                "options": [
-                    "d ⊥ d'",
-                    "d // d'",
-                    "d et d' sont sécantes"
-                ],
-                "correctAnswer": 1,
-                "explanation": "C'est la réciproque : deux droites perpendiculaires à une même droite sont parallèles entre elles."
-            },
-            {
-                "question": "À quoi servent surtout ces propriétés ?",
-                "options": [
-                    "À mesurer des angles",
-                    "À tracer et à vérifier des parallèles",
-                    "À calculer des aires"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Elles servent à construire des parallèles et à prouver que deux droites sont parallèles."
-            }
-        ]
-    },
-    "maths-lecon-7-nombres-relatifs": {
-        "tab1": [
-            {
-                "question": "Lequel de ces nombres relatifs est négatif ?",
-                "options": [
-                    "+4",
-                    "0",
-                    "-3,5",
-                    "+0,5"
-                ],
-                "correctAnswer": 2,
-                "explanation": "Un nombre négatif porte le signe -, comme -3,5."
-            },
-            {
-                "question": "Le nombre 0 est :",
-                "options": [
-                    "positif",
-                    "négatif",
-                    "ni positif ni négatif"
-                ],
-                "correctAnswer": 2,
-                "explanation": "0 est un cas à part : il n'est ni positif ni négatif."
-            },
-            {
-                "question": "Quelle est la distance à zéro du nombre -5 ?",
-                "options": [
-                    "-5",
-                    "5",
-                    "0",
-                    "10"
-                ],
-                "correctAnswer": 1,
-                "explanation": "La distance à zéro ne tient pas compte du signe : |-5| = 5."
-            },
-            {
-                "question": "Quel est l'opposé de -3 ?",
-                "options": [
-                    "+3",
-                    "-3",
-                    "0",
-                    "+6"
-                ],
-                "correctAnswer": 0,
-                "explanation": "L'opposé garde la même distance à zéro mais change de signe : l'opposé de -3 est +3."
-            }
+        "correctAnswer": 1,
+        "explanation": "En série signifie 'à la suite', comme des perles sur un fil"
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Pour qu'un circuit électrique fonctionne, il faut qu'il soit :",
+        "options": [
+          "Ouvert",
+          "Fermé",
+          "Court-circuité",
+          "Branché en parallèle"
         ],
-        "tab2": [
-            {
-                "question": "Sur une droite graduée, les nombres négatifs se trouvent :",
-                "options": [
-                    "à droite de 0",
-                    "à gauche de 0",
-                    "au-dessus de 0"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Les négatifs sont à gauche de 0 et les positifs à droite."
-            },
-            {
-                "question": "Que faut-il choisir pour construire une droite graduée ?",
-                "options": [
-                    "Une origine, une unité et un sens",
-                    "Seulement une origine",
-                    "Seulement une unité de longueur"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Il faut un point origine O (le 0), une unité de longueur et un sens positif."
-            },
-            {
-                "question": "Sur la droite graduée, deux nombres opposés sont :",
-                "options": [
-                    "au même endroit",
-                    "symétriques par rapport à 0",
-                    "toujours à droite de 0"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Les opposés, comme -3 et +3, sont à égale distance de 0, de part et d'autre."
-            },
-            {
-                "question": "Sur la droite graduée, plus on avance vers la droite :",
-                "options": [
-                    "plus les nombres sont grands",
-                    "plus les nombres sont petits",
-                    "les nombres ne changent pas"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Vers la droite, les nombres augmentent. C'est une astuce très pratique pour comparer !"
-            }
+        "correctAnswer": 1,
+        "explanation": "Un circuit doit être fermé pour que le courant circule"
+      },
+      {
+        "question": "Que se passe-t-il si on enlève une lampe dans un circuit en série ?",
+        "options": [
+          "Les autres lampes brillent plus fort",
+          "Toutes les lampes s'éteignent",
+          "Rien ne change",
+          "Les lampes clignotent"
         ],
-        "tab3": [
-            {
-                "question": "Compare : +2 et -5.",
-                "options": [
-                    "+2 > -5",
-                    "+2 < -5",
-                    "Ils sont égaux"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Tout nombre positif est plus grand que tout nombre négatif."
-            },
-            {
-                "question": "Compare : -4 et -9.",
-                "options": [
-                    "-4 < -9",
-                    "-4 > -9",
-                    "Ils sont égaux"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Entre deux négatifs, le plus grand est celui qui est le plus proche de zéro : -4 > -9."
-            },
-            {
-                "question": "Quel est le plus grand : -0,3 ou -0,8 ?",
-                "options": [
-                    "-0,8",
-                    "-0,3",
-                    "Ils sont égaux"
-                ],
-                "correctAnswer": 1,
-                "explanation": "-0,3 est plus proche de zéro que -0,8, donc -0,3 > -0,8."
-            },
-            {
-                "question": "Range dans l'ordre croissant : -5 ; +3 ; -1 ; 0 ; +7.",
-                "options": [
-                    "-5 < -1 < 0 < +3 < +7",
-                    "-1 < -5 < 0 < +3 < +7",
-                    "+7 < +3 < 0 < -1 < -5",
-                    "0 < -1 < -5 < +3 < +7"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Du plus petit au plus grand : -5 < -1 < 0 < +3 < +7."
-            }
-        ]
-    },
-    "maths-lecon-8-somme-relatifs": {
-        "tab1": [
-            {
-                "question": "Calcule : (+5) + (+3)",
-                "options": [
-                    "+8",
-                    "+2",
-                    "-8",
-                    "+15"
-                ],
-                "correctAnswer": 0,
-                "explanation": "5 + 3 = 8 et le signe commun est + : le résultat est +8."
-            },
-            {
-                "question": "Calcule : (-7) + (-4)",
-                "options": [
-                    "-3",
-                    "+11",
-                    "-11",
-                    "-28"
-                ],
-                "correctAnswer": 2,
-                "explanation": "7 + 4 = 11 et le signe commun est - : le résultat est -11."
-            },
-            {
-                "question": "Pour additionner deux nombres relatifs de même signe, on :",
-                "options": [
-                    "additionne les distances à zéro et on garde le signe commun",
-                    "soustrait les distances à zéro",
-                    "change le signe du résultat"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Même signe : on additionne les distances à zéro et on garde le signe commun."
-            },
-            {
-                "question": "Calcule : (-0,4) + (-0,7)",
-                "options": [
-                    "-1,1",
-                    "+1,1",
-                    "-0,3",
-                    "-0,11"
-                ],
-                "correctAnswer": 0,
-                "explanation": "0,4 + 0,7 = 1,1 et les deux nombres sont négatifs : le résultat est -1,1."
-            }
+        "correctAnswer": 1,
+        "explanation": "Dans un circuit en série, si un dipôle est retiré, le circuit est ouvert et tout s'arrête"
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Quelle est la fonction d'un interrupteur dans un circuit ?",
+        "options": [
+          "Produire du courant",
+          "Ouvrir ou fermer le circuit",
+          "Augmenter la tension",
+          "Transformer l'énergie"
         ],
-        "tab2": [
-            {
-                "question": "Calcule : (+8) + (-3)",
-                "options": [
-                    "+11",
-                    "+5",
-                    "-5",
-                    "-11"
-                ],
-                "correctAnswer": 1,
-                "explanation": "8 - 3 = 5. La plus grande distance à zéro est celle de +8, donc le résultat est +5."
-            },
-            {
-                "question": "Calcule : (-9) + (+4)",
-                "options": [
-                    "+5",
-                    "-5",
-                    "-13",
-                    "+13"
-                ],
-                "correctAnswer": 1,
-                "explanation": "9 - 4 = 5. La plus grande distance à zéro est celle de -9, donc le résultat est -5."
-            },
-            {
-                "question": "Calcule : (+7) + (-7)",
-                "options": [
-                    "+14",
-                    "0",
-                    "-14",
-                    "+7"
-                ],
-                "correctAnswer": 1,
-                "explanation": "7 et 7 ont la même distance à zéro : deux nombres opposés s'annulent, le résultat est 0."
-            },
-            {
-                "question": "Quand les deux nombres sont de signes contraires, le résultat prend le signe :",
-                "options": [
-                    "du premier nombre écrit",
-                    "du nombre qui a la plus grande distance à zéro",
-                    "toujours +"
-                ],
-                "correctAnswer": 1,
-                "explanation": "On soustrait les distances à zéro et on garde le signe du nombre le plus éloigné de zéro."
-            }
+        "correctAnswer": 1,
+        "explanation": "L'interrupteur permet d'ouvrir ou de fermer le circuit, contrôlant ainsi le passage du courant"
+      }
+    ],
+    "tab4": [
+      {
+        "question": "Dans un circuit en dérivation, que se passe-t-il si une lampe grille ?",
+        "options": [
+          "Toutes les lampes s'éteignent",
+          "Les autres lampes continuent de briller",
+          "Les lampes clignotent",
+          "Le circuit explose"
         ],
-        "tab3": [
-            {
-                "question": "Calcule : (+6) + (+9)",
-                "options": [
-                    "+3",
-                    "+15",
-                    "-15"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Même signe : 6 + 9 = 15, on garde le + donc +15."
-            },
-            {
-                "question": "Calcule : (-8) + (+12)",
-                "options": [
-                    "-4",
-                    "+4",
-                    "+20"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Signes contraires : 12 - 8 = 4, et 12 est le plus loin de zéro, donc +4."
-            },
-            {
-                "question": "Calcule : (+2,5) + (-1,2)",
-                "options": [
-                    "+1,3",
-                    "-1,3",
-                    "+3,7"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Signes contraires : 2,5 - 1,2 = 1,3, et 2,5 est le plus loin de zéro, donc +1,3."
-            },
-            {
-                "question": "Un thermomètre indique -5 °C. La température monte de 8 °C. Quelle est la nouvelle température ?",
-                "options": [
-                    "-13 °C",
-                    "+3 °C",
-                    "+13 °C"
-                ],
-                "correctAnswer": 1,
-                "explanation": "(-5) + (+8) : 8 - 5 = 3, et 8 est le plus loin de zéro, donc +3 °C."
-            }
-        ]
-    },
-    "maths-lecon-segments": {
-        "tab1": [
-            {
-                "question": "Un segment est :",
-                "options": [
-                    "une ligne illimitée des deux côtés",
-                    "une portion de droite limitée par deux points",
-                    "une ligne courbe"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Un segment est une portion de droite limitée par ses deux extrémités."
-            },
-            {
-                "question": "Comment appelle-t-on les deux points qui limitent un segment ?",
-                "options": [
-                    "Les origines",
-                    "Les extrémités",
-                    "Les milieux"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Ce sont les extrémités du segment, par exemple A et B pour [AB]."
-            },
-            {
-                "question": "Entre deux points, le segment représente :",
-                "options": [
-                    "le chemin le plus long",
-                    "le chemin le plus court",
-                    "un chemin au hasard"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Le segment est la plus courte distance entre deux points."
-            },
-            {
-                "question": "Deux segments qui ont la même longueur sont appelés :",
-                "options": [
-                    "des segments égaux",
-                    "des segments parallèles",
-                    "des segments opposés"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Deux segments de même longueur sont dits égaux."
-            }
+        "correctAnswer": 1,
+        "explanation": "En dérivation, chaque branche est indépendante, donc les autres lampes continuent de fonctionner"
+      }
+    ]
+  },
+  "maths-lecon-3-droites-points": {
+    "tab1": [
+      {
+        "question": "Comment désigne-t-on un point en géométrie ?",
+        "options": [
+          "Par une lettre minuscule",
+          "Par une lettre majuscule",
+          "Par un chiffre",
+          "Par deux lettres"
         ],
-        "tab2": [
-            {
-                "question": "Comment note-t-on le segment d'extrémités A et B ?",
-                "options": [
-                    "(AB)",
-                    "[AB]",
-                    "[AB)",
-                    "AB"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Le segment se note entre crochets fermés : [AB] (ou [BA], c'est le même)."
-            },
-            {
-                "question": "Que représente l'écriture AB, sans crochets ?",
-                "options": [
-                    "Le segment lui-même",
-                    "La longueur du segment",
-                    "La droite passant par A et B"
-                ],
-                "correctAnswer": 1,
-                "explanation": "AB est un nombre : c'est la longueur du segment [AB], par exemple AB = 5 cm."
-            },
-            {
-                "question": "[AB] et [BA] désignent :",
-                "options": [
-                    "deux segments différents",
-                    "le même segment",
-                    "deux droites différentes"
-                ],
-                "correctAnswer": 1,
-                "explanation": "L'ordre des lettres ne change rien : [AB] et [BA] sont le même segment."
-            },
-            {
-                "question": "Que signifient les crochets [ et ] dans la notation [AB] ?",
-                "options": [
-                    "Que les extrémités A et B font partie du segment",
-                    "Que les extrémités sont exclues",
-                    "Que la ligne est illimitée"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Les crochets fermés indiquent que les extrémités appartiennent bien au segment."
-            }
+        "correctAnswer": 1,
+        "explanation": "Un point se nomme toujours avec une lettre MAJUSCULE, comme A ou B."
+      },
+      {
+        "question": "Une droite est une ligne qui est :",
+        "options": [
+          "limitée aux deux bouts",
+          "illimitée dans les deux sens",
+          "limitée d'un seul côté",
+          "toujours courbée"
         ],
-        "tab3": [
-            {
-                "question": "Avec quel instrument mesure-t-on la longueur d'un segment ?",
-                "options": [
-                    "Le compas",
-                    "La règle graduée",
-                    "Le rapporteur"
-                ],
-                "correctAnswer": 1,
-                "explanation": "On aligne le 0 de la règle graduée sur A, puis on lit la mesure au point B."
-            },
-            {
-                "question": "La longueur d'un segment est toujours :",
-                "options": [
-                    "positive",
-                    "négative",
-                    "nulle"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Une longueur est toujours positive, et on l'exprime avec une unité (cm, m...)."
-            },
-            {
-                "question": "Si AB = 0, cela veut dire que :",
-                "options": [
-                    "A et B sont le même point",
-                    "le segment est très long",
-                    "A est à gauche de B"
-                ],
-                "correctAnswer": 0,
-                "explanation": "Une longueur nulle signifie que les deux extrémités sont confondues."
-            },
-            {
-                "question": "B appartient au segment [AC]. Si AB = 3 cm et BC = 5 cm, combien vaut AC ?",
-                "options": [
-                    "2 cm",
-                    "8 cm",
-                    "15 cm",
-                    "5 cm"
-                ],
-                "correctAnswer": 1,
-                "explanation": "Quand B est sur [AC], on a AB + BC = AC, donc 3 + 5 = 8 cm."
-            }
-        ]
-    }
+        "correctAnswer": 1,
+        "explanation": "Une droite se prolonge à l'infini des deux côtés : elle n'a ni début ni fin."
+      },
+      {
+        "question": "Sur un dessin, la droite qui passe par les points A et B se note :",
+        "options": [
+          "[AB]",
+          "(AB)",
+          "[AB)",
+          "AB"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Avec des parenthèses : (AB). Une droite peut aussi porter une lettre minuscule comme d."
+      },
+      {
+        "question": "Un point a-t-il une dimension ?",
+        "options": [
+          "Oui, il a une longueur",
+          "Oui, il a une largeur",
+          "Non, il n'a aucune dimension"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un point est sans dimension : on le dessine juste par une petite croix ou un petit rond."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Que veut dire la notation A ∈ d ?",
+        "options": [
+          "A est parallèle à d",
+          "A appartient à la droite d",
+          "A est le milieu de d",
+          "d appartient à A"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le symbole ∈ se lit « appartient à » : le point A est situé sur la droite d."
+      },
+      {
+        "question": "Trois points sont dits alignés lorsque :",
+        "options": [
+          "ils forment un triangle",
+          "ils appartiennent à une même droite",
+          "ils sont confondus",
+          "ils sont très proches"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Des points alignés sont tous posés sur la même droite."
+      },
+      {
+        "question": "Combien de droites passent par deux points distincts A et B ?",
+        "options": [
+          "Aucune",
+          "Une seule",
+          "Deux",
+          "Une infinité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Par deux points distincts, il passe une seule droite. Deux points suffisent donc pour la tracer !"
+      },
+      {
+        "question": "Combien de droites peut-on tracer en passant par un seul point ?",
+        "options": [
+          "Une seule",
+          "Deux",
+          "Une infinité",
+          "Aucune"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Par un seul point, on peut faire passer une infinité de droites en les faisant tourner autour de lui."
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Une demi-droite est limitée :",
+        "options": [
+          "des deux côtés",
+          "d'un seul côté, par son origine",
+          "d'aucun côté"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une demi-droite part d'un point appelé origine et se prolonge à l'infini de l'autre côté."
+      },
+      {
+        "question": "Que désigne la notation [AB) ?",
+        "options": [
+          "Le segment d'extrémités A et B",
+          "La droite passant par A et B",
+          "La demi-droite d'origine A passant par B",
+          "La demi-droite d'origine B passant par A"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le crochet est du côté de l'origine : [AB) a pour origine A et passe par B."
+      },
+      {
+        "question": "Lequel de ces objets est illimité des DEUX côtés ?",
+        "options": [
+          "Le segment [AB]",
+          "La demi-droite [AB)",
+          "La droite (AB)"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Seule la droite (AB) se prolonge à l'infini des deux côtés."
+      },
+      {
+        "question": "Une droite peut être vue comme :",
+        "options": [
+          "deux segments",
+          "deux demi-droites opposées",
+          "trois demi-droites"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un point d'une droite la partage en deux demi-droites opposées."
+      }
+    ]
+  },
+  "maths-lecon-4-secantes-perpendiculaires": {
+    "tab1": [
+      {
+        "question": "Deux droites sécantes sont deux droites qui :",
+        "options": [
+          "ne se rencontrent jamais",
+          "ont un point commun",
+          "sont confondues",
+          "forment toujours un angle droit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Sécantes veut dire « qui se coupent » : elles ont un point commun."
+      },
+      {
+        "question": "Combien de points communs ont deux droites sécantes ?",
+        "options": [
+          "Aucun",
+          "Exactement un",
+          "Deux",
+          "Une infinité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Deux droites sécantes se coupent en un seul point, appelé point d'intersection."
+      },
+      {
+        "question": "Comment appelle-t-on le point où deux droites sécantes se coupent ?",
+        "options": [
+          "Le milieu",
+          "Le point d'intersection",
+          "L'origine",
+          "L'extrémité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est le point d'intersection, souvent noté I sur les figures."
+      },
+      {
+        "question": "Combien d'angles forment deux droites sécantes autour de leur point d'intersection ?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "6"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Deux droites sécantes forment 4 angles. Les angles opposés par le sommet sont égaux."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Deux droites perpendiculaires sont sécantes et forment un angle de :",
+        "options": [
+          "45°",
+          "60°",
+          "90°",
+          "180°"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Perpendiculaires = sécantes en formant un angle droit, c'est-à-dire 90°."
+      },
+      {
+        "question": "Quel symbole utilise-t-on pour dire « est perpendiculaire à » ?",
+        "options": [
+          "//",
+          "⊥",
+          "∈",
+          "="
+        ],
+        "correctAnswer": 1,
+        "explanation": "On écrit d ⊥ d' pour dire que d est perpendiculaire à d'."
+      },
+      {
+        "question": "Sur une figure, que signifie le petit carré dessiné au point d'intersection ?",
+        "options": [
+          "Que les droites sont parallèles",
+          "Qu'il y a un angle droit",
+          "Que le point est un milieu"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le petit carré est le code qui signale un angle droit de 90°."
+      },
+      {
+        "question": "Si d ⊥ d', que peut-on dire aussi ?",
+        "options": [
+          "d' ⊥ d",
+          "d' // d",
+          "d' est plus longue que d"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La perpendicularité est symétrique : si d ⊥ d', alors d' ⊥ d."
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Quel instrument est le plus simple pour tracer une perpendiculaire ?",
+        "options": [
+          "Le compas",
+          "L'équerre",
+          "Le rapporteur",
+          "La calculatrice"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'équerre possède déjà un angle droit : c'est l'outil le plus pratique."
+      },
+      {
+        "question": "Par un point donné, combien de perpendiculaires à une droite peut-on tracer ?",
+        "options": [
+          "Aucune",
+          "Une seule",
+          "Deux",
+          "Une infinité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Par un point, il n'existe qu'une seule perpendiculaire à une droite donnée."
+      },
+      {
+        "question": "Avec l'équerre, quelle est la première étape ?",
+        "options": [
+          "Tracer un arc de cercle",
+          "Placer l'équerre sur la droite d",
+          "Mesurer la longueur de la droite"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On place d'abord l'équerre sur la droite d, puis on fait coïncider un côté de l'angle droit avec d."
+      },
+      {
+        "question": "Le point est situé en dehors de la droite. Peut-on tracer la perpendiculaire ?",
+        "options": [
+          "Non, c'est impossible",
+          "Oui, et il n'y en a qu'une seule",
+          "Oui, il y en a plusieurs"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Que le point soit sur la droite ou en dehors, il existe toujours une seule perpendiculaire."
+      }
+    ]
+  },
+  "maths-lecon-5-droites-paralleles": {
+    "tab1": [
+      {
+        "question": "Deux droites parallèles :",
+        "options": [
+          "se coupent en un point",
+          "n'ont aucun point commun",
+          "forment un angle droit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Des droites parallèles ne se rencontrent jamais (ou alors elles sont confondues)."
+      },
+      {
+        "question": "Quel symbole note le parallélisme ?",
+        "options": [
+          "⊥",
+          "//",
+          "∈",
+          "≠"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On écrit d // d' pour dire que d est parallèle à d'."
+      },
+      {
+        "question": "Par un point situé hors d'une droite, combien de parallèles à cette droite peut-on tracer ?",
+        "options": [
+          "Aucune",
+          "Une seule",
+          "Deux",
+          "Une infinité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Par un point, il passe une seule parallèle à une droite donnée."
+      },
+      {
+        "question": "Si d // d' et d' // d'', alors :",
+        "options": [
+          "d ⊥ d''",
+          "d // d''",
+          "on ne peut rien dire"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est la transitivité : deux droites parallèles à une même droite sont parallèles entre elles."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Quels instruments utilise-t-on dans la méthode la plus simple ?",
+        "options": [
+          "Un compas seul",
+          "Une équerre et une règle",
+          "Un rapporteur seul"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On pose la règle le long de la droite, puis on fait glisser l'équerre contre la règle."
+      },
+      {
+        "question": "Dans la méthode de l'équerre, on fait glisser l'équerre :",
+        "options": [
+          "le long de la règle",
+          "au hasard sur la feuille",
+          "en la faisant tourner"
+        ],
+        "correctAnswer": 0,
+        "explanation": "On la fait glisser le long de la règle jusqu'au point A, puis on trace."
+      },
+      {
+        "question": "Si deux droites sont perpendiculaires à une même droite, alors elles sont :",
+        "options": [
+          "sécantes",
+          "parallèles",
+          "confondues"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Deux perpendiculaires à une même droite sont parallèles entre elles : c'est la 2e méthode de construction."
+      },
+      {
+        "question": "Par un point A donné, combien de droites parallèles à d peut-on tracer ?",
+        "options": [
+          "Une seule",
+          "Deux",
+          "Une infinité"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Il existe toujours une seule parallèle à d passant par A."
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Vrai ou faux : « Si d // d' et d' // d'', alors d // d'' ».",
+        "options": [
+          "Vrai",
+          "Faux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Vrai, c'est la propriété de transitivité du parallélisme."
+      },
+      {
+        "question": "Vrai ou faux : « Deux droites parallèles se coupent en un point à l'infini ».",
+        "options": [
+          "Vrai",
+          "Faux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Faux : des droites parallèles ne se coupent jamais, nulle part."
+      },
+      {
+        "question": "Complète : si d ⊥ d' et d' ⊥ d'', alors d ___ d''.",
+        "options": [
+          "⊥",
+          "//",
+          "∈"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Deux droites perpendiculaires à une même droite sont parallèles : d // d''."
+      },
+      {
+        "question": "Complète : si d // d' et d' // d'', alors d ___ d''.",
+        "options": [
+          "//",
+          "⊥"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Par transitivité du parallélisme, d // d''."
+      }
+    ]
+  },
+  "maths-lecon-6-proprietes": {
+    "tab1": [
+      {
+        "question": "Comment s'appelle la propriété « si d // d' et d' // d'', alors d // d'' » ?",
+        "options": [
+          "L'unicité",
+          "La transitivité",
+          "La symétrie"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est la transitivité : elle sert souvent à démontrer que deux droites sont parallèles."
+      },
+      {
+        "question": "Par un point donné, il passe combien de parallèles à une droite donnée ?",
+        "options": [
+          "Aucune",
+          "Une seule",
+          "Une infinité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est la propriété d'unicité : une seule parallèle par un point."
+      },
+      {
+        "question": "Deux droites parallèles sont :",
+        "options": [
+          "de plus en plus proches",
+          "toujours à la même distance",
+          "de plus en plus écartées"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les parallèles gardent une distance constante : elles ne se rapprochent jamais."
+      },
+      {
+        "question": "Comment mesure-t-on la distance entre deux droites parallèles ?",
+        "options": [
+          "N'importe comment",
+          "Perpendiculairement aux deux droites",
+          "En suivant les droites"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La distance se mesure perpendiculairement aux deux droites."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Si d // d' et d'' ⊥ d, que peut-on dire ?",
+        "options": [
+          "d'' ⊥ d'",
+          "d'' // d'",
+          "On ne peut rien dire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Si deux droites sont parallèles, toute perpendiculaire à l'une est perpendiculaire à l'autre."
+      },
+      {
+        "question": "Si d ⊥ d'' et d' ⊥ d'', que peut-on dire ?",
+        "options": [
+          "d ⊥ d'",
+          "d // d'",
+          "d et d' sont sécantes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est la réciproque : deux droites perpendiculaires à une même droite sont parallèles entre elles."
+      },
+      {
+        "question": "À quoi servent surtout ces propriétés ?",
+        "options": [
+          "À mesurer des angles",
+          "À tracer et à vérifier des parallèles",
+          "À calculer des aires"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Elles servent à construire des parallèles et à prouver que deux droites sont parallèles."
+      }
+    ]
+  },
+  "maths-lecon-7-nombres-relatifs": {
+    "tab1": [
+      {
+        "question": "Lequel de ces nombres relatifs est négatif ?",
+        "options": [
+          "+4",
+          "0",
+          "-3,5",
+          "+0,5"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un nombre négatif porte le signe -, comme -3,5."
+      },
+      {
+        "question": "Le nombre 0 est :",
+        "options": [
+          "positif",
+          "négatif",
+          "ni positif ni négatif"
+        ],
+        "correctAnswer": 2,
+        "explanation": "0 est un cas à part : il n'est ni positif ni négatif."
+      },
+      {
+        "question": "Quelle est la distance à zéro du nombre -5 ?",
+        "options": [
+          "-5",
+          "5",
+          "0",
+          "10"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La distance à zéro ne tient pas compte du signe : |-5| = 5."
+      },
+      {
+        "question": "Quel est l'opposé de -3 ?",
+        "options": [
+          "+3",
+          "-3",
+          "0",
+          "+6"
+        ],
+        "correctAnswer": 0,
+        "explanation": "L'opposé garde la même distance à zéro mais change de signe : l'opposé de -3 est +3."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Sur une droite graduée, les nombres négatifs se trouvent :",
+        "options": [
+          "à droite de 0",
+          "à gauche de 0",
+          "au-dessus de 0"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les négatifs sont à gauche de 0 et les positifs à droite."
+      },
+      {
+        "question": "Que faut-il choisir pour construire une droite graduée ?",
+        "options": [
+          "Une origine, une unité et un sens",
+          "Seulement une origine",
+          "Seulement une unité de longueur"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Il faut un point origine O (le 0), une unité de longueur et un sens positif."
+      },
+      {
+        "question": "Sur la droite graduée, deux nombres opposés sont :",
+        "options": [
+          "au même endroit",
+          "symétriques par rapport à 0",
+          "toujours à droite de 0"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les opposés, comme -3 et +3, sont à égale distance de 0, de part et d'autre."
+      },
+      {
+        "question": "Sur la droite graduée, plus on avance vers la droite :",
+        "options": [
+          "plus les nombres sont grands",
+          "plus les nombres sont petits",
+          "les nombres ne changent pas"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Vers la droite, les nombres augmentent. C'est une astuce très pratique pour comparer !"
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Compare : +2 et -5.",
+        "options": [
+          "+2 > -5",
+          "+2 < -5",
+          "Ils sont égaux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Tout nombre positif est plus grand que tout nombre négatif."
+      },
+      {
+        "question": "Compare : -4 et -9.",
+        "options": [
+          "-4 < -9",
+          "-4 > -9",
+          "Ils sont égaux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Entre deux négatifs, le plus grand est celui qui est le plus proche de zéro : -4 > -9."
+      },
+      {
+        "question": "Quel est le plus grand : -0,3 ou -0,8 ?",
+        "options": [
+          "-0,8",
+          "-0,3",
+          "Ils sont égaux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "-0,3 est plus proche de zéro que -0,8, donc -0,3 > -0,8."
+      },
+      {
+        "question": "Range dans l'ordre croissant : -5 ; +3 ; -1 ; 0 ; +7.",
+        "options": [
+          "-5 < -1 < 0 < +3 < +7",
+          "-1 < -5 < 0 < +3 < +7",
+          "+7 < +3 < 0 < -1 < -5",
+          "0 < -1 < -5 < +3 < +7"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Du plus petit au plus grand : -5 < -1 < 0 < +3 < +7."
+      }
+    ]
+  },
+  "maths-lecon-8-somme-relatifs": {
+    "tab1": [
+      {
+        "question": "Calcule : (+5) + (+3)",
+        "options": [
+          "+8",
+          "+2",
+          "-8",
+          "+15"
+        ],
+        "correctAnswer": 0,
+        "explanation": "5 + 3 = 8 et le signe commun est + : le résultat est +8."
+      },
+      {
+        "question": "Calcule : (-7) + (-4)",
+        "options": [
+          "-3",
+          "+11",
+          "-11",
+          "-28"
+        ],
+        "correctAnswer": 2,
+        "explanation": "7 + 4 = 11 et le signe commun est - : le résultat est -11."
+      },
+      {
+        "question": "Pour additionner deux nombres relatifs de même signe, on :",
+        "options": [
+          "additionne les distances à zéro et on garde le signe commun",
+          "soustrait les distances à zéro",
+          "change le signe du résultat"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Même signe : on additionne les distances à zéro et on garde le signe commun."
+      },
+      {
+        "question": "Calcule : (-0,4) + (-0,7)",
+        "options": [
+          "-1,1",
+          "+1,1",
+          "-0,3",
+          "-0,11"
+        ],
+        "correctAnswer": 0,
+        "explanation": "0,4 + 0,7 = 1,1 et les deux nombres sont négatifs : le résultat est -1,1."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Calcule : (+8) + (-3)",
+        "options": [
+          "+11",
+          "+5",
+          "-5",
+          "-11"
+        ],
+        "correctAnswer": 1,
+        "explanation": "8 - 3 = 5. La plus grande distance à zéro est celle de +8, donc le résultat est +5."
+      },
+      {
+        "question": "Calcule : (-9) + (+4)",
+        "options": [
+          "+5",
+          "-5",
+          "-13",
+          "+13"
+        ],
+        "correctAnswer": 1,
+        "explanation": "9 - 4 = 5. La plus grande distance à zéro est celle de -9, donc le résultat est -5."
+      },
+      {
+        "question": "Calcule : (+7) + (-7)",
+        "options": [
+          "+14",
+          "0",
+          "-14",
+          "+7"
+        ],
+        "correctAnswer": 1,
+        "explanation": "7 et 7 ont la même distance à zéro : deux nombres opposés s'annulent, le résultat est 0."
+      },
+      {
+        "question": "Quand les deux nombres sont de signes contraires, le résultat prend le signe :",
+        "options": [
+          "du premier nombre écrit",
+          "du nombre qui a la plus grande distance à zéro",
+          "toujours +"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On soustrait les distances à zéro et on garde le signe du nombre le plus éloigné de zéro."
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Calcule : (+6) + (+9)",
+        "options": [
+          "+3",
+          "+15",
+          "-15"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Même signe : 6 + 9 = 15, on garde le + donc +15."
+      },
+      {
+        "question": "Calcule : (-8) + (+12)",
+        "options": [
+          "-4",
+          "+4",
+          "+20"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Signes contraires : 12 - 8 = 4, et 12 est le plus loin de zéro, donc +4."
+      },
+      {
+        "question": "Calcule : (+2,5) + (-1,2)",
+        "options": [
+          "+1,3",
+          "-1,3",
+          "+3,7"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Signes contraires : 2,5 - 1,2 = 1,3, et 2,5 est le plus loin de zéro, donc +1,3."
+      },
+      {
+        "question": "Un thermomètre indique -5 °C. La température monte de 8 °C. Quelle est la nouvelle température ?",
+        "options": [
+          "-13 °C",
+          "+3 °C",
+          "+13 °C"
+        ],
+        "correctAnswer": 1,
+        "explanation": "(-5) + (+8) : 8 - 5 = 3, et 8 est le plus loin de zéro, donc +3 °C."
+      }
+    ]
+  },
+  "maths-lecon-segments": {
+    "tab1": [
+      {
+        "question": "Un segment est :",
+        "options": [
+          "une ligne illimitée des deux côtés",
+          "une portion de droite limitée par deux points",
+          "une ligne courbe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un segment est une portion de droite limitée par ses deux extrémités."
+      },
+      {
+        "question": "Comment appelle-t-on les deux points qui limitent un segment ?",
+        "options": [
+          "Les origines",
+          "Les extrémités",
+          "Les milieux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ce sont les extrémités du segment, par exemple A et B pour [AB]."
+      },
+      {
+        "question": "Entre deux points, le segment représente :",
+        "options": [
+          "le chemin le plus long",
+          "le chemin le plus court",
+          "un chemin au hasard"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le segment est la plus courte distance entre deux points."
+      },
+      {
+        "question": "Deux segments qui ont la même longueur sont appelés :",
+        "options": [
+          "des segments égaux",
+          "des segments parallèles",
+          "des segments opposés"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Deux segments de même longueur sont dits égaux."
+      }
+    ],
+    "tab2": [
+      {
+        "question": "Comment note-t-on le segment d'extrémités A et B ?",
+        "options": [
+          "(AB)",
+          "[AB]",
+          "[AB)",
+          "AB"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le segment se note entre crochets fermés : [AB] (ou [BA], c'est le même)."
+      },
+      {
+        "question": "Que représente l'écriture AB, sans crochets ?",
+        "options": [
+          "Le segment lui-même",
+          "La longueur du segment",
+          "La droite passant par A et B"
+        ],
+        "correctAnswer": 1,
+        "explanation": "AB est un nombre : c'est la longueur du segment [AB], par exemple AB = 5 cm."
+      },
+      {
+        "question": "[AB] et [BA] désignent :",
+        "options": [
+          "deux segments différents",
+          "le même segment",
+          "deux droites différentes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'ordre des lettres ne change rien : [AB] et [BA] sont le même segment."
+      },
+      {
+        "question": "Que signifient les crochets [ et ] dans la notation [AB] ?",
+        "options": [
+          "Que les extrémités A et B font partie du segment",
+          "Que les extrémités sont exclues",
+          "Que la ligne est illimitée"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Les crochets fermés indiquent que les extrémités appartiennent bien au segment."
+      }
+    ],
+    "tab3": [
+      {
+        "question": "Avec quel instrument mesure-t-on la longueur d'un segment ?",
+        "options": [
+          "Le compas",
+          "La règle graduée",
+          "Le rapporteur"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On aligne le 0 de la règle graduée sur A, puis on lit la mesure au point B."
+      },
+      {
+        "question": "La longueur d'un segment est toujours :",
+        "options": [
+          "positive",
+          "négative",
+          "nulle"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Une longueur est toujours positive, et on l'exprime avec une unité (cm, m...)."
+      },
+      {
+        "question": "Si AB = 0, cela veut dire que :",
+        "options": [
+          "A et B sont le même point",
+          "le segment est très long",
+          "A est à gauche de B"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Une longueur nulle signifie que les deux extrémités sont confondues."
+      },
+      {
+        "question": "B appartient au segment [AC]. Si AB = 3 cm et BC = 5 cm, combien vaut AC ?",
+        "options": [
+          "2 cm",
+          "8 cm",
+          "15 cm",
+          "5 cm"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Quand B est sur [AC], on a AB + BC = AC, donc 3 + 5 = 8 cm."
+      }
+    ]
+  },
+  "anglais-unit1-discover-my-school": {
+    "tab3": [
+      {
+        "question": "What is a gate?",
+        "options": [
+          "It's a big door.",
+          "It's a small window.",
+          "It's a classroom.",
+          "It's a teacher."
+        ],
+        "correctAnswer": 0,
+        "explanation": "A gate: it's a big door. C'est la grande porte d'entrée de l'école."
+      },
+      {
+        "question": "It's the meeting place of the teachers. What is it?",
+        "options": [
+          "A canteen",
+          "A staff room",
+          "A library",
+          "An office"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A staff room: it's the meeting place of the teachers — la salle des professeurs."
+      },
+      {
+        "question": "A grammar school is a school from…",
+        "options": [
+          "2nde to Tle",
+          "CP1 to CM2",
+          "6e to 3e",
+          "6e to Tle"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A grammar school: it's a school from 6e to 3e. C'est le collège — là où tu es cette année."
+      },
+      {
+        "question": "A secondary school is a school from…",
+        "options": [
+          "2nde to Tle",
+          "6e to 3e",
+          "CP1 to CM2",
+          "3e to 2nde"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A secondary school: it's a school from 2nde to Tle. À ne pas confondre avec grammar school."
+      },
+      {
+        "question": "Where do students go to borrow books?",
+        "options": [
+          "The canteen",
+          "The staff room",
+          "The library",
+          "The gate"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A library: it's a place where students go to borrow books."
+      },
+      {
+        "question": "Where do students go to take food at school?",
+        "options": [
+          "The library",
+          "The canteen",
+          "The science laboratory",
+          "The office"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A canteen: it's a place where students go to take food at school — la cantine."
+      },
+      {
+        "question": "The headmaster office is an example of…",
+        "options": [
+          "a staff room",
+          "a canteen",
+          "an office",
+          "a library"
+        ],
+        "correctAnswer": 2,
+        "explanation": "An office: it's the work place of administration workers. Ex: the headmaster office."
+      },
+      {
+        "question": "Quelle est la forme POLIE pour demander où se trouve un lieu ?",
+        "options": [
+          "Can you tell me where the library is?",
+          "Can you tell me where is the library?",
+          "Where the library is?",
+          "You tell me the library?"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Après « Can you tell me where… », le verbe passe à la fin : « …where the library IS ? ». C'est le piège classique."
+      },
+      {
+        "question": "« The staff room is ____ the headmaster office. » Quelle préposition signifie « à côté de » ?",
+        "options": [
+          "behind",
+          "next to",
+          "upstairs",
+          "opposite"
+        ],
+        "correctAnswer": 1,
+        "explanation": "next to = à côté de. behind = derrière, upstairs = à l'étage, opposite = en face de."
+      },
+      {
+        "question": "Que veut dire « upstairs » ?",
+        "options": [
+          "Au rez-de-chaussée",
+          "Devant",
+          "À l'étage",
+          "Derrière"
+        ],
+        "correctAnswer": 2,
+        "explanation": "upstairs = à l'étage. Le contraire est downstairs = au rez-de-chaussée."
+      },
+      {
+        "question": "« Where is the school canteen? » — quelle réponse utilise bien une préposition de lieu ?",
+        "options": [
+          "It's canteen.",
+          "It's downstairs, behind the gate.",
+          "It's a place to eat.",
+          "Yes, it is."
+        ],
+        "correctAnswer": 1,
+        "explanation": "On répond avec une préposition de lieu : downstairs, behind, next to, upstairs…"
+      },
+      {
+        "question": "Complète : « A library is a place where students go to borrow books ____ »",
+        "options": [
+          "to eat",
+          "to read",
+          "to sleep",
+          "to play"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A library: it's a place where students go to borrow books TO READ."
+      }
+    ]
+  },
+  "physique-chimie-revisions-rentree": {
+    "tab3": [
+      {
+        "question": "Quels éléments faut-il pour réaliser un circuit électrique simple ?",
+        "options": [
+          "Seulement une pile et une ampoule",
+          "Un générateur, un récepteur, des fils, éventuellement un interrupteur",
+          "Un interrupteur et des fils uniquement",
+          "Une ampoule et un interrupteur"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un générateur (la pile), un récepteur (l'ampoule), des fils électriques, et éventuellement un interrupteur."
+      },
+      {
+        "question": "Dans un circuit, la pile joue le rôle de…",
+        "options": [
+          "récepteur",
+          "interrupteur",
+          "générateur",
+          "conducteur"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La pile est le générateur : c'est elle qui fournit le courant."
+      },
+      {
+        "question": "Dans un circuit, l'ampoule joue le rôle de…",
+        "options": [
+          "générateur",
+          "récepteur",
+          "interrupteur",
+          "isolant"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'ampoule est le récepteur : elle reçoit le courant et s'en sert pour éclairer."
+      },
+      {
+        "question": "Que se passe-t-il lorsque le circuit est OUVERT ?",
+        "options": [
+          "Le courant circule et la lampe s'allume",
+          "Le courant ne circule pas, la lampe reste éteinte",
+          "La pile se recharge",
+          "La lampe clignote"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ouvert = coupé. Le courant ne peut pas faire le tour : la lampe reste éteinte."
+      },
+      {
+        "question": "Que se passe-t-il lorsque le circuit est FERMÉ ?",
+        "options": [
+          "Le courant ne circule plus",
+          "La lampe s'éteint",
+          "Le courant circule et la lampe s'allume",
+          "Rien ne change"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Fermé = la boucle est complète. Le courant circule et la lampe s'allume."
+      },
+      {
+        "question": "Quels sont les trois états physiques de la matière ?",
+        "options": [
+          "Solide, liquide, gazeux",
+          "Dur, mou, liquide",
+          "Chaud, froid, tiède",
+          "Solide, liquide, poudre"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Les trois états physiques sont : solide, liquide et gazeux."
+      },
+      {
+        "question": "Quel état a une forme propre ET un volume propre ?",
+        "options": [
+          "Le gaz",
+          "Le liquide",
+          "Le solide",
+          "Aucun"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le solide garde sa forme et son volume. Le liquide garde seulement son volume."
+      },
+      {
+        "question": "Un liquide versé dans un verre…",
+        "options": [
+          "garde sa forme de départ",
+          "prend la forme du verre mais garde son volume",
+          "occupe tout l'espace du verre",
+          "change de volume"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le liquide prend la forme de son récipient, mais son volume ne change pas."
+      }
+    ]
+  },
+  "physique-chimie-les-melanges": {
+    "tab4": [
+      {
+        "question": "Adja met du sucre dans l'eau et agite. Qu'a-t-elle utilisé pour préparer le mélange ?",
+        "options": [
+          "Seulement le sucre",
+          "Seulement l'eau",
+          "Le sucre et l'eau",
+          "Le sucre et la cuillère"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un mélange se fait avec au moins deux choses : ici le sucre ET l'eau. C'était l'erreur à ne pas refaire."
+      },
+      {
+        "question": "Après avoir agité, on ne voit plus le sucre. A-t-il disparu ?",
+        "options": [
+          "Oui, il a disparu",
+          "Non, il s'est dissous",
+          "Oui, il s'est évaporé",
+          "Non, il est tombé au fond"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Non ! Le sucre ne disparaît pas, il se dissout. Ne plus voir n'est pas disparaître."
+      },
+      {
+        "question": "Quelle preuve montre que le sucre est toujours là ?",
+        "options": [
+          "L'eau a changé de couleur",
+          "L'eau a le goût sucré",
+          "L'eau est devenue plus froide",
+          "Le verre est plus lourd à l'œil"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'eau a le goût sucré : s'il avait vraiment disparu, elle n'aurait aucun goût."
+      },
+      {
+        "question": "Comment appelle-t-on le mélange eau + sucre ?",
+        "options": [
+          "Un mélange hétérogène",
+          "Un mélange homogène",
+          "Une décantation",
+          "Une évaporation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est un mélange homogène : on ne distingue plus les constituants à l'œil nu."
+      },
+      {
+        "question": "Un mélange est HOMOGÈNE quand…",
+        "options": [
+          "on distingue encore les constituants",
+          "on ne distingue plus les constituants à l'œil nu",
+          "il contient de l'eau",
+          "il est de couleur unie"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Homogène = même aspect partout, on ne voit plus les constituants séparément."
+      },
+      {
+        "question": "Lequel de ces mélanges est HÉTÉROGÈNE ?",
+        "options": [
+          "L'eau et le sucre",
+          "L'eau et le sel",
+          "L'eau et le sable",
+          "Le jus de fruit"
+        ],
+        "correctAnswer": 2,
+        "explanation": "On voit encore le sable dans l'eau : c'est hétérogène. Le sucre et le sel, eux, se dissolvent."
+      },
+      {
+        "question": "Que veut dire « le sucre est soluble dans l'eau » ?",
+        "options": [
+          "Il flotte sur l'eau",
+          "Il peut se dissoudre dans l'eau",
+          "Il fait bouillir l'eau",
+          "Il tombe au fond du verre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Soluble = qui peut se dissoudre. Le sucre est soluble dans l'eau, le sable ne l'est pas."
+      },
+      {
+        "question": "Comment s'appelle le phénomène par lequel le sucre se mélange complètement à l'eau ?",
+        "options": [
+          "L'évaporation",
+          "La filtration",
+          "La dissolution",
+          "La décantation"
+        ],
+        "correctAnswer": 2,
+        "explanation": "C'est la dissolution : le corps se disperse dans le liquide jusqu'à ne plus être visible."
+      }
+    ]
+  }
 }

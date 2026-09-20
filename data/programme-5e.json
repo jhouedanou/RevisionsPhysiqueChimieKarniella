@@ -1,0 +1,117 @@
+{
+  "niveau": "5e",
+  "anneeScolaire": "2026-2027",
+  "_lisezMoi": [
+    "Source unique du programme de 5e. Les sommaires 5e/<matiere>.html et le",
+    "catalogue de l'accueil en sont générés : `npm run build:programme`.",
+    "",
+    "Pour ajouter une leçon :",
+    "  1. écrire la page dans 5e/<slug>.html",
+    "  2. ajouter son entrée dans `lecons` de la bonne matière, avec statut 'prete'",
+    "  3. relancer `npm run build:programme` puis `npm run build:chat`",
+    "  4. incrémenter CACHE_NAME dans sw.js",
+    "",
+    "Une leçon sans page écrite reste en statut 'attente' : elle s'affiche",
+    "grisée, pour qu'on voie ce qui manque."
+  ],
+  "matieres": [
+    {
+      "id": "anglais",
+      "nom": "Anglais",
+      "icone": "🇬🇧",
+      "couleur": "#2F6F9D",
+      "description": "Vocabulaire, expressions et dialogues de la classe d'anglais.",
+      "ordre": 1,
+      "lecons": [
+        {
+          "id": "anglais-unit1-discover-my-school",
+          "titre": "Unit 1 — At school : Discover my school",
+          "sousTitre": "Session 1 — Vocabulary & Language function",
+          "icone": "🏫",
+          "description": "Les lieux de l'école en anglais, et comment demander son chemin.",
+          "statut": "prete"
+        }
+      ]
+    },
+    {
+      "id": "physique-chimie",
+      "nom": "Physique-Chimie",
+      "icone": "⚡",
+      "couleur": "#9A6A12",
+      "description": "Circuits électriques, matière et transformations.",
+      "ordre": 2,
+      "lecons": [
+        {
+          "id": "physique-chimie-revisions-rentree",
+          "titre": "Révisions de rentrée",
+          "sousTitre": "Circuits électriques et états de la matière",
+          "icone": "🔌",
+          "description": "Ce qu'il faut avoir retenu de la 6e avant d'attaquer le programme.",
+          "statut": "prete"
+        },
+        {
+          "id": "physique-chimie-les-melanges",
+          "titre": "Les mélanges",
+          "sousTitre": "Dissolution et mélange homogène",
+          "icone": "🥤",
+          "description": "Le sucre dans l'eau : il ne disparaît pas, il se dissout.",
+          "statut": "prete"
+        }
+      ]
+    },
+    {
+      "id": "mathematiques",
+      "nom": "Mathématiques",
+      "icone": "🔢",
+      "couleur": "#9D2F5C",
+      "description": "Nombres, calcul littéral et géométrie.",
+      "ordre": 3,
+      "lecons": []
+    },
+    {
+      "id": "svt",
+      "nom": "SVT",
+      "icone": "🌱",
+      "couleur": "#3C9A57",
+      "description": "Sciences de la Vie et de la Terre.",
+      "ordre": 4,
+      "lecons": []
+    },
+    {
+      "id": "francais",
+      "nom": "Français",
+      "icone": "📖",
+      "couleur": "#7B4397",
+      "description": "Grammaire, conjugaison, lecture et expression écrite.",
+      "ordre": 5,
+      "lecons": []
+    },
+    {
+      "id": "histoire-geo",
+      "nom": "Histoire-Géographie",
+      "icone": "🌍",
+      "couleur": "#2C7742",
+      "description": "Comprendre le passé et lire le monde d'aujourd'hui.",
+      "ordre": 6,
+      "lecons": []
+    },
+    {
+      "id": "edhc",
+      "nom": "EDHC",
+      "icone": "⚖️",
+      "couleur": "#C0392B",
+      "description": "Éducation aux Droits de l'Homme et à la Citoyenneté.",
+      "ordre": 7,
+      "lecons": []
+    },
+    {
+      "id": "tice",
+      "nom": "TICE",
+      "icone": "💻",
+      "couleur": "#2F6F9D",
+      "description": "Technologies de l'Information et de la Communication.",
+      "ordre": 8,
+      "lecons": []
+    }
+  ]
+}

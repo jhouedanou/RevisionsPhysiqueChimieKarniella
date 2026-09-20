@@ -198,6 +198,24 @@ header h1::after {
     margin-bottom: 25px;
 }
 
+/* Leçon annoncée au programme mais pas encore écrite : lisible, non cliquable. */
+.a-venir-item {
+    color: #8A7480;
+}
+
+.a-venir-item em {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* Matière dont le sommaire est encore vide. */
+.programme-vide {
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7480;
+}
+
 .programme-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

@@ -303,6 +303,32 @@
             padding-left: 20px;
         }
 
+        .subject-progress {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(157, 47, 92, 0.12);
+            border: 1px solid rgba(157, 47, 92, 0.28);
+            color: #9D2F5C;
+            font-size: 12px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+
+        /* Pastille de progression, calée sur .status-coming-soon */
+        .lesson-progress {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
         .status-coming-soon {
             display: inline-block;
             background: rgba(255, 255, 255, 0.3);
@@ -361,7 +387,7 @@
 
             <div class="hero-layout">
                 <div class="hero-copy">
-                    <span class="hero-eyebrow">Ton espace de révision</span>
+                    <span class="hero-eyebrow">Ton espace de révision · Classe de 5<sup>e</sup></span>
                     <h1>Objectif <strong>15/20</strong></h1>
                     <p>Des cours clairs, des exercices et des quiz pour avancer à ton rythme — sans pression, mais avec méthode.</p>
                     <div class="hero-actions">
@@ -369,8 +395,8 @@
                         <a class="secondary-cta" href="#programme">Voir tout le programme</a>
                     </div>
                     <ul class="hero-stats" aria-label="Contenu disponible">
-                        <li><strong>7</strong><span>matières</span></li>
-                        <li><strong>39</strong><span>leçons</span></li>
+                        <li><strong id="stat-matieres">8</strong><span>matières</span></li>
+                        <li><strong id="stat-lecons">3</strong><span>leçons</span></li>
                         <li><strong>100 %</strong><span>à ton rythme</span></li>
                     </ul>
                 </div>
@@ -420,95 +446,51 @@
 
             <!-- Programme complet, organisé par matière -->
             <section class="programme-section" id="programme">
-            <h2>🐴 Programme</h2>
-            <p class="programme-intro">Toutes les leçons du site, matière par matière. Suis le parcours dans
-                l'ordre ou choisis directement ce que tu veux réviser !</p>
+            <h2>🐴 Programme de 5<sup>e</sup></h2>
+            <p class="programme-intro">Toutes les leçons de l'année, matière par matière.
+                Le sommaire se remplit au fur et à mesure que les cours sont pris en note.</p>
 
+            <!-- PROGRAMME-5E:DEBUT — généré par scripts/build-programme-5e.js, ne pas éditer -->
             <div class="programme-grid">
                 <div class="programme-matiere">
-                    <h3><span>🔢</span> Mathématiques</h3>
+                    <h3><span>🇬🇧</span> <a href="5e/anglais.html">Anglais</a></h3>
                     <ol>
-                        <li><a href="maths-lecon-1-calculs-algebriques.html">Calculs algébriques</a></li>
-                        <li><a href="maths-lecon-2-diviseurs.html">Diviseurs d'un nombre</a></li>
-                        <li><a href="maths-lecon-3-droites-points.html">Droites et points</a></li>
-                        <li><a href="maths-lecon-segments.html">Les segments</a></li>
-                        <li><a href="maths-lecon-4-secantes-perpendiculaires.html">Droites sécantes et
-                                perpendiculaires</a></li>
-                        <li><a href="maths-lecon-5-droites-paralleles.html">Droites parallèles</a></li>
-                        <li><a href="maths-lecon-6-proprietes.html">Propriétés des droites</a></li>
-                        <li><a href="maths-lecon-7-nombres-relatifs.html">Nombres décimaux relatifs</a></li>
-                        <li><a href="maths-lecon-8-somme-relatifs.html">Somme de nombres relatifs</a></li>
-                        <li><a href="maths-lecon-cercles-disques.html">Cercles et disques</a></li>
-                        <li><a href="maths-lecon-fractions.html">Les fractions</a></li>
-                        <li><a href="maths-lecon-geometrie-triangle.html">Le triangle</a></li>
-                        <li><a href="maths-lecon-proportionnalite.html">Proportionnalité</a></li>
-                        <li><a href="maths-lecon-symetrie-centrale.html">Symétrie centrale</a></li>
+                        <li><a href="5e/anglais-unit1-discover-my-school.html">Unit 1 — At school : Discover my school</a></li>
                     </ol>
                 </div>
-
                 <div class="programme-matiere">
-                    <h3><span>⚡</span> Physique-Chimie</h3>
+                    <h3><span>⚡</span> <a href="5e/physique-chimie.html">Physique-Chimie</a></h3>
                     <ol>
-                        <li><a href="le-circuit-electrique.html">Le circuit électrique</a></li>
-                        <li><a href="les-commandes-electriques.html">Les commandes électriques</a></li>
-                        <li><a href="lecon-3-court-circuit.html">Court-circuit et protection</a></li>
-                        <li><a href="lecon-4-solides-liquides.html">Les solides et les liquides</a></li>
-                        <li><a href="lecon-etats-matiere.html">Les états de la matière</a></li>
-                        <li><a href="lecon-temperature-corps.html">La température d'un corps</a></li>
+                        <li><a href="5e/physique-chimie-revisions-rentree.html">Révisions de rentrée</a></li>
+                        <li><a href="5e/physique-chimie-les-melanges.html">Les mélanges</a></li>
                     </ol>
                 </div>
-
                 <div class="programme-matiere">
-                    <h3><span>🌱</span> SVT</h3>
-                    <ol>
-                        <li><a href="svt-graine-germe.html">La graine qui germe</a></li>
-                        <li><a href="svt-croissance-plantes.html">Croissance des plantes à fleurs</a></li>
-                        <li><a href="svt-croissance-vertebres.html">Croissance des vertébrés</a></li>
-                        <li><a href="svt-reproduction-mammiferes.html">Reproduction chez les mammifères</a></li>
-                        <li><a href="svt-reproduction-oiseaux.html">Reproduction chez les oiseaux</a></li>
-                    </ol>
+                    <h3><span>🔢</span> <a href="5e/mathematiques.html">Mathématiques</a></h3>
+                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>
                 </div>
-
                 <div class="programme-matiere">
-                    <h3><span>🌍</span> Histoire-Géographie</h3>
-                    <ol>
-                        <li><a href="histoire-sources-histoire.html">Les sources de l'histoire</a></li>
-                        <li><a href="histoire-sources-information.html">Sources d'information et dignité
-                                humaine</a></li>
-                        <li><a href="histoire-geographie-lecons.html">Toutes les leçons d'histoire-géographie</a>
-                        </li>
-                    </ol>
+                    <h3><span>🌱</span> <a href="5e/svt.html">SVT</a></h3>
+                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>
                 </div>
-
                 <div class="programme-matiere">
-                    <h3><span>⚖️</span> Éducation civique (ECM)</h3>
-                    <ol>
-                        <li><a href="education-civique.html">Droits humains, Constitution et démocratie</a></li>
-                        <li><a href="ecm-lecon-8-securite-routiere.html">Sécurité et circulation routière</a></li>
-                        <li><a href="ecm-lecon-9-secteur-primaire.html">Économie et secteur primaire</a></li>
-                        <li><a href="ecm-lecon-10-puberte.html">La puberté</a></li>
-                        <li><a href="ecm-lecon-11-abstinence.html">Santé de la reproduction : l'abstinence</a></li>
-                    </ol>
+                    <h3><span>📖</span> <a href="5e/francais.html">Français</a></h3>
+                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>
                 </div>
-
                 <div class="programme-matiere">
-                    <h3><span>💻</span> Informatique (TICE)</h3>
-                    <ol>
-                        <li><a href="tice.html">Le système informatique</a></li>
-                        <li><a href="informatique-lecon-3-apercu-impression.html">Aperçu et impression</a></li>
-                        <li><a href="informatique-culture-numerique-internet.html">Le réseau Internet</a></li>
-                    </ol>
+                    <h3><span>🌍</span> <a href="5e/histoire-geo.html">Histoire-Géographie</a></h3>
+                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>
                 </div>
-
                 <div class="programme-matiere">
-                    <h3><span>📖</span> Français</h3>
-                    <ol>
-                        <li><a href="francais-groupe-nominal.html">Le groupe nominal</a></li>
-                        <li><a href="francais-dictee.html">Entraînement à la dictée</a></li>
-                        <li><a href="francais-lecons.html">Toutes les leçons de français</a></li>
-                    </ol>
+                    <h3><span>⚖️</span> <a href="5e/edhc.html">EDHC</a></h3>
+                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>
+                </div>
+                <div class="programme-matiere">
+                    <h3><span>💻</span> <a href="5e/tice.html">TICE</a></h3>
+                    <p class="programme-vide">Leçons à venir — dès que le cours est pris en note.</p>
                 </div>
             </div>
+            <!-- PROGRAMME-5E:FIN -->
             </section>
         </main>
 
@@ -522,183 +504,103 @@
 
     <script>
         // Configuration des matières et leurs leçons
+        // Catalogue des matières — GÉNÉRÉ par scripts/build-programme-5e.js
+        // depuis data/programme-5e.json. Ne pas éditer à la main : relancer
+        // `npm run build:programme`.
+        // CATALOGUE-5E:DEBUT
         const subjects = [
-            {
-                id: "mathematiques",
-                icon: "🔢",
-                name: "Mathématiques",
-                description: "Apprends les calculs, la géométrie et les nombres de façon simple !",
-                url: "mathematiques.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "📐",
-                        title: "Mathématiques",
-                        description: "Calculs, droites, nombres avec des explications faciles et des quiz amusants.",
-                        url: "mathematiques.html",
-                        status: "available"
-                    }
-                ]
-            },
-            {
-                id: "physique",
-                icon: "⚡",
-                name: "Physique",
-                description: "Découvre l'électricité et les circuits avec des expériences fun !",
-                url: "physique.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "⚡",
-                        title: "Physique",
-                        description: "Circuits électriques, interrupteurs et sécurité avec des explications simples et des quiz.",
-                        url: "physique.html",
-                        status: "available"
-                    }
-                ]
-            },
-            {
-                id: "svt",
-                icon: "🌱",
-                name: "SVT",
-                description: "Explore la nature : plantes, animaux et comment ils vivent !",
-                url: "svt-lecons.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "🌸",
-                        title: "La Vie des Plantes",
-                        description: "Comment les plantes se reproduisent et grandissent, expliqué simplement.",
-                        url: "svt-lecons.html",
-                        status: "available"
-                    }
-                ]
-            },
-            {
-                id: "histoire-geo",
-                icon: "🌍",
-                name: "Histoire-Géographie",
-                description: "Voyage dans le temps et découvre le monde !",
-                url: "histoire-geographie-lecons.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "📜",
-                        title: "Histoire et Géographie",
-                        description: "Découvre le passé et les paysages de notre planète.",
-                        url: "histoire-geographie-lecons.html",
-                        status: "available"
-                    }
-                ]
-            },
-            {
-                id: "education-civique",
-                icon: "⚖️",
-                name: "Éducation Civique",
-                description: "Découvre tes droits, tes devoirs et comment fonctionne la démocratie !",
-                url: "education-civique.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "📜",
-                        title: "Éducation Civique",
-                        description: "Droits humains, Constitution et Démocratie expliqués simplement.",
-                        url: "education-civique.html",
-                        status: "available"
-                    },
-                    {
-                        id: 2,
-                        icon: "🎓",
-                        title: "Quiz Compréhensif",
-                        description: "Teste tes connaissances avec 23 questions couvrant tous les thèmes !",
-                        url: "education-civique-quiz.html",
-                        status: "available"
-                    },
-                    {
-                        id: 3,
-                        icon: "🚦",
-                        title: "Sécurité Routière",
-                        description: "Usagers de la route, signalisation et règles de circulation.",
-                        url: "ecm-lecon-8-securite-routiere.html",
-                        status: "available"
-                    },
-                    {
-                        id: 4,
-                        icon: "🌾",
-                        title: "Secteur Primaire",
-                        description: "Économie, secteur primaire et création d'activités.",
-                        url: "ecm-lecon-9-secteur-primaire.html",
-                        status: "available"
-                    },
-                    {
-                        id: 5,
-                        icon: "🌱",
-                        title: "La Puberté",
-                        description: "Comprendre les changements physiques et adopter les bonnes conduites.",
-                        url: "ecm-lecon-10-puberte.html",
-                        status: "available"
-                    },
-                    {
-                        id: 6,
-                        icon: "🛡️",
-                        title: "L'Abstinence",
-                        description: "Santé de la reproduction, prise de décision et importance de l'abstinence.",
-                        url: "ecm-lecon-11-abstinence.html",
-                        status: "available"
-                    }
-                ]
-            },
-            {
-                id: "tice",
-                icon: "💻",
-                name: "TICE - Technologies",
-                description: "Découvre l'informatique : ordinateurs, logiciels et composants !",
-                url: "tice.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "🖥️",
-                        title: "Système Informatique",
-                        description: "Comprendre l'ordinateur : matériel, logiciels et composants.",
-                        url: "tice.html",
-                        status: "available"
-                    },
-                    {
-                        id: 2,
-                        icon: "🖨️",
-                        title: "Aperçu et Impression",
-                        description: "Traitement de texte : aperçu avant impression et méthodes d'impression.",
-                        url: "informatique-lecon-3-apercu-impression.html",
-                        status: "available"
-                    },
-                    {
-                        id: 3,
-                        icon: "🌐",
-                        title: "Le Réseau Internet",
-                        description: "Introduction au réseau Internet, ses services et la sécurité en ligne.",
-                        url: "informatique-culture-numerique-internet.html",
-                        status: "available"
-                    }
-                ]
-            },
-            {
-                id: "francais",
-                icon: "📖",
-                name: "Français",
-                description: "Maîtrise la grammaire, l'orthographe et l'expression française !",
-                url: "francais-lecons.html",
-                lessons: [
-                    {
-                        id: 1,
-                        icon: "📝",
-                        title: "Le Groupe Nominal",
-                        description: "Découvre le groupe nominal, sa structure et tous les types de groupes nominaux.",
-                        url: "francais-groupe-nominal.html",
-                        status: "available"
-                    }
-                ]
-            }
+          {
+            "id": "anglais",
+            "icon": "🇬🇧",
+            "name": "Anglais",
+            "description": "Vocabulaire, expressions et dialogues de la classe d'anglais.",
+            "url": "5e/anglais.html",
+            "lessons": [
+              {
+                "id": 1,
+                "icon": "🏫",
+                "title": "Unit 1 — At school : Discover my school",
+                "description": "Les lieux de l'école en anglais, et comment demander son chemin.",
+                "url": "5e/anglais-unit1-discover-my-school.html",
+                "status": "available"
+              }
+            ]
+          },
+          {
+            "id": "physique-chimie",
+            "icon": "⚡",
+            "name": "Physique-Chimie",
+            "description": "Circuits électriques, matière et transformations.",
+            "url": "5e/physique-chimie.html",
+            "lessons": [
+              {
+                "id": 1,
+                "icon": "🔌",
+                "title": "Révisions de rentrée",
+                "description": "Ce qu'il faut avoir retenu de la 6e avant d'attaquer le programme.",
+                "url": "5e/physique-chimie-revisions-rentree.html",
+                "status": "available"
+              },
+              {
+                "id": 2,
+                "icon": "🥤",
+                "title": "Les mélanges",
+                "description": "Le sucre dans l'eau : il ne disparaît pas, il se dissout.",
+                "url": "5e/physique-chimie-les-melanges.html",
+                "status": "available"
+              }
+            ]
+          },
+          {
+            "id": "mathematiques",
+            "icon": "🔢",
+            "name": "Mathématiques",
+            "description": "Nombres, calcul littéral et géométrie.",
+            "url": "5e/mathematiques.html",
+            "lessons": []
+          },
+          {
+            "id": "svt",
+            "icon": "🌱",
+            "name": "SVT",
+            "description": "Sciences de la Vie et de la Terre.",
+            "url": "5e/svt.html",
+            "lessons": []
+          },
+          {
+            "id": "francais",
+            "icon": "📖",
+            "name": "Français",
+            "description": "Grammaire, conjugaison, lecture et expression écrite.",
+            "url": "5e/francais.html",
+            "lessons": []
+          },
+          {
+            "id": "histoire-geo",
+            "icon": "🌍",
+            "name": "Histoire-Géographie",
+            "description": "Comprendre le passé et lire le monde d'aujourd'hui.",
+            "url": "5e/histoire-geo.html",
+            "lessons": []
+          },
+          {
+            "id": "edhc",
+            "icon": "⚖️",
+            "name": "EDHC",
+            "description": "Éducation aux Droits de l'Homme et à la Citoyenneté.",
+            "url": "5e/edhc.html",
+            "lessons": []
+          },
+          {
+            "id": "tice",
+            "icon": "💻",
+            "name": "TICE",
+            "description": "Technologies de l'Information et de la Communication.",
+            "url": "5e/tice.html",
+            "lessons": []
+          }
         ];
+        // CATALOGUE-5E:FIN
 
         // Générer les sections par matière
         function renderSubjects() {
@@ -729,6 +631,8 @@
                     // Sinon, afficher le titre normalement
                     titleDiv.innerHTML = `<span>${subject.icon}</span><span>${subject.name}</span>`;
                 }
+                const avancement = badgeMatiere(subject.id);
+                if (avancement) { titleDiv.appendChild(avancement); }
                 section.appendChild(titleDiv);
 
                 // Description de la matière
@@ -764,6 +668,7 @@
                             card.innerHTML = `
                                 <a href="${lesson.url}" aria-label="Ouvrir ${lesson.title}">
                                     <span class="lesson-icon" aria-hidden="true">${lesson.icon}</span>
+                                    ${badgeProgression(lesson.url)}
                                     <h4>${lesson.title}</h4>
                                     <p>${lesson.description}</p>
                                     <span class="lesson-button">Accéder <span aria-hidden="true">→</span></span>
@@ -788,8 +693,62 @@
             });
         }
 
+        /**
+         * Pastille « déjà vu / score » sur une carte de leçon.
+         *
+         * js/progression.js est chargé par le chat, donc de façon asynchrone :
+         * au premier rendu il n'est en général pas encore là. On rend sans
+         * pastille, puis on redessine à son arrivée (voir plus bas).
+         */
+        /**
+         * Avancement d'une MATIÈRE entière.
+         *
+         * C'est ici que se joue le « ce qui reste » : le catalogue de cette page
+         * ne liste que 15 URL, presque toutes des sommaires — les leçons de maths
+         * ou de physique n'y figurent pas une par une. Une pastille par carte ne
+         * dirait donc rien de l'essentiel du travail.
+         */
+        function badgeMatiere(id) {
+            if (!window.KarniellaProgression || !window.KarniellaChatKnowledge) { return null; }
+
+            const lignes = window.KarniellaProgression.resume(window.KarniellaChatKnowledge.pages);
+            const ligne = lignes.find(l => l.matiere === id);
+            if (!ligne || !ligne.total || !ligne.vues) { return null; }
+
+            const span = document.createElement('span');
+            span.className = 'subject-progress';
+            span.textContent = `${ligne.vues}/${ligne.total} leçons vues` +
+                (ligne.scoreMoyen !== null ? ` · ${ligne.scoreMoyen}%` : '');
+            span.title = 'Ton avancement dans cette matière';
+            return span;
+        }
+
+        function badgeProgression(url) {
+            if (!window.KarniellaProgression) { return ''; }
+            const slug = String(url || '').split('/').pop().replace(/\.html$/, '');
+            const suivi = window.KarniellaProgression.pourPage(slug);
+            if (!suivi || !suivi.visites) { return ''; }
+
+            if (suivi.meilleurScore !== null) {
+                return `<span class="lesson-progress" title="Meilleur score au quiz">🎯 ${suivi.meilleurScore}%</span>`;
+            }
+            return '<span class="lesson-progress" title="Leçon déjà ouverte">👀 Déjà vue</span>';
+        }
+
         // Initialiser les sections au chargement
         renderSubjects();
+
+        // Le module de progression arrive après coup : on redessine une fois
+        // qu'il est là, sinon les pastilles n'apparaîtraient qu'au 2e chargement.
+        (function attendreProgression(essais) {
+            // Les deux sont nécessaires : le module pour les scores, l'index du
+            // chat pour savoir combien de leçons compte chaque matière.
+            if (window.KarniellaProgression && window.KarniellaChatKnowledge) {
+                renderSubjects();
+                return;
+            }
+            if (essais > 0) { setTimeout(() => attendreProgression(essais - 1), 300); }
+        })(15);
 
         const searchInput = document.getElementById('subjectSearch');
         const searchResults = document.getElementById('searchResults');
