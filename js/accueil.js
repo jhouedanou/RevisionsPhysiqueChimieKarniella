@@ -55,52 +55,41 @@
        Rendu
        ============================================================ */
 
-    function lienLecon(lecon) {
-        if (lecon.statut !== 'prete') {
-            var attente = document.createElement('li');
-            var bloc = document.createElement('div');
-            bloc.className = 'a-venir';
-            bloc.innerHTML = '<span class="icone" aria-hidden="true">⏳</span>' +
-                '<span class="intitule"><strong></strong><small>à venir</small></span>';
-            bloc.querySelector('strong').textContent = lecon.titre;
-            attente.appendChild(bloc);
-            return attente;
-        }
-
+    /** Une carte de leçon. Un <a> quand la page existe, un <div> sinon. */
+    function carteLecon(lecon) {
         var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = '5e/' + lecon.id + '.html';
+        var prete = lecon.statut === 'prete';
+
+        var carte = document.createElement(prete ? 'a' : 'div');
+        carte.className = prete ? 'carte' : 'carte a-venir';
+        if (prete) { carte.href = '5e/' + lecon.id + '.html'; }
 
         var icone = document.createElement('span');
         icone.className = 'icone';
         icone.setAttribute('aria-hidden', 'true');
-        icone.textContent = lecon.icone || ICONE_DEFAUT;
+        icone.textContent = prete ? (lecon.icone || ICONE_DEFAUT) : '⏳';
+        carte.appendChild(icone);
 
-        var intitule = document.createElement('span');
-        intitule.className = 'intitule';
-        var titre = document.createElement('strong');
+        var titre = document.createElement('span');
+        titre.className = 'titre';
         titre.textContent = lecon.titre;
-        intitule.appendChild(titre);
+        carte.appendChild(titre);
 
-        if (lecon.sousTitre) {
-            var sous = document.createElement('small');
-            sous.textContent = lecon.sousTitre;
-            intitule.appendChild(sous);
-        }
+        var sous = document.createElement('span');
+        sous.className = 'sous';
+        sous.textContent = prete ? (lecon.sousTitre || '') : 'à venir';
+        if (sous.textContent) { carte.appendChild(sous); }
 
-        a.appendChild(icone);
-        a.appendChild(intitule);
-
-        var score = scoreLecon(lecon.id);
+        var score = prete ? scoreLecon(lecon.id) : null;
         if (score) {
             var badge = document.createElement('span');
             badge.className = 'score-lecon';
             badge.textContent = score;
             badge.setAttribute('title', 'Ton meilleur score au quiz');
-            a.appendChild(badge);
+            carte.appendChild(badge);
         }
 
-        li.appendChild(a);
+        li.appendChild(carte);
         return li;
     }
 
@@ -163,7 +152,7 @@
         var liste = document.createElement('ul');
         liste.className = 'liste-lecons';
         (matiere.lecons || []).forEach(function (lecon) {
-            liste.appendChild(lienLecon(lecon));
+            liste.appendChild(carteLecon(lecon));
         });
         section.appendChild(liste);
 
