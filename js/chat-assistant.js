@@ -683,8 +683,13 @@
 
         return detail.notions.map(function (notion, i) {
             var libelle = libelleOnglet(notion.onglet);
-            var reponse = '<strong>' + echapper(notion.titre) + '</strong><br>' +
-                echapper(notion.texte);
+            // Une notion de vocabulaire d'anglais porte sa langue : sans ce
+            // marquage, « It's a place where students go to take food at
+            // school. » serait lu à voix haute par une voix française.
+            var ouvre = notion.langue
+                ? '<span lang="' + echapper(notion.langue) + '">' : '';
+            var reponse = ouvre + '<strong>' + echapper(notion.titre) + '</strong><br>' +
+                echapper(notion.texte) + (ouvre ? '</span>' : '');
             if (libelle) {
                 reponse += '<br><span class="kc-source">📍 Onglet « ' +
                     echapper(libelle) +' » de cette page</span>';
@@ -1106,27 +1111,24 @@
     /**
      * Bouton « Écouter » sous une réponse du chat.
      *
-     * La langue suit la matière : sur une leçon d'anglais, la réponse contient
-     * du vocabulaire anglais qu'il vaut mieux entendre prononcé en anglais.
+     * La langue ne suit plus la matière. Le chat répond en français partout —
+     * sa consigne l'impose (routes/chat.js) — donc une voix anglaise rendait
+     * chaque réponse d'une leçon d'anglais incompréhensible. Mais tout lire en
+     * français serait faux aussi : le mode « Interroge-moi » affiche ici des
+     * questions entièrement anglaises, et les définitions de vocabulaire le
+     * sont aussi.
+     *
+     * On délègue donc au module : il lit le DOM qu'on vient de produire, où
+     * chaque morceau porte son `lang`. Le français reste le repli, puisque
+     * c'est la langue de la page.
      */
     function ajouterBoutonEcouter(div) {
         if (!window.LectureVocale || !window.LectureVocale.disponible()) { return; }
 
-        var matiere = (CONNAISSANCES.detail && CONNAISSANCES.detail.matiere) || '';
-        var langue = matiere === 'anglais' ? 'en-GB' : 'fr-FR';
+        var bouton = window.LectureVocale.creerBouton(function () {
+            return window.LectureVocale.segmentsDe(div);
+        }, 'Écouter cette réponse');
 
-        var bouton = document.createElement('button');
-        bouton.type = 'button';
-        bouton.className = 'kv-bouton';
-        bouton.textContent = '🔊';
-        bouton.setAttribute('aria-label', 'Écouter cette réponse');
-        bouton.setAttribute('title', 'Écouter cette réponse');
-        bouton.addEventListener('click', function () {
-            // On lit le texte affiché, pas le HTML source : les liens et les
-            // balises ne doivent pas être prononcés.
-            var texte = div.textContent.replace(/🔊|🙋 Explique plus simplement/g, '');
-            window.LectureVocale.lire(texte, langue, bouton);
-        });
         div.appendChild(document.createTextNode(' '));
         div.appendChild(bouton);
     }
@@ -1136,6 +1138,7 @@
         var bouton = document.createElement('button');
         bouton.type = 'button';
         bouton.className = 'kc-plus-simple';
+        bouton.setAttribute('data-lire-ignore', '');  // un bouton ne se prononce pas
         bouton.textContent = '🙋 Explique plus simplement';
         bouton.addEventListener('click', function () {
             bouton.remove();
@@ -1276,8 +1279,11 @@
 
         var html = '📝 <strong>À retenir — ' + echapper(detail.titre) + '</strong><br><br>';
         notions.slice(0, 8).forEach(function (n) {
-            html += '<strong>' + echapper(n.titre) + '</strong><br>' +
-                echapper(n.texte) + '<br><br>';
+            // Même marquage que dans construireEntreesPage : une fiche
+            // d'anglais s'écoute en anglais.
+            var ouvre = n.langue ? '<span lang="' + echapper(n.langue) + '">' : '';
+            html += ouvre + '<strong>' + echapper(n.titre) + '</strong><br>' +
+                echapper(n.texte) + (ouvre ? '</span>' : '') + '<br><br>';
         });
         if (detail.quiz && detail.quiz.length) {
             html += '<span class="kc-source">Cette leçon a aussi ' + detail.quiz.length +
@@ -1350,18 +1356,28 @@
         var div = document.createElement('div');
         div.className = 'kc-msg kc-bot';
 
+        // Le numéro et son émoji ne se prononcent pas : ce qui compte est
+        // l'énoncé, et il porte sa langue — un quiz d'anglais mêle des
+        // questions anglaises et des questions françaises sur la grammaire.
+        var entete = document.createElement('div');
+        entete.setAttribute('data-lire-ignore', '');
+        entete.innerHTML = '🎯 <strong>Question ' + (quizEnCours.total + 1) + '</strong>';
+        div.appendChild(entete);
+
         var enonce = document.createElement('div');
-        enonce.innerHTML = '🎯 <strong>Question ' + (quizEnCours.total + 1) + '</strong><br>' +
-            echapper(q.question);
+        if (q.langue) { enonce.setAttribute('lang', q.langue); }
+        enonce.textContent = q.question;
         div.appendChild(enonce);
 
         var liste = document.createElement('div');
         liste.className = 'kc-options';
+        var langueOptions = q.optionsLangue || q.langue;
 
         q.options.forEach(function (option) {
             var bouton = document.createElement('button');
             bouton.type = 'button';
             bouton.className = 'kc-option';
+            if (langueOptions) { bouton.setAttribute('lang', langueOptions); }
             bouton.textContent = option;
             bouton.addEventListener('click', function () {
                 repondreQuestion(liste, q, option, div);
@@ -1415,6 +1431,7 @@
         var suite = document.createElement('button');
         suite.type = 'button';
         suite.className = 'kc-plus-simple';
+        suite.setAttribute('data-lire-ignore', '');  // un bouton ne se prononce pas
         var reste = ((CONNAISSANCES.detail && CONNAISSANCES.detail.quiz) || []).length -
             quizEnCours.posees.length;
         suite.textContent = reste > 0 ? '➡️ Question suivante' : '🏁 Voir mon score';
@@ -1522,7 +1539,9 @@
             var fiche = ficheDeRevision();
             window.setTimeout(function () {
                 if (fiche) {
-                    ajouterMessage(fiche, 'bot', true);
+                    // La fiche est le résumé de la leçon : c'est justement ce
+                    // qu'on veut pouvoir écouter.
+                    ajouterBoutonEcouter(ajouterMessage(fiche, 'bot', true));
                     noterHistorique({ r: 1 });
                 } else {
                     var msg = 'Je n\'ai pas encore de fiche pour cette page 🐴. ' +

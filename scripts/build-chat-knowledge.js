@@ -191,6 +191,17 @@ function extraireVocabulaire($, idOnglet) {
     const notions = [];
 
     $('.table-vocab').each((_, table) => {
+        // La langue du tableau suit la notion jusque dans le chat, qui lit ses
+        // réponses à voix haute : « A canteen. It's a place where students go
+        // to take food at school. » doit sortir avec une voix anglaise.
+        //
+        // On ne remonte QUE data-lire-langue : chercher `lang` atteindrait
+        // <html lang="fr"> et taguerait tout le site en français. Et on ne le
+        // fait que sur les tableaux de vocabulaire, dont les deux colonnes sont
+        // dans la même langue — la prose d'un onglet anglais, elle, est le
+        // commentaire français de la règle.
+        const langue = $(table).closest('[data-lire-langue]').attr('data-lire-langue') || '';
+
         $(table).find('tbody tr').each((__, ligne) => {
             const cellules = $(ligne).find('td');
             if (cellules.length < 2) { return; }
@@ -203,11 +214,13 @@ function extraireVocabulaire($, idOnglet) {
             if (!mot || mot.length > 60 || definition.length < 10) { return; }
             if (!motsUtiles(mot).length) { return; }
 
-            notions.push({
+            const notion = {
                 titre: mot,
                 onglet: idOnglet,
                 texte: tronquer(definition)
-            });
+            };
+            if (langue) { notion.langue = langue; }
+            notions.push(notion);
         });
     });
     return notions;
@@ -276,7 +289,8 @@ function lireJSON(relatif, defaut) {
 function normaliserQuestion(q) {
     const enonce = nettoyerTexte(q.question || q.text || '');
     if (!enonce || !Array.isArray(q.options)) { return null; }
-    return {
+
+    const normalisee = {
         question: enonce,
         options: q.options.map(nettoyerTexte),
         reponse: q.options[q.correctAnswer] !== undefined
@@ -284,6 +298,16 @@ function normaliserQuestion(q) {
             : null,
         explication: nettoyerTexte(q.explanation || '')
     };
+
+    // La langue suit la question jusque dans le chat : son mode « Interroge-moi »
+    // repose sur ce fichier, et il affiche les questions d'anglais telles
+    // quelles. Sans ces champs, la voix du chat les prononcerait en français.
+    // Cette fonction ne recopie que ce qu'elle liste : sans ces deux lignes,
+    // le marquage s'arrêterait à la page.
+    if (q.langue) { normalisee.langue = q.langue; }
+    if (q.optionsLangue) { normalisee.optionsLangue = q.optionsLangue; }
+
+    return normalisee;
 }
 
 /**
