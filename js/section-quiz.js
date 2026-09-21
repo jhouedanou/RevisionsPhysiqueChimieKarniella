@@ -4,6 +4,23 @@
  * Designed for Révisions Karniella
  */
 
+/**
+ * ` lang="en"` si la question en déclare une, rien sinon.
+ *
+ * Le quiz d'une leçon d'anglais est bilingue : des questions anglaises
+ * (« Where do students go to grow vegetables? ») voisinent avec des questions
+ * françaises sur la grammaire, qui ont parfois des propositions anglaises.
+ * Sans ces attributs, la lecture vocale prononce les unes avec la voix des
+ * autres — c'est la langue de l'onglet qui décidait pour tout le monde.
+ *
+ * La valeur vient d'un fichier de données interpolé dans une template string :
+ * on la valide plutôt que de lui faire confiance.
+ */
+function attributLangue(code) {
+    if (typeof code !== 'string' || !/^[a-z]{2}(-[A-Za-z]{2,8})?$/.test(code)) { return ''; }
+    return ` lang="${code}"`;
+}
+
 class SectionQuiz {
     constructor(containerId, questions) {
         this.container = document.getElementById(containerId);
@@ -47,19 +64,24 @@ class SectionQuiz {
 
     renderQuestion(question, index) {
         const qId = `${this.container.id}-q${index}`;
+        // La langue est portée par l'énoncé et par les propositions, pas par
+        // l'onglet : `optionsLangue` existe parce qu'une question française
+        // peut proposer des phrases anglaises à départager.
+        const langEnonce = attributLangue(question.langue);
+        const langOptions = attributLangue(question.optionsLangue || question.langue);
         return `
             <div class="section-quiz-question" id="${qId}">
-                <p class="question-text"><strong>${index + 1}.</strong> ${question.question}</p>
+                <p class="question-text"${langEnonce}><strong data-lire-ignore>${index + 1}.</strong> ${question.question}</p>
                 <div class="question-options">
                     ${question.options.map((option, optIndex) => `
                         <label class="option-label">
-                            <input 
-                                type="radio" 
-                                name="${qId}" 
+                            <input
+                                type="radio"
+                                name="${qId}"
                                 value="${optIndex}"
                                 onchange="sectionQuizInstances['${this.container.id}'].clearFeedback('${qId}')"
                             >
-                            <span>${option}</span>
+                            <span${langOptions}>${option}</span>
                         </label>
                     `).join('')}
                 </div>

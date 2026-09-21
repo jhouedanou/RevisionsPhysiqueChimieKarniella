@@ -1101,7 +1101,8 @@
           "It's a teacher."
         ],
         "correctAnswer": 0,
-        "explanation": "A gate: it's a big door. C'est la grande porte d'entrée de l'école."
+        "explanation": "A gate: it's a big door. C'est la grande porte d'entrée de l'école.",
+        "langue": "en"
       },
       {
         "question": "It's the meeting place of the teachers. What is it?",
@@ -1112,7 +1113,8 @@
           "An office"
         ],
         "correctAnswer": 1,
-        "explanation": "A staff room: it's the meeting place of the teachers — la salle des professeurs."
+        "explanation": "A staff room: it's the meeting place of the teachers — la salle des professeurs.",
+        "langue": "en"
       },
       {
         "question": "A grammar school is a school from…",
@@ -1123,7 +1125,8 @@
           "6e to Tle"
         ],
         "correctAnswer": 2,
-        "explanation": "A grammar school: it's a school from 6e to 3e. C'est le collège — là où tu es cette année."
+        "explanation": "A grammar school: it's a school from 6e to 3e. C'est le collège — là où tu es cette année.",
+        "langue": "en"
       },
       {
         "question": "A secondary school is a school from…",
@@ -1134,7 +1137,8 @@
           "3e to 2nde"
         ],
         "correctAnswer": 0,
-        "explanation": "A secondary school: it's a school from 2nde to Tle. À ne pas confondre avec grammar school."
+        "explanation": "A secondary school: it's a school from 2nde to Tle. À ne pas confondre avec grammar school.",
+        "langue": "en"
       },
       {
         "question": "Where do students go to borrow books?",
@@ -1145,7 +1149,8 @@
           "The gate"
         ],
         "correctAnswer": 2,
-        "explanation": "A library: it's a place where students go to borrow books."
+        "explanation": "A library: it's a place where students go to borrow books.",
+        "langue": "en"
       },
       {
         "question": "Where do students go to take food at school?",
@@ -1156,7 +1161,8 @@
           "The office"
         ],
         "correctAnswer": 1,
-        "explanation": "A canteen: it's a place where students go to take food at school — la cantine."
+        "explanation": "A canteen: it's a place where students go to take food at school — la cantine.",
+        "langue": "en"
       },
       {
         "question": "The headmaster office is an example of…",
@@ -1167,7 +1173,8 @@
           "a library"
         ],
         "correctAnswer": 2,
-        "explanation": "An office: it's the work place of administration workers. Ex: the headmaster office."
+        "explanation": "An office: it's the work place of administration workers. Ex: the headmaster office.",
+        "langue": "en"
       },
       {
         "question": "Quelle est la forme POLIE pour demander où se trouve un lieu ?",
@@ -1178,7 +1185,9 @@
           "You tell me the library?"
         ],
         "correctAnswer": 0,
-        "explanation": "Après « Can you tell me where… », le verbe passe à la fin : « …where the library IS ? ». C'est le piège classique."
+        "explanation": "Après « Can you tell me where… », le verbe passe à la fin : « …where the library IS ? ». C'est le piège classique.",
+        "langue": "fr",
+        "optionsLangue": "en"
       },
       {
         "question": "« The staff room is ____ the headmaster office. » Quelle préposition signifie « à côté de » ?",
@@ -1189,7 +1198,9 @@
           "opposite"
         ],
         "correctAnswer": 1,
-        "explanation": "next to = à côté de. behind = derrière, upstairs = à l'étage, opposite = en face de."
+        "explanation": "next to = à côté de. behind = derrière, upstairs = à l'étage, opposite = en face de.",
+        "langue": "fr",
+        "optionsLangue": "en"
       },
       {
         "question": "Que veut dire « upstairs » ?",
@@ -1200,7 +1211,8 @@
           "Derrière"
         ],
         "correctAnswer": 2,
-        "explanation": "upstairs = à l'étage. Le contraire est downstairs = au rez-de-chaussée."
+        "explanation": "upstairs = à l'étage. Le contraire est downstairs = au rez-de-chaussée.",
+        "langue": "fr"
       },
       {
         "question": "« Where is the school canteen? » — quelle réponse utilise bien une préposition de lieu ?",
@@ -1211,7 +1223,9 @@
           "Yes, it is."
         ],
         "correctAnswer": 1,
-        "explanation": "On répond avec une préposition de lieu : downstairs, behind, next to, upstairs…"
+        "explanation": "On répond avec une préposition de lieu : downstairs, behind, next to, upstairs…",
+        "langue": "fr",
+        "optionsLangue": "en"
       },
       {
         "question": "Complète : « A library is a place where students go to borrow books ____ »",
@@ -1222,7 +1236,8 @@
           "to play"
         ],
         "correctAnswer": 1,
-        "explanation": "A library: it's a place where students go to borrow books TO READ."
+        "explanation": "A library: it's a place where students go to borrow books TO READ.",
+        "langue": "en"
       }
     ]
   },
@@ -1421,7 +1436,8 @@
           "A toilet"
         ],
         "correctAnswer": 1,
-        "explanation": "A playground: it's the place where students go to play and practise sports."
+        "explanation": "A playground: it's the place where students go to play and practise sports.",
+        "langue": "en"
       },
       {
         "question": "It's the work place of the secretary. What is it?",
@@ -1432,7 +1448,8 @@
           "A library"
         ],
         "correctAnswer": 2,
-        "explanation": "A secretary's office: it's the work place of the secretary."
+        "explanation": "A secretary's office: it's the work place of the secretary.",
+        "langue": "en"
       },
       {
         "question": "Where do students go to grow vegetables?",
@@ -1443,7 +1460,8 @@
           "The laboratory"
         ],
         "correctAnswer": 1,
-        "explanation": "A school garden: it's the place where students go to grow vegetables."
+        "explanation": "A school garden: it's the place where students go to grow vegetables.",
+        "langue": "en"
       },
       {
         "question": "Après « like », comment écrit-on le verbe qui suit ?",
@@ -1454,7 +1472,8 @@
           "like + to + verbe"
         ],
         "correctAnswer": 1,
-        "explanation": "like + V-ing : I like speaking English. Jamais « I like speak » ni « I like to speak » dans cette leçon."
+        "explanation": "like + V-ing : I like speaking English. Jamais « I like speak » ni « I like to speak » dans cette leçon.",
+        "langue": "fr"
       },
       {
         "question": "Quelle phrase est CORRECTE ?",
@@ -1465,7 +1484,9 @@
           "I like spoke English."
         ],
         "correctAnswer": 2,
-        "explanation": "like + verbe + -ing → I like speaking English."
+        "explanation": "like + verbe + -ing → I like speaking English.",
+        "langue": "fr",
+        "optionsLangue": "en"
       },
       {
         "question": "Complète : « I dislike ____ the board. »",
@@ -1476,7 +1497,8 @@
           "cleaned"
         ],
         "correctAnswer": 2,
-        "explanation": "dislike + V-ing → I dislike cleaning the board. C'est la même règle qu'avec like."
+        "explanation": "dislike + V-ing → I dislike cleaning the board. C'est la même règle qu'avec like.",
+        "langue": "en"
       },
       {
         "question": "« I like English. » — quelle construction est utilisée ici ?",
@@ -1487,7 +1509,8 @@
           "like + préposition"
         ],
         "correctAnswer": 1,
-        "explanation": "English est un nom : c'est la construction like + noun."
+        "explanation": "English est un nom : c'est la construction like + noun.",
+        "langue": "fr"
       },
       {
         "question": "Laquelle de ces phrases exprime un DISLIKE correctement ?",
@@ -1498,7 +1521,9 @@
           "I dislike dogging."
         ],
         "correctAnswer": 0,
-        "explanation": "dislike + nom → I dislike dogs."
+        "explanation": "dislike + nom → I dislike dogs.",
+        "langue": "fr",
+        "optionsLangue": "en"
       }
     ]
   },

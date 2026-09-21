@@ -272,34 +272,75 @@ en physique et en maths.
 
 ### 🔊 Lecture vocale
 
-`js/lecture-vocale.js` ajoute un bouton 🔊 sur :
+`js/lecture-vocale.js` pose un bouton 🔊 sur le vocabulaire, les questions de quiz et
+les réponses du chat. Il utilise la **Web Speech API** du navigateur : pas de clé d'API,
+pas de coût, et les voix étant installées sur l'appareil, **ça fonctionne hors-ligne**.
+Si le navigateur ne sait pas parler, aucun bouton n'apparaît et rien ne casse.
 
-- chaque **ligne de vocabulaire** — lit le mot *et* sa définition ;
-- chaque **question de quiz**, avec ses propositions ;
-- chaque **réponse du chat**.
+#### La règle
 
-Utilise la **Web Speech API** du navigateur : pas de clé d'API, pas de coût, et
-les voix étant installées sur l'appareil, **ça fonctionne hors-ligne**. Si le
-navigateur ne sait pas parler, aucun bouton n'apparaît et rien ne casse.
+> Un bouton prononce un passage **dans la langue où ce passage est écrit**, et ne
+> prononce **jamais** ce qui n'est pas de la parole : une formule grammaticale
+> (`like + V-ing`), une étiquette de colonne, un numéro de question, l'émoji du bouton.
 
-Le module est chargé par `js/chat-assistant.js` : **aucune page HTML à modifier**.
+Corollaire : **ce qui est prononcé ne dit jamais plus que ce que la page affiche.** Là où
+le cahier était illisible, la voix s'arrête comme la page.
 
-#### Faire lire un passage en anglais
+Un même bouton enchaîne plusieurs langues, parce que le cours les mêle au milieu d'une
+ligne — « upstairs — à l'étage », un énoncé de quiz français avec des propositions
+anglaises. Chaque morceau garde sa voix, et son débit : l'anglais ralentit, le français
+non.
 
-Poser `data-lire-langue="en-GB"` sur un élément : tout ce qu'il contient sera lu
-avec une voix anglaise. Sans cet attribut, la langue de la page (`fr-FR`) s'applique.
+#### Les trois marqueurs
+
+| Marqueur | Effet |
+|---|---|
+| `data-lire` (sans valeur) | pose un bouton, lit ce qui est écrit. **À préférer** : ne peut pas diverger de la page. Ne jamais l'imbriquer. |
+| `data-lire="texte"` | lit *ceci* à la place. À réserver aux cas où l'affichage contient du non-parlé. |
+| `data-lire-ignore` | ce sous-arbre n'est jamais prononcé, et aucun bouton n'y est posé. Sur un `<em>`, une cellule, une ligne ou une `<table>` entière. |
+| `lang` / `data-lire-langue` | la langue, héritée du plus proche ancêtre qui en déclare une. |
+
+Sont muets **d'office**, sans rien écrire : `<s>` et `<del>`. Une forme fautive est
+affichée barrée pour être reconnue ; la prononcer avec un bon accent la ferait apprendre.
 
 ```html
-<table class="table-vocab" data-lire-langue="en-GB">
-<section class="tab-content" id="tab2" data-lire-langue="en-GB">
+<!-- Le mot anglais se dit, sa glose française non : on marque le fragment. -->
+<li><strong lang="en-GB" data-lire>upstairs</strong> — à l'étage</li>
+
+<!-- Tableau « Construction | Example » : la formule ne se prononce pas. -->
+<tr><td data-lire-ignore>like + V-ing</td><td>I like speaking English.</td></tr>
 ```
 
-`data-lire="texte à lire"` sur n'importe quel élément y ajoute un bouton qui lit
-ce texte — utile pour un dialogue dont l'affichage contient des annotations.
+Une ligne de tableau prononce **toutes ses cellules parlables**, dans l'ordre : un
+tableau de vocabulaire dit le mot *et* sa définition, un tableau à quatre colonnes n'en
+perd aucune.
 
-Trois vitesses (normale / lente / très lente) apparaissent au-dessus des onglets
-dès qu'une zone anglaise existe sur la page. Le choix est mémorisé et ne
-s'applique **qu'à l'anglais** : ralentir le français n'a pas d'intérêt.
+#### Les quiz
+
+Chaque question de `data/section-questions.json` peut porter `langue` et, si ses
+propositions sont dans une autre langue, `optionsLangue` :
+
+```json
+{ "question": "Quelle phrase est CORRECTE ?", "options": ["I like speak English.", "…"],
+  "langue": "fr", "optionsLangue": "en" }
+```
+
+`js/section-quiz.js` les pose sur la page, et `scripts/build-chat-knowledge.js` les
+propage dans `data/chat/<slug>.json` — le mode « Interroge-moi » du chat affiche les
+mêmes questions et doit les lire pareil. Pour un énoncé réellement bilingue
+(« Complète : « I dislike ____ the board. » »), on marque la langue **dominante**.
+
+#### Le chargement
+
+Les pages de leçon chargent le module elles-mêmes, **avant** `chat-assistant.js` :
+
+```html
+<script src="../js/lecture-vocale.js" defer></script>
+```
+
+`chat-assistant.js` l'injecte aussi en filet pour les pages qui n'ont pas la balise.
+Les deux chemins sont idempotents, et le module porte son propre CSS — il fonctionne
+donc aussi sur l'accueil, qui ne charge pas `css/lecon-5e.css`.
 
 ### Suivi des progrès
 
