@@ -10,6 +10,7 @@ npm-debug.log*
 *.backup_*
 *.bak
 *.contrast-backup
+*.theme_backup_*
 
 # OS
 .DS_Store

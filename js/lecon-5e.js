@@ -4,6 +4,12 @@
  * `openTab` était recopié à l'identique dans 22 pages de 6e. Ici il vit à un
  * seul endroit, et les onglets se branchent tout seuls : plus besoin d'écrire
  * onclick="openTab(event, 'tab2')" dans chaque bouton.
+ *
+ * Le module ajoute aussi, sans rien demander aux pages :
+ *   - une barre de lecture sous les onglets, qui restent en haut de l'écran ;
+ *   - des boutons « Précédent / Suivant » au bas de chaque onglet ;
+ *   - les cartes à retourner 🃏, tirées des notions de la leçon ;
+ *   - les liens directs vers une notion, posés par la recherche.
  */
 (function () {
     'use strict';
@@ -39,8 +45,261 @@
         var groupe = document.querySelector('.tabs');
         if (groupe) { groupe.setAttribute('role', 'tablist'); }
 
+        ajouterBarreLecture(groupe);
+        ajouterNavigation(boutons);
+        preparerCartes(groupe);
+
         suivreAncre();
         window.addEventListener('hashchange', suivreAncre);
+    }
+
+    /* ============================================================
+       Barre de lecture
+       ============================================================ */
+
+    /** Un trait sous les onglets, qui avance à mesure qu'on descend dans la page. */
+    function ajouterBarreLecture(groupe) {
+        if (!groupe) { return; }
+        var barre = document.createElement('div');
+        barre.className = 'barre-lecture';
+        barre.setAttribute('aria-hidden', 'true');
+        var remplissage = document.createElement('span');
+        barre.appendChild(remplissage);
+        groupe.appendChild(barre);
+
+        var prevu = false;
+        function mesurer() {
+            prevu = false;
+            var max = document.documentElement.scrollHeight - window.innerHeight;
+            var part = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+            remplissage.style.transform = 'scaleX(' + part + ')';
+        }
+        function planifier() {
+            if (!prevu) { prevu = true; window.requestAnimationFrame(mesurer); }
+        }
+        window.addEventListener('scroll', planifier, { passive: true });
+        window.addEventListener('resize', planifier);
+        document.addEventListener('click', planifier);   // un changement d'onglet change la hauteur
+        mesurer();
+    }
+
+    /* ============================================================
+       Précédent / Suivant
+       ============================================================ */
+
+    /** Au bas de chaque onglet, de quoi passer au suivant sans remonter. */
+    function ajouterNavigation(boutons) {
+        if (boutons.length < 2) { return; }
+
+        for (var i = 0; i < boutons.length; i++) {
+            var contenu = document.getElementById(boutons[i].getAttribute('data-onglet'));
+            if (!contenu) { continue; }
+
+            var nav = document.createElement('nav');
+            nav.className = 'suite-onglets';
+            nav.setAttribute('aria-label', 'Passer à un autre onglet');
+            if (i > 0) { nav.appendChild(boutonVers(boutons[i - 1], 'precedent')); }
+            if (i < boutons.length - 1) { nav.appendChild(boutonVers(boutons[i + 1], 'suivant')); }
+            contenu.appendChild(nav);
+        }
+    }
+
+    function boutonVers(cible, sens) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'suite-' + sens;
+        var libelle = cible.textContent.trim();
+        b.textContent = sens === 'suivant' ? 'Suivant : ' + libelle + ' →' : '← ' + libelle;
+        b.addEventListener('click', function () {
+            ouvrirOnglet(cible.getAttribute('data-onglet'), cible);
+            var onglets = document.querySelector('.tabs');
+            var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            (onglets || document.body).scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block: 'start' });
+            cible.focus({ preventScroll: true });
+        });
+        return b;
+    }
+
+    /* ============================================================
+       Cartes à retourner 🃏
+       ============================================================ */
+
+    // Ce qui ne fait pas une bonne carte : la mise en situation, la correction
+    // et le quiz (des questions, pas des notions), et les consignes.
+    var ONGLETS_EXCLUS = /quiz|situation|correction/i;
+    var TITRES_EXCLUS = /^(ecoute|avant|entraine|fabrique|activite|questions?|correction|teste)/;
+    var TEXTE_MAX = 260;
+
+    function choisirCartes(detail) {
+        var exclus = {};
+        (detail.onglets || []).forEach(function (o) {
+            if (ONGLETS_EXCLUS.test(o.libelle)) { exclus[o.id] = true; }
+        });
+        return (detail.notions || []).filter(function (n) {
+            var titre = normaliser(n.titre);
+            return !exclus[n.onglet] &&
+                n.texte && n.texte.length <= TEXTE_MAX &&
+                n.titre.length <= 50 &&
+                !/[?/]/.test(n.titre) &&
+                !TITRES_EXCLUS.test(titre);
+        });
+    }
+
+    /** Charge les notions de la page ; le bouton 🃏 n'apparaît que s'il y a de quoi réviser. */
+    function preparerCartes(groupe) {
+        if (!groupe || typeof window.fetch !== 'function') { return; }
+        var slug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+
+        window.fetch('../data/chat/' + slug + '.json')
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; })
+            .then(function (detail) {
+                var cartes = detail ? choisirCartes(detail) : [];
+                if (cartes.length < 3) { return; }
+
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'bouton-cartes';
+                b.textContent = '🃏 Réviser en cartes';
+                b.addEventListener('click', function () { ouvrirCartes(cartes, b); });
+                groupe.insertBefore(b, groupe.querySelector('.barre-lecture'));
+            });
+    }
+
+    function ouvrirCartes(cartes, declencheur) {
+        var paquet = cartes.slice();
+        var position = 0;
+
+        var voile = document.createElement('div');
+        voile.className = 'cartes-voile';
+
+        var boite = document.createElement('div');
+        boite.className = 'cartes-boite';
+        boite.setAttribute('role', 'dialog');
+        boite.setAttribute('aria-modal', 'true');
+        boite.setAttribute('aria-label', 'Cartes de révision');
+
+        var haut = document.createElement('div');
+        haut.className = 'cartes-haut';
+        var compte = document.createElement('span');
+        compte.className = 'cartes-compte';
+        compte.setAttribute('aria-live', 'polite');
+        var melanger = document.createElement('button');
+        melanger.type = 'button';
+        melanger.className = 'cartes-outil';
+        melanger.textContent = '🔀 Mélanger';
+        var fermerBtn = document.createElement('button');
+        fermerBtn.type = 'button';
+        fermerBtn.className = 'cartes-outil';
+        fermerBtn.textContent = 'Fermer';
+        haut.appendChild(compte);
+        haut.appendChild(melanger);
+        haut.appendChild(fermerBtn);
+
+        // La carte : un bouton, pour qu'Entrée ou Espace la retourne aussi.
+        var carte = document.createElement('button');
+        carte.type = 'button';
+        carte.className = 'carte-revision';
+        var recto = document.createElement('span');
+        recto.className = 'carte-face carte-recto';
+        var verso = document.createElement('span');
+        verso.className = 'carte-face carte-verso';
+        carte.appendChild(recto);
+        carte.appendChild(verso);
+
+        var bas = document.createElement('div');
+        bas.className = 'cartes-bas';
+        var precedente = document.createElement('button');
+        precedente.type = 'button';
+        precedente.className = 'cartes-nav';
+        precedente.textContent = '← Précédente';
+        var suivante = document.createElement('button');
+        suivante.type = 'button';
+        suivante.className = 'cartes-nav cartes-nav-suivante';
+        suivante.textContent = 'Suivante →';
+        bas.appendChild(precedente);
+        bas.appendChild(suivante);
+
+        var aide = document.createElement('p');
+        aide.className = 'cartes-aide';
+        aide.textContent = 'Essaie de répondre dans ta tête, puis touche la carte pour la retourner.';
+
+        boite.appendChild(haut);
+        boite.appendChild(carte);
+        boite.appendChild(aide);
+        boite.appendChild(bas);
+        voile.appendChild(boite);
+        document.body.appendChild(voile);
+        document.documentElement.classList.add('cartes-ouvertes');
+
+        function montrer() {
+            var n = paquet[position];
+            carte.classList.remove('retournee');
+            recto.textContent = n.titre;
+            verso.textContent = n.texte;
+            // Une carte d'anglais doit être lue avec une voix anglaise.
+            if (n.langue) { carte.setAttribute('lang', n.langue); } else { carte.removeAttribute('lang'); }
+            carte.setAttribute('aria-label', n.titre + ' — touche pour voir la réponse');
+            compte.textContent = 'Carte ' + (position + 1) + ' sur ' + paquet.length;
+            precedente.disabled = position === 0;
+            suivante.textContent = position === paquet.length - 1 ? 'Terminer ✓' : 'Suivante →';
+        }
+
+        function retourner() {
+            var retournee = carte.classList.toggle('retournee');
+            carte.setAttribute('aria-label', retournee
+                ? paquet[position].texte
+                : paquet[position].titre + ' — touche pour voir la réponse');
+        }
+
+        function fermer() {
+            document.removeEventListener('keydown', clavier);
+            document.documentElement.classList.remove('cartes-ouvertes');
+            voile.parentNode.removeChild(voile);
+            if (declencheur) { declencheur.focus(); }
+        }
+
+        function aller(sens) {
+            if (sens > 0 && position === paquet.length - 1) {
+                if (window.KarniellaFete) { window.KarniellaFete(); }
+                fermer();
+                return;
+            }
+            position = Math.max(0, Math.min(paquet.length - 1, position + sens));
+            montrer();
+            carte.focus();
+        }
+
+        function clavier(e) {
+            if (e.key === 'Escape') { e.preventDefault(); fermer(); }
+            else if (e.key === 'ArrowRight') { e.preventDefault(); aller(1); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); aller(-1); }
+            else if (e.key === 'Tab') {
+                var focusables = boite.querySelectorAll('button:not(:disabled)');
+                var premier = focusables[0];
+                var dernier = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === premier) { e.preventDefault(); dernier.focus(); }
+                else if (!e.shiftKey && document.activeElement === dernier) { e.preventDefault(); premier.focus(); }
+            }
+        }
+
+        carte.addEventListener('click', retourner);
+        precedente.addEventListener('click', function () { aller(-1); });
+        suivante.addEventListener('click', function () { aller(1); });
+        fermerBtn.addEventListener('click', fermer);
+        melanger.addEventListener('click', function () {
+            for (var i = paquet.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = paquet[i]; paquet[i] = paquet[j]; paquet[j] = t;
+            }
+            position = 0;
+            montrer();
+        });
+        voile.addEventListener('mousedown', function (e) { if (e.target === voile) { fermer(); } });
+        document.addEventListener('keydown', clavier);
+
+        montrer();
+        carte.focus();
     }
 
     /* ============================================================

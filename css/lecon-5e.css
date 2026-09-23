@@ -94,15 +94,60 @@ body.lecon-5e {
    Onglets
    ============================================================ */
 
+/* Les onglets restent en haut de l'écran : sur une longue leçon, on change
+   d'onglet sans remonter. */
 .tabs {
+    position: sticky;
+    top: 0;
+    z-index: 5;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     justify-content: center;
-    padding: 14px 16px 0;
+    padding: 12px 16px 12px;
     max-width: 900px;
     margin: 0 auto;
+    background: var(--surface-voilee);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0 0 16px 16px;
 }
+
+/* Barre de lecture, collée sous les onglets (js/lecon-5e.js). */
+.barre-lecture {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--bord);
+    overflow: hidden;
+}
+
+.barre-lecture span {
+    display: block;
+    height: 100%;
+    background: var(--l5-fort);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.bouton-cartes {
+    min-height: 44px;
+    padding: 9px 16px;
+    border: 2px dashed var(--l5-fort);
+    border-radius: 11px;
+    background: var(--l5-pale);
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.bouton-cartes:hover { border-style: solid; }
+.bouton-cartes:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .tab-button {
     padding: 9px 16px;
@@ -139,6 +184,44 @@ body.lecon-5e {
 @media (prefers-reduced-motion: reduce) {
     .tab-content.active { animation: none; }
 }
+
+/* ============================================================
+   Précédent / Suivant, au bas de chaque onglet (js/lecon-5e.js)
+   ============================================================ */
+
+.suite-onglets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.suite-onglets button {
+    min-height: 48px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.suite-precedent {
+    border: 1px solid var(--l5-bord);
+    background: var(--surface);
+    color: var(--l5-rose);
+}
+
+.suite-suivant {
+    margin-left: auto;
+    border: 1px solid var(--l5-fort);
+    background: var(--l5-fort);
+    color: #fff;
+}
+
+.suite-onglets button:hover { filter: brightness(1.08); }
+.suite-onglets button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* ============================================================
    Contenu
@@ -345,4 +428,115 @@ a.carte-lecon:focus-visible { outline: 3px solid var(--focus); outline-offset: 3
 
 @media (prefers-reduced-motion: reduce) {
     .notion-ciblee { animation: none; background: var(--surligne); }
+}
+
+/* ============================================================
+   Cartes à retourner 🃏 (js/lecon-5e.js)
+   ============================================================ */
+
+html.cartes-ouvertes { overflow: hidden; }
+
+.cartes-voile {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(53, 33, 45, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.cartes-boite {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 520px;
+    padding: 18px;
+    background: var(--fond);
+    border: 1px solid var(--l5-bord);
+    border-radius: 22px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    color: var(--l5-encre);
+}
+
+.cartes-haut { display: flex; align-items: center; gap: 8px; }
+.cartes-compte { margin-right: auto; font-size: 14px; font-weight: 800; color: var(--doux); }
+
+.cartes-outil,
+.cartes-nav {
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--l5-bord);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.cartes-nav:disabled { opacity: 0.4; cursor: default; }
+.cartes-outil:focus-visible,
+.cartes-nav:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.cartes-bas { display: flex; justify-content: space-between; gap: 10px; }
+.cartes-nav-suivante { background: var(--l5-fort); border-color: var(--l5-fort); color: #fff; }
+
+.cartes-aide { margin: 0; font-size: 14px; text-align: center; color: var(--doux); }
+
+/* La carte se retourne en 3D ; le recto et le verso sont empilés. */
+.carte-revision {
+    position: relative;
+    display: grid;
+    min-height: 230px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.carte-revision:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 20px; }
+
+.carte-face {
+    grid-area: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.45s ease;
+    text-align: center;
+}
+
+.carte-recto {
+    background: linear-gradient(145deg, var(--l5-fort) 0%, var(--entete-fonce) 100%);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.carte-verso {
+    background: var(--surface);
+    border: 2px solid var(--l5-fort);
+    font-size: 18px;
+    line-height: 1.5;
+    transform: rotateY(180deg);
+}
+
+.carte-revision.retournee .carte-recto { transform: rotateY(180deg); }
+.carte-revision.retournee .carte-verso { transform: rotateY(360deg); }
+
+@media (prefers-reduced-motion: reduce) {
+    .carte-face { transition: none; }
 }

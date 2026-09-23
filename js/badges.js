@@ -190,11 +190,39 @@
         }, 6000);
     }
 
+    /**
+     * Pluie de confettis 🎉 : quiz réussi, nouveau badge, paquet de cartes fini.
+     * Rien du tout pour qui a demandé moins d'animations.
+     */
+    var CONFETTIS = ['🎉', '⭐', '🐴', '💖', '✨', '🏆', '🌸'];
+
+    function feter() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+        var pluie = document.createElement('div');
+        pluie.className = 'confettis';
+        pluie.setAttribute('aria-hidden', 'true');
+        for (var i = 0; i < 32; i++) {
+            var c = document.createElement('span');
+            c.textContent = CONFETTIS[i % CONFETTIS.length];
+            c.style.left = (Math.random() * 100) + '%';
+            c.style.animationDelay = (Math.random() * 0.6) + 's';
+            c.style.animationDuration = (1.8 + Math.random() * 1.4) + 's';
+            c.style.fontSize = (16 + Math.random() * 18) + 'px';
+            c.style.setProperty('--derive', (Math.random() * 160 - 80) + 'px');
+            pluie.appendChild(c);
+        }
+        document.body.appendChild(pluie);
+        window.setTimeout(function () {
+            if (pluie.parentNode) { pluie.parentNode.removeChild(pluie); }
+        }, 3800);
+    }
+
     /** Recalcule après un progrès, et félicite s'il y a de quoi. */
     function verifier() {
         if (!window.KarniellaProgression || !window.KarniellaProgramme) { return; }
         var r = calculer(true);
 
+        if (r.nouveaux.length) { feter(); }
         if (r.nouveaux.length === 1) {
             var b = r.nouveaux[0];
             feliciter(b.icone, 'Nouveau badge : ' + b.nom + ' !', b.quoi + ' C\'est fait. 🎉');
@@ -255,6 +283,8 @@
     } else {
         initialiser();
     }
+
+    window.KarniellaFete = feter;
 
     window.KarniellaBadges = {
         /** Tous les badges, gagnés ou non. Vide tant que la progression manque. */

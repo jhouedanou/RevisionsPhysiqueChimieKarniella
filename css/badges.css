@@ -75,3 +75,30 @@
     .badge-toast { transition: opacity 0.3s ease; }
     .badge-toast-visible { animation: none; }
 }
+
+/* ============================================================
+   Confettis (window.KarniellaFete)
+   ============================================================ */
+
+.confettis {
+    position: fixed;
+    inset: 0;
+    z-index: 100001;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confettis span {
+    position: absolute;
+    top: -40px;
+    line-height: 1;
+    animation-name: confetti-tombe;
+    animation-timing-function: cubic-bezier(0.3, 0.6, 0.6, 1);
+    animation-fill-mode: forwards;
+}
+
+@keyframes confetti-tombe {
+    0%   { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translate(var(--derive, 0), 110vh) rotate(540deg); opacity: 0; }
+}

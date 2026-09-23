@@ -158,6 +158,9 @@ class SectionQuiz {
             <p>${emoji} <strong>${message}</strong> - Score : ${correct}/${total} (${percentage}%)</p>
         `;
 
+        // 🎉 à partir de 80 % (js/badges.js, chargé par le chat).
+        if (percentage >= 80 && window.KarniellaFete) { window.KarniellaFete(); }
+
         // Alimente le suivi des progrès, partagé avec le chat. Le module est
         // chargé par chat-assistant.js : on ne suppose pas sa présence.
         if (window.KarniellaProgression) {

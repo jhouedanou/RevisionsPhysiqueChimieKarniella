@@ -1408,6 +1408,7 @@
 
         // Rien à enregistrer ici : chaque réponse a déjà mis la série à jour.
         ajouterTexteBot(texte);
+        if (pourcentage >= 80 && quizEnCours.total >= 3 && window.KarniellaFete) { window.KarniellaFete(); }
         noterHistorique({ t: texte });
         quizEnCours = { posees: [], justes: 0, total: 0, serie: null };
     }

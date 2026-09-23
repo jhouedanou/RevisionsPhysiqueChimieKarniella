@@ -430,6 +430,35 @@ leçon ouverte. `js/badges.js` déduit les badges de la progression, les garde u
 gagnés (clé `karniella-badges`) et affiche un message de félicitations à chaque nouveau
 badge, ou au premier progrès du jour quand la série continue.
 
+### 🌙 Mode sombre, A+ et couleurs des matières
+
+- `css/theme.css` porte **toutes** les couleurs du site, en clair et en sombre.
+  `js/theme.js`, chargé sans `defer` dans le `<head>`, pose `data-theme` sur `<html>`
+  avant l'affichage : le site suit le réglage de l'appareil, puis le choix fait avec
+  le bouton 🌙 (en haut à gauche). Le bouton **A+** agrandit le texte.
+- `css/matieres.css` est **généré** par `npm run build:programme` à partir du champ
+  `couleur` de `data/programme-5e.json` : trois teintes par matière, vérifiées à
+  4,5:1 en clair et en sombre. Les pages portent `data-matiere` sur `<body>`.
+- Une nouvelle page de leçon doit donc avoir, dans son `<head>` :
+
+```html
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
+```
+
+et `<body class="lecon-5e" data-matiere="<id-de-la-matière>">`.
+
+### 📖 Dans les leçons
+
+Ajouté par `js/lecon-5e.js`, sans rien à écrire dans les pages :
+- les onglets restent en haut de l'écran, avec une **barre de lecture** ;
+- des boutons **Précédent / Suivant** au bas de chaque onglet ;
+- **🃏 Réviser en cartes** : les notions de la leçon (hors situation, correction
+  et quiz) en cartes à retourner, tirées de `data/chat/<slug>.json` ;
+- des **confettis** 🎉 à 80 % et plus à un quiz, à chaque nouveau badge et à la
+  fin d'un paquet de cartes (`window.KarniellaFete`, dans `js/badges.js`).
+
 ## 📞 Support
 
 Pour toute question ou problème :
