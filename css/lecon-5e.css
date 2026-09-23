@@ -321,3 +321,21 @@ a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 
 /* Le mot doit pouvoir passer à la ligne une fois le bouton ajouté à côté. */
 .table-vocab td:first-child { white-space: normal; }
+
+/* ============================================================
+   Notion ouverte depuis la recherche (js/lecon-5e.js)
+   ============================================================ */
+
+.notion-ciblee {
+    border-radius: 8px;
+    animation: l5-ciblee 2.6s ease;
+}
+
+@keyframes l5-ciblee {
+    0%, 60% { background: #FFE08A; box-shadow: 0 0 0 6px #FFE08A; }
+    100%    { background: transparent; box-shadow: 0 0 0 6px transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .notion-ciblee { animation: none; background: #FFE08A; }
+}

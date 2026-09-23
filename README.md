@@ -369,6 +369,7 @@ puis écrit :
 |---|---|
 | `js/chat-knowledge-index.js` | Index de toutes les pages (titres des notions) |
 | `data/chat/<slug>.json` | Détail d'une page : textes des notions + quiz |
+| `js/recherche-index.js` | Index de la recherche : notions (avec extrait) et quiz de toutes les pages |
 
 **Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
 car Vercel sert le site en statique, sans étape de build.
@@ -404,9 +405,30 @@ Les matières encore vides ne prennent **pas** un bloc chacune : elles sont
 réunies sur une ligne « Bientôt ». Six blocs vides sur huit alourdiraient la page
 au lieu de l'éclaircir.
 
-La recherche porte sur les noms de matières, les titres de leçons **et les
-notions de chaque page** (via l'index du chat) : taper « canteen » ou
-« dissolution » trouve la bonne leçon.
+La recherche de l'accueil filtre **carte par carte** : noms de matières, titres
+de leçons **et titres des notions** (via l'index du chat). Taper « canteen » ou
+« dissolution » garde la bonne leçon. Un bouton en dessous passe le même mot à la
+recherche complète.
+
+### 🔍 Recherche complète
+
+Bouton **🔍 Rechercher** en haut à droite de chaque page, ou touche `/` (ou Ctrl+K).
+Chargée par `chat-assistant.js` : aucune page HTML à modifier.
+
+- Cherche dans les leçons, **le texte des notions** et les questions de quiz
+  (`js/recherche-index.js`, généré par `npm run build:chat`, chargé à la première recherche).
+- Sans accents, pluriels compris, une faute de frappe tolérée (« circiut » trouve « circuit »).
+- Un résultat de notion ouvre la leçon **sur le bon onglet** et fait briller la notion :
+  `js/lecon-5e.js` lit l'adresse `#onglet=tab3&notion=Mélange homogène`.
+- Dernière ligne : « Demander au poney », qui passe la question au chat.
+
+### 🔥 Série de jours et 🏅 badges
+
+`js/progression.js` note chaque jour de révision (leçon ouverte ou quiz fait).
+L'accueil affiche la série, l'objectif du jour (une leçon + un quiz) et la dernière
+leçon ouverte. `js/badges.js` déduit les badges de la progression, les garde une fois
+gagnés (clé `karniella-badges`) et affiche un message de félicitations à chaque nouveau
+badge, ou au premier progrès du jour quand la série continue.
 
 ## 📞 Support
 

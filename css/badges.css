@@ -1,0 +1,77 @@
+/**
+ * badges.css — Le message de félicitations (js/badges.js).
+ *
+ * Chargée par le script lui-même. Le panneau des badges de l'accueil, lui,
+ * vit dans css/accueil.css.
+ */
+
+.badge-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    z-index: 99997;          /* sous le chat (99998) et la recherche (100000) */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: max-content;
+    max-width: min(380px, calc(100vw - 32px));
+    padding: 12px 18px 12px 12px;
+    border-radius: 18px;
+    background: linear-gradient(125deg, #35212D 0%, #9D2F5C 100%);
+    color: #fff;
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.35;
+    text-decoration: none;
+    box-shadow: 0 16px 40px rgba(53, 33, 45, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 24px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.badge-toast-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+    animation: badge-saut 0.6s ease 0.2s;
+}
+
+.badge-toast:focus-visible { outline: 3px solid #FFE08A; outline-offset: 3px; }
+
+.badge-toast strong { display: block; font-size: 15px; }
+
+.badge-toast-icone {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 26px;
+}
+
+@keyframes badge-saut {
+    0%, 100% { transform: translate(-50%, 0); }
+    40%      { transform: translate(-50%, -8px); }
+}
+
+/* Sur téléphone, laisser la place au bouton du chat, en bas à droite. */
+@media (max-width: 560px) {
+    .badge-toast {
+        left: 16px;
+        right: 84px;
+        bottom: 14px;
+        width: auto;
+        max-width: none;
+        transform: translateY(24px);
+    }
+    .badge-toast-visible { transform: none; animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .badge-toast { transition: opacity 0.3s ease; }
+    .badge-toast-visible { animation: none; }
+}

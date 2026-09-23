@@ -770,9 +770,18 @@
     /** Charge js/progression.js. Facultatif : sans lui, le chat marche pareil. */
     function chargerProgression() {
         chargerLectureVocale();
-        if (window.KarniellaProgression) { return; }
+        chargerModule('KarniellaBadges', 'js/badges.js');
+        chargerModule('KarniellaProgression', 'js/progression.js');
+    }
+
+    /**
+     * Les modules du site qui n'ont rien à voir avec le chat (recherche, badges)
+     * passent aussi par lui : c'est le seul script que toutes les pages chargent.
+     */
+    function chargerModule(nomGlobal, chemin) {
+        if (window[nomGlobal]) { return; }
         var script = document.createElement('script');
-        script.src = RACINE + 'js/progression.js';
+        script.src = RACINE + chemin;
         document.head.appendChild(script);
     }
 
@@ -1627,6 +1636,13 @@
         if (elFenetre.classList.contains('kc-ouvert')) { fermer(); } else { ouvrir(); }
     }
 
+    /** Ouvre le chat et lui pose `question` — utilisé par la recherche. */
+    function demander(question) {
+        if (!elFenetre) { return; }
+        if (!elFenetre.classList.contains('kc-ouvert')) { ouvrir(); }
+        traiter(question, 'explication');
+    }
+
     /** Sous-titre de l'entête : rappelle la leçon et le mode de fonctionnement. */
     function majSousTitre() {
         var el = document.getElementById('kc-sous');
@@ -1767,6 +1783,10 @@
         document.body.appendChild(elBulle);
         document.body.appendChild(elFenetre);
 
+        // Tôt, et pas avec les connaissances : le bouton 🔍 doit apparaître
+        // tout de suite dans l'en-tête.
+        chargerModule('KarniellaRecherche', 'js/recherche.js');
+
         // Les connaissances de la page arrivent de façon asynchrone : on affiche
         // d'abord une fenêtre utilisable, puis on la personnalise à l'arrivée.
         chargerConnaissances(function () {
@@ -1805,6 +1825,7 @@
         ouvrir: ouvrir,
         fermer: fermer,
         basculer: basculer,
+        demander: demander,
         chercher: chercher,
         base: BASE,
         // Utiles pour vérifier depuis la console qu'une page est bien reconnue.

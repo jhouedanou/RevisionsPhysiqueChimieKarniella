@@ -1,0 +1,296 @@
+/**
+ * recherche.css — Le bouton 🔍 et la fenêtre de recherche (js/recherche.js).
+ *
+ * Chargée par le script lui-même : aucune page n'a à la déclarer. Les couleurs
+ * reprennent celles de l'accueil et des leçons de 5e.
+ */
+
+.rech-voile,
+.rech-bouton {
+    --rech-encre: #49353F;
+    --rech-rose: #9D2F5C;
+    --rech-rose-clair: #C83F76;
+    --rech-doux: #7A6470;
+    --rech-bord: rgba(72, 40, 55, 0.14);
+    --rech-fond-actif: #FBE7EF;
+}
+
+/* ============================================================
+   Le bouton, en haut à droite de l'en-tête
+   ============================================================ */
+
+.rech-entete { position: relative; }
+
+.rech-bouton {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--rech-bord);
+    background: #fff;
+    color: var(--rech-rose);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(73, 30, 50, 0.14);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.rech-bouton:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(73, 30, 50, 0.2); }
+.rech-bouton:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+
+/* Sur l'en-tête sombre des leçons, le bouton reste blanc mais sans ombre lourde. */
+body.lecon-5e > header .rech-bouton {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+}
+
+/* Sur téléphone, l'icône seule : le texte pousserait le titre. */
+@media (max-width: 560px) {
+    .rech-bouton { top: 10px; right: 10px; width: 44px; padding: 0; justify-content: center; }
+    .rech-bouton-texte { display: none; }
+}
+
+/* ============================================================
+   La fenêtre
+   ============================================================ */
+
+/* Au-dessus de tout, chat compris (99999). */
+.rech-voile {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: max(6vh, 16px) 16px 16px;
+    background: rgba(53, 33, 45, 0.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.rech-voile[hidden] { display: none; }
+
+html.rech-ouverte { overflow: hidden; }
+
+.rech-boite {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 640px;
+    max-height: min(640px, 88vh);
+    overflow: hidden;
+    background: #FFF9FB;
+    border: 1px solid var(--rech-bord);
+    border-radius: 22px;
+    box-shadow: 0 24px 70px rgba(53, 33, 45, 0.35);
+    color: var(--rech-encre);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    animation: rech-arrive 0.18s ease;
+}
+
+@keyframes rech-arrive {
+    from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+}
+
+.rech-champ {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: #fff;
+    border-bottom: 1px solid var(--rech-bord);
+}
+
+.rech-loupe { font-size: 20px; }
+
+.rech-champ input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: 18px;
+    color: inherit;
+}
+
+.rech-champ input:focus { outline: none; }
+.rech-champ input::-webkit-search-cancel-button { display: none; }
+
+.rech-fermer {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--rech-bord);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--rech-doux);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rech-fermer:hover { color: var(--rech-rose); border-color: var(--rech-rose); }
+.rech-fermer:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+.rech-resultats {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px 10px 12px;
+}
+
+.rech-compte,
+.rech-etat,
+.rech-astuce {
+    margin: 10px 8px 4px;
+    font-size: 14px;
+    color: var(--rech-doux);
+}
+
+.rech-astuce { margin-top: 16px; }
+
+.rech-groupe { margin-top: 10px; }
+
+.rech-groupe-titre {
+    margin: 0 8px 6px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rech-rose);
+}
+
+/* ============================================================
+   Un résultat
+   ============================================================ */
+
+.rech-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    color: inherit;
+    text-decoration: none;
+}
+
+.rech-item:hover,
+.rech-item.rech-actif {
+    background: var(--rech-fond-actif);
+    border-color: rgba(157, 47, 92, 0.25);
+}
+
+.rech-item:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 1px; }
+
+.rech-icone {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid var(--rech-bord);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.rech-corps {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.rech-titre { font-weight: 800; font-size: 16px; }
+
+.rech-extrait {
+    font-size: 14px;
+    color: var(--rech-encre);
+    opacity: 0.85;
+}
+
+.rech-contexte {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--rech-doux);
+}
+
+.rech-item mark {
+    padding: 0 2px;
+    border-radius: 4px;
+    background: #FFE08A;
+    color: inherit;
+}
+
+.rech-chat .rech-icone {
+    background: linear-gradient(145deg, #B9366C 0%, #7F2E53 100%);
+    border-color: transparent;
+}
+
+.rech-chat .rech-titre { color: var(--rech-rose); }
+
+/* ============================================================
+   Puces : recherches récentes et idées
+   ============================================================ */
+
+.rech-puces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 8px;
+}
+
+.rech-puce {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--rech-bord);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--rech-encre);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rech-puce:hover { border-color: var(--rech-rose); color: var(--rech-rose); }
+.rech-puce:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+
+.rech-pied {
+    margin: 0;
+    padding: 10px 16px;
+    border-top: 1px solid var(--rech-bord);
+    background: #fff;
+    font-size: 12.5px;
+    color: var(--rech-doux);
+    text-align: center;
+}
+
+/* Sur téléphone, la fenêtre prend tout l'écran, et les raccourcis clavier
+   n'ont plus de sens. */
+@media (max-width: 560px) {
+    .rech-voile { padding: 0; }
+    .rech-boite { max-width: none; max-height: none; height: 100%; border-radius: 0; border: 0; }
+    .rech-pied { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rech-boite { animation: none; }
+    .rech-bouton { transition: none; }
+    .rech-bouton:hover { transform: none; }
+}

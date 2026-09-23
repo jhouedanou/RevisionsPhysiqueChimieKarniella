@@ -32,6 +32,10 @@
 
 <main class="enveloppe">
 
+  <!-- Série de jours, objectif du jour, « Reprendre » : rempli par js/accueil.js
+       quand la progression est disponible. Caché sinon. -->
+  <section id="mon-galop" class="mon-galop" aria-label="Ma série de révisions" hidden></section>
+
   <div class="recherche">
     <label for="recherche">Rechercher une matière ou une leçon</label>
     <div class="champ-recherche">
@@ -42,12 +46,23 @@
     </div>
   </div>
 
+  <p id="recherche-compte" class="recherche-compte" aria-live="polite" hidden></p>
+
   <p id="recherche-vide" class="recherche-vide" hidden>
-    Rien ne correspond à ta recherche. 🐴 Essaie un autre mot.
+    Aucune leçon ne porte ce nom. 🐴 Le mot est peut-être dans le texte d'une leçon :
   </p>
+
+  <!-- Ouvre la recherche complète (js/recherche.js) sur le même mot -->
+  <button id="recherche-partout" class="recherche-partout" type="button" hidden></button>
 
   <!-- Rempli par js/accueil.js depuis js/programme-5e.js -->
   <div id="sommaire"></div>
+
+  <section id="mes-badges" class="mes-badges" aria-labelledby="titre-badges" hidden>
+    <h2 id="titre-badges">🏅 Mes badges</h2>
+    <p id="badges-compte" class="badges-compte"></p>
+    <ul id="liste-badges" class="liste-badges"></ul>
+  </section>
 
 </main>
 

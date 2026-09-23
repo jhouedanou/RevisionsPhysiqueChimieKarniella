@@ -19,6 +19,7 @@
     var CLE = 'karniella-progression';
     var VERSION = 1;
     var MAX_QUIZ_GARDES = 10;   // par page : de quoi voir une évolution, pas un journal
+    var MAX_JOURS_GARDES = 60;  // assez pour la série en cours ; le record est gardé à part
 
     /* ============================================================
        Stockage
@@ -38,10 +39,14 @@
     function ecrire(donnees) {
         try {
             window.localStorage.setItem(CLE, JSON.stringify(donnees));
-            return true;
         } catch (err) {
             return false;   // quota atteint ou stockage refusé : sans conséquence
         }
+        // Les badges (js/badges.js) écoutent pour féliciter au bon moment.
+        try {
+            window.dispatchEvent(new CustomEvent('karniella:progression'));
+        } catch (err) { /* très vieux navigateur : pas de félicitations, rien d'autre */ }
+        return true;
     }
 
     function entree(donnees, slug) {
@@ -49,6 +54,45 @@
             donnees.pages[slug] = { visites: 0, matiere: null, quiz: [], questions: 0 };
         }
         return donnees.pages[slug];
+    }
+
+    /* ============================================================
+       Jours de révision — pour la série de jours
+       ============================================================ */
+
+    /** « 2026-09-23 », à l'heure de Karniella et pas en UTC. */
+    function jourDe(date) {
+        var d = date || new Date();
+        var mois = d.getMonth() + 1;
+        var jour = d.getDate();
+        return d.getFullYear() + '-' + (mois < 10 ? '0' : '') + mois + '-' + (jour < 10 ? '0' : '') + jour;
+    }
+
+    function veilleDe(cle) {
+        var morceaux = cle.split('-');
+        return jourDe(new Date(+morceaux[0], +morceaux[1] - 1, +morceaux[2] - 1));
+    }
+
+    /** Longueur de la série qui se termine le jour `cle`. */
+    function serieFinissantLe(jours, cle) {
+        var n = 0;
+        while (jours[cle]) { n++; cle = veilleDe(cle); }
+        return n;
+    }
+
+    /** Compte une activité (`lecons` ou `quiz`) pour aujourd'hui. */
+    function noterJour(donnees, quoi) {
+        var jours = donnees.jours || (donnees.jours = {});
+        var aujourdhui = jourDe();
+        var jour = jours[aujourdhui] || (jours[aujourdhui] = { lecons: 0, quiz: 0 });
+        jour[quoi] += 1;
+
+        donnees.record = Math.max(donnees.record || 0, serieFinissantLe(jours, aujourdhui));
+
+        var cles = Object.keys(jours).sort();
+        cles.slice(0, Math.max(0, cles.length - MAX_JOURS_GARDES)).forEach(function (c) {
+            delete jours[c];
+        });
     }
 
     /* ============================================================
@@ -63,6 +107,7 @@
         page.visites += 1;
         page.derniereVisite = Date.now();
         if (matiere) { page.matiere = matiere; }
+        noterJour(donnees, 'lecons');
         ecrire(donnees);
     }
 
@@ -87,6 +132,8 @@
         } else {
             page.quiz.push({ correct: correct, total: total, date: Date.now(), serie: serie || null });
             page.quiz = page.quiz.slice(-MAX_QUIZ_GARDES);
+            // Un quiz compte une fois, pas à chaque réponse d'une même série.
+            noterJour(donnees, 'quiz');
         }
         ecrire(donnees);
     }
@@ -176,6 +223,46 @@
         }).sort(function (a, b) { return b.vues - a.vues; });
     }
 
+    /**
+     * La série de jours de révision.
+     *   actuelle    : jours d'affilée jusqu'à aujourd'hui — ou jusqu'à hier, tant
+     *                 qu'aujourd'hui n'est pas fini : la série n'est pas perdue à 8 h
+     *   record      : la plus longue série jamais faite
+     *   aujourdhui  : { lecons, quiz } faits aujourd'hui
+     */
+    function serie() {
+        var donnees = lire();
+        var jours = donnees.jours || {};
+        var aujourdhui = jourDe();
+        var actuelle = jours[aujourdhui]
+            ? serieFinissantLe(jours, aujourdhui)
+            : serieFinissantLe(jours, veilleDe(aujourdhui));
+        return {
+            actuelle: actuelle,
+            record: Math.max(donnees.record || 0, actuelle),
+            aujourdhui: jours[aujourdhui] || { lecons: 0, quiz: 0 },
+            jour: aujourdhui
+        };
+    }
+
+    /** Toutes les pages suivies — pour les badges et la carte « Reprendre ». */
+    function pages() {
+        var brutes = lire().pages;
+        var liste = {};
+        Object.keys(brutes).forEach(function (slug) {
+            var p = brutes[slug];
+            liste[slug] = {
+                visites: p.visites,
+                questions: p.questions,
+                quiz: p.quiz,
+                meilleurScore: meilleurScore(p),
+                derniereVisite: p.derniereVisite || null,
+                matiere: p.matiere
+            };
+        });
+        return liste;
+    }
+
     function reinitialiser() {
         try { window.localStorage.removeItem(CLE); } catch (err) { /* rien à faire */ }
     }
@@ -197,6 +284,8 @@
         enregistrerQuestion: enregistrerQuestion,
         pourPage: pourPage,
         resume: resume,
+        serie: serie,
+        pages: pages,
         reinitialiser: reinitialiser,
         disponible: disponible
     };

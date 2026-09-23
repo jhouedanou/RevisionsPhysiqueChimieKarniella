@@ -11,10 +11,12 @@
  * passée en 5e et le site ne propose que le programme de l'année en cours. Les
  * fichiers restent dans le dépôt, mais rien ne les référence.
  *
- * Produit deux niveaux :
+ * Produit deux niveaux pour le chat, plus l'index de la recherche :
  *
  *   js/chat-knowledge-index.js   index léger, chargé sur toutes les pages
  *   data/chat/<slug>.json        détail complet, chargé pour la page courante seulement
+ *   js/recherche-index.js        notions et quiz de toutes les pages, avec un
+ *                                extrait de texte — chargé à la première recherche
  *
  * Les fichiers générés ne doivent pas être édités à la main : relancer ce script.
  */
@@ -29,6 +31,7 @@ const RACINE = path.join(__dirname, '..');
 const DOSSIER_5E = path.join(RACINE, '5e');
 const DOSSIER_SORTIE = path.join(RACINE, 'data', 'chat');
 const FICHIER_INDEX = path.join(RACINE, 'js', 'chat-knowledge-index.js');
+const FICHIER_RECHERCHE = path.join(RACINE, 'js', 'recherche-index.js');
 const PROGRAMME = path.join(RACINE, 'data', 'programme-5e.json');
 
 /* ============================================================
@@ -201,6 +204,8 @@ function extraireVocabulaire($, idOnglet) {
         // dans la même langue — la prose d'un onglet anglais, elle, est le
         // commentaire français de la règle.
         const langue = $(table).closest('[data-lire-langue]').attr('data-lire-langue') || '';
+        // L'onglet du tableau, pour que la recherche puisse y mener directement.
+        const onglet = $(table).closest('.tab-content').attr('id') || idOnglet;
 
         $(table).find('tbody tr').each((__, ligne) => {
             const cellules = $(ligne).find('td');
@@ -216,7 +221,7 @@ function extraireVocabulaire($, idOnglet) {
 
             const notion = {
                 titre: mot,
-                onglet: idOnglet,
+                onglet: onglet,
                 texte: tronquer(definition)
             };
             if (langue) { notion.langue = langue; }
@@ -632,6 +637,74 @@ function ecrireDetails(pages) {
 }
 
 /* ============================================================
+   Index de la recherche
+   ============================================================ */
+
+// Assez pour montrer un extrait sous chaque résultat, pas pour recopier la
+// leçon : l'index est téléchargé en entier à la première recherche.
+const EXTRAIT_MAX = 300;
+
+function extrait(texte) {
+    if (texte.length <= EXTRAIT_MAX) { return texte; }
+    const coupe = texte.slice(0, EXTRAIT_MAX);
+    const espace = coupe.lastIndexOf(' ');
+    return (espace > 0 ? coupe.slice(0, espace) : coupe) + '…';
+}
+
+function ecrireIndexRecherche(pages) {
+    let programme = { matieres: [] };
+    try {
+        programme = JSON.parse(fs.readFileSync(PROGRAMME, 'utf8'));
+    } catch (err) { /* déjà signalé par chargerMatieres() */ }
+
+    const matieres = {};
+    for (const m of programme.matieres || []) {
+        matieres[m.id] = { nom: m.nom, icone: m.icone, couleur: m.couleur || null };
+    }
+
+    const entrees = pages.map((p) => {
+        // Une page sommaire porte le slug de sa matière. Ses « notions » ne sont
+        // que la liste de ses leçons, déjà trouvables comme leçons : les garder
+        // doublerait chaque résultat.
+        const sommaire = Boolean(matieres[p.slug]);
+        // Les questions de quiz mènent à l'onglet Quiz quand la page en a un.
+        const ongletQuiz = p.onglets.find((o) => /quiz/i.test(o.libelle));
+        return {
+            slug: p.slug,
+            titre: p.titre,
+            sousTitre: p.sousTitre,
+            matiere: p.matiere,
+            sommaire: sommaire,
+            onglets: p.onglets,
+            notions: sommaire ? [] : p.notions.map((n) => ({
+                titre: n.titre,
+                onglet: n.onglet,
+                texte: extrait(n.texte)
+            })),
+            quiz: p.quiz.map((q) => ({
+                question: q.question,
+                onglet: ongletQuiz ? ongletQuiz.id : null
+            }))
+        };
+    });
+
+    const contenu =
+        '/**\n' +
+        ' * recherche-index.js — GÉNÉRÉ par scripts/build-chat-knowledge.js\n' +
+        ' * Ne pas éditer à la main : relancer `npm run build:chat`.\n' +
+        ' *\n' +
+        ' * Tout ce que la recherche sait trouver : les pages de 5e, leurs notions\n' +
+        ' * (avec un extrait) et leurs questions de quiz. Chargé par js/recherche.js\n' +
+        ' * à la première recherche seulement.\n' +
+        ' */\n' +
+        'self.KarniellaRechercheIndex = ' +
+        JSON.stringify({ version: 1, matieres, pages: entrees }) + ';\n';
+
+    fs.writeFileSync(FICHIER_RECHERCHE, contenu, 'utf8');
+    return Buffer.byteLength(contenu);
+}
+
+/* ============================================================
    Point d'entrée
    ============================================================ */
 
@@ -656,6 +729,7 @@ function main() {
 
     const tailleIndex = ecrireIndex(pages);
     const tailleDetails = ecrireDetails(pages);
+    const tailleRecherche = ecrireIndexRecherche(pages);
 
     const totalNotions = pages.reduce((n, p) => n + p.notions.length, 0);
     const totalQuiz = pages.reduce((n, p) => n + p.quiz.length, 0);
@@ -668,6 +742,7 @@ function main() {
         .map(([m, n]) => m + '=' + n).join(', '));
     console.log('  js/chat-knowledge-index.js  ' + Math.round(tailleIndex / 1024) + ' Ko');
     console.log('  data/chat/*.json            ' + Math.round(tailleDetails / 1024) + ' Ko au total');
+    console.log('  js/recherche-index.js       ' + Math.round(tailleRecherche / 1024) + ' Ko');
 
     if (sansNotion.length) {
         // Signalé plutôt que masqué : sur ces pages le chat retombera sur la

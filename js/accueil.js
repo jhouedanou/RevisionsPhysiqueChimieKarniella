@@ -8,6 +8,11 @@
  * Le sommaire est groupé par matière. Les matières encore vides ne prennent
  * PAS un bloc chacune — elles sont réunies sur une ligne en bas de page.
  * Six blocs vides sur huit rendraient la page plus lourde, pas plus claire.
+ *
+ * Au-dessus du sommaire : la série de jours, l'objectif du jour et la leçon à
+ * reprendre. En dessous : les badges (js/badges.js). Les deux restent cachés
+ * tant que js/progression.js n'est pas là, ou si le navigateur refuse le
+ * stockage — sans suivi, une série à 0 découragerait plus qu'autre chose.
  */
 (function () {
     'use strict';
@@ -90,6 +95,10 @@
         }
 
         li.appendChild(carte);
+        li.dataset.recherche = normaliser(
+            lecon.titre + ' ' + (lecon.sousTitre || '') + ' ' +
+            (lecon.description || '') + ' ' + notionsDe(lecon.id)
+        );
         return li;
     }
 
@@ -113,15 +122,11 @@
         var section = document.createElement('section');
         section.className = 'bloc-matiere';
 
-        // Sert à la recherche : tout le texte de la matière, normalisé.
-        section.dataset.recherche = normaliser(
-            [matiere.nom, matiere.description]
-                .concat((matiere.lecons || []).map(function (l) {
-                    return l.titre + ' ' + (l.sousTitre || '') + ' ' +
-                        (l.description || '') + ' ' + notionsDe(l.id);
-                }))
-                .join(' ')
-        );
+        // Sert à la recherche. Le NOM de la matière montre toutes ses leçons ;
+        // sinon chaque carte est filtrée sur son propre texte (voir filtrer()).
+        // Pas la description : « circuit » y figure pour la physique-chimie, et
+        // ramènerait « Les mélanges », qui n'en parle pas.
+        section.dataset.rechercheMatiere = normaliser(matiere.nom);
 
         var titre = document.createElement('h2');
         titre.className = 'titre-matiere';
@@ -206,24 +211,79 @@
        Recherche
        ============================================================ */
 
+    /** Chaque mot cherché doit se trouver dans le texte, dans n'importe quel ordre. */
+    function correspond(texte, motsCherches) {
+        for (var i = 0; i < motsCherches.length; i++) {
+            if (texte.indexOf(motsCherches[i]) === -1) { return false; }
+        }
+        return true;
+    }
+
+    /**
+     * Filtre carte par carte. Une matière reste affichée tant qu'une de ses
+     * leçons correspond ; si c'est son NOM qui correspond (« anglais »), on
+     * montre toutes ses leçons.
+     */
     function filtrer() {
         var champ = $('recherche');
-        var vide = $('recherche-vide');
         if (!champ) { return; }
 
         var terme = normaliser(champ.value);
-        var blocs = document.querySelectorAll('[data-recherche]');
-        var visibles = 0;
+        var motsCherches = terme ? terme.split(/\s+/) : [];
+        var lecons = 0;
 
+        var blocs = document.querySelectorAll('.bloc-matiere');
         for (var i = 0; i < blocs.length; i++) {
-            var correspond = !terme || blocs[i].dataset.recherche.indexOf(terme) !== -1;
-            blocs[i].hidden = !correspond;
-            if (correspond) { visibles++; }
+            var toute = !terme || correspond(blocs[i].dataset.rechercheMatiere || '', motsCherches);
+            var cartes = blocs[i].querySelectorAll('li[data-recherche]');
+            var visibles = 0;
+            for (var j = 0; j < cartes.length; j++) {
+                var montre = toute || correspond(cartes[j].dataset.recherche, motsCherches);
+                cartes[j].hidden = !montre;
+                if (montre) { visibles++; }
+            }
+            blocs[i].hidden = visibles === 0;
+            lecons += visibles;
         }
 
-        if (vide) { vide.hidden = !(terme && visibles === 0); }
+        var bientot = document.querySelector('.a-venir-matieres');
+        if (bientot) { bientot.hidden = Boolean(terme) && !correspond(bientot.dataset.recherche, motsCherches); }
+
+        var compte = $('recherche-compte');
+        if (compte) {
+            compte.hidden = !terme || lecons === 0;
+            compte.textContent = lecons + (lecons > 1 ? ' leçons trouvées' : ' leçon trouvée');
+        }
+
+        var vide = $('recherche-vide');
+        if (vide) { vide.hidden = !(terme && lecons === 0); }
         var effacer = $('effacer-recherche');
         if (effacer) { effacer.hidden = !terme; }
+
+        majRecherchePartout(champ.value.trim());
+    }
+
+    /**
+     * Le bouton qui passe le même mot à la recherche complète (js/recherche.js) :
+     * elle fouille aussi le texte des leçons et les quiz, et mène à l'endroit
+     * exact de la leçon.
+     */
+    function majRecherchePartout(terme) {
+        var bouton = $('recherche-partout');
+        var R = window.KarniellaRecherche;
+        if (!bouton) { return; }
+        if (!R || terme.length < 2) { bouton.hidden = true; return; }
+
+        bouton.hidden = false;
+        bouton.textContent = '🔎 Chercher « ' + terme + ' » dans le texte des leçons';
+        R.charger(function (ok) {
+            // La saisie a pu changer pendant le chargement de l'index.
+            if (!ok || $('recherche').value.trim() !== terme) { return; }
+            var total = R.chercher(terme).total;
+            bouton.textContent = total
+                ? '🔎 ' + total + (total > 1 ? ' passages' : ' passage') + ' parlent de « ' + terme + ' » — les voir'
+                : '🐴 Rien dans les leçons sur « ' + terme + ' » — demande au poney';
+        });
     }
 
     function brancherRecherche() {
@@ -238,7 +298,153 @@
                 champ.focus();
             });
         }
+
+        var partout = $('recherche-partout');
+        if (partout) {
+            partout.addEventListener('click', function () {
+                if (window.KarniellaRecherche) { window.KarniellaRecherche.ouvrir(champ.value.trim()); }
+            });
+        }
         filtrer();
+    }
+
+    /* ============================================================
+       Ma série — série de jours, objectif du jour, leçon à reprendre
+       ============================================================ */
+
+    function suiviDisponible() {
+        return window.KarniellaProgression && window.KarniellaProgression.disponible();
+    }
+
+    function creer(balise, classe, texte) {
+        var e = document.createElement(balise);
+        if (classe) { e.className = classe; }
+        if (texte !== undefined) { e.textContent = texte; }
+        return e;
+    }
+
+    /** La leçon ouverte le plus récemment, parmi celles du programme. */
+    function leconAReprendre() {
+        var pages = window.KarniellaProgression.pages();
+        var meilleure = null;
+        window.KarniellaProgramme.matieres.forEach(function (m) {
+            (m.lecons || []).forEach(function (l) {
+                var p = pages[l.id];
+                if (l.statut !== 'prete' || !p || !p.derniereVisite) { return; }
+                if (!meilleure || p.derniereVisite > meilleure.date) {
+                    meilleure = { lecon: l, date: p.derniereVisite };
+                }
+            });
+        });
+        return meilleure && meilleure.lecon;
+    }
+
+    function salutation() {
+        var heure = new Date().getHours();
+        if (heure >= 18 || heure < 5) { return 'Bonsoir Karniella 🌙'; }
+        return 'Salut Karniella 👋';
+    }
+
+    function etapeObjectif(fait, texte) {
+        var li = creer('li', fait ? 'fait' : '');
+        li.appendChild(creer('span', 'coche', fait ? '✓' : '')).setAttribute('aria-hidden', 'true');
+        li.appendChild(document.createTextNode(texte));
+        if (fait) { li.appendChild(creer('span', 'lecteur-seul', ' (fait)')); }
+        return li;
+    }
+
+    function rendreGalop() {
+        var zone = $('mon-galop');
+        if (!zone) { return; }
+        if (!suiviDisponible()) { zone.hidden = true; return; }
+
+        var serie = window.KarniellaProgression.serie();
+        var jour = serie.aujourdhui;
+        var actifAujourdhui = jour.lecons + jour.quiz > 0;
+        zone.textContent = '';
+
+        zone.appendChild(creer('h2', 'salut', salutation()));
+
+        var grille = creer('div', 'galop-grille');
+
+        // -- La série
+        var carteSerie = creer('div', 'galop-carte galop-serie' + (serie.actuelle ? '' : ' eteinte'));
+        carteSerie.appendChild(creer('span', 'flamme', serie.actuelle ? '🔥' : '🐴')).setAttribute('aria-hidden', 'true');
+        var bloc = creer('div');
+        if (serie.actuelle) {
+            bloc.appendChild(creer('strong', 'chiffre', serie.actuelle + (serie.actuelle > 1 ? ' jours de suite' : ' jour de suite')));
+            bloc.appendChild(creer('span', 'detail', actifAujourdhui
+                ? (serie.actuelle >= serie.record ? 'C\'est ton record !' : 'Ton record : ' + serie.record + ' jours')
+                : 'Révise aujourd\'hui pour la continuer !'));
+        } else {
+            bloc.appendChild(creer('strong', 'chiffre', 'Lance ta série !'));
+            bloc.appendChild(creer('span', 'detail', 'Une leçon par jour, et la flamme s\'allume.'));
+        }
+        carteSerie.appendChild(bloc);
+        grille.appendChild(carteSerie);
+
+        // -- L'objectif du jour
+        var carteObjectif = creer('div', 'galop-carte galop-objectif');
+        var fini = jour.lecons > 0 && jour.quiz > 0;
+        carteObjectif.appendChild(creer('strong', 'titre-carte', fini ? 'Objectif du jour atteint ! 🎉' : '🎯 Objectif du jour'));
+        var etapes = creer('ul', 'etapes');
+        etapes.appendChild(etapeObjectif(jour.lecons > 0, 'Ouvrir une leçon'));
+        etapes.appendChild(etapeObjectif(jour.quiz > 0, 'Faire un quiz'));
+        carteObjectif.appendChild(etapes);
+        grille.appendChild(carteObjectif);
+
+        // -- La leçon à reprendre
+        var lecon = leconAReprendre();
+        if (lecon) {
+            var reprendre = creer('a', 'galop-carte galop-reprendre');
+            reprendre.href = '5e/' + lecon.id + '.html';
+            reprendre.appendChild(creer('span', 'icone', lecon.icone || ICONE_DEFAUT)).setAttribute('aria-hidden', 'true');
+            var texte = creer('span');
+            texte.appendChild(creer('span', 'detail', 'Reprendre'));
+            texte.appendChild(creer('strong', 'titre-carte', lecon.titre));
+            reprendre.appendChild(texte);
+            reprendre.appendChild(creer('span', 'fleche', '→')).setAttribute('aria-hidden', 'true');
+            grille.appendChild(reprendre);
+        }
+
+        zone.appendChild(grille);
+        zone.hidden = false;
+    }
+
+    /* ============================================================
+       Mes badges
+       ============================================================ */
+
+    function rendreBadges() {
+        var zone = $('mes-badges');
+        var liste = $('liste-badges');
+        if (!zone || !liste) { return; }
+        if (!suiviDisponible() || !window.KarniellaBadges) { zone.hidden = true; return; }
+
+        var badges = window.KarniellaBadges.liste();
+        if (!badges.length) { zone.hidden = true; return; }
+
+        var gagnes = badges.filter(function (b) { return b.obtenu; }).length;
+        $('badges-compte').textContent = gagnes
+            ? gagnes + ' sur ' + badges.length + ' — continue, il en reste à gagner !'
+            : 'Aucun pour l\'instant : ouvre une leçon pour gagner le premier !';
+        if (gagnes === badges.length) { $('badges-compte').textContent = 'Tous gagnés ! Tu es la reine de l\'écurie. 👑'; }
+
+        liste.textContent = '';
+        badges.forEach(function (b) {
+            var li = creer('li', 'badge' + (b.obtenu ? ' obtenu' : ''));
+            li.appendChild(creer('span', 'badge-icone', b.obtenu ? b.icone : '🔒')).setAttribute('aria-hidden', 'true');
+            li.appendChild(creer('strong', 'badge-nom', b.nom));
+            li.appendChild(creer('span', 'badge-quoi', b.quoi));
+            li.appendChild(creer('span', 'lecteur-seul', b.obtenu ? ' — gagné' : ' — pas encore gagné'));
+            liste.appendChild(li);
+        });
+        zone.hidden = false;
+    }
+
+    function rendreSuivi() {
+        rendreGalop();
+        rendreBadges();
     }
 
     /* ============================================================
@@ -257,9 +463,23 @@
             if (window.KarniellaProgression && window.KarniellaChatKnowledge) {
                 rendre();
                 filtrer();
+                rendreSuivi();
                 return;
             }
             if (essais-- > 0) { window.setTimeout(attendre, 300); }
+        })();
+
+        // Les badges arrivent par le chat eux aussi, et la progression change
+        // quand Karniella fait un quiz depuis le chat de l'accueil.
+        window.addEventListener('karniella:progression', function () {
+            // Après js/badges.js, qui écoute le même événement pour enregistrer
+            // le badge gagné avant qu'on l'affiche.
+            window.setTimeout(rendreSuivi, 0);
+        });
+        var essaisBadges = 20;
+        (function attendreBadges() {
+            if (window.KarniellaBadges && window.KarniellaProgression) { rendreSuivi(); return; }
+            if (essaisBadges-- > 0) { window.setTimeout(attendreBadges, 300); }
         })();
     }
 
