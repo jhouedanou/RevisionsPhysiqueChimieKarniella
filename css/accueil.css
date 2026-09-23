@@ -9,14 +9,15 @@
  * des leçons groupé par matière, un pied de page. Rien d'autre.
  */
 
+/* Les couleurs viennent de css/theme.css (clair et sombre). */
 :root {
-    --ac-fond: #FFF9FB;
-    --ac-encre: #49353F;
-    --ac-rose: #9D2F5C;
-    --ac-rose-clair: #C83F76;
-    --ac-bord: rgba(72, 40, 55, 0.14);
-    --ac-ombre: 0 10px 30px rgba(73, 30, 50, 0.12);
-    --ac-doux: #8A7480;
+    --ac-fond: var(--fond);
+    --ac-encre: var(--encre);
+    --ac-rose: var(--rose);
+    --ac-rose-clair: var(--rose-clair);
+    --ac-bord: var(--bord);
+    --ac-ombre: var(--ombre);
+    --ac-doux: var(--doux);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,10 +28,10 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(165deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
+    background: var(--fond-degrade);
     color: var(--ac-encre);
     font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
 }
 
@@ -80,7 +81,7 @@ body {
 .recherche label {
     display: block;
     margin-bottom: 7px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--ac-doux);
 }
@@ -90,7 +91,7 @@ body {
     align-items: center;
     gap: 9px;
     padding: 11px 15px;
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--ac-bord);
     border-radius: 14px;
     box-shadow: var(--ac-ombre);
@@ -109,25 +110,26 @@ body {
     border: 0;
     background: none;
     font-family: inherit;
-    font-size: 15px;
+    font-size: 17px;
     color: inherit;
 }
 
 .champ-recherche input:focus { outline: none; }
 
 .effacer-recherche {
+    min-height: 36px;
     border: 0;
     background: none;
     color: var(--ac-doux);
     font-family: inherit;
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     padding: 2px 6px;
     border-radius: 6px;
 }
 
-.effacer-recherche:hover { background: #FBE7EF; color: var(--ac-rose); }
-.effacer-recherche:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+.effacer-recherche:hover { background: var(--rose-pale); color: var(--ac-rose); }
+.effacer-recherche:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .recherche-compte {
     margin: -14px 0 14px 4px;
@@ -144,7 +146,7 @@ body {
     padding: 10px 16px;
     border: 1px dashed rgba(157, 47, 92, 0.4);
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--surface-voilee);
     color: var(--ac-rose);
     font-family: inherit;
     font-size: 14.5px;
@@ -153,15 +155,15 @@ body {
     cursor: pointer;
 }
 
-.recherche-partout:hover { background: #fff; border-style: solid; }
-.recherche-partout:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+.recherche-partout:hover { background: var(--surface); border-style: solid; }
+.recherche-partout:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .recherche-vide {
     margin-bottom: 26px;
     padding: 22px 18px;
     text-align: center;
     color: var(--ac-doux);
-    background: #fff;
+    background: var(--surface);
     border: 1px dashed var(--ac-bord);
     border-radius: 14px;
 }
@@ -173,8 +175,10 @@ body {
 .bloc-matiere {
     margin-bottom: 16px;
     padding: 18px 20px 20px;
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--ac-bord);
+    /* La couleur de la matière (css/matieres.css), pour la reconnaître d'un coup d'œil. */
+    border-top: 5px solid var(--matiere, var(--rose));
     border-radius: 16px;
     box-shadow: var(--ac-ombre);
 }
@@ -190,25 +194,34 @@ body {
 .titre-matiere .icone { font-size: 24px; line-height: 1; }
 
 .titre-matiere a {
-    color: var(--ac-rose);
-    font-size: 18px;
+    color: var(--matiere-texte, var(--ac-rose));
+    font-size: 20px;
     font-weight: 800;
     text-decoration: none;
 }
 
 .titre-matiere a:hover { text-decoration: underline; }
-.titre-matiere a:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+.titre-matiere a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-/* Avancement dans la matière, rempli par js/progression.js */
+/* Avancement dans la matière : un anneau qui se remplit, et le compte à côté. */
 .avancement {
     margin-left: auto;
-    padding: 3px 11px;
-    border-radius: 999px;
-    background: rgba(157, 47, 92, 0.1);
-    border: 1px solid rgba(157, 47, 92, 0.24);
-    color: var(--ac-rose);
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ac-doux);
+    font-size: 13px;
     font-weight: 700;
+}
+
+.anneau {
+    --p: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: conic-gradient(var(--matiere-fort, var(--rose)) calc(var(--p) * 1%), var(--rose-pale) 0);
+    -webkit-mask: radial-gradient(circle, transparent 9px, #000 10px);
+    mask: radial-gradient(circle, transparent 9px, #000 10px);
 }
 
 /* Les leçons sont des CARTES en grille, pas des lignes empilées : deux ou
@@ -238,7 +251,7 @@ body {
     gap: 7px;
     width: 100%;
     padding: 16px;
-    background: #FFF6FA;
+    background: var(--matiere-pale, var(--surface-douce));
     border: 1px solid var(--ac-bord);
     border-radius: 14px;
     color: inherit;
@@ -247,18 +260,18 @@ body {
 }
 
 a.carte:hover {
-    background: #fff;
+    background: var(--surface);
     transform: translateY(-3px);
-    box-shadow: 0 14px 28px rgba(73, 30, 50, 0.16);
+    box-shadow: var(--ombre-forte);
 }
 
-a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 .carte .icone { font-size: 26px; line-height: 1; }
-.carte .titre { font-size: 15px; font-weight: 800; line-height: 1.3; }
+.carte .titre { font-size: 17px; font-weight: 800; line-height: 1.3; }
 
 .carte .sous {
-    font-size: 12.5px;
+    font-size: 14px;
     line-height: 1.4;
     color: var(--ac-doux);
 }
@@ -270,15 +283,15 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     margin-top: auto;
     padding: 3px 10px;
     border-radius: 999px;
-    background: #E4F5E8;
-    color: #1F5C33;
+    background: var(--succes-fond);
+    color: var(--succes-texte);
     font-size: 11.5px;
     font-weight: 700;
 }
 
 /* Leçon annoncée au programme mais pas encore écrite. */
 .carte.a-venir {
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--surface-voilee);
     border-style: dashed;
     color: var(--ac-doux);
     cursor: default;
@@ -293,7 +306,7 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 .a-venir-matieres {
     margin: 18px 0 8px;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.55);
+    background: var(--surface-voilee);
     border: 1px dashed var(--ac-bord);
     border-radius: 16px;
     font-size: 14px;
@@ -315,7 +328,7 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     align-items: center;
     gap: 6px;
     padding: 5px 12px;
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--ac-bord);
     border-radius: 999px;
     color: var(--ac-encre);
@@ -324,7 +337,7 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 }
 
 .a-venir-matieres a:hover { border-color: var(--ac-rose); color: var(--ac-rose); }
-.a-venir-matieres a:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+.a-venir-matieres a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* ============================================================
    Ma série — au-dessus de la recherche
@@ -350,7 +363,7 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     align-items: center;
     gap: 12px;
     padding: 14px 16px;
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--ac-bord);
     border-radius: 16px;
     box-shadow: var(--ac-ombre);
@@ -368,13 +381,13 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 
 /* La série : la carte chaude, qui donne envie de ne pas la casser. */
 .galop-serie {
-    background: linear-gradient(135deg, #FFF3E0 0%, #FFE3EE 100%);
+    background: linear-gradient(135deg, var(--chaud-debut) 0%, var(--chaud-fin) 100%);
     border-color: rgba(230, 120, 40, 0.3);
 }
 
 .galop-serie .flamme { font-size: 34px; line-height: 1; }
 .galop-serie .chiffre { display: block; font-size: 18px; line-height: 1.25; }
-.galop-serie.eteinte { background: #fff; border-color: var(--ac-bord); }
+.galop-serie.eteinte { background: var(--surface); border-color: var(--ac-bord); }
 
 .galop-objectif { flex-direction: column; align-items: flex-start; gap: 8px; }
 
@@ -401,7 +414,7 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 }
 
 .galop-objectif li.fait { color: var(--ac-doux); text-decoration: line-through; }
-.galop-objectif li.fait .coche { background: #2E8B57; border-color: #2E8B57; }
+.galop-objectif li.fait .coche { background: var(--succes-bord); border-color: var(--succes-bord); }
 
 .galop-reprendre .icone { font-size: 28px; line-height: 1; }
 .galop-reprendre > span:nth-child(2) { flex: 1 1 auto; min-width: 0; }
@@ -411,8 +424,8 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.galop-reprendre:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(73, 30, 50, 0.16); }
-.galop-reprendre:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+.galop-reprendre:hover { transform: translateY(-3px); box-shadow: var(--ombre-forte); }
+.galop-reprendre:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 /* ============================================================
    Mes badges — sous le sommaire
@@ -421,7 +434,7 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 .mes-badges {
     margin-top: 22px;
     padding: 18px 20px 20px;
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--ac-bord);
     border-radius: 16px;
     box-shadow: var(--ac-ombre);
@@ -447,18 +460,18 @@ a.carte:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     padding: 14px 10px;
     border: 1px dashed var(--ac-bord);
     border-radius: 14px;
-    background: #FAF6F8;
+    background: var(--surface-grise);
     text-align: center;
     color: var(--ac-doux);
 }
 
 .badge-icone { font-size: 30px; line-height: 1.1; filter: grayscale(1); opacity: 0.55; }
-.badge-nom { font-size: 13.5px; line-height: 1.25; }
-.badge-quoi { font-size: 12px; line-height: 1.35; }
+.badge-nom { font-size: 14.5px; line-height: 1.25; }
+.badge-quoi { font-size: 13px; line-height: 1.35; }
 
 .badge.obtenu {
     border: 1px solid rgba(214, 160, 40, 0.45);
-    background: linear-gradient(160deg, #FFF8E1 0%, #FFEFF5 100%);
+    background: linear-gradient(160deg, var(--or-debut) 0%, var(--rose-tres-pale) 100%);
     color: var(--ac-encre);
 }
 

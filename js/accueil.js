@@ -34,18 +34,26 @@
        Progression — le module arrive de façon asynchrone
        ============================================================ */
 
-    function avancementMatiere(id) {
-        if (!window.KarniellaProgression || !window.KarniellaChatKnowledge) { return null; }
+    /**
+     * Leçons ouvertes et score moyen d'une matière, comptés sur les leçons du
+     * programme. (Le résumé de progression.js compte aussi la page sommaire de
+     * la matière : « 1/3 vues » pour deux leçons.)
+     */
+    function avancementMatiere(matiere) {
+        if (!window.KarniellaProgression) { return null; }
+        var pages = window.KarniellaProgression.pages();
+        var pretes = (matiere.lecons || []).filter(function (l) { return l.statut === 'prete'; });
+        if (!pretes.length) { return null; }
 
-        var lignes = window.KarniellaProgression.resume(window.KarniellaChatKnowledge.pages);
-        for (var i = 0; i < lignes.length; i++) {
-            if (lignes[i].matiere !== id) { continue; }
-            var l = lignes[i];
-            if (!l.total || !l.vues) { return null; }
-            return l.vues + '/' + l.total + ' vues' +
-                (l.scoreMoyen !== null ? ' · ' + l.scoreMoyen + '%' : '');
-        }
-        return null;
+        var vues = 0, somme = 0, notes = 0;
+        pretes.forEach(function (l) {
+            var p = pages[l.id];
+            if (!p) { return; }
+            if (p.visites > 0) { vues++; }
+            if (p.meilleurScore !== null) { somme += p.meilleurScore; notes++; }
+        });
+        if (!vues) { return null; }
+        return { vues: vues, total: pretes.length, score: notes ? Math.round(somme / notes) : null };
     }
 
     function scoreLecon(url) {
@@ -121,6 +129,7 @@
     function blocMatiere(matiere) {
         var section = document.createElement('section');
         section.className = 'bloc-matiere';
+        section.dataset.matiere = matiere.id;   // ses couleurs, css/matieres.css
 
         // Sert à la recherche. Le NOM de la matière montre toutes ses leçons ;
         // sinon chaque carte est filtrée sur son propre texte (voir filtrer()).
@@ -143,12 +152,22 @@
         titre.appendChild(icone);
         titre.appendChild(lien);
 
-        var avancement = avancementMatiere(matiere.id);
+        var avancement = avancementMatiere(matiere);
         if (avancement) {
             var badge = document.createElement('span');
             badge.className = 'avancement';
-            badge.textContent = avancement;
             badge.setAttribute('title', 'Ton avancement dans cette matière');
+
+            var anneau = document.createElement('span');
+            anneau.className = 'anneau';
+            anneau.setAttribute('aria-hidden', 'true');
+            anneau.style.setProperty('--p', Math.round(100 * avancement.vues / avancement.total));
+            badge.appendChild(anneau);
+
+            badge.appendChild(document.createTextNode(
+                avancement.vues + '/' + avancement.total + (avancement.total > 1 ? ' leçons vues' : ' leçon vue') +
+                (avancement.score !== null ? ' · 🎯 ' + avancement.score + ' %' : '')
+            ));
             titre.appendChild(badge);
         }
 

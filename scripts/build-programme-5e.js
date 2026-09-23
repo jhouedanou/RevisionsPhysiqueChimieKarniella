@@ -87,10 +87,13 @@ ${lecons.map(carteLecon).join('\n')}
 <title>${echapper(matiere.nom)} ${programme.niveau} - Révisions Karniella</title>
 <meta name="description" content="${echapper(matiere.description)}">
 <link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
 <link rel="stylesheet" href="../css/karniella-theme.css">
 <link rel="stylesheet" href="../css/lecon-5e.css">
 </head>
-<body class="lecon-5e">
+<body class="lecon-5e" data-matiere="${echapper(matiere.id)}">
 <header>
 <a class="btn-back" href="../index.html">← Retour à l'accueil</a>
 <span class="badge-niveau">Classe de ${echapper(programme.niveau)}</span>
@@ -111,6 +114,92 @@ ${corps}
 </body>
 </html>
 `;
+}
+
+/* ============================================================
+   Couleurs des matières — css/matieres.css
+   ============================================================ */
+
+const FICHIER_MATIERES_CSS = path.join(RACINE, 'css', 'matieres.css');
+const SURFACE_CLAIRE = '#FFFFFF';
+const SURFACE_SOMBRE = '#2A2027';     // --surface du mode sombre, css/theme.css
+
+function versRVB(hex) {
+    const h = hex.replace('#', '');
+    const plein = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+    return [0, 2, 4].map((i) => parseInt(plein.slice(i, i + 2), 16));
+}
+
+function versHex(rvb) {
+    return '#' + rvb.map((c) => Math.round(c).toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+
+function melanger(a, b, part) {
+    const x = versRVB(a);
+    const y = versRVB(b);
+    return versHex(x.map((c, i) => c + (y[i] - c) * part));
+}
+
+function luminance(hex) {
+    const [r, v, b] = versRVB(hex).map((c) => {
+        const s = c / 255;
+        return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * r + 0.7152 * v + 0.0722 * b;
+}
+
+function contraste(a, b) {
+    const [claire, sombre] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+    return (claire + 0.05) / (sombre + 0.05);
+}
+
+/** Rapproche `couleur` de `vers` jusqu'à atteindre 4,5:1 face à `fond`. */
+function lisible(couleur, fond, vers) {
+    for (let part = 0; part <= 1; part += 0.05) {
+        const essai = melanger(couleur, vers, part);
+        if (contraste(essai, fond) >= 4.5) { return essai; }
+    }
+    return vers;
+}
+
+/**
+ * Trois teintes par matière et par thème :
+ *   --matiere-fort   fond d'en-tête ou d'onglet actif, sous du texte blanc
+ *   --matiere-texte  titres et liens, sur la surface de la page
+ *   --matiere-pale   fond teinté des cartes et encadrés
+ * Toutes vérifiées à 4,5:1 : la couleur choisie dans le programme est une
+ * intention, pas une garantie de lisibilité (le vert de la SVT, en blanc
+ * dessus, ne passait pas).
+ */
+function ecrireCouleursMatieres(matieres) {
+    const lignes = [
+        '/**',
+        ' * matieres.css — GÉNÉRÉ par scripts/build-programme-5e.js',
+        ' * Ne pas éditer à la main : modifier `couleur` dans data/programme-5e.json',
+        ' * puis relancer `npm run build:programme`.',
+        ' */',
+        ''
+    ];
+
+    for (const m of matieres) {
+        if (!m.couleur) { continue; }
+        const fort = lisible(m.couleur, '#FFFFFF', '#000000');
+        lignes.push(
+            `[data-matiere="${m.id}"] {`,
+            `    --matiere: ${m.couleur};`,
+            `    --matiere-fort: ${fort};`,
+            `    --matiere-texte: ${lisible(m.couleur, SURFACE_CLAIRE, '#000000')};`,
+            `    --matiere-pale: ${melanger(m.couleur, SURFACE_CLAIRE, 0.9)};`,
+            '}',
+            `html[data-theme="dark"] [data-matiere="${m.id}"] {`,
+            `    --matiere-texte: ${lisible(m.couleur, SURFACE_SOMBRE, '#FFFFFF')};`,
+            `    --matiere-pale: ${melanger(m.couleur, SURFACE_SOMBRE, 0.78)};`,
+            '}',
+            ''
+        );
+    }
+
+    fs.writeFileSync(FICHIER_MATIERES_CSS, lignes.join('\n'), 'utf8');
 }
 
 /* ============================================================
@@ -137,6 +226,7 @@ function ecrireProgrammeJS(programme, matieres) {
             id: m.id,
             nom: m.nom,
             icone: m.icone,
+            couleur: m.couleur || null,
             description: m.description,
             lecons: (m.lecons || []).map((l) => ({
                 id: l.id,
@@ -195,6 +285,7 @@ function main() {
     }
 
     const taille = ecrireProgrammeJS(programme, matieres);
+    ecrireCouleursMatieres(matieres);
 
     console.log('\n✓ ' + matieres.length + ' sommaires écrits dans 5e/');
     console.log('  ' + totalPretes + ' leçon(s) disponible(s) sur ' + totalLecons + ' annoncée(s)');

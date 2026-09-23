@@ -1,0 +1,159 @@
+/**
+ * theme.css — Les couleurs du site, en clair et en sombre.
+ *
+ * Toutes les feuilles de 5e (accueil, leçons, recherche, badges) lisent leurs
+ * couleurs ici. Le mode sombre ne redéfinit QUE ces variables : aucune règle
+ * de mise en page n'a à connaître le thème.
+ *
+ * js/theme.js pose `data-theme="light"` ou `"dark"` sur <html> avant l'affichage
+ * (préférence du système, ou choix de Karniella avec le bouton 🌙). Sans
+ * JavaScript, le site reste en clair.
+ *
+ * Les couleurs propres à chaque matière vivent dans css/matieres.css, généré
+ * depuis data/programme-5e.json.
+ */
+
+:root {
+    color-scheme: light;
+
+    --fond: #FFF9FB;
+    --fond-degrade: linear-gradient(165deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
+    --surface: #FFFFFF;
+    --surface-douce: #FFF6FA;
+    --surface-grise: #FAF6F8;
+    --surface-voilee: rgba(255, 255, 255, 0.6);
+
+    --encre: #49353F;
+    --doux: #75606B;          /* 5:1 sur blanc — l'ancien #8A7480 tombait à 4:1 */
+    --bord: rgba(72, 40, 55, 0.14);
+    --ombre: 0 10px 30px rgba(73, 30, 50, 0.12);
+    --ombre-forte: 0 14px 28px rgba(73, 30, 50, 0.16);
+
+    --rose: #9D2F5C;
+    --rose-clair: #C83F76;
+    --rose-pale: #FBE7EF;
+    --rose-tres-pale: #FFF4F8;
+    --entete-fonce: #35212D;
+
+    --focus: #8A2BE2;
+    --surligne: #FFE08A;
+
+    --succes-fond: #E4F5E8;
+    --succes-texte: #1F5C33;
+    --succes-bord: #3C9A57;
+    --erreur-fond: #FBE4E9;
+    --erreur-texte: #8B2318;
+    --erreur-bord: #C0392B;
+
+    /* Encadrés des leçons, un ton par nature d'information */
+    --boite-exemple: #E9F3FB;
+    --boite-exemple-texte: #2F6F9D;
+    --boite-important: #FFF3DC;
+    --boite-important-texte: #8A5E0E;
+    --boite-important-bord: #C98A1E;
+    --boite-note: #EAF5EC;
+    --boite-note-texte: #2C7742;
+    --boite-dialogue: #F7F2FA;
+
+    /* Série de jours */
+    --chaud-debut: #FFF3E0;
+    --chaud-fin: #FFE3EE;
+    --or-debut: #FFF8E1;
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    --fond: #1B1418;
+    --fond-degrade: linear-gradient(165deg, #241820 0%, #1B1418 50%, #1E1915 100%);
+    --surface: #2A2027;
+    --surface-douce: #32262E;
+    --surface-grise: #2E242B;
+    --surface-voilee: rgba(42, 32, 39, 0.7);
+
+    --encre: #F3E6EC;
+    --doux: #C4B0BA;
+    --bord: rgba(255, 220, 235, 0.14);
+    --ombre: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --ombre-forte: 0 14px 28px rgba(0, 0, 0, 0.45);
+
+    --rose: #F28DB5;
+    --rose-clair: #F7A8C8;
+    --rose-pale: #45283A;
+    --rose-tres-pale: #30222B;
+    --entete-fonce: #140E12;
+
+    --focus: #C9A2FF;
+    --surligne: #7A5C0C;
+
+    --succes-fond: #1E3A27;
+    --succes-texte: #A8E6BC;
+    --succes-bord: #5CC27F;
+    --erreur-fond: #45202A;
+    --erreur-texte: #FFB4BF;
+    --erreur-bord: #E0707F;
+
+    --boite-exemple: #1D2F3D;
+    --boite-exemple-texte: #93C8EE;
+    --boite-important: #3A2E17;
+    --boite-important-texte: #F0C46A;
+    --boite-important-bord: #C98A1E;
+    --boite-note: #1D3325;
+    --boite-note-texte: #92D8A7;
+    --boite-dialogue: #2F2535;
+
+    --chaud-debut: #3A2618;
+    --chaud-fin: #3A1E2B;
+    --or-debut: #3A3018;
+}
+
+/* ============================================================
+   Réglages d'affichage : 🌙 et A+ (js/theme.js)
+   ============================================================ */
+
+.reglages {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    display: flex;
+    gap: 6px;
+}
+
+.reglage {
+    min-width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid var(--bord);
+    background: var(--surface);
+    color: var(--rose);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(73, 30, 50, 0.14);
+}
+
+.reglage:hover { background: var(--rose-pale); }
+.reglage:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.reglage[aria-pressed="true"] { background: var(--rose-pale); border-color: var(--rose); }
+
+/* Sur téléphone, les boutons des coins (🌙 A+ à gauche, 🔍 à droite)
+   chevaucheraient le bouton Retour, centré : on descend le contenu. */
+@media (max-width: 560px) {
+    .reglages { top: 10px; left: 10px; }
+    body.lecon-5e > header,
+    header.accueil-entete { padding-top: 64px; }
+}
+
+/* Texte plus grand : tout le site est en px, `zoom` est le seul levier qui
+   agrandit tout d'un coup sans réécrire chaque feuille. Seulement sur le
+   contenu de la page : sur <body>, il agrandirait aussi le chat et la
+   recherche, fixés à l'écran, qui déborderaient. */
+html[data-texte="grand"] body > header,
+html[data-texte="grand"] body > main,
+html[data-texte="grand"] body > .tabs,
+html[data-texte="grand"] body > footer,
+html[data-texte="grand"] body > .pied { zoom: 1.15; }

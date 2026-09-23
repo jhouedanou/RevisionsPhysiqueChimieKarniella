@@ -505,23 +505,25 @@
        avec sa valeur en repli. */
 
     var CSS = [
-        '.kv-bouton{margin-left:6px;padding:1px 5px;border:1px solid rgba(157,47,92,.3);',
-        'border-radius:7px;background:#fff;font-size:13px;line-height:1.5;cursor:pointer;',
+        // Couleurs du thème (css/theme.css), avec des replis pour les pages sans.
+        '.kv-bouton{margin-left:6px;min-width:34px;min-height:34px;padding:2px 7px;',
+        'border:1px solid var(--bord,rgba(157,47,92,.3));',
+        'border-radius:9px;background:var(--surface,#fff);font-size:15px;line-height:1.5;cursor:pointer;',
         'vertical-align:middle;transition:background .15s ease,transform .15s ease}',
-        '.kv-bouton:hover{background:#FBE7EF}',
-        '.kv-bouton:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
-        '.kv-bouton.kv-parle{background:var(--l5-rose,#9D2F5C);border-color:var(--l5-rose,#9D2F5C);',
+        '.kv-bouton:hover{background:var(--rose-pale,#FBE7EF)}',
+        '.kv-bouton:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}',
+        '.kv-bouton.kv-parle{background:var(--l5-fort,#9D2F5C);border-color:var(--l5-fort,#9D2F5C);',
         'animation:kv-pulse 1s ease-in-out infinite}',
         '@keyframes kv-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}',
         '@media (prefers-reduced-motion:reduce){.kv-bouton.kv-parle{animation:none}}',
         '.kv-reglage{display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:900px;',
         'margin:12px auto 0;padding:0 16px;font-size:13px}',
-        '.kv-vitesse{padding:5px 12px;border:1px solid rgba(157,47,92,.3);border-radius:999px;',
-        'background:#fff;color:var(--l5-rose,#9D2F5C);font-family:inherit;font-size:12.5px;',
+        '.kv-vitesse{min-height:36px;padding:5px 14px;border:1px solid var(--bord,rgba(157,47,92,.3));border-radius:999px;',
+        'background:var(--surface,#fff);color:var(--l5-rose,#9D2F5C);font-family:inherit;font-size:14px;',
         'font-weight:700;cursor:pointer}',
-        '.kv-vitesse:hover{background:#FBE7EF}',
-        '.kv-vitesse.actif{background:var(--l5-rose,#9D2F5C);border-color:var(--l5-rose,#9D2F5C);color:#fff}',
-        '.kv-vitesse:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}'
+        '.kv-vitesse:hover{background:var(--rose-pale,#FBE7EF)}',
+        '.kv-vitesse.actif{background:var(--l5-fort,#9D2F5C);border-color:var(--l5-fort,#9D2F5C);color:#fff}',
+        '.kv-vitesse:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}'
     ].join('');
 
     function installerStyle() {

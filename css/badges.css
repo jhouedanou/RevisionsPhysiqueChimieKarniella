@@ -17,7 +17,7 @@
     max-width: min(380px, calc(100vw - 32px));
     padding: 12px 18px 12px 12px;
     border-radius: 18px;
-    background: linear-gradient(125deg, #35212D 0%, #9D2F5C 100%);
+    background: linear-gradient(125deg, var(--entete-fonce, #35212D) 0%, #9D2F5C 100%);
     color: #fff;
     font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
     font-size: 14px;

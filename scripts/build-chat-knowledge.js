@@ -130,7 +130,9 @@ function tronquer(texte) {
 }
 
 const TITRES = 'h2, h3, h4';
-const MAX_NOTIONS = 14;
+// 14 coupait les leçons riches : sur « Les mélanges », « La dissolution » (dans
+// À retenir) passait à la trappe et le chat répondait qu'il ne savait pas.
+const MAX_NOTIONS = 30;
 
 /**
  * Découpe un conteneur en notions : chaque titre ouvre une notion, on accumule
@@ -193,6 +195,16 @@ function extraireNotions($, conteneur, idOnglet) {
 function extraireVocabulaire($, idOnglet) {
     const notions = [];
 
+    // Un tableau de correction (« Réponse donnée | … », « Correction | … ») a la
+    // même classe qu'un tableau de vocabulaire, mais sa première colonne répète
+    // les mêmes étiquettes d'une question à l'autre. Un vrai mot de vocabulaire
+    // n'apparaît qu'une fois : ce qui revient est une étiquette, pas un mot.
+    const occurrences = {};
+    $('.table-vocab tbody tr').each((_, ligne) => {
+        const cle = normaliser($(ligne).find('td').first().text());
+        occurrences[cle] = (occurrences[cle] || 0) + 1;
+    });
+
     $('.table-vocab').each((_, table) => {
         // La langue du tableau suit la notion jusque dans le chat, qui lit ses
         // réponses à voix haute : « A canteen. It's a place where students go
@@ -217,6 +229,7 @@ function extraireVocabulaire($, idOnglet) {
             );
 
             if (!mot || mot.length > 60 || definition.length < 10) { return; }
+            if (occurrences[normaliser(mot)] > 1) { return; }
             if (!motsUtiles(mot).length) { return; }
 
             const notion = {

@@ -1,0 +1,93 @@
+/**
+ * matieres.css — GÉNÉRÉ par scripts/build-programme-5e.js
+ * Ne pas éditer à la main : modifier `couleur` dans data/programme-5e.json
+ * puis relancer `npm run build:programme`.
+ */
+
+[data-matiere="anglais"] {
+    --matiere: #2F6F9D;
+    --matiere-fort: #2F6F9D;
+    --matiere-texte: #2F6F9D;
+    --matiere-pale: #EAF1F5;
+}
+html[data-theme="dark"] [data-matiere="anglais"] {
+    --matiere-texte: #6393B6;
+    --matiere-pale: #2B3141;
+}
+
+[data-matiere="physique-chimie"] {
+    --matiere: #9A6A12;
+    --matiere-fort: #9A6A12;
+    --matiere-texte: #9A6A12;
+    --matiere-pale: #F5F0E7;
+}
+html[data-theme="dark"] [data-matiere="physique-chimie"] {
+    --matiere-texte: #AE8841;
+    --matiere-pale: #433022;
+}
+
+[data-matiere="mathematiques"] {
+    --matiere: #9D2F5C;
+    --matiere-fort: #9D2F5C;
+    --matiere-texte: #9D2F5C;
+    --matiere-pale: #F5EAEF;
+}
+html[data-theme="dark"] [data-matiere="mathematiques"] {
+    --matiere-texte: #BF7895;
+    --matiere-pale: #432333;
+}
+
+[data-matiere="svt"] {
+    --matiere: #3C9A57;
+    --matiere-fort: #33834A;
+    --matiere-texte: #33834A;
+    --matiere-pale: #ECF5EE;
+}
+html[data-theme="dark"] [data-matiere="svt"] {
+    --matiere-texte: #469F5F;
+    --matiere-pale: #2E3B32;
+}
+
+[data-matiere="francais"] {
+    --matiere: #7B4397;
+    --matiere-fort: #7B4397;
+    --matiere-texte: #7B4397;
+    --matiere-pale: #F2ECF5;
+}
+html[data-theme="dark"] [data-matiere="francais"] {
+    --matiere-texte: #A37BB6;
+    --matiere-pale: #3C2840;
+}
+
+[data-matiere="histoire-geo"] {
+    --matiere: #2C7742;
+    --matiere-fort: #2C7742;
+    --matiere-texte: #2C7742;
+    --matiere-pale: #EAF1EC;
+}
+html[data-theme="dark"] [data-matiere="histoire-geo"] {
+    --matiere-texte: #619971;
+    --matiere-pale: #2A332D;
+}
+
+[data-matiere="edhc"] {
+    --matiere: #C0392B;
+    --matiere-fort: #C0392B;
+    --matiere-texte: #C0392B;
+    --matiere-pale: #F9EBEA;
+}
+html[data-theme="dark"] [data-matiere="edhc"] {
+    --matiere-texte: #D3746B;
+    --matiere-pale: #4B2628;
+}
+
+[data-matiere="tice"] {
+    --matiere: #2F6F9D;
+    --matiere-fort: #2F6F9D;
+    --matiere-texte: #2F6F9D;
+    --matiere-pale: #EAF1F5;
+}
+html[data-theme="dark"] [data-matiere="tice"] {
+    --matiere-texte: #6393B6;
+    --matiere-pale: #2B3141;
+}

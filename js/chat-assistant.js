@@ -583,6 +583,30 @@
         }
     ];
 
+    /**
+     * Les liens de la base générale ont été écrits pour des pages à la racine :
+     * depuis une leçon de 5e/, « physique.html » visait 5e/physique.html, qui
+     * n'existe pas. On les rend absolus. Les sommaires de matière de 6e sont
+     * remplacés par ceux de 5e ; les leçons de 6e, elles, restent à la racine et
+     * servent de rappel.
+     */
+    var SOMMAIRES_5E = {
+        'mathematiques.html': 'mathematiques',
+        'physique.html': 'physique-chimie',
+        'svt-lecons.html': 'svt',
+        'francais-lecons.html': 'francais',
+        'histoire-geographie-lecons.html': 'histoire-geo',
+        'education-civique.html': 'edhc',
+        'tice.html': 'tice'
+    };
+
+    function liensDuSite(html) {
+        return String(html).replace(/href="([a-z0-9-]+\.html)"/g, function (tout, fichier) {
+            var cible = SOMMAIRES_5E[fichier] ? '5e/' + SOMMAIRES_5E[fichier] + '.html' : fichier;
+            return 'href="' + RACINE + cible + '"';
+        });
+    }
+
     /* ============================================================
        2) OUTILS DE NORMALISATION ET DE RECHERCHE
        ============================================================ */
@@ -694,10 +718,15 @@
                 reponse += '<br><span class="kc-source">📍 Onglet « ' +
                     echapper(libelle) +' » de cette page</span>';
             }
+            // Les mots du TEXTE comptent aussi, en plus faible : « dissolution »
+            // doit trouver la notion « Dissoudre », qui en parle sans le titrer.
+            var motsTexte = {};
+            decouper(normaliser(notion.texte || '')).forEach(function (m) { motsTexte[m] = true; });
             return {
                 id: 'page:' + detail.slug + ':' + i,
                 matiere: detail.matiere,
                 keywords: motsClesDepuisTitre(notion.titre),
+                motsTexte: motsTexte,
                 reponse: reponse
             };
         });
@@ -725,7 +754,7 @@
                     keywords: motsClesDepuisTitre(notion.titre),
                     reponse: 'Ça, c\'est dans une autre leçon : <strong>' +
                         echapper(notion.titre) + '</strong>.<br>' +
-                        'Tu la trouveras dans <a href="' + echapper(slug) + '.html">' +
+                        'Tu la trouveras dans <a href="' + RACINE + '5e/' + echapper(slug) + '.html">' +
                         echapper(autre.titre) + '</a> 🐴'
                 });
             });
@@ -835,6 +864,15 @@
                     // Tolère les variantes : fraction / fractions, droite / droites.
                     score += 1.3;
                 }
+            }
+        }
+        if (entree.motsTexte) {
+            var titre = entree.keywords;
+            for (var k = 0; k < motsQuestion.length; k++) {
+                var m = motsQuestion[k];
+                if (m.length < 4 || !entree.motsTexte[m] || titre.indexOf(m) !== -1) { continue; }
+                // Un mot long est rare, donc parlant ; un mot court l'est moins.
+                score += m.length >= 6 ? 1.5 : 0.8;
             }
         }
         return score;
@@ -1006,8 +1044,37 @@
         '#kc-messages{padding:12px}',
         '}',
 
+        // Bulle d'invitation, les premières fois : sans elle, rien ne dit que le
+        // bouton 🐴 sait répondre aux questions.
+        '#kc-invite{position:fixed;right:20px;bottom:90px;z-index:99998;max-width:230px;padding:11px 15px;',
+        'border-radius:16px 16px 4px 16px;background:#fff;color:#49353F;border:1px solid rgba(72,40,55,.14);',
+        "box-shadow:0 12px 30px rgba(73,30,50,.2);font-family:'Aptos','Avenir Next','Nunito Sans','Segoe UI',sans-serif;",
+        'font-size:14px;line-height:1.35;text-align:left;cursor:pointer;animation:kc-invite .45s ease}',
+        '#kc-invite strong{display:block;color:#9D2F5C}',
+        '#kc-invite:focus-visible{outline:3px solid #8A2BE2;outline-offset:3px}',
+        '@keyframes kc-invite{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}',
+
+        // Le bouton flottant ne doit pas cacher la fin de la page.
+        'body::after{content:"";display:block;height:84px}',
+
+        // Mode sombre (js/theme.js pose data-theme sur <html>).
+        'html[data-theme="dark"] #kc-fenetre{background:#1F171C;color:#F3E6EC;border-color:rgba(255,220,235,.14)}',
+        'html[data-theme="dark"] .kc-bot{background:#2A2027;color:#F3E6EC;border-color:rgba(255,220,235,.12);border-left-color:#F28DB5}',
+        'html[data-theme="dark"] .kc-msg a{color:#F7A8C8}',
+        'html[data-theme="dark"] #kc-suggestions,html[data-theme="dark"] #kc-actions{background:#2A1F26;border-color:rgba(255,220,235,.1)}',
+        'html[data-theme="dark"] .kc-sug,html[data-theme="dark"] .kc-action{background:#32262E;color:#F7A8C8;border-color:rgba(247,168,200,.3)}',
+        'html[data-theme="dark"] .kc-sug:hover,html[data-theme="dark"] .kc-action:hover{background:#9D2F5C;color:#fff}',
+        'html[data-theme="dark"] .kc-option{background:#32262E;color:#F3E6EC;border-color:rgba(247,168,200,.3)}',
+        'html[data-theme="dark"] .kc-option.kc-juste{background:#1E3A27;border-color:#5CC27F;color:#A8E6BC}',
+        'html[data-theme="dark"] .kc-option.kc-faux{background:#45202A;border-color:#E0707F;color:#FFB4BF}',
+        'html[data-theme="dark"] .kc-plus-simple{color:#F7A8C8}',
+        'html[data-theme="dark"] #kc-formulaire{background:#241B21;border-color:rgba(255,220,235,.1)}',
+        'html[data-theme="dark"] #kc-saisie{background:#1B1418;color:#F3E6EC;border-color:rgba(255,220,235,.2)}',
+        'html[data-theme="dark"] #kc-invite{background:#2A2027;color:#F3E6EC;border-color:rgba(255,220,235,.14)}',
+        'html[data-theme="dark"] #kc-invite strong{color:#F7A8C8}',
+
         // Respecte la préférence "moins d'animations"
-        '@media (prefers-reduced-motion:reduce){#kc-bulle{transition:none}#kc-bulle:hover{transform:none}}'
+        '@media (prefers-reduced-motion:reduce){#kc-bulle{transition:none}#kc-bulle:hover{transform:none}#kc-invite{animation:none}}'
     ].join('');
 
     /* ============================================================
@@ -1071,7 +1138,7 @@
         var div = document.createElement('div');
         div.className = 'kc-msg ' + (auteur === 'user' ? 'kc-user' : 'kc-bot');
         if (html) {
-            div.innerHTML = contenu;             // contenu de confiance (base interne)
+            div.innerHTML = liensDuSite(contenu);   // contenu de confiance (base interne)
         } else {
             div.textContent = contenu;           // texte utilisateur : jamais en innerHTML
         }
@@ -1610,7 +1677,52 @@
         traiter(question, 'explication');
     }
 
+    /* ============================================================
+       Invitation — les trois premières visites seulement
+       ============================================================ */
+
+    var CLE_INVITE = 'kc-invite';
+    var MAX_INVITES = 3;
+    var elInvite = null;
+
+    function lireInvites() {
+        try { return parseInt(window.localStorage.getItem(CLE_INVITE), 10) || 0; } catch (err) { return MAX_INVITES; }
+    }
+
+    function ecrireInvites(n) {
+        try { window.localStorage.setItem(CLE_INVITE, String(n)); } catch (err) { /* sans conséquence */ }
+    }
+
+    function retirerInvite() {
+        if (elInvite && elInvite.parentNode) { elInvite.parentNode.removeChild(elInvite); }
+        elInvite = null;
+    }
+
+    function inviter() {
+        var vues = lireInvites();
+        if (vues >= MAX_INVITES) { return; }
+        ecrireInvites(vues + 1);
+
+        window.setTimeout(function () {
+            if (elFenetre.classList.contains('kc-ouvert')) { return; }
+            elInvite = document.createElement('button');
+            elInvite.id = 'kc-invite';
+            elInvite.type = 'button';
+            var titre = document.createElement('strong');
+            titre.textContent = 'Une question ? 🐴';
+            elInvite.appendChild(titre);
+            elInvite.appendChild(document.createTextNode(
+                'Demande-moi, je connais tes leçons. Je peux aussi t\'interroger !'));
+            elInvite.addEventListener('click', function () { retirerInvite(); ouvrir(); });
+            document.body.appendChild(elInvite);
+            window.setTimeout(retirerInvite, 9000);
+        }, 1500);
+    }
+
     function ouvrir() {
+        // Elle a trouvé le chat : plus besoin de l'inviter.
+        retirerInvite();
+        ecrireInvites(MAX_INVITES);
         dernierFocus = document.activeElement;
         elFenetre.classList.add('kc-ouvert');
         elFenetre.setAttribute('aria-hidden', 'false');
@@ -1786,6 +1898,7 @@
         // Tôt, et pas avec les connaissances : le bouton 🔍 doit apparaître
         // tout de suite dans l'en-tête.
         chargerModule('KarniellaRecherche', 'js/recherche.js');
+        inviter();
 
         // Les connaissances de la page arrivent de façon asynchrone : on affiche
         // d'abord une fenêtre utilisable, puis on la personnalise à l'arrivée.

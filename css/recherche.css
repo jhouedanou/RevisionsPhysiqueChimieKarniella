@@ -5,14 +5,20 @@
  * reprennent celles de l'accueil et des leçons de 5e.
  */
 
+/* Couleurs : css/theme.css (clair et sombre). Les valeurs de repli servent aux
+   pages qui ne chargeraient pas encore le thème. */
 .rech-voile,
 .rech-bouton {
-    --rech-encre: #49353F;
-    --rech-rose: #9D2F5C;
-    --rech-rose-clair: #C83F76;
-    --rech-doux: #7A6470;
-    --rech-bord: rgba(72, 40, 55, 0.14);
-    --rech-fond-actif: #FBE7EF;
+    --rech-encre: var(--encre, #49353F);
+    --rech-rose: var(--rose, #9D2F5C);
+    --rech-rose-clair: var(--rose-clair, #C83F76);
+    --rech-doux: var(--doux, #75606B);
+    --rech-bord: var(--bord, rgba(72, 40, 55, 0.14));
+    --rech-fond-actif: var(--rose-pale, #FBE7EF);
+    --rech-surface: var(--surface, #FFFFFF);
+    --rech-fond: var(--fond, #FFF9FB);
+    --rech-focus: var(--focus, var(--rech-focus));
+    --rech-surligne: var(--surligne, #FFE08A);
 }
 
 /* ============================================================
@@ -33,7 +39,7 @@
     padding: 0 16px;
     border-radius: 999px;
     border: 1px solid var(--rech-bord);
-    background: #fff;
+    background: var(--rech-surface);
     color: var(--rech-rose);
     font-family: inherit;
     font-size: 14px;
@@ -44,7 +50,7 @@
 }
 
 .rech-bouton:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(73, 30, 50, 0.2); }
-.rech-bouton:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+.rech-bouton:focus-visible { outline: 3px solid var(--rech-focus); outline-offset: 3px; }
 
 /* Sur l'en-tête sombre des leçons, le bouton reste blanc mais sans ombre lourde. */
 body.lecon-5e > header .rech-bouton {
@@ -87,7 +93,7 @@ html.rech-ouverte { overflow: hidden; }
     max-width: 640px;
     max-height: min(640px, 88vh);
     overflow: hidden;
-    background: #FFF9FB;
+    background: var(--rech-fond);
     border: 1px solid var(--rech-bord);
     border-radius: 22px;
     box-shadow: 0 24px 70px rgba(53, 33, 45, 0.35);
@@ -108,7 +114,7 @@ html.rech-ouverte { overflow: hidden; }
     align-items: center;
     gap: 10px;
     padding: 14px 16px;
-    background: #fff;
+    background: var(--rech-surface);
     border-bottom: 1px solid var(--rech-bord);
 }
 
@@ -133,7 +139,7 @@ html.rech-ouverte { overflow: hidden; }
     padding: 0 12px;
     border: 1px solid var(--rech-bord);
     border-radius: 10px;
-    background: #fff;
+    background: var(--rech-surface);
     color: var(--rech-doux);
     font-family: inherit;
     font-size: 13px;
@@ -142,7 +148,7 @@ html.rech-ouverte { overflow: hidden; }
 }
 
 .rech-fermer:hover { color: var(--rech-rose); border-color: var(--rech-rose); }
-.rech-fermer:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+.rech-fermer:focus-visible { outline: 3px solid var(--rech-focus); outline-offset: 2px; }
 
 .rech-resultats {
     flex: 1 1 auto;
@@ -193,7 +199,7 @@ html.rech-ouverte { overflow: hidden; }
     border-color: rgba(157, 47, 92, 0.25);
 }
 
-.rech-item:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 1px; }
+.rech-item:focus-visible { outline: 3px solid var(--rech-focus); outline-offset: 1px; }
 
 .rech-icone {
     flex: 0 0 auto;
@@ -203,7 +209,7 @@ html.rech-ouverte { overflow: hidden; }
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    background: #fff;
+    background: var(--rech-surface);
     border: 1px solid var(--rech-bord);
     font-size: 20px;
     line-height: 1;
@@ -233,7 +239,7 @@ html.rech-ouverte { overflow: hidden; }
 .rech-item mark {
     padding: 0 2px;
     border-radius: 4px;
-    background: #FFE08A;
+    background: var(--rech-surligne);
     color: inherit;
 }
 
@@ -260,7 +266,7 @@ html.rech-ouverte { overflow: hidden; }
     padding: 0 14px;
     border: 1px solid var(--rech-bord);
     border-radius: 999px;
-    background: #fff;
+    background: var(--rech-surface);
     color: var(--rech-encre);
     font-family: inherit;
     font-size: 14px;
@@ -269,13 +275,13 @@ html.rech-ouverte { overflow: hidden; }
 }
 
 .rech-puce:hover { border-color: var(--rech-rose); color: var(--rech-rose); }
-.rech-puce:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+.rech-puce:focus-visible { outline: 3px solid var(--rech-focus); outline-offset: 2px; }
 
 .rech-pied {
     margin: 0;
     padding: 10px 16px;
     border-top: 1px solid var(--rech-bord);
-    background: #fff;
+    background: var(--rech-surface);
     font-size: 12.5px;
     color: var(--rech-doux);
     text-align: center;

@@ -9,23 +9,29 @@
  * chargées avant celle-ci.
  */
 
-:root {
-    --l5-fond: #FFF9FB;
-    --l5-encre: #49353F;
-    --l5-rose: #9D2F5C;
-    --l5-rose-clair: #C83F76;
-    --l5-bord: rgba(72, 40, 55, 0.14);
-    --l5-ombre: 0 10px 30px rgba(73, 30, 50, 0.12);
+/* Couleurs : css/theme.css (clair et sombre) et css/matieres.css (la teinte
+   de la matière, posée par data-matiere sur <body>). Sans matière connue, on
+   retombe sur le rose du site. */
+:root,
+[data-matiere] {
+    --l5-fond: var(--fond);
+    --l5-encre: var(--encre);
+    --l5-rose: var(--matiere-texte, var(--rose));
+    --l5-rose-clair: var(--matiere-texte, var(--rose-clair));
+    --l5-fort: var(--matiere-fort, #9D2F5C);
+    --l5-pale: var(--matiere-pale, var(--rose-pale));
+    --l5-bord: var(--bord);
+    --l5-ombre: var(--ombre);
     --l5-rayon: 16px;
 }
 
 body.lecon-5e {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(160deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
+    background: var(--fond-degrade);
     color: var(--l5-encre);
     font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
 }
 
@@ -37,7 +43,7 @@ body.lecon-5e {
     position: relative;
     padding: 26px 20px 22px;
     text-align: center;
-    background: linear-gradient(125deg, #35212D 0%, #9D2F5C 100%);
+    background: linear-gradient(125deg, var(--entete-fonce) 0%, var(--l5-fort) 100%);
     color: #fff;
 }
 
@@ -102,22 +108,23 @@ body.lecon-5e {
     padding: 9px 16px;
     border: 1px solid var(--l5-bord);
     border-radius: 11px;
-    background: #fff;
+    min-height: 44px;
+    background: var(--surface);
     color: var(--l5-rose);
     font-family: inherit;
-    font-size: 13.5px;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.tab-button:hover { background: #FBE7EF; }
+.tab-button:hover { background: var(--l5-pale); }
 .tab-button.active {
-    background: var(--l5-rose);
-    border-color: var(--l5-rose);
+    background: var(--l5-fort);
+    border-color: var(--l5-fort);
     color: #fff;
 }
-.tab-button:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 2px; }
+.tab-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 .content { max-width: 900px; margin: 0 auto; padding: 16px; }
 
@@ -138,7 +145,7 @@ body.lecon-5e {
    ============================================================ */
 
 .container {
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--l5-bord);
     border-radius: var(--l5-rayon);
     box-shadow: var(--l5-ombre);
@@ -174,15 +181,15 @@ body.lecon-5e {
     border-left: 5px solid;
 }
 
-.definition-box { background: #FBE7EF; border-left-color: var(--l5-rose); }
-.example-box    { background: #E9F3FB; border-left-color: #2F6F9D; }
-.important-box  { background: #FFF3DC; border-left-color: #C98A1E; }
-.note-box       { background: #EAF5EC; border-left-color: #3C9A57; }
+.definition-box { background: var(--l5-pale); border-left-color: var(--l5-fort); }
+.example-box    { background: var(--boite-exemple); border-left-color: var(--boite-exemple-texte); }
+.important-box  { background: var(--boite-important); border-left-color: var(--boite-important-bord); }
+.note-box       { background: var(--boite-note); border-left-color: var(--succes-bord); }
 
 .definition-box h4 { color: var(--l5-rose); }
-.example-box h4    { color: #2F6F9D; }
-.important-box h4  { color: #9A6A12; }
-.note-box h4       { color: #2C7742; }
+.example-box h4    { color: var(--boite-exemple-texte); }
+.important-box h4  { color: var(--boite-important-texte); }
+.note-box h4       { color: var(--boite-note-texte); }
 
 /* Tableau de vocabulaire — le format naturel pour l'anglais. */
 .table-vocab {
@@ -200,8 +207,8 @@ body.lecon-5e {
     vertical-align: top;
 }
 
-.table-vocab th { background: var(--l5-rose); color: #fff; font-size: 14px; }
-.table-vocab tbody tr:nth-child(even) { background: #FFF4F8; }
+.table-vocab th { background: var(--l5-fort); color: #fff; font-size: 14px; }
+.table-vocab tbody tr:nth-child(even) { background: var(--rose-tres-pale); }
 .table-vocab td:first-child { font-weight: 700; color: var(--l5-rose); white-space: nowrap; }
 
 @media (max-width: 560px) {
@@ -216,8 +223,8 @@ body.lecon-5e {
 .dialogue {
     margin: 12px 0;
     padding: 14px 16px;
-    background: #F7F2FA;
-    border: 1px dashed rgba(157, 47, 92, 0.35);
+    background: var(--boite-dialogue);
+    border: 1px dashed var(--bord);
     border-radius: 12px;
 }
 
@@ -227,8 +234,8 @@ body.lecon-5e {
 
 /* Passage que je n'ai pas pu lire sur la photo : à compléter par Karniella. */
 .a-completer {
-    background: #FFF3DC;
-    border-bottom: 2px dotted #C98A1E;
+    background: var(--boite-important);
+    border-bottom: 2px dotted var(--boite-important-bord);
     padding: 0 4px;
     font-style: italic;
 }
@@ -249,7 +256,7 @@ body.lecon-5e {
     flex-direction: column;
     gap: 6px;
     padding: 18px;
-    background: #fff;
+    background: var(--surface);
     border: 1px solid var(--l5-bord);
     border-radius: var(--l5-rayon);
     box-shadow: var(--l5-ombre);
@@ -258,8 +265,8 @@ body.lecon-5e {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-a.carte-lecon:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(73, 30, 50, 0.2); }
-a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
+a.carte-lecon:hover { transform: translateY(-3px); box-shadow: var(--ombre-forte); }
+a.carte-lecon:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 .carte-lecon .icone { font-size: 28px; line-height: 1; }
 .carte-lecon h3 { margin: 0; color: var(--l5-rose); font-size: 17px; }
@@ -267,13 +274,13 @@ a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 
 /* Leçon pas encore saisie : visible, mais clairement inerte. */
 .carte-lecon.a-venir {
-    background: #FBF7F9;
+    background: var(--surface-grise);
     border-style: dashed;
     box-shadow: none;
     cursor: default;
 }
 
-.carte-lecon.a-venir h3 { color: #8A7480; }
+.carte-lecon.a-venir h3 { color: var(--doux); }
 
 .etiquette {
     align-self: flex-start;
@@ -283,13 +290,13 @@ a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
     font-weight: 700;
 }
 
-.etiquette.prete { background: #E4F5E8; color: #1F5C33; }
-.etiquette.attente { background: #F0E9ED; color: #6E5A64; }
+.etiquette.prete { background: var(--succes-fond); color: var(--succes-texte); }
+.etiquette.attente { background: var(--surface-grise); color: var(--doux); }
 
 .vide {
     padding: 26px 20px;
     text-align: center;
-    background: #fff;
+    background: var(--surface);
     border: 1px dashed var(--l5-bord);
     border-radius: var(--l5-rayon);
 }
@@ -332,10 +339,10 @@ a.carte-lecon:focus-visible { outline: 3px solid #8A2BE2; outline-offset: 3px; }
 }
 
 @keyframes l5-ciblee {
-    0%, 60% { background: #FFE08A; box-shadow: 0 0 0 6px #FFE08A; }
+    0%, 60% { background: var(--surligne); box-shadow: 0 0 0 6px var(--surligne); }
     100%    { background: transparent; box-shadow: 0 0 0 6px transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .notion-ciblee { animation: none; background: #FFE08A; }
+    .notion-ciblee { animation: none; background: var(--surligne); }
 }
