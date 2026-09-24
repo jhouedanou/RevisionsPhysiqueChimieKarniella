@@ -57,6 +57,43 @@
         var titre = document.querySelector('.parcours-titre');
         if (!titre || !rang) { return; }
         titre.innerHTML = 'Parcours · <strong>étape ' + rang + ' sur ' + total + '</strong>';
+
+        var jauge = document.querySelector('.parcours-jauge span');
+        if (jauge) { jauge.style.width = Math.round(rang / total * 100) + '%'; }
+
+        var suivant = document.querySelector('.parcours-suivant');
+        if (suivant) {
+            var boutons = document.querySelectorAll('.tab-button[data-onglet]');
+            var cible = boutons[rang];   // l'étape d'après (index = rang)
+            suivant.hidden = !cible;
+            if (cible) { suivant.textContent = 'Étape suivante : ' + cible.textContent.trim() + ' →'; }
+        }
+    }
+
+    /** Sous les étapes : la jauge d'avancement et le bouton vers l'étape d'après. */
+    function ajouterSuiteParcours(groupe, boutons) {
+        if (!groupe || boutons.length < 2) { return; }
+        var jauge = document.createElement('div');
+        jauge.className = 'parcours-jauge';
+        jauge.setAttribute('aria-hidden', 'true');
+        jauge.appendChild(document.createElement('span'));
+        groupe.appendChild(jauge);
+
+        var suivant = document.createElement('button');
+        suivant.type = 'button';
+        suivant.className = 'parcours-suivant';
+        suivant.addEventListener('click', function () {
+            var actifs = document.querySelectorAll('.tab-button[data-onglet]');
+            for (var i = 0; i < actifs.length; i++) {
+                if (actifs[i].classList.contains('active') && actifs[i + 1]) {
+                    ouvrirOnglet(actifs[i + 1].getAttribute('data-onglet'), actifs[i + 1]);
+                    var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    document.querySelector('main.content').scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block: 'start' });
+                    return;
+                }
+            }
+        });
+        groupe.appendChild(suivant);
     }
 
     function initialiser() {
@@ -92,6 +129,8 @@
         ajouterNavigation(boutons);
         preparerCartes(groupe);
         ajouterMission(groupe);
+        ajouterSuiteParcours(groupe, boutons);
+        majTitreParcours(rangActif, boutons.length);
 
         suivreAncre();
         window.addEventListener('hashchange', suivreAncre);

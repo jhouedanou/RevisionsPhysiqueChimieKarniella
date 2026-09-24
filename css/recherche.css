@@ -98,7 +98,7 @@ html.rech-ouverte { overflow: hidden; }
     border-radius: 22px;
     box-shadow: 0 24px 70px rgba(53, 33, 45, 0.35);
     color: var(--rech-encre);
-    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-family: var(--police-texte, 'Nunito', 'Segoe UI', sans-serif);
     font-size: 16px;
     line-height: 1.45;
     animation: rech-arrive 0.18s ease;

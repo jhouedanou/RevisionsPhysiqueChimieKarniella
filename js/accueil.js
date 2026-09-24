@@ -400,6 +400,8 @@
         zone.textContent = '';
 
         zone.appendChild(creer('h1', 'salut', salutation()));
+        var titreAchete = window.KarniellaXP && window.KarniellaXP.titre();
+        if (titreAchete) { zone.appendChild(creer('p', 'titre-achete', '👑 ' + titreAchete)); }
 
         var grille = creer('div', 'galop-grille');
 
@@ -461,6 +463,7 @@
         if (!suiviDisponible() || !window.KarniellaBadges) { zone.hidden = true; return; }
 
         var badges = window.KarniellaBadges.liste();
+        if (window.KarniellaXP) { badges = badges.concat(window.KarniellaXP.badgesAchetes()); }
         if (!badges.length) { zone.hidden = true; return; }
 
         var gagnes = badges.filter(function (b) { return b.obtenu; }).length;
@@ -510,6 +513,7 @@
 
         // Les badges arrivent par le chat eux aussi, et la progression change
         // quand Karniella fait un quiz depuis le chat de l'accueil.
+        window.addEventListener('karniella:xp', function () { window.setTimeout(rendreSuivi, 0); });
         window.addEventListener('karniella:progression', function () {
             // Après js/badges.js, qui écoute le même événement pour enregistrer
             // le badge gagné avant qu'on l'affiche.

@@ -25,6 +25,51 @@
         return '';
     })();
 
+    /* ============================================================
+       Icônes SVG (tracés Lucide, 24×24, trait 2)
+       ============================================================
+       Les emojis restent pour le contenu (leçons, badges, avatars) : ils font
+       partie du jeu. Pour la navigation et les commandes, des icônes vectorielles :
+       même rendu sur tous les appareils, colorables par le thème. */
+
+    var ICONES = {
+        maison: '<path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',
+        livre: '<path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/>',
+        etoile: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+        medaille: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>',
+        flamme: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+        lune: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>',
+        soleil: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+        loupe: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+        fusee: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+        panier: '<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>'
+    };
+
+    function svg(nom, taille) {
+        var t = taille || 20;
+        return '<svg class="ico-svg" width="' + t + '" height="' + t + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+            (ICONES[nom] || '') + '</svg>';
+    }
+
+    window.KarniellaIcones = { svg: svg, noms: Object.keys(ICONES) };
+
+    /** Baloo 2 + Nunito (css/theme.css). Hors-ligne, la pile système prend le relais. */
+    function chargerPolices() {
+        if (document.getElementById('karniella-polices')) { return; }
+        var pre = document.createElement('link');
+        pre.rel = 'preconnect';
+        pre.href = 'https://fonts.gstatic.com';
+        pre.crossOrigin = 'anonymous';
+        document.head.appendChild(pre);
+        var lien = document.createElement('link');
+        lien.id = 'karniella-polices';
+        lien.rel = 'stylesheet';
+        lien.href = 'https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800;900&display=swap';
+        document.head.appendChild(lien);
+    }
+    chargerPolices();
+
     var barre = null;
     var zoneOutils = null;
     var fil = null;
@@ -235,7 +280,11 @@
         var titre = X.solde() + ' XP — clique pour ouvrir la boutique';
         puceXP.setAttribute('title', titre);
         puceXP.setAttribute('aria-label', titre);
-        if (avatar) { avatar.textContent = X.avatar(); }
+        if (avatar) {
+            avatar.textContent = X.avatar();
+            var cadre = X.cadre();
+            if (cadre) { avatar.setAttribute('data-cadre', cadre); } else { avatar.removeAttribute('data-cadre'); }
+        }
     }
 
     /* ============================================================
@@ -266,7 +315,9 @@
         puceFlamme.hidden = true;
         puceFlamme.setAttribute('aria-haspopup', 'dialog');
         puceFlamme.setAttribute('aria-expanded', 'false');
-        puceFlamme.appendChild(el('span', 'ico', '🔥')).setAttribute('aria-hidden', 'true');
+        var icoFlamme = el('span', 'ico');
+        icoFlamme.innerHTML = svg('flamme', 18);
+        puceFlamme.appendChild(icoFlamme);
         puceFlamme.appendChild(el('span', 'n', '0'));
         puceFlamme.addEventListener('click', basculerPanneau);
         zoneOutils.appendChild(puceFlamme);
@@ -274,7 +325,9 @@
         puceXP = el('a', 'coquille-puce coquille-xp');
         puceXP.href = RACINE + 'boutique.html';
         puceXP.hidden = true;
-        puceXP.appendChild(el('span', 'ico', '⭐')).setAttribute('aria-hidden', 'true');
+        var icoXP = el('span', 'ico');
+        icoXP.innerHTML = svg('etoile', 18);
+        puceXP.appendChild(icoXP);
         puceXP.appendChild(el('span', 'n', '0'));
         puceXP.appendChild(el('span', 'texte', 'XP'));
         zoneOutils.appendChild(puceXP);
@@ -305,16 +358,18 @@
         nav.setAttribute('aria-label', 'Navigation principale');
 
         var entrees = [
-            { ico: '🏠', texte: 'Accueil', href: RACINE + 'index.html', actif: slug === 'index' && ancre !== '#sommaire' && ancre !== '#mes-badges' },
-            { ico: '📚', texte: 'Leçons', href: RACINE + 'index.html#sommaire', actif: dans5e() || ancre === '#sommaire' },
-            { ico: '⭐', texte: 'Boutique', href: RACINE + 'boutique.html', actif: slug === 'boutique' },
-            { ico: '🏅', texte: 'Badges', href: RACINE + 'index.html#mes-badges', actif: ancre === '#mes-badges' }
+            { ico: 'maison', texte: 'Accueil', href: RACINE + 'index.html', actif: slug === 'index' && ancre !== '#sommaire' && ancre !== '#mes-badges' },
+            { ico: 'livre', texte: 'Leçons', href: RACINE + 'index.html#sommaire', actif: dans5e() || ancre === '#sommaire' },
+            { ico: 'etoile', texte: 'Boutique', href: RACINE + 'boutique.html', actif: slug === 'boutique' },
+            { ico: 'medaille', texte: 'Badges', href: RACINE + 'index.html#mes-badges', actif: ancre === '#mes-badges' }
         ];
         entrees.forEach(function (e) {
             var a = el('a', e.actif ? 'actif' : '');
             a.href = e.href;
             if (e.actif) { a.setAttribute('aria-current', 'page'); }
-            a.appendChild(el('span', 'ico', e.ico)).setAttribute('aria-hidden', 'true');
+            var ico = el('span', 'ico');
+            ico.innerHTML = svg(e.ico, 22);
+            a.appendChild(ico);
             a.appendChild(document.createTextNode(e.texte));
             nav.appendChild(a);
         });
