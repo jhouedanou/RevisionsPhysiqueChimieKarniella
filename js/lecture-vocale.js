@@ -493,7 +493,12 @@
             bloc.appendChild(b);
         });
 
-        conteneur.parentNode.insertBefore(bloc, conteneur.nextSibling);
+        // Dans le contenu de la leçon, pas entre le parcours et le contenu :
+        // les deux se partagent une ligne de grille (css/lecon-5e.css), un
+        // bloc glissé entre eux prendrait une ligne entière et repousserait la leçon.
+        var contenu = document.querySelector('main.content');
+        if (contenu) { contenu.insertBefore(bloc, contenu.firstChild); }
+        else { conteneur.parentNode.insertBefore(bloc, conteneur.nextSibling); }
     }
 
     /* ============================================================

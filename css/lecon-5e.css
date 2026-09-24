@@ -217,8 +217,59 @@ body.lecon-5e > * { grid-column: 1 / -1; }
 }
 
 @media (min-width: 900px) {
-    .barre-lecture { position: static; order: 99; margin-top: 10px; }
+    .barre-lecture { display: none; }   /* sur grand écran, la jauge du parcours suffit */
 }
+
+/* Jauge d'avancement du parcours et bouton « Étape suivante » (js/lecon-5e.js).
+   Visibles sur grand écran seulement : sur téléphone, les boutons au bas de
+   chaque onglet font le même travail. */
+.parcours-jauge,
+.parcours-suivant { display: none; }
+
+@media (min-width: 900px) {
+    .parcours-jauge {
+        display: block;
+        height: 8px;
+        margin-top: 10px;
+        border-radius: 8px;
+        background: var(--surface-grise);
+        border: 1px solid var(--l5-bord);
+        overflow: hidden;
+    }
+    .parcours-jauge span {
+        display: block;
+        height: 100%;
+        width: 0;
+        border-radius: 8px;
+        background: var(--l5-fort);
+        transition: width var(--duree-normale, 220ms) ease;
+    }
+    .parcours-suivant {
+        display: block;
+        width: 100%;
+        min-height: 46px;
+        margin-top: 12px;
+        padding: 8px 14px;
+        border: 0;
+        border-radius: var(--rayon-bouton, 14px);
+        background: var(--l5-fort);
+        color: #fff;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.25;
+        cursor: pointer;
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+        transition: transform var(--duree-rapide, 150ms) ease, box-shadow var(--duree-rapide, 150ms) ease;
+    }
+    .parcours-suivant:hover { filter: brightness(1.08); }
+    .parcours-suivant:active { transform: translateY(2px); box-shadow: none; }
+    .parcours-suivant:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .parcours-suivant[hidden] { display: none; }
+}
+
+/* Réglage de la vitesse de lecture (js/lecture-vocale.js), en tête du contenu. */
+main.content > .kv-reglage { margin: 0 0 14px; }
 
 .bouton-cartes {
     min-height: 44px;
