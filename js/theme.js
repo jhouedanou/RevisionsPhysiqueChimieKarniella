@@ -26,7 +26,17 @@
         try { window.localStorage.setItem(cle, valeur); } catch (err) { /* choix oublié au rechargement */ }
     }
 
+    /** Le thème acheté dans la boutique (js/xp.js), ou null. */
+    function skinActif() {
+        try {
+            var xp = JSON.parse(window.localStorage.getItem('karniella-xp'));
+            return (xp && xp.skin) || null;
+        } catch (err) { return null; }
+    }
+
     function estSombre() {
+        // Les thèmes de la boutique sont des thèmes de nuit : ils imposent le sombre.
+        if (skinActif()) { return true; }
         var choix = lire(CLE_THEME);
         if (choix === 'dark' || choix === 'light') { return choix === 'dark'; }
         return Boolean(media && media.matches);
@@ -38,6 +48,8 @@
     function appliquer() {
         var sombre = estSombre();
         html.setAttribute('data-theme', sombre ? 'dark' : 'light');
+        var skin = skinActif();
+        if (skin) { html.setAttribute('data-skin', skin); } else { html.removeAttribute('data-skin'); }
         html.setAttribute('data-texte', lire(CLE_TEXTE) === 'grand' ? 'grand' : 'normal');
 
         // La barre du navigateur, sur téléphone, suit le thème.
@@ -55,6 +67,8 @@
     }
 
     function basculerTheme() {
+        // Avec un thème de boutique, 🌙 ramène au thème de base en clair.
+        if (skinActif() && window.KarniellaXP) { window.KarniellaXP.activerTheme(null); ecrire(CLE_THEME, 'light'); appliquer(); return; }
         ecrire(CLE_THEME, estSombre() ? 'light' : 'dark');
         appliquer();
     }
@@ -71,9 +85,13 @@
         else if (media.addListener) { media.addListener(suivre); }
     }
 
-    /** Les deux boutons, en haut à gauche de l'en-tête (la recherche est à droite). */
+    /**
+     * Les deux boutons, dans la barre du haut (js/coquille.js). Sans elle —
+     * une vieille page qui ne la charge pas — ils vont dans l'en-tête.
+     */
     function ajouterBoutons() {
-        var entete = document.querySelector('.accueil-entete, body.lecon-5e > header');
+        var zone = window.KarniellaCoquille ? window.KarniellaCoquille.zoneOutils() : null;
+        var entete = zone || document.querySelector('.accueil-entete, body.lecon-5e > header');
         if (!entete || entete.querySelector('.reglages')) { return; }
 
         var groupe = document.createElement('div');
@@ -88,14 +106,16 @@
         boutonTexte.type = 'button';
         boutonTexte.className = 'reglage';
         boutonTexte.textContent = 'A+';
+        boutonTexte.setAttribute('data-reglage', 'texte');
         boutonTexte.setAttribute('aria-label', 'Texte plus grand');
         boutonTexte.setAttribute('title', 'Texte plus grand');
         boutonTexte.addEventListener('click', basculerTexte);
 
         groupe.appendChild(boutonTheme);
         groupe.appendChild(boutonTexte);
-        entete.style.position = entete.style.position || 'relative';
+        if (!zone) { entete.style.position = entete.style.position || 'relative'; }
         entete.appendChild(groupe);
+        if (window.KarniellaCoquille) { window.KarniellaCoquille.ranger(); }
         appliquer();
     }
 
@@ -105,5 +125,5 @@
         ajouterBoutons();
     }
 
-    window.KarniellaTheme = { basculerTheme: basculerTheme, basculerTexte: basculerTexte };
+    window.KarniellaTheme = { basculerTheme: basculerTheme, basculerTexte: basculerTexte, appliquer: appliquer };
 })();

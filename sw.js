@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.1.0
 
-const CACHE_NAME = 'karniella-cache-v18';
+const CACHE_NAME = 'karniella-cache-v19';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -12,11 +12,14 @@ const DATA_CACHE_NAME = 'karniella-data-v1';
 const FILES_TO_CACHE = [
     '/',
     '/index.html',
+    '/boutique.html',
+    '/5e/mission.html',
 
     '/css/theme.css',
     '/css/matieres.css',
-    '/css/karniella-theme.css',
-    '/css/horse-theme.css',
+    '/css/coquille.css',
+    '/css/boutique.css',
+    '/css/mission.css',
     '/css/accueil.css',
     '/css/lecon-5e.css',
     '/css/section-quiz.css',
@@ -34,6 +37,10 @@ const FILES_TO_CACHE = [
     '/js/recherche-index.js',
     '/js/badges.js',
     '/js/theme.js',
+    '/js/coquille.js',
+    '/js/xp.js',
+    '/js/boutique.js',
+    '/js/mission.js',
 
     '/data/section-questions.json',
     '/data/programme-5e.json',

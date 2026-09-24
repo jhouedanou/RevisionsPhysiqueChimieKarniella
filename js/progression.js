@@ -119,7 +119,7 @@
      * quand elle veut. Tant que l'identifiant de série ne change pas, on met à
      * jour la même entrée au lieu d'en empiler une par question.
      */
-    function enregistrerQuiz(slug, correct, total, serie) {
+    function enregistrerQuiz(slug, correct, total, serie, extra) {
         if (!slug || !total) { return; }
         var donnees = lire();
         var page = entree(donnees, slug);
@@ -130,12 +130,32 @@
             dernier.total = total;
             dernier.date = Date.now();
         } else {
-            page.quiz.push({ correct: correct, total: total, date: Date.now(), serie: serie || null });
+            var tentative = { correct: correct, total: total, date: Date.now(), serie: serie || null };
+            // Mode Ghost 👻 : le temps mis, en secondes, et si c'était une course contre le fantôme.
+            if (extra && typeof extra.temps === 'number') { tentative.temps = Math.round(extra.temps); }
+            if (extra && extra.fantome) { tentative.fantome = true; }
+            page.quiz.push(tentative);
             page.quiz = page.quiz.slice(-MAX_QUIZ_GARDES);
             // Un quiz compte une fois, pas à chaque réponse d'une même série.
             noterJour(donnees, 'quiz');
+            // Le record sert au fantôme : gardé à part, il survit à la coupe des 10 derniers.
+            if (typeof tentative.temps === 'number') { majRecord(page, tentative); }
         }
         ecrire(donnees);
+    }
+
+    /** Meilleure tentative chronométrée : d'abord le score, puis le temps le plus court. */
+    function majRecord(page, t) {
+        var r = page.record;
+        if (!r || t.correct > r.correct || (t.correct === r.correct && t.temps < r.temps)) {
+            page.record = { correct: t.correct, total: t.total, temps: t.temps, date: t.date };
+        }
+    }
+
+    /** Le record chronométré d'une page — pour le mode Ghost 👻 — ou null. */
+    function record(slug) {
+        var page = lire().pages[slug];
+        return (page && page.record) ? page.record : null;
     }
 
     /** Elle a posé une question au chat sur cette leçon. */
@@ -282,6 +302,7 @@
         marquerVisite: marquerVisite,
         enregistrerQuiz: enregistrerQuiz,
         enregistrerQuestion: enregistrerQuestion,
+        record: record,
         pourPage: pourPage,
         resume: resume,
         serie: serie,

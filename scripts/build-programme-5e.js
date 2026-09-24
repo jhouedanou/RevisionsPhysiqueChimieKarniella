@@ -90,12 +90,13 @@ ${lecons.map(carteLecon).join('\n')}
 <link rel="stylesheet" href="../css/theme.css">
 <link rel="stylesheet" href="../css/matieres.css">
 <script src="../js/theme.js"></script>
-<link rel="stylesheet" href="../css/karniella-theme.css">
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
 </head>
 <body class="lecon-5e" data-matiere="${echapper(matiere.id)}">
 <header>
-<a class="btn-back" href="../index.html">← Retour à l'accueil</a>
 <span class="badge-niveau">Classe de ${echapper(programme.niveau)}</span>
 <h1>${echapper(matiere.icone)} ${echapper(matiere.nom)}</h1>
 <p>${echapper(matiere.description)}</p>
@@ -233,7 +234,8 @@ function ecrireProgrammeJS(programme, matieres) {
                 titre: l.titre,
                 sousTitre: l.sousTitre || '',
                 icone: l.icone || '📄',
-                statut: l.statut
+                statut: l.statut,
+                mission: Boolean(l.mission)
             }))
         }))
     };

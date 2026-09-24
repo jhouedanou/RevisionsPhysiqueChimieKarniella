@@ -63,7 +63,8 @@
           "sousTitre": "Dissolution et mélange homogène",
           "icone": "🥤",
           "description": "Le sucre dans l'eau : il ne disparaît pas, il se dissout.",
-          "statut": "prete"
+          "statut": "prete",
+          "mission": true
         }
       ]
     },

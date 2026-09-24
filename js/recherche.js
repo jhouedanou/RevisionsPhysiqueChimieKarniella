@@ -600,9 +600,10 @@
        Bouton et raccourcis
        ============================================================ */
 
-    /** Le bouton 🔍, en haut à droite de l'en-tête de la page. */
+    /** Le bouton 🔍, dans la barre du haut (js/coquille.js), sinon dans l'en-tête. */
     function ajouterBouton() {
-        var entete = document.querySelector('.accueil-entete, body.lecon-5e > header, header');
+        var zone = window.KarniellaCoquille ? window.KarniellaCoquille.zoneOutils() : null;
+        var entete = zone || document.querySelector('.accueil-entete, body.lecon-5e > header, header');
         if (!entete || entete.querySelector('.rech-bouton')) { return; }
 
         var b = el('button', 'rech-bouton');
@@ -612,8 +613,9 @@
         b.appendChild(el('span', '', '🔍')).setAttribute('aria-hidden', 'true');
         b.appendChild(el('span', 'rech-bouton-texte', 'Rechercher'));
         b.addEventListener('click', function () { ouvrir(''); });
-        entete.classList.add('rech-entete');
+        if (!zone) { entete.classList.add('rech-entete'); }
         entete.appendChild(b);
+        if (window.KarniellaCoquille) { window.KarniellaCoquille.ranger(); }
     }
 
     function enTrainDEcrire(cible) {

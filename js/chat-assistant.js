@@ -801,6 +801,7 @@
         chargerLectureVocale();
         chargerModule('KarniellaBadges', 'js/badges.js');
         chargerModule('KarniellaProgression', 'js/progression.js');
+        chargerModule('KarniellaXP', 'js/xp.js');
     }
 
     /**

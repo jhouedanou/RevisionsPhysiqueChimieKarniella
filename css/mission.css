@@ -1,0 +1,117 @@
+/**
+ * mission.css — Une mission de 3 minutes (js/mission.js).
+ *
+ * Trois écrans, une carte à la fois, jamais de scroll : l'histoire, une
+ * micro-leçon par carte, puis le quiz en étapes (css/section-quiz.css).
+ */
+
+body.mission-page {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--fond-degrade);
+    color: var(--encre);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+.mission {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 18px 16px 40px;
+    display: grid;
+    gap: 14px;
+}
+
+.mission-chargement, .mission-erreur { text-align: center; color: var(--doux); margin: 40px 0; }
+
+/* Les étapes : Mission · cartes · quiz */
+.mission-etapes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--doux);
+}
+.mission-etapes i {
+    flex: 1;
+    height: 6px;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+}
+.mission-etapes i.on { background: var(--l5-fort, var(--rose)); border-color: transparent; }
+
+.mission-carte {
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    border-radius: var(--rayon-carte, 18px);
+    box-shadow: var(--ombre);
+    padding: 22px;
+    animation: mission-apparait 0.3s ease;
+}
+
+@keyframes mission-apparait {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.mission-etiquette {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--doux);
+}
+
+/* L'histoire : une carte de nuit, façon écran de vaisseau. */
+.mission-histoire {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1E2A5E, #0B1030);
+    border: 0;
+    color: #EAF0FF;
+}
+.mission-histoire .mission-etiquette { color: #B7CCFF; }
+.mission-histoire h1 { margin: 0 0 10px; font-size: clamp(22px, 5vw, 28px); font-weight: 900; letter-spacing: -0.01em; line-height: 1.2; }
+.mission-histoire p { margin: 0; font-size: 16.5px; }
+.mission-histoire .deco { position: absolute; right: 10px; top: 6px; font-size: 64px; opacity: 0.3; line-height: 1; pointer-events: none; }
+.mission-histoire .mission-duree { display: inline-block; margin-top: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 13px; font-weight: 800; }
+
+.mission-bloc h2 { margin: 0 0 10px; font-size: 20px; font-weight: 900; color: var(--l5-rose, var(--rose)); line-height: 1.25; }
+.mission-bloc p { margin: 0; font-size: 17px; }
+
+.mission-boutons { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.mission-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid var(--bord);
+    background: var(--surface);
+    color: var(--l5-rose, var(--rose));
+    font-family: inherit;
+    font-size: 15.5px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+}
+.mission-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.mission-btn-plein { margin-left: auto; background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; }
+.mission-histoire .mission-btn-plein { background: #fff; border-color: #fff; color: #1E2A5E; }
+
+/* Le quiz reprend le style de section-quiz.css, sans son cadre coloré. */
+.mission .section-quiz-wrapper { margin: 0; }
+
+.mission-retour { text-align: center; font-size: 14px; }
+.mission-retour a { color: var(--l5-rose, var(--rose)); font-weight: 800; }
+
+@media (prefers-reduced-motion: reduce) { .mission-carte { animation: none; } }

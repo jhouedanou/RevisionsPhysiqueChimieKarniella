@@ -1,0 +1,42 @@
+{
+  "id": "physique-chimie-les-melanges",
+  "lecon": "physique-chimie-les-melanges",
+  "matiere": "physique-chimie",
+  "titre": "Alerte sur la planète Glacia",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, notre sonde a détecté une anomalie : le sucre de la réserve a « disparu » dans l'eau des moteurs. L'équipage panique. Prouve que le sucre est toujours là pour redémarrer le vaisseau !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🧱 Un mélange, c'est au moins deux briques",
+      "contenu": "Un mélange se fait toujours avec au moins deux choses. Le sucre tout seul, ce n'est pas un mélange : il faut le sucre ET l'eau, comme deux briques de Lego qu'on assemble."
+    },
+    {
+      "titre": "🔎 Ne plus voir n'est pas disparaître",
+      "contenu": "Dans l'eau, le morceau de sucre se démonte en briques minuscules qui se glissent entre les molécules d'eau. Trop petites pour tes yeux, mais pas pour ta langue : l'eau est sucrée. Le sucre s'est dissous, il n'a pas disparu."
+    },
+    {
+      "titre": "🥤 Homogène : tout se ressemble",
+      "contenu": "Quand on ne distingue plus les ingrédients, le mélange est homogène. Indice : « homo » veut dire « pareil ». Si on voit encore des morceaux, comme du sable dans l'eau, le mélange est hétérogène."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Le sucre ne se voit plus dans l'eau des moteurs. Qu'est-il devenu ?",
+      "options": ["Il a disparu pour toujours", "Il s'est dissous, il est toujours là", "Il s'est transformé en eau", "Il s'est évaporé"],
+      "correct_answer_index": 1,
+      "explanation": "Le sucre s'est dissous : ses morceaux sont trop petits pour être vus, mais l'eau a le goût sucré."
+    },
+    {
+      "question": "Quels sont les ingrédients du mélange de la réserve ?",
+      "options": ["Le sucre seulement", "L'eau seulement", "Le sucre et l'eau", "Le sucre, l'eau et l'air"],
+      "correct_answer_index": 2,
+      "explanation": "Un mélange a toujours au moins deux ingrédients : ici le sucre et l'eau."
+    },
+    {
+      "question": "On ne distingue plus le sucre de l'eau. Ce mélange est…",
+      "options": ["hétérogène", "homogène", "solide", "impossible"],
+      "correct_answer_index": 1,
+      "explanation": "Homogène : tout se ressemble, on ne voit plus les ingrédients séparément."
+    }
+  ]
+}
