@@ -221,3 +221,177 @@
     .section-quiz-check-all:hover,
     .section-quiz-check-all:active { transform: none; }
 }
+
+/* ============================================================
+   Mode étapes : une question à la fois, chrono, XP, fantôme 👻
+   ============================================================ */
+
+.quiz-etapes { padding: 20px; }
+
+.quiz-etapes-haut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.quiz-etapes-haut h4 { margin: 0; color: var(--l5-rose, var(--rose)); font-size: 18px; font-weight: 800; }
+
+.quiz-chrono {
+    font-variant-numeric: tabular-nums;
+    font-weight: 900;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+}
+
+/* Les points d'avancement : un par question. */
+.quiz-points { display: flex; gap: 6px; margin-bottom: 14px; }
+.quiz-points i {
+    flex: 1;
+    height: 7px;
+    border-radius: 7px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+}
+.quiz-points i.actif { background: var(--l5-fort, var(--rose)); border-color: transparent; }
+.quiz-points i.juste { background: var(--succes-bord); border-color: transparent; }
+.quiz-points i.faux { background: var(--erreur-bord); border-color: transparent; }
+
+/* La course contre le fantôme. */
+.quiz-fantome {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 10px 14px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    font-size: 13.5px;
+}
+.quiz-fantome[hidden] { display: none; }
+.quiz-fantome-ligne { display: flex; justify-content: space-between; gap: 10px; font-weight: 800; }
+.quiz-piste { position: relative; height: 10px; border-radius: 10px; background: var(--surface-grise); }
+.quiz-piste i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 10px; width: 0; transition: width 0.25s linear; }
+.quiz-piste-lui { background: repeating-linear-gradient(90deg, var(--doux) 0 6px, transparent 6px 10px); opacity: 0.6; }
+.quiz-piste-toi { background: var(--l5-fort, var(--rose)); }
+.quiz-piste-marque { position: absolute; top: -9px; left: 0; transform: translateX(-50%); font-size: 16px; transition: left 0.25s linear; }
+
+.quiz-compte {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--doux);
+}
+
+.quiz-question {
+    background: var(--surface);
+    border: 2px solid var(--bord);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.quiz-question .question-text { font-size: 18px; line-height: 1.45; }
+
+.quiz-options { display: grid; gap: 8px; }
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--bord);
+    background: var(--surface-grise);
+    color: var(--encre);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.quiz-option b {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    display: inline-grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    font-size: 13px;
+}
+
+.quiz-option:hover:not(:disabled) { background: var(--l5-pale, var(--rose-pale)); border-color: var(--l5-fort, var(--rose)); }
+.quiz-option:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.quiz-option:disabled { cursor: default; opacity: 0.7; }
+.quiz-option.juste { opacity: 1; border-color: var(--succes-bord); background: var(--succes-fond); color: var(--succes-texte); }
+.quiz-option.juste b { background: var(--succes-bord); border-color: var(--succes-bord); color: #fff; }
+.quiz-option.faux { opacity: 1; border-color: var(--erreur-bord); background: var(--erreur-fond); color: var(--erreur-texte); }
+.quiz-option.faux b { background: var(--erreur-bord); border-color: var(--erreur-bord); color: #fff; }
+
+.quiz-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid var(--bord);
+    background: var(--surface);
+    color: var(--l5-rose, var(--rose));
+    font-family: inherit;
+    font-size: 15.5px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+}
+.quiz-btn:hover { filter: brightness(1.05); }
+.quiz-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.quiz-btn-plein { background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; }
+.quiz-btn-or { background: var(--or-pale, #FFF3DC); border-color: transparent; color: var(--or-texte, #9A6A12); }
+.quiz-suivant { margin-top: 14px; width: 100%; }
+.quiz-suivant[hidden] { display: none; }
+
+.quiz-depart, .quiz-fin {
+    text-align: center;
+    padding: 22px 16px;
+    background: var(--surface);
+    border: 2px solid var(--bord);
+    border-radius: 14px;
+}
+.quiz-depart p, .quiz-fin p { margin: 0 0 10px; }
+.quiz-depart-titre { font-size: 20px; font-weight: 900; color: var(--l5-rose, var(--rose)); }
+.quiz-depart-boutons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+
+.quiz-fin { border-color: var(--succes-bord); }
+.quiz-fin-emoji { display: block; font-size: 46px; line-height: 1; margin-bottom: 8px; }
+.quiz-fin-titre { font-size: 22px; font-weight: 900; }
+.quiz-fin-titre:focus { outline: none; }
+.quiz-fin-score { color: var(--doux); }
+.quiz-fin-fantome { font-weight: 800; }
+.quiz-gains { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 8px 0 12px; }
+.quiz-gain {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--or-pale, #FFF3DC);
+    color: var(--or-texte, #9A6A12);
+    font-weight: 900;
+    font-size: 14px;
+}
+.quiz-gain.bonus { background: var(--succes-fond); color: var(--succes-texte); }
+
+@media (prefers-reduced-motion: reduce) {
+    .quiz-piste i, .quiz-piste-marque { transition: none; }
+}

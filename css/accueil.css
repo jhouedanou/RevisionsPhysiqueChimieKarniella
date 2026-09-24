@@ -35,7 +35,7 @@ body {
     line-height: 1.6;
 }
 
-.enveloppe { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+.enveloppe { max-width: 960px; margin: 0 auto; padding: 0 16px; }
 
 /* ============================================================
    En-tête
@@ -173,13 +173,13 @@ body {
    ============================================================ */
 
 .bloc-matiere {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     padding: 18px 20px 20px;
     background: var(--surface);
     border: 1px solid var(--ac-bord);
     /* La couleur de la matière (css/matieres.css), pour la reconnaître d'un coup d'œil. */
     border-top: 5px solid var(--matiere, var(--rose));
-    border-radius: 16px;
+    border-radius: var(--rayon-carte, 18px);
     box-shadow: var(--ac-ombre);
 }
 
@@ -289,6 +289,21 @@ a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
     font-weight: 700;
 }
 
+/* La version express : une mission de 3 minutes (5e/mission.html). */
+.mission-lecon {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--rose);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+}
+html[data-theme="dark"] .mission-lecon { color: #1B1418; }
+.mission-lecon:hover { filter: brightness(1.1); }
+.mission-lecon + .score-lecon { margin-top: 0; }
+
 /* Leçon annoncée au programme mais pas encore écrite. */
 .carte.a-venir {
     background: var(--surface-voilee);
@@ -340,32 +355,55 @@ a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .a-venir-matieres a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* ============================================================
-   Ma série — au-dessus de la recherche
-   ============================================================ */
+   Ma série — le haut de page, façon tableau de bord
+   ============================================================
+   La carte « Reprendre » est le héros : grande, colorée, un seul bouton.
+   À côté, la série et l'objectif du jour. */
 
-.mon-galop { margin-bottom: 22px; }
+.mon-galop { margin: 22px 0 26px; }
 
 .salut {
-    margin-bottom: 12px;
-    font-size: clamp(20px, 4.6vw, 24px);
+    margin-bottom: 14px;
+    font-size: clamp(22px, 4.6vw, 28px);
     font-weight: 800;
+    letter-spacing: -0.01em;
 }
 
 .galop-grille {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-areas: "reprendre serie" "reprendre objectif";
     gap: 12px;
 }
 
+@media (max-width: 640px) {
+    .galop-grille {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "reprendre" "serie" "objectif";
+    }
+}
+
+/* Sans leçon à reprendre, série et objectif se partagent la ligne. */
+.galop-grille.sans-reprendre {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "serie objectif";
+}
+
+@media (max-width: 640px) {
+    .galop-grille.sans-reprendre {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "serie" "objectif";
+    }
+}
+
 .galop-carte {
-    flex: 1 1 220px;
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 14px 16px;
     background: var(--surface);
     border: 1px solid var(--ac-bord);
-    border-radius: 16px;
+    border-radius: var(--rayon-carte, 18px);
     box-shadow: var(--ac-ombre);
     color: inherit;
     text-decoration: none;
@@ -381,6 +419,7 @@ a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 /* La série : la carte chaude, qui donne envie de ne pas la casser. */
 .galop-serie {
+    grid-area: serie;
     background: linear-gradient(135deg, var(--chaud-debut) 0%, var(--chaud-fin) 100%);
     border-color: rgba(230, 120, 40, 0.3);
 }
@@ -389,7 +428,7 @@ a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .galop-serie .chiffre { display: block; font-size: 18px; line-height: 1.25; }
 .galop-serie.eteinte { background: var(--surface); border-color: var(--ac-bord); }
 
-.galop-objectif { flex-direction: column; align-items: flex-start; gap: 8px; }
+.galop-objectif { grid-area: objectif; flex-direction: column; align-items: flex-start; gap: 8px; }
 
 .galop-objectif .etapes { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 
@@ -416,16 +455,69 @@ a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .galop-objectif li.fait { color: var(--ac-doux); text-decoration: line-through; }
 .galop-objectif li.fait .coche { background: var(--succes-bord); border-color: var(--succes-bord); }
 
-.galop-reprendre .icone { font-size: 28px; line-height: 1; }
-.galop-reprendre > span:nth-child(2) { flex: 1 1 auto; min-width: 0; }
-.galop-reprendre .fleche { font-size: 22px; font-weight: 800; color: var(--ac-rose); }
-
+/* Le héros : reprendre là où on s'est arrêtée. */
 .galop-reprendre {
+    grid-area: reprendre;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 180px;
+    padding: 20px 22px;
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-clair) 100%);
+    border: 0;
+    color: #fff;
     transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+html[data-theme="dark"] .galop-reprendre { color: #1B1418; }
+
+.galop-reprendre .icone {
+    position: absolute;
+    right: -6px;
+    bottom: -16px;
+    font-size: 110px;
+    line-height: 1;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.galop-reprendre > span:nth-child(2) { flex: 1 1 auto; min-width: 0; position: relative; }
+.galop-reprendre .detail { color: inherit; opacity: 0.85; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.galop-reprendre .titre-carte { font-size: clamp(20px, 3.5vw, 26px); font-weight: 800; line-height: 1.15; margin-top: 4px; }
+.galop-reprendre .sous-carte { display: block; margin-top: 4px; font-size: 14px; opacity: 0.9; }
+
+.galop-reprendre .fleche {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--rose);
+    font-size: 15px;
+    font-weight: 800;
 }
 
 .galop-reprendre:hover { transform: translateY(-3px); box-shadow: var(--ombre-forte); }
 .galop-reprendre:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Titres de section du tableau de bord. */
+.section-titre {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 4px 0 12px;
+}
+
+.section-titre h2 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; }
+.section-titre a { font-size: 13.5px; font-weight: 800; color: var(--ac-rose); text-decoration: none; }
+.section-titre a:hover { text-decoration: underline; }
 
 /* ============================================================
    Mes badges — sous le sommaire

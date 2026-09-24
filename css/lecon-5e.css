@@ -5,8 +5,8 @@
  * changer une couleur voulait dire éditer 58 fichiers. Les pages de 5e
  * partagent cette feuille et ne portent plus aucun style propre.
  *
- * S'appuie sur la palette de css/karniella-theme.css et css/horse-theme.css,
- * chargées avant celle-ci.
+ * Les couleurs viennent de css/theme.css et css/matieres.css ; la barre du
+ * haut et la navigation de css/coquille.css.
  */
 
 /* Couleurs : css/theme.css (clair et sombre) et css/matieres.css (la teinte
@@ -36,81 +36,163 @@ body.lecon-5e {
 }
 
 /* ============================================================
-   En-tête
-   ============================================================ */
+   Mise en page : le parcours à gauche, la leçon à droite
+   ============================================================
+   Sur un grand écran, la leçon se lit comme un cours en ligne : la liste des
+   étapes reste visible à gauche, le contenu occupe la droite. La barre du
+   haut (coquille), le bandeau et le pied s'étendent sur toute la largeur. */
 
-.lecon-5e header {
+body.lecon-5e {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+}
+
+body.lecon-5e > * { grid-column: 1 / -1; }
+
+@media (min-width: 900px) {
+    body.lecon-5e {
+        grid-template-columns: 1fr 240px minmax(0, 860px) 1fr;
+        column-gap: 20px;
+    }
+    body.lecon-5e > .tabs { grid-column: 2; }
+    body.lecon-5e > main.content { grid-column: 3; }
+    body.lecon-5e > header:not(.coquille-barre) { grid-column: 2 / 4; }
+}
+
+/* ============================================================
+   Bandeau de la leçon
+   ============================================================
+   Plus de grand dégradé sombre : un bandeau compact, teinté de la couleur
+   de la matière, aligné à gauche. Le « Retour » a disparu : le fil d'Ariane
+   de la barre du haut mène partout. */
+
+.lecon-5e header:not(.coquille-barre) {
     position: relative;
-    padding: 26px 20px 22px;
-    text-align: center;
-    background: linear-gradient(125deg, var(--entete-fonce) 0%, var(--l5-fort) 100%);
-    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 16px;
+    max-width: 1120px;
+    width: calc(100% - 32px);
+    margin: 18px auto 6px;
+    padding: 18px 22px;
+    border-radius: var(--rayon-carte, 18px);
+    background: var(--l5-pale);
+    border: 1px solid var(--l5-bord);
+    color: var(--l5-encre);
+    text-align: left;
 }
 
-.lecon-5e header h1 {
-    margin: 0 0 6px;
-    font-size: clamp(22px, 5vw, 32px);
-    line-height: 1.2;
+@media (min-width: 900px) {
+    .lecon-5e header:not(.coquille-barre) { width: 100%; margin-left: 0; margin-right: 0; }
 }
 
-.lecon-5e header p {
+.lecon-5e header:not(.coquille-barre) h1 {
+    flex: 1 1 100%;
     margin: 0;
-    font-size: 14px;
-    opacity: 0.92;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--l5-rose);
 }
 
+.lecon-5e header:not(.coquille-barre) p {
+    flex: 1 1 100%;
+    margin: 2px 0 0;
+    font-size: 15px;
+    color: var(--doux);
+}
+
+/* Les anciennes pages gardent leur bouton Retour, discret. */
 .lecon-5e .btn-back {
     display: inline-block;
-    margin-bottom: 14px;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
+    background: var(--surface);
+    border: 1px solid var(--l5-bord);
+    color: var(--l5-rose);
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
-    transition: background 0.2s ease;
 }
 
-.lecon-5e .btn-back:hover { background: rgba(255, 255, 255, 0.3); }
-.lecon-5e .btn-back:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.lecon-5e .btn-back:hover { background: var(--rose-pale); }
+.lecon-5e .btn-back:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* Bandeau de niveau, pour qu'on sache toujours où l'on est. */
 .badge-niveau {
     display: inline-block;
-    margin-bottom: 10px;
     padding: 3px 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: var(--surface);
+    border: 1px solid var(--l5-bord);
+    color: var(--l5-rose);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 /* ============================================================
-   Onglets
-   ============================================================ */
+   Le parcours (les onglets)
+   ============================================================
+   Les onglets sont les étapes du parcours : numérotées, cochées une fois
+   vues. Sur téléphone, une rangée de puces collée sous la barre du haut ;
+   sur grand écran, une colonne à gauche qui suit le défilement. */
 
-/* Les onglets restent en haut de l'écran : sur une longue leçon, on change
-   d'onglet sans remonter. */
 .tabs {
     position: sticky;
-    top: 0;
+    top: var(--coquille-hauteur, 0px);
     z-index: 5;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 6px;
-    justify-content: center;
-    padding: 12px 16px 12px;
-    max-width: 900px;
+    align-items: center;
+    padding: 10px 16px 12px;
+    max-width: 1120px;
+    width: 100%;
     margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     background: var(--surface-voilee);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: 0 0 16px 16px;
+    counter-reset: etape;
+}
+
+.tabs::-webkit-scrollbar { display: none; }
+
+.parcours-titre {
+    display: none;
+    margin: 0 0 8px 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--doux);
+}
+
+.parcours-titre strong { color: var(--l5-rose); }
+
+@media (min-width: 900px) {
+    .tabs {
+        flex-direction: column;
+        align-items: stretch;
+        align-self: start;
+        gap: 4px;
+        top: calc(var(--coquille-hauteur, 0px) + 14px);
+        margin: 10px 0 0;
+        padding: 14px;
+        overflow: visible;
+        background: var(--surface);
+        border: 1px solid var(--l5-bord);
+        border-radius: var(--rayon-carte, 18px);
+        box-shadow: var(--l5-ombre);
+    }
+    .parcours-titre { display: block; }
 }
 
 /* Barre de lecture, collée sous les onglets (js/lecon-5e.js). */
@@ -133,6 +215,10 @@ body.lecon-5e {
     transform-origin: left;
 }
 
+@media (min-width: 900px) {
+    .barre-lecture { position: static; order: 99; margin-top: 10px; }
+}
+
 .bouton-cartes {
     min-height: 44px;
     padding: 9px 16px;
@@ -144,34 +230,87 @@ body.lecon-5e {
     font-size: 15px;
     font-weight: 800;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .bouton-cartes:hover { border-style: solid; }
 .bouton-cartes:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-.tab-button {
-    padding: 9px 16px;
-    border: 1px solid var(--l5-bord);
-    border-radius: 11px;
+.bouton-mission {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 44px;
-    background: var(--surface);
-    color: var(--l5-rose);
-    font-family: inherit;
+    padding: 9px 16px;
+    border-radius: 11px;
+    background: var(--l5-fort);
+    color: #fff;
     font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.tab-button:hover { background: var(--l5-pale); }
-.tab-button.active {
-    background: var(--l5-fort);
-    border-color: var(--l5-fort);
-    color: #fff;
+.bouton-mission:hover { filter: brightness(1.08); }
+.bouton-mission:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+@media (min-width: 900px) {
+    .bouton-cartes { margin-top: 8px; }
+    .bouton-mission { margin-top: 6px; }
 }
+
+.tab-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 14px 7px 8px;
+    border: 1px solid var(--l5-bord);
+    border-radius: 999px;
+    min-height: 42px;
+    background: var(--surface);
+    color: var(--doux);
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    counter-increment: etape;
+}
+
+/* Le numéro de l'étape, ou une coche une fois l'étape vue. */
+.tab-button::before {
+    content: counter(etape);
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    border: 2px solid var(--l5-bord);
+    display: inline-grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.tab-button:hover { background: var(--l5-pale); color: var(--l5-rose); }
+.tab-button.vu { color: var(--l5-encre); }
+.tab-button.vu::before { content: "✓"; background: var(--succes-bord); border-color: var(--succes-bord); color: #fff; }
+.tab-button.active {
+    background: var(--l5-pale);
+    border-color: var(--l5-fort);
+    color: var(--l5-rose);
+}
+.tab-button.active::before { content: counter(etape); background: var(--l5-fort); border-color: var(--l5-fort); color: #fff; }
 .tab-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-.content { max-width: 900px; margin: 0 auto; padding: 16px; }
+@media (min-width: 900px) {
+    .tab-button { border-radius: 12px; border-color: transparent; background: transparent; white-space: normal; text-align: left; }
+    .tab-button.active { border-color: transparent; }
+}
+
+.content { max-width: 1120px; width: 100%; margin: 0 auto; padding: 16px; }
+@media (min-width: 900px) { .content { padding: 10px 0 16px; max-width: none; } }
 
 .tab-content { display: none; }
 .tab-content.active { display: block; animation: l5-apparait 0.25s ease; }

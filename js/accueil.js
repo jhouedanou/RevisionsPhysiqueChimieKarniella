@@ -93,6 +93,14 @@
         sous.textContent = prete ? (lecon.sousTitre || '') : 'à venir';
         if (sous.textContent) { carte.appendChild(sous); }
 
+        if (prete && lecon.mission) {
+            var mission = document.createElement('span');
+            mission.className = 'mission-lecon';
+            mission.textContent = '🚀 Mission 3 min';
+            mission.setAttribute('title', 'Une version express : une histoire, trois cartes, un quiz');
+            carte.appendChild(mission);
+        }
+
         var score = prete ? scoreLecon(lecon.id) : null;
         if (score) {
             var badge = document.createElement('span');
@@ -100,6 +108,15 @@
             badge.textContent = score;
             badge.setAttribute('title', 'Ton meilleur score au quiz');
             carte.appendChild(badge);
+        }
+
+        if (prete && lecon.mission) {
+            carte.addEventListener('click', function (e) {
+                if (e.target.closest && e.target.closest('.mission-lecon')) {
+                    e.preventDefault();
+                    window.location.href = '5e/mission.html?id=' + encodeURIComponent(lecon.id);
+                }
+            });
         }
 
         li.appendChild(carte);
@@ -382,7 +399,7 @@
         var actifAujourdhui = jour.lecons + jour.quiz > 0;
         zone.textContent = '';
 
-        zone.appendChild(creer('h2', 'salut', salutation()));
+        zone.appendChild(creer('h1', 'salut', salutation()));
 
         var grille = creer('div', 'galop-grille');
 
@@ -419,11 +436,14 @@
             reprendre.href = '5e/' + lecon.id + '.html';
             reprendre.appendChild(creer('span', 'icone', lecon.icone || ICONE_DEFAUT)).setAttribute('aria-hidden', 'true');
             var texte = creer('span');
-            texte.appendChild(creer('span', 'detail', 'Reprendre'));
+            texte.appendChild(creer('span', 'detail', 'Reprendre où tu t\'es arrêtée'));
             texte.appendChild(creer('strong', 'titre-carte', lecon.titre));
+            if (lecon.sousTitre) { texte.appendChild(creer('span', 'sous-carte', lecon.sousTitre)); }
             reprendre.appendChild(texte);
-            reprendre.appendChild(creer('span', 'fleche', '→')).setAttribute('aria-hidden', 'true');
+            reprendre.appendChild(creer('span', 'fleche', 'Continuer →')).setAttribute('aria-hidden', 'true');
             grille.appendChild(reprendre);
+        } else {
+            grille.classList.add('sans-reprendre');
         }
 
         zone.appendChild(grille);

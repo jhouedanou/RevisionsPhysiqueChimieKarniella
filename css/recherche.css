@@ -53,7 +53,7 @@
 .rech-bouton:focus-visible { outline: 3px solid var(--rech-focus); outline-offset: 3px; }
 
 /* Sur l'en-tête sombre des leçons, le bouton reste blanc mais sans ombre lourde. */
-body.lecon-5e > header .rech-bouton {
+body.lecon-5e > header:not(.coquille-barre) .rech-bouton {
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: none;
 }

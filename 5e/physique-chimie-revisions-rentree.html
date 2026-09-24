@@ -9,14 +9,15 @@
 <link rel="stylesheet" href="../css/theme.css">
 <link rel="stylesheet" href="../css/matieres.css">
 <script src="../js/theme.js"></script>
-<link rel="stylesheet" href="../css/karniella-theme.css">
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
 <link rel="stylesheet" href="../css/section-quiz.css">
 </head>
 <body class="lecon-5e" data-matiere="physique-chimie">
 
 <header>
-<a class="btn-back" href="physique-chimie.html">← Retour à la physique-chimie</a>
 <span class="badge-niveau">Physique-Chimie · Classe de 5e</span>
 <h1>🔌 Révisions de rentrée</h1>
 <p>Circuits électriques et états physiques de la matière</p>
@@ -182,7 +183,7 @@
             .then(function (data) {
                 var questions = data['physique-chimie-revisions-rentree'];
                 if (questions && questions.tab3 && window.initSectionQuiz) {
-                    initSectionQuiz('quiz-pc-revisions', questions.tab3);
+                    initSectionQuiz('quiz-pc-revisions', questions.tab3, { etapes: true });
                 }
             })
             .catch(function () { /* hors-ligne sans cache : le reste marche */ });

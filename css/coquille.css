@@ -1,0 +1,287 @@
+/**
+ * coquille.css — La coquille commune à toutes les pages (js/coquille.js).
+ *
+ * Avant : chaque page portait son propre en-tête, avec un lien « Retour »
+ * tout en haut qui disparaissait dès qu'on descendait, et les boutons 🌙 A+ 🔍
+ * posés dans les coins. Depuis une leçon, l'accueil était à deux clics.
+ *
+ * Maintenant, comme sur une plateforme de cours en ligne :
+ *   - une barre fixe en haut : logo (= accueil), fil d'Ariane, 🔥 série,
+ *     ⭐ XP, réglages, avatar ;
+ *   - sur téléphone, une barre de navigation en bas, sous le pouce ;
+ *   - les couleurs viennent de css/theme.css (clair, sombre, thèmes achetés).
+ */
+
+:root {
+    --coquille-hauteur: 56px;
+    --coquille-nav-bas: 0px;   /* devient 64px sur téléphone */
+    --coquille-largeur: 1120px;
+    --rayon-carte: 18px;
+    --flamme: #F26A1B;
+    --flamme-pale: #FFE9DA;
+    --or-texte: #9A6A12;
+    --or-pale: #FFF3DC;
+}
+
+html[data-theme="dark"] {
+    --flamme: #FF8A47;
+    --flamme-pale: #3A2618;
+    --or-texte: #F0C46A;
+    --or-pale: #3A2E17;
+}
+
+/* ============================================================
+   La barre du haut
+   ============================================================ */
+
+.coquille-barre {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: var(--coquille-hauteur);
+    padding: 0 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--bord);
+    color: var(--encre);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+/* Sur une longue page, ni en-tête ni bordure ne doivent laisser voir le
+   contenu passer derrière : la barre est opaque, volontairement. */
+
+.coquille-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--rose);
+    font-weight: 900;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 4px 6px;
+    margin-left: -6px;
+}
+
+.coquille-logo:hover { background: var(--rose-pale); }
+.coquille-logo:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.coquille-logo .signe { font-size: 24px; line-height: 1; }
+
+/* Fil d'Ariane : Accueil › Matière › Leçon. Le dernier élément est la page. */
+.coquille-fil {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 13.5px;
+    color: var(--doux);
+}
+
+.coquille-fil a {
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.coquille-fil a:hover { background: var(--rose-pale); color: var(--rose); }
+.coquille-fil a:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+.coquille-fil .sep { opacity: 0.55; padding: 0 2px; }
+.coquille-fil .ici { padding: 4px 8px; color: var(--encre); font-weight: 800; overflow: hidden; text-overflow: ellipsis; }
+
+.coquille-outils {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+/* Les boutons ronds : 🌙 A+ 🔍 et l'avatar. */
+.coquille-outils .reglage,
+.coquille-outils .rech-bouton,
+.coquille-rond {
+    position: static;
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid var(--bord);
+    background: var(--surface);
+    color: var(--rose);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.coquille-outils .reglage:hover,
+.coquille-outils .rech-bouton:hover,
+.coquille-rond:hover { background: var(--rose-pale); transform: none; box-shadow: none; }
+.coquille-outils .reglage:focus-visible,
+.coquille-outils .rech-bouton:focus-visible,
+.coquille-rond:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.coquille-outils .reglage[aria-pressed="true"] { background: var(--rose-pale); border-color: var(--rose); }
+.coquille-outils .rech-bouton-texte { display: none; }
+
+.coquille-avatar {
+    background: var(--rose-pale);
+    border-color: var(--rose);
+    font-size: 19px;
+    text-decoration: none;
+}
+
+/* 🔥 série et ⭐ XP : des pastilles colorées, lisibles d'un coup d'œil. */
+.coquille-puce {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 36px;
+    padding: 0 11px 0 9px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.coquille-puce:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.coquille-puce .ico { font-size: 16px; line-height: 1; }
+
+.coquille-flamme { background: var(--flamme-pale); color: var(--flamme); }
+.coquille-flamme.eteinte { background: var(--surface-grise); color: var(--doux); border-color: var(--bord); }
+.coquille-flamme.eteinte .ico { filter: grayscale(1); opacity: 0.6; }
+.coquille-flamme.en-danger { animation: coquille-pulse 1.3s ease-in-out infinite; }
+
+@keyframes coquille-pulse {
+    50% { box-shadow: 0 0 0 6px rgba(242, 106, 27, 0.28); }
+}
+
+.coquille-xp { background: var(--or-pale); color: var(--or-texte); }
+
+/* Le petit panneau de la série, sous la flamme. */
+.coquille-panneau {
+    position: fixed;
+    top: calc(var(--coquille-hauteur) + 8px);
+    right: 12px;
+    z-index: 60;
+    width: 300px;
+    max-width: calc(100vw - 24px);
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    border-radius: var(--rayon-carte);
+    box-shadow: var(--ombre-forte);
+    color: var(--encre);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-size: 14.5px;
+}
+
+.coquille-panneau[hidden] { display: none; }
+.coquille-panneau .gros { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+.coquille-panneau .gros .ico { font-size: 30px; }
+.coquille-panneau p { margin: 0 0 10px; color: var(--doux); }
+.coquille-panneau ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.coquille-panneau li { display: flex; align-items: center; gap: 9px; font-weight: 700; }
+.coquille-panneau .coche {
+    width: 22px; height: 22px; border-radius: 999px; border: 2px solid var(--bord);
+    display: inline-grid; place-items: center; font-size: 12px; color: #fff;
+}
+.coquille-panneau li.fait { color: var(--doux); }
+.coquille-panneau li.fait .coche { background: var(--succes-bord); border-color: var(--succes-bord); }
+.coquille-panneau .semaine { display: flex; gap: 5px; margin-top: 12px; }
+.coquille-panneau .semaine i {
+    flex: 1; height: 26px; border-radius: 7px; display: grid; place-items: center;
+    background: var(--surface-grise); border: 1px solid var(--bord); font-size: 11px; font-style: normal; font-weight: 800; color: var(--doux);
+}
+.coquille-panneau .semaine i.on { background: var(--flamme-pale); border-color: var(--flamme); color: var(--flamme); }
+.coquille-panneau .semaine i.auj { outline: 2px solid var(--rose); outline-offset: 1px; }
+
+/* ============================================================
+   La navigation du bas (téléphone)
+   ============================================================ */
+
+.coquille-nav-bas {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 6px 6px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: var(--surface);
+    border-top: 1px solid var(--bord);
+    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+}
+
+.coquille-nav-bas a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 5px 4px;
+    border-radius: 12px;
+    color: var(--doux);
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.coquille-nav-bas a .ico { font-size: 21px; line-height: 1; }
+.coquille-nav-bas a.actif { color: var(--rose); background: var(--rose-pale); }
+.coquille-nav-bas a:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+
+@media (max-width: 719px) {
+    :root { --coquille-nav-bas: 64px; }
+    .coquille-nav-bas { display: grid; }
+    .coquille-fil { display: none; }
+    .coquille-logo .nom { display: none; }
+    .coquille-barre { padding: 0 10px; gap: 8px; }
+    .coquille-outils .reglage[data-reglage="texte"] { display: none; }
+    /* La bulle du chat et son invite remontent au-dessus de la barre basse. */
+    html body #kc-bulle { bottom: calc(var(--coquille-nav-bas) + 12px); }
+    html body #kc-invite { bottom: calc(var(--coquille-nav-bas) + 84px); }
+    body { padding-bottom: var(--coquille-nav-bas); }
+}
+
+@media (max-width: 400px) {
+    .coquille-xp .texte { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .coquille-flamme.en-danger { animation: none; box-shadow: 0 0 0 3px rgba(242, 106, 27, 0.35); }
+}
+
+/* Texte pour les lecteurs d'écran seulement. */
+.coquille-panneau .lecteur-seul,
+.coquille-barre .lecteur-seul {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Le texte agrandi (A+) ne doit pas zoomer la barre, qui est fixe. */
+html[data-texte="grand"] .coquille-barre,
+html[data-texte="grand"] .coquille-nav-bas { zoom: 1; }
+
+/* `hidden` doit gagner sur les display posés ici. */
+.coquille-barre [hidden],
+.coquille-nav-bas [hidden] { display: none !important; }

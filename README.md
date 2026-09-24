@@ -435,7 +435,7 @@ badge, ou au premier progrès du jour quand la série continue.
 - `css/theme.css` porte **toutes** les couleurs du site, en clair et en sombre.
   `js/theme.js`, chargé sans `defer` dans le `<head>`, pose `data-theme` sur `<html>`
   avant l'affichage : le site suit le réglage de l'appareil, puis le choix fait avec
-  le bouton 🌙 (en haut à gauche). Le bouton **A+** agrandit le texte.
+  le bouton 🌙 (dans la barre du haut). Le bouton **A+** agrandit le texte.
 - `css/matieres.css` est **généré** par `npm run build:programme` à partir du champ
   `couleur` de `data/programme-5e.json` : trois teintes par matière, vérifiées à
   4,5:1 en clair et en sombre. Les pages portent `data-matiere` sur `<body>`.
@@ -445,9 +445,53 @@ badge, ou au premier progrès du jour quand la série continue.
 <link rel="stylesheet" href="../css/theme.css">
 <link rel="stylesheet" href="../css/matieres.css">
 <script src="../js/theme.js"></script>
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
 ```
 
-et `<body class="lecon-5e" data-matiere="<id-de-la-matière>">`.
+et `<body class="lecon-5e" data-matiere="<id-de-la-matière>">`. Pas de bouton
+« Retour » à écrire : la barre du haut s'en charge.
+
+### 🧭 La coquille : barre du haut et navigation du bas
+
+`js/coquille.js` + `css/coquille.css`, chargés dans le `<head>` de toutes les pages.
+Comme sur une plateforme de cours en ligne :
+
+- une **barre fixe en haut** : le logo 🐴 ramène à l'accueil, un fil d'Ariane
+  (`Accueil › Physique-Chimie › Les mélanges`) mène partout en un clic, puis
+  🔥 la série, ⭐ les XP, 🌙, A+, 🔍 et l'avatar (→ boutique) ;
+- sur **téléphone**, une barre en bas : Accueil · Leçons · Boutique · Badges ;
+- dans les leçons, les onglets deviennent un **parcours** numéroté : colonne à
+  gauche sur grand écran, puces sous la barre sur téléphone, coche sur les
+  étapes vues (gardées pour la session), « étape 2 sur 4 ».
+- La flamme 🔥 est grise tant que rien n'a été révisé aujourd'hui et **clignote
+  après 18 h** si la série est en danger. Un clic ouvre le résumé de la semaine.
+
+### ⭐ XP et boutique
+
+`js/xp.js` (clé `karniella-xp`) : **+10 XP par bonne réponse, +50 XP pour un
+sans-faute** (quiz d'au moins 3 questions). `boutique.html` échange les XP contre
+le badge « Apprentie Alchimiste » (100), les thèmes **Cyberpunk Rose** et
+**Espace Profond** (300, variables `html[data-skin=…]` dans `css/theme.css`) et
+l'avatar **poney astronaute** (500). Un thème acheté impose le mode sombre ;
+le bouton 🌙 le retire.
+
+### 🎯 Quiz en étapes et mode Ghost 👻
+
+`initSectionQuiz(id, questions, { etapes: true })` affiche **une question à la
+fois** : feedback immédiat, chrono, points d'avancement, écran final avec les XP.
+`js/progression.js` garde le **record chronométré** de chaque quiz
+(`KarniellaProgression.record(slug)`). Au quiz suivant, « 👻 Battre mon fantôme »
+fait courir l'ancien record sur une piste pendant qu'on répond.
+
+### 🚀 Missions de 3 minutes
+
+`5e/mission.html?id=<slug>` joue `data/missions/<slug>.json` en trois écrans,
+une carte à la fois : l'histoire, une micro-leçon par carte, le quiz en étapes.
+Le format JSON et le prompt pour en générer sont dans `docs/prompt-missions.md`.
+Pour afficher le bouton « 🚀 Mission 3 min » sur une leçon : `"mission": true`
+dans `data/programme-5e.json`, puis `npm run build:programme`.
 
 ### 📖 Dans les leçons
 

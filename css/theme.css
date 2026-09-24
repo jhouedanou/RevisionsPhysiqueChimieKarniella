@@ -108,16 +108,76 @@ html[data-theme="dark"] {
 }
 
 /* ============================================================
+   Thèmes de la boutique (js/xp.js) — posés par js/theme.js en data-skin
+   ============================================================
+   Des thèmes de nuit : ils s'appliquent par-dessus le mode sombre, et ne
+   redéfinissent eux aussi QUE des variables. */
+
+html[data-skin="cyberpunk-rose"] {
+    --fond: #14071A;
+    --fond-degrade: linear-gradient(165deg, #2A0A3A 0%, #14071A 55%, #1A0426 100%);
+    --surface: #22102F;
+    --surface-douce: #2B1539;
+    --surface-grise: #26123A;
+    --surface-voilee: rgba(34, 16, 47, 0.75);
+    --encre: #FCE7FF;
+    --doux: #D9A6E8;
+    --bord: rgba(255, 120, 220, 0.25);
+    --rose: #FF5CB8;
+    --rose-clair: #FF8ACB;
+    --rose-pale: #4A1547;
+    --rose-tres-pale: #31103A;
+    --entete-fonce: #0E0414;
+    --focus: #5CF2F2;
+    --chaud-debut: #3F1B14;
+    --chaud-fin: #4A1547;
+    --or-debut: #0F3A3F;
+    --flamme: #FF6A3D;
+    --flamme-pale: #3F1B14;
+    --or-texte: #5CF2F2;
+    --or-pale: #0F3A3F;
+}
+
+html[data-skin="espace-profond"] {
+    --fond: #070B1F;
+    --fond-degrade: radial-gradient(circle at 20% 10%, #1B2559 0%, #070B1F 55%, #02040E 100%);
+    --surface: #111838;
+    --surface-douce: #161E45;
+    --surface-grise: #131A3C;
+    --surface-voilee: rgba(17, 24, 56, 0.75);
+    --encre: #E9EEFF;
+    --doux: #A9B4E0;
+    --bord: rgba(160, 180, 255, 0.2);
+    --rose: #9DBBFF;
+    --rose-clair: #B7CCFF;
+    --rose-pale: #1E2A5E;
+    --rose-tres-pale: #141C46;
+    --entete-fonce: #02040E;
+    --focus: #FFD166;
+    --chaud-debut: #2A2618;
+    --chaud-fin: #1E2A5E;
+    --or-debut: #3A2E17;
+    --flamme: #FF8A47;
+    --flamme-pale: #3A2618;
+    --or-texte: #FFD166;
+    --or-pale: #3A2E17;
+}
+
+/* ============================================================
    Réglages d'affichage : 🌙 et A+ (js/theme.js)
    ============================================================ */
 
 .reglages {
+    display: flex;
+    gap: 6px;
+}
+
+/* Sans la barre du haut (vieille page), les boutons restent dans le coin. */
+header > .reglages {
     position: absolute;
     top: 14px;
     left: 14px;
     z-index: 2;
-    display: flex;
-    gap: 6px;
 }
 
 .reglage {
@@ -143,8 +203,7 @@ html[data-theme="dark"] {
 /* Sur téléphone, les boutons des coins (🌙 A+ à gauche, 🔍 à droite)
    chevaucheraient le bouton Retour, centré : on descend le contenu. */
 @media (max-width: 560px) {
-    .reglages { top: 10px; left: 10px; }
-    body.lecon-5e > header,
+    header > .reglages { top: 10px; left: 10px; }
     header.accueil-entete { padding-top: 64px; }
 }
 

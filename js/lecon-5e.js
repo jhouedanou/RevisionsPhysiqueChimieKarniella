@@ -22,11 +22,41 @@
         }
 
         var boutons = document.querySelectorAll('.tab-button');
+        var rang = 0;
         for (var j = 0; j < boutons.length; j++) {
             var estActif = boutons[j] === bouton;
+            // L'étape qu'on quitte est vue : elle gagne sa coche.
+            if (boutons[j].classList.contains('active') && !estActif) { marquerVu(boutons[j]); }
             boutons[j].classList.toggle('active', estActif);
             boutons[j].setAttribute('aria-selected', estActif ? 'true' : 'false');
+            if (estActif) { rang = j + 1; }
         }
+        majTitreParcours(rang, boutons.length);
+    }
+
+    /* ============================================================
+       Le parcours : étape X sur N, étapes vues
+       ============================================================
+       Les étapes vues sont gardées pour la session : revenir sur la leçon
+       après un détour garde les coches, fermer l'onglet les efface. */
+
+    var CLE_VUES = 'karniella-etapes-vues:' + window.location.pathname;
+
+    function lireVues() {
+        try { return JSON.parse(window.sessionStorage.getItem(CLE_VUES)) || {}; } catch (err) { return {}; }
+    }
+
+    function marquerVu(bouton) {
+        bouton.classList.add('vu');
+        var vues = lireVues();
+        vues[bouton.getAttribute('data-onglet')] = true;
+        try { window.sessionStorage.setItem(CLE_VUES, JSON.stringify(vues)); } catch (err) { /* sans suite */ }
+    }
+
+    function majTitreParcours(rang, total) {
+        var titre = document.querySelector('.parcours-titre');
+        if (!titre || !rang) { return; }
+        titre.innerHTML = 'Parcours · <strong>étape ' + rang + ' sur ' + total + '</strong>';
     }
 
     function initialiser() {
@@ -43,11 +73,25 @@
         }
 
         var groupe = document.querySelector('.tabs');
-        if (groupe) { groupe.setAttribute('role', 'tablist'); }
+        if (groupe) {
+            groupe.setAttribute('role', 'tablist');
+            var titre = document.createElement('p');
+            titre.className = 'parcours-titre';
+            groupe.insertBefore(titre, groupe.firstChild);
+        }
+
+        var vues = lireVues();
+        var rangActif = 0;
+        for (var k = 0; k < boutons.length; k++) {
+            if (vues[boutons[k].getAttribute('data-onglet')]) { boutons[k].classList.add('vu'); }
+            if (boutons[k].classList.contains('active')) { rangActif = k + 1; }
+        }
+        majTitreParcours(rangActif, boutons.length);
 
         ajouterBarreLecture(groupe);
         ajouterNavigation(boutons);
         preparerCartes(groupe);
+        ajouterMission(groupe);
 
         suivreAncre();
         window.addEventListener('hashchange', suivreAncre);
@@ -118,6 +162,27 @@
             cible.focus({ preventScroll: true });
         });
         return b;
+    }
+
+    /* ============================================================
+       🚀 Mission express (5e/mission.html)
+       ============================================================ */
+
+    function ajouterMission(groupe) {
+        var programme = window.KarniellaProgramme;
+        if (!groupe || !programme) { return; }
+        var slug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+        var trouvee = false;
+        programme.matieres.forEach(function (m) {
+            (m.lecons || []).forEach(function (l) { if (l.id === slug && l.mission) { trouvee = true; } });
+        });
+        if (!trouvee) { return; }
+        var a = document.createElement('a');
+        a.className = 'bouton-mission';
+        a.href = 'mission.html?id=' + encodeURIComponent(slug);
+        a.textContent = '🚀 Mission 3 min';
+        a.setAttribute('title', 'La version express : une histoire, trois cartes, un quiz');
+        groupe.appendChild(a);
     }
 
     /* ============================================================
