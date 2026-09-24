@@ -26,17 +26,32 @@
         try { window.localStorage.setItem(cle, valeur); } catch (err) { /* choix oublié au rechargement */ }
     }
 
-    /** Le thème acheté dans la boutique (js/xp.js), ou null. */
+    /* Les thèmes de la boutique. Ceux « de jour » gardent le mode clair,
+       les autres imposent le sombre (leurs surfaces sont foncées). */
+    var SKINS = {
+        'theme-cyberpunk-rose': { valeur: 'cyberpunk-rose', clair: false },
+        'theme-espace-profond': { valeur: 'espace-profond', clair: false },
+        'theme-foret-enchantee': { valeur: 'foret-enchantee', clair: false },
+        'theme-ocean': { valeur: 'ocean', clair: true },
+        'theme-bonbon': { valeur: 'bonbon', clair: true },
+        'theme-or-royal': { valeur: 'or-royal', clair: false }
+    };
+
+    /** Le thème acheté et activé dans la boutique (js/xp.js), ou null. */
     function skinActif() {
         try {
             var xp = JSON.parse(window.localStorage.getItem('karniella-xp'));
-            return (xp && xp.skin) || null;
+            if (!xp) { return null; }
+            var id = xp.actifs ? xp.actifs.theme : null;
+            if (!id && xp.skin) { id = 'theme-' + xp.skin; }   // ancien format
+            if (!id || !SKINS[id] || (xp.achats || []).indexOf(id) === -1) { return null; }
+            return SKINS[id];
         } catch (err) { return null; }
     }
 
     function estSombre() {
-        // Les thèmes de la boutique sont des thèmes de nuit : ils imposent le sombre.
-        if (skinActif()) { return true; }
+        var skin = skinActif();
+        if (skin) { return !skin.clair; }
         var choix = lire(CLE_THEME);
         if (choix === 'dark' || choix === 'light') { return choix === 'dark'; }
         return Boolean(media && media.matches);
@@ -49,7 +64,7 @@
         var sombre = estSombre();
         html.setAttribute('data-theme', sombre ? 'dark' : 'light');
         var skin = skinActif();
-        if (skin) { html.setAttribute('data-skin', skin); } else { html.removeAttribute('data-skin'); }
+        if (skin) { html.setAttribute('data-skin', skin.valeur); } else { html.removeAttribute('data-skin'); }
         html.setAttribute('data-texte', lire(CLE_TEXTE) === 'grand' ? 'grand' : 'normal');
 
         // La barre du navigateur, sur téléphone, suit le thème.
@@ -57,7 +72,8 @@
         if (meta) { meta.setAttribute('content', sombre ? '#1B1418' : '#B9366C'); }
 
         if (boutonTheme) {
-            boutonTheme.textContent = sombre ? '☀️' : '🌙';
+            var I = window.KarniellaIcones;
+            if (I) { boutonTheme.innerHTML = I.svg(sombre ? 'soleil' : 'lune'); } else { boutonTheme.textContent = sombre ? '☀️' : '🌙'; }
             boutonTheme.setAttribute('aria-label', sombre ? 'Passer en mode clair' : 'Passer en mode sombre');
             boutonTheme.setAttribute('title', sombre ? 'Mode clair' : 'Mode sombre');
         }
@@ -67,8 +83,9 @@
     }
 
     function basculerTheme() {
-        // Avec un thème de boutique, 🌙 ramène au thème de base en clair.
-        if (skinActif() && window.KarniellaXP) { window.KarniellaXP.activerTheme(null); ecrire(CLE_THEME, 'light'); appliquer(); return; }
+        // Avec un thème de boutique, 🌙 ramène au thème de base (clair ou sombre).
+        var skin = skinActif();
+        if (skin && window.KarniellaXP) { window.KarniellaXP.desactiver('theme'); ecrire(CLE_THEME, skin.clair ? 'dark' : 'light'); appliquer(); return; }
         ecrire(CLE_THEME, estSombre() ? 'light' : 'dark');
         appliquer();
     }

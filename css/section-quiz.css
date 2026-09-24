@@ -359,7 +359,10 @@
 }
 .quiz-btn:hover { filter: brightness(1.05); }
 .quiz-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.quiz-btn-plein { background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; }
+.quiz-btn-plein { background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18); transition: transform var(--duree-rapide, 150ms) ease, box-shadow var(--duree-rapide, 150ms) ease; }
+.quiz-btn-plein:active { transform: translateY(2px); box-shadow: none; }
+.quiz-option:active:not(:disabled) { transform: scale(0.99); }
+.quiz-fin-titre, .quiz-depart-titre { font-family: var(--police-titre, inherit); }
 .quiz-btn-or { background: var(--or-pale, #FFF3DC); border-color: transparent; color: var(--or-texte, #9A6A12); }
 .quiz-suivant { margin-top: 14px; width: 100%; }
 .quiz-suivant[hidden] { display: none; }

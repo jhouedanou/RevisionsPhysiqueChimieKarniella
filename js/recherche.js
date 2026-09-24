@@ -610,7 +610,10 @@
         b.type = 'button';
         b.setAttribute('aria-label', 'Rechercher dans mes leçons (touche /)');
         b.setAttribute('title', 'Rechercher (touche /)');
-        b.appendChild(el('span', '', '🔍')).setAttribute('aria-hidden', 'true');
+        var ico = el('span', '');
+        if (window.KarniellaIcones) { ico.innerHTML = window.KarniellaIcones.svg('loupe'); } else { ico.textContent = '🔍'; }
+        ico.setAttribute('aria-hidden', 'true');
+        b.appendChild(ico);
         b.appendChild(el('span', 'rech-bouton-texte', 'Rechercher'));
         b.addEventListener('click', function () { ouvrir(''); });
         if (!zone) { entete.classList.add('rech-entete'); }

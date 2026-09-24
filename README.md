@@ -471,11 +471,28 @@ Comme sur une plateforme de cours en ligne :
 ### ⭐ XP et boutique
 
 `js/xp.js` (clé `karniella-xp`) : **+10 XP par bonne réponse, +50 XP pour un
-sans-faute** (quiz d'au moins 3 questions). `boutique.html` échange les XP contre
-le badge « Apprentie Alchimiste » (100), les thèmes **Cyberpunk Rose** et
-**Espace Profond** (300, variables `html[data-skin=…]` dans `css/theme.css`) et
-l'avatar **poney astronaute** (500). Un thème acheté impose le mode sombre ;
-le bouton 🌙 le retire.
+sans-faute** (quiz d'au moins 3 questions). `boutique.html` propose **27
+récompenses en 6 rayons**, de 100 à 1 500 XP, qui changent vraiment l'application :
+
+| Rayon | Effet | Exemples |
+|---|---|---|
+| Badges (6) | s'ajoutent à « Mes badges » | Apprentie Alchimiste 100 · Savante Suprême 1500 |
+| Thèmes (6) | couleurs de tout le site, `html[data-skin=…]` dans `css/theme.css` | Cyberpunk Rose, Grand Océan (jour), Or Royal |
+| Avatars (6) | le rond dans la barre du haut | Licorne 350 · Poney astronaute 500 · Reine 1000 |
+| Cadres (3) | anneau autour de l'avatar | argent, or, arc-en-ciel |
+| Confettis (3) | la pluie des réussites (`js/badges.js`) | étoiles, cœurs, feu d'artifice |
+| Titres (3) | sous « Salut Karniella » sur l'accueil | Capitaine Karniella, Reine de l'écurie |
+
+Un seul actif par rayon (sauf les badges). Les thèmes « de nuit » imposent le mode
+sombre, ceux « de jour » le clair ; le bouton 🌙 retire le thème actif.
+
+### 🎨 Polices et icônes
+
+Titres en **Baloo 2**, texte en **Nunito** (Google Fonts, chargées par
+`js/coquille.js` ; hors-ligne la pile système prend le relais). Les commandes
+(navigation, 🌙, 🔍, flamme, XP) sont des icônes SVG (`KarniellaIcones.svg(nom)`
+dans `js/coquille.js`) ; les emojis restent pour le contenu et les récompenses.
+Les skills de design du projet vivent dans `.claude/skills/` (`ui-ux-pro-max`).
 
 ### 🎯 Quiz en étapes et mode Ghost 👻
 

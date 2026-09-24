@@ -30,7 +30,7 @@ body {
     min-height: 100vh;
     background: var(--fond-degrade);
     color: var(--ac-encre);
-    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-family: var(--police-texte, 'Nunito', 'Segoe UI', sans-serif);
     font-size: 17px;
     line-height: 1.6;
 }
@@ -180,7 +180,7 @@ body {
     /* La couleur de la matière (css/matieres.css), pour la reconnaître d'un coup d'œil. */
     border-top: 5px solid var(--matiere, var(--rose));
     border-radius: var(--rayon-carte, 18px);
-    box-shadow: var(--ac-ombre);
+    box-shadow: var(--ombre-clay, var(--ac-ombre));
 }
 
 .titre-matiere {
@@ -195,7 +195,8 @@ body {
 
 .titre-matiere a {
     color: var(--matiere-texte, var(--ac-rose));
-    font-size: 20px;
+    font-family: var(--police-titre, inherit);
+    font-size: 22px;
     font-weight: 800;
     text-decoration: none;
 }
@@ -363,10 +364,20 @@ html[data-theme="dark"] .mission-lecon { color: #1B1418; }
 .mon-galop { margin: 22px 0 26px; }
 
 .salut {
+    font-family: var(--police-titre, inherit);
     margin-bottom: 14px;
     font-size: clamp(22px, 4.6vw, 28px);
     font-weight: 800;
     letter-spacing: -0.01em;
+}
+
+.titre-achete {
+    margin: -8px 0 14px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--or-texte, #9A6A12);
 }
 
 .galop-grille {
@@ -404,7 +415,7 @@ html[data-theme="dark"] .mission-lecon { color: #1B1418; }
     background: var(--surface);
     border: 1px solid var(--ac-bord);
     border-radius: var(--rayon-carte, 18px);
-    box-shadow: var(--ac-ombre);
+    box-shadow: var(--ombre-clay, var(--ac-ombre));
     color: inherit;
     text-decoration: none;
 }
@@ -486,11 +497,13 @@ html[data-theme="dark"] .galop-reprendre { color: #1B1418; }
 
 .galop-reprendre > span:nth-child(2) { flex: 1 1 auto; min-width: 0; position: relative; }
 .galop-reprendre .detail { color: inherit; opacity: 0.85; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-.galop-reprendre .titre-carte { font-size: clamp(20px, 3.5vw, 26px); font-weight: 800; line-height: 1.15; margin-top: 4px; }
+.galop-reprendre .titre-carte { font-family: var(--police-titre, inherit); font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; line-height: 1.15; margin-top: 4px; }
 .galop-reprendre .sous-carte { display: block; margin-top: 4px; font-size: 14px; opacity: 0.9; }
 
 .galop-reprendre .fleche {
     position: relative;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+    transition: transform var(--duree-rapide, 150ms) ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -503,7 +516,8 @@ html[data-theme="dark"] .galop-reprendre { color: #1B1418; }
     font-weight: 800;
 }
 
-.galop-reprendre:hover { transform: translateY(-3px); box-shadow: var(--ombre-forte); }
+.galop-reprendre:hover { transform: translateY(-3px); box-shadow: var(--ombre-clay-forte, var(--ombre-forte)); }
+.galop-reprendre:active .fleche { transform: translateY(2px); box-shadow: none; }
 .galop-reprendre:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 /* Titres de section du tableau de bord. */
@@ -515,7 +529,7 @@ html[data-theme="dark"] .galop-reprendre { color: #1B1418; }
     margin: 4px 0 12px;
 }
 
-.section-titre h2 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; }
+.section-titre h2 { font-family: var(--police-titre, inherit); font-size: 21px; font-weight: 800; letter-spacing: 0; }
 .section-titre a { font-size: 13.5px; font-weight: 800; color: var(--ac-rose); text-decoration: none; }
 .section-titre a:hover { text-decoration: underline; }
 
@@ -533,7 +547,7 @@ html[data-theme="dark"] .galop-reprendre { color: #1B1418; }
     scroll-margin-top: 16px;
 }
 
-.mes-badges h2 { font-size: 18px; font-weight: 800; color: var(--ac-rose); }
+.mes-badges h2 { font-family: var(--police-titre, inherit); font-size: 21px; font-weight: 800; color: var(--ac-rose); }
 
 .badges-compte { margin: 2px 0 14px; font-size: 14px; color: var(--ac-doux); }
 

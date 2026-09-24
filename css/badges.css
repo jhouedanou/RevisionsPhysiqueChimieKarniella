@@ -19,7 +19,7 @@
     border-radius: 18px;
     background: linear-gradient(125deg, var(--entete-fonce, #35212D) 0%, #9D2F5C 100%);
     color: #fff;
-    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-family: var(--police-texte, 'Nunito', 'Segoe UI', sans-serif);
     font-size: 14px;
     line-height: 1.35;
     text-decoration: none;

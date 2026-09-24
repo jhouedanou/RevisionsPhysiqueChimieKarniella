@@ -10,7 +10,7 @@ body.mission-page {
     min-height: 100vh;
     background: var(--fond-degrade);
     color: var(--encre);
-    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-family: var(--police-texte, 'Nunito', 'Segoe UI', sans-serif);
     font-size: 17px;
     line-height: 1.55;
 }
@@ -78,12 +78,12 @@ body.mission-page {
     color: #EAF0FF;
 }
 .mission-histoire .mission-etiquette { color: #B7CCFF; }
-.mission-histoire h1 { margin: 0 0 10px; font-size: clamp(22px, 5vw, 28px); font-weight: 900; letter-spacing: -0.01em; line-height: 1.2; }
+.mission-histoire h1 { margin: 0 0 10px; font-family: var(--police-titre, inherit); font-size: clamp(24px, 5vw, 30px); font-weight: 900; letter-spacing: -0.01em; line-height: 1.2; }
 .mission-histoire p { margin: 0; font-size: 16.5px; }
 .mission-histoire .deco { position: absolute; right: 10px; top: 6px; font-size: 64px; opacity: 0.3; line-height: 1; pointer-events: none; }
 .mission-histoire .mission-duree { display: inline-block; margin-top: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.14); font-size: 13px; font-weight: 800; }
 
-.mission-bloc h2 { margin: 0 0 10px; font-size: 20px; font-weight: 900; color: var(--l5-rose, var(--rose)); line-height: 1.25; }
+.mission-bloc h2 { margin: 0 0 10px; font-family: var(--police-titre, inherit); font-size: 22px; font-weight: 900; color: var(--l5-rose, var(--rose)); line-height: 1.25; }
 .mission-bloc p { margin: 0; font-size: 17px; }
 
 .mission-boutons { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
@@ -105,7 +105,8 @@ body.mission-page {
     cursor: pointer;
 }
 .mission-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.mission-btn-plein { margin-left: auto; background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; }
+.mission-btn-plein { margin-left: auto; background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18); transition: transform var(--duree-rapide, 150ms) ease, box-shadow var(--duree-rapide, 150ms) ease; }
+.mission-btn-plein:active { transform: translateY(2px); box-shadow: none; }
 .mission-histoire .mission-btn-plein { background: #fff; border-color: #fff; color: #1E2A5E; }
 
 /* Le quiz reprend le style de section-quiz.css, sans son cadre coloré. */

@@ -201,9 +201,11 @@
         var pluie = document.createElement('div');
         pluie.className = 'confettis';
         pluie.setAttribute('aria-hidden', 'true');
+        // La pluie achetée dans la boutique (js/xp.js), sinon celle de base.
+        var formes = (window.KarniellaXP && window.KarniellaXP.confettis()) || CONFETTIS;
         for (var i = 0; i < 32; i++) {
             var c = document.createElement('span');
-            c.textContent = CONFETTIS[i % CONFETTIS.length];
+            c.textContent = formes[i % formes.length];
             c.style.left = (Math.random() * 100) + '%';
             c.style.animationDelay = (Math.random() * 0.6) + 's';
             c.style.animationDuration = (1.8 + Math.random() * 1.4) + 's';

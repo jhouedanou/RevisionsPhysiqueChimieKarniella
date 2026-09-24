@@ -16,6 +16,20 @@
 :root {
     color-scheme: light;
 
+    /* Polices : Baloo 2 pour les titres (rond, joueur), Nunito pour le texte.
+       Chargées par js/coquille.js depuis Google Fonts ; hors-ligne, la pile
+       système prend le relais sans casser la mise en page. */
+    --police-titre: 'Baloo 2', 'Nunito', 'Avenir Next', 'Segoe UI', sans-serif;
+    --police-texte: 'Nunito', 'Nunito Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+
+    /* Style « clay » : cartes rebondies, ombres douces, pression au toucher. */
+    --rayon-carte: 20px;
+    --rayon-bouton: 14px;
+    --ombre-clay: 0 2px 0 rgba(73, 30, 50, 0.06), 0 12px 28px rgba(73, 30, 50, 0.10);
+    --ombre-clay-forte: 0 3px 0 rgba(73, 30, 50, 0.08), 0 18px 40px rgba(73, 30, 50, 0.16);
+    --duree-rapide: 150ms;
+    --duree-normale: 220ms;
+
     --fond: #FFF9FB;
     --fond-degrade: linear-gradient(165deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
     --surface: #FFFFFF;
@@ -63,6 +77,9 @@
 
 html[data-theme="dark"] {
     color-scheme: dark;
+
+    --ombre-clay: 0 2px 0 rgba(0, 0, 0, 0.25), 0 12px 28px rgba(0, 0, 0, 0.35);
+    --ombre-clay-forte: 0 3px 0 rgba(0, 0, 0, 0.3), 0 18px 40px rgba(0, 0, 0, 0.5);
 
     --fond: #1B1418;
     --fond-degrade: linear-gradient(165deg, #241820 0%, #1B1418 50%, #1E1915 100%);
@@ -161,6 +178,106 @@ html[data-skin="espace-profond"] {
     --flamme-pale: #3A2618;
     --or-texte: #FFD166;
     --or-pale: #3A2E17;
+}
+
+html[data-skin="foret-enchantee"] {
+    --fond: #0B1A12;
+    --fond-degrade: radial-gradient(circle at 80% 0%, #1E4A2E 0%, #0B1A12 50%, #06110B 100%);
+    --surface: #132A1C;
+    --surface-douce: #183424;
+    --surface-grise: #16301F;
+    --surface-voilee: rgba(19, 42, 28, 0.75);
+    --encre: #EAF7EE;
+    --doux: #A9D4B6;
+    --bord: rgba(160, 230, 180, 0.2);
+    --rose: #8FE3A8;
+    --rose-clair: #B6F0C6;
+    --rose-pale: #1E4A2E;
+    --rose-tres-pale: #163A24;
+    --entete-fonce: #06110B;
+    --focus: #FFD166;
+    --chaud-debut: #3A2A14;
+    --chaud-fin: #1E4A2E;
+    --or-debut: #3A3018;
+    --flamme: #FFB347;
+    --flamme-pale: #3A2A14;
+    --or-texte: #FFD166;
+    --or-pale: #3A3018;
+}
+
+html[data-skin="ocean"] {
+    --fond: #EAF7FA;
+    --fond-degrade: linear-gradient(165deg, #D6F0F6 0%, #EAF7FA 50%, #FFF6E5 100%);
+    --surface: #FFFFFF;
+    --surface-douce: #F2FAFC;
+    --surface-grise: #EEF6F8;
+    --surface-voilee: rgba(255, 255, 255, 0.7);
+    --encre: #143642;
+    --doux: #4A6B77;
+    --bord: rgba(20, 54, 66, 0.14);
+    --rose: #0E7C9A;
+    --rose-clair: #2A9DBD;
+    --rose-pale: #D6F0F6;
+    --rose-tres-pale: #EAF7FA;
+    --entete-fonce: #143642;
+    --focus: #E8590C;
+    --chaud-debut: #FFF0D6;
+    --chaud-fin: #D6F0F6;
+    --or-debut: #FFF8E1;
+    --flamme: #E8590C;
+    --flamme-pale: #FFE7D6;
+    --or-texte: #9A6A12;
+    --or-pale: #FFF3DC;
+}
+
+html[data-skin="bonbon"] {
+    --fond: #FFF6FB;
+    --fond-degrade: linear-gradient(165deg, #FFE1F0 0%, #E8FFF4 50%, #FFF9D9 100%);
+    --surface: #FFFFFF;
+    --surface-douce: #FFF0F7;
+    --surface-grise: #F6F0F4;
+    --surface-voilee: rgba(255, 255, 255, 0.7);
+    --encre: #4A2C3B;
+    --doux: #7A5A6B;
+    --bord: rgba(74, 44, 59, 0.14);
+    --rose: #D6336C;
+    --rose-clair: #F06595;
+    --rose-pale: #FFE1F0;
+    --rose-tres-pale: #FFF0F7;
+    --entete-fonce: #4A2C3B;
+    --focus: #0CA678;
+    --chaud-debut: #FFF3BF;
+    --chaud-fin: #FFE1F0;
+    --or-debut: #FFF9D9;
+    --flamme: #F76707;
+    --flamme-pale: #FFE8D9;
+    --or-texte: #A56A00;
+    --or-pale: #FFF3BF;
+}
+
+html[data-skin="or-royal"] {
+    --fond: #1A0F24;
+    --fond-degrade: radial-gradient(circle at 50% 0%, #3B1E52 0%, #1A0F24 55%, #120A19 100%);
+    --surface: #2A1838;
+    --surface-douce: #331E44;
+    --surface-grise: #2E1B3E;
+    --surface-voilee: rgba(42, 24, 56, 0.75);
+    --encre: #FBF3E4;
+    --doux: #D9C7A6;
+    --bord: rgba(255, 215, 130, 0.25);
+    --rose: #F2C14E;
+    --rose-clair: #FFD97A;
+    --rose-pale: #4A3418;
+    --rose-tres-pale: #3A2A14;
+    --entete-fonce: #120A19;
+    --focus: #7DD3FC;
+    --chaud-debut: #4A3418;
+    --chaud-fin: #3B1E52;
+    --or-debut: #4A3418;
+    --flamme: #FF9F43;
+    --flamme-pale: #4A3418;
+    --or-texte: #F2C14E;
+    --or-pale: #4A3418;
 }
 
 /* ============================================================

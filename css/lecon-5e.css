@@ -30,7 +30,7 @@ body.lecon-5e {
     min-height: 100vh;
     background: var(--fond-degrade);
     color: var(--l5-encre);
-    font-family: 'Aptos', 'Avenir Next', 'Nunito Sans', 'Segoe UI', sans-serif;
+    font-family: var(--police-texte, 'Nunito', 'Segoe UI', sans-serif);
     font-size: 17px;
     line-height: 1.6;
 }
@@ -91,9 +91,10 @@ body.lecon-5e > * { grid-column: 1 / -1; }
 .lecon-5e header:not(.coquille-barre) h1 {
     flex: 1 1 100%;
     margin: 0;
-    font-size: clamp(22px, 4vw, 30px);
+    font-family: var(--police-titre, inherit);
+    font-size: clamp(24px, 4vw, 32px);
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
     line-height: 1.2;
     color: var(--l5-rose);
 }
@@ -357,7 +358,10 @@ body.lecon-5e > * { grid-column: 1 / -1; }
     border: 1px solid var(--l5-fort);
     background: var(--l5-fort);
     color: #fff;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+    transition: transform var(--duree-rapide, 150ms) ease, box-shadow var(--duree-rapide, 150ms) ease;
 }
+.suite-suivant:active { transform: translateY(2px); box-shadow: none; }
 
 .suite-onglets button:hover { filter: brightness(1.08); }
 .suite-onglets button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
@@ -369,15 +373,16 @@ body.lecon-5e > * { grid-column: 1 / -1; }
 .container {
     background: var(--surface);
     border: 1px solid var(--l5-bord);
-    border-radius: var(--l5-rayon);
-    box-shadow: var(--l5-ombre);
+    border-radius: var(--rayon-carte, var(--l5-rayon));
+    box-shadow: var(--ombre-clay, var(--l5-ombre));
     padding: 20px;
 }
 
 .lecon-5e h2 {
     margin: 0 0 14px;
     color: var(--l5-rose);
-    font-size: 21px;
+    font-family: var(--police-titre, inherit);
+    font-size: 23px;
     line-height: 1.25;
 }
 
