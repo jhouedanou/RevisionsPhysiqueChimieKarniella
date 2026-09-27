@@ -1965,154 +1965,6 @@
       }
     ]
   },
-  "anglais-unit1-lesson2-classroom": {
-    "tab4": [
-      {
-        "question": "It's the big surface where the teacher writes. What is it?",
-        "options": [
-          "A desk",
-          "A board",
-          "A window",
-          "A ruler"
-        ],
-        "correctAnswer": 1,
-        "explanation": "A board: it's the big black or white surface where the teacher writes.",
-        "langue": "en"
-      },
-      {
-        "question": "It's the white stick used to write on the blackboard. What is it?",
-        "options": [
-          "A pen",
-          "A pencil",
-          "A piece of chalk",
-          "A duster"
-        ],
-        "correctAnswer": 2,
-        "explanation": "A piece of chalk: it's the white stick used to write on the blackboard.",
-        "langue": "en"
-      },
-      {
-        "question": "It's the object used to draw straight lines and measure. What is it?",
-        "options": [
-          "A ruler",
-          "A school bag",
-          "A chair",
-          "A duster"
-        ],
-        "correctAnswer": 0,
-        "explanation": "A ruler: it's the object used to draw straight lines and measure.",
-        "langue": "en"
-      },
-      {
-        "question": "Comment dit-on « jaune » en anglais ?",
-        "options": [
-          "Green",
-          "Brown",
-          "Yellow",
-          "Orange"
-        ],
-        "correctAnswer": 2,
-        "explanation": "Yellow = jaune. Green = vert, brown = marron.",
-        "optionsLangue": "en"
-      },
-      {
-        "question": "Choose the correct sentence.",
-        "options": [
-          "The board green is.",
-          "The board is green.",
-          "The board are green.",
-          "Green the board is."
-        ],
-        "correctAnswer": 1,
-        "explanation": "Affirmative form: subject + is + colour. The board is green.",
-        "langue": "en"
-      },
-      {
-        "question": "Quelle est la forme négative de « The chairs are black » ?",
-        "options": [
-          "The chairs not are black.",
-          "The chairs is not black.",
-          "The chairs aren't black.",
-          "The chairs no black."
-        ],
-        "correctAnswer": 2,
-        "explanation": "On ajoute not après are : are not = aren't.",
-        "optionsLangue": "en"
-      },
-      {
-        "question": "Complete: There ___ twenty desks in the classroom.",
-        "options": [
-          "is",
-          "are",
-          "be",
-          "am"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Twenty desks: plural, so we use « are ».",
-        "langue": "en"
-      },
-      {
-        "question": "Is it « a pen red » or « a red pen »?",
-        "options": [
-          "A pen red",
-          "A red pen",
-          "Both are correct",
-          "Neither"
-        ],
-        "correctAnswer": 1,
-        "explanation": "In English, the colour comes before the noun: a red pen.",
-        "langue": "en"
-      },
-      {
-        "question": "It's the object used to clean the board. What is it?",
-        "options": [
-          "A duster",
-          "A ruler",
-          "A desk",
-          "A pen"
-        ],
-        "correctAnswer": 0,
-        "explanation": "A duster: it's the object used to clean the board.",
-        "langue": "en"
-      },
-      {
-        "question": "Negative form: « There is a computer. »",
-        "options": [
-          "There not is a computer.",
-          "There isn't a computer.",
-          "There aren't a computer.",
-          "There is no a computer."
-        ],
-        "correctAnswer": 1,
-        "explanation": "There is + not = there isn't.",
-        "langue": "en"
-      },
-      {
-        "question": "Comment dit-on « Je peux sortir, s'il vous plaît ? »",
-        "options": [
-          "May I come in?",
-          "May I go out, please?",
-          "Can you repeat, please?",
-          "Open your books."
-        ],
-        "correctAnswer": 1,
-        "explanation": "May I go out, please? = Je peux sortir ?",
-        "optionsLangue": "en"
-      },
-      {
-        "question": "How do you pronounce « chalk »?",
-        "options": [
-          "The l is silent: « tchok »",
-          "« chalk » with a strong l",
-          "« shalk »",
-          "« kalk »"
-        ],
-        "correctAnswer": 0,
-        "explanation": "In chalk, the l is silent.",
-        "langue": "en"
-      }
-    ]
-  },
   "physique-chimie-tension-nominale": {
     "tab5": [
       {
@@ -2419,6 +2271,154 @@
         ],
         "correctAnswer": 1,
         "explanation": "L'hydrographie, ce sont les fleuves, rivières et lagunes."
+      }
+    ]
+  },
+  "anglais-unit1-lesson2-college": {
+    "tab4": [
+      {
+        "question": "To line up means…",
+        "options": [
+          "To queue up",
+          "To work a lot",
+          "To repeat the class",
+          "To be late"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To line up = to queue up (se mettre en rang).",
+        "langue": "en"
+      },
+      {
+        "question": "What is the opposite of « to be late »?",
+        "options": [
+          "To be top of",
+          "To be on time",
+          "To go up",
+          "To stay down"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To be late ≠ to be on time.",
+        "langue": "en"
+      },
+      {
+        "question": "To stay down means…",
+        "options": [
+          "To go to the next class",
+          "To repeat the class",
+          "To sit down",
+          "To be the best"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To stay down = to repeat the class (redoubler).",
+        "langue": "en"
+      },
+      {
+        "question": "To go up means…",
+        "options": [
+          "To climb a tree",
+          "To go to the next class",
+          "To be late",
+          "To line up"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To go up = to go to the next class.",
+        "langue": "en"
+      },
+      {
+        "question": "To be top of the class means…",
+        "options": [
+          "To be the worst of the class",
+          "To be the best of the class",
+          "To sit at the top",
+          "To be late"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To be top of = to be the best of. The opposite: to be bottom of.",
+        "langue": "en"
+      },
+      {
+        "question": "« Well done! » means…",
+        "options": [
+          "Nice job, very good!",
+          "Be quiet!",
+          "Line up!",
+          "Go home!"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Well done = nice job, very good.",
+        "langue": "en"
+      },
+      {
+        "question": "To work hard means…",
+        "options": [
+          "To work a lot",
+          "To work badly",
+          "To stop working",
+          "To be tired"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To work hard = to work a lot.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « recevoir son bulletin » ?",
+        "options": [
+          "To receive a letter",
+          "To receive a school report",
+          "To give a report",
+          "To read a book"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To receive a report = to receive a school report.",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "The present continuous expresses…",
+        "options": [
+          "an action in progress",
+          "a past action",
+          "a future plan only",
+          "an order"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Expressing an action in progress: what you are doing now.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: I ___ writing on the board.",
+        "options": [
+          "is",
+          "are",
+          "am",
+          "be"
+        ],
+        "correctAnswer": 2,
+        "explanation": "I am writing on the board.",
+        "langue": "en"
+      },
+      {
+        "question": "Choose the correct sentence.",
+        "options": [
+          "You are speak English.",
+          "You speaking English.",
+          "You are speaking English.",
+          "You is speaking English."
+        ],
+        "correctAnswer": 2,
+        "explanation": "Subject + BE + verb-ing: You are speaking English.",
+        "langue": "en"
+      },
+      {
+        "question": "Negative form of « She is lining up »:",
+        "options": [
+          "She not is lining up.",
+          "She isn't lining up.",
+          "She aren't lining up.",
+          "She is lining not up."
+        ],
+        "correctAnswer": 1,
+        "explanation": "Subject + BE + NOT + verb-ing: she isn't lining up.",
+        "langue": "en"
       }
     ]
   }

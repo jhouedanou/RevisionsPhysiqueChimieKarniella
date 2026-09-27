@@ -42,11 +42,11 @@
           "mission": true
         },
         {
-          "id": "anglais-unit1-lesson2-classroom",
-          "titre": "Unit 1 — At school : Lesson 2, My classroom",
-          "sousTitre": "Session 1 — Vocabulary & Language function (affirmative, negative)",
-          "icone": "🎨",
-          "description": "Les objets et les couleurs de la classe, les phrases affirmatives et négatives avec to be.",
+          "id": "anglais-unit1-lesson2-college",
+          "titre": "Unit 1 — At school : Lesson 2, Life at Collège Moderne Kasséré",
+          "sousTitre": "Session 1 — Vocabulary & The present continuous",
+          "icone": "🎒",
+          "description": "La vie au collège (line up, be late, work hard, go up, stay down) et le présent continu.",
           "statut": "prete",
           "mission": true
         }
