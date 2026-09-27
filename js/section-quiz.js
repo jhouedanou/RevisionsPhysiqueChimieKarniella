@@ -349,13 +349,38 @@ class SectionQuiz {
         const suivant = this.elScene.querySelector('.quiz-suivant');
         suivant.hidden = false;
         suivant.focus({ preventScroll: true });
+        // Sur téléphone, l'explication peut pousser le bouton sous l'écran : on le montre.
+        const bas = suivant.getBoundingClientRect().bottom;
+        if (bas > window.innerHeight) {
+            const doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollBy({ top: bas - window.innerHeight + 16, behavior: doux ? 'smooth' : 'auto' });
+        }
     }
 
     suivant() {
         this.index++;
         this.majPiste();
-        if (this.index < this.questions.length) { this.rendreQuestion(); return; }
-        this.terminer();
+        if (this.index < this.questions.length) { this.rendreQuestion(); } else { this.terminer(); }
+        this.remonter();
+    }
+
+    /**
+     * Après « Question suivante », la nouvelle question pouvait rester cachée
+     * au-dessus de l'écran (sous la barre du haut) : on remonte jusqu'au quiz.
+     */
+    remonter() {
+        const barre = document.querySelector('.coquille-barre');
+        let haut = barre ? Math.max(0, barre.getBoundingClientRect().bottom) : 0;
+        const onglets = document.querySelector('.tabs');
+        if (onglets && window.getComputedStyle(onglets).position === 'sticky' &&
+                onglets.getBoundingClientRect().width > window.innerWidth * 0.6) {
+            haut += onglets.offsetHeight;
+        }
+        const cible = this.container.querySelector('.quiz-etapes') || this.container;
+        const top = cible.getBoundingClientRect().top;
+        if (top >= haut && top < window.innerHeight * 0.4) { return; }   // déjà bien placé
+        const doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: Math.max(0, top + window.pageYOffset - haut - 12), behavior: doux ? 'smooth' : 'auto' });
     }
 
     terminer() {
