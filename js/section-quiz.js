@@ -123,6 +123,7 @@ class SectionQuiz {
         let correct = 0;
         let total = this.questions.length;
         let allAnswered = true;
+        const details = [];   // pour le suivi de tonton (js/suivi.js)
 
         this.questions.forEach((question, index) => {
             const qId = `${this.container.id}-q${index}`;
@@ -138,6 +139,7 @@ class SectionQuiz {
 
             const selectedValue = parseInt(selected.value);
             const isCorrect = selectedValue === question.correctAnswer;
+            details.push({ q: question.question, r: question.options[selectedValue], b: question.options[question.correctAnswer], ok: isCorrect });
 
             if (isCorrect) {
                 correct++;
@@ -185,7 +187,7 @@ class SectionQuiz {
         // Alimente le suivi des progrès, partagé avec le chat. Le module est
         // chargé par chat-assistant.js : on ne suppose pas sa présence.
         if (window.KarniellaProgression) {
-            window.KarniellaProgression.enregistrerQuiz(this.slug, correct, total);
+            window.KarniellaProgression.enregistrerQuiz(this.slug, correct, total, null, { details: details });
         }
         if (window.KarniellaXP) { window.KarniellaXP.gagnerQuiz(correct, total, this.slug); }
     }
@@ -201,6 +203,7 @@ class SectionQuiz {
         this.index = 0;
         this.correct = 0;
         this.reponses = [];
+        this.details = [];
         this.debut = null;
         this.fantomeActif = false;
 
@@ -335,6 +338,7 @@ class SectionQuiz {
         });
         if (juste) { this.correct++; }
         this.reponses[this.index] = juste;
+        this.details[this.index] = { q: q.question, r: q.options[choix], b: q.options[q.correctAnswer], ok: juste };
 
         const retour = this.elScene.querySelector('.question-feedback');
         retour.className = 'question-feedback ' + (juste ? 'feedback-correct' : 'feedback-incorrect');
@@ -378,7 +382,7 @@ class SectionQuiz {
         let xp = null;
         if (window.KarniellaXP) { xp = window.KarniellaXP.gagnerQuiz(correct, total, this.slug); }
         if (window.KarniellaProgression) {
-            window.KarniellaProgression.enregistrerQuiz(this.slug, correct, total, null, { temps: temps, fantome: this.fantomeActif });
+            window.KarniellaProgression.enregistrerQuiz(this.slug, correct, total, null, { temps: temps, fantome: this.fantomeActif, details: this.details });
         }
         if (pct >= 80 && window.KarniellaFete) { window.KarniellaFete(); }
 

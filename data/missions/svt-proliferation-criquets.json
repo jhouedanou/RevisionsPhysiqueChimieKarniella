@@ -4,54 +4,54 @@
   "matiere": "svt",
   "titre": "Le nuage qui mange tout",
   "duree_minutes": 3,
-  "story_context": "Capitaine Karniella, la sonde survole les champs de Korhogo : un nuage sombre avance et dévore tout sur son passage. Ce ne sont pas des nuages, ce sont des criquets ! Comprends comment ils se multiplient et ce qu'ils provoquent pour aider les villages.",
+  "story_context": "Capitaine Karniella, la sonde survole un champ de maïs : un nuage sombre avance et dévore tout sur son passage. Ce ne sont pas des nuages, ce sont des criquets pèlerins ! Découvre ce qu'ils font à l'environnement et aux hommes, comme dans ton manuel.",
   "micro_learning_blocks": [
     {
-      "titre": "🦗 De solitaire à grégaire",
-      "contenu": "Après de grosses pluies, l'herbe pousse et les criquets pondent des centaines d'œufs. Trop nombreux, ils changent de couleur, se regroupent en essaims de millions et s'envolent ensemble : ils prolifèrent."
+      "titre": "🦗 Les actions néfastes",
+      "contenu": "Un essaim de 1 km², c'est 40 millions de criquets : ils mangent en un jour autant que 35.000 personnes. Ils détruisent les végétaux et les cultures, et polluent les cours d'eau avec leurs déjections et leurs cadavres."
     },
     {
-      "titre": "🌱 Un désert après leur passage",
-      "contenu": "Un essaim mange chaque jour autant que 35 000 personnes. Cultures, herbes, feuilles : tout disparaît. Le sol nu est emporté par le vent et la pluie (érosion), et les autres animaux n'ont plus rien à manger."
+      "titre": "🌱 Sur l'environnement",
+      "contenu": "Les plantes mangées, le sol est nu : il subit l'érosion et perd sa fertilité, donc mauvaises récoltes. L'eau polluée devient impropre à la consommation."
     },
     {
-      "titre": "👨‍🌾 Les hommes aussi",
-      "contenu": "Récoltes perdues, donc famine et pauvreté pour les paysans. Et les pesticides utilisés contre les criquets peuvent empoisonner l'eau. La lutte biologique (oiseaux, champignon Metarhizium) est plus douce."
+      "titre": "👨‍🌾 Sur l'Homme",
+      "contenu": "Cultures ravagées, bétail mort : les paysans perdent leurs revenus. Viennent la famine, la malnutrition, les maladies, la mort et l'exode vers des terres plus fertiles."
     }
   ],
   "quiz": [
     {
-      "question": "Un très grand groupe de criquets qui volent ensemble, c'est…",
+      "question": "Un essaim de 1 km² contient environ…",
       "options": [
-        "une ruche",
-        "un essaim",
-        "un troupeau",
-        "une meute"
+        "4 000 criquets",
+        "40 millions de criquets",
+        "400 criquets",
+        "1 criquet"
       ],
       "correct_answer_index": 1,
-      "explanation": "Un essaim : jusqu'à 40 millions de criquets par km²."
+      "explanation": "40 millions, qui mangent autant que 35.000 personnes par jour."
     },
     {
-      "question": "Que devient le sol quand la végétation est dévorée ?",
+      "question": "Que devient le sol mis à nu par les criquets ?",
       "options": [
-        "Il devient plus fertile",
-        "Il est emporté par le vent et la pluie",
-        "Il se transforme en sable",
+        "Plus fertile",
+        "Il subit l'érosion et s'appauvrit",
+        "Il devient du sable doré",
         "Rien ne change"
       ],
       "correct_answer_index": 1,
-      "explanation": "Sans plantes pour le retenir, le sol subit l'érosion."
+      "explanation": "Sans plantes, le sol s'érode et perd sa fertilité."
     },
     {
-      "question": "Quelle conséquence directe pour les paysans ?",
+      "question": "Laquelle est une conséquence sur l'Homme ?",
       "options": [
+        "La pollution des cours d'eau",
+        "L'érosion des sols",
         "La famine",
-        "Plus de pluie",
-        "Des récoltes doublées",
-        "Des criquets à vendre"
+        "La destruction de la végétation"
       ],
-      "correct_answer_index": 0,
-      "explanation": "Récoltes détruites : plus de nourriture ni de revenu."
+      "correct_answer_index": 2,
+      "explanation": "La famine touche les populations : c'est une conséquence sur l'Homme."
     }
   ]
 }

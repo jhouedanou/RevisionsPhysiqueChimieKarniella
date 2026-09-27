@@ -802,6 +802,7 @@
         chargerModule('KarniellaBadges', 'js/badges.js');
         chargerModule('KarniellaProgression', 'js/progression.js');
         chargerModule('KarniellaXP', 'js/xp.js');
+        chargerModule('KarniellaSuivi', 'js/suivi.js');
     }
 
     /**
@@ -1375,7 +1376,7 @@
        data/chat/<slug>.json. Aucun appel réseau, jamais.
        ============================================================ */
 
-    var quizEnCours = { posees: [], justes: 0, total: 0, serie: null };
+    var quizEnCours = { posees: [], justes: 0, total: 0, serie: null, details: [] };
 
     /** Tire une question encore jamais posée dans cette session. */
     function questionSuivante() {
@@ -1411,7 +1412,7 @@
         ajouterTexteBot(texte);
         if (pourcentage >= 80 && quizEnCours.total >= 3 && window.KarniellaFete) { window.KarniellaFete(); }
         noterHistorique({ t: texte });
-        quizEnCours = { posees: [], justes: 0, total: 0, serie: null };
+        quizEnCours = { posees: [], justes: 0, total: 0, serie: null, details: [] };
     }
 
     /** Affiche une question et ses options cliquables. */
@@ -1474,6 +1475,7 @@
         var juste = choisie === q.reponse;
         quizEnCours.total += 1;
         if (juste) { quizEnCours.justes += 1; }
+        quizEnCours.details.push({ q: q.question, r: choisie, b: q.reponse, ok: juste });
 
         // Fige les options et montre où était la bonne réponse.
         Array.prototype.forEach.call(liste.children, function (bouton) {
@@ -1486,7 +1488,8 @@
         // n'ira presque jamais au bout des 20 questions d'une leçon.
         if (window.KarniellaProgression) {
             window.KarniellaProgression.enregistrerQuiz(
-                CONNAISSANCES.slug, quizEnCours.justes, quizEnCours.total, quizEnCours.serie);
+                CONNAISSANCES.slug, quizEnCours.justes, quizEnCours.total, quizEnCours.serie,
+                { details: quizEnCours.details });
         }
 
         var verdict = document.createElement('span');
