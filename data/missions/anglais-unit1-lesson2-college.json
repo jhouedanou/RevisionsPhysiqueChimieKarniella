@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit1-lesson2-college",
+  "lecon": "anglais-unit1-lesson2-college",
+  "matiere": "anglais",
+  "titre": "Report day on the space ship",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, c'est le jour des bulletins sur le vaisseau ! Le robot professeur distribue les school reports, mais il ne sait pas dire ce que les élèves sont en train de faire. Apprends-lui le vocabulaire du collège et le présent continu.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🎒 La vie au collège",
+      "contenu": "To line up = to queue up. To be late ≠ to be on time. To receive a report = to receive a school report. To work hard = to work a lot."
+    },
+    {
+      "titre": "🏆 Premier ou dernier ?",
+      "contenu": "To be top of = to be the best of ; to be bottom of = to be the worst of. Well done = nice job, very good. To go up = passer en classe supérieure ; to stay down = redoubler."
+    },
+    {
+      "titre": "⏳ En train de…",
+      "contenu": "Le présent continu dit ce qu'on fait en ce moment : sujet + am / is / are + verbe-ing. I am writing on the board. You are speaking English. N'oublie ni BE, ni -ING !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "To stay down means…",
+      "options": [
+        "To go to the next class",
+        "To repeat the class",
+        "To sit down",
+        "To be late"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "To stay down = to repeat the class."
+    },
+    {
+      "question": "Complete: You ___ speaking English.",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "You are speaking English."
+    },
+    {
+      "question": "The opposite of « to be top of » is…",
+      "options": [
+        "to be on time",
+        "to be bottom of",
+        "to go up",
+        "to work hard"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Top of ≠ bottom of."
+    }
+  ]
+}
