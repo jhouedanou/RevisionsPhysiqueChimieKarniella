@@ -1,0 +1,57 @@
+{
+  "id": "mathematiques-puissances-entieres",
+  "lecon": "mathematiques-puissances-entieres",
+  "matiere": "mathematiques",
+  "titre": "Les bactéries de la planète Glacia",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, une bactérie s'est glissée dans le laboratoire du vaisseau. Elle se divise en deux toutes les heures ! Dans 10 heures, combien y en aura-t-il ? Trouve l'écriture rapide des mathématiciens avant que l'ordinateur ne sature.",
+  "micro_learning_blocks": [
+    {
+      "titre": "✖️ Une puissance, c'est une multiplication en boucle",
+      "contenu": "2 × 2 × 2 s'écrit 2³ : la base 2 est multipliée 3 fois par elle-même. Le petit chiffre en haut, l'exposant, compte les facteurs. Attention : 2³ = 8, pas 6 !"
+    },
+    {
+      "titre": "➖➖ Deux moins font un plus",
+      "contenu": "Avec une base négative, les signes − vont deux par deux et s'annulent. Exposant pair → résultat positif : (−2)⁴ = +16. Exposant impair → il reste un − tout seul : (−2)³ = −8."
+    },
+    {
+      "titre": "🧮 Même base : on additionne les exposants",
+      "contenu": "2³ × 2² = 2⁵ : on garde la base et on additionne 3 + 2. Et dans un calcul, la puissance passe avant la multiplication : 3 × 2³ = 3 × 8 = 24."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Que vaut 2³ ?",
+      "options": [
+        "6",
+        "8",
+        "9",
+        "5"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "2 × 2 × 2 = 8."
+    },
+    {
+      "question": "Quel est le signe de (−3)⁴ ?",
+      "options": [
+        "Négatif",
+        "Positif",
+        "Nul",
+        "Ça dépend"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Exposant pair : les signes − s'annulent deux par deux, le résultat est positif (+81)."
+    },
+    {
+      "question": "Simplifie 5² × 5³.",
+      "options": [
+        "5⁶",
+        "5⁵",
+        "25⁵",
+        "10⁵"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Même base : on additionne les exposants, 2 + 3 = 5."
+    }
+  ]
+}

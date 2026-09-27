@@ -1,0 +1,57 @@
+{
+  "id": "mathematiques-nombres-decimaux-relatifs",
+  "lecon": "mathematiques-nombres-decimaux-relatifs",
+  "matiere": "mathematiques",
+  "titre": "Le thermomètre du vaisseau",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le thermomètre du vaisseau affiche des nombres bizarres : −18 dans la soute, +25 dans le poste de pilotage. L'ordinateur de bord ne sait plus lequel est le plus froid. Explique-lui les nombres relatifs avant que la cargaison ne fonde !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🛗 Le signe, c'est l'étage",
+      "contenu": "Imagine un ascenseur : le 0 est le rez-de-chaussée. Les nombres positifs (+3) sont les étages du haut, les négatifs (−2) sont les sous-sols. Le signe dit simplement de quel côté du zéro on est."
+    },
+    {
+      "titre": "🪞 Les opposés, des jumeaux dans le miroir",
+      "contenu": "+5 et −5 sont opposés : même distance au zéro, mais chacun d'un côté, comme dans un miroir. La distance à zéro, c'est le nombre sans son signe : pour −18, c'est 18."
+    },
+    {
+      "titre": "❄️ Plus à gauche, plus petit",
+      "contenu": "Sur la droite graduée, plus on va à gauche, plus le nombre est petit. −18 est plus à gauche que −5, donc −18 < −5 : dans la soute à −18, il fait plus froid !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Comment écrit-on « 18 degrés au-dessous de zéro » ?",
+      "options": [
+        "18",
+        "+18",
+        "−18",
+        "0"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Au-dessous de zéro, le nombre est négatif : −18."
+    },
+    {
+      "question": "Quel est l'opposé de −4 ?",
+      "options": [
+        "−4",
+        "+4",
+        "0",
+        "4,4"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Même distance à zéro, signe contraire : +4."
+    },
+    {
+      "question": "Lequel est le plus petit : −18 ou −5 ?",
+      "options": [
+        "−18",
+        "−5",
+        "Ils sont égaux",
+        "Impossible à dire"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "−18 est plus à gauche sur la droite graduée : il est plus petit."
+    }
+  ]
+}

@@ -38,6 +38,15 @@
           "icone": "💬",
           "description": "Les autres lieux de l'école, et dire ce qu'on aime ou pas.",
           "statut": "prete"
+        },
+        {
+          "id": "anglais-unit1-lesson2-classroom",
+          "titre": "Unit 1 — At school : Lesson 2, My classroom",
+          "sousTitre": "Session 1 — Vocabulary & Language function (affirmative, negative)",
+          "icone": "🎨",
+          "description": "Les objets et les couleurs de la classe, les phrases affirmatives et négatives avec to be.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
@@ -75,7 +84,26 @@
       "couleur": "#9D2F5C",
       "description": "Nombres, calcul littéral et géométrie.",
       "ordre": 3,
-      "lecons": []
+      "lecons": [
+        {
+          "id": "mathematiques-nombres-decimaux-relatifs",
+          "titre": "Les nombres décimaux relatifs",
+          "sousTitre": "Calculs algébriques — Présentation et notation",
+          "icone": "➕",
+          "description": "Les nombres avec un signe + ou − : opposés, droite graduée, comparaison.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "mathematiques-puissances-entieres",
+          "titre": "Puissances entières d'un nombre entier relatif",
+          "sousTitre": "Calculs algébriques — Définition, propriétés, calculs",
+          "icone": "🔢",
+          "description": "Base, exposant, signe d'une puissance, propriétés et priorités de calcul.",
+          "statut": "prete",
+          "mission": true
+        }
+      ]
     },
     {
       "id": "svt",
@@ -84,7 +112,17 @@
       "couleur": "#3C9A57",
       "description": "Sciences de la Vie et de la Terre.",
       "ordre": 4,
-      "lecons": []
+      "lecons": [
+        {
+          "id": "svt-proliferation-criquets",
+          "titre": "La prolifération des criquets",
+          "sousTitre": "Ses effets sur l'environnement et sur l'homme",
+          "icone": "🦗",
+          "description": "Le criquet, les essaims, les dégâts sur la nature et les hommes, les moyens de lutte.",
+          "statut": "prete",
+          "mission": true
+        }
+      ]
     },
     {
       "id": "francais",
