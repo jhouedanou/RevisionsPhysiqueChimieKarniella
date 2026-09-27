@@ -800,3 +800,64 @@ html.cartes-ouvertes { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
     .exercice summary::before { transition: none; }
 }
+
+/* ============================================================
+   Traductions (js/traduction.js)
+   ============================================================ */
+
+.trad-bouton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    min-height: 32px;
+    margin-left: 6px;
+    padding: 0 8px;
+    border: 1px solid var(--l5-bord);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background var(--duree-rapide, 150ms) ease;
+}
+
+.trad-bouton:hover,
+.trad-bouton.actif { background: var(--l5-pale); border-color: var(--l5-fort); }
+.trad-bouton:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.trad-texte {
+    display: block;
+    margin-top: 4px;
+    padding: 4px 10px;
+    border-left: 3px solid var(--l5-fort);
+    border-radius: 0 8px 8px 0;
+    background: var(--l5-pale);
+    color: var(--encre);
+    font-size: 0.92em;
+    font-style: italic;
+}
+
+.trad-texte[hidden] { display: none; }
+
+.trad-tout {
+    min-height: 40px;
+    margin-left: auto;
+    padding: 0 14px;
+    border: 1px solid var(--l5-bord);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.trad-tout[aria-pressed="true"] { background: var(--l5-pale); border-color: var(--l5-fort); }
+.trad-tout:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+main.content > .trad-tout { display: block; margin: 0 0 14px auto; }

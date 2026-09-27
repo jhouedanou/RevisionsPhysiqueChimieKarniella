@@ -494,6 +494,15 @@ Titres en **Baloo 2**, texte en **Nunito** (Google Fonts, chargées par
 dans `js/coquille.js`) ; les emojis restent pour le contenu et les récompenses.
 Les skills de design du projet vivent dans `.claude/skills/` (`ui-ux-pro-max`).
 
+### 🇫🇷 Traductions dans les leçons d'anglais
+
+Chaque définition, exemple et ligne de dialogue en anglais porte sa traduction
+(`data-fr="…"`). `js/traduction.js` ajoute un bouton **FR** à côté de chacune et un
+interrupteur « Afficher toutes les traductions », mémorisé dans le navigateur. Les
+traductions vivent dans `scripts/traductions-anglais.json` ;
+`python3 scripts/poser-traductions.py 5e/anglais-*.html` les pose dans les pages. Voir
+`CLAUDE.md` pour la règle à suivre à chaque nouvelle leçon.
+
 ### 🎯 Quiz en étapes et mode Ghost 👻
 
 `initSectionQuiz(id, questions, { etapes: true })` affiche **une question à la
