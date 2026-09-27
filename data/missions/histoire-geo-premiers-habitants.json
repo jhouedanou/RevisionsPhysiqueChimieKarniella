@@ -1,0 +1,57 @@
+{
+  "id": "histoire-geo-premiers-habitants",
+  "lecon": "histoire-geo-premiers-habitants",
+  "matiere": "histoire-geo",
+  "titre": "Les traces des premiers habitants",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, la sonde a atterri en Côte d'Ivoire il y a très longtemps. Des archéologues ont trouvé des poteries cassées, des restes de fer fondu et de vieilles tombes. Qui vivait là en premier ? Mène l'enquête avant que les traces ne s'effacent !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🔍 Des indices, pas de livres",
+      "contenu": "Les premiers habitants n'ont pas laissé d'écrits. On les connaît par les traditions orales (les récits des anciens) et par des traces matérielles : nécropoles, résidus de métallurgie du fer, poteries, restes d'aliments."
+    },
+    {
+      "titre": "🧭 Quatre groupes « proto »",
+      "contenu": "Proto veut dire « premier ». Les Protoakan sont au centre et à l'est, les Protokrou à l'ouest, les Protomandé au nord-ouest, les Protogur au nord (Protosénoufo et Protokoulango)."
+    },
+    {
+      "titre": "👣 Les petits hommes des légendes",
+      "contenu": "Les Pygmées ou Négrilles seraient les plus anciens : petite taille, chevelure abondante, pieds retournés. Chaque peuple leur donne un nom (Baoulé KAKATIKA, Gouro YONIN…). Les Gban du centre-ouest, très petits, ont longtemps été vus comme leurs descendants."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Que veut dire « proto » ?",
+      "options": [
+        "Premier",
+        "Petit",
+        "Grand",
+        "Nouveau"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Proto = antérieur à, premier."
+    },
+    {
+      "question": "Où vivent les Protokrou ?",
+      "options": [
+        "Au nord",
+        "À l'ouest",
+        "À l'est",
+        "Au centre"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Les Protokrou sont à l'ouest."
+    },
+    {
+      "question": "Pygmées est un autre nom pour…",
+      "options": [
+        "les Gban",
+        "les Négrilles",
+        "les Protogur",
+        "les Baoulé"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Pygmées ou Négrilles."
+    }
+  ]
+}

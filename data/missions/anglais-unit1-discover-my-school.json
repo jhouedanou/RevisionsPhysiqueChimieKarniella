@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit1-discover-my-school",
+  "lecon": "anglais-unit1-discover-my-school",
+  "matiere": "anglais",
+  "titre": "Lost in the space school",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, un nouvel élève vient d'arriver à l'école du vaisseau. Il cherche la bibliothèque, la cantine et la salle des profs, mais il ne parle qu'anglais ! Guide-le avant la sonnerie.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🏫 Les lieux de l'école",
+      "contenu": "A gate is a big door. A staff room is the meeting place of the teachers. A library is where students borrow books. A canteen is where they take food. Apprends la définition en anglais, pas seulement la traduction."
+    },
+    {
+      "titre": "🙋 Demander poliment",
+      "contenu": "Where is the library? est la forme directe. Can you tell me where the library is? est la forme polie : le verbe is passe à la fin de la phrase."
+    },
+    {
+      "titre": "🧭 Répondre avec une préposition",
+      "contenu": "upstairs (à l'étage), downstairs (en bas), next to (à côté de), behind (derrière), in front of (devant), between (entre), opposite (en face). Ex : It's upstairs, next to the lab."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "It's the meeting place of the teachers. What is it?",
+      "options": [
+        "A library",
+        "A staff room",
+        "A canteen",
+        "A gate"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A staff room."
+    },
+    {
+      "question": "Choose the polite question.",
+      "options": [
+        "Where the library is?",
+        "Can you tell me where the library is?",
+        "Can you tell me where is the library?",
+        "Library where?"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "In the polite form, is goes at the end."
+    },
+    {
+      "question": "« À l'étage » in English is…",
+      "options": [
+        "downstairs",
+        "behind",
+        "upstairs",
+        "next to"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Upstairs = à l'étage."
+    }
+  ]
+}

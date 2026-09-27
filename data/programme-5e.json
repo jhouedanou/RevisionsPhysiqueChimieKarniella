@@ -29,7 +29,8 @@
           "sousTitre": "Session 1 — Vocabulary & Language function",
           "icone": "🏫",
           "description": "Les lieux de l'école en anglais, et comment demander son chemin.",
-          "statut": "prete"
+          "statut": "prete",
+          "mission": true
         },
         {
           "id": "anglais-unit1-session2",
@@ -37,7 +38,8 @@
           "sousTitre": "Vocabulary & Expressing like and dislike",
           "icone": "💬",
           "description": "Les autres lieux de l'école, et dire ce qu'on aime ou pas.",
-          "statut": "prete"
+          "statut": "prete",
+          "mission": true
         },
         {
           "id": "anglais-unit1-lesson2-classroom",
@@ -158,7 +160,26 @@
       "couleur": "#2C7742",
       "description": "Comprendre le passé et lire le monde d'aujourd'hui.",
       "ordre": 6,
-      "lecons": []
+      "lecons": [
+        {
+          "id": "histoire-geo-premiers-habitants",
+          "titre": "Les premiers habitants de la Côte d'Ivoire",
+          "sousTitre": "Histoire — Thème 1 : Le peuplement de la Côte d'Ivoire, leçon 1",
+          "icone": "🗺️",
+          "description": "Les traces, les quatre groupes proto, les Pygmées et les Gban.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "histoire-geo-milieu-physique",
+          "titre": "Le milieu physique de la Côte d'Ivoire et l'installation des populations",
+          "sousTitre": "Géographie — Thème 1 : L'homme et le milieu, leçon 1",
+          "icone": "🏞️",
+          "description": "Relief, climat, végétation, sols, hydrographie, et où les hommes s'installent.",
+          "statut": "prete",
+          "mission": true
+        }
+      ]
     },
     {
       "id": "edhc",

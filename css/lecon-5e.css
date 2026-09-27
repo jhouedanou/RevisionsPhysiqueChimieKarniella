@@ -50,6 +50,13 @@ body.lecon-5e {
 
 body.lecon-5e > * { grid-column: 1 / -1; }
 
+/* La largeur inclut la marge intérieure : sans ça, la barre du parcours et le
+   contenu (width: 100% + padding) dépassaient de 32 px sur téléphone et la
+   page glissait de côté. */
+.lecon-5e header,
+.lecon-5e .tabs,
+.lecon-5e .content { box-sizing: border-box; }
+
 @media (min-width: 900px) {
     body.lecon-5e {
         grid-template-columns: 1fr 240px minmax(0, 860px) 1fr;
@@ -734,4 +741,62 @@ html.cartes-ouvertes { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
     .carte-face { transition: none; }
+}
+
+/* ============================================================
+   Exercices d'entraînement (onglet Practice)
+   ============================================================
+   Un exercice = une consigne, des items numérotés, et la correction
+   repliée dans un <details> : on cherche d'abord, on vérifie ensuite. */
+
+.exercice {
+    margin: 0 0 18px;
+    padding: 16px 18px;
+    border: 1px solid var(--l5-bord);
+    border-radius: var(--rayon-carte, 18px);
+    background: var(--surface);
+    box-shadow: var(--ombre-clay, none);
+}
+
+.exercice h3 { margin-top: 0; }
+.exercice .consigne { color: var(--doux); font-size: 15px; }
+.exercice ol { margin-bottom: 8px; }
+.exercice li { margin-bottom: 8px; }
+
+.trou {
+    display: inline-block;
+    min-width: 72px;
+    border-bottom: 2px dotted var(--l5-fort);
+    text-align: center;
+    color: var(--doux);
+}
+
+.exercice details {
+    margin-top: 10px;
+    border-radius: 12px;
+    background: var(--succes-fond);
+    border: 1px solid var(--succes-bord);
+}
+
+.exercice summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    color: var(--succes-texte);
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+}
+
+.exercice summary::-webkit-details-marker { display: none; }
+.exercice summary::before { content: "▸"; transition: transform var(--duree-rapide, 150ms) ease; }
+.exercice details[open] summary::before { transform: rotate(90deg); }
+.exercice summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 12px; }
+
+.exercice details > :not(summary) { margin: 0 14px 12px; color: var(--succes-texte); }
+
+@media (prefers-reduced-motion: reduce) {
+    .exercice summary::before { transition: none; }
 }

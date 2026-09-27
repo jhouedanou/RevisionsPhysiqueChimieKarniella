@@ -1091,7 +1091,7 @@
     ]
   },
   "anglais-unit1-discover-my-school": {
-    "tab3": [
+    "tab4": [
       {
         "question": "What is a gate?",
         "options": [
@@ -1426,7 +1426,7 @@
     ]
   },
   "anglais-unit1-session2": {
-    "tab3": [
+    "tab4": [
       {
         "question": "It's the place where students go to play and practise sports. What is it?",
         "options": [
@@ -1523,6 +1523,54 @@
         "correctAnswer": 0,
         "explanation": "dislike + nom → I dislike dogs.",
         "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: I like (swim) ___.",
+        "options": [
+          "swim",
+          "swiming",
+          "swimming",
+          "swims"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Swim → swimming: the m is doubled.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: She dislikes (dance) ___.",
+        "options": [
+          "danceing",
+          "dancing",
+          "dance",
+          "to dancing"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dance → dancing: the final e disappears.",
+        "langue": "en"
+      },
+      {
+        "question": "Which sentence is correct?",
+        "options": [
+          "I like speak English.",
+          "I like to speaking English.",
+          "I like speaking English.",
+          "I speaking like English."
+        ],
+        "correctAnswer": 2,
+        "explanation": "Like + verb-ing: I like speaking English.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « Je n'aime pas les chiens » ?",
+        "options": [
+          "I like dogs.",
+          "I dislike dogs.",
+          "I dislike dog.",
+          "I no like dogs."
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dislike + nom au pluriel : I dislike dogs.",
         "optionsLangue": "en"
       }
     ]
@@ -1918,7 +1966,7 @@
     ]
   },
   "anglais-unit1-lesson2-classroom": {
-    "tab3": [
+    "tab4": [
       {
         "question": "It's the big surface where the teacher writes. What is it?",
         "options": [
@@ -2013,6 +2061,54 @@
         ],
         "correctAnswer": 1,
         "explanation": "In English, the colour comes before the noun: a red pen.",
+        "langue": "en"
+      },
+      {
+        "question": "It's the object used to clean the board. What is it?",
+        "options": [
+          "A duster",
+          "A ruler",
+          "A desk",
+          "A pen"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A duster: it's the object used to clean the board.",
+        "langue": "en"
+      },
+      {
+        "question": "Negative form: « There is a computer. »",
+        "options": [
+          "There not is a computer.",
+          "There isn't a computer.",
+          "There aren't a computer.",
+          "There is no a computer."
+        ],
+        "correctAnswer": 1,
+        "explanation": "There is + not = there isn't.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « Je peux sortir, s'il vous plaît ? »",
+        "options": [
+          "May I come in?",
+          "May I go out, please?",
+          "Can you repeat, please?",
+          "Open your books."
+        ],
+        "correctAnswer": 1,
+        "explanation": "May I go out, please? = Je peux sortir ?",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "How do you pronounce « chalk »?",
+        "options": [
+          "The l is silent: « tchok »",
+          "« chalk » with a strong l",
+          "« shalk »",
+          "« kalk »"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In chalk, the l is silent.",
         "langue": "en"
       }
     ]
@@ -2117,6 +2213,212 @@
         ],
         "correctAnswer": 2,
         "explanation": "Seule la surtension (pile bien plus forte que la lampe) fait griller la lampe."
+      }
+    ]
+  },
+  "histoire-geo-premiers-habitants": {
+    "tab5": [
+      {
+        "question": "Comment connaît-on les premiers habitants de la Côte d'Ivoire ?",
+        "options": [
+          "Par leurs livres",
+          "Par des traces orales et matérielles",
+          "Par des photos anciennes",
+          "Par Internet"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Traditions orales, nécropoles, restes de métallurgie du fer, d'aliments et de poterie."
+      },
+      {
+        "question": "Que signifie le préfixe « proto » ?",
+        "options": [
+          "Nouveau",
+          "Petit",
+          "Antérieur à, premier",
+          "Étranger"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Proto veut dire « antérieur à » ou « premier » : les Protoakan sont les premiers Akan."
+      },
+      {
+        "question": "Combien de grands groupes de premiers habitants la carte présente-t-elle ?",
+        "options": [
+          "Deux",
+          "Trois",
+          "Quatre",
+          "Six"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Quatre : Protokrou, Protoakan, Protomandé et Protogur."
+      },
+      {
+        "question": "Où se situent les Protoakan ?",
+        "options": [
+          "Au nord",
+          "À l'ouest",
+          "Au centre et à l'est",
+          "Au nord-ouest"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Les Protoakan sont au centre et à l'est."
+      },
+      {
+        "question": "Où se situent les Protokrou ?",
+        "options": [
+          "À l'ouest",
+          "Au nord",
+          "À l'est",
+          "Au centre"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Les Protokrou sont à l'ouest."
+      },
+      {
+        "question": "Les Protogur, au nord, sont divisés en deux sous-groupes. Lesquels ?",
+        "options": [
+          "Protoakan et Protokrou",
+          "Protosénoufo et Protokoulango",
+          "Pygmées et Gban",
+          "Toura et Gouro"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les Protogur regroupent les Protosénoufo et les Protokoulango."
+      },
+      {
+        "question": "Quel autre nom donne-t-on aux Pygmées ?",
+        "options": [
+          "Les Gban",
+          "Les Négrilles",
+          "Les Protomandé",
+          "Les Gagou"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Pygmées ou Négrilles : les deux noms désignent les mêmes petits hommes des légendes."
+      },
+      {
+        "question": "Comment les légendes décrivent-elles les Pygmées ?",
+        "options": [
+          "Grands, cheveux ras, pieds normaux",
+          "Petite taille, chevelure abondante, pieds retournés",
+          "Géants à la peau blanche",
+          "Des oiseaux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Petite taille, chevelure abondante, pieds retournés, peau brune ou rougeâtre."
+      },
+      {
+        "question": "Que signifie « Gban », le nom que préfèrent les Gagou ?",
+        "options": [
+          "Allez-vous en",
+          "Puces : un être minuscule mais agile",
+          "Géants",
+          "Chasseurs"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Gban signifie « puces » ; « Gagou » voulait dire « allez-vous en » et ils le trouvent péjoratif."
+      }
+    ]
+  },
+  "histoire-geo-milieu-physique": {
+    "tab5": [
+      {
+        "question": "Qu'est-ce que le milieu physique ?",
+        "options": [
+          "Une salle de sport",
+          "Le cadre de vie des sociétés humaines, l'ensemble des conditions naturelles",
+          "Une ville",
+          "Un parc national"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le milieu physique est le cadre de vie des sociétés humaines : les conditions naturelles qui influencent la vie."
+      },
+      {
+        "question": "Lequel de ces éléments ne fait PAS partie du milieu physique ?",
+        "options": [
+          "Le relief",
+          "Le climat",
+          "Les routes",
+          "L'hydrographie"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Les routes sont construites par l'homme. Les cinq éléments : relief, climat, végétation, sols, hydrographie."
+      },
+      {
+        "question": "Où sont localisées les plaines ?",
+        "options": [
+          "Au nord",
+          "Au sud",
+          "À l'ouest",
+          "À l'est"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les plaines sont au sud, avec une altitude de 0 à 200 m."
+      },
+      {
+        "question": "Où sont localisés les plateaux ?",
+        "options": [
+          "Au sud",
+          "Au nord",
+          "Au bord de la mer",
+          "Dans les lagunes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les plateaux sont au nord."
+      },
+      {
+        "question": "Quel est le point le plus haut de la Côte d'Ivoire ?",
+        "options": [
+          "Le mont Nimba",
+          "Le mont Tonkoui",
+          "Le plateau de Korhogo",
+          "La lagune Ébrié"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le mont Nimba, à l'ouest, culmine à 1 752 m."
+      },
+      {
+        "question": "Quelle végétation trouve-t-on au sud ?",
+        "options": [
+          "La savane",
+          "Le désert",
+          "La forêt dense",
+          "La steppe"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Au sud, les fortes pluies donnent la forêt dense. Au nord, c'est la savane."
+      },
+      {
+        "question": "Lequel de ces fleuves est ivoirien ?",
+        "options": [
+          "Le Nil",
+          "Le Bandama",
+          "Le Congo",
+          "Le Niger"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les quatre grands fleuves : Cavally, Sassandra, Bandama, Comoé."
+      },
+      {
+        "question": "Pourquoi le sud est-il la région la plus peuplée ?",
+        "options": [
+          "Parce qu'il fait froid",
+          "Pour l'eau, les sols riches et le climat humide",
+          "Parce qu'il n'y a pas d'arbres",
+          "Par hasard"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les hommes s'installent en fonction du milieu : eau, bonnes terres et climat humide attirent la population."
+      },
+      {
+        "question": "Que veut dire « hydrographie » ?",
+        "options": [
+          "L'étude des roches",
+          "L'ensemble des cours d'eau",
+          "La météo",
+          "Les plantes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'hydrographie, ce sont les fleuves, rivières et lagunes."
       }
     ]
   }
