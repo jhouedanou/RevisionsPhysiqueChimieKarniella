@@ -1091,7 +1091,7 @@
     ]
   },
   "anglais-unit1-discover-my-school": {
-    "tab3": [
+    "tab4": [
       {
         "question": "What is a gate?",
         "options": [
@@ -1426,7 +1426,7 @@
     ]
   },
   "anglais-unit1-session2": {
-    "tab3": [
+    "tab4": [
       {
         "question": "It's the place where students go to play and practise sports. What is it?",
         "options": [
@@ -1523,6 +1523,54 @@
         "correctAnswer": 0,
         "explanation": "dislike + nom → I dislike dogs.",
         "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: I like (swim) ___.",
+        "options": [
+          "swim",
+          "swiming",
+          "swimming",
+          "swims"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Swim → swimming: the m is doubled.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: She dislikes (dance) ___.",
+        "options": [
+          "danceing",
+          "dancing",
+          "dance",
+          "to dancing"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dance → dancing: the final e disappears.",
+        "langue": "en"
+      },
+      {
+        "question": "Which sentence is correct?",
+        "options": [
+          "I like speak English.",
+          "I like to speaking English.",
+          "I like speaking English.",
+          "I speaking like English."
+        ],
+        "correctAnswer": 2,
+        "explanation": "Like + verb-ing: I like speaking English.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « Je n'aime pas les chiens » ?",
+        "options": [
+          "I like dogs.",
+          "I dislike dogs.",
+          "I dislike dog.",
+          "I no like dogs."
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dislike + nom au pluriel : I dislike dogs.",
         "optionsLangue": "en"
       }
     ]
@@ -1918,7 +1966,7 @@
     ]
   },
   "anglais-unit1-lesson2-classroom": {
-    "tab3": [
+    "tab4": [
       {
         "question": "It's the big surface where the teacher writes. What is it?",
         "options": [
@@ -2013,6 +2061,54 @@
         ],
         "correctAnswer": 1,
         "explanation": "In English, the colour comes before the noun: a red pen.",
+        "langue": "en"
+      },
+      {
+        "question": "It's the object used to clean the board. What is it?",
+        "options": [
+          "A duster",
+          "A ruler",
+          "A desk",
+          "A pen"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A duster: it's the object used to clean the board.",
+        "langue": "en"
+      },
+      {
+        "question": "Negative form: « There is a computer. »",
+        "options": [
+          "There not is a computer.",
+          "There isn't a computer.",
+          "There aren't a computer.",
+          "There is no a computer."
+        ],
+        "correctAnswer": 1,
+        "explanation": "There is + not = there isn't.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « Je peux sortir, s'il vous plaît ? »",
+        "options": [
+          "May I come in?",
+          "May I go out, please?",
+          "Can you repeat, please?",
+          "Open your books."
+        ],
+        "correctAnswer": 1,
+        "explanation": "May I go out, please? = Je peux sortir ?",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "How do you pronounce « chalk »?",
+        "options": [
+          "The l is silent: « tchok »",
+          "« chalk » with a strong l",
+          "« shalk »",
+          "« kalk »"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In chalk, the l is silent.",
         "langue": "en"
       }
     ]

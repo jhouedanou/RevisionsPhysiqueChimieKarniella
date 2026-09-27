@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit1-session2",
+  "lecon": "anglais-unit1-session2",
+  "matiere": "anglais",
+  "titre": "The robot who loves -ING",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le robot du vaisseau veut dire ce qu'il aime, mais il fait toujours la même faute : « I like speak English ». Répare sa grammaire et apprends-lui les nouveaux lieux de l'école !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🏃 Encore des lieux",
+      "contenu": "A playground: where students play and practise sports. A school garden: where they grow vegetables. A secretary's office: the work place of the secretary. A toilet: where they wash their hands."
+    },
+    {
+      "titre": "❤️ Like / dislike",
+      "contenu": "Après like ou dislike, deux constructions seulement : un nom (I like English) ou un verbe en -ing (I like speaking English). Jamais « I like speak »."
+    },
+    {
+      "titre": "✏️ L'orthographe du -ing",
+      "contenu": "Le e final tombe : dance → dancing, write → writing. Une consonne après une voyelle courte se double : swim → swimming. Sinon, on ajoute juste -ing : play → playing."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which sentence is correct?",
+      "options": [
+        "I like speak English.",
+        "I like speaking English.",
+        "I like to speaking English.",
+        "I speaking English like."
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Like + verb-ing."
+    },
+    {
+      "question": "Write → ?",
+      "options": [
+        "writeing",
+        "writting",
+        "writing",
+        "writes"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "The final e disappears: writing."
+    },
+    {
+      "question": "It's the place where students go to grow vegetables.",
+      "options": [
+        "A playground",
+        "A school garden",
+        "A toilet",
+        "A canteen"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A school garden."
+    }
+  ]
+}

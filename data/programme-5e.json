@@ -29,7 +29,8 @@
           "sousTitre": "Session 1 — Vocabulary & Language function",
           "icone": "🏫",
           "description": "Les lieux de l'école en anglais, et comment demander son chemin.",
-          "statut": "prete"
+          "statut": "prete",
+          "mission": true
         },
         {
           "id": "anglais-unit1-session2",
@@ -37,7 +38,8 @@
           "sousTitre": "Vocabulary & Expressing like and dislike",
           "icone": "💬",
           "description": "Les autres lieux de l'école, et dire ce qu'on aime ou pas.",
-          "statut": "prete"
+          "statut": "prete",
+          "mission": true
         },
         {
           "id": "anglais-unit1-lesson2-classroom",

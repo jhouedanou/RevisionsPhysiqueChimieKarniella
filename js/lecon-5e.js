@@ -230,7 +230,7 @@
 
     // Ce qui ne fait pas une bonne carte : la mise en situation, la correction
     // et le quiz (des questions, pas des notions), et les consignes.
-    var ONGLETS_EXCLUS = /quiz|situation|correction/i;
+    var ONGLETS_EXCLUS = /quiz|situation|correction|practice|exercice/i;   // les exercices ne sont pas des notions
     var TITRES_EXCLUS = /^(ecoute|avant|entraine|fabrique|activite|questions?|correction|teste)/;
     var TEXTE_MAX = 260;
 
