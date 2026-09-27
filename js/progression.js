@@ -57,6 +57,32 @@
     }
 
     /* ============================================================
+       Suivi à distance (js/suivi.js) — pour que tonton voie les progrès
+       ============================================================ */
+
+    /**
+     * Passe la ligne à js/suivi.js. S'il n'est pas encore chargé, on la dépose
+     * dans sa file localStorage : il l'enverra en arrivant.
+     */
+    function signaler(ligne) {
+        ligne.date = Date.now();
+        if (window.KarniellaSuivi) { window.KarniellaSuivi.noter(ligne); return; }
+        try {
+            var file = JSON.parse(window.localStorage.getItem('karniella-suivi-file')) || [];
+            file.push(ligne);
+            window.localStorage.setItem('karniella-suivi-file', JSON.stringify(file.slice(-300)));
+        } catch (err) { /* stockage refusé : pas de suivi, rien d'autre */ }
+    }
+
+    /** Les réponses d'un quiz, en court : 40 questions, 200 caractères par texte. */
+    function detailsCourts(details) {
+        function court(t) { return t == null ? null : String(t).slice(0, 200); }
+        return details.slice(0, 40).map(function (d) {
+            return { q: court(d.q), r: court(d.r), b: court(d.b), ok: !!d.ok };
+        });
+    }
+
+    /* ============================================================
        Jours de révision — pour la série de jours
        ============================================================ */
 
@@ -109,6 +135,7 @@
         if (matiere) { page.matiere = matiere; }
         noterJour(donnees, 'lecons');
         ecrire(donnees);
+        signaler({ type: 'visite', page: slug, matiere: matiere || null });
     }
 
     /**
@@ -142,6 +169,12 @@
             if (typeof tentative.temps === 'number') { majRecord(page, tentative); }
         }
         ecrire(donnees);
+        signaler({
+            type: 'quiz', page: slug, matiere: page.matiere || null, score: correct, total: total,
+            duree: (extra && typeof extra.temps === 'number') ? Math.round(extra.temps) : null,
+            serie: serie ? String(serie).slice(0, 80) : null,
+            details: (extra && extra.details) ? detailsCourts(extra.details) : null
+        });
     }
 
     /** Meilleure tentative chronométrée : d'abord le score, puis le temps le plus court. */
@@ -162,8 +195,10 @@
     function enregistrerQuestion(slug) {
         if (!slug) { return; }
         var donnees = lire();
-        entree(donnees, slug).questions += 1;
+        var page = entree(donnees, slug);
+        page.questions += 1;
         ecrire(donnees);
+        signaler({ type: 'question', page: slug, matiere: page.matiere || null });
     }
 
     /* ============================================================

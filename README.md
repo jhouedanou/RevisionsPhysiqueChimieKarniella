@@ -529,6 +529,23 @@ Ajouté par `js/lecon-5e.js`, sans rien à écrire dans les pages :
 - des **confettis** 🎉 à 80 % et plus à un quiz, à chaque nouveau badge et à la
   fin d'un paquet de cartes (`window.KarniellaFete`, dans `js/badges.js`).
 
+## 👀 Le suivi (pour tonton)
+
+Chaque leçon ouverte, le temps passé sur chaque page, chaque quiz (avec la
+réponse choisie à chaque question) et chaque question au chat partent dans la
+table `activite` du projet Supabase **karniella** (organisation socialmedia).
+
+- `js/suivi.js` envoie les lignes. Il est chargé par `chat-assistant.js`, donc
+  sur toutes les pages. Hors ligne, les lignes attendent dans `localStorage`.
+  Rien n'est envoyé depuis `localhost`.
+- `js/progression.js` lui passe les visites, les quiz et les questions.
+- `suivi.html` (non listée, `noindex`) affiche le tableau de bord, avec un mot
+  de passe. Le bouton « Ne pas compter cet appareil » évite de mélanger le
+  téléphone de tonton avec celui de Karniella.
+- `supabase/suivi.sql` décrit la base : la clé publique permet seulement
+  d'ajouter des lignes. La lecture passe par la fonction `tableau_suivi(mdp)`.
+  Pour changer le mot de passe, voir la fin de ce fichier.
+
 ## 📞 Support
 
 Pour toute question ou problème :

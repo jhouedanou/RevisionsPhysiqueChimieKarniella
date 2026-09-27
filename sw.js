@@ -1,7 +1,7 @@
 // Service Worker pour Révisions Karniella PWA
 // Version 1.1.0
 
-const CACHE_NAME = 'karniella-cache-v27';
+const CACHE_NAME = 'karniella-cache-v28';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Fichiers à mettre en cache lors de l'installation
@@ -42,6 +42,7 @@ const FILES_TO_CACHE = [
     '/js/xp.js',
     '/js/boutique.js',
     '/js/mission.js',
+    '/js/suivi.js',
 
     '/data/section-questions.json',
     '/data/programme-5e.json',
@@ -126,6 +127,11 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     // L'API (dont le repli IA du chat) ne doit jamais être mise en cache.
     if (event.request.url.includes('/api/')) {
+        return;
+    }
+
+    // Le suivi (js/suivi.js, suivi.html) parle directement à Supabase : jamais de cache.
+    if (event.request.url.includes('.supabase.co/')) {
         return;
     }
 
