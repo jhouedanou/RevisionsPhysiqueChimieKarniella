@@ -51,7 +51,8 @@ function listerPages() {
     }
 
     return fs.readdirSync(DOSSIER_5E)
-        .filter((nom) => nom.endsWith('.html') && !EST_SAUVEGARDE.test(nom))
+        // mission.html est une coquille remplie par js/mission.js : rien à indexer.
+        .filter((nom) => nom.endsWith('.html') && nom !== 'mission.html' && !EST_SAUVEGARDE.test(nom))
         .map((nom) => ({
             slug: nom.slice(0, -'.html'.length),
             chemin: path.join(DOSSIER_5E, nom)

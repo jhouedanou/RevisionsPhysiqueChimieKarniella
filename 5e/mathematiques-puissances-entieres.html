@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puissances entières d'un nombre entier relatif - Mathématiques 5e</title>
+<meta name="description" content="Les puissances : définition, propriétés et calculs avec les exposants.">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
+<link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/section-quiz.css">
+</head>
+<body class="lecon-5e" data-matiere="mathematiques">
+
+<header>
+<span class="badge-niveau">Mathématiques · Calculs algébriques · Classe de 5e</span>
+<h1>🔢 Puissances entières d'un nombre entier relatif</h1>
+<p>Définition, propriétés et calculs avec les puissances</p>
+</header>
+
+<div class="tabs">
+<button class="tab-button active" data-onglet="tab1">1. Définition</button>
+<button class="tab-button" data-onglet="tab2">2. Propriétés</button>
+<button class="tab-button" data-onglet="tab3">3. Calculer</button>
+<button class="tab-button" data-onglet="tab4">Quiz</button>
+</div>
+
+<main class="content">
+
+<!-- ============ 1. DÉFINITION ============ -->
+<section class="tab-content active" id="tab1">
+  <div class="container">
+    <h2>1. Définition</h2>
+
+    <div class="definition-box">
+      <h4>🦠 La situation</h4>
+      <p>Une bactérie se divise en deux toutes les heures. Au départ, il y en a une.
+      Au bout d'une heure : 2. Au bout de deux heures : 2 × 2 = 4. Au bout de trois
+      heures : 2 × 2 × 2 = 8. Et au bout de 10 heures ? Il faudrait écrire
+      2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2… C'est long ! Les mathématiciens ont
+      inventé une écriture plus courte : <strong>2<sup>10</sup></strong>.</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>Soit <strong>a</strong> un nombre entier relatif et <strong>n</strong> un nombre
+      entier supérieur ou égal à 2. Le nombre <strong>a<sup>n</sup></strong> (on lit
+      « a puissance n » ou « a exposant n ») est le produit de <strong>n facteurs
+      tous égaux à a</strong> :</p>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>a<sup>n</sup> = a × a × a × … × a</strong> &nbsp;(n facteurs)
+      </p>
+      <ul>
+        <li><strong>a</strong> s'appelle la <strong>base</strong> ;</li>
+        <li><strong>n</strong> s'appelle l'<strong>exposant</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="example-box">
+      <h4>💡 Exemples</h4>
+      <ul>
+        <li>2<sup>3</sup> = 2 × 2 × 2 = <strong>8</strong> (base 2, exposant 3)</li>
+        <li>5<sup>2</sup> = 5 × 5 = <strong>25</strong> (« 5 au carré »)</li>
+        <li>10<sup>4</sup> = 10 × 10 × 10 × 10 = <strong>10 000</strong></li>
+        <li>(−3)<sup>2</sup> = (−3) × (−3) = <strong>+9</strong></li>
+        <li>(−2)<sup>3</sup> = (−2) × (−2) × (−2) = <strong>−8</strong></li>
+      </ul>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 Deux cas particuliers</h4>
+      <ul>
+        <li><strong>a<sup>1</sup> = a</strong> : un seul facteur. 7<sup>1</sup> = 7.</li>
+        <li><strong>a<sup>0</sup> = 1</strong> pour tout nombre a différent de 0. 7<sup>0</sup> = 1 ; (−4)<sup>0</sup> = 1.</li>
+      </ul>
+    </div>
+
+    <div class="important-box">
+      <h4>⚠️ Ne confonds pas</h4>
+      <p><strong>2<sup>3</sup> n'est pas 2 × 3.</strong> 2<sup>3</sup> = 2 × 2 × 2 = 8,
+      alors que 2 × 3 = 6. L'exposant dit <em>combien de fois</em> on multiplie la base
+      par elle-même, ce n'est pas un nombre qu'on multiplie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. PROPRIÉTÉS ============ -->
+<section class="tab-content" id="tab2">
+  <div class="container">
+    <h2>2. Quelques propriétés</h2>
+
+    <h3>a) Le signe d'une puissance</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <ul>
+        <li>La puissance d'un nombre <strong>positif</strong> est toujours <strong>positive</strong>.</li>
+        <li>La puissance d'un nombre <strong>négatif</strong> est :
+          <ul>
+            <li><strong>positive</strong> si l'exposant est <strong>pair</strong> : (−2)<sup>4</sup> = +16 ;</li>
+            <li><strong>négative</strong> si l'exposant est <strong>impair</strong> : (−2)<sup>5</sup> = −32.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="note-box">
+      <h4>🐴 Pourquoi ?</h4>
+      <p>Chaque fois qu'on multiplie deux nombres négatifs, le résultat devient positif :
+      (−) × (−) = (+). Avec un exposant pair, les signes − vont deux par deux et
+      s'annulent tous. Avec un exposant impair, il en reste un tout seul à la fin.</p>
+    </div>
+
+    <h3>b) Produit de deux puissances de même base</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>a<sup>m</sup> × a<sup>n</sup> = a<sup>m + n</sup></strong>
+      </p>
+      <p>Pour multiplier deux puissances de la <strong>même base</strong>, on garde la base
+      et on <strong>additionne</strong> les exposants.</p>
+    </div>
+    <div class="example-box">
+      <p>2<sup>3</sup> × 2<sup>2</sup> = (2 × 2 × 2) × (2 × 2) = 2<sup>5</sup> = 32.
+      On a bien 3 + 2 = 5 facteurs.</p>
+      <p>(−5)<sup>2</sup> × (−5)<sup>3</sup> = (−5)<sup>5</sup> = −3 125.</p>
+    </div>
+
+    <h3>c) Puissance d'une puissance</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>(a<sup>m</sup>)<sup>n</sup> = a<sup>m × n</sup></strong>
+      </p>
+      <p>Pour élever une puissance à une puissance, on <strong>multiplie</strong> les exposants.</p>
+    </div>
+    <div class="example-box">
+      <p>(2<sup>3</sup>)<sup>2</sup> = 2<sup>3</sup> × 2<sup>3</sup> = 2<sup>6</sup> = 64.
+      On a bien 3 × 2 = 6.</p>
+    </div>
+
+    <h3>d) Puissance d'un produit</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>(a × b)<sup>n</sup> = a<sup>n</sup> × b<sup>n</sup></strong>
+      </p>
+    </div>
+    <div class="example-box">
+      <p>(2 × 5)<sup>3</sup> = 2<sup>3</sup> × 5<sup>3</sup> = 8 × 125 = 1 000.
+      Vérification : (2 × 5)<sup>3</sup> = 10<sup>3</sup> = 1 000. ✓</p>
+    </div>
+
+    <div class="important-box">
+      <h4>⚠️ Attention aux parenthèses</h4>
+      <p><strong>(−3)<sup>2</sup></strong> et <strong>−3<sup>2</sup></strong> ne sont pas
+      égaux ! (−3)<sup>2</sup> = (−3) × (−3) = <strong>+9</strong>, mais −3<sup>2</sup>
+      = −(3 × 3) = <strong>−9</strong>. Sans parenthèses, la puissance ne porte que sur
+      le 3, pas sur le signe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. CALCULER ============ -->
+<section class="tab-content" id="tab3">
+  <div class="container">
+    <h2>3. Calculer avec les puissances</h2>
+
+    <div class="definition-box">
+      <h4>📘 L'ordre des calculs</h4>
+      <p>Dans une expression, on calcule dans cet ordre :</p>
+      <ol>
+        <li>les <strong>parenthèses</strong> ;</li>
+        <li>les <strong>puissances</strong> ;</li>
+        <li>les <strong>multiplications et divisions</strong> ;</li>
+        <li>les <strong>additions et soustractions</strong>.</li>
+      </ol>
+      <p>La puissance passe <strong>avant</strong> la multiplication : elle est
+      « prioritaire ».</p>
+    </div>
+
+    <h3>Exemple 1 : A = 3 × 2<sup>3</sup></h3>
+    <div class="example-box">
+      <p>D'abord la puissance : 2<sup>3</sup> = 8. Puis la multiplication : A = 3 × 8
+      = <strong>24</strong>.<br>
+      <em>Erreur à éviter : calculer 3 × 2 = 6 puis 6<sup>3</sup> = 216.</em></p>
+    </div>
+
+    <h3>Exemple 2 : B = 5<sup>2</sup> − 2<sup>4</sup></h3>
+    <div class="example-box">
+      <p>5<sup>2</sup> = 25 et 2<sup>4</sup> = 16. Donc B = 25 − 16 = <strong>9</strong>.</p>
+    </div>
+
+    <h3>Exemple 3 : C = (−2)<sup>3</sup> × (−2)<sup>2</sup></h3>
+    <div class="example-box">
+      <p>Même base : on additionne les exposants. C = (−2)<sup>5</sup>. L'exposant est
+      impair, le résultat est négatif : C = <strong>−32</strong>.</p>
+    </div>
+
+    <h3>Exemple 4 : D = (3 + 1)<sup>2</sup></h3>
+    <div class="example-box">
+      <p>D'abord la parenthèse : 3 + 1 = 4. Puis la puissance : D = 4<sup>2</sup> =
+      <strong>16</strong>.<br>
+      <em>Attention : (3 + 1)<sup>2</sup> n'est pas 3<sup>2</sup> + 1<sup>2</sup> = 10.</em></p>
+    </div>
+
+    <h3>Les puissances de 10</h3>
+    <div class="definition-box">
+      <h4>📘 Très pratiques</h4>
+      <p>10<sup>n</sup> s'écrit <strong>1 suivi de n zéros</strong> :
+      10<sup>2</sup> = 100 ; 10<sup>3</sup> = 1 000 ; 10<sup>6</sup> = 1 000 000 (un million).</p>
+      <p>Elles servent à écrire les grands nombres : 3 × 10<sup>6</sup> = 3 000 000.</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 La méthode en 3 questions</h4>
+      <ul>
+        <li>Y a-t-il des <strong>parenthèses</strong> ? Je les calcule d'abord.</li>
+        <li>Y a-t-il des <strong>puissances</strong> ? Je les calcule ensuite, en faisant attention au signe.</li>
+        <li>Il reste des × ÷ puis des + − ? Je termine dans cet ordre.</li>
+      </ul>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <p>Les propriétés et les exemples ont été rédigés à partir du plan du vocal
+      (1. Définition, 2. Propriétés, 3. Calculer avec les puissances). Si ton
+      professeur a noté d'autres exemples, envoie-moi la page et je les ajoute.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="tab-content" id="tab4">
+  <div class="container">
+    <h2>🎯 Teste-toi</h2>
+    <p>Bases, exposants, signes et priorités : à toi de jouer.</p>
+    <div id="quiz-puissances"></div>
+  </div>
+</section>
+
+</main>
+
+<p class="pied">Révisions de Karniella · Mathématiques 5e · Puissances entières</p>
+
+<script src="../js/lecon-5e.js" defer></script>
+<script src="../js/lecture-vocale.js" defer></script>
+<script src="../js/section-quiz.js" defer></script>
+<script src="../js/chat-assistant.js" defer></script>
+<script>
+    window.addEventListener('load', function () {
+        fetch('../data/section-questions.json')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var questions = data['mathematiques-puissances-entieres'];
+                if (questions && questions.tab4 && window.initSectionQuiz) {
+                    initSectionQuiz('quiz-puissances', questions.tab4, { etapes: true });
+                }
+            })
+            .catch(function () { /* hors-ligne sans cache : le reste marche */ });
+    });
+</script>
+</body>
+</html>

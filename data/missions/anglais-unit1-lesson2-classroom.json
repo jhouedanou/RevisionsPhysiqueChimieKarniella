@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit1-lesson2-classroom",
+  "lecon": "anglais-unit1-lesson2-classroom",
+  "matiere": "anglais",
+  "titre": "The colourful classroom",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, l'ordinateur de bord a perdu la couleur de tous les objets de la classe spatiale ! Il te faut décrire chaque objet en anglais, en affirmatif et en négatif, pour que l'écran retrouve ses couleurs.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🎒 Les objets de la classe",
+      "contenu": "A desk (le bureau), a chair, a board (le tableau), a piece of chalk (la craie), a ruler (la règle), a school bag. Et les couleurs : red, blue, green, yellow, black, white, brown."
+    },
+    {
+      "titre": "✅ Affirmative: is / are",
+      "contenu": "Un seul objet → is : The board is green. Plusieurs → are : The chairs are black. Pour dire ce qu'il y a : There is a desk. There are twenty desks."
+    },
+    {
+      "titre": "❌ Negative: isn't / aren't",
+      "contenu": "On ajoute not après le verbe : The chalk is not black → The chalk isn't black. The chairs are not blue → The chairs aren't blue. Et la couleur se place avant le nom : a red pen."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is « la règle » in English?",
+      "options": [
+        "A ruler",
+        "A duster",
+        "A board",
+        "A chair"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "A ruler: the object used to draw straight lines."
+    },
+    {
+      "question": "Choose the correct sentence.",
+      "options": [
+        "The chairs is black.",
+        "The chairs are black.",
+        "The chairs be black.",
+        "Black are the chairs."
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Plural subject → are."
+    },
+    {
+      "question": "Negative form of « The chalk is white »?",
+      "options": [
+        "The chalk isn't white.",
+        "The chalk not is white.",
+        "The chalk aren't white.",
+        "The chalk no white."
+      ],
+      "correct_answer_index": 0,
+      "explanation": "is + not = isn't."
+    }
+  ]
+}

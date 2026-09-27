@@ -1618,5 +1618,403 @@
         "explanation": "« Parce que » introduit la raison — c'est justement ce qu'on demande dans une explication."
       }
     ]
+  },
+  "mathematiques-nombres-decimaux-relatifs": {
+    "tab4": [
+      {
+        "question": "Dans le congélateur, il fait 18 degrés au-dessous de zéro. Comment écrit-on cette température ?",
+        "options": [
+          "18",
+          "+18",
+          "−18",
+          "0,18"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Au-dessous de zéro, c'est un nombre négatif : on écrit −18."
+      },
+      {
+        "question": "Quel est l'opposé de +7 ?",
+        "options": [
+          "+7",
+          "0",
+          "−7",
+          "7,0"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Deux nombres opposés ont la même distance à zéro et des signes contraires : l'opposé de +7 est −7."
+      },
+      {
+        "question": "Quelle est la distance à zéro de −6,5 ?",
+        "options": [
+          "−6,5",
+          "6,5",
+          "0",
+          "+13"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La distance à zéro, c'est le nombre sans son signe : 6,5."
+      },
+      {
+        "question": "Sur une droite graduée, où se trouvent les nombres négatifs ?",
+        "options": [
+          "À droite du 0",
+          "À gauche du 0",
+          "Au-dessus du 0",
+          "Il n'y en a pas"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les négatifs sont à gauche du 0, les positifs à droite."
+      },
+      {
+        "question": "Quel nombre est le plus grand : −18 ou −5 ?",
+        "options": [
+          "−18",
+          "−5",
+          "Ils sont égaux",
+          "On ne peut pas savoir"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Entre deux négatifs, le plus grand est le plus proche du zéro : −5 > −18."
+      },
+      {
+        "question": "Le nombre +4 et le nombre 4…",
+        "options": [
+          "sont différents",
+          "sont le même nombre",
+          "sont opposés",
+          "n'existent pas"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un nombre positif s'écrit avec + ou sans signe : +4 = 4."
+      },
+      {
+        "question": "Quel est le signe du nombre 0 ?",
+        "options": [
+          "Il est positif seulement",
+          "Il est négatif seulement",
+          "Il est à la fois positif et négatif",
+          "Il n'existe pas"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le 0 est à la fois positif et négatif : il est sur la frontière."
+      },
+      {
+        "question": "Range dans l'ordre croissant : −3 ; +2 ; −7 ; 0",
+        "options": [
+          "−3 < −7 < 0 < +2",
+          "−7 < −3 < 0 < +2",
+          "0 < −3 < −7 < +2",
+          "+2 < 0 < −3 < −7"
+        ],
+        "correctAnswer": 1,
+        "explanation": "De gauche à droite sur la droite graduée : −7, puis −3, puis 0, puis +2."
+      }
+    ]
+  },
+  "mathematiques-puissances-entieres": {
+    "tab4": [
+      {
+        "question": "Que vaut 2 puissance 3 (2³) ?",
+        "options": [
+          "6",
+          "8",
+          "9",
+          "23"
+        ],
+        "correctAnswer": 1,
+        "explanation": "2³ = 2 × 2 × 2 = 8. Ce n'est pas 2 × 3 !"
+      },
+      {
+        "question": "Dans 5⁴, comment s'appelle le 4 ?",
+        "options": [
+          "La base",
+          "Le facteur",
+          "L'exposant",
+          "Le produit"
+        ],
+        "correctAnswer": 2,
+        "explanation": "5 est la base, 4 est l'exposant : le nombre de facteurs."
+      },
+      {
+        "question": "Que vaut (−3)² ?",
+        "options": [
+          "−9",
+          "+9",
+          "−6",
+          "+6"
+        ],
+        "correctAnswer": 1,
+        "explanation": "(−3)² = (−3) × (−3) = +9. Exposant pair : résultat positif."
+      },
+      {
+        "question": "Que vaut (−2)³ ?",
+        "options": [
+          "+8",
+          "−8",
+          "−6",
+          "+6"
+        ],
+        "correctAnswer": 1,
+        "explanation": "(−2)³ = (−2) × (−2) × (−2) = −8. Exposant impair : résultat négatif."
+      },
+      {
+        "question": "Que vaut 7⁰ ?",
+        "options": [
+          "0",
+          "7",
+          "1",
+          "70"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Tout nombre (sauf 0) à la puissance 0 vaut 1."
+      },
+      {
+        "question": "Simplifie 3² × 3⁴.",
+        "options": [
+          "3⁸",
+          "9⁶",
+          "3⁶",
+          "6⁶"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Même base : on additionne les exposants. 3² × 3⁴ = 3⁶."
+      },
+      {
+        "question": "Que vaut (2³)²  ?",
+        "options": [
+          "2⁵",
+          "2⁶",
+          "2⁹",
+          "4³"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Puissance d'une puissance : on multiplie les exposants. (2³)² = 2⁶ = 64."
+      },
+      {
+        "question": "Calcule A = 3 × 2³.",
+        "options": [
+          "216",
+          "24",
+          "18",
+          "12"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La puissance d'abord : 2³ = 8. Puis 3 × 8 = 24."
+      },
+      {
+        "question": "Que vaut 10⁵ ?",
+        "options": [
+          "50",
+          "1 000",
+          "100 000",
+          "10 000"
+        ],
+        "correctAnswer": 2,
+        "explanation": "10⁵ = 1 suivi de 5 zéros = 100 000."
+      }
+    ]
+  },
+  "svt-proliferation-criquets": {
+    "tab5": [
+      {
+        "question": "Le criquet est…",
+        "options": [
+          "un oiseau",
+          "un insecte herbivore",
+          "un reptile",
+          "un mammifère"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le criquet est un insecte qui se nourrit de plantes : il est herbivore."
+      },
+      {
+        "question": "Que veut dire « proliférer » ?",
+        "options": [
+          "Disparaître",
+          "Se multiplier très vite et en grand nombre",
+          "Dormir tout l'hiver",
+          "Changer de pays"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Proliférer, c'est se multiplier très vite et en très grand nombre."
+      },
+      {
+        "question": "Après quoi les criquets prolifèrent-ils ?",
+        "options": [
+          "Après une longue sécheresse",
+          "Après de fortes pluies",
+          "Après un incendie",
+          "Après l'hiver"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Après de fortes pluies, la végétation pousse et les femelles pondent dans le sol humide."
+      },
+      {
+        "question": "Comment appelle-t-on un très grand groupe de criquets qui volent ensemble ?",
+        "options": [
+          "Une famille",
+          "Un troupeau",
+          "Un essaim",
+          "Une ruche"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un essaim peut contenir des dizaines de millions de criquets."
+      },
+      {
+        "question": "Quelle est la première conséquence sur l'environnement ?",
+        "options": [
+          "L'eau devient salée",
+          "La végétation est dévorée",
+          "Il pleut davantage",
+          "Les arbres poussent plus vite"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les criquets mangent tout ce qui est vert : cultures, herbes, feuilles."
+      },
+      {
+        "question": "Sans plantes pour le retenir, le sol est emporté par le vent et la pluie. C'est…",
+        "options": [
+          "la pollinisation",
+          "l'érosion",
+          "la germination",
+          "la fermentation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'érosion : le sol nu est emporté et devient moins fertile."
+      },
+      {
+        "question": "Quelle conséquence pour l'homme quand les récoltes sont détruites ?",
+        "options": [
+          "La famine",
+          "Plus de vacances",
+          "Des prix plus bas",
+          "Rien ne change"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Plus de récoltes, plus de nourriture : c'est l'insécurité alimentaire, voire la famine."
+      },
+      {
+        "question": "Quel moyen de lutte utilise les ennemis naturels du criquet, comme un champignon ?",
+        "options": [
+          "La lutte chimique",
+          "La lutte biologique",
+          "La lutte mécanique",
+          "La surveillance"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La lutte biologique utilise des oiseaux, des poules ou un champignon qui ne tue que les criquets."
+      },
+      {
+        "question": "Pourquoi les pesticides sont-ils dangereux ?",
+        "options": [
+          "Ils font pousser les criquets",
+          "Ils tuent aussi les abeilles et polluent l'eau",
+          "Ils ne coûtent rien",
+          "Ils attirent la pluie"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les pesticides tuent d'autres animaux, polluent l'eau et le sol, et peuvent intoxiquer les personnes."
+      }
+    ]
+  },
+  "anglais-unit1-lesson2-classroom": {
+    "tab3": [
+      {
+        "question": "It's the big surface where the teacher writes. What is it?",
+        "options": [
+          "A desk",
+          "A board",
+          "A window",
+          "A ruler"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A board: it's the big black or white surface where the teacher writes.",
+        "langue": "en"
+      },
+      {
+        "question": "It's the white stick used to write on the blackboard. What is it?",
+        "options": [
+          "A pen",
+          "A pencil",
+          "A piece of chalk",
+          "A duster"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A piece of chalk: it's the white stick used to write on the blackboard.",
+        "langue": "en"
+      },
+      {
+        "question": "It's the object used to draw straight lines and measure. What is it?",
+        "options": [
+          "A ruler",
+          "A school bag",
+          "A chair",
+          "A duster"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A ruler: it's the object used to draw straight lines and measure.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « jaune » en anglais ?",
+        "options": [
+          "Green",
+          "Brown",
+          "Yellow",
+          "Orange"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Yellow = jaune. Green = vert, brown = marron.",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Choose the correct sentence.",
+        "options": [
+          "The board green is.",
+          "The board is green.",
+          "The board are green.",
+          "Green the board is."
+        ],
+        "correctAnswer": 1,
+        "explanation": "Affirmative form: subject + is + colour. The board is green.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle est la forme négative de « The chairs are black » ?",
+        "options": [
+          "The chairs not are black.",
+          "The chairs is not black.",
+          "The chairs aren't black.",
+          "The chairs no black."
+        ],
+        "correctAnswer": 2,
+        "explanation": "On ajoute not après are : are not = aren't.",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: There ___ twenty desks in the classroom.",
+        "options": [
+          "is",
+          "are",
+          "be",
+          "am"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Twenty desks: plural, so we use « are ».",
+        "langue": "en"
+      },
+      {
+        "question": "Is it « a pen red » or « a red pen »?",
+        "options": [
+          "A pen red",
+          "A red pen",
+          "Both are correct",
+          "Neither"
+        ],
+        "correctAnswer": 1,
+        "explanation": "In English, the colour comes before the noun: a red pen.",
+        "langue": "en"
+      }
+    ]
   }
 }

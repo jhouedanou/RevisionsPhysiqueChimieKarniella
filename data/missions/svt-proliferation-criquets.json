@@ -1,0 +1,57 @@
+{
+  "id": "svt-proliferation-criquets",
+  "lecon": "svt-proliferation-criquets",
+  "matiere": "svt",
+  "titre": "Le nuage qui mange tout",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, la sonde survole les champs de Korhogo : un nuage sombre avance et dévore tout sur son passage. Ce ne sont pas des nuages, ce sont des criquets ! Comprends comment ils se multiplient et ce qu'ils provoquent pour aider les villages.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🦗 De solitaire à grégaire",
+      "contenu": "Après de grosses pluies, l'herbe pousse et les criquets pondent des centaines d'œufs. Trop nombreux, ils changent de couleur, se regroupent en essaims de millions et s'envolent ensemble : ils prolifèrent."
+    },
+    {
+      "titre": "🌱 Un désert après leur passage",
+      "contenu": "Un essaim mange chaque jour autant que 35 000 personnes. Cultures, herbes, feuilles : tout disparaît. Le sol nu est emporté par le vent et la pluie (érosion), et les autres animaux n'ont plus rien à manger."
+    },
+    {
+      "titre": "👨‍🌾 Les hommes aussi",
+      "contenu": "Récoltes perdues, donc famine et pauvreté pour les paysans. Et les pesticides utilisés contre les criquets peuvent empoisonner l'eau. La lutte biologique (oiseaux, champignon Metarhizium) est plus douce."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Un très grand groupe de criquets qui volent ensemble, c'est…",
+      "options": [
+        "une ruche",
+        "un essaim",
+        "un troupeau",
+        "une meute"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Un essaim : jusqu'à 40 millions de criquets par km²."
+    },
+    {
+      "question": "Que devient le sol quand la végétation est dévorée ?",
+      "options": [
+        "Il devient plus fertile",
+        "Il est emporté par le vent et la pluie",
+        "Il se transforme en sable",
+        "Rien ne change"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Sans plantes pour le retenir, le sol subit l'érosion."
+    },
+    {
+      "question": "Quelle conséquence directe pour les paysans ?",
+      "options": [
+        "La famine",
+        "Plus de pluie",
+        "Des récoltes doublées",
+        "Des criquets à vendre"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Récoltes détruites : plus de nourriture ni de revenu."
+    }
+  ]
+}
