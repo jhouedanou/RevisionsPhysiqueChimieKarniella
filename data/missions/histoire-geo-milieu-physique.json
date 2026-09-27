@@ -1,0 +1,57 @@
+{
+  "id": "histoire-geo-milieu-physique",
+  "lecon": "histoire-geo-milieu-physique",
+  "matiere": "histoire-geo",
+  "titre": "Où poser le village ?",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, la sonde doit installer un village de colons en Côte d'Ivoire. Au sud, des forêts et des lagunes ; au nord, des plateaux et de la savane ; à l'ouest, des montagnes. Étudie le milieu physique pour choisir le meilleur endroit !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🏔️ Plaines, plateaux, montagnes",
+      "contenu": "Le milieu physique, c'est le cadre naturel de la vie : relief, climat, végétation, sols, hydrographie. Les plaines sont au sud (0 à 200 m), les plateaux au nord, les montagnes à l'ouest avec le mont Nimba."
+    },
+    {
+      "titre": "🌧️ Forêt au sud, savane au nord",
+      "contenu": "Au sud, climat équatorial très humide : forêt dense et sols riches. Au nord, climat tropical plus sec : savane. Quatre grands fleuves traversent le pays : Cavally, Sassandra, Bandama, Comoé."
+    },
+    {
+      "titre": "🏘️ L'homme suit l'eau et la terre",
+      "contenu": "Les hommes s'installent en fonction du milieu : là où il y a de l'eau, de bonnes terres et un climat humide. C'est pour ça que le sud, le long des fleuves et des lagunes, est le plus peuplé."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Où sont les plaines ?",
+      "options": [
+        "Au nord",
+        "Au sud",
+        "À l'ouest",
+        "Nulle part"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Les plaines sont au sud, de 0 à 200 m."
+    },
+    {
+      "question": "Quelle végétation au nord ?",
+      "options": [
+        "Forêt dense",
+        "Savane",
+        "Mangrove",
+        "Désert"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Le nord, plus sec, est couvert de savane."
+    },
+    {
+      "question": "Où le village aura-t-il le plus d'eau et de bonnes terres ?",
+      "options": [
+        "Au sud, près des fleuves",
+        "Au sommet du mont Nimba",
+        "Dans la savane sèche",
+        "Loin de toute rivière"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Le sud humide et fertile, près des fleuves et des lagunes."
+    }
+  ]
+}
