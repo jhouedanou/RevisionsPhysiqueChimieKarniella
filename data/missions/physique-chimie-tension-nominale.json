@@ -1,0 +1,57 @@
+{
+  "id": "physique-chimie-tension-nominale",
+  "lecon": "physique-chimie-tension-nominale",
+  "matiere": "physique-chimie",
+  "titre": "Les lampes du vaisseau",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, les lampes du couloir clignotent : certaines brillent à peine, une autre vient de griller ! L'ingénieur a mélangé les piles et les lampes. Lis les inscriptions et remets chaque lampe sur la bonne pile avant la nuit spatiale.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🔋 Lis l'étiquette",
+      "contenu": "Sur la pile : 4,5 V. Sur la lampe : 3,5 V. Le V, c'est le volt, l'unité de la tension. Ce nombre est la tension nominale : ce que la pile fournit, ou ce dont la lampe a besoin. Comme une pointure de chaussure !"
+    },
+    {
+      "titre": "🕯️ Trop faible, trop fort",
+      "contenu": "Pile plus faible que la lampe (1,5 V sur une lampe 6 V) : sous-tension, la lampe brille à peine. Pile plus forte (12 V sur une lampe 3,5 V) : surtension, la lampe brille très fort puis grille pour de bon."
+    },
+    {
+      "titre": "✅ La bonne pointure",
+      "contenu": "Quand la tension de la pile est égale à la tension nominale de la lampe (4,5 V et 4,5 V), la lampe est adaptée : elle brille normalement et longtemps. Toujours comparer les deux inscriptions avant de brancher."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Que veut dire le V sur une pile ?",
+      "options": [
+        "Vitesse",
+        "Volt",
+        "Volume",
+        "Vert"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Le volt est l'unité de la tension."
+    },
+    {
+      "question": "Lampe 3,5 V sur pile 12 V : c'est…",
+      "options": [
+        "une sous-tension",
+        "une lampe adaptée",
+        "une surtension",
+        "impossible"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "12 V est bien plus grand que 3,5 V : surtension, la lampe grille."
+    },
+    {
+      "question": "Quand la lampe est-elle adaptée ?",
+      "options": [
+        "Pile plus faible",
+        "Pile plus forte",
+        "Tensions égales",
+        "Sans pile"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Tension de la pile = tension nominale de la lampe : éclat normal."
+    }
+  ]
+}

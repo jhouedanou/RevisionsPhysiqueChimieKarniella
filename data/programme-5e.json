@@ -74,6 +74,15 @@
           "description": "Le sucre dans l'eau : il ne disparaît pas, il se dissout.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "physique-chimie-tension-nominale",
+          "titre": "Tension nominale d'un générateur et d'un récepteur",
+          "sousTitre": "Leçon 1 — Sous-tension, surtension, lampe adaptée",
+          "icone": "🔋",
+          "description": "Les inscriptions sur une pile et une lampe, et ce qui se passe quand les tensions ne vont pas ensemble.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },

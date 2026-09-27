@@ -2016,5 +2016,108 @@
         "langue": "en"
       }
     ]
+  },
+  "physique-chimie-tension-nominale": {
+    "tab5": [
+      {
+        "question": "Sur une pile, on lit « 4,5 V ». Que signifie la lettre V ?",
+        "options": [
+          "Vitesse",
+          "Volt, l'unité de la tension",
+          "Volume",
+          "Voltmètre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "V est le symbole du volt, l'unité de la tension électrique."
+      },
+      {
+        "question": "Dans un circuit avec une pile et une lampe, la pile est…",
+        "options": [
+          "un récepteur",
+          "un générateur",
+          "un interrupteur",
+          "un fil"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La pile fournit l'énergie électrique : c'est le générateur. La lampe la reçoit : c'est le récepteur."
+      },
+      {
+        "question": "« 3,5 V » inscrit sur une lampe, c'est…",
+        "options": [
+          "sa tension nominale",
+          "son poids",
+          "sa durée de vie",
+          "sa puissance"
+        ],
+        "correctAnswer": 0,
+        "explanation": "C'est la tension nominale : celle qu'il faut lui appliquer pour qu'elle fonctionne normalement."
+      },
+      {
+        "question": "On branche une lampe de 6 V sur une pile de 1,5 V. La lampe est…",
+        "options": [
+          "adaptée",
+          "en surtension",
+          "en sous-tension",
+          "cassée"
+        ],
+        "correctAnswer": 2,
+        "explanation": "1,5 V < 6 V : la tension est trop faible, la lampe est en sous-tension et brille faiblement."
+      },
+      {
+        "question": "Que fait une lampe en sous-tension ?",
+        "options": [
+          "Elle grille",
+          "Elle brille faiblement ou pas du tout",
+          "Elle brille normalement",
+          "Elle explose"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En sous-tension, la lampe manque d'énergie : elle brille faiblement."
+      },
+      {
+        "question": "On branche une lampe de 3,5 V sur une pile de 12 V. Que se passe-t-il ?",
+        "options": [
+          "Elle brille normalement",
+          "Elle brille faiblement",
+          "Elle brille très fort puis grille",
+          "Rien"
+        ],
+        "correctAnswer": 2,
+        "explanation": "12 V > 3,5 V : surtension. La lampe brille très fort puis son filament casse."
+      },
+      {
+        "question": "Quand une lampe est-elle adaptée à une pile ?",
+        "options": [
+          "Quand sa tension nominale est plus petite",
+          "Quand sa tension nominale est plus grande",
+          "Quand les deux tensions nominales sont égales",
+          "Jamais"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Lampe adaptée : tension de la pile = tension nominale de la lampe. Éclat normal."
+      },
+      {
+        "question": "Quel appareil mesure une tension ?",
+        "options": [
+          "Un ampèremètre",
+          "Un thermomètre",
+          "Un voltmètre",
+          "Une balance"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le voltmètre mesure la tension, en volts."
+      },
+      {
+        "question": "Lequel de ces montages fait griller la lampe ?",
+        "options": [
+          "Lampe 4,5 V sur pile 4,5 V",
+          "Lampe 6 V sur pile 1,5 V",
+          "Lampe 3,5 V sur pile 12 V",
+          "Lampe 12 V sur pile 4,5 V"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Seule la surtension (pile bien plus forte que la lampe) fait griller la lampe."
+      }
+    ]
   }
 }
