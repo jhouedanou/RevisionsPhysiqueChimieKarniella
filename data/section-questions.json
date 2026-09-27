@@ -1863,105 +1863,138 @@
     ]
   },
   "svt-proliferation-criquets": {
-    "tab5": [
+    "tab6": [
       {
-        "question": "Le criquet est…",
+        "question": "Un essaim de 1 km² contient environ…",
         "options": [
-          "un oiseau",
-          "un insecte herbivore",
-          "un reptile",
-          "un mammifère"
+          "4 000 criquets",
+          "40 millions de criquets",
+          "1 million de criquets",
+          "400 criquets"
         ],
         "correctAnswer": 1,
-        "explanation": "Le criquet est un insecte qui se nourrit de plantes : il est herbivore."
+        "explanation": "Manuel p. 72 : environ 40 millions de criquets, qui mangent en un jour autant que 35.000 personnes."
       },
       {
-        "question": "Que veut dire « proliférer » ?",
+        "question": "Combien un criquet adulte mange-t-il par jour ?",
         "options": [
-          "Disparaître",
-          "Se multiplier très vite et en grand nombre",
-          "Dormir tout l'hiver",
-          "Changer de pays"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Proliférer, c'est se multiplier très vite et en très grand nombre."
-      },
-      {
-        "question": "Après quoi les criquets prolifèrent-ils ?",
-        "options": [
-          "Après une longue sécheresse",
-          "Après de fortes pluies",
-          "Après un incendie",
-          "Après l'hiver"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Après de fortes pluies, la végétation pousse et les femelles pondent dans le sol humide."
-      },
-      {
-        "question": "Comment appelle-t-on un très grand groupe de criquets qui volent ensemble ?",
-        "options": [
-          "Une famille",
-          "Un troupeau",
-          "Un essaim",
-          "Une ruche"
-        ],
-        "correctAnswer": 2,
-        "explanation": "Un essaim peut contenir des dizaines de millions de criquets."
-      },
-      {
-        "question": "Quelle est la première conséquence sur l'environnement ?",
-        "options": [
-          "L'eau devient salée",
-          "La végétation est dévorée",
-          "Il pleut davantage",
-          "Les arbres poussent plus vite"
-        ],
-        "correctAnswer": 1,
-        "explanation": "Les criquets mangent tout ce qui est vert : cultures, herbes, feuilles."
-      },
-      {
-        "question": "Sans plantes pour le retenir, le sol est emporté par le vent et la pluie. C'est…",
-        "options": [
-          "la pollinisation",
-          "l'érosion",
-          "la germination",
-          "la fermentation"
-        ],
-        "correctAnswer": 1,
-        "explanation": "L'érosion : le sol nu est emporté et devient moins fertile."
-      },
-      {
-        "question": "Quelle conséquence pour l'homme quand les récoltes sont détruites ?",
-        "options": [
-          "La famine",
-          "Plus de vacances",
-          "Des prix plus bas",
-          "Rien ne change"
+          "Environ deux grammes, à peu près son propre poids",
+          "Un kilo",
+          "Rien, il boit seulement",
+          "La moitié d'une feuille"
         ],
         "correctAnswer": 0,
-        "explanation": "Plus de récoltes, plus de nourriture : c'est l'insécurité alimentaire, voire la famine."
+        "explanation": "Il mange à peu près son propre poids en aliments frais, soit environ 2 g par jour."
       },
       {
-        "question": "Quel moyen de lutte utilise les ennemis naturels du criquet, comme un champignon ?",
+        "question": "Quelle est une action néfaste des criquets sur l'environnement ?",
         "options": [
-          "La lutte chimique",
-          "La lutte biologique",
-          "La lutte mécanique",
-          "La surveillance"
+          "Ils piquent les populations",
+          "Ils consomment en grande quantité les végétaux et les cultures",
+          "Ils fertilisent les sols",
+          "Ils nettoient les cours d'eau"
         ],
         "correctAnswer": 1,
-        "explanation": "La lutte biologique utilise des oiseaux, des poules ou un champignon qui ne tue que les criquets."
+        "explanation": "Les criquets détruisent les végétaux et les cultures, et polluent les cours d'eau."
       },
       {
-        "question": "Pourquoi les pesticides sont-ils dangereux ?",
+        "question": "Comment les criquets polluent-ils les cours d'eau ?",
         "options": [
-          "Ils font pousser les criquets",
-          "Ils tuent aussi les abeilles et polluent l'eau",
-          "Ils ne coûtent rien",
-          "Ils attirent la pluie"
+          "Avec leurs œufs seulement",
+          "Avec leurs déjections et leurs cadavres",
+          "Avec du pesticide",
+          "Ils ne polluent pas l'eau"
         ],
         "correctAnswer": 1,
-        "explanation": "Les pesticides tuent d'autres animaux, polluent l'eau et le sol, et peuvent intoxiquer les personnes."
+        "explanation": "Leurs déjections (crottes) et leurs nombreux cadavres polluent l'eau."
+      },
+      {
+        "question": "Combien de kilomètres un essaim de criquets pèlerins peut-il parcourir par jour ?",
+        "options": [
+          "15 km",
+          "près de 150 km",
+          "1 500 km",
+          "1 km"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Manuel p. 73 : près de 150 km par jour, en essaims de 80 millions d'individus."
+      },
+      {
+        "question": "Après le passage des criquets, le sol est nu. Que lui arrive-t-il ?",
+        "options": [
+          "Il devient plus fertile",
+          "Il subit l'érosion et perd sa fertilité",
+          "Il se couvre de fleurs",
+          "Rien"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le sol nu est exposé à l'érosion, qui entraîne la perte de la fertilité des sols."
+      },
+      {
+        "question": "L'eau polluée par les criquets devient…",
+        "options": [
+          "plus propre",
+          "impropre à la consommation",
+          "salée",
+          "plus chaude"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La pollution des eaux rend l'eau impropre à la consommation et à l'agriculture."
+      },
+      {
+        "question": "Laquelle est une conséquence sur l'Homme, et pas sur l'environnement ?",
+        "options": [
+          "Pollution des cours d'eau",
+          "Appauvrissement des sols",
+          "Installation de la famine",
+          "Destruction de la végétation"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La famine touche les gens : c'est une conséquence sur l'Homme."
+      },
+      {
+        "question": "Pourquoi des populations entières partent-elles (exode) ?",
+        "options": [
+          "Pour chasser les criquets",
+          "À la recherche de terres plus fertiles",
+          "Pour aller à l'école",
+          "Parce qu'il fait trop froid"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Leurs terres ne produisent plus rien : elles partent chercher des terres plus fertiles."
+      },
+      {
+        "question": "La prolifération des criquets est une menace…",
+        "options": [
+          "sanitaire et économique",
+          "seulement pour les poissons",
+          "sans danger",
+          "seulement pour les oiseaux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Sanitaire (faim, maladies, mort) et économique (chute des revenus des paysans)."
+      },
+      {
+        "question": "La pollution des eaux provoque surtout…",
+        "options": [
+          "la désertification",
+          "les maladies hydriques",
+          "l'érosion des sols",
+          "la famine"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Exercice 2 : pollution des eaux → maladies hydriques."
+      },
+      {
+        "question": "Un criquet solitaire…",
+        "options": [
+          "détruit les cultures vivrières",
+          "pollue les eaux",
+          "n'a aucune conséquence sur l'environnement",
+          "provoque la malnutrition"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Seul, il n'est pas dangereux : c'est la prolifération qui cause les dégâts."
       }
     ]
   },
