@@ -17,6 +17,11 @@ demandées et qu'il faut appliquer à chaque nouvelle leçon.
   questions dans `data/section-questions.json`, mission de 3 minutes dans
   `data/missions/<slug>.json` (format de `docs/prompt-missions.md`).
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
+- Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
+  manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)
+  qui suit le plan du professeur, corriger seulement l'orthographe, et mettre
+  ce qui manque dans un encadré « ✏️ À vérifier ». Garder le texte brut reçu
+  dans `docs/sources/`.
 
 ## Leçons d'anglais : bouton de traduction sur chaque phrase
 

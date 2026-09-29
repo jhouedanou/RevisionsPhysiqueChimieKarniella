@@ -1865,6 +1865,28 @@
   "svt-proliferation-criquets": {
     "tab6": [
       {
+        "question": "Dans ton cahier, quelles sont les 4 étapes pour vérifier une hypothèse ?",
+        "options": [
+          "Titre, texte, image, résumé",
+          "Observation, résultats, analyse, conclusion",
+          "Introduction, développement, conclusion, exercice",
+          "Question, réponse, correction, note"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Observation (ou document) → résultats → analyse → conclusion."
+      },
+      {
+        "question": "Quelle est la conclusion de la partie I de ton cahier ?",
+        "options": [
+          "Les criquets n'ont aucun effet",
+          "La prolifération des criquets agit effectivement par la destruction de l'environnement",
+          "Les criquets fertilisent les sols",
+          "Les criquets vivent seuls"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les résultats (végétation envahie, cultures dévastées, bétail mort, eau polluée) confirment la 1re hypothèse."
+      },
+      {
         "question": "Un essaim de 1 km² contient environ…",
         "options": [
           "4 000 criquets",
@@ -2308,7 +2330,7 @@
     ]
   },
   "anglais-unit1-lesson2-college": {
-    "tab4": [
+    "tab5": [
       {
         "question": "To line up means…",
         "options": [
@@ -2452,6 +2474,208 @@
         "correctAnswer": 1,
         "explanation": "Subject + BE + NOT + verb-ing: she isn't lining up.",
         "langue": "en"
+      },
+      {
+        "question": "« To do research » means…",
+        "options": [
+          "To give a presentation",
+          "To search for information we don't know",
+          "To start class again after a break",
+          "To repeat the class"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To do research = chercher des informations qu'on ne connaît pas."
+      },
+      {
+        "question": "« To resume class » means…",
+        "options": [
+          "To stop class",
+          "To start class again after a break",
+          "To go to the next class",
+          "To be late"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To resume class = reprendre les cours après une pause."
+      },
+      {
+        "question": "Le contraire de « boring » est…",
+        "options": [
+          "hard",
+          "difficult",
+          "interesting",
+          "late"
+        ],
+        "correctAnswer": 2,
+        "explanation": "boring ≠ fun / interesting / pleasant."
+      },
+      {
+        "question": "Quelle question est correcte ?",
+        "options": [
+          "You are learning English now?",
+          "Are you learning English now?",
+          "Do you learning English now?",
+          "Are you learn English now?"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Question Yes/No : Am / Are / Is + sujet + verbe-ING… ?"
+      },
+      {
+        "question": "« Is Mr N'Goran teaching French? » — Réponse courte négative :",
+        "options": [
+          "No, he doesn't.",
+          "No, he isn't.",
+          "No, he not.",
+          "No, he aren't."
+        ],
+        "correctAnswer": 1,
+        "explanation": "On reprend BE : No, he isn't."
+      },
+      {
+        "question": "« … are you going to school? — By car. »",
+        "options": [
+          "What",
+          "Who",
+          "How",
+          "Where"
+        ],
+        "correctAnswer": 2,
+        "explanation": "How = comment. On répond au moyen de transport : by car."
+      },
+      {
+        "question": "Pour demander poliment la permission de sortir au professeur :",
+        "options": [
+          "May I go out, sir?",
+          "I go out, sir?",
+          "May I going out, sir?",
+          "Can I to go out, sir?"
+        ],
+        "correctAnswer": 0,
+        "explanation": "May + I + verbe à la base : May I go out, sir?"
+      },
+      {
+        "question": "« May I come in? » — Réponse négative :",
+        "options": [
+          "No, you mayn't.",
+          "No, you may not.",
+          "No, you don't.",
+          "No, you aren't."
+        ],
+        "correctAnswer": 1,
+        "explanation": "On écrit : No, you may not."
+      }
+    ]
+  },
+  "francais-expose-oral": {
+    "tab4": [
+      {
+        "question": "L'exposé oral est un discours dans lequel on présente…",
+        "options": [
+          "seulement des informations",
+          "des informations et son point de vue personnel sur un thème",
+          "seulement son point de vue",
+          "une histoire inventée"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Définition : des informations ET son point de vue personnel, à un public donné."
+      },
+      {
+        "question": "Le point de vue sur le thème, c'est…",
+        "options": [
+          "le titre de l'exposé",
+          "l'expression de ce qu'on pense sur le thème",
+          "la conclusion du professeur",
+          "la liste des sources"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le point de vue = ce qu'on pense du thème."
+      },
+      {
+        "question": "Le thème d'un exposé peut être…",
+        "options": [
+          "un comportement ou un phénomène",
+          "seulement un livre",
+          "seulement une personne",
+          "un exercice de maths"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le cours cite : un comportement, un phénomène…"
+      },
+      {
+        "question": "Combien de phases faut-il observer pour réussir l'exposé ?",
+        "options": [
+          "Une",
+          "Deux",
+          "Trois",
+          "Quatre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La phase de préparation et la phase de présentation."
+      },
+      {
+        "question": "Que fait-on pendant la phase de préparation ?",
+        "options": [
+          "On parle devant la classe",
+          "On fait des recherches et on organise le travail",
+          "On pose des questions au public",
+          "On note les camarades"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Recherches pour recueillir les informations, puis organisation du travail."
+      },
+      {
+        "question": "On organise l'exposé comme un discours écrit, en…",
+        "options": [
+          "titre, image, légende",
+          "introduction, développement, conclusion",
+          "question, réponse, correction",
+          "début, milieu, début"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Introduction, développement, conclusion."
+      },
+      {
+        "question": "Pendant la présentation, il faut utiliser des phrases…",
+        "options": [
+          "interrogatives",
+          "exclamatives",
+          "déclaratives",
+          "impératives"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Les phrases déclaratives affirment quelque chose et finissent par un point."
+      },
+      {
+        "question": "Laquelle est une phrase déclarative ?",
+        "options": [
+          "Le téléphone distrait les élèves.",
+          "Éteins ton téléphone !",
+          "As-tu un téléphone ?",
+          "Quel beau téléphone !"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Elle affirme quelque chose et se termine par un point."
+      },
+      {
+        "question": "« La pollution des lagunes » est…",
+        "options": [
+          "un comportement",
+          "un phénomène",
+          "une conclusion",
+          "une phrase déclarative"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C'est quelque chose qui arrive : un phénomène."
+      },
+      {
+        "question": "Quelle formule sert à donner son point de vue ?",
+        "options": [
+          "Il était une fois…",
+          "À mon avis, …",
+          "Premièrement, calcule…",
+          "Réponds par vrai ou faux."
+        ],
+        "correctAnswer": 1,
+        "explanation": "À mon avis, je pense que, selon moi…"
       }
     ]
   }
