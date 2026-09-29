@@ -17,6 +17,10 @@
     {
       "titre": "⏳ En train de…",
       "contenu": "Le présent continu dit ce qu'on fait en ce moment : sujet + am / is / are + verbe-ing. I am writing on the board. You are speaking English. N'oublie ni BE, ni -ING !"
+    },
+    {
+      "titre": "❓ Poser la question, demander la permission",
+      "contenu": "Question : Are you learning English now? — Yes, we are. / No, we aren't. What are you doing now? — We are learning English. Permission : Can I read the text, sir? May I go out, sir? — Yes, you may. / No, you may not."
     }
   ],
   "quiz": [
@@ -52,6 +56,17 @@
       ],
       "correct_answer_index": 1,
       "explanation": "Top of ≠ bottom of."
+    },
+    {
+      "question": "Pour demander poliment la permission de sortir :",
+      "options": [
+        "May I go out, sir?",
+        "I going out, sir?",
+        "Can I to go out?",
+        "Am I go out?"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "May + I + verbe à la base. May est le plus poli."
     }
   ]
 }

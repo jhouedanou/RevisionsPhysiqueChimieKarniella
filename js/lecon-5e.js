@@ -71,6 +71,27 @@
     }
 
     /** Sous les étapes : la jauge d'avancement et le bouton vers l'étape d'après. */
+    /**
+     * Remonte au début de l'onglet qui vient de s'ouvrir, juste sous la barre du
+     * haut (et sous les onglets quand ils collent en haut, sur téléphone).
+     * scrollIntoView sur .tabs ne marchait pas : un élément collant (sticky)
+     * est toujours « visible », donc le navigateur ne bougeait pas.
+     */
+    function remonterAuDebut() {
+        var section = document.querySelector('.tab-content.active') || document.querySelector('main.content');
+        if (!section) { return; }
+        var barre = document.querySelector('.coquille-barre');
+        var haut = barre ? Math.max(0, barre.getBoundingClientRect().bottom) : 0;
+        var onglets = document.querySelector('.tabs');
+        if (onglets && window.getComputedStyle(onglets).position === 'sticky' &&
+                onglets.getBoundingClientRect().width > window.innerWidth * 0.6) {
+            haut += onglets.offsetHeight;
+        }
+        var cible = section.getBoundingClientRect().top + window.pageYOffset - haut - 12;
+        var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: Math.max(0, cible), behavior: doux ? 'smooth' : 'auto' });
+    }
+
     function ajouterSuiteParcours(groupe, boutons) {
         if (!groupe || boutons.length < 2) { return; }
         var jauge = document.createElement('div');
@@ -87,8 +108,7 @@
             for (var i = 0; i < actifs.length; i++) {
                 if (actifs[i].classList.contains('active') && actifs[i + 1]) {
                     ouvrirOnglet(actifs[i + 1].getAttribute('data-onglet'), actifs[i + 1]);
-                    var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                    document.querySelector('main.content').scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block: 'start' });
+                    remonterAuDebut();
                     return;
                 }
             }
@@ -195,9 +215,7 @@
         b.textContent = sens === 'suivant' ? 'Suivant : ' + libelle + ' →' : '← ' + libelle;
         b.addEventListener('click', function () {
             ouvrirOnglet(cible.getAttribute('data-onglet'), cible);
-            var onglets = document.querySelector('.tabs');
-            var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            (onglets || document.body).scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block: 'start' });
+            remonterAuDebut();
             cible.focus({ preventScroll: true });
         });
         return b;
