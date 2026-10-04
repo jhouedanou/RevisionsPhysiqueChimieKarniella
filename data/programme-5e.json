@@ -215,7 +215,17 @@
       "couleur": "#2F6F9D",
       "description": "Technologies de l'Information et de la Communication.",
       "ordre": 8,
-      "lecons": []
+      "lecons": [
+        {
+          "id": "tice-initiation-ordinateur",
+          "titre": "Initiation à l'utilisation d'un ordinateur",
+          "sousTitre": "Révision des notions — Leçon 1",
+          "icone": "💻",
+          "description": "L'informatique, le système informatique, la partie matérielle et la partie logicielle.",
+          "statut": "prete",
+          "mission": true
+        }
+      ]
     }
   ]
 }
