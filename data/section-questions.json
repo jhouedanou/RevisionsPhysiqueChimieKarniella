@@ -1670,6 +1670,39 @@
   "mathematiques-nombres-decimaux-relatifs": {
     "tab4": [
       {
+        "question": "D'après ton cahier, un nombre décimal relatif, c'est…",
+        "options": [
+          "Un nombre décimal sans virgule",
+          "Un nombre entier naturel ou décimal précédé du signe − ou +",
+          "Un nombre toujours négatif",
+          "Un nombre plus grand que 0"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ton cahier : « des nombres entiers naturels ou des nombres décimaux précédés du signe moins ou plus »."
+      },
+      {
+        "question": "+3,12 est un nombre décimal relatif…",
+        "options": [
+          "Négatif",
+          "Positif",
+          "Ni positif ni négatif",
+          "Entier"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le signe + indique un nombre positif."
+      },
+      {
+        "question": "Comment peut-on aussi écrire +28 ?",
+        "options": [
+          "−28",
+          "28",
+          "2,8",
+          "0,28"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Pour un nombre positif, on peut ne pas écrire le signe + : +28 = 28."
+      },
+      {
         "question": "Dans le congélateur, il fait 18 degrés au-dessous de zéro. Comment écrit-on cette température ?",
         "options": [
           "18",
@@ -1859,6 +1892,72 @@
         ],
         "correctAnswer": 2,
         "explanation": "10⁵ = 1 suivi de 5 zéros = 100 000."
+      },
+      {
+        "question": "Que vaut 3⁴ ?",
+        "options": [
+          "12",
+          "81",
+          "27",
+          "7"
+        ],
+        "correctAnswer": 1,
+        "explanation": "3⁴ = 3 × 3 × 3 × 3 : 3 × 3 = 9 ; 9 × 3 = 27 ; 27 × 3 = 81. Ce n'est pas 3 × 4 = 12 !"
+      },
+      {
+        "question": "Sans parenthèses, que calcule-t-on en premier ?",
+        "options": [
+          "L'addition",
+          "La multiplication",
+          "La puissance",
+          "La soustraction"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ordre : la puissance, puis × et ÷, puis + et −. Les parenthèses passent avant tout."
+      },
+      {
+        "question": "Calcule 2 (3² − 5).",
+        "options": [
+          "8",
+          "2",
+          "26",
+          "16"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Dans la parenthèse : 3² = 9, puis 9 − 5 = 4. Enfin 2 × 4 = 8."
+      },
+      {
+        "question": "Simplifie 2⁵ × 2³.",
+        "options": [
+          "2⁸",
+          "2¹⁵",
+          "4⁸",
+          "2²"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Même base : on additionne les exposants. 5 + 3 = 8."
+      },
+      {
+        "question": "Simplifie 3⁴ × 5⁴.",
+        "options": [
+          "8⁴",
+          "15⁸",
+          "15⁴",
+          "3⁹"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Même exposant : aⁿ × bⁿ = (a × b)ⁿ, donc (3 × 5)⁴ = 15⁴."
+      },
+      {
+        "question": "Que vaut 1⁶ ?",
+        "options": [
+          "6",
+          "1",
+          "0",
+          "16"
+        ],
+        "correctAnswer": 1,
+        "explanation": "1 × 1 × 1 × 1 × 1 × 1 = 1. Ton cahier : 1ⁿ = 1."
       }
     ]
   },
@@ -2676,6 +2775,131 @@
         ],
         "correctAnswer": 1,
         "explanation": "À mon avis, je pense que, selon moi…"
+      }
+    ]
+  },
+  "mathematiques-nombres-premiers": {
+    "tab4": [
+      {
+        "question": "Quelle est la division euclidienne de 57 par 4 ?",
+        "options": [
+          "57 = 4 × 13 + 5",
+          "57 = 4 × 14 + 1",
+          "57 = 4 × 15 − 3",
+          "57 = 4 × 12 + 9"
+        ],
+        "correctAnswer": 1,
+        "explanation": "4 × 14 = 56 et il reste 1, qui est plus petit que 4."
+      },
+      {
+        "question": "Dans a = b × q + r, comment s'appelle r ?",
+        "options": [
+          "Le dividende",
+          "Le diviseur",
+          "Le quotient",
+          "Le reste"
+        ],
+        "correctAnswer": 3,
+        "explanation": "a est le dividende, b le diviseur, q le quotient et r le reste."
+      },
+      {
+        "question": "Dans la division euclidienne de a par b, le reste r doit être…",
+        "options": [
+          "Plus grand que b",
+          "Égal à b",
+          "Plus petit que b",
+          "Égal à 0"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Toujours r < b. Sinon on peut encore augmenter le quotient."
+      },
+      {
+        "question": "20 = 4 × 5. Que peut-on dire ?",
+        "options": [
+          "20 est un multiple de 4",
+          "20 est un nombre premier",
+          "4 est un multiple de 20",
+          "Le reste est 5"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le reste est nul : 20 est un multiple de 4 (et 4 est un diviseur de 20)."
+      },
+      {
+        "question": "Encadre 17 par deux multiples consécutifs de 6.",
+        "options": [
+          "6 < 17 < 12",
+          "12 < 17 < 18",
+          "17 < 18 < 24",
+          "12 < 17 < 24"
+        ],
+        "correctAnswer": 1,
+        "explanation": "6 × 2 < 17 < 6 × 3, soit 12 < 17 < 18."
+      },
+      {
+        "question": "Qu'est-ce qu'un nombre premier ?",
+        "options": [
+          "Un nombre impair",
+          "Un nombre qui a exactement deux diviseurs : 1 et lui-même",
+          "Un nombre plus petit que 10",
+          "Un nombre qui finit par 1"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Définition du cahier : exactement deux diviseurs, 1 et lui-même."
+      },
+      {
+        "question": "Lequel de ces nombres est premier ?",
+        "options": [
+          "9",
+          "15",
+          "13",
+          "21"
+        ],
+        "correctAnswer": 2,
+        "explanation": "9 = 3 × 3 ; 15 = 3 × 5 ; 21 = 3 × 7. Seul 13 n'a que 1 et 13 comme diviseurs."
+      },
+      {
+        "question": "1 est-il un nombre premier ?",
+        "options": [
+          "Oui",
+          "Non",
+          "Seulement en 5e",
+          "Ça dépend"
+        ],
+        "correctAnswer": 1,
+        "explanation": "1 n'a qu'un seul diviseur (lui-même). Il en faut exactement deux."
+      },
+      {
+        "question": "On cherche si un nombre est premier. On le divise par 2, 3, 5… On trouve un reste nul. Alors…",
+        "options": [
+          "Le nombre est premier",
+          "Le nombre n'est pas premier",
+          "On recommence par 2",
+          "Le quotient est premier"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Reste nul = le nombre a un autre diviseur que 1 et lui-même : il n'est pas premier."
+      },
+      {
+        "question": "Quelle est la décomposition de 60 en produit de facteurs premiers ?",
+        "options": [
+          "6 × 10",
+          "2² × 3 × 5",
+          "2 × 30",
+          "4 × 15"
+        ],
+        "correctAnswer": 1,
+        "explanation": "60 = 2 × 2 × 3 × 5 = 2² × 3 × 5 : tous les facteurs sont premiers."
+      },
+      {
+        "question": "Pièce de 47 m², cartons de 5 m², 9 cartons achetés. C'est…",
+        "options": [
+          "Suffisant",
+          "Insuffisant : il faut un autre carton",
+          "Trop : 1 carton de trop",
+          "Exactement juste"
+        ],
+        "correctAnswer": 1,
+        "explanation": "47 = 5 × 9 + 2 : 9 cartons couvrent 45 m², et 45 < 47. Il faut un 10ᵉ carton."
       }
     ]
   }

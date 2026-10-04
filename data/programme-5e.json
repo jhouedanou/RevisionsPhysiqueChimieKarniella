@@ -97,20 +97,29 @@
       "ordre": 3,
       "lecons": [
         {
+          "id": "mathematiques-puissances-entieres",
+          "titre": "Puissances entières d'un nombre entier naturel",
+          "sousTitre": "Leçon 1 : Nombres premiers — I. Puissances",
+          "icone": "🔢",
+          "description": "Base, exposant, priorités des opérations et calculs avec les puissances.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "mathematiques-nombres-premiers",
+          "titre": "Nombres premiers",
+          "sousTitre": "Leçon 1 — II. Division euclidienne, III. Nombres premiers",
+          "icone": "🧱",
+          "description": "Division euclidienne, multiples, encadrement, reconnaître et décomposer en facteurs premiers.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
           "id": "mathematiques-nombres-decimaux-relatifs",
           "titre": "Les nombres décimaux relatifs",
           "sousTitre": "Calculs algébriques — Présentation et notation",
           "icone": "➕",
           "description": "Les nombres avec un signe + ou − : opposés, droite graduée, comparaison.",
-          "statut": "prete",
-          "mission": true
-        },
-        {
-          "id": "mathematiques-puissances-entieres",
-          "titre": "Puissances entières d'un nombre entier relatif",
-          "sousTitre": "Calculs algébriques — Définition, propriétés, calculs",
-          "icone": "🔢",
-          "description": "Base, exposant, signe d'une puissance, propriétés et priorités de calcul.",
           "statut": "prete",
           "mission": true
         }

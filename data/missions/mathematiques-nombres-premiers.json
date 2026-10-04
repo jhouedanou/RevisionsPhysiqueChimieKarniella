@@ -1,0 +1,57 @@
+{
+  "id": "mathematiques-nombres-premiers",
+  "lecon": "mathematiques-nombres-premiers",
+  "matiere": "mathematiques",
+  "titre": "Les cristaux incassables de la planète Prima",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le vaisseau a besoin de 47 cristaux d'énergie, rangés par boîtes de 5. Mais attention : certains cristaux sont « premiers », impossibles à casser en morceaux égaux. Partage, encadre et trouve les cristaux incassables avant la panne !",
+  "micro_learning_blocks": [
+    {
+      "titre": "📦 Partager en boîtes : la division euclidienne",
+      "contenu": "47 cristaux par boîtes de 5 : 9 boîtes pleines et 2 cristaux qui restent. On écrit 47 = 5 × 9 + 2. Le reste 2 est toujours plus petit que la taille de la boîte, 5 : sinon, on remplirait une boîte de plus !"
+    },
+    {
+      "titre": "🪜 Entre deux marches : l'encadrement",
+      "contenu": "Les multiples de 5 sont des marches : 45, 50, 55… 47 n'est sur aucune marche, il est entre deux marches qui se suivent : 5 × 9 < 47 < 5 × 10, soit 45 < 47 < 50. Avec 9 boîtes, il manque des cristaux : il en faut une 10ᵉ."
+    },
+    {
+      "titre": "💎 Les cristaux incassables : les nombres premiers",
+      "contenu": "Un nombre premier n'a que deux diviseurs : 1 et lui-même. 2, 3, 5, 7, 11, 13 sont incassables. 6 se casse en 2 × 3 : il n'est pas premier. Et 1 n'a qu'un seul diviseur : il n'est pas premier non plus."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Quelle est la division euclidienne de 47 par 5 ?",
+      "options": [
+        "47 = 5 × 8 + 7",
+        "47 = 5 × 9 + 2",
+        "47 = 5 × 10 − 3",
+        "47 = 5 × 9"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "5 × 9 = 45, il reste 2, et 2 est plus petit que 5."
+    },
+    {
+      "question": "Encadre 17 par deux multiples consécutifs de 6.",
+      "options": [
+        "6 < 17 < 12",
+        "12 < 17 < 24",
+        "12 < 17 < 18",
+        "17 < 18 < 24"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "6 × 2 = 12 et 6 × 3 = 18 : 12 < 17 < 18."
+    },
+    {
+      "question": "Lequel de ces cristaux est incassable (nombre premier) ?",
+      "options": [
+        "9",
+        "11",
+        "15",
+        "1"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "11 n'a que deux diviseurs : 1 et 11. 9 = 3 × 3, 15 = 3 × 5, et 1 n'a qu'un diviseur."
+    }
+  ]
+}
