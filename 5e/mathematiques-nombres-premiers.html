@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nombres premiers - Mathématiques 5e</title>
+<meta name="description" content="Division euclidienne, multiples, encadrement et nombres premiers.">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
+<link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/section-quiz.css">
+</head>
+<body class="lecon-5e" data-matiere="mathematiques">
+
+<header>
+<span class="badge-niveau">Mathématiques · Leçon 1 : Nombres premiers · Classe de 5e</span>
+<h1>🧱 Nombres premiers</h1>
+<p>Division euclidienne, multiples et nombres premiers</p>
+</header>
+
+<div class="tabs">
+<button class="tab-button active" data-onglet="tab1">II. Division euclidienne</button>
+<button class="tab-button" data-onglet="tab2">III. Nombres premiers</button>
+<button class="tab-button" data-onglet="tab3">Exercices</button>
+<button class="tab-button" data-onglet="tab4">Quiz</button>
+</div>
+
+<main class="content">
+
+<!-- ============ II. DIVISION EUCLIDIENNE ============ -->
+<section class="tab-content active" id="tab1">
+  <div class="container">
+    <div class="note-box" data-hors-chat>
+      <h4>📖 D'où vient cette leçon ?</h4>
+      <p>Les encadrés 📘 reprennent <strong>ton cahier</strong>, d'après la note vocale
+      où tu le lis à voix haute : c'est le cours à apprendre. Les encadrés 🐴 et ⚠️
+      expliquent. La partie <strong>I. Puissance entière d'un nombre entier naturel</strong>
+      de cette leçon est dans la leçon
+      <a href="mathematiques-puissances-entieres.html">Puissances</a> (onglet « Mon cahier »).</p>
+    </div>
+
+    <p><strong>Thème :</strong> Calculs algébriques<br>
+    <strong>Leçon 1 :</strong> Nombres premiers</p>
+
+    <h2>II. Division euclidienne</h2>
+
+    <h3>1. Division euclidienne</h3>
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p><strong>a</strong> et <strong>b</strong> sont deux nombres entiers naturels et
+      <strong>b n'est pas nul</strong>. On peut trouver deux nombres entiers naturels
+      <strong>q</strong> et <strong>r</strong> tels que :</p>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>a = b × q + r</strong> &nbsp;et&nbsp; <strong>r &lt; b</strong>
+      </p>
+      <p>L'écriture a = b × q + r (avec r &lt; b) s'appelle la <strong>division
+      euclidienne</strong> de a par b.</p>
+    </div>
+
+    <table class="table-vocab">
+      <thead>
+        <tr><th>Mot</th><th>Ce que c'est</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dividende</td><td><strong>a</strong> : le nombre qu'on divise.</td></tr>
+        <tr><td>Diviseur</td><td><strong>b</strong> : le nombre par lequel on divise (jamais 0).</td></tr>
+        <tr><td>Quotient</td><td><strong>q</strong> : combien de fois b « rentre » dans a.</td></tr>
+        <tr><td>Reste</td><td><strong>r</strong> : ce qui reste, toujours plus petit que b.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>Division euclidienne de 57 par 4 :
+      <strong>57 = 4 × 14 + 1</strong> &nbsp;(et 1 &lt; 4).</p>
+      <p>57 est le dividende, 4 le diviseur, 14 le quotient et 1 le reste.</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 Comment trouver q et r ?</h4>
+      <p>Cherche le plus grand multiple de 4 qui ne dépasse pas 57 :
+      4 × 14 = 56 (et 4 × 15 = 60, c'est trop). Donc <strong>q = 14</strong>.
+      Il reste 57 − 56 = 1, donc <strong>r = 1</strong>.</p>
+    </div>
+
+    <div class="important-box">
+      <h4>⚠️ Le reste doit être plus petit que le diviseur</h4>
+      <p>57 = 4 × 13 + 5 est une égalité juste, mais <strong>ce n'est pas</strong> la
+      division euclidienne de 57 par 4, car 5 n'est pas plus petit que 4. On peut
+      encore mettre un « 4 » de plus dans le quotient.</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 Remarque</h4>
+      <p>a est un nombre entier naturel et b n'est pas nul. Si a est un
+      <strong>multiple</strong> de b, le reste de la division euclidienne de a par b est
+      <strong>nul</strong> et on a : <strong>a = b × q</strong>.</p>
+    </div>
+    <div class="example-box">
+      <p>20 ÷ 4 = 5 ; <strong>20 = 4 × 5</strong> (le reste est 0).</p>
+    </div>
+    <div class="note-box">
+      <h4>🐴 Trois façons de dire la même chose</h4>
+      <p>Comme 20 = 4 × 5 avec un reste nul : 20 est un <strong>multiple</strong> de 4 ;
+      4 est un <strong>diviseur</strong> de 20 ; 20 est <strong>divisible</strong> par 4.</p>
+    </div>
+
+    <h3>2. Encadrement d'un nombre entier naturel par deux multiples consécutifs d'un même nombre</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p>a et b sont des nombres entiers naturels et b n'est pas nul. Si a
+      <strong>n'est pas un multiple</strong> de b, alors a peut être encadré par
+      <strong>deux multiples consécutifs</strong> de b.</p>
+      <p>Autrement dit, on peut trouver un nombre entier naturel q tel que :</p>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>b × q &lt; a &lt; b × (q + 1)</strong>
+      </p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>Encadrons 17 par deux multiples consécutifs de 6 :</p>
+      <p style="text-align: center;"><strong>6 × 2 &lt; 17 &lt; 6 × 3</strong> ;
+      &nbsp;<strong>12 &lt; 17 &lt; 18</strong></p>
+    </div>
+    <div class="note-box">
+      <h4>🐴 L'image à garder</h4>
+      <p>Les multiples de 6 sont comme des marches : 0, 6, 12, 18, 24… Le nombre 17
+      n'est pas sur une marche : il est <strong>entre</strong> la marche 12 et la marche
+      18, qui se suivent. Le quotient de la division euclidienne donne la marche du
+      dessous : 17 = 6 × 2 + 5, donc q = 2.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <p>Dans l'enregistrement, on entend « 4 × 14 + 1 » mais pas le premier nombre.
+      J'ai recalculé : 4 × 14 + 1 = <strong>57</strong>. Vérifie que c'est bien 57 dans
+      ton cahier.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ III. NOMBRES PREMIERS ============ -->
+<section class="tab-content" id="tab2">
+  <div class="container">
+    <h2>III. Nombres premiers</h2>
+
+    <h3>1. Définition</h3>
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>Un <strong>nombre premier</strong> est un nombre entier naturel non nul qui
+      admet <strong>exactement deux diviseurs : 1 et lui-même</strong>.</p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemples</h4>
+      <p><strong>2 ; 3 ; 5 ; 7 ; 11 ; 13</strong> sont des nombres premiers.</p>
+    </div>
+    <div class="note-box">
+      <h4>🐴 Pourquoi « premier » ?</h4>
+      <p>Les nombres premiers sont les <strong>briques</strong> des nombres : on ne peut
+      pas les casser en multiplication plus petite. 7 = 1 × 7 seulement : il est premier.
+      Mais 6 = 2 × 3 : il a 4 diviseurs (1, 2, 3, 6), il n'est pas premier.
+      Et <strong>1 n'est pas premier</strong> : il n'a qu'un seul diviseur, lui-même.</p>
+    </div>
+
+    <h3>2. Reconnaître un nombre premier</h3>
+    <div class="definition-box">
+      <h4>📘 Méthode</h4>
+      <p>Pour savoir si un nombre entier naturel a est premier, on le divise par les
+      nombres premiers pris dans l'<strong>ordre croissant</strong> (2, 3, 5, 7, 11…),
+      jusqu'à obtenir :</p>
+      <ul>
+        <li>soit un <strong>reste nul</strong> : dans ce cas le nombre
+            <strong>n'est pas premier</strong> ;</li>
+        <li>soit un <strong>quotient inférieur ou égal au diviseur</strong> : dans ce
+            cas le nombre <strong>est premier</strong>.</li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple : 11 est-il premier ?</h4>
+      <ul>
+        <li>Par 2 : 11 = 2 × 5 + 1. Reste 1, pas nul. Quotient 5, plus grand que 2 :
+            on continue.</li>
+        <li>Par 3 : 11 = 3 × 3 + 2. Reste 2, pas nul. Quotient 3, <strong>égal au
+            diviseur 3</strong> : on s'arrête.</li>
+      </ul>
+      <p>Donc <strong>11 est un nombre premier</strong>.</p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple : 91 est-il premier ?</h4>
+      <ul>
+        <li>Par 2 : 91 = 2 × 45 + 1. Par 3 : 91 = 3 × 30 + 1. Par 5 : 91 = 5 × 18 + 1.</li>
+        <li>Par 7 : 91 = 7 × 13 + <strong>0</strong>. Reste nul : on s'arrête.</li>
+      </ul>
+      <p>Donc <strong>91 n'est pas premier</strong> (91 = 7 × 13).</p>
+    </div>
+
+    <h3>3. Décomposition d'un nombre entier naturel en produit de facteurs premiers</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p>Si un nombre entier naturel plus grand que 1 <strong>n'est pas premier</strong>,
+      il admet une <strong>décomposition en produit de facteurs premiers</strong>.</p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple : décomposer 60</h4>
+      <p>On divise par le plus petit nombre premier possible, et on recommence avec le
+      quotient, jusqu'à arriver à 1 :</p>
+      <p style="font-family: monospace; font-size: 18px; line-height: 1.6; text-align: center;">
+        60 | 2<br>
+        30 | 2<br>
+        15 | 3<br>
+        &nbsp;5 | 5<br>
+        &nbsp;1 |&nbsp;&nbsp;
+      </p>
+      <p>Donc <strong>60 = 2 × 2 × 3 × 5 = 2<sup>2</sup> × 3 × 5</strong>.</p>
+    </div>
+    <div class="note-box">
+      <h4>🐴 Le lien avec les puissances</h4>
+      <p>Quand un facteur premier revient plusieurs fois, on l'écrit avec une
+      puissance : 2 × 2 = 2<sup>2</sup>. C'est pour ça que la leçon commence par les
+      puissances !</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Pour 11, les calculs ne s'entendent pas dans l'enregistrement : j'ai écrit
+            ceux qui suivent la méthode. Compare avec ton cahier.</li>
+        <li>Pour la décomposition, tu ne lis pas d'exemple. Celui de 60 est ajouté ici :
+            si ton professeur en a donné un autre, envoie-le moi.</li>
+        <li>Les exemples de 91 et l'encadré « Pourquoi premier ? » ne sont pas dans ton
+            cahier : ils servent à comprendre.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXERCICES ============ -->
+<section class="tab-content" id="tab3">
+  <div class="container">
+    <h2>Exercices</h2>
+    <p>Cherche d'abord seule, ensuite ouvre la correction.</p>
+
+    <div class="exercice">
+      <h3>Situation d'évaluation — Les carreaux du village</h3>
+      <p class="consigne">Le père de ton ami fait poser des carreaux dans une pièce de sa
+      maison au village. La surface à carreler mesure <strong>47 m²</strong>. Un carton
+      de carreaux couvre <strong>5 m²</strong>. Il a acheté <strong>9 cartons</strong>.
+      Ton ami dit que c'est suffisant.</p>
+      <ol>
+        <li>Fais la division euclidienne de 47 par 5.</li>
+        <li>Encadre 47 par deux multiples consécutifs de 5.</li>
+        <li>Donne ton avis : la quantité de carreaux est-elle suffisante ?</li>
+      </ol>
+      <details>
+        <summary>Voir la correction (ton cahier)</summary>
+        <ol>
+          <li>47 = 5 × 9 + 2. 47 n'est pas un multiple de 5.</li>
+          <li>5 × 9 &lt; 47 &lt; 5 × 10 ; 45 &lt; 47 &lt; 50.</li>
+          <li>La quantité de carreaux est <strong>insuffisante</strong> car 45 &lt; 47 :
+              les 9 cartons couvrent seulement 45 m². Donc le père de ton ami doit
+              acheter <strong>un autre carton</strong> de carreaux (10 cartons couvrent
+              50 m²).</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <p>Dans l'enregistrement, l'énoncé de la situation ne s'entend presque pas. J'ai
+      compris 47 m² et des cartons de 5 m² ; « 9 cartons » est déduit de ta réponse
+      (45 &lt; 47). La correction, elle, est bien celle que tu lis. Recopie le vrai
+      énoncé si tu peux.</p>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 2 — Division euclidienne</h3>
+      <p class="consigne">Fais la division euclidienne de 75 par 6. Nomme le dividende,
+      le diviseur, le quotient et le reste.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <p>6 × 12 = 72 et 6 × 13 = 78 (trop grand). Donc <strong>75 = 6 × 12 + 3</strong>
+        (et 3 &lt; 6).</p>
+        <p>Dividende : 75 · Diviseur : 6 · Quotient : 12 · Reste : 3.</p>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 3 — Encadrer</h3>
+      <p class="consigne">Encadre 50 par deux multiples consécutifs de 7.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <p>50 = 7 × 7 + 1, donc <strong>7 × 7 &lt; 50 &lt; 7 × 8</strong> ;
+        <strong>49 &lt; 50 &lt; 56</strong>.</p>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 4 — Premier ou pas ?</h3>
+      <p class="consigne">Utilise la méthode du cours pour dire si 29 est premier.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <ul>
+          <li>Par 2 : 29 = 2 × 14 + 1 (quotient 14 &gt; 2, on continue).</li>
+          <li>Par 3 : 29 = 3 × 9 + 2 (quotient 9 &gt; 3, on continue).</li>
+          <li>Par 5 : 29 = 5 × 5 + 4 (quotient 5 = diviseur 5, on s'arrête).</li>
+        </ul>
+        <p>Aucun reste nul : <strong>29 est premier</strong>.</p>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 5 — Décomposer</h3>
+      <p class="consigne">Décompose 36 en produit de facteurs premiers. Écris le résultat
+      avec des puissances.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <p>36 ÷ 2 = 18 ; 18 ÷ 2 = 9 ; 9 ÷ 3 = 3 ; 3 ÷ 3 = 1.</p>
+        <p><strong>36 = 2 × 2 × 3 × 3 = 2<sup>2</sup> × 3<sup>2</sup></strong>.</p>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 6 — Vrai ou faux</h3>
+      <ol>
+        <li>1 est un nombre premier.</li>
+        <li>15 est un nombre premier.</li>
+        <li>47 = 5 × 8 + 7 est la division euclidienne de 47 par 5.</li>
+        <li>13 est un nombre premier.</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li><strong>Faux</strong> : 1 n'a qu'un seul diviseur.</li>
+          <li><strong>Faux</strong> : 15 = 3 × 5.</li>
+          <li><strong>Faux</strong> : le reste 7 n'est pas plus petit que 5. La bonne
+              écriture est 47 = 5 × 9 + 2.</li>
+          <li><strong>Vrai</strong> : ses seuls diviseurs sont 1 et 13.</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="tab-content" id="tab4">
+  <div class="container">
+    <h2>🎯 Teste-toi</h2>
+    <p>Division euclidienne, multiples, encadrement et nombres premiers.</p>
+    <div id="quiz-nombres-premiers"></div>
+  </div>
+</section>
+
+</main>
+
+<p class="pied">Révisions de Karniella · Mathématiques 5e · Nombres premiers</p>
+
+<script src="../js/lecon-5e.js" defer></script>
+<script src="../js/lecture-vocale.js" defer></script>
+<script src="../js/section-quiz.js" defer></script>
+<script src="../js/chat-assistant.js" defer></script>
+<script>
+    window.addEventListener('load', function () {
+        fetch('../data/section-questions.json')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var questions = data['mathematiques-nombres-premiers'];
+                if (questions && questions.tab4 && window.initSectionQuiz) {
+                    initSectionQuiz('quiz-nombres-premiers', questions.tab4, { etapes: true });
+                }
+            })
+            .catch(function () { /* hors-ligne sans cache : le reste marche */ });
+    });
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Puissances entières d'un nombre entier relatif - Mathématiques 5e</title>
+<title>Puissances entières d'un nombre entier naturel - Mathématiques 5e</title>
 <meta name="description" content="Les puissances : définition, propriétés et calculs avec les exposants.">
 <link rel="manifest" href="../manifest.json">
 <link rel="stylesheet" href="../css/theme.css">
@@ -18,13 +18,14 @@
 <body class="lecon-5e" data-matiere="mathematiques">
 
 <header>
-<span class="badge-niveau">Mathématiques · Calculs algébriques · Classe de 5e</span>
-<h1>🔢 Puissances entières d'un nombre entier relatif</h1>
+<span class="badge-niveau">Mathématiques · Leçon 1 : Nombres premiers · Classe de 5e</span>
+<h1>🔢 Puissances entières d'un nombre entier naturel</h1>
 <p>Définition, propriétés et calculs avec les puissances</p>
 </header>
 
 <div class="tabs">
-<button class="tab-button active" data-onglet="tab1">1. Définition</button>
+<button class="tab-button active" data-onglet="cahier">Mon cahier</button>
+<button class="tab-button" data-onglet="tab1">1. Définition</button>
 <button class="tab-button" data-onglet="tab2">2. Propriétés</button>
 <button class="tab-button" data-onglet="tab3">3. Calculer</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
@@ -32,8 +33,126 @@
 
 <main class="content">
 
+<!-- ============ MON CAHIER (cours du professeur) ============ -->
+<section class="tab-content active" id="cahier">
+  <div class="container">
+    <div class="note-box" data-hors-chat>
+      <h4>📖 D'où vient cette leçon ?</h4>
+      <p>Cet onglet reprend <strong>ton cahier</strong>, d'après la note vocale où tu le
+      lis à voix haute : c'est le cours à apprendre. Dans ton cahier, les puissances
+      sont la partie <strong>I</strong> de la <strong>Leçon 1 : Nombres premiers</strong>.
+      La suite (II. Division euclidienne, III. Nombres premiers) est dans la leçon
+      <a href="mathematiques-nombres-premiers.html">Nombres premiers</a>.</p>
+    </div>
+
+    <p><strong>Thème :</strong> Calculs algébriques<br>
+    <strong>Leçon 1 :</strong> Nombres premiers</p>
+
+    <h2>I. Puissance entière d'un nombre entier naturel</h2>
+
+    <h3>1. Définition</h3>
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p><strong>a</strong> est un nombre entier naturel et <strong>n</strong> un nombre
+      entier naturel plus grand que 1. <strong>a<sup>n</sup></strong> désigne le produit
+      de <strong>n facteurs égaux au nombre a</strong>. On a :</p>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>a<sup>n</sup> = a × a × … × a</strong> &nbsp;(n facteurs)
+      </p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemples</h4>
+      <ul>
+        <li>2<sup>3</sup> = 2 × 2 × 2 = <strong>8</strong></li>
+        <li>3<sup>4</sup> = 3 × 3 × 3 × 3 = <strong>81</strong></li>
+      </ul>
+    </div>
+    <div class="definition-box">
+      <h4>📘 Vocabulaire et cas particuliers</h4>
+      <p><span class="a-completer">a<sup>n</sup> se lit « a puissance n » ou « a exposant
+      n » ; n est l'exposant.</span></p>
+      <ul>
+        <li><strong>a<sup>1</sup> = a</strong> ;</li>
+        <li><strong>1<sup>n</sup> = 1</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="important-box">
+      <h4>⚠️ Le piège : 3<sup>4</sup> n'est pas 3 × 4</h4>
+      <p>En lisant ton cahier à voix haute, tu as d'abord trouvé 3<sup>4</sup> = 12. C'est faux :
+      <strong>3<sup>4</sup> n'est pas 3 × 4</strong>. On multiplie 3 par lui-même,
+      4 fois, et on calcule <strong>au fur et à mesure</strong> :</p>
+      <p style="text-align: center;">3 × 3 = 9 &nbsp;→&nbsp; 9 × 3 = 27 &nbsp;→&nbsp;
+      27 × 3 = <strong>81</strong></p>
+      <p>Donc 3<sup>4</sup> = <strong>81</strong>. Écris toujours le résultat à côté.</p>
+    </div>
+
+    <h3>2. Règle de priorité des opérations</h3>
+    <div class="definition-box">
+      <h4>📘 Règle</h4>
+      <p>Dans une suite d'opérations comportant des <strong>parenthèses</strong>, les
+      calculs entre parenthèses sont <strong>prioritaires</strong>.</p>
+      <p>En l'absence de parenthèses, on effectue les calculs dans l'ordre suivant :</p>
+      <ol>
+        <li>la <strong>puissance</strong> ;</li>
+        <li>la <strong>multiplication</strong> et la <strong>division</strong> ;</li>
+        <li>l'<strong>addition</strong> et la <strong>soustraction</strong>.</li>
+      </ol>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>2 (3<sup>2</sup> − 5) = 2 (9 − 5) = 2 × 4 = <strong>8</strong></p>
+      <p><em>Dans la parenthèse, la puissance d'abord : 3<sup>2</sup> = 9. Puis la
+      soustraction : 9 − 5 = 4. Enfin la multiplication : 2 × 4 = 8.</em></p>
+    </div>
+
+    <h3>3. Calculs avec les puissances</h3>
+    <div class="definition-box">
+      <h4>📘 Propriétés</h4>
+      <p><strong>a</strong> et <strong>b</strong> sont des nombres entiers naturels,
+      <strong>m</strong> et <strong>n</strong> sont des nombres entiers naturels non nuls.
+      On a :</p>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>a<sup>m</sup> × a<sup>n</sup> = a<sup>m + n</sup></strong>
+      </p>
+      <p style="text-align: center; font-size: 20px;">
+        <strong>a<sup>n</sup> × b<sup>n</sup> = (a × b)<sup>n</sup></strong>
+      </p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemples</h4>
+      <ul>
+        <li>2<sup>5</sup> × 2<sup>3</sup> = 2<sup>5 + 3</sup> = <strong>2<sup>8</sup></strong></li>
+        <li>3<sup>4</sup> × 5<sup>4</sup> = (3 × 5)<sup>4</sup> = <strong>15<sup>4</sup></strong></li>
+      </ul>
+    </div>
+    <div class="note-box">
+      <h4>🐴 Comment choisir la bonne propriété ?</h4>
+      <ul>
+        <li><strong>Même base</strong> (2 et 2) → on garde la base et on
+            <strong>additionne</strong> les exposants.</li>
+        <li><strong>Même exposant</strong> (4 et 4) → on garde l'exposant et on
+            <strong>multiplie</strong> les bases.</li>
+      </ul>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Le <strong>vocabulaire</strong> (passage surligné) est inaudible dans
+            l'enregistrement : recopie ce que dit ton cahier.</li>
+        <li>Cas particuliers : j'ai entendu a<sup>1</sup> = a et 1<sup>n</sup> = 1.
+            Y a-t-il aussi a<sup>0</sup> = 1 ?</li>
+        <li>Règle de priorité : le premier exemple (il commence par « 3 ( … 15 … ) »)
+            n'est pas compréhensible. Le résultat 8 du deuxième exemple a été
+            recalculé.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 1. DÉFINITION ============ -->
-<section class="tab-content active" id="tab1">
+<section class="tab-content" id="tab1">
   <div class="container">
     <h2>1. Définition</h2>
 
@@ -225,10 +344,11 @@
     </div>
 
     <div class="important-box" data-hors-chat>
-      <h4>✏️ À vérifier dans ton cahier</h4>
-      <p>Les propriétés et les exemples ont été rédigés à partir du plan du vocal
-      (1. Définition, 2. Propriétés, 3. Calculer avec les puissances). Si ton
-      professeur a noté d'autres exemples, envoie-moi la page et je les ajoute.</p>
+      <h4>✏️ Plus loin que ton cahier</h4>
+      <p>Ton cahier parle des puissances d'un nombre entier <strong>naturel</strong>
+      (onglet « Mon cahier »). Ces onglets vont un peu plus loin : puissances de
+      nombres négatifs, puissance d'une puissance, a<sup>0</sup> = 1. C'est un bonus
+      pour comprendre, pas le cours à réciter.</p>
     </div>
   </div>
 </section>
