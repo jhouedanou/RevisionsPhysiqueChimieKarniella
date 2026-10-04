@@ -20,11 +20,12 @@
 <header>
 <span class="badge-niveau">Physique-Chimie · Leçon 1 · Classe de 5e</span>
 <h1>🔋 Tension nominale d'un générateur et d'un récepteur</h1>
-<p>Les inscriptions sur une pile et une lampe, la sous-tension, la surtension et la lampe adaptée</p>
+<p>Les inscriptions sur une pile et une lampe, la sous-tension, la surtension, la lampe adaptée et la tension du secteur</p>
 </header>
 
 <div class="tabs">
-<button class="tab-button active" data-onglet="tab1">1. Les inscriptions</button>
+<button class="tab-button active" data-onglet="cahier">Mon cahier</button>
+<button class="tab-button" data-onglet="tab1">1. Les inscriptions</button>
 <button class="tab-button" data-onglet="tab2">2. Sous-tension</button>
 <button class="tab-button" data-onglet="tab3">3. Surtension</button>
 <button class="tab-button" data-onglet="tab4">4. Lampe adaptée</button>
@@ -33,8 +34,117 @@
 
 <main class="content">
 
+<!-- ============ MON CAHIER (cours du professeur) ============ -->
+<section class="tab-content active" id="cahier">
+  <div class="container">
+    <div class="note-box" data-hors-chat>
+      <h4>📖 D'où vient cette leçon ?</h4>
+      <p>Cet onglet reprend <strong>ton cahier</strong>, d'après la note vocale du 04/10 où
+      tu le lis à voix haute : c'est le cours à apprendre. Les schémas montrent les
+      expériences. Les onglets suivants expliquent avec d'autres exemples.</p>
+    </div>
+
+    <h2>Leçon 1 : Tension d'un générateur et d'un récepteur</h2>
+
+    <h3>1. Tension d'un générateur et d'un récepteur</h3>
+    <p><strong>1-1. Observons les inscriptions sur une pile et sur une lampe</strong></p>
+    <figure class="schema">
+      <svg viewBox="0 0 320 170" role="img" aria-label="Une pile plate et une lampe avec leurs inscriptions"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="20" y="50" width="110" height="70" rx="6"/><path d="M50 50 V30 h8 M95 50 V24 h8"/><path d="M230 112 C205 98 205 52 240 46 C275 52 275 98 250 112 Z"/><rect x="228" y="112" width="24" height="18" rx="2"/><path d="M228 118 h24 M228 124 h24 M236 130 l4 6 l4 -6"/><path d="M234 112 V88 l6 -8 l6 8 V112" stroke-width="1.5"/></g><text x="75" y="92" font-size="16" font-weight="700" text-anchor="middle">4,5 V</text><text x="40" y="30" font-size="14">+</text><text x="108" y="24" font-size="16">−</text><text x="262" y="126" font-size="13" font-weight="700" style="fill:var(--rose)">3,8 V</text><text x="75" y="145" font-size="12" text-anchor="middle">pile = générateur</text><text x="75" y="161" font-size="11" text-anchor="middle">tension d'alimentation</text><text x="240" y="152" font-size="12" text-anchor="middle">lampe = récepteur</text><text x="240" y="167" font-size="11" text-anchor="middle">tension d'usage</text></svg>
+      <figcaption>Schéma 1 : la tension nominale de la pile est sa tension d'alimentation ; celle de la lampe est sa tension d'usage.</figcaption>
+    </figure>
+
+    <p><strong>1-2. Signification des inscriptions</strong></p>
+    <div class="definition-box">
+      <p>Sur la <strong>pile</strong>, on lit une valeur suivie de la lettre
+      <strong>V</strong> : c'est la <strong>tension nominale</strong>. Elle s'exprime en
+      <strong>volt (V)</strong>. La pile est un <strong>générateur</strong> : cette tension
+      est appelée <strong>tension d'alimentation</strong>.</p>
+      <p>Sur la <strong>lampe</strong>, on lit également une valeur suivie de la lettre
+      <strong>V</strong> : c'est également une <strong>tension nominale</strong>. Elle
+      s'exprime en volt. La lampe est un <strong>récepteur</strong> : cette tension est
+      appelée <strong>tension d'usage</strong> de la lampe.</p>
+    </div>
+
+    <h3>2. Lampe en sous-tension</h3>
+    <p><strong>2-1. Expérience et observation</strong></p>
+    <figure class="schema">
+      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit : une pile de 1,5 volt alimente une lampe de 3,8 volts, la lampe brille faiblement"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H230 V74 M230 106 V140 H60 V84"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L241.2 101.2 M241.2 78.8 L218.8 101.2"/></g><line x1="247.3" y1="100.0" x2="251.7" y2="102.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="230.0" y1="110.0" x2="230.0" y2="115.0" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="212.7" y1="100.0" x2="208.3" y2="102.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="212.7" y1="80.0" x2="208.3" y2="77.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="230.0" y1="70.0" x2="230.0" y2="65.0" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="247.3" y1="80.0" x2="251.7" y2="77.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="66" font-size="12" text-anchor="end">pile</text><text x="36" y="82" font-size="13" font-weight="700" text-anchor="end">1,5 V</text><text x="266" y="88" font-size="12">lampe</text><text x="266" y="104" font-size="13" font-weight="700">3,8 V</text></svg>
+      <figcaption>Schéma 2 : pile de 1,5 V et lampe de 3,8 V. La lampe brille faiblement.</figcaption>
+    </figure>
+
+    <p><strong>2-2. Conclusion</strong></p>
+    <div class="definition-box">
+      <p>Lorsque la tension de la pile est <strong>inférieure</strong> à la tension d'usage
+      de la lampe, la lampe est en <strong>sous-tension</strong> (ou sous-voltée, ou
+      sous-alimentée).</p>
+      <p>Lorsque le récepteur est en sous-tension, il <strong>fonctionne mal</strong> ou
+      <strong>ne fonctionne pas du tout</strong>.</p>
+    </div>
+
+    <h3>3. Lampe en surtension</h3>
+    <p><strong>3-1. Expérience et observation</strong></p>
+    <figure class="schema">
+      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit : une pile de 9 volts alimente une lampe de 3,8 volts, la lampe grille"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H230 V74 M230 106 V140 H60 V84"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L228 88 M233 93 L241.2 101.2 M241.2 78.8 L232 87 M227 92 L218.8 101.2"/></g><line x1="249.0" y1="96.2" x2="262.3" y2="100.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="241.8" y1="106.2" x2="250.0" y2="117.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="230.0" y1="110.0" x2="230.0" y2="124.0" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="218.2" y1="106.2" x2="210.0" y2="117.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.0" y1="96.2" x2="197.7" y2="100.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.0" y1="83.8" x2="197.7" y2="79.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="218.2" y1="73.8" x2="210.0" y2="62.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="230.0" y1="70.0" x2="230.0" y2="56.0" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="241.8" y1="73.8" x2="250.0" y2="62.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="249.0" y1="83.8" x2="262.3" y2="79.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="66" font-size="12" text-anchor="end">pile</text><text x="36" y="82" font-size="13" font-weight="700" text-anchor="end">9 V</text><text x="266" y="88" font-size="12">lampe</text><text x="266" y="104" font-size="13" font-weight="700">3,8 V</text><text x="266" y="122" font-size="12" style="fill:var(--erreur-bord)">grillée !</text></svg>
+      <figcaption>Schéma 3 : pile de 9 V et lampe de 3,8 V. La lampe brille très fort puis grille.</figcaption>
+    </figure>
+
+    <p><strong>3-2. Conclusion</strong></p>
+    <div class="definition-box">
+      <p>Lorsque la tension de la pile est <strong>supérieure</strong> à la tension d'usage
+      de la lampe, on dit que la lampe est en <strong>surtension</strong>.</p>
+      <p>La surtension provoque la <strong>détérioration</strong> du récepteur.</p>
+    </div>
+
+    <h3>4. Lampe adaptée</h3>
+    <p><strong>4-1. Expérience et observation</strong></p>
+    <figure class="schema">
+      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit : une pile de 4,5 volts alimente une lampe de 3,8 volts, la lampe brille normalement"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H230 V74 M230 106 V140 H60 V84"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L241.2 101.2 M241.2 78.8 L218.8 101.2"/></g><line x1="248.5" y1="97.7" x2="257.7" y2="101.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="237.7" y1="108.5" x2="241.5" y2="117.7" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="222.3" y1="108.5" x2="218.5" y2="117.7" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.5" y1="97.7" x2="202.3" y2="101.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.5" y1="82.3" x2="202.3" y2="78.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="222.3" y1="71.5" x2="218.5" y2="62.3" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="237.7" y1="71.5" x2="241.5" y2="62.3" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="248.5" y1="82.3" x2="257.7" y2="78.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="66" font-size="12" text-anchor="end">pile</text><text x="36" y="82" font-size="13" font-weight="700" text-anchor="end">4,5 V</text><text x="266" y="88" font-size="12">lampe</text><text x="266" y="104" font-size="13" font-weight="700">3,8 V</text></svg>
+      <figcaption>Schéma 4 : pile de 4,5 V et lampe de 3,8 V. La lampe brille normalement.</figcaption>
+    </figure>
+
+    <p><strong>4-2. Conclusion</strong></p>
+    <div class="definition-box">
+      <p>Lorsque la tension de la pile est <strong>voisine</strong> de la tension d'usage de
+      la lampe, on dit que la lampe est <strong>adaptée</strong> à la pile.</p>
+    </div>
+
+    <h3>5. Tension du courant du secteur</h3>
+    <div class="definition-box">
+      <p>Le courant du secteur est délivré par la <strong>CIE</strong> sous une tension de
+      <strong>220 V</strong> dans les installations domestiques.</p>
+    </div>
+    <div class="important-box">
+      <h4>⚠️ Danger</h4>
+      <p>220 V, c'est <strong>des dizaines de fois</strong> la tension d'une pile : le
+      courant du secteur peut tuer. On ne touche jamais l'intérieur d'une prise, ni un
+      fil dénudé, et on ne fait jamais d'expérience avec le secteur.</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 Comment lire les schémas</h4>
+      <p>Sur la pile, le <strong>grand trait fin</strong> est la borne <strong>+</strong>,
+      le <strong>petit trait épais</strong> est la borne <strong>−</strong>. La flèche
+      <strong>I</strong> montre le sens du courant : il sort par la borne + et revient
+      par la borne −. La lampe est le cercle avec une croix.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Les <strong>valeurs des schémas</strong> : dans l'enregistrement, j'entends
+            1,5 V, 4,5 V et 9 V pour les piles, mais pas la valeur de la lampe. J'ai mis
+            3,8 V : recopie les valeurs de tes dessins.</li>
+        <li>« délivré par la <strong>CIE</strong> » : j'entends « CE ». C'est sûrement la
+            CIE (Compagnie Ivoirienne d'Électricité).</li>
+        <li>Tu lis vite les observations : l'adulte te le fait remarquer. Pour chaque
+            expérience, écris ce que fait la lampe (faible, grille, normale).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 1. LES INSCRIPTIONS ============ -->
-<section class="tab-content active" id="tab1">
+<section class="tab-content" id="tab1">
   <div class="container">
     <h2>1. Les inscriptions sur une pile et sur une lampe</h2>
 
@@ -65,6 +175,10 @@
       </tbody>
     </table>
 
+    <figure class="schema">
+      <svg viewBox="0 0 320 170" role="img" aria-label="Une pile plate et une lampe avec leurs inscriptions"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="20" y="50" width="110" height="70" rx="6"/><path d="M50 50 V30 h8 M95 50 V24 h8"/><path d="M230 112 C205 98 205 52 240 46 C275 52 275 98 250 112 Z"/><rect x="228" y="112" width="24" height="18" rx="2"/><path d="M228 118 h24 M228 124 h24 M236 130 l4 6 l4 -6"/><path d="M234 112 V88 l6 -8 l6 8 V112" stroke-width="1.5"/></g><text x="75" y="92" font-size="16" font-weight="700" text-anchor="middle">4,5 V</text><text x="40" y="30" font-size="14">+</text><text x="108" y="24" font-size="16">−</text><text x="262" y="126" font-size="13" font-weight="700" style="fill:var(--rose)">3,5 V</text><text x="75" y="145" font-size="12" text-anchor="middle">pile = générateur</text><text x="75" y="161" font-size="11" text-anchor="middle">tension d'alimentation</text><text x="240" y="152" font-size="12" text-anchor="middle">lampe = récepteur</text><text x="240" y="167" font-size="11" text-anchor="middle">tension d'usage</text></svg>
+      <figcaption>Les inscriptions : 4,5 V sur la pile, 3,5 V sur la lampe.</figcaption>
+    </figure>
     <h3>1-2. Signification des inscriptions</h3>
     <div class="definition-box">
       <h4>📘 Le volt</h4>
@@ -77,14 +191,16 @@
       <h4>📘 La tension nominale d'un générateur</h4>
       <p>L'inscription <strong>4,5 V</strong> sur la pile est sa <strong>tension
       nominale</strong> : c'est la tension que la pile <strong>fournit</strong> entre ses
-      deux bornes quand elle est neuve.</p>
+      deux bornes quand elle est neuve. On l'appelle aussi la <strong>tension
+      d'alimentation</strong>.</p>
     </div>
 
     <div class="definition-box">
       <h4>📘 La tension nominale d'un récepteur</h4>
       <p>L'inscription <strong>3,5 V</strong> sur la lampe est sa <strong>tension
       nominale</strong> : c'est la tension qu'il faut lui appliquer pour qu'elle
-      <strong>fonctionne normalement</strong>, ni trop faible, ni trop forte.</p>
+      <strong>fonctionne normalement</strong>, ni trop faible, ni trop forte. On l'appelle
+      aussi la <strong>tension d'usage</strong>.</p>
     </div>
 
     <div class="note-box">
@@ -102,6 +218,10 @@
     <h2>2. Lampe en sous-tension</h2>
 
     <h3>2-1. Expérience et observation</h3>
+    <figure class="schema">
+      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit : une pile de 1,5 volt et une lampe de 6 volts, la lampe brille faiblement"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H230 V74 M230 106 V140 H60 V84"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L241.2 101.2 M241.2 78.8 L218.8 101.2"/></g><line x1="247.3" y1="100.0" x2="251.7" y2="102.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="230.0" y1="110.0" x2="230.0" y2="115.0" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="212.7" y1="100.0" x2="208.3" y2="102.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="212.7" y1="80.0" x2="208.3" y2="77.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="230.0" y1="70.0" x2="230.0" y2="65.0" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><line x1="247.3" y1="80.0" x2="251.7" y2="77.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round" opacity="0.55" stroke-dasharray="2 3"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="66" font-size="12" text-anchor="end">pile</text><text x="36" y="82" font-size="13" font-weight="700" text-anchor="end">1,5 V</text><text x="266" y="88" font-size="12">lampe</text><text x="266" y="104" font-size="13" font-weight="700">6 V</text></svg>
+      <figcaption>Une lampe de 6 V sur une pile de 1,5 V : éclat faible.</figcaption>
+    </figure>
     <div class="example-box">
       <h4>🧪 L'expérience</h4>
       <p>On branche une lampe de <strong>6 V</strong> sur une pile de <strong>1,5 V</strong>.
@@ -128,6 +248,10 @@
     <h2>3. Lampe en surtension</h2>
 
     <h3>3-1. Expérience et observation</h3>
+    <figure class="schema">
+      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit : une pile de 12 volts et une lampe de 3,5 volts, la lampe grille"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H230 V74 M230 106 V140 H60 V84"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L228 88 M233 93 L241.2 101.2 M241.2 78.8 L232 87 M227 92 L218.8 101.2"/></g><line x1="249.0" y1="96.2" x2="262.3" y2="100.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="241.8" y1="106.2" x2="250.0" y2="117.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="230.0" y1="110.0" x2="230.0" y2="124.0" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="218.2" y1="106.2" x2="210.0" y2="117.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.0" y1="96.2" x2="197.7" y2="100.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.0" y1="83.8" x2="197.7" y2="79.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="218.2" y1="73.8" x2="210.0" y2="62.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="230.0" y1="70.0" x2="230.0" y2="56.0" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="241.8" y1="73.8" x2="250.0" y2="62.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="249.0" y1="83.8" x2="262.3" y2="79.5" stroke="var(--erreur-bord)" stroke-width="2.5" stroke-linecap="round"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="66" font-size="12" text-anchor="end">pile</text><text x="36" y="82" font-size="13" font-weight="700" text-anchor="end">12 V</text><text x="266" y="88" font-size="12">lampe</text><text x="266" y="104" font-size="13" font-weight="700">3,5 V</text><text x="266" y="122" font-size="12" style="fill:var(--erreur-bord)">grillée !</text></svg>
+      <figcaption>Une lampe de 3,5 V sur une pile de 12 V : la lampe grille.</figcaption>
+    </figure>
     <div class="example-box">
       <h4>🧪 L'expérience</h4>
       <p>On branche une lampe de <strong>3,5 V</strong> sur une pile de <strong>12 V</strong>.
@@ -160,6 +284,10 @@
 <section class="tab-content" id="tab4">
   <div class="container">
     <h2>4. Lampe adaptée</h2>
+    <figure class="schema">
+      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit : une pile de 4,5 volts et une lampe de 4,5 volts, la lampe brille normalement"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H230 V74 M230 106 V140 H60 V84"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L241.2 101.2 M241.2 78.8 L218.8 101.2"/></g><line x1="248.5" y1="97.7" x2="257.7" y2="101.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="237.7" y1="108.5" x2="241.5" y2="117.7" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="222.3" y1="108.5" x2="218.5" y2="117.7" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.5" y1="97.7" x2="202.3" y2="101.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.5" y1="82.3" x2="202.3" y2="78.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="222.3" y1="71.5" x2="218.5" y2="62.3" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="237.7" y1="71.5" x2="241.5" y2="62.3" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="248.5" y1="82.3" x2="257.7" y2="78.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="66" font-size="12" text-anchor="end">pile</text><text x="36" y="82" font-size="13" font-weight="700" text-anchor="end">4,5 V</text><text x="266" y="88" font-size="12">lampe</text><text x="266" y="104" font-size="13" font-weight="700">4,5 V</text></svg>
+      <figcaption>Une lampe de 4,5 V sur une pile de 4,5 V : éclat normal.</figcaption>
+    </figure>
 
     <div class="example-box">
       <h4>🧪 L'expérience</h4>
@@ -197,6 +325,9 @@
         <tr><td>Générateur</td><td>Ce qui fournit l'énergie électrique (pile, batterie).</td></tr>
         <tr><td>Récepteur</td><td>Ce qui reçoit l'énergie électrique (lampe, moteur).</td></tr>
         <tr><td>Tension nominale</td><td>La tension inscrite sur l'objet : fournie par le générateur, ou nécessaire au récepteur.</td></tr>
+        <tr><td>Tension d'alimentation</td><td>La tension nominale d'un générateur (la pile).</td></tr>
+        <tr><td>Tension d'usage</td><td>La tension nominale d'un récepteur (la lampe).</td></tr>
+        <tr><td>Courant du secteur</td><td>Le courant des prises de la maison, délivré par la CIE sous 220 V.</td></tr>
         <tr><td>Volt (V)</td><td>L'unité de la tension électrique.</td></tr>
         <tr><td>Voltmètre</td><td>L'appareil qui mesure une tension.</td></tr>
       </tbody>
@@ -211,9 +342,8 @@
 
     <div class="important-box" data-hors-chat>
       <h4>✏️ À vérifier dans ton cahier</h4>
-      <p>Les valeurs des expériences (1,5 V, 4,5 V, 12 V) sont des exemples classiques.
-      Si ton professeur a utilisé d'autres piles ou d'autres lampes, envoie-moi la page
-      et je mets les bonnes valeurs.</p>
+      <p>Les valeurs de ces onglets (1,5 V, 6 V, 12 V…) sont des exemples pour
+      comprendre. Les valeurs de ton professeur sont dans l'onglet « Mon cahier ».</p>
     </div>
   </div>
 </section>

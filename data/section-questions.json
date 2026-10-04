@@ -1330,6 +1330,28 @@
         ],
         "correctAnswer": 1,
         "explanation": "Le liquide prend la forme de son récipient, mais son volume ne change pas."
+      },
+      {
+        "question": "On met du sucre dans l'eau et on agite. Le sucre…",
+        "options": [
+          "disparaît",
+          "se dissout",
+          "devient solide",
+          "s'évapore"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le sucre ne disparaît pas : il se dissout. L'eau est sucrée !"
+      },
+      {
+        "question": "L'eau sucrée est un mélange…",
+        "options": [
+          "hétérogène",
+          "homogène",
+          "solide",
+          "gazeux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On ne distingue plus le sucre à l'œil nu : c'est un mélange homogène."
       }
     ]
   },
@@ -2219,6 +2241,61 @@
         ],
         "correctAnswer": 2,
         "explanation": "Seule la surtension (pile bien plus forte que la lampe) fait griller la lampe."
+      },
+      {
+        "question": "La tension nominale d'une pile s'appelle aussi…",
+        "options": [
+          "la tension d'usage",
+          "la tension d'alimentation",
+          "la tension du secteur",
+          "l'intensité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ton cahier : la pile est un générateur, sa tension est appelée tension d'alimentation."
+      },
+      {
+        "question": "La tension nominale d'une lampe s'appelle aussi…",
+        "options": [
+          "la tension d'usage",
+          "la tension d'alimentation",
+          "le volt",
+          "la surtension"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ton cahier : la lampe est un récepteur, sa tension est appelée tension d'usage."
+      },
+      {
+        "question": "Que provoque la surtension ?",
+        "options": [
+          "Rien",
+          "La détérioration du récepteur",
+          "Un éclat faible",
+          "Une pile neuve"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ton cahier : la surtension provoque la détérioration du récepteur (la lampe grille)."
+      },
+      {
+        "question": "Quelle est la tension du courant du secteur à la maison ?",
+        "options": [
+          "4,5 V",
+          "12 V",
+          "220 V",
+          "1,5 V"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ton cahier : le courant du secteur est délivré par la CIE sous 220 V. Danger !"
+      },
+      {
+        "question": "Sur le schéma d'une pile, la borne + est…",
+        "options": [
+          "le petit trait épais",
+          "le grand trait fin",
+          "le cercle",
+          "la croix"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Grand trait fin = borne +, petit trait épais = borne −."
       }
     ]
   },
