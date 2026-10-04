@@ -2775,6 +2775,28 @@
         ],
         "correctAnswer": 1,
         "explanation": "À mon avis, je pense que, selon moi…"
+      },
+      {
+        "question": "Pendant la présentation, quels points de vue faut-il rappeler ?",
+        "options": [
+          "Seulement le sien",
+          "Le ou les points de vue opposés au sien",
+          "Ceux du professeur",
+          "Aucun"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ton cahier : « rappeler le ou les points de vue opposés au sien ». On dit ce que pensent les autres, puis on défend son avis."
+      },
+      {
+        "question": "Une phrase déclarative peut être…",
+        "options": [
+          "Seulement affirmative",
+          "Affirmative ou négative",
+          "Une question",
+          "Un ordre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Elle dit quelque chose et finit par un point : « Il pleut. » (affirmative) ou « Il ne pleut pas. » (négative)."
       }
     ]
   },
