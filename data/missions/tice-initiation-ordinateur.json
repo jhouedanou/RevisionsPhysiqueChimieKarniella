@@ -1,0 +1,57 @@
+{
+  "id": "tice-initiation-ordinateur",
+  "lecon": "tice-initiation-ordinateur",
+  "matiere": "tice",
+  "titre": "Le robot qui ne sait rien faire",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le nouvel ordinateur du vaisseau est allumé… mais il ne sait rien faire ! Pour le réveiller, il faut comprendre de quoi il est fait et comment l'information voyage en lui. À toi de jouer !",
+  "micro_learning_blocks": [
+    {
+      "titre": "💡 L'informatique, c'est quoi ?",
+      "contenu": "Informatique = information + automatique. C'est la science qui traite l'information (textes, images, sons) toute seule, grâce à un ordinateur. L'information entre, elle est traitée, puis elle sort : comme les ingrédients qui deviennent un plat dans une cuisine."
+    },
+    {
+      "titre": "🦾 Le corps : la partie matérielle",
+      "contenu": "C'est tout ce qu'on peut toucher : l'unité centrale (le cerveau), les périphériques d'entrée (clavier, souris) et de sortie (écran, imprimante). Entrée = l'information va vers l'ordinateur ; sortie = elle en vient."
+    },
+    {
+      "titre": "🧠 Le savoir-faire : la partie logicielle",
+      "contenu": "Ce sont les programmes, qu'on ne touche pas. Le système d'exploitation (Windows, Android) fait tout marcher ; les logiciels d'application (Word, Paint, Chrome) font un travail précis. Matériel + logiciels = un système informatique."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "L'informatique traite l'information de façon…",
+      "options": [
+        "automatique",
+        "magique",
+        "manuelle",
+        "secrète"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Information + automatique = informatique."
+    },
+    {
+      "question": "Le clavier est…",
+      "options": [
+        "un logiciel",
+        "un périphérique de sortie",
+        "un périphérique d'entrée",
+        "un système d'exploitation"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Avec le clavier, l'information entre dans l'ordinateur."
+    },
+    {
+      "question": "Lequel fait partie de la partie logicielle ?",
+      "options": [
+        "L'écran",
+        "Windows",
+        "La souris",
+        "L'unité centrale"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Windows est un programme : on ne le touche pas."
+    }
+  ]
+}

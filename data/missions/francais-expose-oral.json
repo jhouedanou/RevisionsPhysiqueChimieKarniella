@@ -2,56 +2,56 @@
   "id": "francais-expose-oral",
   "lecon": "francais-expose-oral",
   "matiere": "francais",
-  "titre": "Le discours du capitaine",
+  "titre": "Ma journée au club hippique",
   "duree_minutes": 3,
-  "story_context": "Capitaine Karniella, l'équipage attend ton exposé sur la vie à bord ! Pour les convaincre, il faut les informer ET leur dire ce que tu penses. Prépare-toi en 3 minutes.",
+  "story_context": "Capitaine Karniella, ce soir toute la famille veut savoir comment s'est passée ta journée au club hippique ! Ta mission : en faire un vrai exposé oral. Informe-les sur ce que tu as fait ET dis-leur ce que tu en penses. En selle !",
   "micro_learning_blocks": [
     {
-      "titre": "🎤 L'exposé oral",
-      "contenu": "C'est un discours dans lequel on présente à un public des informations et son point de vue personnel sur un thème. Le point de vue, c'est ce qu'on pense du thème. Le thème peut être un comportement ou un phénomène."
+      "titre": "🔎 Phase 1 : je prépare",
+      "contenu": "Comme une cavalière qui prépare son cheval avant de monter, rassemble tes informations : où, quand, avec qui, quel cheval, et ce que tu as fait (le pansage, le pas, le trot, le galop…). Puis range-les en trois parties : introduction, développement, conclusion."
     },
     {
-      "titre": "🔎 Phase 1 : la préparation",
-      "contenu": "On fait des recherches pour recueillir les informations. Puis on organise le travail comme un discours écrit : introduction, développement, conclusion."
+      "titre": "🗂️ Le parcours en trois obstacles",
+      "contenu": "Introduction : je présente ma journée et j'annonce mon avis. Développement : je raconte les moments dans l'ordre, du brossage au rangement de la selle. Conclusion : je dis ce que j'ai appris et je redis ce que je pense."
     },
     {
-      "titre": "🗣️ Phase 2 : la présentation",
-      "contenu": "On rappelle le ou les points de vue opposés au sien et on utilise des phrases déclaratives (elles affirment quelque chose et finissent par un point). À mon avis… Je pense que…"
+      "titre": "🗣️ Phase 2 : je présente",
+      "contenu": "J'utilise des phrases déclaratives : « J'ai brossé mon cheval. » Je donne mon avis : « À mon avis, l'équitation apprend la patience. » Et je rappelle un point de vue opposé au mien : « Certains pensent que c'est dangereux, mais avec un casque et un moniteur, on est en sécurité. »"
     }
   ],
   "quiz": [
     {
-      "question": "Dans un exposé oral, on présente…",
+      "question": "Quelle phrase est une bonne introduction pour ton exposé ?",
       "options": [
-        "des informations et son point de vue",
-        "seulement une histoire",
-        "seulement des questions",
-        "un dessin"
-      ],
-      "correct_answer_index": 0,
-      "explanation": "Informer ET donner son point de vue."
-    },
-    {
-      "question": "La phase de préparation, c'est…",
-      "options": [
-        "parler devant la classe",
-        "faire des recherches et organiser son travail",
-        "poser des questions au public",
-        "applaudir"
+        "Le galop, c'est rapide !",
+        "Samedi, je suis allée au club hippique. Je vais vous raconter ma journée et vous dire ce que j'en pense.",
+        "As-tu déjà monté un cheval ?",
+        "Range la selle !"
       ],
       "correct_answer_index": 1,
-      "explanation": "Recherches, puis introduction, développement, conclusion."
+      "explanation": "L'introduction présente le thème (ta journée) et annonce ton point de vue."
     },
     {
-      "question": "Pendant la présentation, on utilise des phrases…",
+      "question": "Quelle phrase rappelle un point de vue opposé au tien ?",
       "options": [
-        "interrogatives",
-        "déclaratives",
-        "exclamatives",
-        "impératives"
+        "J'ai monté une jument très calme.",
+        "Certains pensent que l'équitation est dangereuse.",
+        "Le club ouvre à 8 heures.",
+        "J'adore les chevaux."
       ],
       "correct_answer_index": 1,
-      "explanation": "Des phrases déclaratives, qui affirment."
+      "explanation": "On rappelle ce que pensent les autres, puis on explique pourquoi on garde son avis."
+    },
+    {
+      "question": "Laquelle est une phrase déclarative ?",
+      "options": [
+        "Quel beau cheval !",
+        "Brosse ton cheval !",
+        "Après la reprise, j'ai donné à boire à mon cheval.",
+        "As-tu sauté l'obstacle ?"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Elle dit quelque chose et finit par un point."
     }
   ]
 }
