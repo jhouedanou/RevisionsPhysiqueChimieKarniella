@@ -2716,6 +2716,61 @@
         ],
         "correctAnswer": 1,
         "explanation": "On écrit : No, you may not."
+      },
+      {
+        "question": "What do students do before entering the classroom?",
+        "options": [
+          "They go home.",
+          "They line up and greet the teacher.",
+          "They sleep.",
+          "They eat."
+        ],
+        "correctAnswer": 1,
+        "explanation": "Session 3 : « They line up and greet the teacher. » (Ils se mettent en rang et saluent le professeur.)"
+      },
+      {
+        "question": "« To greet » veut dire…",
+        "options": [
+          "saluer",
+          "sortir",
+          "écouter",
+          "refuser"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To greet = dire bonjour à quelqu'un, saluer."
+      },
+      {
+        "question": "Le professeur refuse la permission. Il dit…",
+        "options": [
+          "Yes, you may.",
+          "No, you may not.",
+          "You are welcome.",
+          "Let's go."
+        ],
+        "correctAnswer": 1,
+        "explanation": "Pour refuser : No, you may not. / No, you can't."
+      },
+      {
+        "question": "Quelle question est correcte ?",
+        "options": [
+          "What students do before class?",
+          "What do students do before class?",
+          "What students does before class?",
+          "What do students doing before class?"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Au présent simple, la question a besoin de do : What do students do…?"
+      },
+      {
+        "question": "« Thank you! » — On répond…",
+        "options": [
+          "You are welcome.",
+          "Goodbye, sir.",
+          "Yes, you can.",
+          "I'm fine."
+        ],
+        "correctAnswer": 0,
+        "explanation": "You are welcome = je t'en prie, de rien."
       }
     ]
   },
