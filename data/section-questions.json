@@ -2322,6 +2322,61 @@
         ],
         "correctAnswer": 1,
         "explanation": "Gban signifie « puces » ; « Gagou » voulait dire « allez-vous en » et ils le trouvent péjoratif."
+      },
+      {
+        "question": "D'après ton cahier, qu'est-ce qui montre que la Côte d'Ivoire est habitée depuis la préhistoire ?",
+        "options": [
+          "Les journaux",
+          "La présence des sites et des vestiges",
+          "Les routes",
+          "Les écoles"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Introduction du cahier : la présence des sites et des vestiges."
+      },
+      {
+        "question": "D'après ton cahier, quelle taille ont les Pygmées ?",
+        "options": [
+          "De 1,44 m à 1,55 m",
+          "Plus de 2 m",
+          "Environ 80 cm",
+          "Environ 1,80 m"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ton cahier : ils sont petits de taille, de 1,44 m à 1,55 m."
+      },
+      {
+        "question": "Comment les Baoulé appellent-ils les Pygmées ?",
+        "options": [
+          "Yonin",
+          "Kakatika ou Angbé",
+          "Bidikobei",
+          "Mandébélé"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Baoulé : Kakatika ou Angbé. Bété : Bidikobei. Sénoufo : Mandébélé. Gouro : Yonin."
+      },
+      {
+        "question": "Les « pieds retournés » et les « mi-hommes, mi-génies », c'est…",
+        "options": [
+          "Une photo prise en Côte d'Ivoire",
+          "Ce que disent les légendes des traditions orales",
+          "Une découverte des archéologues",
+          "Une erreur du manuel"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Personne n'a trouvé de traces des Pygmées en Côte d'Ivoire : ces descriptions viennent des légendes."
+      },
+      {
+        "question": "Lequel de ces mots est bien écrit ?",
+        "options": [
+          "Potocan",
+          "Protoakan",
+          "Proto-can",
+          "Protakan"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On écrit toujours « Proto » collé devant : Protoakan, Protokrou, Protomandé, Protogur."
       }
     ]
   },
