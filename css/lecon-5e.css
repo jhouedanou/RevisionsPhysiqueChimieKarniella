@@ -500,9 +500,25 @@ main.content > .kv-reglage { margin: 0 0 14px; }
     .table-vocab, .table-vocab tbody, .table-vocab tr, .table-vocab td { display: block; width: 100%; }
     .table-vocab thead { display: none; }
     .table-vocab tr { margin-bottom: 10px; border: 1px solid var(--l5-bord); border-radius: 10px; overflow: hidden; }
-    .table-vocab td { border: 0; border-bottom: 1px solid var(--l5-bord); }
+    /* border-box : sans lui, width: 100% + la marge intérieure dépassait de la
+       ligne de 24 px, et la fin du texte était coupée à droite. */
+    .table-vocab td { border: 0; border-bottom: 1px solid var(--l5-bord); box-sizing: border-box; }
     .table-vocab td:last-child { border-bottom: 0; }
+    /* Sur téléphone l'en-tête disparaît : une cellule peut rappeler sa colonne. */
+    .table-vocab td[data-titre]::before {
+        content: attr(data-titre);
+        display: block;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--doux);
+    }
 }
+
+/* Tableau dont la 1re colonne est une phrase (relevé de texte), pas un mot :
+   elle doit pouvoir revenir à la ligne. */
+.table-vocab.table-texte td:first-child { white-space: normal; }
 
 /* Dialogue (language function en anglais) */
 .dialogue {

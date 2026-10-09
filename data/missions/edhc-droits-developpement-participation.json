@@ -1,0 +1,57 @@
+{
+  "id": "edhc-droits-developpement-participation",
+  "lecon": "edhc-droits-developpement-participation",
+  "matiere": "edhc",
+  "titre": "Le conseil des jeunes",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, tu viens d'être élue déléguée des jeunes du vaisseau ! Au premier conseil, on te demande quels droits les enfants de l'équipage doivent garder. Prépare ton discours, et n'oublie pas les devoirs !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🧒 Qui est un enfant ?",
+      "contenu": "Toute personne de moins de 18 ans. Ses droits sont écrits dans la Convention relative aux droits de l'enfant (ONU, 20 novembre 1989), en quatre groupes : survie, développement, protection, participation."
+    },
+    {
+      "titre": "🌱 Le droit de grandir",
+      "contenu": "Les droits au développement, c'est l'eau et le soleil de la plante : aller à l'école (obligatoire de 6 à 16 ans en Côte d'Ivoire), jouer, se reposer, s'informer, avoir ses idées."
+    },
+    {
+      "titre": "🗳️ Le droit de donner son avis",
+      "contenu": "Les droits à la participation : être entendu, s'exprimer avec respect, former un club, voter pour le délégué. Et en échange, des devoirs : respecter parents et enseignants, travailler, protéger les biens publics."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Aller à l'école, c'est un droit…",
+      "options": [
+        "à la participation",
+        "au développement",
+        "de vote",
+        "de propriété"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "L'éducation fait grandir : c'est un droit au développement."
+    },
+    {
+      "question": "Voter pour le délégué, c'est un droit…",
+      "options": [
+        "à la participation",
+        "à la survie",
+        "au développement",
+        "à la protection"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "On donne son avis : c'est participer."
+    },
+    {
+      "question": "Lequel est un devoir de l'enfant ?",
+      "options": [
+        "Jouer",
+        "S'exprimer",
+        "Se reposer",
+        "Respecter ses enseignants"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "Les trois autres sont des droits."
+    }
+  ]
+}

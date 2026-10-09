@@ -1,0 +1,57 @@
+{
+  "id": "francais-groupe-nominal",
+  "lecon": "francais-groupe-nominal",
+  "matiere": "francais",
+  "titre": "Le nom qui voulait grandir",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le mot « cheval » est tout seul et tout petit dans sa phrase. Il rêve de devenir un grand groupe nominal ! Trois pouvoirs peuvent l'agrandir : à toi de les lui donner.",
+  "micro_learning_blocks": [
+    {
+      "titre": "✨ Pouvoir 1 : l'adjectif",
+      "contenu": "Un mot qui donne une qualité et qui s'accorde avec le nom, comme un habit taillé sur mesure : un cheval blanc, une jument blanche. Collé au nom, il est épithète."
+    },
+    {
+      "titre": "🔗 Pouvoir 2 : le complément du nom",
+      "contenu": "Il arrive avec une préposition (de, à, en…) comme un wagon accroché par un crochet : un cheval de course, une robe en pagne. Lui ne s'accorde pas."
+    },
+    {
+      "titre": "🧲 Pouvoir 3 : la relative",
+      "contenu": "Elle commence par un pronom relatif (qui, que, dont, où) et a son propre verbe : un cheval qui galope. Le nom qu'elle complète s'appelle l'antécédent."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "« un cheval de course » : quelle expansion ?",
+      "options": [
+        "Adjectif",
+        "Relative",
+        "Complément du nom",
+        "Attribut"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Préposition « de » + nom : complément du nom."
+    },
+    {
+      "question": "« le livre ___ je lis » : quel pronom ?",
+      "options": [
+        "que",
+        "qui",
+        "dont",
+        "où"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Je lis le livre : « que » est COD."
+    },
+    {
+      "question": "Une expansion du nom est…",
+      "options": [
+        "obligatoire",
+        "facultative",
+        "un verbe",
+        "toujours au pluriel"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "On peut la supprimer, la phrase reste correcte."
+    }
+  ]
+}

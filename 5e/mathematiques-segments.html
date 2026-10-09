@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segments - Mathématiques 5e</title>
+<meta name="description" content="Leçon 2 : les caractéristiques d'un segment (milieu, longueur) et la médiatrice d'un segment.">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
+<link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/section-quiz.css">
+</head>
+<body class="lecon-5e" data-matiere="mathematiques">
+
+<header>
+<span class="badge-niveau">Mathématiques · Leçon 2 · Classe de 5e</span>
+<h1>📏 Segments</h1>
+<p>Les caractéristiques d'un segment et la médiatrice d'un segment</p>
+</header>
+
+<div class="tabs">
+<button class="tab-button active" data-onglet="tab1">1. Caractéristiques d'un segment</button>
+<button class="tab-button" data-onglet="tab2">2. La médiatrice</button>
+<button class="tab-button" data-onglet="tab3">Exercices</button>
+<button class="tab-button" data-onglet="tab4">Quiz</button>
+</div>
+
+<main class="content">
+
+<!-- ============ 1. CARACTÉRISTIQUES D'UN SEGMENT ============ -->
+<section class="tab-content active" id="tab1">
+  <div class="container">
+    <div class="note-box" data-hors-chat>
+      <h4>📖 D'où vient cette leçon ?</h4>
+      <p>Les <strong>titres</strong> sont ceux de ton cahier (ton message du 09/10 : « une
+      leçon qu'on a faite hier »). Tu n'as envoyé que les titres : les propriétés et la
+      définition sont rédigées d'après le programme de 5e. Vérifie avec ton cahier.</p>
+    </div>
+
+    <p><strong>Leçon 2 :</strong> Segments</p>
+
+    <h2>1. Caractéristiques d'un segment</h2>
+
+    <div class="note-box">
+      <h4>🐴 Rappel de 6e</h4>
+      <p>Le <strong>segment [AB]</strong> est la partie de la droite (AB) comprise
+      <strong>entre les points A et B</strong>. A et B sont ses <strong>extrémités</strong>.
+      Sa <strong>longueur</strong> se note <strong>AB</strong> (sans crochets).</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 Ce qui caractérise un segment</h4>
+      <p>Un segment est caractérisé par ses <strong>deux extrémités</strong>, sa
+      <strong>longueur</strong> et son <strong>milieu</strong>.</p>
+      <p>Le <strong>milieu</strong> d'un segment est le point de ce segment situé
+      <strong>à égale distance</strong> de ses deux extrémités.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 90" role="img" aria-label="Figure : le segment [AB] et son milieu I. Les longueurs AI et IB sont codées par le même petit trait.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="30" y1="45" x2="290" y2="45"/>
+          <!-- croix des points -->
+          <line x1="24" y1="39" x2="36" y2="51"/><line x1="24" y1="51" x2="36" y2="39"/>
+          <line x1="154" y1="39" x2="166" y2="51"/><line x1="154" y1="51" x2="166" y2="39"/>
+          <line x1="284" y1="39" x2="296" y2="51"/><line x1="284" y1="51" x2="296" y2="39"/>
+          <!-- codage : même longueur -->
+          <line x1="92" y1="36" x2="98" y2="54"/>
+          <line x1="222" y1="36" x2="228" y2="54"/>
+        </g>
+        <g fill="currentColor" font-size="16" font-weight="700" text-anchor="middle">
+          <text x="30" y="78">A</text>
+          <text x="160" y="78">I</text>
+          <text x="290" y="78">B</text>
+        </g>
+      </svg>
+      <figcaption>I est le milieu de [AB] : les petits traits identiques disent que <strong>AI = IB</strong>.</figcaption>
+    </figure>
+
+    <h3>1) Propriété</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p>Si I est le <strong>milieu</strong> du segment [AB], alors I
+      <strong>appartient</strong> à [AB] et <strong>IA = IB</strong>.</p>
+      <p style="text-align: center; font-size: 19px;"><strong>IA = IB = AB ÷ 2</strong></p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>I est le milieu de [AB] et AB = 8 cm. Alors IA = IB = 8 ÷ 2 =
+      <strong>4 cm</strong>.</p>
+    </div>
+
+    <h3>2) Propriété</h3>
+    <div class="definition-box">
+      <h4>📘 Propriété (réciproque)</h4>
+      <p>Si un point I <strong>appartient</strong> au segment [AB] et si
+      <strong>IA = IB</strong>, alors I est le <strong>milieu</strong> de [AB].</p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>M est sur le segment [EF], avec EM = 3 cm et MF = 3 cm. Comme M appartient à
+      [EF] et EM = MF, M est le <strong>milieu</strong> de [EF].</p>
+    </div>
+
+    <div class="important-box">
+      <h4>⚠️ Les deux conditions comptent</h4>
+      <p>Un point peut être à la même distance de A et de B <strong>sans être sur</strong>
+      le segment [AB] (au-dessus ou en dessous). Ce point-là n'est <strong>pas</strong> le
+      milieu. Pour dire « milieu », il faut vérifier <strong>les deux</strong> : le point
+      est sur [AB], <strong>et</strong> IA = IB.</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 La différence entre les deux propriétés</h4>
+      <p>La <strong>1re</strong> part du milieu pour trouver des longueurs
+      (« je sais que c'est le milieu, donc… »). La <strong>2e</strong> part des longueurs
+      pour prouver que c'est le milieu (« je sais que IA = IB et que I est sur [AB],
+      donc… »).</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <p>Ton message dit deux fois « Propriétés ». J'ai mis les deux propriétés du
+      <strong>milieu</strong> (le sens direct et la réciproque), c'est le plus courant.
+      Si ton cahier dit autre chose (par exemple « si M est sur [AB], alors AM + MB =
+      AB »), envoie-moi la page et je corrige.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. LA MÉDIATRICE D'UN SEGMENT ============ -->
+<section class="tab-content" id="tab2">
+  <div class="container">
+    <h2>2. Caractéristiques de la médiatrice d'un segment</h2>
+
+    <h3>1) Définition</h3>
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>La <strong>médiatrice</strong> d'un segment est la <strong>droite</strong> qui
+      passe par le <strong>milieu</strong> de ce segment et qui est
+      <strong>perpendiculaire</strong> à ce segment.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 220" role="img" aria-label="Figure : le segment [AB], son milieu I et la droite (d) qui passe par I et qui est perpendiculaire à [AB]. Un petit carré marque l'angle droit en I.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="40" y1="120" x2="280" y2="120"/>
+          <line x1="160" y1="20" x2="160" y2="205"/>
+          <!-- angle droit -->
+          <polyline points="160,106 174,106 174,120" stroke-width="2"/>
+          <!-- croix des points -->
+          <line x1="34" y1="114" x2="46" y2="126"/><line x1="34" y1="126" x2="46" y2="114"/>
+          <line x1="274" y1="114" x2="286" y2="126"/><line x1="274" y1="126" x2="286" y2="114"/>
+          <!-- codage : même longueur -->
+          <line x1="97" y1="111" x2="103" y2="129"/>
+          <line x1="217" y1="111" x2="223" y2="129"/>
+        </g>
+        <g fill="currentColor" font-size="16" font-weight="700" text-anchor="middle">
+          <text x="40" y="148">A</text>
+          <text x="280" y="148">B</text>
+          <text x="148" y="140">I</text>
+          <text x="182" y="34">(d)</text>
+        </g>
+      </svg>
+      <figcaption>(d) est la médiatrice de [AB] : elle passe par le milieu I
+      (<strong>codage</strong> : les petits traits) et elle est perpendiculaire à [AB]
+      (<strong>codage</strong> : le petit carré).</figcaption>
+    </figure>
+
+    <div class="important-box">
+      <h4>⚠️ Il faut les deux à la fois</h4>
+      <ul>
+        <li>Une droite perpendiculaire à [AB] qui ne passe <strong>pas par le milieu</strong>
+            n'est pas la médiatrice.</li>
+        <li>Une droite qui passe par le milieu mais qui n'est <strong>pas
+            perpendiculaire</strong> n'est pas la médiatrice.</li>
+      </ul>
+      <p>Un segment n'a qu'<strong>une seule</strong> médiatrice.</p>
+    </div>
+
+    <div class="example-box">
+      <h4>✏️ Tracer la médiatrice avec la règle et l'équerre</h4>
+      <ol>
+        <li>Mesure le segment [AB] avec la règle graduée.</li>
+        <li>Divise la longueur par 2 et place le milieu I.</li>
+        <li>Pose l'équerre le long de [AB], l'angle droit sur I.</li>
+        <li>Trace la droite qui passe par I le long de l'autre côté de l'équerre.</li>
+        <li>Code la figure : les petits traits sur [AI] et [IB], le petit carré en I.</li>
+      </ol>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 D'où vient le mot ?</h4>
+      <p><strong>Média</strong>trice, comme <strong>médian</strong> ou « au
+      <strong>milieu</strong> » : c'est la droite qui coupe le segment <strong>en son
+      milieu</strong>, bien droite, à angle droit.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Ton message s'arrête à « 1- Définition » : la suite (la propriété de la
+            médiatrice) viendra sans doute au prochain cours. Envoie-la-moi quand vous
+            l'aurez faite.</li>
+        <li>La méthode pour tracer avec la règle et l'équerre est une <strong>aide en
+            plus</strong>. Si ton professeur a montré le tracé au <strong>compas</strong>,
+            dis-le-moi.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXERCICES ============ -->
+<section class="tab-content" id="tab3">
+  <div class="container">
+    <h2>Exercices</h2>
+    <p>Cherche d'abord seule, ensuite ouvre la correction.</p>
+
+    <div class="exercice">
+      <h3>Exercice 1 — Calcule</h3>
+      <p class="consigne">I est le milieu du segment [AB].</p>
+      <ol>
+        <li>AB = 10 cm. Calcule IA et IB.</li>
+        <li>IA = 3,5 cm. Calcule AB.</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>IA = IB = 10 ÷ 2 = <strong>5 cm</strong>.</li>
+          <li>AB = 2 × 3,5 = <strong>7 cm</strong>.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 2 — Est-ce le milieu ?</h3>
+      <p class="consigne">Le segment [EF] mesure 6 cm.</p>
+      <ol>
+        <li>Le point M est sur [EF], avec EM = 3 cm. M est-il le milieu de [EF] ?</li>
+        <li>Le point N n'est pas sur [EF], mais EN = NF = 4 cm. N est-il le milieu de [EF] ?</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>MF = 6 − 3 = 3 cm, donc EM = MF. Comme M est sur [EF] et EM = MF,
+              <strong>M est le milieu</strong> de [EF].</li>
+          <li><strong>Non</strong> : N est bien à égale distance de E et de F, mais il
+              n'est pas sur le segment [EF].</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 3 — Vrai ou faux ?</h3>
+      <ol>
+        <li>La médiatrice de [AB] passe par A.</li>
+        <li>La médiatrice de [AB] est perpendiculaire à [AB].</li>
+        <li>Toute droite perpendiculaire à [AB] est la médiatrice de [AB].</li>
+        <li>La médiatrice de [AB] passe par le milieu de [AB].</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>Faux : elle passe par le milieu, pas par une extrémité.</li>
+          <li>Vrai.</li>
+          <li>Faux : il faut aussi qu'elle passe par le milieu.</li>
+          <li>Vrai.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 4 — Construis</h3>
+      <p class="consigne">Trace un segment [CD] de 7 cm, puis sa médiatrice (Δ). Code la
+      figure.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>7 ÷ 2 = 3,5 : place le milieu K de [CD] à 3,5 cm de C.</li>
+          <li>Avec l'équerre, trace la droite (Δ) perpendiculaire à [CD] qui passe par K.</li>
+          <li>Code : un petit trait sur [CK] et le même sur [KD], un petit carré en K.</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="tab-content" id="tab4">
+  <div class="container">
+    <h2>🎯 Teste-toi</h2>
+    <p>Le milieu d'un segment et la médiatrice.</p>
+    <div id="quiz-segments"></div>
+  </div>
+</section>
+
+</main>
+
+<p class="pied">Révisions de Karniella · Mathématiques 5e · Segments</p>
+
+<script src="../js/lecon-5e.js" defer></script>
+<script src="../js/lecture-vocale.js" defer></script>
+<script src="../js/section-quiz.js" defer></script>
+<script src="../js/chat-assistant.js" defer></script>
+<script>
+    window.addEventListener('load', function () {
+        fetch('../data/section-questions.json')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var questions = data['mathematiques-segments'];
+                if (questions && questions.tab4 && window.initSectionQuiz) {
+                    initSectionQuiz('quiz-segments', questions.tab4, { etapes: true });
+                }
+            })
+            .catch(function () { /* hors-ligne sans cache : le reste marche */ });
+    });
+</script>
+</body>
+</html>

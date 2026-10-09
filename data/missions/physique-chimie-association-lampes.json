@@ -1,0 +1,57 @@
+{
+  "id": "physique-chimie-association-lampes",
+  "lecon": "physique-chimie-association-lampes",
+  "matiere": "physique-chimie",
+  "titre": "Les guirlandes de la fête",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, ce soir c'est la fête à bord ! Mais une seule ampoule a grillé et toute la guirlande du pont s'est éteinte… alors que dans les cabines, les lampes brillent toujours. Comprends comment chaque circuit est branché avant le début de la fête.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🔗 En série : un seul chemin",
+      "contenu": "Les lampes sont à la suite, dans une seule boucle, comme des perles sur un fil. Elles brillent moins fort qu'une lampe seule. Si une lampe grille, le fil est coupé : tout s'éteint."
+    },
+    {
+      "titre": "🌿 En dérivation : chacune son chemin",
+      "contenu": "Chaque lampe a sa propre boucle entre deux nœuds, comme des branches sur un tronc. Elles brillent normalement, et si une lampe grille, les autres continuent. C'est le montage des maisons."
+    },
+    {
+      "titre": "⚡ Attention au raccourci",
+      "contenu": "En dérivation, un fil posé sur les bornes d'une lampe court-circuite la pile : toutes les lampes s'éteignent et la pile chauffe. Danger d'incendie : c'est le rôle des fusibles et des disjoncteurs."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Une ampoule grille et toute la guirlande s'éteint. Elle est montée…",
+      "options": [
+        "en dérivation",
+        "en série",
+        "en court-circuit",
+        "sans pile"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "En série, une lampe défectueuse ouvre l'unique boucle."
+    },
+    {
+      "question": "Les lampes des cabines restent allumées quand l'une grille. Elles sont…",
+      "options": [
+        "en série",
+        "éteintes",
+        "en dérivation",
+        "court-circuitées"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "En dérivation, chaque lampe a son propre chemin."
+    },
+    {
+      "question": "Un fil relie les bornes d'une lampe en dérivation. Que se passe-t-il ?",
+      "options": [
+        "Toutes les lampes s'éteignent et la pile chauffe",
+        "Rien",
+        "Les lampes brillent plus",
+        "Seule cette lampe brille"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "La pile est court-circuitée : danger !"
+    }
+  ]
+}
