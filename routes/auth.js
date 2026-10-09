@@ -1,15 +1,34 @@
 const express = require('express');
+const crypto = require('crypto');
 const router = express.Router();
 
-// Credentials (hardcoded for simplicity)
-const ADMIN_USERNAME = 'karniella';
-const ADMIN_PASSWORD = 'houedanou';
+// Identifiants : dans les variables d'environnement, JAMAIS dans le dépôt (il
+// est public). Sur Vercel : Settings → Environment Variables. En local :
+// `ADMIN_PASSWORD=… npm start` (voir .env.example).
+// Sans ADMIN_PASSWORD, la connexion admin est refusée : pas de mot de passe
+// par défaut que tout le monde pourrait lire sur GitHub.
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'karniella';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+
+/** Comparaison à temps constant : la durée ne trahit pas les bons caractères. */
+function egal(a, b) {
+    const x = crypto.createHash('sha256').update(String(a || '')).digest();
+    const y = crypto.createHash('sha256').update(String(b || '')).digest();
+    return crypto.timingSafeEqual(x, y);
+}
 
 // Login endpoint
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    if (!ADMIN_PASSWORD) {
+        return res.status(503).json({
+            success: false,
+            message: 'Connexion admin désactivée : la variable ADMIN_PASSWORD n\'est pas définie sur le serveur.'
+        });
+    }
+
+    if (egal(username, ADMIN_USERNAME) && egal(password, ADMIN_PASSWORD)) {
         req.session.isAuthenticated = true;
         req.session.username = username;
         return res.json({

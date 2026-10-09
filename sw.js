@@ -1,8 +1,22 @@
 // Service Worker pour Révisions Karniella PWA
-// Version 1.1.0
+// Version 1.2.0
+//
+// Politique de cache : le RÉSEAU D'ABORD pour tout ce qui change quand on
+// ajoute une leçon (pages, scripts, styles, données JSON). Le cache ne sert
+// que de secours : hors-ligne, ou quand le réseau met plus de DELAI_RESEAU à
+// répondre. Avant, scripts et styles étaient servis « cache d'abord » : le
+// catalogue de l'accueil (js/programme-5e.js) restait l'ancien et les
+// nouvelles leçons n'apparaissaient qu'après un rechargement forcé.
+// Seules les images et les polices, qui ne changent jamais, restent
+// « cache d'abord ».
 
-const CACHE_NAME = 'karniella-cache-v39';
+const CACHE_NAME = 'karniella-cache-v40';
 const DATA_CACHE_NAME = 'karniella-data-v1';
+
+// Au-delà, on sert la copie en cache (si on en a une) et le réseau continue
+// en arrière-plan pour mettre le cache à jour. Une connexion mobile lente ne
+// doit pas laisser l'écran blanc.
+const DELAI_RESEAU = 4000;
 
 // Fichiers à mettre en cache lors de l'installation
 // Coquille du site : ce qu'il faut pour qu'une page s'affiche.
@@ -81,8 +95,10 @@ try {
  * pas pouvoir faire échouer l'installation du service worker.
  */
 function mettreEnCacheAuMieux(cache, urls) {
+    // `cache: 'reload'` : on veut la version du serveur, pas une copie que le
+    // cache HTTP du navigateur aurait gardée de la visite précédente.
     return Promise.all(urls.map((url) =>
-        cache.add(url).catch(() => {
+        cache.add(new Request(url, { cache: 'reload' })).catch(() => {
             console.warn('[ServiceWorker] non mis en cache :', url);
         })
     ));
@@ -96,8 +112,10 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME)
             .then((cache) => {
                 console.log('[ServiceWorker] Mise en cache des fichiers');
-                return cache.addAll(FILES_TO_CACHE)
-                    .then(() => mettreEnCacheAuMieux(cache, FICHIERS_CHAT));
+                // Tolérant pour tout : un seul fichier en 404 ne doit pas bloquer
+                // l'installation, sinon l'ancien service worker reste en place
+                // pour toujours et plus rien ne se met à jour.
+                return mettreEnCacheAuMieux(cache, FILES_TO_CACHE.concat(FICHIERS_CHAT));
             })
             .then(() => {
                 return self.skipWaiting();
@@ -123,97 +141,102 @@ self.addEventListener('activate', (event) => {
     return self.clients.claim();
 });
 
-// Stratégie de récupération
+/* ------------------------------------------------------------------
+   Stratégies
+   ------------------------------------------------------------------ */
+
+/** Garde une copie d'une réponse valide. */
+function garder(nomCache, requete, reponse) {
+    if (!reponse || reponse.status !== 200 || reponse.type === 'error') { return; }
+    const copie = reponse.clone();
+    caches.open(nomCache).then((cache) => cache.put(requete, copie));
+}
+
+/**
+ * Réseau d'abord. Si le réseau échoue, ou s'il tarde plus de DELAI_RESEAU et
+ * qu'on a une copie, on sert la copie ; le réseau, lui, finit sa course et met
+ * le cache à jour pour la prochaine fois.
+ */
+function reseauDAbord(event, nomCache, secours) {
+    const requete = event.request;
+    const reseau = fetch(requete).then((reponse) => {
+        garder(nomCache, requete, reponse);
+        return reponse;
+    });
+    // Le service worker ne doit pas s'arrêter avant la fin de la mise à jour.
+    event.waitUntil(reseau.then(() => undefined, () => undefined));
+
+    const copie = () => caches.match(requete).then((r) => r || (secours ? secours() : undefined));
+
+    return new Promise((resoudre, rejeter) => {
+        let fini = false;
+        const minuterie = setTimeout(() => {
+            caches.match(requete).then((r) => {
+                if (r && !fini) { fini = true; resoudre(r); }
+            });
+        }, DELAI_RESEAU);
+
+        reseau.then((reponse) => {
+            clearTimeout(minuterie);
+            if (!fini) { fini = true; resoudre(reponse); }
+        }).catch(() => {
+            clearTimeout(minuterie);
+            if (fini) { return; }
+            copie().then((r) => {
+                fini = true;
+                if (r) { resoudre(r); } else { rejeter(new Error('hors-ligne et pas en cache')); }
+            });
+        });
+    });
+}
+
+/** Cache d'abord : pour ce qui ne change jamais (images, polices). */
+function cacheDAbord(event) {
+    const requete = event.request;
+    return caches.match(requete).then((r) => r || fetch(requete).then((reponse) => {
+        garder(CACHE_NAME, requete, reponse);
+        return reponse;
+    }));
+}
+
+const IMMUABLE = /\.(png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot)$/i;
+
 self.addEventListener('fetch', (event) => {
-    // L'API (dont le repli IA du chat) ne doit jamais être mise en cache.
-    if (event.request.url.includes('/api/')) {
+    const requete = event.request;
+    if (requete.method !== 'GET') { return; }
+
+    const url = new URL(requete.url);
+
+    // L'API (dont le repli IA du chat) ne doit jamais être mise en cache, ni
+    // le suivi (js/suivi.js, suivi.html), qui parle directement à Supabase.
+    if (url.pathname.startsWith('/api/') || url.hostname.endsWith('.supabase.co')) {
         return;
     }
 
-    // Le suivi (js/suivi.js, suivi.html) parle directement à Supabase : jamais de cache.
-    if (event.request.url.includes('.supabase.co/')) {
+    // Polices Google et autres ressources externes : elles ne changent pas.
+    if (url.origin !== self.location.origin) {
+        event.respondWith(cacheDAbord(event));
         return;
     }
 
-    // Pour les données JSON : Network First, Cache Fallback
-    if (event.request.url.includes('/data/')) {
-        event.respondWith(
-            caches.open(DATA_CACHE_NAME).then((cache) => {
-                return fetch(event.request)
-                    .then((response) => {
-                        // Mettre en cache la nouvelle version
-                        cache.put(event.request, response.clone());
-                        return response;
-                    })
-                    .catch(() => {
-                        // Si pas de réseau, utiliser le cache. `caches.match`
-                        // (global) et non `cache.match` : les fichiers du chat
-                        // sont précachés dans CACHE_NAME, pas dans le cache de
-                        // données, et resteraient introuvables hors-ligne.
-                        return caches.match(event.request);
-                    });
-            })
-        );
+    if (IMMUABLE.test(url.pathname) ||
+            requete.destination === 'image' || requete.destination === 'font') {
+        event.respondWith(cacheDAbord(event));
         return;
     }
 
-    // Pour les pages : Network First afin qu'une mise à jour soit visible
-    // dès la prochaine ouverture, avec le cache comme secours hors-ligne.
-    if (event.request.mode === 'navigate' || event.request.destination === 'document') {
-        event.respondWith(
-            fetch(event.request)
-                .then((response) => {
-                    if (response && response.status === 200) {
-                        const responseToCache = response.clone();
-                        caches.open(CACHE_NAME)
-                            .then((cache) => cache.put(event.request, responseToCache));
-                    }
-                    return response;
-                })
-                .catch(async () => {
-                    return (await caches.match(event.request)) || caches.match('/index.html');
-                })
-        );
+    // Les données JSON gardent leur cache à part, conservé d'une version à
+    // l'autre (questions, missions, chat : utiles hors-ligne).
+    if (url.pathname.startsWith('/data/')) {
+        event.respondWith(reseauDAbord(event, DATA_CACHE_NAME));
         return;
     }
 
-    // Pour les ressources statiques : Cache First, Network Fallback
-    event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                if (response) {
-                    return response;
-                }
-
-                return fetch(event.request).then((response) => {
-                    // Ne pas mettre en cache les requêtes non-GET
-                    if (event.request.method !== 'GET') {
-                        return response;
-                    }
-
-                    // Ne pas mettre en cache les erreurs
-                    if (!response || response.status !== 200 || response.type === 'error') {
-                        return response;
-                    }
-
-                    // Clone la réponse
-                    const responseToCache = response.clone();
-
-                    caches.open(CACHE_NAME)
-                        .then((cache) => {
-                            cache.put(event.request, responseToCache);
-                        });
-
-                    return response;
-                });
-            })
-            .catch(() => {
-                // Page de fallback pour les pages HTML
-                if (event.request.destination === 'document') {
-                    return caches.match('/index.html');
-                }
-            })
-    );
+    // Pages, scripts, styles, manifeste : réseau d'abord. Une page introuvable
+    // hors-ligne retombe sur l'accueil.
+    const estPage = requete.mode === 'navigate' || requete.destination === 'document';
+    event.respondWith(reseauDAbord(event, CACHE_NAME,
+        estPage ? () => caches.match('/index.html') : null));
 });
 
 // Gestion des messages du client

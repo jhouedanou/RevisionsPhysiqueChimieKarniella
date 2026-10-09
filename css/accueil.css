@@ -97,9 +97,12 @@ body {
     box-shadow: var(--ac-ombre);
 }
 
+/* Le même contour violet que partout ailleurs : l'ancien halo rose à 15 %
+   ne se voyait presque pas (1,2:1). */
 .champ-recherche:focus-within {
     border-color: var(--ac-rose-clair);
-    box-shadow: 0 0 0 3px rgba(200, 63, 118, 0.15);
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
 }
 
 .champ-recherche span { color: var(--ac-rose); font-size: 17px; }
@@ -290,20 +293,34 @@ a.carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
     font-weight: 700;
 }
 
-/* La version express : une mission de 3 minutes (5e/mission.html). */
+/* La version express : une mission de 3 minutes (5e/mission.html).
+   Un lien à part, posé par-dessus le bas de la carte : la carte lui garde la
+   place (.avec-mission). 44 px de haut, la taille d'un doigt. */
+.liste-lecons > li { position: relative; }
+
+.carte.avec-mission { padding-bottom: 70px; }
+
 .mission-lecon {
-    align-self: flex-start;
-    margin-top: auto;
-    padding: 4px 10px;
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 16px;
     border-radius: 999px;
     background: var(--rose);
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
+    text-decoration: none;
+    transition: transform 0.18s ease;
 }
 html[data-theme="dark"] .mission-lecon { color: #1B1418; }
 .mission-lecon:hover { filter: brightness(1.1); }
-.mission-lecon + .score-lecon { margin-top: 0; }
+.mission-lecon:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+/* La carte se soulève au survol : la mission suit. */
+.liste-lecons > li:hover > .mission-lecon { transform: translateY(-3px); }
 
 /* Leçon annoncée au programme mais pas encore écrite. */
 .carte.a-venir {

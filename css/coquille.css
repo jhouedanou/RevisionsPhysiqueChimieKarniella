@@ -16,9 +16,9 @@
     --coquille-hauteur: 56px;
     --coquille-nav-bas: 0px;   /* devient 64px sur téléphone */
     --coquille-largeur: 1120px;
-    --flamme: #F26A1B;
+    --flamme: #A94A13;      /* 4,9:1 sur --flamme-pale (l'ancien #F26A1B : 2,6:1) */
     --flamme-pale: #FFE9DA;
-    --or-texte: #9A6A12;
+    --or-texte: #8A5E0E;    /* 5,2:1 sur --or-pale (l'ancien : 4,3:1) */
     --or-pale: #FFF3DC;
 }
 
@@ -287,13 +287,18 @@ html[data-theme="dark"] {
 .coquille-nav-bas a.actif { color: var(--rose); background: var(--rose-pale); }
 .coquille-nav-bas a:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
 
+/* A+ (grand texte) reste sur téléphone : il tient dès 360 px de large. En
+   dessous seulement (vieux petits écrans de 320 px), il ferait déborder la barre. */
+@media (max-width: 359px) {
+    .coquille-outils .reglage[data-reglage="texte"] { display: none; }
+}
+
 @media (max-width: 719px) {
     :root { --coquille-nav-bas: 64px; }
     .coquille-nav-bas { display: grid; }
     .coquille-fil { display: none; }
     .coquille-logo .nom { display: none; }
     .coquille-barre { padding: 0 10px; gap: 8px; }
-    .coquille-outils .reglage[data-reglage="texte"] { display: none; }
     /* La bulle du chat et son invite remontent au-dessus de la barre basse. */
     html body #kc-bulle { bottom: calc(var(--coquille-nav-bas) + 12px); }
     html body #kc-invite { bottom: calc(var(--coquille-nav-bas) + 84px); }

@@ -201,6 +201,30 @@
         signaler({ type: 'question', page: slug, matiere: page.matiere || null });
     }
 
+    /**
+     * Karniella a lu une étape (un onglet, jusqu'en bas) de la leçon `slug`.
+     * `etapes` : toutes les étapes à lire. Quand elles le sont toutes, la
+     * leçon est « lue » pour de bon — c'est ce qui débloque sa mission.
+     * Renvoie true si la leçon est lue.
+     *
+     * Rien n'est envoyé au suivi à distance : la table Supabase n'accepte que
+     * visite, temps, quiz et question (supabase/suivi.sql).
+     */
+    function marquerLecture(slug, etape, etapes) {
+        if (!slug || !etape) { return false; }
+        var donnees = lire();
+        var page = entree(donnees, slug);
+        var liste = page.etapesLues || (page.etapesLues = []);
+        var change = false;
+        if (liste.indexOf(etape) === -1) { liste.push(etape); change = true; }
+        if (!page.lue && (etapes || []).every(function (e) { return liste.indexOf(e) !== -1; })) {
+            page.lue = Date.now();
+            change = true;
+        }
+        if (change) { ecrire(donnees); }
+        return !!page.lue;
+    }
+
     /* ============================================================
        Lecture
        ============================================================ */
@@ -224,7 +248,9 @@
             questions: page.questions,
             quiz: page.quiz,
             meilleurScore: meilleurScore(page),
-            derniereVisite: page.derniereVisite || null
+            derniereVisite: page.derniereVisite || null,
+            etapesLues: (page.etapesLues || []).slice(),
+            lue: !!page.lue
         };
     }
 
@@ -312,7 +338,8 @@
                 quiz: p.quiz,
                 meilleurScore: meilleurScore(p),
                 derniereVisite: p.derniereVisite || null,
-                matiere: p.matiere
+                matiere: p.matiere,
+                lue: !!p.lue
             };
         });
         return liste;
@@ -337,6 +364,7 @@
         marquerVisite: marquerVisite,
         enregistrerQuiz: enregistrerQuiz,
         enregistrerQuestion: enregistrerQuestion,
+        marquerLecture: marquerLecture,
         record: record,
         pourPage: pourPage,
         resume: resume,

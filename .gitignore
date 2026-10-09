@@ -22,3 +22,7 @@ Thumbs.db
 *.swp
 *.swo
 travail.bundle
+
+# Caches Python (scripts des skills)
+__pycache__/
+*.pyc

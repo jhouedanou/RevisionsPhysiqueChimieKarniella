@@ -60,6 +60,14 @@
     var boutonTheme = null;
     var boutonTexte = null;
 
+    /** Le fond du thème en mode sombre (thèmes de la boutique compris), le rose sinon. */
+    function couleurBarre(sombre) {
+        if (!sombre) { return '#B9366C'; }
+        var fond = '';
+        try { fond = window.getComputedStyle(html).getPropertyValue('--fond').trim(); } catch (err) { /* vieux navigateur */ }
+        return fond || '#1B1418';
+    }
+
     function appliquer() {
         var sombre = estSombre();
         html.setAttribute('data-theme', sombre ? 'dark' : 'light');
@@ -67,9 +75,15 @@
         if (skin) { html.setAttribute('data-skin', skin.valeur); } else { html.removeAttribute('data-skin'); }
         html.setAttribute('data-texte', lire(CLE_TEXTE) === 'grand' ? 'grand' : 'normal');
 
-        // La barre du navigateur, sur téléphone, suit le thème.
+        // La barre du navigateur, sur téléphone, suit le thème. Les pages de 5e/
+        // n'ont pas la balise : on la crée, plutôt que de l'écrire dans 24 pages.
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) { meta.setAttribute('content', sombre ? '#1B1418' : '#B9366C'); }
+        if (!meta && document.head) {
+            meta = document.createElement('meta');
+            meta.setAttribute('name', 'theme-color');
+            document.head.appendChild(meta);
+        }
+        if (meta) { meta.setAttribute('content', couleurBarre(sombre)); }
 
         if (boutonTheme) {
             var I = window.KarniellaIcones;

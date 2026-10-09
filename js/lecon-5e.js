@@ -9,7 +9,11 @@
  *   - une barre de lecture sous les onglets, qui restent en haut de l'écran ;
  *   - des boutons « Précédent / Suivant » au bas de chaque onglet ;
  *   - les cartes à retourner 🃏, tirées des notions de la leçon ;
- *   - les liens directs vers une notion, posés par la recherche.
+ *   - les liens directs vers une notion, posés par la recherche ;
+ *   - le suivi de lecture : la mission 🚀 n'apparaît qu'une fois la leçon lue.
+ *
+ * L'onglet ouvert est écrit dans l'adresse (#tab3) : si le téléphone recharge
+ * la page, Karniella revient où elle en était.
  */
 (function () {
     'use strict';
@@ -29,9 +33,101 @@
             if (boutons[j].classList.contains('active') && !estActif) { marquerVu(boutons[j]); }
             boutons[j].classList.toggle('active', estActif);
             boutons[j].setAttribute('aria-selected', estActif ? 'true' : 'false');
+            // Un seul onglet dans l'ordre de tabulation : les flèches font le reste.
+            if (bouton) { boutons[j].setAttribute('tabindex', estActif ? '0' : '-1'); }
             if (estActif) { rang = j + 1; }
         }
         majTitreParcours(rang, boutons.length);
+        montrerOngletActif(bouton);
+        ecrireAncre(id);
+        etapeOuverte(id);
+    }
+
+    function mouvementDoux() {
+        return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    /**
+     * Sur téléphone, la rangée d'onglets est bien plus large que l'écran :
+     * on la fait défiler pour garder l'onglet actif au milieu. Sinon, après
+     * quelques « Suivant », l'onglet ouvert n'était plus visible.
+     */
+    function montrerOngletActif(bouton) {
+        var groupe = bouton && bouton.parentNode;
+        if (!groupe || groupe.scrollWidth <= groupe.clientWidth + 1) { return; }
+        var g = groupe.getBoundingClientRect();
+        var b = bouton.getBoundingClientRect();
+        var decalage = b.left - g.left - (g.width - b.width) / 2;
+        if (Math.abs(decalage) < 2) { return; }
+        if (typeof groupe.scrollBy === 'function') {
+            groupe.scrollBy({ left: decalage, behavior: mouvementDoux() ? 'smooth' : 'auto' });
+        } else {
+            groupe.scrollLeft += decalage;
+        }
+    }
+
+    /** #tab3 dans l'adresse, sans ajouter d'entrée à l'historique. */
+    function ecrireAncre(id) {
+        if (!id || !window.history || typeof window.history.replaceState !== 'function') { return; }
+        if (window.location.hash.slice(1) === id) { return; }
+        try { window.history.replaceState(null, '', '#' + id); } catch (err) { /* file:// */ }
+    }
+
+    /**
+     * Un dégradé sur le bord de la rangée quand il reste des onglets cachés de
+     * ce côté (css : .tabs.suite-droite / .suite-gauche). Sans lui, rien ne
+     * disait que le Quiz, les cartes et la mission étaient plus loin à droite.
+     */
+    function majBordsOnglets() {
+        var groupe = document.querySelector('.tabs');
+        if (!groupe) { return; }
+        var reste = groupe.scrollWidth - groupe.clientWidth - groupe.scrollLeft;
+        groupe.classList.toggle('suite-droite', reste > 4);
+        groupe.classList.toggle('suite-gauche', groupe.scrollLeft > 4);
+    }
+
+    function brancherBordsOnglets(groupe) {
+        if (!groupe) { return; }
+        var prevu = false;
+        function planifier() {
+            if (prevu) { return; }
+            prevu = true;
+            window.requestAnimationFrame(function () { prevu = false; majBordsOnglets(); });
+        }
+        groupe.addEventListener('scroll', planifier, { passive: true });
+        window.addEventListener('resize', planifier);
+        window.addEventListener('load', function () {
+            montrerOngletActif(groupe.querySelector('.tab-button.active'));
+            planifier();
+        });
+        planifier();
+    }
+
+    /**
+     * Flèches du clavier dans la rangée d'onglets (gauche / droite ; haut / bas
+     * quand les onglets sont en colonne, sur grand écran), Début et Fin.
+     */
+    function brancherClavier(groupe) {
+        if (!groupe) { return; }
+        groupe.addEventListener('keydown', function (e) {
+            var cible = e.target;
+            if (!cible.classList || !cible.classList.contains('tab-button')) { return; }
+            var boutons = Array.prototype.slice.call(groupe.querySelectorAll('.tab-button[data-onglet]'));
+            var i = boutons.indexOf(cible);
+            if (i === -1) { return; }
+            var colonne = window.getComputedStyle(groupe).flexDirection === 'column';
+            var suivant = colonne ? 'ArrowDown' : 'ArrowRight';
+            var precedent = colonne ? 'ArrowUp' : 'ArrowLeft';
+            var j = null;
+            if (e.key === suivant) { j = (i + 1) % boutons.length; }
+            else if (e.key === precedent) { j = (i - 1 + boutons.length) % boutons.length; }
+            else if (e.key === 'Home') { j = 0; }
+            else if (e.key === 'End') { j = boutons.length - 1; }
+            if (j === null) { return; }
+            e.preventDefault();
+            ouvrirOnglet(boutons[j].getAttribute('data-onglet'), boutons[j]);
+            boutons[j].focus();
+        });
     }
 
     /* ============================================================
@@ -121,10 +217,20 @@
 
         for (var i = 0; i < boutons.length; i++) {
             (function (bouton) {
+                var id = bouton.getAttribute('data-onglet');
+                var actif = bouton.classList.contains('active');
                 bouton.setAttribute('role', 'tab');
-                bouton.setAttribute('aria-controls', bouton.getAttribute('data-onglet'));
+                bouton.setAttribute('aria-controls', id);
+                bouton.setAttribute('aria-selected', actif ? 'true' : 'false');
+                bouton.setAttribute('tabindex', actif ? '0' : '-1');
+                if (!bouton.id) { bouton.id = 'onglet-' + id; }
+                var panneau = document.getElementById(id);
+                if (panneau) {
+                    panneau.setAttribute('role', 'tabpanel');
+                    panneau.setAttribute('aria-labelledby', bouton.id);
+                }
                 bouton.addEventListener('click', function () {
-                    ouvrirOnglet(bouton.getAttribute('data-onglet'), bouton);
+                    ouvrirOnglet(id, bouton);
                 });
             })(boutons[i]);
         }
@@ -151,9 +257,12 @@
         ajouterMission(groupe);
         ajouterSuiteParcours(groupe, boutons);
         majTitreParcours(rangActif, boutons.length);
+        brancherClavier(groupe);
+        suivreLecture(boutons);
 
         suivreAncre();
         window.addEventListener('hashchange', suivreAncre);
+        brancherBordsOnglets(groupe);
     }
 
     /* ============================================================
@@ -239,7 +348,111 @@
         a.href = 'mission.html?id=' + encodeURIComponent(slug);
         a.textContent = '🚀 Mission 3 min';
         a.setAttribute('title', 'La version express : une histoire, trois cartes, un quiz');
+        // Cachée tant que la leçon n'est pas lue (voir « Suivi de lecture »).
+        a.hidden = !lecture.lue;
+        lecture.mission = a;
         groupe.appendChild(a);
+        majBordsOnglets();
+    }
+
+    /* ============================================================
+       Suivi de lecture — débloque la mission 🚀
+       ============================================================
+       Une étape est lue quand Karniella a vu le BAS de l'onglet (un repère
+       invisible y est posé). La leçon est lue quand toutes les étapes avant le
+       quiz le sont : alors seulement la mission apparaît. Ouvrir les onglets un
+       à un sans les lire ne suffit pas.
+
+       C'est js/progression.js qui s'en souvient (chargé par le chat, donc un
+       peu après cette page). En attendant, ou si le navigateur refuse le
+       stockage, on compte en mémoire : la mission se débloque quand même
+       pendant la visite. */
+
+    var lecture = { slug: null, etapes: [], lues: {}, lue: false, enAttente: [], mission: null };
+
+    /** L'onglet du quiz n'est pas à « lire » : c'est l'épreuve, pas la leçon. */
+    function estOngletQuiz(bouton) {
+        var id = bouton.getAttribute('data-onglet');
+        var contenu = id && document.getElementById(id);
+        if (/quiz|teste/i.test(bouton.textContent)) { return true; }
+        return !!(contenu && contenu.querySelector('[id^="quiz"]'));
+    }
+
+    function suivreLecture(boutons) {
+        lecture.slug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+        for (var i = 0; i < boutons.length; i++) {
+            if (!estOngletQuiz(boutons[i])) { lecture.etapes.push(boutons[i].getAttribute('data-onglet')); }
+        }
+        // Rien à lire avant le quiz : la mission est ouverte d'emblée.
+        if (!lecture.etapes.length) { lecture.lue = true; majMission(false); return; }
+
+        // Ce que progression.js a déjà retenu des visites précédentes.
+        var essais = 40;
+        (function attendre() {
+            var suivi = window.KarniellaProgression;
+            if (suivi) {
+                var deja = suivi.pourPage(lecture.slug);
+                if (deja) {
+                    (deja.etapesLues || []).forEach(function (e) { lecture.lues[e] = true; });
+                    if (deja.lue) { lecture.lue = true; }
+                }
+                var file = lecture.enAttente;
+                lecture.enAttente = [];
+                file.forEach(function (e) { noterEtape(e); });
+                majMission(false);
+                return;
+            }
+            if (essais-- > 0) { window.setTimeout(attendre, 250); }
+        })();
+
+        if (!('IntersectionObserver' in window)) { return; }   // repli : etapeOuverte()
+        var observateur = new window.IntersectionObserver(function (entrees) {
+            entrees.forEach(function (entree) {
+                if (entree.isIntersecting) { noterEtape(entree.target.getAttribute('data-etape')); }
+            });
+        });
+        lecture.etapes.forEach(function (id) {
+            var contenu = document.getElementById(id);
+            if (!contenu) { return; }
+            var repere = document.createElement('div');
+            repere.className = 'fin-etape';
+            repere.setAttribute('aria-hidden', 'true');
+            repere.setAttribute('data-etape', id);
+            contenu.appendChild(repere);
+            observateur.observe(repere);
+        });
+    }
+
+    /** Sans IntersectionObserver (vieux navigateur), ouvrir l'onglet compte. */
+    function etapeOuverte(id) {
+        if (lecture.slug && !('IntersectionObserver' in window)) { noterEtape(id); }
+    }
+
+    function noterEtape(id) {
+        if (!id || lecture.etapes.indexOf(id) === -1) { return; }
+        var nouvelle = !lecture.lues[id];
+        lecture.lues[id] = true;
+        var suivi = window.KarniellaProgression;
+        if (suivi) {
+            if (suivi.marquerLecture(lecture.slug, id, lecture.etapes)) { lecture.lue = true; }
+        } else if (nouvelle) {
+            lecture.enAttente.push(id);
+        }
+        if (!lecture.lue && lecture.etapes.every(function (e) { return lecture.lues[e]; })) {
+            lecture.lue = true;
+        }
+        majMission(true);
+    }
+
+    function majMission(fete) {
+        var a = lecture.mission;
+        if (!a || !lecture.lue || !a.hidden) { return; }
+        a.hidden = false;
+        if (fete) {
+            a.classList.add('debloquee');
+            a.setAttribute('title', 'Mission débloquée : tu as lu toute la leçon !');
+        }
+        majBordsOnglets();
     }
 
     /* ============================================================
@@ -285,6 +498,7 @@
                 b.textContent = '🃏 Réviser en cartes';
                 b.addEventListener('click', function () { ouvrirCartes(cartes, b); });
                 groupe.insertBefore(b, groupe.querySelector('.barre-lecture'));
+                majBordsOnglets();
             });
     }
 

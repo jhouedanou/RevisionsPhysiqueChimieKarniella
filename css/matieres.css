@@ -11,18 +11,18 @@
     --matiere-pale: #EAF1F5;
 }
 html[data-theme="dark"] [data-matiere="anglais"] {
-    --matiere-texte: #6393B6;
+    --matiere-texte: #78A1BF;
     --matiere-pale: #2B3141;
 }
 
 [data-matiere="physique-chimie"] {
     --matiere: #9A6A12;
     --matiere-fort: #9A6A12;
-    --matiere-texte: #9A6A12;
+    --matiere-texte: #926511;
     --matiere-pale: #F5F0E7;
 }
 html[data-theme="dark"] [data-matiere="physique-chimie"] {
-    --matiere-texte: #AE8841;
+    --matiere-texte: #B89759;
     --matiere-pale: #433022;
 }
 
@@ -33,18 +33,18 @@ html[data-theme="dark"] [data-matiere="physique-chimie"] {
     --matiere-pale: #F5EAEF;
 }
 html[data-theme="dark"] [data-matiere="mathematiques"] {
-    --matiere-texte: #BF7895;
+    --matiere-texte: #C4829D;
     --matiere-pale: #432333;
 }
 
 [data-matiere="svt"] {
     --matiere: #3C9A57;
     --matiere-fort: #33834A;
-    --matiere-texte: #33834A;
+    --matiere-texte: #307B46;
     --matiere-pale: #ECF5EE;
 }
 html[data-theme="dark"] [data-matiere="svt"] {
-    --matiere-texte: #469F5F;
+    --matiere-texte: #6DB381;
     --matiere-pale: #2E3B32;
 }
 
@@ -55,7 +55,7 @@ html[data-theme="dark"] [data-matiere="svt"] {
     --matiere-pale: #F2ECF5;
 }
 html[data-theme="dark"] [data-matiere="francais"] {
-    --matiere-texte: #A37BB6;
+    --matiere-texte: #B08EC1;
     --matiere-pale: #3C2840;
 }
 
@@ -66,7 +66,7 @@ html[data-theme="dark"] [data-matiere="francais"] {
     --matiere-pale: #EAF1EC;
 }
 html[data-theme="dark"] [data-matiere="histoire-geo"] {
-    --matiere-texte: #619971;
+    --matiere-texte: #76A784;
     --matiere-pale: #2A332D;
 }
 
@@ -77,7 +77,7 @@ html[data-theme="dark"] [data-matiere="histoire-geo"] {
     --matiere-pale: #F9EBEA;
 }
 html[data-theme="dark"] [data-matiere="edhc"] {
-    --matiere-texte: #D3746B;
+    --matiere-texte: #D98880;
     --matiere-pale: #4B2628;
 }
 
@@ -88,6 +88,6 @@ html[data-theme="dark"] [data-matiere="edhc"] {
     --matiere-pale: #EAF1F5;
 }
 html[data-theme="dark"] [data-matiere="tice"] {
-    --matiere-texte: #6393B6;
+    --matiere-texte: #78A1BF;
     --matiere-pale: #2B3141;
 }

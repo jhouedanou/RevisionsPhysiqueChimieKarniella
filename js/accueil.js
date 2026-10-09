@@ -64,6 +64,13 @@
         return '🎯 ' + suivi.meilleurScore + '%';
     }
 
+    /** La leçon a-t-elle été lue jusqu'au bout ? (js/lecon-5e.js, suivi de lecture) */
+    function leconLue(id) {
+        if (!window.KarniellaProgression) { return false; }
+        var suivi = window.KarniellaProgression.pourPage(id);
+        return !!(suivi && suivi.lue);
+    }
+
     /* ============================================================
        Rendu
        ============================================================ */
@@ -93,14 +100,6 @@
         sous.textContent = prete ? (lecon.sousTitre || '') : 'à venir';
         if (sous.textContent) { carte.appendChild(sous); }
 
-        if (prete && lecon.mission) {
-            var mission = document.createElement('span');
-            mission.className = 'mission-lecon';
-            mission.textContent = '🚀 Mission 3 min';
-            mission.setAttribute('title', 'Une version express : une histoire, trois cartes, un quiz');
-            carte.appendChild(mission);
-        }
-
         var score = prete ? scoreLecon(lecon.id) : null;
         if (score) {
             var badge = document.createElement('span');
@@ -110,16 +109,21 @@
             carte.appendChild(badge);
         }
 
-        if (prete && lecon.mission) {
-            carte.addEventListener('click', function (e) {
-                if (e.target.closest && e.target.closest('.mission-lecon')) {
-                    e.preventDefault();
-                    window.location.href = '5e/mission.html?id=' + encodeURIComponent(lecon.id);
-                }
-            });
-        }
-
         li.appendChild(carte);
+
+        // La mission : un vrai lien, À CÔTÉ de celui de la carte (un lien dans
+        // un lien n'est pas atteignable au clavier, et un doigt qui tombait à
+        // côté ouvrait la leçon). Seulement une fois la leçon lue jusqu'au bout.
+        if (prete && lecon.mission && leconLue(lecon.id)) {
+            var mission = document.createElement('a');
+            mission.className = 'mission-lecon';
+            mission.href = '5e/mission.html?id=' + encodeURIComponent(lecon.id);
+            mission.textContent = '🚀 Mission 3 min';
+            mission.setAttribute('aria-label', 'Mission 3 min : ' + lecon.titre);
+            mission.setAttribute('title', 'Une version express : une histoire, trois cartes, un quiz');
+            carte.classList.add('avec-mission');
+            li.appendChild(mission);
+        }
         li.dataset.recherche = normaliser(
             lecon.titre + ' ' + (lecon.sousTitre || '') + ' ' +
             (lecon.description || '') + ' ' + notionsDe(lecon.id)

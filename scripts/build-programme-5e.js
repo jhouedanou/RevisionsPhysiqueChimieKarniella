@@ -185,16 +185,23 @@ function ecrireCouleursMatieres(matieres) {
     for (const m of matieres) {
         if (!m.couleur) { continue; }
         const fort = lisible(m.couleur, '#FFFFFF', '#000000');
+        // Le texte de matière est vérifié sur le fond PÂLE, pas sur la surface :
+        // c'est là qu'il est le moins lisible (onglet actif, encadrés). Vérifié
+        // sur la surface seule, il tombait entre 3,6 et 4,2:1 sur l'onglet actif.
+        // Le pâle étant entre la couleur et la surface, ce qui passe sur lui
+        // passe aussi sur la surface.
+        const paleClair = melanger(m.couleur, SURFACE_CLAIRE, 0.9);
+        const paleSombre = melanger(m.couleur, SURFACE_SOMBRE, 0.78);
         lignes.push(
             `[data-matiere="${m.id}"] {`,
             `    --matiere: ${m.couleur};`,
             `    --matiere-fort: ${fort};`,
-            `    --matiere-texte: ${lisible(m.couleur, SURFACE_CLAIRE, '#000000')};`,
-            `    --matiere-pale: ${melanger(m.couleur, SURFACE_CLAIRE, 0.9)};`,
+            `    --matiere-texte: ${lisible(m.couleur, paleClair, '#000000')};`,
+            `    --matiere-pale: ${paleClair};`,
             '}',
             `html[data-theme="dark"] [data-matiere="${m.id}"] {`,
-            `    --matiere-texte: ${lisible(m.couleur, SURFACE_SOMBRE, '#FFFFFF')};`,
-            `    --matiere-pale: ${melanger(m.couleur, SURFACE_SOMBRE, 0.78)};`,
+            `    --matiere-texte: ${lisible(m.couleur, paleSombre, '#FFFFFF')};`,
+            `    --matiere-pale: ${paleSombre};`,
             '}',
             ''
         );

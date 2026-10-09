@@ -36,8 +36,15 @@ Le serveur démarrera sur `http://localhost:3000`
 - **Interface admin** : http://localhost:3000/admin/login.html
 
 ### Identifiants Admin
-- **Username** : `karniella`
-- **Password** : `houedanou`
+
+Ils ne sont **pas** dans le dépôt (il est public) : ils viennent des variables
+d'environnement `ADMIN_USERNAME` (par défaut `karniella`) et `ADMIN_PASSWORD`.
+Sans `ADMIN_PASSWORD`, la connexion admin est refusée.
+
+- En local : `ADMIN_PASSWORD=mon-mot-de-passe npm start`
+- Sur Vercel : *Settings → Environment Variables*, puis redéployer.
+
+Voir `.env.example` (avec `SESSION_SECRET`).
 
 ## 📁 Structure du Projet
 
@@ -376,9 +383,12 @@ puis écrit :
 **Ces fichiers sont générés — ne pas les éditer à la main.** Ils sont committés
 car Vercel sert le site en statique, sans étape de build.
 
-⚠️ Après régénération, **incrémenter `CACHE_NAME` dans `sw.js`** (`karniella-cache-v13`
-→ `v14`, …). Sans ça, les utilisateurs ayant installé la PWA gardent l'ancienne
-version : les fichiers `/js/` sont servis en cache-first.
+Après régénération, incrémenter `CACHE_NAME` dans `sw.js` (`karniella-cache-v13`
+→ `v14`, …) : le précache hors-ligne est alors refait. Ce n'est plus ce qui
+fait apparaître les nouvelles leçons : `sw.js` sert pages, scripts, styles et
+JSON **réseau d'abord** (le cache ne sert que hors-ligne, ou si le réseau met
+plus de 4 s), et seulement images et polices en cache d'abord. Un simple
+rechargement suffit, plus besoin de rechargement forcé.
 
 ### Activer le repli IA
 
@@ -520,6 +530,12 @@ une carte à la fois : l'histoire, une micro-leçon par carte, le quiz en étape
 Le format JSON et le prompt pour en générer sont dans `docs/prompt-missions.md`.
 Pour afficher le bouton « 🚀 Mission 3 min » sur une leçon : `"mission": true`
 dans `data/programme-5e.json`, puis `npm run build:programme`.
+
+Le bouton n'apparaît (dans la leçon comme sur l'accueil) qu'une fois la leçon
+**lue** : Karniella doit avoir vu le **bas** de chaque onglet avant le quiz.
+`js/lecon-5e.js` pose un repère invisible au bas de chaque étape et
+`js/progression.js` retient les étapes lues (`marquerLecture`, `pourPage(slug).lue`).
+Ouvrir les onglets sans les lire ne suffit pas.
 
 ### 📖 Dans les leçons
 

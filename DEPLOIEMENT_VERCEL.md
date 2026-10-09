@@ -100,7 +100,9 @@ git push
 
 ⚠️ **Important** : Pour un déploiement en production, il est recommandé de :
 
-1. **Changer les identifiants admin** dans `routes/auth.js`
+1. **Définir les identifiants admin** dans les variables d'environnement
+   ci-dessous : `routes/auth.js` les lit, et **refuse toute connexion admin
+   tant que `ADMIN_PASSWORD` n'est pas défini**
 2. **Utiliser des variables d'environnement** pour les secrets
 3. **Activer HTTPS** (automatique sur Vercel)
 

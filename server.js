@@ -6,13 +6,18 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Clé de signature des cookies de session : variable d'environnement. Sans
+// elle, une clé au hasard à chaque démarrage (les sessions admin se perdent
+// au redémarrage, rien de plus).
+const SESSION_SECRET = process.env.SESSION_SECRET || require('crypto').randomBytes(32).toString('hex');
+
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Session configuration
 app.use(session({
-    secret: 'karniella-secret-key-2024',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -62,7 +67,8 @@ app.listen(PORT, () => {
     console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
     console.log(`📚 Site public: http://localhost:${PORT}`);
     console.log(`🔐 Admin: http://localhost:${PORT}/admin/login.html`);
-    console.log(`\n👤 Identifiants admin:`);
-    console.log(`   Username: karniella`);
-    console.log(`   Password: houedanou`);
+    if (!process.env.ADMIN_PASSWORD) {
+        console.log(`\n⚠️  ADMIN_PASSWORD non défini : la connexion admin est désactivée.`);
+        console.log(`   Lancer avec : ADMIN_PASSWORD=… npm start`);
+    }
 });
