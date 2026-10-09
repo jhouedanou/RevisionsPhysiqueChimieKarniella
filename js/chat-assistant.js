@@ -966,16 +966,16 @@
         'box-shadow:0 12px 30px rgba(73,30,50,.24);transition:transform .25s ease,box-shadow .25s ease;',
         'display:flex;align-items:center;justify-content:center;font-family:inherit;padding:0}',
         '#kc-bulle:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(73,30,50,.3)}',
-        '#kc-bulle:focus-visible{outline:3px solid #8A2BE2;outline-offset:3px}',
+        '#kc-bulle:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:3px}',
 
         '#kc-fenetre{position:fixed;right:20px;bottom:96px;z-index:99999;width:370px;max-width:calc(100vw - 32px);',
         'height:min(560px,calc(100vh - 130px));display:none;flex-direction:column;overflow:hidden;',
-        'background:#FFF9FB;border:1px solid rgba(72,40,55,.14);border-radius:22px;',
+        'background:var(--fond,#FFF9FB);border:1px solid var(--bord,rgba(72,40,55,.14));border-radius:22px;',
         'box-shadow:0 24px 70px rgba(73,30,50,.24);',
-        "font-family:'Aptos','Avenir Next','Nunito Sans','Segoe UI',sans-serif;font-size:14px;color:#49353F}",
+        "font-family:'Aptos','Avenir Next','Nunito Sans','Segoe UI',sans-serif;font-size:14px;color:var(--encre,#49353F)}",
         '#kc-fenetre.kc-ouvert{display:flex}',
 
-        '#kc-entete{background:linear-gradient(125deg,#35212D 0%,#9D2F5C 100%);color:#fff;padding:15px 16px;',
+        '#kc-entete{background:linear-gradient(125deg,var(--entete-fonce,#35212D) 0%,#9D2F5C 100%);color:#fff;padding:15px 16px;',
         'display:flex;align-items:center;gap:10px;border-bottom:0;flex:0 0 auto}',
         '#kc-entete .kc-titre{font-weight:800;font-size:15px;line-height:1.25;text-shadow:none}',
         '#kc-entete .kc-sous{font-size:11px;opacity:.92}',
@@ -986,58 +986,58 @@
 
         '#kc-messages{flex:1 1 auto;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}',
         '.kc-msg{max-width:88%;padding:10px 13px;border-radius:14px;line-height:1.5;word-wrap:break-word;overflow-wrap:break-word}',
-        '.kc-bot{align-self:flex-start;background:#fff;border:1px solid rgba(72,40,55,.12);border-left:4px solid #C83F76;',
-        'border-radius:14px 14px 14px 4px;color:#49353F}',
-        '.kc-user{align-self:flex-end;background:#9D2F5C;color:#fff;',
-        'border:1px solid #9D2F5C;border-radius:14px 14px 4px 14px;text-shadow:none}',
-        '.kc-msg a{color:#9D2F5C;font-weight:700}',
-        '.kc-msg a:hover{color:#8B5A2B}',
-        '.kc-user a{color:#FFE5F0}',
+        '.kc-bot{align-self:flex-start;background:var(--surface,#fff);border:1px solid var(--bord,rgba(72,40,55,.12));border-left:4px solid var(--rose-clair,#C83F76);',
+        'border-radius:14px 14px 14px 4px;color:var(--encre,#49353F)}',
+        '.kc-user{align-self:flex-end;background:var(--rose,#9D2F5C);color:var(--fond,#fff);',
+        'border:1px solid var(--rose,#9D2F5C);border-radius:14px 14px 4px 14px;text-shadow:none}',
+        '.kc-msg a{color:var(--rose,#9D2F5C);font-weight:700}',
+        '.kc-msg a:hover{text-decoration:none}',
+        '.kc-user a{color:inherit;text-decoration:underline}',
 
         '#kc-suggestions{flex:0 0 auto;padding:9px 12px;display:flex;flex-wrap:wrap;gap:6px;',
-        'background:#F9EAF0;border-top:1px solid rgba(72,40,55,.1)}',
-        '.kc-sug{background:#fff;border:1px solid rgba(157,47,92,.22);color:#9D2F5C;border-radius:10px;padding:6px 10px;',
-        'font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s ease}',
-        '.kc-sug:hover{background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
-        '.kc-sug:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        'background:var(--rose-tres-pale,#F9EAF0);border-top:1px solid var(--bord,rgba(72,40,55,.1))}',
+        '.kc-sug{background:var(--surface,#fff);border:1px solid var(--bord,rgba(157,47,92,.22));color:var(--rose,#9D2F5C);border-radius:10px;padding:6px 10px;',
+        'font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:background-color .2s ease,color .2s ease,border-color .2s ease}',
+        '.kc-sug:hover{background:var(--rose,#9D2F5C);color:var(--fond,#fff);border-color:var(--rose,#9D2F5C)}',
+        '.kc-sug:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}',
 
         '.kc-source{display:block;margin-top:6px;font-size:11px;opacity:.75;font-style:italic}',
         '.kc-plus-simple{display:inline-block;margin-top:8px;background:none;border:0;padding:0;',
-        'color:#9D2F5C;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;text-decoration:underline}',
-        '.kc-plus-simple:hover{color:#7F2E53}',
-        '.kc-plus-simple:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        'color:var(--rose,#9D2F5C);font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;text-decoration:underline}',
+        '.kc-plus-simple:hover{text-decoration:none}',
+        '.kc-plus-simple:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}',
         '.kc-attente{opacity:.7;font-style:italic}',
 
-        '#kc-actions{flex:0 0 auto;display:flex;flex-wrap:wrap;gap:6px;padding:9px 12px 0;background:#F9EAF0}',
-        '.kc-action{flex:1 1 45%;background:#fff;border:1px solid rgba(157,47,92,.3);color:#9D2F5C;',
+        '#kc-actions{flex:0 0 auto;display:flex;flex-wrap:wrap;gap:6px;padding:9px 12px 0;background:var(--rose-tres-pale,#F9EAF0)}',
+        '.kc-action{flex:1 1 45%;background:var(--surface,#fff);border:1px solid var(--bord,rgba(157,47,92,.3));color:var(--rose,#9D2F5C);',
         'border-radius:10px;padding:8px 6px;font-size:11.5px;font-weight:700;cursor:pointer;',
-        'font-family:inherit;line-height:1.3;transition:all .2s ease}',
-        '.kc-action:hover{background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
-        '.kc-action:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        'font-family:inherit;line-height:1.3;transition:background-color .2s ease,color .2s ease,border-color .2s ease}',
+        '.kc-action:hover{background:var(--rose,#9D2F5C);color:var(--fond,#fff);border-color:var(--rose,#9D2F5C)}',
+        '.kc-action:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}',
         '#kc-suggestions:empty{display:none}',
 
         '.kc-options{display:flex;flex-direction:column;gap:5px;margin-top:9px}',
-        '.kc-option{width:100%;text-align:left;background:#FFF9FB;border:1px solid rgba(157,47,92,.28);',
-        'color:#49353F;border-radius:9px;padding:8px 11px;font-size:12.5px;font-family:inherit;',
-        'cursor:pointer;line-height:1.35;transition:all .15s ease}',
-        '.kc-option:hover:not(:disabled){background:#9D2F5C;color:#fff;border-color:#9D2F5C}',
-        '.kc-option:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        '.kc-option{width:100%;text-align:left;background:var(--fond,#FFF9FB);border:1px solid var(--bord,rgba(157,47,92,.28));',
+        'color:var(--encre,#49353F);border-radius:9px;padding:8px 11px;font-size:12.5px;font-family:inherit;',
+        'cursor:pointer;line-height:1.35;transition:background-color .15s ease,color .15s ease,border-color .15s ease}',
+        '.kc-option:hover:not(:disabled){background:var(--rose,#9D2F5C);color:var(--fond,#fff);border-color:var(--rose,#9D2F5C)}',
+        '.kc-option:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}',
         '.kc-option:disabled{cursor:default;opacity:.85}',
-        '.kc-option.kc-juste{background:#E4F5E8;border-color:#3C9A57;color:#1F5C33;font-weight:700;opacity:1}',
-        '.kc-option.kc-faux{background:#FBE4E9;border-color:#C0392B;color:#8B2318;opacity:1}',
+        '.kc-option.kc-juste{background:var(--succes-fond,#E4F5E8);border-color:var(--succes-bord,#3C9A57);color:var(--succes-texte,#1F5C33);font-weight:700;opacity:1}',
+        '.kc-option.kc-faux{background:var(--erreur-fond,#FBE4E9);border-color:var(--erreur-bord,#C0392B);color:var(--erreur-texte,#8B2318);opacity:1}',
         '.kc-verdict{display:block;margin-top:9px;font-weight:700}',
 
-        '.kc-jauge{display:block;height:7px;border-radius:4px;background:rgba(157,47,92,.16);margin:5px 0 9px;overflow:hidden}',
-        '.kc-jauge span{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#C83F76,#9D2F5C)}',
+        '.kc-jauge{display:block;height:7px;border-radius:4px;background:var(--rose-pale,rgba(157,47,92,.16));margin:5px 0 9px;overflow:hidden}',
+        '.kc-jauge span{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--rose-clair,#C83F76),var(--rose,#9D2F5C))}',
 
-        '#kc-formulaire{flex:0 0 auto;display:flex;gap:8px;padding:11px 12px;background:#fff;border-top:1px solid rgba(72,40,55,.1)}',
-        '#kc-saisie{flex:1 1 auto;min-width:0;border:1px solid rgba(72,40,55,.18);border-radius:12px;padding:10px 13px;',
-        'font-family:inherit;font-size:14px;color:#49353F;background:#FFF9FB}',
-        '#kc-saisie:focus{outline:none;border-color:#C83F76;box-shadow:0 0 0 3px rgba(200,63,118,.14)}',
-        '#kc-envoyer{flex:0 0 auto;background:#9D2F5C;color:#fff;',
-        'border:1px solid #9D2F5C;border-radius:12px;padding:0 15px;font-size:17px;cursor:pointer;font-family:inherit}',
-        '#kc-envoyer:hover{background:#7F2E53}',
-        '#kc-envoyer:focus-visible{outline:3px solid #8A2BE2;outline-offset:2px}',
+        '#kc-formulaire{flex:0 0 auto;display:flex;gap:8px;padding:11px 12px;background:var(--surface,#fff);border-top:1px solid var(--bord,rgba(72,40,55,.1))}',
+        '#kc-saisie{flex:1 1 auto;min-width:0;border:1px solid var(--bord,rgba(72,40,55,.18));border-radius:12px;padding:10px 13px;',
+        'font-family:inherit;font-size:16px;color:var(--encre,#49353F);background:var(--fond,#FFF9FB)}',
+        '#kc-saisie:focus{outline:3px solid var(--focus,#8A2BE2);outline-offset:1px;border-color:var(--rose-clair,#C83F76)}',
+        '#kc-envoyer{flex:0 0 auto;background:var(--rose,#9D2F5C);color:var(--fond,#fff);',
+        'border:1px solid var(--rose,#9D2F5C);border-radius:12px;padding:0 15px;font-size:17px;cursor:pointer;font-family:inherit}',
+        '#kc-envoyer:hover{filter:brightness(.9)}',
+        '#kc-envoyer:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:2px}',
 
         // Plein écran sur mobile
         '@media (max-width:768px){',
@@ -1049,31 +1049,20 @@
         // Bulle d'invitation, les premières fois : sans elle, rien ne dit que le
         // bouton 🐴 sait répondre aux questions.
         '#kc-invite{position:fixed;right:20px;bottom:90px;z-index:99998;max-width:230px;padding:11px 15px;',
-        'border-radius:16px 16px 4px 16px;background:#fff;color:#49353F;border:1px solid rgba(72,40,55,.14);',
+        'border-radius:16px 16px 4px 16px;background:var(--surface,#fff);color:var(--encre,#49353F);border:1px solid var(--bord,rgba(72,40,55,.14));',
         "box-shadow:0 12px 30px rgba(73,30,50,.2);font-family:'Aptos','Avenir Next','Nunito Sans','Segoe UI',sans-serif;",
         'font-size:14px;line-height:1.35;text-align:left;cursor:pointer;animation:kc-invite .45s ease}',
-        '#kc-invite strong{display:block;color:#9D2F5C}',
-        '#kc-invite:focus-visible{outline:3px solid #8A2BE2;outline-offset:3px}',
+        '#kc-invite strong{display:block;color:var(--rose,#9D2F5C)}',
+        '#kc-invite:focus-visible{outline:3px solid var(--focus,#8A2BE2);outline-offset:3px}',
         '@keyframes kc-invite{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}',
 
         // Le bouton flottant ne doit pas cacher la fin de la page.
         'body::after{content:"";display:block;height:84px}',
 
-        // Mode sombre (js/theme.js pose data-theme sur <html>).
-        'html[data-theme="dark"] #kc-fenetre{background:#1F171C;color:#F3E6EC;border-color:rgba(255,220,235,.14)}',
-        'html[data-theme="dark"] .kc-bot{background:#2A2027;color:#F3E6EC;border-color:rgba(255,220,235,.12);border-left-color:#F28DB5}',
-        'html[data-theme="dark"] .kc-msg a{color:#F7A8C8}',
-        'html[data-theme="dark"] #kc-suggestions,html[data-theme="dark"] #kc-actions{background:#2A1F26;border-color:rgba(255,220,235,.1)}',
-        'html[data-theme="dark"] .kc-sug,html[data-theme="dark"] .kc-action{background:#32262E;color:#F7A8C8;border-color:rgba(247,168,200,.3)}',
-        'html[data-theme="dark"] .kc-sug:hover,html[data-theme="dark"] .kc-action:hover{background:#9D2F5C;color:#fff}',
-        'html[data-theme="dark"] .kc-option{background:#32262E;color:#F3E6EC;border-color:rgba(247,168,200,.3)}',
-        'html[data-theme="dark"] .kc-option.kc-juste{background:#1E3A27;border-color:#5CC27F;color:#A8E6BC}',
-        'html[data-theme="dark"] .kc-option.kc-faux{background:#45202A;border-color:#E0707F;color:#FFB4BF}',
-        'html[data-theme="dark"] .kc-plus-simple{color:#F7A8C8}',
-        'html[data-theme="dark"] #kc-formulaire{background:#241B21;border-color:rgba(255,220,235,.1)}',
-        'html[data-theme="dark"] #kc-saisie{background:#1B1418;color:#F3E6EC;border-color:rgba(255,220,235,.2)}',
-        'html[data-theme="dark"] #kc-invite{background:#2A2027;color:#F3E6EC;border-color:rgba(255,220,235,.14)}',
-        'html[data-theme="dark"] #kc-invite strong{color:#F7A8C8}',
+        // Plus de bloc « mode sombre » : tout passe par les variables de
+        // css/theme.css, qui changent en mode sombre ET avec les thèmes de la
+        // boutique. Les valeurs après la virgule ne servent que si theme.css
+        // manque.
 
         // Respecte la préférence "moins d'animations"
         '@media (prefers-reduced-motion:reduce){#kc-bulle{transition:none}#kc-bulle:hover{transform:none}#kc-invite{animation:none}}'
@@ -1721,6 +1710,18 @@
             elInvite.addEventListener('click', function () { retirerInvite(); ouvrir(); });
             document.body.appendChild(elInvite);
             window.setTimeout(retirerInvite, 9000);
+
+            // Elle est occupée ailleurs (elle touche la page, la fait défiler) :
+            // la bulle s'efface tout de suite au lieu de cacher, 9 secondes
+            // durant, le bas de l'écran — les réponses du quiz, par exemple.
+            function ailleurs(e) {
+                if (elInvite && e && e.target && elInvite.contains(e.target)) { return; }
+                retirerInvite();
+                document.removeEventListener('pointerdown', ailleurs, true);
+                window.removeEventListener('scroll', ailleurs, true);
+            }
+            document.addEventListener('pointerdown', ailleurs, true);
+            window.addEventListener('scroll', ailleurs, { capture: true, passive: true });
         }, 1500);
     }
 

@@ -254,16 +254,34 @@ class SectionQuiz {
 
     demarrer(fantome) {
         this.fantomeActif = Boolean(fantome);
-        this.debut = Date.now();
+        this.debut = null;
         if (this.fantomeActif) {
             this.elFantome.hidden = false;
             this.elFantome.innerHTML = `
                 <div class="quiz-fantome-ligne"><span>👻 Fantôme : ${this.record.correct}/${this.record.total} en ${formaterTemps(this.record.temps)}</span><span class="quiz-fantome-toi">Toi : 0/${this.questions.length}</span></div>
                 <div class="quiz-piste"><i class="quiz-piste-lui"></i><i class="quiz-piste-toi"></i><span class="quiz-piste-marque" aria-hidden="true">👻</span></div>`;
         }
-        this.tic = window.setInterval(() => this.majChrono(), 250);
-        this.majChrono();
         this.rendreQuestion();
+
+        // Le quiz est construit au chargement de la page, souvent dans un onglet
+        // encore caché : le chrono ne part que quand il arrive à l'écran. Sinon
+        // tout le temps de lecture de la leçon comptait dans le premier record
+        // du fantôme et dans la durée envoyée au suivi.
+        const partir = () => {
+            if (this.debut) { return; }
+            this.debut = Date.now();
+            this.tic = window.setInterval(() => this.majChrono(), 250);
+            this.majChrono();
+        };
+        if (!this.container || !('IntersectionObserver' in window)) { partir(); return; }
+        if (this.guetteur) { this.guetteur.disconnect(); }
+        this.guetteur = new window.IntersectionObserver((entrees) => {
+            if (entrees.some((e) => e.isIntersecting)) {
+                this.guetteur.disconnect();
+                partir();
+            }
+        });
+        this.guetteur.observe(this.container);
     }
 
     secondes() {

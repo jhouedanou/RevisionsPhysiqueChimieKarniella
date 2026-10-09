@@ -173,6 +173,23 @@ body.lecon-5e > * { grid-column: 1 / -1; }
 
 .tabs::-webkit-scrollbar { display: none; }
 
+/* Sur téléphone la rangée dépasse l'écran : un fondu sur le bord où il reste
+   des onglets cachés (classes posées par js/lecon-5e.js). */
+@media (max-width: 899px) {
+    .tabs.suite-droite {
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent);
+    }
+    .tabs.suite-gauche {
+        -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent);
+        mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent);
+    }
+    .tabs.suite-gauche.suite-droite {
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+        mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+    }
+}
+
 .parcours-titre {
     display: none;
     margin: 0 0 8px 4px;
@@ -312,6 +329,27 @@ main.content > .kv-reglage { margin: 0 0 14px; }
 
 .bouton-mission:hover { filter: brightness(1.08); }
 .bouton-mission:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Cachée tant que la leçon n'est pas lue : sans cette règle, display:
+   inline-flex l'emportait sur l'attribut hidden. */
+.bouton-mission[hidden] { display: none; }
+
+/* Débloquée pendant la lecture : elle arrive avec un petit saut. */
+.bouton-mission.debloquee { animation: mission-debloquee 0.6s ease-out 2; }
+
+@keyframes mission-debloquee {
+    0%   { transform: scale(0.6); }
+    60%  { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bouton-mission.debloquee { animation: none; }
+}
+
+/* Repère invisible au bas de chaque étape : quand il passe à l'écran, l'étape
+   est lue (js/lecon-5e.js, suivi de lecture). */
+.fin-etape { height: 1px; }
 
 @media (min-width: 900px) {
     .bouton-cartes { margin-top: 8px; }

@@ -70,6 +70,16 @@
     }
     chargerPolices();
 
+    /** Le service worker, sur toutes les pages (js/inscrire-sw.js). */
+    function chargerServiceWorker() {
+        if (!('serviceWorker' in navigator) || window.KarniellaSW) { return; }
+        var script = document.createElement('script');
+        script.src = RACINE + 'js/inscrire-sw.js';
+        script.defer = true;
+        document.head.appendChild(script);
+    }
+    chargerServiceWorker();
+
     var barre = null;
     var zoneOutils = null;
     var fil = null;

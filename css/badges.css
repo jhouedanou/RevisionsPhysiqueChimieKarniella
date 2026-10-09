@@ -8,7 +8,8 @@
 .badge-toast {
     position: fixed;
     left: 50%;
-    bottom: 20px;
+    /* Au-dessus de la barre de navigation du bas (64 px sur téléphone, 0 ailleurs). */
+    bottom: calc(var(--coquille-nav-bas, 0px) + 20px);
     z-index: 99997;          /* sous le chat (99998) et la recherche (100000) */
     display: flex;
     align-items: center;
@@ -63,7 +64,7 @@
     .badge-toast {
         left: 16px;
         right: 84px;
-        bottom: 14px;
+        bottom: calc(var(--coquille-nav-bas, 0px) + 14px);
         width: auto;
         max-width: none;
         transform: translateY(24px);
