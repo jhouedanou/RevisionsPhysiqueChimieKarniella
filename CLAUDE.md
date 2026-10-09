@@ -42,3 +42,28 @@ dont la traduction donnerait la réponse d'un exercice.
 
 Chaque leçon d'anglais a aussi un onglet « C/ Practice » (exercices avec
 correction dans `<details>`, classe `.exercice`) avant le quiz.
+
+## Leçons de physique-chimie : toujours des schémas
+
+Karniella l'a demandé : chaque leçon de physique-chimie a des **schémas**
+(circuit, montage, expérience, appareil de mesure). Au moins un par partie
+du cours, et un schéma dans chaque exercice qui parle d'un montage.
+
+- SVG écrit dans la page (pas d'image externe), dans
+  `<figure class="schema">` avec une `<figcaption>` qui dit ce qu'on voit.
+  `viewBox`, `role="img"` et `aria-label` sur le `<svg>`.
+- Mode sombre : traits en `stroke="currentColor"`, texte sans `fill`
+  (la classe `.schema` le met en `currentColor`), accents avec les variables
+  du thème (`var(--rose)`, `var(--boite-exemple-texte)`…). Jamais de
+  couleur codée en dur.
+- Circuits : symboles normalisés (pile, lampe, interrupteur ouvert / fermé,
+  moteur, DEL, fil, nœud), étiquettes en français, lisibles à 390 px.
+  Pile : grand trait fin = borne +, petit trait épais = borne −. Flèche du
+  courant : de la borne + vers la borne −, à l'extérieur de la pile.
+- Schéma du manuel ou du cahier : le refaire fidèlement. S'il est
+  illisible ou deviné, le dire dans l'encadré « ✏️ À vérifier ».
+
+    <figure class="schema">
+      <svg viewBox="0 0 240 120" role="img" aria-label="Pile reliée à une lampe">…</svg>
+      <figcaption>Schéma 1 : une pile alimente une lampe.</figcaption>
+    </figure>

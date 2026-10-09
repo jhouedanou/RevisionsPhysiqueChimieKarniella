@@ -744,6 +744,40 @@ html.cartes-ouvertes { overflow: hidden; }
 }
 
 /* ============================================================
+   Schémas (physique-chimie surtout)
+   ============================================================
+   Un schéma = un <svg> écrit dans la page, dans <figure class="schema">.
+   Les traits en currentColor prennent la couleur de l'encre : le schéma
+   reste lisible en mode clair comme en mode sombre. */
+
+.schema {
+    margin: 0 0 18px;
+    padding: 14px 12px 10px;
+    border: 1px solid var(--l5-bord, var(--bord));
+    border-radius: var(--rayon-carte, 18px);
+    background: var(--surface);
+    color: var(--encre);
+    text-align: center;
+}
+.schema svg {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+}
+.schema svg text {
+    fill: currentColor;
+    font-family: var(--police-texte, sans-serif);
+}
+.schema figcaption {
+    margin-top: 8px;
+    color: var(--doux);
+    font-size: 15px;
+}
+
+/* ============================================================
    Exercices d'entraînement (onglet Practice)
    ============================================================
    Un exercice = une consigne, des items numérotés, et la correction

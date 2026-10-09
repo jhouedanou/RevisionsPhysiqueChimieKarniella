@@ -229,6 +229,8 @@ générateur — pas de lien mort sur un sommaire.
 - Onglets : `<button class="tab-button" data-onglet="tab2">` — `js/lecon-5e.js`
   branche les clics tout seul, plus de `onclick` à écrire.
 - Encadrés : `.definition-box`, `.example-box`, `.important-box`, `.note-box`.
+- Schémas : `<figure class="schema">` + `<svg>` en `currentColor` (règles dans
+  `CLAUDE.md`, obligatoires en physique-chimie).
 - Vocabulaire : `<table class="table-vocab">`. **Chaque ligne devient une notion
   cherchable par le chat** — « what is a canteen ? » trouve sa réponse.
 - `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
