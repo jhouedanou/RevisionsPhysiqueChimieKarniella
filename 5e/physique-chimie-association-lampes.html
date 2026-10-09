@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Association de lampes électriques - Physique-Chimie 5e</title>
+<meta name="description" content="Leçon 2 : lampes en série et en dérivation, schémas, lampe défectueuse, court-circuit et intérêt de chaque association.">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/coquille.css">
+<script src="../js/coquille.js"></script>
+<link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/section-quiz.css">
+</head>
+<body class="lecon-5e" data-matiere="physique-chimie">
+
+<header>
+<span class="badge-niveau">Physique-Chimie · Leçon 2 · Classe de 5e</span>
+<h1>💡 Association de lampes électriques</h1>
+<p>Lampes en série, lampes en dérivation, et à quoi sert chaque montage</p>
+</header>
+
+<div class="tabs">
+<button class="tab-button active" data-onglet="tab1">1. En série</button>
+<button class="tab-button" data-onglet="tab2">2. En dérivation</button>
+<button class="tab-button" data-onglet="tab3">3. Intérêt de chaque association</button>
+<button class="tab-button" data-onglet="tab4">Exercices</button>
+<button class="tab-button" data-onglet="tab5">Quiz</button>
+</div>
+
+<main class="content">
+
+<!-- ============ 1. ASSOCIATION DE LAMPES EN SÉRIE ============ -->
+<section class="tab-content active" id="tab1">
+  <div class="container">
+    <div class="note-box" data-hors-chat>
+      <h4>📖 D'où vient cette leçon ?</h4>
+      <p>Les <strong>titres</strong> sont ceux de ton cahier (ton message du 09/10). Tu
+      n'as envoyé que les titres : le texte sous chaque titre est rédigé d'après le
+      programme de physique-chimie de 5e. Vérifie avec ton cahier et garde les phrases
+      de ton professeur.</p>
+    </div>
+
+    <p><strong>Leçon 2 :</strong> Association de lampes électriques</p>
+
+    <h2>1. Association de lampes en série</h2>
+
+    <h3>1-1. Expérience et observation</h3>
+    <div class="example-box">
+      <h4>🧪 L'expérience</h4>
+      <p>On réalise d'abord un circuit avec une <strong>pile</strong>, un
+      <strong>interrupteur</strong> et <strong>une seule lampe</strong> L1 : elle brille
+      normalement.</p>
+      <p>Puis on ajoute une deuxième lampe <strong>identique</strong> L2, branchée
+      <strong>à la suite</strong> de L1, dans la même boucle. On ferme l'interrupteur.</p>
+      <p><strong>Observation :</strong> les deux lampes brillent, mais
+      <strong>moins fort</strong> que la lampe seule. Les deux lampes ont le
+      <strong>même éclat</strong>.</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>Des lampes sont associées <strong>en série</strong> lorsqu'elles sont branchées
+      <strong>les unes à la suite des autres</strong> et forment avec le générateur
+      <strong>une seule boucle</strong>.</p>
+      <p>Deux lampes identiques en série sur une pile brillent <strong>plus faiblement</strong>
+      qu'une seule lampe sur la même pile.</p>
+    </div>
+
+    <h3>1-2. Schéma du circuit</h3>
+    <figure class="schema">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Schéma : une pile, un interrupteur fermé et deux lampes L1 et L2 branchées l'une à la suite de l'autre, dans une seule boucle.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <!-- fil du haut avec L1 et L2 -->
+          <line x1="40" y1="40" x2="106" y2="40"/>
+          <line x1="134" y1="40" x2="186" y2="40"/>
+          <line x1="214" y1="40" x2="280" y2="40"/>
+          <circle cx="120" cy="40" r="14"/>
+          <line x1="110" y1="30" x2="130" y2="50"/><line x1="110" y1="50" x2="130" y2="30"/>
+          <circle cx="200" cy="40" r="14"/>
+          <line x1="190" y1="30" x2="210" y2="50"/><line x1="190" y1="50" x2="210" y2="30"/>
+          <!-- côté droit -->
+          <line x1="280" y1="40" x2="280" y2="160"/>
+          <!-- fil du bas avec la pile -->
+          <line x1="280" y1="160" x2="166" y2="160"/>
+          <line x1="154" y1="160" x2="40" y2="160"/>
+          <line x1="154" y1="144" x2="154" y2="176"/>
+          <line x1="166" y1="152" x2="166" y2="168" stroke-width="6"/>
+          <!-- côté gauche avec l'interrupteur fermé -->
+          <line x1="40" y1="160" x2="40" y2="118"/>
+          <line x1="40" y1="118" x2="40" y2="82"/>
+          <line x1="40" y1="82" x2="40" y2="40"/>
+        </g>
+        <g fill="currentColor">
+          <circle cx="40" cy="118" r="3.5"/><circle cx="40" cy="82" r="3.5"/>
+        </g>
+        <g fill="currentColor" font-size="15" font-weight="700" text-anchor="middle">
+          <text x="120" y="20">L1</text>
+          <text x="200" y="20">L2</text>
+          <text x="20" y="105">K</text>
+          <text x="146" y="140">+</text>
+          <text x="176" y="146">−</text>
+          <text x="160" y="194">Pile</text>
+        </g>
+      </svg>
+      <figcaption>Deux lampes en série : il n'y a qu'<strong>un seul chemin</strong> pour le courant.</figcaption>
+    </figure>
+
+    <table class="table-vocab">
+      <thead><tr><th>Élément</th><th>Son symbole</th></tr></thead>
+      <tbody>
+        <tr><td>Lampe</td><td>Un cercle avec une croix (L1, L2).</td></tr>
+        <tr><td>Pile</td><td>Un grand trait fin (la borne +) et un petit trait épais (la borne −).</td></tr>
+        <tr><td>Interrupteur</td><td>K. Fermé, il laisse passer le courant.</td></tr>
+        <tr><td>Fil de connexion</td><td>Un trait.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>1-3. Effet d'une lampe défectueuse</h3>
+    <div class="example-box">
+      <h4>🧪 L'expérience</h4>
+      <p>Les deux lampes brillent. On <strong>dévisse</strong> la lampe L1 (c'est comme si
+      elle était grillée).</p>
+      <p><strong>Observation :</strong> la lampe L2 <strong>s'éteint</strong> aussi.</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 À retenir</h4>
+      <p>Dans un circuit en série, si une lampe est <strong>défectueuse</strong> (grillée ou
+      dévissée), le circuit est <strong>ouvert</strong> : le courant ne passe plus et
+      <strong>toutes les autres lampes s'éteignent</strong>.</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 L'image à garder</h4>
+      <p>Le circuit en série, c'est <strong>un seul pont</strong> sur une rivière : si une
+      planche casse, plus personne ne passe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. ASSOCIATION DE LAMPES EN DÉRIVATION ============ -->
+<section class="tab-content" id="tab2">
+  <div class="container">
+    <h2>2. Association de lampes en dérivation (parallèle)</h2>
+
+    <h3>2-1. Expérience et observation</h3>
+    <div class="example-box">
+      <h4>🧪 L'expérience</h4>
+      <p>On branche les deux lampes identiques L1 et L2 <strong>chacune sur son propre
+      chemin</strong>, entre les deux mêmes points du circuit. On ferme l'interrupteur.</p>
+      <p><strong>Observation :</strong> les deux lampes brillent <strong>normalement</strong>,
+      avec le <strong>même éclat</strong> qu'une lampe seule branchée sur la même pile.</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>Des lampes sont associées <strong>en dérivation</strong> (ou <strong>en
+      parallèle</strong>) lorsque chacune est branchée sur <strong>sa propre boucle</strong>,
+      entre <strong>deux mêmes points</strong> du circuit appelés <strong>nœuds</strong>.</p>
+      <p>Chaque lampe en dérivation brille <strong>comme si elle était seule</strong> sur la
+      pile.</p>
+    </div>
+
+    <h3>2-2. Schéma du circuit</h3>
+    <figure class="schema">
+      <svg viewBox="0 0 320 230" role="img" aria-label="Schéma : une pile et un interrupteur fermé ; la lampe L1 et la lampe L2 sont chacune sur leur propre branche, entre deux nœuds A et B.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <!-- branche de L1 (en haut) -->
+          <line x1="40" y1="40" x2="146" y2="40"/>
+          <line x1="174" y1="40" x2="280" y2="40"/>
+          <circle cx="160" cy="40" r="14"/>
+          <line x1="150" y1="30" x2="170" y2="50"/><line x1="150" y1="50" x2="170" y2="30"/>
+          <!-- branche de L2 (au milieu) -->
+          <line x1="40" y1="110" x2="146" y2="110"/>
+          <line x1="174" y1="110" x2="280" y2="110"/>
+          <circle cx="160" cy="110" r="14"/>
+          <line x1="150" y1="100" x2="170" y2="120"/><line x1="150" y1="120" x2="170" y2="100"/>
+          <!-- côtés -->
+          <line x1="40" y1="40" x2="40" y2="110"/>
+          <line x1="280" y1="40" x2="280" y2="190"/>
+          <!-- interrupteur fermé, côté gauche -->
+          <line x1="40" y1="110" x2="40" y2="135"/>
+          <line x1="40" y1="135" x2="40" y2="165"/>
+          <line x1="40" y1="165" x2="40" y2="190"/>
+          <!-- fil du bas avec la pile -->
+          <line x1="40" y1="190" x2="154" y2="190"/>
+          <line x1="166" y1="190" x2="280" y2="190"/>
+          <line x1="154" y1="174" x2="154" y2="206"/>
+          <line x1="166" y1="182" x2="166" y2="198" stroke-width="6"/>
+        </g>
+        <g fill="currentColor">
+          <circle cx="40" cy="110" r="5"/><circle cx="280" cy="110" r="5"/>
+          <circle cx="40" cy="135" r="3.5"/><circle cx="40" cy="165" r="3.5"/>
+        </g>
+        <g fill="currentColor" font-size="15" font-weight="700" text-anchor="middle">
+          <text x="160" y="20">L1</text>
+          <text x="160" y="90">L2</text>
+          <text x="24" y="104">A</text>
+          <text x="298" y="104">B</text>
+          <text x="20" y="155">K</text>
+          <text x="146" y="170">+</text>
+          <text x="176" y="176">−</text>
+          <text x="160" y="224">Pile</text>
+        </g>
+      </svg>
+      <figcaption>Deux lampes en dérivation entre les nœuds A et B : <strong>chaque lampe a son chemin</strong>.</figcaption>
+    </figure>
+
+    <table class="table-vocab">
+      <thead><tr><th>Mot</th><th>Ce que ça veut dire</th></tr></thead>
+      <tbody>
+        <tr><td>Nœud</td><td>Un point du circuit où se rejoignent au moins trois fils (A et B sur le schéma).</td></tr>
+        <tr><td>Branche principale</td><td>Le chemin qui contient la pile et l'interrupteur.</td></tr>
+        <tr><td>Branche dérivée</td><td>Un chemin entre les deux nœuds qui contient une lampe.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2-3. Effet d'une lampe défectueuse</h3>
+    <div class="example-box">
+      <h4>🧪 L'expérience</h4>
+      <p>Les deux lampes brillent. On <strong>dévisse</strong> la lampe L1.</p>
+      <p><strong>Observation :</strong> la lampe L2 <strong>continue de briller</strong>
+      normalement.</p>
+    </div>
+
+    <div class="definition-box">
+      <h4>📘 À retenir</h4>
+      <p>Dans un circuit en dérivation, si une lampe est <strong>défectueuse</strong>, les
+      autres lampes <strong>continuent de briller</strong> : chaque lampe est sur sa propre
+      boucle, qui reste fermée.</p>
+    </div>
+
+    <h3>2-4. Effet d'un court-circuit</h3>
+    <div class="example-box">
+      <h4>🧪 L'expérience</h4>
+      <p>Les deux lampes brillent. On relie les deux bornes de la lampe L2 par un
+      <strong>simple fil de connexion</strong>.</p>
+      <p><strong>Observation :</strong> les <strong>deux lampes s'éteignent</strong>, et la
+      pile <strong>chauffe</strong> et s'use très vite.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 230" role="img" aria-label="Schéma : le même circuit en dérivation, avec un fil qui relie les deux bornes de la lampe L2. Ce fil relie aussi les deux bornes de la pile.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="40" y1="40" x2="146" y2="40"/>
+          <line x1="174" y1="40" x2="280" y2="40"/>
+          <circle cx="160" cy="40" r="14"/>
+          <line x1="150" y1="30" x2="170" y2="50"/><line x1="150" y1="50" x2="170" y2="30"/>
+          <line x1="40" y1="110" x2="146" y2="110"/>
+          <line x1="174" y1="110" x2="280" y2="110"/>
+          <circle cx="160" cy="110" r="14"/>
+          <line x1="150" y1="100" x2="170" y2="120"/><line x1="150" y1="120" x2="170" y2="100"/>
+          <line x1="40" y1="40" x2="40" y2="110"/>
+          <line x1="280" y1="40" x2="280" y2="190"/>
+          <line x1="40" y1="110" x2="40" y2="135"/>
+          <line x1="40" y1="135" x2="40" y2="165"/>
+          <line x1="40" y1="165" x2="40" y2="190"/>
+          <line x1="40" y1="190" x2="154" y2="190"/>
+          <line x1="166" y1="190" x2="280" y2="190"/>
+          <line x1="154" y1="174" x2="154" y2="206"/>
+          <line x1="166" y1="182" x2="166" y2="198" stroke-width="6"/>
+        </g>
+        <!-- le fil du court-circuit -->
+        <path d="M110 110 Q160 160 210 110" fill="none" stroke-width="3.5" stroke-linecap="round" style="stroke: var(--erreur-bord)"/>
+        <g fill="currentColor">
+          <circle cx="40" cy="110" r="5"/><circle cx="280" cy="110" r="5"/>
+          <circle cx="40" cy="135" r="3.5"/><circle cx="40" cy="165" r="3.5"/>
+          <circle cx="110" cy="110" r="4"/><circle cx="210" cy="110" r="4"/>
+        </g>
+        <g fill="currentColor" font-size="15" font-weight="700" text-anchor="middle">
+          <text x="160" y="20">L1</text>
+          <text x="160" y="90">L2</text>
+          <text x="20" y="155">K</text>
+          <text x="160" y="224">Pile</text>
+        </g>
+        <text x="160" y="160" font-size="13" font-weight="700" text-anchor="middle" style="fill: var(--erreur-bord)">fil du court-circuit</text>
+      </svg>
+      <figcaption>Le fil relie les bornes de L2… et donc aussi les deux bornes de la pile.</figcaption>
+    </figure>
+
+    <div class="definition-box">
+      <h4>📘 À retenir</h4>
+      <p>Court-circuiter une lampe montée en dérivation, c'est <strong>court-circuiter le
+      générateur</strong> : le courant passe par le fil, le chemin le plus facile, et plus
+      par les lampes. <strong>Toutes les lampes s'éteignent</strong> et la pile
+      <strong>chauffe</strong>.</p>
+    </div>
+
+    <div class="important-box">
+      <h4>⚠️ Danger</h4>
+      <p>Un court-circuit fait <strong>chauffer</strong> les fils et le générateur. Dans une
+      maison, il peut provoquer un <strong>incendie</strong>. C'est pour ça que les
+      installations ont des <strong>fusibles</strong> ou un <strong>disjoncteur</strong>,
+      qui coupent le courant tout seuls.</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 Pour comparer avec la série</h4>
+      <p>En <strong>série</strong>, si on court-circuite L1, seule L1 s'éteint : L2 brille
+      <strong>plus fort</strong>, car elle reçoit toute la tension de la pile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. INTÉRÊT DE CHAQUE ASSOCIATION ============ -->
+<section class="tab-content" id="tab3">
+  <div class="container">
+    <h2>3. Intérêt de chaque association</h2>
+
+    <h3>3-1. Dans une association de lampes en série</h3>
+    <div class="definition-box">
+      <h4>📘 Intérêt</h4>
+      <ul>
+        <li>Un <strong>seul interrupteur</strong> allume ou éteint
+            <strong>toutes les lampes en même temps</strong>.</li>
+        <li>Le montage demande <strong>peu de fils</strong>.</li>
+      </ul>
+      <p><strong>Exemple :</strong> certaines <strong>guirlandes lumineuses</strong> de
+      fête.</p>
+    </div>
+    <div class="important-box">
+      <h4>⚠️ Inconvénients</h4>
+      <ul>
+        <li>Les lampes brillent <strong>moins fort</strong> qu'une lampe seule.</li>
+        <li>Si <strong>une lampe grille</strong>, <strong>toutes s'éteignent</strong>, et il
+            est difficile de trouver laquelle est en panne.</li>
+      </ul>
+    </div>
+
+    <h3>3-2. Dans une association de lampes en dérivation</h3>
+    <div class="definition-box">
+      <h4>📘 Intérêt</h4>
+      <ul>
+        <li>Chaque lampe brille <strong>normalement</strong>, comme si elle était seule.</li>
+        <li>Les lampes sont <strong>indépendantes</strong> : si une lampe grille, les
+            autres <strong>continuent de briller</strong>.</li>
+        <li>On peut mettre un <strong>interrupteur pour chaque lampe</strong>.</li>
+      </ul>
+      <p><strong>Exemples :</strong> l'<strong>installation électrique d'une maison</strong>
+      (on éteint la cuisine, le salon reste allumé), les <strong>phares d'une
+      voiture</strong>.</p>
+    </div>
+    <div class="important-box">
+      <h4>⚠️ Inconvénients</h4>
+      <ul>
+        <li>Le montage demande <strong>plus de fils</strong>.</li>
+        <li>Un <strong>court-circuit</strong> sur une seule lampe court-circuite le générateur.</li>
+      </ul>
+    </div>
+
+    <h3>Résumé</h3>
+    <table class="table-vocab">
+      <thead><tr><th>Montage</th><th>Ce qu'il faut retenir</th></tr></thead>
+      <tbody>
+        <tr><td>En série</td><td>Une seule boucle. Deux lampes identiques brillent moins fort qu'une lampe seule. Une lampe défectueuse : toutes s'éteignent. Exemple : une guirlande.</td></tr>
+        <tr><td>En dérivation</td><td>Une boucle par lampe. Chaque lampe brille normalement, comme seule. Une lampe défectueuse : les autres continuent de briller. Exemple : les lampes de la maison.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note-box">
+      <h4>🐴 La question qui trie tout</h4>
+      <p>Pour reconnaître un montage, demande-toi : <strong>« Si j'enlève une lampe, les
+      autres restent-elles allumées ? »</strong> Non → série. Oui → dérivation.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Ton message ne donnait que les <strong>titres</strong> : les expériences, les
+            définitions et les conclusions sont rédigées d'après le programme. Garde les
+            phrases exactes de ton professeur.</li>
+        <li>Vérifie les <strong>schémas</strong> : ton professeur a peut-être dessiné
+            l'interrupteur ou la pile à un autre endroit. Ce n'est pas grave, le montage
+            reste le même.</li>
+        <li>Au 2-4, ton professeur a-t-il court-circuité <strong>une lampe</strong> ou
+            <strong>la pile</strong> ? Dans les deux cas, en dérivation, toutes les lampes
+            s'éteignent.</li>
+        <li>Les « inconvénients », le résumé et l'encadré « Pour comparer avec la série »
+            sont des <strong>aides en plus</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXERCICES ============ -->
+<section class="tab-content" id="tab4">
+  <div class="container">
+    <h2>Exercices</h2>
+    <p>Cherche d'abord seule, ensuite ouvre la correction.</p>
+
+    <div class="exercice">
+      <h3>Exercice 1 — Complète</h3>
+      <p>Des lampes associées en <span class="trou">…</span> forment une seule boucle avec
+      le générateur. Des lampes associées en <span class="trou">…</span> sont chacune sur
+      leur propre boucle, entre deux <span class="trou">…</span>.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <p>série · dérivation (ou parallèle) · nœuds</p>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 2 — Série ou dérivation ?</h3>
+      <ol>
+        <li>À la maison, maman éteint la cuisine : le salon reste allumé.</li>
+        <li>Une ampoule de la guirlande grille : toute la guirlande s'éteint.</li>
+        <li>Un phare de la voiture a grillé, mais l'autre éclaire toujours.</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>Dérivation : les lampes sont indépendantes.</li>
+          <li>Série : une lampe défectueuse ouvre le circuit.</li>
+          <li>Dérivation.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 3 — Prévois l'éclat</h3>
+      <p class="consigne">Une lampe seule brille normalement sur une pile. On branche deux
+      lampes identiques à cette lampe sur la même pile.</p>
+      <ol>
+        <li>Elles sont en série. Comment brillent-elles ?</li>
+        <li>Elles sont en dérivation. Comment brillent-elles ?</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>Plus faiblement que la lampe seule (et toutes les deux pareil).</li>
+          <li>Normalement, avec le même éclat que la lampe seule.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 4 — Le court-circuit</h3>
+      <p class="consigne">Deux lampes sont en dérivation et brillent. Ton camarade relie les
+      deux bornes d'une des lampes avec un fil.</p>
+      <ol>
+        <li>Qu'observe-t-on ?</li>
+        <li>Pourquoi est-ce dangereux ?</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>Les deux lampes s'éteignent : la pile est court-circuitée.</li>
+          <li>La pile et les fils chauffent : dans une maison, ça peut provoquer un
+              incendie.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 5 — Dessine le schéma</h3>
+      <p class="consigne">Dessine le schéma d'un circuit avec une pile, un interrupteur
+      fermé et deux lampes en dérivation. Marque les deux nœuds A et B.</p>
+      <details>
+        <summary>Voir la correction</summary>
+        <p>Compare avec le schéma du 2-2 (onglet « 2. En dérivation ») : chaque lampe est
+        sur sa propre branche, entre A et B, et la pile avec l'interrupteur est sur la
+        branche principale. Vérifie aussi les symboles : la lampe est un cercle avec une
+        croix, la pile un grand trait fin (+) et un petit trait épais (−).</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="tab-content" id="tab5">
+  <div class="container">
+    <h2>🎯 Teste-toi</h2>
+    <p>Série, dérivation, lampe défectueuse, court-circuit et intérêt de chaque montage.</p>
+    <div id="quiz-association-lampes"></div>
+  </div>
+</section>
+
+</main>
+
+<p class="pied">Révisions de Karniella · Physique-Chimie 5e · Association de lampes</p>
+
+<script src="../js/lecon-5e.js" defer></script>
+<script src="../js/lecture-vocale.js" defer></script>
+<script src="../js/section-quiz.js" defer></script>
+<script src="../js/chat-assistant.js" defer></script>
+<script>
+    window.addEventListener('load', function () {
+        fetch('../data/section-questions.json')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var questions = data['physique-chimie-association-lampes'];
+                if (questions && questions.tab5 && window.initSectionQuiz) {
+                    initSectionQuiz('quiz-association-lampes', questions.tab5, { etapes: true });
+                }
+            })
+            .catch(function () { /* hors-ligne sans cache : le reste marche */ });
+    });
+</script>
+</body>
+</html>

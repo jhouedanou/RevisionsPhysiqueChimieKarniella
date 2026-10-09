@@ -85,6 +85,15 @@
           "description": "Les inscriptions sur une pile et une lampe, et ce qui se passe quand les tensions ne vont pas ensemble.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "physique-chimie-association-lampes",
+          "titre": "Association de lampes électriques",
+          "sousTitre": "Leçon 2 — En série, en dérivation, court-circuit",
+          "icone": "💡",
+          "description": "Une seule boucle ou une boucle par lampe : ce qui change quand une lampe grille.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
@@ -120,6 +129,15 @@
           "sousTitre": "Calculs algébriques — Présentation et notation",
           "icone": "➕",
           "description": "Les nombres avec un signe + ou − : opposés, droite graduée, comparaison.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "mathematiques-segments",
+          "titre": "Segments",
+          "sousTitre": "Leçon 2 — Caractéristiques d'un segment, médiatrice",
+          "icone": "📏",
+          "description": "Le milieu d'un segment, ses deux propriétés, et la définition de la médiatrice.",
           "statut": "prete",
           "mission": true
         }
@@ -168,6 +186,33 @@
           "description": "Définition, point de vue, phase de préparation et phase de présentation.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "francais-portrait-simple",
+          "titre": "Le portrait simple",
+          "sousTitre": "Expression écrite · Séance 1 : rédaction d'un portrait simple",
+          "icone": "🖼️",
+          "description": "Portrait physique et moral, outils grammaticaux, lexique, et préparer son texte.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "francais-groupe-nominal",
+          "titre": "Le groupe nominal : les expansions du nom",
+          "sousTitre": "Grammaire · Séances 1 à 3 : adjectif, relative, complément du nom",
+          "icone": "🧩",
+          "description": "L'adjectif qualificatif, la subordonnée relative et le complément du nom.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "francais-description",
+          "titre": "La description",
+          "sousTitre": "Lecture · Séance 1 : lecture méthodique d'un texte descriptif",
+          "icone": "🔎",
+          "description": "Présentation du texte, hypothèse générale, axes, tableau de vérification et bilan.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
@@ -206,7 +251,17 @@
       "couleur": "#C0392B",
       "description": "Éducation aux Droits de l'Homme et à la Citoyenneté.",
       "ordre": 7,
-      "lecons": []
+      "lecons": [
+        {
+          "id": "edhc-droits-developpement-participation",
+          "titre": "Les droits au développement et à la participation de l'enfant",
+          "sousTitre": "Thème 1 : Les droits et devoirs du citoyen en temps de paix ou de conflits armés, leçon 1",
+          "icone": "🧒",
+          "description": "Aller à l'école, jouer, s'informer, donner son avis, et les devoirs qui vont avec.",
+          "statut": "prete",
+          "mission": true
+        }
+      ]
     },
     {
       "id": "tice",

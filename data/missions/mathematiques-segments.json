@@ -1,0 +1,57 @@
+{
+  "id": "mathematiques-segments",
+  "lecon": "mathematiques-segments",
+  "matiere": "mathematiques",
+  "titre": "La ligne de partage",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, deux îles A et B se disputent un trésor. Le conseil veut construire un phare exactement au milieu du chemin [AB], puis tracer une frontière juste pour les deux îles. Ta règle et ton équerre sont prêtes ?",
+  "micro_learning_blocks": [
+    {
+      "titre": "📍 Le milieu, point d'équilibre",
+      "contenu": "Le milieu I de [AB] est sur le segment, à la même distance de A et de B : IA = IB = AB ÷ 2. Comme le point d'une balançoire où les deux côtés sont égaux."
+    },
+    {
+      "titre": "🔁 Les deux sens de la propriété",
+      "contenu": "Si I est le milieu, alors IA = IB. Et si I est SUR [AB] avec IA = IB, alors I est le milieu. Attention : un point hors du segment peut être à égale distance sans être le milieu !"
+    },
+    {
+      "titre": "✂️ La médiatrice, frontière parfaite",
+      "contenu": "La médiatrice de [AB] est la droite qui passe par le milieu et qui est perpendiculaire à [AB]. On la code avec des petits traits égaux et un petit carré."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "AB = 10 km. À quelle distance de A faut-il placer le phare au milieu ?",
+      "options": [
+        "10 km",
+        "2 km",
+        "20 km",
+        "5 km"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "IA = AB ÷ 2 = 10 ÷ 2 = 5 km."
+    },
+    {
+      "question": "Un point N hors de [AB] avec NA = NB est-il le milieu ?",
+      "options": [
+        "Non, il doit être sur [AB]",
+        "Oui",
+        "Oui si NA = 3",
+        "Toujours"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Le milieu doit être sur le segment."
+    },
+    {
+      "question": "La médiatrice de [AB] est…",
+      "options": [
+        "parallèle à [AB]",
+        "perpendiculaire à [AB] en son milieu",
+        "la droite (AB)",
+        "un cercle"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Milieu + perpendiculaire : les deux conditions."
+    }
+  ]
+}

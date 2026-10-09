@@ -1,0 +1,57 @@
+{
+  "id": "francais-description",
+  "lecon": "francais-description",
+  "matiere": "francais",
+  "titre": "Le détective des textes",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, un message mystérieux décrit un marché très animé. Ton enquête : prouver ce que le texte veut montrer, indice après indice, comme un vrai détective de la lecture méthodique.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🔎 L'enquête en 4 étapes",
+      "contenu": "1. Présenter le texte (titre, auteur, type, thème). 2. Formuler l'hypothèse générale : « Ce texte est la description de… qui… ». 3. La vérifier. 4. Faire le bilan."
+    },
+    {
+      "titre": "🧭 Les axes et le tableau",
+      "contenu": "On coupe l'hypothèse en axes, puis pour chaque axe on remplit le tableau : indices (mots du texte), outils d'analyse (le procédé), interprétation (ce que ça prouve)."
+    },
+    {
+      "titre": "🛠️ Les outils du détective",
+      "contenu": "Indicateurs de lieu (à l'entrée, plus loin), champs lexicaux des cinq sens, comparaison (avec « comme »), métaphore (sans « comme »), personnification (l'huile chante)."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Quelle est la 2e étape de la lecture méthodique ?",
+      "options": [
+        "Le bilan",
+        "Le tableau",
+        "L'hypothèse générale",
+        "Les axes"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Présentation, hypothèse générale, vérification, bilan."
+    },
+    {
+      "question": "« Le marché est le cœur du quartier » est…",
+      "options": [
+        "une comparaison",
+        "une métaphore",
+        "un indicateur de lieu",
+        "un indice de temps"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Pas de « comme » : c'est une métaphore."
+    },
+    {
+      "question": "Dans le bilan, on dit d'abord…",
+      "options": [
+        "si l'hypothèse est confirmée",
+        "le titre",
+        "la première ligne",
+        "les mots difficiles"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Puis on rappelle les procédés et l'intérêt du texte."
+    }
+  ]
+}

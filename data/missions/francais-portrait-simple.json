@@ -1,0 +1,57 @@
+{
+  "id": "francais-portrait-simple",
+  "lecon": "francais-portrait-simple",
+  "matiere": "francais",
+  "titre": "Avis de recherche",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, Éclair, le cheval du club, s'est échappé ! Pour le retrouver, l'équipage a besoin d'un portrait si précis qu'on le reconnaîtra au premier coup d'œil. Prends ta plume !",
+  "micro_learning_blocks": [
+    {
+      "titre": "🖼️ Un portrait, deux faces",
+      "contenu": "Le portrait physique dit comment il est (taille, robe, crinière, tache sur le front). Le portrait moral dit qui il est (calme, patient, joueur)."
+    },
+    {
+      "titre": "🧰 La boîte à outils",
+      "contenu": "Des adjectifs précis (brune, élancé), des compléments du nom (à la crinière noire), des relatives (qui galope vite), les verbes être et avoir, et des comparaisons : rapide comme le vent."
+    },
+    {
+      "titre": "🗺️ Le plan",
+      "contenu": "Avant d'écrire : type d'écrit, thème, personnage. Puis : introduction (qui est-ce ?), physique de la tête aux pieds, moral avec des exemples, conclusion avec ton sentiment."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "« Il a une tache blanche sur le front » : c'est le portrait…",
+      "options": [
+        "moral",
+        "physique",
+        "du lieu",
+        "de l'auteur"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Ça se voit : portrait physique."
+    },
+    {
+      "question": "« Rapide comme le vent » est…",
+      "options": [
+        "une comparaison",
+        "un complément du nom",
+        "une relative",
+        "un défaut"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Le mot « comme » signale la comparaison."
+    },
+    {
+      "question": "Que met-on dans la conclusion ?",
+      "options": [
+        "La taille",
+        "Le nom du cheval",
+        "La couleur de la robe",
+        "Son sentiment sur le personnage"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "On termine par ce qu'on ressent."
+    }
+  ]
+}

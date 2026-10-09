@@ -3093,5 +3093,810 @@
         "explanation": "Ils servent à faire un travail précis : écrire, dessiner, aller sur Internet."
       }
     ]
+  },
+  "physique-chimie-association-lampes": {
+    "tab5": [
+      {
+        "question": "Des lampes branchées les unes à la suite des autres, dans une seule boucle, sont associées…",
+        "options": [
+          "en dérivation",
+          "en série",
+          "en parallèle",
+          "en court-circuit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une seule boucle, les lampes à la suite : c'est le montage en série."
+      },
+      {
+        "question": "Deux lampes identiques en série sur une pile brillent…",
+        "options": [
+          "plus fort qu'une lampe seule",
+          "normalement",
+          "moins fort qu'une lampe seule",
+          "chacune différemment"
+        ],
+        "correctAnswer": 2,
+        "explanation": "En série, les deux lampes se partagent la pile : leur éclat est plus faible."
+      },
+      {
+        "question": "En série, on dévisse une lampe. Que fait l'autre lampe ?",
+        "options": [
+          "Elle s'éteint",
+          "Elle brille plus fort",
+          "Elle brille normalement",
+          "Elle clignote"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le circuit est ouvert : le courant ne passe plus, toutes les lampes s'éteignent."
+      },
+      {
+        "question": "Des lampes associées en dérivation sont branchées…",
+        "options": [
+          "les unes à la suite des autres",
+          "sans pile",
+          "dans une seule boucle",
+          "chacune sur sa propre boucle, entre deux mêmes points"
+        ],
+        "correctAnswer": 3,
+        "explanation": "En dérivation (ou en parallèle), chaque lampe a son propre chemin entre les deux nœuds."
+      },
+      {
+        "question": "Comment s'appelle un point du circuit où se rejoignent au moins trois fils ?",
+        "options": [
+          "Une borne",
+          "Un culot",
+          "Un nœud",
+          "Un filament"
+        ],
+        "correctAnswer": 2,
+        "explanation": "C'est un nœud. Les lampes en dérivation sont branchées entre deux nœuds."
+      },
+      {
+        "question": "En dérivation, on dévisse une lampe. Que fait l'autre lampe ?",
+        "options": [
+          "Elle continue de briller",
+          "Elle s'éteint",
+          "Elle grille",
+          "Elle brille plus faiblement"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Chaque lampe est sur sa propre boucle : l'autre boucle reste fermée."
+      },
+      {
+        "question": "En dérivation, on relie les deux bornes d'une lampe avec un fil. Que se passe-t-il ?",
+        "options": [
+          "Seule cette lampe s'éteint",
+          "Rien ne change",
+          "Toutes les lampes s'éteignent et la pile chauffe",
+          "Les lampes brillent plus fort"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le fil court-circuite aussi la pile : le courant passe par le fil, plus par les lampes."
+      },
+      {
+        "question": "Pourquoi un court-circuit est-il dangereux ?",
+        "options": [
+          "Il recharge trop la pile",
+          "Il fait chauffer les fils et peut provoquer un incendie",
+          "Il fait briller les lampes trop fort",
+          "Il n'est pas dangereux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les fils et le générateur chauffent : c'est pour ça qu'on installe des fusibles et des disjoncteurs."
+      },
+      {
+        "question": "À la maison, on éteint la cuisine et le salon reste allumé. Les lampes sont montées…",
+        "options": [
+          "en série",
+          "en court-circuit",
+          "sans interrupteur",
+          "en dérivation"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les lampes de la maison sont indépendantes : elles sont en dérivation."
+      },
+      {
+        "question": "Quel est un intérêt du montage en série ?",
+        "options": [
+          "Un seul interrupteur allume ou éteint toutes les lampes",
+          "Une lampe grillée n'éteint pas les autres",
+          "Les lampes brillent plus fort",
+          "Chaque lampe a son interrupteur"
+        ],
+        "correctAnswer": 0,
+        "explanation": "En série, tout s'allume et s'éteint ensemble, avec peu de fils (exemple : une guirlande)."
+      },
+      {
+        "question": "Sur un schéma, une lampe est représentée par…",
+        "options": [
+          "deux traits parallèles",
+          "un cercle avec une croix",
+          "un rectangle",
+          "une flèche"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le cercle avec une croix est le symbole de la lampe. Deux traits (un grand, un petit), c'est la pile."
+      }
+    ]
+  },
+  "mathematiques-segments": {
+    "tab4": [
+      {
+        "question": "Un segment est caractérisé par…",
+        "options": [
+          "sa couleur",
+          "ses deux droites",
+          "ses extrémités, sa longueur et son milieu",
+          "son angle"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un segment a deux extrémités, une longueur et un milieu."
+      },
+      {
+        "question": "I est le milieu de [AB] et AB = 12 cm. Combien mesure AI ?",
+        "options": [
+          "6 cm",
+          "12 cm",
+          "24 cm",
+          "3 cm"
+        ],
+        "correctAnswer": 0,
+        "explanation": "IA = IB = AB ÷ 2 = 12 ÷ 2 = 6 cm."
+      },
+      {
+        "question": "I est le milieu de [AB] et IB = 2,5 cm. Combien mesure AB ?",
+        "options": [
+          "2,5 cm",
+          "1,25 cm",
+          "7,5 cm",
+          "5 cm"
+        ],
+        "correctAnswer": 3,
+        "explanation": "AB = 2 × IB = 2 × 2,5 = 5 cm."
+      },
+      {
+        "question": "M est sur le segment [EF] et EM = MF. Que peut-on dire ?",
+        "options": [
+          "M est une extrémité de [EF]",
+          "M est le milieu de [EF]",
+          "EF = EM",
+          "On ne peut rien dire"
+        ],
+        "correctAnswer": 1,
+        "explanation": "M appartient à [EF] et EM = MF : par la propriété, M est le milieu de [EF]."
+      },
+      {
+        "question": "N n'est pas sur [EF], mais NE = NF. N est-il le milieu de [EF] ?",
+        "options": [
+          "Oui",
+          "Oui, si NE = 3 cm",
+          "Non : le milieu doit aussi être sur [EF]",
+          "On ne peut jamais savoir"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Il faut les deux conditions : être sur le segment ET à égale distance des extrémités."
+      },
+      {
+        "question": "Sur une figure, deux petits traits identiques sur [AI] et sur [IB] signifient…",
+        "options": [
+          "que [AI] est perpendiculaire à [IB]",
+          "que AI est le double de IB",
+          "que A et B sont confondus",
+          "que AI = IB"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le même codage sur deux segments veut dire qu'ils ont la même longueur."
+      },
+      {
+        "question": "La médiatrice d'un segment est…",
+        "options": [
+          "la droite perpendiculaire au segment en son milieu",
+          "la droite qui passe par une extrémité",
+          "le milieu du segment",
+          "une droite parallèle au segment"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Médiatrice = droite qui passe par le milieu ET qui est perpendiculaire au segment."
+      },
+      {
+        "question": "Une droite perpendiculaire à [AB] qui ne passe pas par son milieu est-elle sa médiatrice ?",
+        "options": [
+          "Oui",
+          "Non",
+          "Oui, si elle passe par A",
+          "Seulement si AB = 4 cm"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Il manque une condition : la médiatrice passe par le milieu du segment."
+      },
+      {
+        "question": "Combien un segment a-t-il de médiatrices ?",
+        "options": [
+          "Aucune",
+          "Deux",
+          "Une seule",
+          "Une infinité"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un segment n'a qu'un seul milieu, et une seule perpendiculaire passe par ce milieu."
+      },
+      {
+        "question": "Sur une figure, un petit carré au croisement de deux droites indique…",
+        "options": [
+          "un angle droit",
+          "un milieu",
+          "une longueur",
+          "un cercle"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le petit carré code l'angle droit : les droites sont perpendiculaires."
+      },
+      {
+        "question": "Quel instrument permet de tracer la perpendiculaire à [AB] qui passe par son milieu ?",
+        "options": [
+          "La gomme",
+          "Le rapporteur seul",
+          "Le taille-crayon",
+          "L'équerre"
+        ],
+        "correctAnswer": 3,
+        "explanation": "On place le milieu avec la règle graduée, puis on trace la perpendiculaire avec l'équerre."
+      }
+    ]
+  },
+  "edhc-droits-developpement-participation": {
+    "tab6": [
+      {
+        "question": "Selon la Convention relative aux droits de l'enfant, un enfant est un être humain âgé de moins de…",
+        "options": [
+          "12 ans",
+          "15 ans",
+          "18 ans",
+          "21 ans"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un enfant est tout être humain âgé de moins de 18 ans."
+      },
+      {
+        "question": "La Convention relative aux droits de l'enfant a été adoptée par l'ONU le…",
+        "options": [
+          "20 novembre 1989",
+          "10 décembre 1948",
+          "7 août 1960",
+          "1er janvier 2000"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le 20 novembre 1989. Le 10 décembre 1948, c'est la Déclaration universelle des droits de l'homme."
+      },
+      {
+        "question": "En combien de grands groupes classe-t-on les droits de l'enfant ?",
+        "options": [
+          "2",
+          "3",
+          "10",
+          "4"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Quatre groupes : survie, développement, protection et participation."
+      },
+      {
+        "question": "Les droits au développement permettent à l'enfant de…",
+        "options": [
+          "donner son avis",
+          "grandir et développer toutes ses capacités",
+          "être protégé contre la violence",
+          "voter aux élections"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ils l'aident à grandir dans son corps et dans sa tête : école, jeu, information…"
+      },
+      {
+        "question": "Lequel de ces droits est un droit au développement ?",
+        "options": [
+          "La liberté d'association",
+          "Le droit d'être entendu",
+          "Le droit à l'éducation",
+          "Le droit de vote"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Aller à l'école permet à l'enfant de développer ses capacités."
+      },
+      {
+        "question": "Les droits à la participation permettent à l'enfant de…",
+        "options": [
+          "donner son avis et prendre part aux décisions qui le concernent",
+          "jouer au football",
+          "aller à l'école",
+          "manger à sa faim"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Participer, c'est s'exprimer, être entendu et prendre part à la vie de son école ou de sa famille."
+      },
+      {
+        "question": "Voter pour élire le délégué de sa classe, c'est exercer…",
+        "options": [
+          "un devoir",
+          "un droit à la survie",
+          "un droit au développement",
+          "un droit à la participation"
+        ],
+        "correctAnswer": 3,
+        "explanation": "On donne son avis et on prend part à la vie de la classe : c'est la participation."
+      },
+      {
+        "question": "En Côte d'Ivoire, depuis la loi de 2015, l'école est obligatoire de…",
+        "options": [
+          "3 à 10 ans",
+          "6 à 16 ans",
+          "6 à 12 ans",
+          "10 à 18 ans"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'école est obligatoire pour tous les enfants de 6 à 16 ans."
+      },
+      {
+        "question": "Lequel de ces exemples est un devoir de l'enfant ?",
+        "options": [
+          "Se reposer",
+          "S'exprimer",
+          "Respecter ses parents et ses enseignants",
+          "S'informer"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Se reposer, s'exprimer et s'informer sont des droits. Respecter ses parents est un devoir."
+      },
+      {
+        "question": "La liberté d'expression permet-elle d'insulter quelqu'un ?",
+        "options": [
+          "Oui, toujours",
+          "Non : on donne son avis avec respect",
+          "Oui, mais seulement à l'école",
+          "Seulement les adultes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On peut dire ce qu'on pense, poliment et dans le respect des autres."
+      },
+      {
+        "question": "Une fille de 11 ans est retirée de l'école pour vendre au marché. Quel droit n'est pas respecté ?",
+        "options": [
+          "Le droit à l'éducation",
+          "La liberté d'association",
+          "Le droit de vote",
+          "La liberté de religion"
+        ],
+        "correctAnswer": 0,
+        "explanation": "C'est le droit à l'éducation, un droit au développement."
+      },
+      {
+        "question": "Que célèbre-t-on le 20 novembre ?",
+        "options": [
+          "La fête de l'indépendance",
+          "La fête du travail",
+          "La journée de l'eau",
+          "La Journée internationale des droits de l'enfant"
+        ],
+        "correctAnswer": 3,
+        "explanation": "C'est le jour anniversaire de l'adoption de la Convention relative aux droits de l'enfant (1989)."
+      }
+    ]
+  },
+  "francais-groupe-nominal": {
+    "tab5": [
+      {
+        "question": "Dans un groupe nominal, le mot principal (le noyau) est…",
+        "options": [
+          "un verbe",
+          "un nom",
+          "un adjectif",
+          "une préposition"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le GN est organisé autour d'un nom : c'est son noyau."
+      },
+      {
+        "question": "Une expansion du nom est…",
+        "options": [
+          "facultative : on peut la supprimer",
+          "obligatoire",
+          "toujours un verbe",
+          "toujours placée avant le nom"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Si on la supprime, la phrase reste correcte : « une robe rouge » → « une robe »."
+      },
+      {
+        "question": "Quelles sont les trois expansions du nom ?",
+        "options": [
+          "Le sujet, le verbe et le complément",
+          "Le déterminant, le nom et le pronom",
+          "L'adjectif qualificatif, le complément du nom et la subordonnée relative",
+          "L'adverbe, la préposition et la conjonction"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Adjectif (un cheval blanc), complément du nom (un cheval de course), relative (un cheval qui galope)."
+      },
+      {
+        "question": "L'adjectif qualificatif s'accorde…",
+        "options": [
+          "avec le verbe",
+          "jamais",
+          "seulement au pluriel",
+          "en genre et en nombre avec le nom qu'il qualifie"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Une robe neuve, des pagnes neufs : il prend le genre et le nombre du nom."
+      },
+      {
+        "question": "Dans « une robe rouge », quelle est la fonction de « rouge » ?",
+        "options": [
+          "Attribut du sujet",
+          "Complément du nom",
+          "Épithète",
+          "Sujet"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Il est dans le GN, à côté du nom : il est épithète."
+      },
+      {
+        "question": "Dans « La robe est rouge », quelle est la fonction de « rouge » ?",
+        "options": [
+          "Attribut du sujet",
+          "Épithète",
+          "Complément du nom",
+          "Pronom relatif"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Il est après le verbe être : il est attribut du sujet, ce n'est pas une expansion du nom."
+      },
+      {
+        "question": "Une subordonnée relative commence toujours par…",
+        "options": [
+          "une préposition",
+          "un déterminant",
+          "un adjectif",
+          "un pronom relatif"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Qui, que, dont, où… introduisent la subordonnée relative."
+      },
+      {
+        "question": "Dans « le garçon qui chante », quel est l'antécédent ?",
+        "options": [
+          "qui",
+          "garçon",
+          "chante",
+          "le"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'antécédent est le nom que la relative complète, placé juste avant le pronom relatif."
+      },
+      {
+        "question": "Complète : « Le livre ___ je lis est passionnant. »",
+        "options": [
+          "qui",
+          "dont",
+          "que",
+          "où"
+        ],
+        "correctAnswer": 2,
+        "explanation": "« que » est complément d'objet direct : je lis le livre."
+      },
+      {
+        "question": "Complète : « Le village ___ je suis née est au bord de la lagune. »",
+        "options": [
+          "où",
+          "qui",
+          "que",
+          "dont"
+        ],
+        "correctAnswer": 0,
+        "explanation": "« où » indique le lieu."
+      },
+      {
+        "question": "Le complément du nom est généralement introduit par…",
+        "options": [
+          "un pronom relatif",
+          "une préposition",
+          "un verbe conjugué",
+          "un adjectif"
+        ],
+        "correctAnswer": 1,
+        "explanation": "De, à, en, pour, sans, avec… : une robe en pagne, la cour de l'école."
+      },
+      {
+        "question": "Dans « une robe en pagne », quel est le complément du nom ?",
+        "options": [
+          "une",
+          "robe",
+          "une robe",
+          "en pagne"
+        ],
+        "correctAnswer": 3,
+        "explanation": "« en pagne » complète le nom « robe », avec la préposition « en »."
+      },
+      {
+        "question": "Le complément du nom s'accorde-t-il avec le nom qu'il complète ?",
+        "options": [
+          "Oui, toujours",
+          "Seulement au féminin",
+          "Non",
+          "Seulement au pluriel"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Il ne s'accorde pas : des robes en pagne (et non « en pagnes »)."
+      },
+      {
+        "question": "« Un cheval qui galope » : quelle est l'expansion du nom ?",
+        "options": [
+          "Une subordonnée relative",
+          "Un adjectif qualificatif",
+          "Un complément du nom",
+          "Un attribut"
+        ],
+        "correctAnswer": 0,
+        "explanation": "« qui galope » commence par un pronom relatif et contient un verbe conjugué."
+      }
+    ]
+  },
+  "francais-portrait-simple": {
+    "tab5": [
+      {
+        "question": "Le portrait est la description…",
+        "options": [
+          "d'un lieu",
+          "d'une personne",
+          "d'un objet",
+          "d'un événement"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le portrait décrit une personne (ou un personnage, un animal)."
+      },
+      {
+        "question": "Le portrait physique décrit…",
+        "options": [
+          "le caractère",
+          "les pensées",
+          "l'aspect extérieur : taille, visage, vêtements",
+          "les qualités"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le physique, c'est ce qu'on voit : la taille, le visage, les cheveux, les vêtements."
+      },
+      {
+        "question": "Le portrait moral décrit…",
+        "options": [
+          "le caractère : les qualités et les défauts",
+          "la taille",
+          "les vêtements",
+          "la couleur des yeux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le moral, c'est qui est la personne : gentille, courageuse, bavarde…"
+      },
+      {
+        "question": "« Elle a les cheveux tressés » appartient au…",
+        "options": [
+          "portrait moral",
+          "bilan",
+          "plan",
+          "portrait physique"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les cheveux se voient : c'est le portrait physique."
+      },
+      {
+        "question": "Lequel de ces mots est une qualité ?",
+        "options": [
+          "Paresseux",
+          "Égoïste",
+          "Serviable",
+          "Menteur"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Serviable = qui aime rendre service. Les trois autres sont des défauts."
+      },
+      {
+        "question": "« Elle est rapide comme une gazelle. » Quel outil est utilisé ?",
+        "options": [
+          "Une comparaison",
+          "Un complément du nom",
+          "Une subordonnée relative",
+          "Une question"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le mot « comme » rapproche deux choses : c'est une comparaison."
+      },
+      {
+        "question": "Quels verbes sont très utiles pour faire un portrait ?",
+        "options": [
+          "Les verbes à l'impératif",
+          "Les verbes d'état (être, sembler, paraître) et avoir",
+          "Seulement les verbes de mouvement",
+          "Aucun verbe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Elle est grande, il semble timide, elle a les yeux brillants."
+      },
+      {
+        "question": "Avant de rédiger, que faut-il identifier ?",
+        "options": [
+          "La date du jour",
+          "Le nom du professeur",
+          "Le nombre de lignes",
+          "Le type d'écrit, le thème et le personnage à décrire"
+        ],
+        "correctAnswer": 3,
+        "explanation": "C'est la première étape du traitement de la situation."
+      },
+      {
+        "question": "Dans quel ordre organise-t-on un portrait ?",
+        "options": [
+          "Conclusion, introduction, développement",
+          "Introduction, développement (physique puis moral), conclusion",
+          "Seulement un développement",
+          "Le portrait moral, puis l'introduction"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On présente le personnage, on le décrit, puis on donne son sentiment."
+      },
+      {
+        "question": "Que met-on dans la conclusion d'un portrait ?",
+        "options": [
+          "Son sentiment ou son avis sur le personnage",
+          "Le nom et l'âge du personnage",
+          "La couleur de ses yeux",
+          "Un nouveau personnage"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le nom et l'âge vont dans l'introduction ; la conclusion donne ce qu'on ressent."
+      },
+      {
+        "question": "Lequel de ces mots est trop vague pour un bon portrait ?",
+        "options": [
+          "Élancé",
+          "Crépus",
+          "Bien",
+          "Généreux"
+        ],
+        "correctAnswer": 2,
+        "explanation": "« Bien » ne dit presque rien. Choisis des mots précis."
+      }
+    ]
+  },
+  "francais-description": {
+    "tab6": [
+      {
+        "question": "Un texte descriptif présente…",
+        "options": [
+          "une suite d'actions",
+          "un lieu, une personne, un objet ou un animal",
+          "une recette",
+          "un dialogue"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La description permet au lecteur de se représenter ce qui est décrit."
+      },
+      {
+        "question": "Quelle est la première étape de la lecture méthodique ?",
+        "options": [
+          "La présentation du texte",
+          "Le bilan",
+          "Le tableau de vérification",
+          "Les axes de lecture"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ordre : présentation, hypothèse générale, vérification (axes et tableau), bilan."
+      },
+      {
+        "question": "L'hypothèse générale, c'est…",
+        "options": [
+          "le résumé de tout le texte",
+          "le titre du texte",
+          "la dernière phrase du texte",
+          "une phrase qui dit ce que le texte présente et ce qu'il veut montrer"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Exemple : « Ce texte est la description d'un marché animé que le narrateur aime. »"
+      },
+      {
+        "question": "Les axes de lecture sont…",
+        "options": [
+          "les lignes du texte",
+          "les parties de l'hypothèse générale qu'on vérifie une à une",
+          "les personnages du texte",
+          "les mots difficiles"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On tire les axes de l'hypothèse générale."
+      },
+      {
+        "question": "Dans le tableau de vérification, les indices sont…",
+        "options": [
+          "des questions du professeur",
+          "des dessins",
+          "des mots ou des phrases relevés dans le texte",
+          "les réponses du quiz"
+        ],
+        "correctAnswer": 2,
+        "explanation": "On relève les indices, on nomme l'outil d'analyse, puis on interprète."
+      },
+      {
+        "question": "« À l'entrée », « au milieu de l'allée », « plus loin » sont des…",
+        "options": [
+          "indicateurs de temps",
+          "adjectifs",
+          "verbes",
+          "indicateurs de lieu"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Ils organisent la description dans l'espace."
+      },
+      {
+        "question": "« Des cris, des rires, des appels » forment le champ lexical…",
+        "options": [
+          "du bruit",
+          "de la couleur",
+          "de l'odorat",
+          "du goût"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ces mots se rapportent tous à ce qu'on entend."
+      },
+      {
+        "question": "« Les pagnes dansent au vent comme des drapeaux. » Quel procédé contient le mot « comme » ?",
+        "options": [
+          "Une métaphore",
+          "Une comparaison",
+          "Un champ lexical",
+          "Un indicateur de lieu"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« comme » est un outil de comparaison."
+      },
+      {
+        "question": "« Le marché est le cœur battant du quartier. » Quel est ce procédé ?",
+        "options": [
+          "Une comparaison",
+          "Un indicateur de lieu",
+          "Une métaphore",
+          "Un adjectif de couleur"
+        ],
+        "correctAnswer": 2,
+        "explanation": "On rapproche le marché et un cœur sans outil de comparaison : c'est une métaphore."
+      },
+      {
+        "question": "« L'huile chante. » Quel est ce procédé ?",
+        "options": [
+          "Une personnification",
+          "Une comparaison",
+          "Un complément du nom",
+          "Une rime"
+        ],
+        "correctAnswer": 0,
+        "explanation": "On donne à une chose une action humaine : chanter."
+      },
+      {
+        "question": "Dans le bilan, on dit d'abord…",
+        "options": [
+          "le nom de l'auteur",
+          "la première phrase du texte",
+          "les mots difficiles",
+          "si l'hypothèse générale est confirmée"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Puis on rappelle les procédés et on donne l'intérêt du texte."
+      },
+      {
+        "question": "Quels temps trouve-t-on souvent dans une description ?",
+        "options": [
+          "Le futur",
+          "Le présent ou l'imparfait",
+          "L'impératif",
+          "Le conditionnel"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le présent de description, ou l'imparfait dans un récit au passé."
+      }
+    ]
   }
 }
