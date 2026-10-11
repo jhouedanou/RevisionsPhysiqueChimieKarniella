@@ -4200,6 +4200,175 @@
       }
     ]
   },
+  "svt-lutte-moustiques": {
+    "tab6": [
+      {
+        "question": "Qu'est-ce qu'un gîte larvaire ?",
+        "options": [
+          "Un lit pour les moustiques",
+          "Un endroit avec de l'eau qui ne coule pas, où vivent les larves",
+          "Un produit qui tue les larves",
+          "Une maladie"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Flaque, caniveau bouché, vieux pneu, boîte vide : de l'eau stagnante où vivent les larves."
+      },
+      {
+        "question": "Quelle action détruit un gîte larvaire ?",
+        "options": [
+          "Laisser une jarre ouverte",
+          "Jeter les boîtes vides dans la cour",
+          "Vider l'eau restée dans un vieux pneu",
+          "Boucher le caniveau avec des ordures"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Sans eau stagnante, la femelle ne peut plus pondre."
+      },
+      {
+        "question": "Pourquoi faut-il couvrir les jarres et les seaux d'eau ?",
+        "options": [
+          "Pour garder l'eau froide",
+          "Pour que la femelle du moustique ne puisse pas y pondre",
+          "Pour que l'eau sente bon",
+          "Pour attirer les poissons"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une jarre ouverte devient un gîte larvaire."
+      },
+      {
+        "question": "Que veut dire « curer un caniveau » ?",
+        "options": [
+          "Le peindre",
+          "Le boucher",
+          "Le nettoyer pour que l'eau coule",
+          "Le remplir d'eau"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un caniveau curé laisse couler l'eau : elle ne stagne plus."
+      },
+      {
+        "question": "Pourquoi couper les herbes hautes ?",
+        "options": [
+          "Les moustiques s'y cachent",
+          "Les moustiques les mangent",
+          "Elles donnent le paludisme",
+          "Pour faire de l'ombre"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Les herbes hautes servent de cachette aux moustiques, à l'ombre et à l'humidité."
+      },
+      {
+        "question": "Des poissons qui mangent les larves, c'est quelle lutte ?",
+        "options": [
+          "La lutte chimique",
+          "La lutte biologique",
+          "La lutte physique",
+          "Ce n'est pas une lutte"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On utilise un être vivant contre un autre : c'est la lutte biologique."
+      },
+      {
+        "question": "Un insecticide, c'est…",
+        "options": [
+          "Un produit qui tue les insectes",
+          "Un médicament contre la fièvre",
+          "Un insecte",
+          "Une moustiquaire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Il tue les insectes comme les moustiques : c'est la lutte chimique."
+      },
+      {
+        "question": "Un larvicide sert à…",
+        "options": [
+          "Nourrir les larves",
+          "Tuer les larves",
+          "Tuer les poissons",
+          "Faire pousser les plantes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le larvicide tue les larves dans l'eau qu'on ne peut pas supprimer."
+      },
+      {
+        "question": "Que faut-il faire après avoir pulvérisé un insecticide dans une chambre ?",
+        "options": [
+          "Rester dedans et respirer",
+          "Sortir de la pièce, puis aérer",
+          "En mettre sur la nourriture",
+          "Fermer les fenêtres et dormir"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un insecticide est un poison : on sort et on aère."
+      },
+      {
+        "question": "Quel est le meilleur moyen de se protéger des piqûres la nuit ?",
+        "options": [
+          "Dormir sous une moustiquaire imprégnée",
+          "Dormir la fenêtre ouverte",
+          "Allumer la lumière",
+          "Boire beaucoup d'eau"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Elle empêche le moustique de piquer et le tue quand il se pose dessus."
+      },
+      {
+        "question": "Comment bien utiliser une moustiquaire ?",
+        "options": [
+          "Seulement pendant la saison des pluies",
+          "La border sous le matelas, chaque nuit",
+          "La laisser trouée",
+          "La mettre à la fenêtre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Bien bordée, sans trou, chaque nuit et toute l'année."
+      },
+      {
+        "question": "Un répulsif, c'est…",
+        "options": [
+          "Un produit qui attire les moustiques",
+          "Un produit qui fait fuir les moustiques",
+          "Un poisson",
+          "Un caniveau"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Pommade ou lotion sur la peau : les moustiques s'éloignent."
+      },
+      {
+        "question": "Pourquoi la moustiquaire protège-t-elle du paludisme ?",
+        "options": [
+          "Elle soigne la fièvre",
+          "Le moustique ne peut pas piquer, donc il ne transmet pas la maladie",
+          "Elle fait pleuvoir",
+          "Elle nourrit les moustiques"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le paludisme passe par la piqûre : pas de piqûre, pas de paludisme."
+      },
+      {
+        "question": "Tu as de la fièvre. Que fais-tu ?",
+        "options": [
+          "J'attends que ça passe",
+          "Je le dis à un adulte et je vais au centre de santé",
+          "Je prends n'importe quel médicament",
+          "Je pulvérise un insecticide"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On ne se soigne pas seul. Soigné à temps, le paludisme guérit."
+      },
+      {
+        "question": "Une opération de salubrité suffit-elle pour toute l'année ?",
+        "options": [
+          "Oui, une fois suffit",
+          "Non, il faut la refaire souvent",
+          "Oui, si on la fait la nuit",
+          "Non, elle ne sert à rien"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'eau et les ordures reviennent : il faut nettoyer régulièrement."
+      }
+    ]
+  },
   "anglais-unit1-lesson3-learn-at-school": {
     "tab6": [
       {
