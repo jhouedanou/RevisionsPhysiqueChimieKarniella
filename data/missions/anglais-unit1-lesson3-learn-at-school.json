@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit1-lesson3-learn-at-school",
+  "lecon": "anglais-unit1-lesson3-learn-at-school",
+  "matiere": "anglais",
+  "titre": "The lost timetable",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le robot de l'école a perdu son timetable ! Il ne sait plus quelles matières il y a, ni à quelle heure commencent les cours. Aide-le à retrouver les mots de l'emploi du temps, à donner son avis, et à remettre les aiguilles de son horloge à l'heure.",
+  "micro_learning_blocks": [
+    {
+      "titre": "📅 L'emploi du temps",
+      "contenu": "A school timetable = a schedule = a school programme. A period = un moment de la journée (the morning, the afternoon). A free period = a break time. Physical training = sports. To attend class = to participate in class sessions."
+    },
+    {
+      "titre": "🗣️ Donne ton avis",
+      "contenu": "Pour demander : How do you find…? What do you think about…? What's your opinion about…? Pour répondre : I find English easy. I think History lessons are nice. Avec think, n'oublie pas is ou are !"
+    },
+    {
+      "titre": "⏰ Les trois aiguilles : from, in, at",
+      "contenu": "A mark = a grade (13/20). I'm good at English ≠ I'm bad at maths. From 9:20 to 10:15 = le début et la fin. In the afternoon = un moment de la journée. At 7:30 = l'heure précise."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "A schedule = …",
+      "options": [
+        "a grade",
+        "a timetable",
+        "a free period",
+        "a subject"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A schedule = a timetable (un emploi du temps)."
+    },
+    {
+      "question": "Complete: How do you ___ English? — I find English easy.",
+      "options": [
+        "think",
+        "opinion",
+        "find",
+        "about"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "How do you find…? — I find…"
+    },
+    {
+      "question": "Complete: Classes always start ___ 7:30.",
+      "options": [
+        "at",
+        "in",
+        "from",
+        "on"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "At + une heure précise : at 7:30."
+    }
+  ]
+}
