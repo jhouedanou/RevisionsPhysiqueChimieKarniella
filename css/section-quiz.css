@@ -395,6 +395,53 @@
 }
 .quiz-gain.bonus { background: var(--succes-fond); color: var(--succes-texte); }
 
+/* Récapitulatif de fin de quiz (les deux modes) */
+.quiz-recap {
+    margin-top: 16px;
+    padding: 18px;
+    text-align: left;
+    background: var(--surface);
+    border: 2px solid var(--bord);
+    border-radius: 14px;
+}
+.quiz-recap-titre { margin: 0 0 4px; font-size: 18px; font-weight: 900; color: var(--l5-rose, var(--rose)); }
+.quiz-recap-bilan { margin: 0 0 12px; color: var(--doux); font-weight: 700; }
+.quiz-recap-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.quiz-recap-ligne {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid var(--succes-bord);
+    background: var(--succes-fond);
+    color: var(--succes-texte);
+    font-size: 15.5px;
+}
+.quiz-recap-ligne.faux { border-color: var(--erreur-bord); background: var(--erreur-fond); color: var(--erreur-texte); }
+.quiz-recap-ligne > div { min-width: 0; }
+.quiz-recap-ligne p { margin: 0 0 4px; line-height: 1.45; overflow-wrap: anywhere; }
+.quiz-recap-ligne p:last-child { margin-bottom: 0; }
+.quiz-recap-marque {
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: inline-grid;
+    place-items: center;
+    background: var(--succes-bord);
+    color: #fff;
+    font-weight: 900;
+}
+.quiz-recap-ligne.faux .quiz-recap-marque { background: var(--erreur-bord); }
+.quiz-recap-question { font-weight: 800; color: var(--encre); }
+.quiz-recap-explication { font-size: 14.5px; opacity: 0.9; }
+
+@media (max-width: 480px) {
+    .quiz-recap { padding: 14px 10px; }
+    .quiz-recap-ligne { padding: 10px; gap: 8px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .quiz-piste i, .quiz-piste-marque { transition: none; }
 }

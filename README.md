@@ -519,6 +519,10 @@ traductions vivent dans `scripts/traductions-anglais.json` ;
 
 `initSectionQuiz(id, questions, { etapes: true })` affiche **une question à la
 fois** : feedback immédiat, chrono, points d'avancement, écran final avec les XP.
+Sous l'écran final, un **📋 récapitulatif** reprend chaque question avec la
+réponse donnée ; pour une erreur, il redonne la bonne réponse et l'explication.
+Le quiz « toutes les questions d'un coup », le mode « Interroge-moi » du chat et
+les pages `francais-quiz.html` / `education-civique-quiz.html` ont le même.
 `js/progression.js` garde le **record chronométré** de chaque quiz
 (`KarniellaProgression.record(slug)`). Au quiz suivant, « 👻 Battre mon fantôme »
 fait courir l'ancien record sur une piste pendant qu'on répond.
