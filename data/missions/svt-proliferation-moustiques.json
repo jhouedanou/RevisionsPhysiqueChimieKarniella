@@ -1,0 +1,57 @@
+{
+  "id": "svt-proliferation-moustiques",
+  "lecon": "svt-proliferation-moustiques",
+  "matiere": "svt",
+  "titre": "L'internat qui bourdonne",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, alerte à l'internat ! Pendant le grand nettoyage, des nuées de moustiques bourdonnent et plusieurs élèves ont de la fièvre. Trouve où se cachent les moustiques et ce qu'ils font aux élèves, comme dans ton cahier.",
+  "micro_learning_blocks": [
+    {
+      "titre": "💧 La nurserie des moustiques",
+      "contenu": "La femelle pond dans l'eau qui ne coule pas : flaques, vieux pneus, boîtes vides, caniveaux bouchés. C'est leur crèche ! Œuf, larve et nymphe y grandissent, puis l'adulte s'envole."
+    },
+    {
+      "titre": "🌿 Les cachettes",
+      "contenu": "Les ordures gardent l'eau de pluie et les herbes hautes servent d'hôtel à l'ombre. Un endroit sale, c'est un parc d'attractions pour moustiques : ils prolifèrent, ils deviennent très nombreux."
+    },
+    {
+      "titre": "🤒 Sur l'Homme",
+      "contenu": "Piqûres qui grattent, bourdonnement qui empêche de dormir, et surtout le paludisme : fièvre, maux de tête, fatigue. Seule la femelle pique : c'est elle la coupable !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Où la femelle du moustique pond-elle ?",
+      "options": [
+        "Dans le sable sec",
+        "Dans l'eau qui ne coule pas",
+        "Sur le toit",
+        "Dans les livres"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Flaques, pneus, boîtes vides : l'eau stagnante est sa crèche."
+    },
+    {
+      "question": "Que veut dire « prolifération » ?",
+      "options": [
+        "Les moustiques partent en vacances",
+        "Les moustiques deviennent très nombreux",
+        "Les moustiques deviennent tout petits",
+        "Les moustiques changent de couleur"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Proliférer, c'est se multiplier jusqu'à être très nombreux."
+    },
+    {
+      "question": "Quelle maladie le moustique peut-il donner ?",
+      "options": [
+        "La carie",
+        "Le rhume",
+        "Le paludisme",
+        "La varicelle"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Le paludisme : fièvre, maux de tête, fatigue."
+    }
+  ]
+}

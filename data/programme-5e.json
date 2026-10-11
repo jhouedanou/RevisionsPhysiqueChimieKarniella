@@ -159,6 +159,15 @@
           "description": "Manuel p. 72 à 76 : les actions néfastes du criquet, ses conséquences sur l'environnement et sur l'Homme, et les exercices corrigés.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "svt-proliferation-moustiques",
+          "titre": "La prolifération des moustiques",
+          "sousTitre": "Les conditions du milieu qui la favorisent et ses conséquences sur l'Homme",
+          "icone": "🦟",
+          "description": "D'après ton cahier : constat, problème, hypothèses, le milieu qui aide les moustiques, le paludisme, et les exercices corrigés.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
