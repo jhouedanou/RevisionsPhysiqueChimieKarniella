@@ -4030,5 +4030,174 @@
         "explanation": "Le présent de description, ou l'imparfait dans un récit au passé."
       }
     ]
+  },
+  "svt-proliferation-moustiques": {
+    "tab5": [
+      {
+        "question": "Dans le constat de ton cahier, où a-t-on vu beaucoup de moustiques ?",
+        "options": [
+          "Dans un hôpital",
+          "Dans un internat, pendant une opération de salubrité",
+          "Au marché",
+          "Dans une forêt"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On a vu beaucoup de moustiques pendant une opération de salubrité dans un internat, et certains élèves sont malades."
+      },
+      {
+        "question": "Quel est le problème posé dans ton cours ?",
+        "options": [
+          "Comment la prolifération des moustiques agit-elle sur l'Homme ?",
+          "Pourquoi les moustiques volent-ils ?",
+          "Combien de pattes a un moustique ?",
+          "Où dorment les élèves de l'internat ?"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le problème, c'est la question qu'on se pose : comment la prolifération des moustiques agit-elle sur l'Homme ?"
+      },
+      {
+        "question": "Que veut dire « prolifération » ?",
+        "options": [
+          "Les moustiques disparaissent",
+          "Les moustiques deviennent très nombreux",
+          "Les moustiques changent de couleur",
+          "Les moustiques dorment"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Prolifération : les moustiques deviennent très nombreux."
+      },
+      {
+        "question": "Quelle est la première hypothèse de ton cours ?",
+        "options": [
+          "Les moustiques ne piquent pas",
+          "La prolifération des moustiques n'a aucun effet",
+          "Certaines conditions du milieu favorisent la prolifération des moustiques",
+          "Les moustiques vivent seulement en forêt"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Hypothèse 1 : certaines conditions du milieu favorisent la prolifération des moustiques."
+      },
+      {
+        "question": "Quelle est la deuxième hypothèse de ton cours ?",
+        "options": [
+          "Les moustiques nettoient l'internat",
+          "La prolifération des moustiques a des conséquences sur l'Homme",
+          "Les moustiques aiment le froid",
+          "Les élèves sont malades à cause de la nourriture"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hypothèse 2 : la prolifération des moustiques a des conséquences sur l'Homme."
+      },
+      {
+        "question": "Dans les 4 étapes de la vérification, que vient-il après l'observation ?",
+        "options": [
+          "La conclusion",
+          "L'analyse",
+          "Les résultats",
+          "Le problème"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Observation → résultats → analyse → conclusion."
+      },
+      {
+        "question": "Où la femelle du moustique pond-elle ses œufs ?",
+        "options": [
+          "Dans l'eau qui ne coule pas (eau stagnante)",
+          "Dans le sable sec",
+          "Sur les murs",
+          "Dans les arbres"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Elle pond dans l'eau stagnante : flaques, vieux pneus, boîtes vides, caniveaux bouchés."
+      },
+      {
+        "question": "Lequel n'est PAS un endroit où le moustique pond ?",
+        "options": [
+          "Une flaque d'eau",
+          "Un vieux pneu plein d'eau de pluie",
+          "Une boîte vide qui contient de l'eau",
+          "Un sol de sable sec"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Sans eau, pas de ponte : le sable sec ne convient pas aux moustiques."
+      },
+      {
+        "question": "Pourquoi les herbes hautes aident-elles les moustiques ?",
+        "options": [
+          "Ils mangent l'herbe",
+          "Ils s'y cachent, à l'ombre et à l'humidité",
+          "Elles font de l'eau",
+          "Elles chassent les oiseaux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les moustiques se cachent le jour dans les herbes hautes et les broussailles."
+      },
+      {
+        "question": "Dans l'ordre, quelles sont les étapes de la vie du moustique ?",
+        "options": [
+          "Larve, œuf, adulte, nymphe",
+          "Œuf, larve, nymphe, adulte",
+          "Adulte, nymphe, œuf, larve",
+          "Nymphe, œuf, larve, adulte"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Œuf → larve → nymphe → adulte. Les trois premières étapes se passent dans l'eau."
+      },
+      {
+        "question": "Quelle maladie les moustiques transmettent-ils le plus souvent en Côte d'Ivoire ?",
+        "options": [
+          "La rougeole",
+          "Le paludisme",
+          "La carie dentaire",
+          "Le rhume"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le paludisme, transmis par la piqûre du moustique anophèle femelle."
+      },
+      {
+        "question": "Lequel est un signe du paludisme ?",
+        "options": [
+          "La fièvre",
+          "Les cheveux qui poussent",
+          "Une bonne faim",
+          "Les dents qui brillent"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Fièvre, frissons, maux de tête, fatigue, vomissements : ce sont les signes du paludisme."
+      },
+      {
+        "question": "Quel moustique pique ?",
+        "options": [
+          "Le mâle",
+          "La femelle",
+          "Les deux",
+          "Aucun"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Seule la femelle pique : elle a besoin de sang pour ses œufs."
+      },
+      {
+        "question": "Pourquoi certains élèves de l'internat sont-ils malades ?",
+        "options": [
+          "Ils ont trop mangé",
+          "L'endroit était sale : beaucoup de moustiques les ont piqués et rendus malades",
+          "Ils ont trop dormi",
+          "Il faisait froid"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Endroit sale → beaucoup de moustiques → piqûres → paludisme → élèves malades."
+      },
+      {
+        "question": "Quelle action fait diminuer les moustiques ?",
+        "options": [
+          "Laisser l'eau dans les vieux pneus",
+          "Jeter les ordures dans le caniveau",
+          "Vider les récipients qui gardent l'eau de pluie",
+          "Laisser pousser les herbes"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Sans eau stagnante, les moustiques ne peuvent plus pondre."
+      }
+    ]
   }
 }
