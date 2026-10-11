@@ -168,6 +168,15 @@
           "description": "D'après ton cahier : constat, problème, hypothèses, le milieu qui aide les moustiques, le paludisme, et les exercices corrigés.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "svt-lutte-moustiques",
+          "titre": "La lutte contre la prolifération des moustiques",
+          "sousTitre": "Détruire les gîtes, tuer les moustiques, se protéger des piqûres",
+          "icone": "🛡️",
+          "description": "Lutte physique, chimique et biologique, moustiquaire imprégnée, et les exercices corrigés. Rédigée d'après le titre du cahier.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
