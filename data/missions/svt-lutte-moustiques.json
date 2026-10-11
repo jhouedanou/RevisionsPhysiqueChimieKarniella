@@ -1,0 +1,57 @@
+{
+  "id": "svt-lutte-moustiques",
+  "lecon": "svt-lutte-moustiques",
+  "matiere": "svt",
+  "titre": "Opération zéro moustique",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le directeur de l'internat t'appelle à l'aide : les moustiques reviennent sans cesse ! Ta mission : casser leur cycle à trois endroits. Dans l'eau, dans l'air, et sur ta peau.",
+  "micro_learning_blocks": [
+    {
+      "titre": "💧 Vider la crèche",
+      "contenu": "Les larves grandissent dans l'eau qui ne coule pas : c'est leur crèche, le gîte larvaire. Vide les pneus et les boîtes, couvre les jarres, cure les caniveaux, ramasse les ordures. Plus d'eau stagnante, plus de bébés moustiques !"
+    },
+    {
+      "titre": "🧪 Produits et alliés",
+      "contenu": "Insecticide pour les adultes, larvicide pour les larves : c'est la lutte chimique, et c'est un adulte qui s'en sert. Des poissons gloutons qui avalent les larves : c'est la lutte biologique."
+    },
+    {
+      "titre": "🛏️ Le bouclier de la nuit",
+      "contenu": "La moustiquaire imprégnée est ton bouclier : bien bordée, sans trou, chaque nuit. Pas de piqûre, pas de paludisme. Et si la fièvre arrive, direction le centre de santé !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Qu'est-ce qu'un gîte larvaire ?",
+      "options": [
+        "Un hôtel pour moustiques adultes",
+        "De l'eau qui ne coule pas, où vivent les larves",
+        "Un produit qui tue les larves",
+        "Une moustiquaire"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Flaques, pneus, boîtes vides : la crèche des larves."
+    },
+    {
+      "question": "Des poissons qui mangent les larves, c'est la lutte…",
+      "options": [
+        "chimique",
+        "physique",
+        "biologique",
+        "magique"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Un être vivant contre un autre : lutte biologique."
+    },
+    {
+      "question": "Quel est ton meilleur bouclier la nuit ?",
+      "options": [
+        "La fenêtre ouverte",
+        "La moustiquaire imprégnée",
+        "La lumière allumée",
+        "Un ventilateur éteint"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Elle empêche la piqûre et tue le moustique."
+    }
+  ]
+}
