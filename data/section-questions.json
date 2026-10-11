@@ -4199,5 +4199,288 @@
         "explanation": "Sans eau stagnante, les moustiques ne peuvent plus pondre."
       }
     ]
+  },
+  "anglais-unit1-lesson3-learn-at-school": {
+    "tab6": [
+      {
+        "question": "A school timetable is…",
+        "options": [
+          "A school programme",
+          "A break time",
+          "A drawing lesson",
+          "A test"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A school timetable = a school programme (un emploi du temps).",
+        "langue": "en"
+      },
+      {
+        "question": "To attend class means…",
+        "options": [
+          "To be late",
+          "To participate in class sessions",
+          "To stay down",
+          "To paint pictures"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To attend class = to participate in class sessions (aller en cours).",
+        "langue": "en"
+      },
+      {
+        "question": "A free period is…",
+        "options": [
+          "A maths test",
+          "A school subject",
+          "A break time",
+          "A bad mark"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A free period = a break time: breakfast time, lunch time.",
+        "langue": "en"
+      },
+      {
+        "question": "Physical training means…",
+        "options": [
+          "Drawing",
+          "Spelling",
+          "History",
+          "Sports"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Physical training = sports (l'EPS).",
+        "langue": "en"
+      },
+      {
+        "question": "In a drawing lesson, students…",
+        "options": [
+          "run and play football",
+          "paint or colour pictures",
+          "do maths",
+          "learn Spanish"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A drawing lesson: a lesson of arts and pictures when students paint or colour pictures.",
+        "langue": "en"
+      },
+      {
+        "question": "Spelling lessons are…",
+        "options": [
+          "oral and pronunciation lessons",
+          "sports lessons",
+          "science lessons",
+          "free periods"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Spelling lessons: oral and pronunciation lessons.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « un moment de la journée (le matin, l'après-midi) » ?",
+        "options": [
+          "a mark",
+          "a grade",
+          "a period",
+          "a schedule"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A period = a moment of time. Ex: the morning, the afternoon.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: How do you ___ English?",
+        "options": [
+          "think",
+          "find",
+          "opinion",
+          "about"
+        ],
+        "correctAnswer": 1,
+        "explanation": "How do you find English? — I find English easy.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: What do you think ___ History lessons?",
+        "options": [
+          "at",
+          "in",
+          "from",
+          "about"
+        ],
+        "correctAnswer": 3,
+        "explanation": "What do you think about…? (Qu'est-ce que tu penses de… ?)",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle réponse est CORRECTE ?",
+        "options": [
+          "I think History lessons is nice.",
+          "I think History lessons nice.",
+          "I think History lessons are nice.",
+          "I thinking History lessons are nice."
+        ],
+        "correctAnswer": 2,
+        "explanation": "History lessons est au pluriel → are. Avec think, il faut is ou are.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "« What's your opinion about maths? » means the same as…",
+        "options": [
+          "Are you good at maths?",
+          "What do you think about maths?",
+          "When do you have maths?",
+          "Is maths your favourite subject?"
+        ],
+        "correctAnswer": 1,
+        "explanation": "What's your opinion about…? = What do you think about…? = How do you find…?",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: I find English ___.",
+        "options": [
+          "easy",
+          "is easy",
+          "are easy",
+          "about easy"
+        ],
+        "correctAnswer": 0,
+        "explanation": "I find + matière + adjectif : I find English easy (pas de is).",
+        "langue": "en"
+      },
+      {
+        "question": "A mark = …",
+        "options": [
+          "a timetable",
+          "a period",
+          "a subject",
+          "a grade"
+        ],
+        "correctAnswer": 3,
+        "explanation": "A mark = a grade (une note). Ex: 13/20 after a test.",
+        "langue": "en"
+      },
+      {
+        "question": "A schedule = …",
+        "options": [
+          "a test",
+          "a timetable",
+          "a grade",
+          "a break"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A schedule = a timetable: a school programme.",
+        "langue": "en"
+      },
+      {
+        "question": "I always have good grades in English. I'm ___ English.",
+        "options": [
+          "bad at",
+          "good in",
+          "good at",
+          "late"
+        ],
+        "correctAnswer": 2,
+        "explanation": "To be good at = to have good marks at. On dit good AT, pas good in.",
+        "langue": "en"
+      },
+      {
+        "question": "To be bad at means…",
+        "options": [
+          "To have good marks at",
+          "To be on time",
+          "To be top of",
+          "To have bad marks at"
+        ],
+        "correctAnswer": 3,
+        "explanation": "To be bad at = to have bad marks at.",
+        "langue": "en"
+      },
+      {
+        "question": "Which one is a scientific subject?",
+        "options": [
+          "Spanish",
+          "Physics",
+          "French",
+          "English"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Scientific subjects: maths, physics, biology, science.",
+        "langue": "en"
+      },
+      {
+        "question": "Which one is a literary subject?",
+        "options": [
+          "Spanish",
+          "Biology",
+          "Maths",
+          "Physics"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Literary subjects: English, French, Spanish.",
+        "langue": "en"
+      },
+      {
+        "question": "A favourite subject is…",
+        "options": [
+          "a free period",
+          "a subject you like the most",
+          "a bad mark",
+          "a subject you don't like"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A favourite subject: a subject you like the most. English is my favourite subject.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: We have English ___ 9:20 ___ 10:15.",
+        "options": [
+          "at … in",
+          "in … at",
+          "to … from",
+          "from … to"
+        ],
+        "correctAnswer": 3,
+        "explanation": "From … to … : l'heure du début et l'heure de la fin.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: Classes always start ___ 7:30.",
+        "options": [
+          "in",
+          "from",
+          "at",
+          "on"
+        ],
+        "correctAnswer": 2,
+        "explanation": "At + une heure précise : at 7:30.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: We don't have class ___ the afternoon.",
+        "options": [
+          "in",
+          "at",
+          "to",
+          "on"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In the + moment de la journée : in the morning, in the afternoon.",
+        "langue": "en"
+      },
+      {
+        "question": "Comment lit-on « 10:15 » en anglais ?",
+        "options": [
+          "one fifteen",
+          "ten fifty",
+          "fifteen ten",
+          "ten fifteen"
+        ],
+        "correctAnswer": 3,
+        "explanation": "On lit les deux nombres : ten fifteen.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      }
+    ]
   }
 }

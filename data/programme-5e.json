@@ -49,6 +49,15 @@
           "description": "La vie au collège (line up, be late, do research, deliver a presentation…), le présent continu (affirmatif, négatif, questions) et can / may.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "anglais-unit1-lesson3-learn-at-school",
+          "titre": "Unit 1 — At school : Lesson 3, What do you learn at school?",
+          "sousTitre": "Sessions 1 & 2 — Vocabulary, giving opinion, from / in / at",
+          "icone": "📚",
+          "description": "Les matières et l'emploi du temps (timetable, period, a mark, to be good at…), donner son avis (How do you find…?) et from… to / in the / at.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
