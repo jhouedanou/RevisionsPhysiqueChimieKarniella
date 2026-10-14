@@ -3744,7 +3744,7 @@
           "un pronom relatif"
         ],
         "correctAnswer": 3,
-        "explanation": "Qui, que, dont, où… introduisent la subordonnée relative."
+        "explanation": "Qui, que, quoi, où, dont… introduisent la subordonnée relative."
       },
       {
         "question": "Dans « le garçon qui chante », quel est l'antécédent ?",
@@ -3755,7 +3755,7 @@
           "le"
         ],
         "correctAnswer": 1,
-        "explanation": "L'antécédent est le nom que la relative complète, placé juste avant le pronom relatif."
+        "explanation": "L'antécédent est le nom que la relative complète. Le plus souvent, il est placé juste avant le pronom relatif."
       },
       {
         "question": "Complète : « Le livre ___ je lis est passionnant. »",
@@ -3822,6 +3822,50 @@
         ],
         "correctAnswer": 0,
         "explanation": "« qui galope » commence par un pronom relatif et contient un verbe conjugué."
+      },
+      {
+        "question": "D'après ton cahier, lequel de ces mots est un pronom relatif ?",
+        "options": [
+          "quoi",
+          "avec",
+          "très",
+          "notre"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ton cahier cite les pronoms relatifs qui, que, quoi, où, dont…"
+      },
+      {
+        "question": "« Je l'avais vu qui combattait le géant. » Quel est l'antécédent de la relative ?",
+        "options": [
+          "le géant",
+          "vu",
+          "le pronom « l' »",
+          "combattait"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Quand l'antécédent est un pronom (ici « l' »), la subordonnée relative est séparée de lui."
+      },
+      {
+        "question": "D'après ton cahier, la subordonnée relative peut être supprimée, mais…",
+        "options": [
+          "elle s'accorde toujours avec le verbe",
+          "elle est toujours au début de la phrase",
+          "elle ne contient jamais de verbe",
+          "elle est rarement déplacée"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Comme l'adjectif épithète, c'est une expansion du nom : on peut la supprimer, mais on la déplace rarement."
+      },
+      {
+        "question": "Le complément du nom a un déterminant ou non. Dans quel GN n'a-t-il pas de déterminant ?",
+        "options": [
+          "le volant de la voiture",
+          "un sac en cuir",
+          "la porte de la maison",
+          "le cahier de la classe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« en cuir » : pas de déterminant devant « cuir ». Dans les autres, il y a « la »."
       }
     ]
   },
@@ -3947,6 +3991,50 @@
         ],
         "correctAnswer": 2,
         "explanation": "« Bien » ne dit presque rien. Choisis des mots précis."
+      },
+      {
+        "question": "D'après ton cahier, le portrait simple (ou statique) décrit un personnage…",
+        "options": [
+          "qui court et qui joue",
+          "qui raconte sa vie",
+          "qui n'est pas en mouvement ou en action",
+          "qu'on a inventé"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Statique veut dire qui ne bouge pas : on décrit le personnage comme sur une photo."
+      },
+      {
+        "question": "D'après ton cahier, par quoi commence le portrait physique ?",
+        "options": [
+          "Les pieds",
+          "Les vêtements",
+          "Les chaussures",
+          "La tête, le visage, les yeux"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le portrait physique commence par la tête, le visage, les yeux, avant de décrire les autres éléments."
+      },
+      {
+        "question": "Quelles sont les formes de phrase citées dans ton cahier ?",
+        "options": [
+          "Déclaratif, interrogatif, impératif",
+          "Affirmatif, négatif et emphatique",
+          "Présent, imparfait, passé composé",
+          "Physique, moral, sentiment"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les formes : affirmatif, négatif, emphatique. Déclaratif, interrogatif, impératif et exclamatif sont les types de phrase."
+      },
+      {
+        "question": "Dans le portrait de Didier Drogba, « humble » et « très gentille » sont des mots…",
+        "options": [
+          "mélioratifs : ils présentent la personne de façon positive",
+          "dépréciatifs : ils présentent la personne de façon négative",
+          "des verbes d'état",
+          "des compléments du nom"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ce sont des mots mélioratifs, du portrait moral. Le contraire : dépréciatif (paresseux, méchant)."
       }
     ]
   },
@@ -4083,6 +4171,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Le présent de description, ou l'imparfait dans un récit au passé."
+      },
+      {
+        "question": "Dans ton cahier, quelles sont les quatre colonnes du tableau de vérification ?",
+        "options": [
+          "Entrées, repérage, analyse, interprétation",
+          "Titre, auteur, thème, bilan",
+          "Indices, résumé, avis, conclusion",
+          "Axes, hypothèse, texte, vocabulaire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Entrées (l'axe : H1 ou H2), repérage (les mots du texte), analyse (l'outil), interprétation (ce que ça montre)."
+      },
+      {
+        "question": "Dans le texte sur César, « avaient été » et « étaient revenus » sont conjugués au…",
+        "options": [
+          "présent de l'indicatif",
+          "futur simple",
+          "plus-que-parfait de l'indicatif",
+          "passé simple"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Auxiliaire à l'imparfait + participe passé : c'est le plus-que-parfait. Il marque les actions passées de César."
+      },
+      {
+        "question": "« Il s'était engagé, il était revenu. » Quel type de phrase est-ce ?",
+        "options": [
+          "Une phrase interrogative",
+          "Une phrase déclarative",
+          "Une phrase impérative",
+          "Une phrase exclamative"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Elle donne une information et finit par un point : c'est une phrase déclarative. Elle précise les actions passées du personnage."
+      },
+      {
+        "question": "D'après ton cahier, que veut dire « martyriser » ?",
+        "options": [
+          "Soigner quelqu'un",
+          "Faire rire quelqu'un",
+          "Aider quelqu'un",
+          "Faire souffrir quelqu'un d'une grande douleur"
+        ],
+        "correctAnswer": 3,
+        "explanation": "« Martyrisé » est formé à partir du verbe « martyriser » : faire souffrir quelqu'un d'une grande douleur."
       }
     ]
   },
