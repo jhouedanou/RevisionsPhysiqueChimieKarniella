@@ -23,6 +23,23 @@ demandées et qu'il faut appliquer à chaque nouvelle leçon.
   ce qui manque dans un encadré « ✏️ À vérifier ». Garder le texte brut reçu
   dans `docs/sources/`.
 
+## Écrire simple
+
+Demandé le 14/10 : des leçons courtes, que Karniella comprend du premier coup.
+
+- **Pas d'encadré « 📖 D'où vient cette leçon ? »**, ni aucune phrase sur la
+  provenance du contenu dans la page (note vocale, enregistrement, message,
+  « rédigé d'après le programme », « aide en plus », « j'entends »…). La
+  provenance va dans `docs/sources/` et dans le message de commit.
+- Phrases d'environ 15 mots, une idée par phrase, tutoiement, mots simples.
+- Au plus un encadré 🐴 par partie (1 à 3 phrases) ; ⚠️ seulement pour un vrai
+  piège ou un danger ; pas d'idée dite deux fois.
+- « ✏️ À vérifier dans ton cahier » : un seul par onglet au plus, à la fin,
+  1 à 4 puces courtes qui disent quoi vérifier, sans parler de l'audio.
+- On ne simplifie jamais le texte du cahier ni les textes d'étude (seule
+  l'orthographe est corrigée), ni les définitions, les schémas, les exercices
+  et leurs corrections.
+
 ## Leçons d'anglais : bouton de traduction sur chaque phrase
 
 Chaque définition, phrase d'exemple et ligne de dialogue en anglais porte sa
