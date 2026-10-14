@@ -376,6 +376,62 @@ conditions du milieu.
 
 ---
 
+## Histoire — Les premiers habitants de la Côte d'Ivoire
+
+*Passage le plus bruité de l'enregistrement (32:29 à 37:26). Quatre
+transcriptions (dont une sur le son nettoyé et ralenti) ne donnent presque
+rien de sûr après les Pygmées. Seuls les morceaux qui reviennent dans
+plusieurs transcriptions sont gardés.*
+
+### Avant la leçon : méthode d'exploitation de documents
+*(Le même texte que la leçon de français « L'exploitation de documents »,
+reçue par une note vocale plus ancienne. Elle est lue ici dans le cahier
+d'histoire.)*
+1. Numéroter les lignes du texte.
+2. Faire une lecture approfondie, crayon en main.
+3. Souligner les mots difficiles et les mots-clés.
+Comment répondre aux questions ?
+A. Pour la question [sur l'idée générale] [?], l'élève fait une phrase
+complète en utilisant la formulation suivante : « Dans le texte, il s'agit
+de… » ou « … à partir de… » [?] ; « À travers le texte, l'auteur montre
+que… » ou « l'auteur affirme… ».
+B. Pour l'explication [d'un passage] [?], l'élève [s'appuie sur] ses
+connaissances et donne les raisons d'une affirmation.
+
+### I. 1. Les Pygmées ou Négrilles *(déjà reçu le 04/10)*
+Même liste de caractéristiques que le 04/10 : petits de taille (1,44 m à
+1,55 m [?]), peau brune ou rougeâtre, très intelligents, force
+extraordinaire, chasse, pêche, cueillette, « ils aiment beaucoup les
+fruits » (entendu encore). Les noms donnés par les peuples sont inaudibles.
+
+### 2-1. Les premières ethnies *(déjà reçu le 04/10)*
+Noms presque inaudibles. On entend « Adjéké », « Ehotilé », « Gagou »,
+« Nabé », « Proto… veut dire avant ».
+
+### 2-2. La localisation des premières ethnies *(nouveau, inaudible)*
+Elle lit une localisation pour chaque ethnie ; on n'entend que des
+directions : « au sud », « à l'ouest », « au sud-est », « au centre-est »,
+« au centre », « à l'est », « au nord-est », « au nord », « au nord-ouest ».
+On entend aussi : « la plus grande partie […] au nord-est et au nord » [?].
+
+### 3. *(titre inaudible ; on entend « l'épreuve… de la Côte d'Ivoire »)* *(nouveau)*
+- « … depuis la préhistoire » [?].
+- Selon les traditions orales, un peuple [?] est descendu du ciel dans une
+  bassine en cuivre.
+- Les Ehotilé [?] sont sortis de l'eau, de la lagune.
+- D'autres [?] disent qu'ils sont descendus à l'aide d'une chaîne [?] ;
+  d'autres encore qu'ils sont sortis d'un rocher [?] *(entendu « d'une
+  robe »)*.
+
+### II. *(nouveau, début seulement)*
+« L'organisation politique, économique, sociale et religieuse » [?] des
+premiers habitants.
+1. Les Protoakan [?]
+a) L'organisation politique : chez eux, […] le royaume et le village [?].
+*(Fin de la lecture d'histoire.)*
+
+---
+
 ## Géographie — Le milieu physique de la Côte d'Ivoire et l'installation des populations *(nouveau : le texte du cahier)*
 
 *La note du 04/10 s'arrêtait après le relief. Ici, elle lit toute la partie I.

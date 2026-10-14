@@ -2454,6 +2454,28 @@
         ],
         "correctAnswer": 1,
         "explanation": "On écrit toujours « Proto » collé devant : Protoakan, Protokrou, Protomandé, Protogur."
+      },
+      {
+        "question": "Selon les traditions orales de ton cahier, d'où les Ehotilé disent-ils être sortis ?",
+        "options": [
+          "D'une montagne",
+          "De l'eau, de la lagune",
+          "D'une forêt",
+          "D'une grotte"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les Ehotilé disent qu'ils sont sortis de l'eau, de la lagune : une légende qui dit « nous sommes ici depuis toujours »."
+      },
+      {
+        "question": "Avant d'étudier un document d'histoire, que fait-on d'abord ?",
+        "options": [
+          "On répond tout de suite aux questions",
+          "On recopie le texte",
+          "On numérote les lignes du texte",
+          "On apprend le texte par cœur"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La méthode : numéroter les lignes, lire crayon en main, souligner les mots difficiles et les mots-clés."
       }
     ]
   },
