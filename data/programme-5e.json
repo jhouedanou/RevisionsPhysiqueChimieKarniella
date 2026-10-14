@@ -198,14 +198,6 @@
       "ordre": 5,
       "lecons": [
         {
-          "id": "francais-exploitation-documents",
-          "titre": "L'exploitation de documents",
-          "sousTitre": "Lire un texte et répondre aux questions",
-          "icone": "🔍",
-          "description": "La méthode en trois gestes, et les formules qui rapportent des points.",
-          "statut": "prete"
-        },
-        {
           "id": "francais-expose-oral",
           "titre": "L'exposé : donner un point de vue sur un thème",
           "sousTitre": "Expression orale · Séance 1 : comment faire un exposé oral",
@@ -251,6 +243,14 @@
       "description": "Comprendre le passé et lire le monde d'aujourd'hui.",
       "ordre": 6,
       "lecons": [
+        {
+          "id": "histoire-geo-exploitation-documents",
+          "titre": "L'exploitation de documents",
+          "sousTitre": "Histoire — Méthode, avant la leçon 1",
+          "icone": "📑",
+          "description": "Ton cahier d'histoire : les trois gestes avant de répondre, et les formules pour l'idée générale et l'explication.",
+          "statut": "prete"
+        },
         {
           "id": "histoire-geo-premiers-habitants",
           "titre": "Les premiers habitants de la Côte d'Ivoire",

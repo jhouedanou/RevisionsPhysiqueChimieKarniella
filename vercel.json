@@ -40,6 +40,13 @@
             "dest": "server.js"
         },
         {
+            "src": "/5e/francais-exploitation-documents(\\.html)?$",
+            "status": 301,
+            "headers": {
+                "Location": "/5e/histoire-geo-exploitation-documents.html"
+            }
+        },
+        {
             "src": "/(.+)\\.html$",
             "dest": "/$1.html"
         },
