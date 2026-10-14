@@ -4,6 +4,11 @@ Site statique (HTML + JS vanilla), classe de 5e, Côte d'Ivoire. Le README
 détaille l'architecture ; ce fichier garde les règles que Karniella a
 demandées et qu'il faut appliquer à chaque nouvelle leçon.
 
+**Règle n° 1 : garder simple.** Chaque leçon, chaque ajout, chaque
+correction reste court et facile à lire pour une élève de 5e. Avant de
+publier, se demander : « Est-ce que je peux le dire plus court ? » Le détail
+est dans la section « Écrire simple » ci-dessous.
+
 ## Toute leçon
 
 - Modèle de page : une leçon existante de la même matière dans `5e/`
