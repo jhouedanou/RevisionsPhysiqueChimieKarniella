@@ -146,7 +146,7 @@
           "titre": "Segments",
           "sousTitre": "Leçon 2 — Caractéristiques d'un segment, médiatrice",
           "icone": "📏",
-          "description": "Le milieu d'un segment, ses deux propriétés, et la définition de la médiatrice.",
+          "description": "D'après ton cahier : AM + MB = AB, la médiatrice et ses points équidistants, et le milieu en plus.",
           "statut": "prete",
           "mission": true
         }
@@ -174,7 +174,7 @@
           "titre": "La prolifération des moustiques",
           "sousTitre": "Les conditions du milieu qui la favorisent et ses conséquences sur l'Homme",
           "icone": "🦟",
-          "description": "D'après ton cahier : constat, problème, hypothèses, le milieu qui aide les moustiques, le paludisme, et les exercices corrigés.",
+          "description": "D'après ton cahier : constat, hypothèses, les conditions du milieu (ordures, pneus, eau stagnante), le développement du moustique dans l'eau et dans l'air, le paludisme.",
           "statut": "prete",
           "mission": true
         },
@@ -219,7 +219,7 @@
           "titre": "Le portrait simple",
           "sousTitre": "Expression écrite · Séance 1 : rédaction d'un portrait simple",
           "icone": "🖼️",
-          "description": "Portrait physique et moral, outils grammaticaux, lexique, et préparer son texte.",
+          "description": "Ton cahier : le portrait statique, les outils de la langue, le lexique, et le portrait de Didier Drogba rédigé en classe.",
           "statut": "prete",
           "mission": true
         },
@@ -228,7 +228,7 @@
           "titre": "Le groupe nominal : les expansions du nom",
           "sousTitre": "Grammaire · Séances 1 à 3 : adjectif, relative, complément du nom",
           "icone": "🧩",
-          "description": "L'adjectif qualificatif, la subordonnée relative et le complément du nom.",
+          "description": "L'adjectif qualificatif, la subordonnée relative et le complément du nom, avec ton cahier pour les séances 2 et 3.",
           "statut": "prete",
           "mission": true
         },
@@ -237,7 +237,7 @@
           "titre": "La description",
           "sousTitre": "Lecture · Séance 1 : lecture méthodique d'un texte descriptif",
           "icone": "🔎",
-          "description": "Présentation du texte, hypothèse générale, axes, tableau de vérification et bilan.",
+          "description": "Ton cahier : le portrait de César (axes, tableau de vérification, bilan, vocabulaire), puis la méthode sur d'autres textes.",
           "statut": "prete",
           "mission": true
         }

@@ -430,3 +430,63 @@ Nous avons trois types de sols :
 
 5. L'hydrographie
 *(Inaudible : on entend « non, t'es si… ». Rien n'est lu.)*
+
+---
+
+## TICE — Initiation à l'utilisation d'un ordinateur *(nouveau : le texte du cahier et la suite de la leçon)*
+
+*Le 03/10, seuls les titres étaient arrivés. Ici, elle lit le cours, et la
+suite (démarrer, éteindre, éléments de l'unité centrale). La fin de
+l'enregistrement est très bruitée.*
+
+Révision des notions
+L'informatique est la science qui permet de traiter l'information
+automatiquement. L'ordinateur est l'outil principal de l'informatique [?] ; il
+comprend deux parties, à savoir la partie matérielle et la partie logicielle.
+
+Leçon 1 : Initiation à l'utilisation d'un ordinateur
+
+I. Définition des notions
+1. La notion d'informatique : l'informatique est la science qui permet de
+   traiter automatiquement des informations.
+2. La notion de système informatique : un système informatique est un
+   ensemble de composants logiciels et matériels qui fonctionnent ensemble et
+   permettent de traiter les informations.
+
+II. Les différentes parties d'un ordinateur
+Un ordinateur se compose de deux grandes parties.
+1. La partie matérielle : c'est la partie physique de l'ordinateur ; on
+   l'appelle aussi hardware. Elle comprend l'unité centrale et les
+   périphériques [?] : périphériques d'entrée (le clavier, la souris…),
+   périphériques de sortie (l'écran, l'imprimante…), périphériques de
+   stockage (la clé USB, le disque dur…) *(liste mal entendue)*.
+2. La partie logicielle (software) : elle comprend [?] les logiciels
+   d'application, qui permettent d'effectuer des tâches précises [?], et le
+   système d'exploitation, qui permet de gérer les composants [?] de
+   l'ordinateur. Exemples de systèmes d'exploitation : macOS, Windows,
+   Linux.
+
+III. [Démarrer l'ordinateur] [?] *(titre mal entendu)*
+Démarche : pour démarrer l'ordinateur de bureau [?], il faut s'assurer que
+tous les câbles sont bien connectés [?]. Par la suite, on branche l'écran [?]
+et l'unité centrale sur une prise électrique [?], puis on appuie sur le
+bouton d'alimentation [?]. À la fin du démarrage, le bureau s'affiche [?].
+
+IV. Éteindre l'ordinateur [?]
+1) À partir du menu Démarrer : on fait un clic gauche sur ce symbole, on
+   choisit l'option « Arrêter » [?].
+2) À partir du clavier : en faisant la combinaison Alt + F4, une boîte de
+   dialogue s'ouvre ; on valide par la touche Entrée.
+3) Pour un ordinateur portable [?] : le système défini par les paramètres
+   fait que l'ordinateur s'éteint une fois l'écran rabattu (fermé).
+4) Avec le bouton d'alimentation [?] : on règle les paramètres de sorte que
+   l'ordinateur s'éteigne dès qu'on fait une pression sur ce bouton.
+
+V. [Les éléments de l'unité centrale] [?] *(titre inaudible)*
+On entend : « la fonction d'un élément tel que le disque dur, la RAM, le
+processeur ».
+- Le processeur : c'est le cerveau de l'ordinateur, car c'est lui qui traite
+  toutes les commandes [?].
+- La mémoire vive, la RAM (random access memory) : c'est l'espace dans lequel
+  sont placées toutes les applications utilisées [?] ; elle s'efface quand
+  on éteint [?].
