@@ -3348,6 +3348,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Le cercle avec une croix est le symbole de la lampe. Deux traits (un grand, un petit), c'est la pile."
+      },
+      {
+        "question": "Deux lampes sont montées en série. On relie les deux bornes de la lampe L1 avec un fil. Que se passe-t-il ?",
+        "options": [
+          "Les deux lampes s'éteignent",
+          "L1 s'éteint, et L2 continue de briller plus fort",
+          "L1 brille plus fort, et L2 s'éteint",
+          "Rien ne change"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ton cahier : dans un montage en série, la lampe court-circuitée s'éteint, mais l'autre continue de briller et son éclat augmente."
+      },
+      {
+        "question": "On court-circuite une seule lampe. Dans quel montage l'autre lampe reste-t-elle allumée ?",
+        "options": [
+          "En série",
+          "En dérivation",
+          "Dans les deux montages",
+          "Dans aucun des deux montages"
+        ],
+        "correctAnswer": 0,
+        "explanation": "En série, l'autre lampe brille même plus fort. En dérivation, toutes les lampes s'éteignent."
+      },
+      {
+        "question": "Pourquoi les lampadaires de la rue sont-ils montés en dérivation ?",
+        "options": [
+          "Pour qu'ils brillent moins fort",
+          "Pour qu'un seul fil suffise",
+          "Pour qu'ils s'éteignent tous en même temps",
+          "Pour que, si un lampadaire est en panne, les autres continuent de fonctionner"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Ton cahier : en dérivation, lorsqu'une lampe est en panne, les autres continuent de fonctionner. Exemples : les lampes de la maison et les lampadaires de la rue."
+      },
+      {
+        "question": "Sur un schéma, un fil relie les deux bornes d'une lampe. Que fait ce fil ?",
+        "options": [
+          "Il fait briller la lampe plus fort",
+          "Il remplace la pile",
+          "Il court-circuite la lampe : elle s'éteint",
+          "Il ouvre le circuit"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le courant passe par le fil, le chemin le plus facile, et plus par la lampe : la lampe court-circuitée s'éteint, en série comme en dérivation."
       }
     ]
   },
