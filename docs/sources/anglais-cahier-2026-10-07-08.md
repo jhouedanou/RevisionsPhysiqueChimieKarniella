@@ -6,6 +6,8 @@ de la leçon `5e/anglais-unit1-lesson3-learn-at-school.html`.*
 
 *`[?]` = mot mal lu. Les remarques entre crochets sont de moi.*
 
+*Confirmé par Karniella le 11/10 : « never » et « CMK ».*
+
 ---
 
 Wednesday, October 7th 2026
@@ -47,8 +49,8 @@ A_ Vocabulary.
 × A schedule = A timetable: A school programme.
 × To be good at: to have good marks at …… Ex: I'm good at English because I
   always have good grades after tests.
-× To be bad at: To have bad marks at. Ex: I'm bad at maths because I [never ?]
-  [bas de page coupé sur la photo] have good marks after tests.
+× To be bad at: To have bad marks at. Ex: I'm bad at maths because I never
+  [bas de page coupé sur la photo, mot confirmé] have good marks after tests.
 × Scientific subjects: maths, physics, biology, science ……
 × Literary subjects: English, French, Spanish.
 × A favourite subject: A subject you like the most. Ex: English is my favourite
@@ -59,6 +61,6 @@ B_ Language function.
 _ From …… to …… / In the …… / At ……
 Ex: On Thursday, we have English from 9:20 to 10:15.   [« from » et « to » soulignés en rouge]
 _ In.
-Ex: At C [?], 5ᵉ C students [« of 5ᵉ » ajouté puis raturé ?] don't have class
+Ex: At CMK [confirmé], 5ᵉ C students [« of 5ᵉ » ajouté puis raturé ?] don't have class
     in the afternoon.                                  [« in » souligné en rouge]
 _ At. Ex: In my school, class [classes] always start at 7:30.   [« at 7:30 » souligné en rouge]
