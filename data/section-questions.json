@@ -2579,6 +2579,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "L'hydrographie, ce sont les fleuves, rivières et lagunes."
+      },
+      {
+        "question": "D'après ton cahier, comment s'appelle le climat du sud de la Côte d'Ivoire ?",
+        "options": [
+          "Le climat soudanais",
+          "Le climat de montagne",
+          "Le climat attiéen ou climat subéquatorial",
+          "Le climat désertique"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Au sud, c'est le climat attiéen, qu'on appelle aussi climat subéquatorial : chaud et très humide."
+      },
+      {
+        "question": "Où trouve-t-on la forêt galerie ?",
+        "options": [
+          "Au nord, le long des cours d'eau",
+          "Au sud, au bord de la mer",
+          "Au sommet des montagnes de l'ouest",
+          "Au milieu des villes"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La forêt galerie est une bande d'arbres qui suit les cours d'eau, au nord, au milieu de la savane."
+      },
+      {
+        "question": "Où sont situés les sols hydromorphes ?",
+        "options": [
+          "Sur les hauts plateaux du nord",
+          "Au bord des cours d'eau, dans les bas-fonds et les marais",
+          "Au sommet des montagnes",
+          "Seulement sous la forêt dense"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hydro veut dire « eau » : les sols hydromorphes sont gorgés d'eau. On les trouve au bord des cours d'eau, dans les bas-fonds et les marais."
+      },
+      {
+        "question": "Quelle végétation trouve-t-on au centre de la Côte d'Ivoire ?",
+        "options": [
+          "La mangrove",
+          "La forêt galerie seulement",
+          "Le désert",
+          "La forêt claire et la savane arborée"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Au centre, ton cahier place la forêt claire (arbres espacés) et la savane arborée (herbes et beaucoup d'arbres)."
       }
     ]
   },
@@ -3222,7 +3266,7 @@
           "Dans le clavier"
         ],
         "correctAnswer": 0,
-        "explanation": "L'unité centrale est le « cerveau » de l'ordinateur."
+        "explanation": "Dans l'unité centrale, c'est le processeur qui traite l'information : ton cahier l'appelle le « cerveau » de l'ordinateur."
       },
       {
         "question": "Windows et Android sont…",
@@ -3245,6 +3289,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Ils servent à faire un travail précis : écrire, dessiner, aller sur Internet."
+      },
+      {
+        "question": "D'après ton cahier, comment éteindre l'ordinateur à partir du clavier ?",
+        "options": [
+          "Ctrl + C, puis Espace",
+          "Alt + F4, puis la touche Entrée",
+          "Maj + A, puis Échap",
+          "On débranche la prise"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Alt + F4 ouvre une boîte de dialogue (quand on est sur le bureau) ; on valide avec la touche Entrée."
+      },
+      {
+        "question": "Quel élément de l'unité centrale est le « cerveau » de l'ordinateur ?",
+        "options": [
+          "Le disque dur",
+          "La RAM",
+          "L'écran",
+          "Le processeur"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Ton cahier le dit : le processeur est le cerveau de l'ordinateur. Il se trouve dans l'unité centrale."
+      },
+      {
+        "question": "La RAM, c'est…",
+        "options": [
+          "La mémoire vive",
+          "Le disque dur",
+          "Le système d'exploitation",
+          "Un périphérique de sortie"
+        ],
+        "correctAnswer": 0,
+        "explanation": "RAM veut dire random access memory : c'est la mémoire vive de l'ordinateur. Le disque dur, lui, garde les fichiers pour longtemps."
+      },
+      {
+        "question": "Comment appelle-t-on aussi la partie matérielle de l'ordinateur ?",
+        "options": [
+          "Le software",
+          "Internet",
+          "Le hardware",
+          "Le logiciel"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La partie matérielle, c'est la partie physique de l'ordinateur : on l'appelle aussi hardware. Le software, c'est la partie logicielle."
       }
     ]
   },
