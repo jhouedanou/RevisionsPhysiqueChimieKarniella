@@ -3473,6 +3473,61 @@
         ],
         "correctAnswer": 3,
         "explanation": "On place le milieu avec la règle graduée, puis on trace la perpendiculaire avec l'équerre."
+      },
+      {
+        "question": "D'après ton cahier, si M appartient au segment [AB], alors…",
+        "options": [
+          "AM = MB",
+          "AM + MB = AB",
+          "AM + MB est plus grand que AB",
+          "AB = 2 × AM"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Propriété 1 de ton cahier : si M appartient à [AB], alors AM + MB = AB."
+      },
+      {
+        "question": "M est sur [AB], AM = 3 cm et MB = 5 cm. Combien mesure AB ?",
+        "options": [
+          "2 cm",
+          "15 cm",
+          "8 cm",
+          "4 cm"
+        ],
+        "correctAnswer": 2,
+        "explanation": "AM + MB = AB, donc AB = 3 + 5 = 8 cm."
+      },
+      {
+        "question": "EG = 2 cm, GF = 4 cm et EF = 6 cm. Que peut-on dire du point G ?",
+        "options": [
+          "G appartient au segment [EF]",
+          "G est le milieu de [EF]",
+          "G n'est pas sur [EF]",
+          "On ne peut rien dire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "EG + GF = 2 + 4 = 6 = EF : d'après la propriété 2, G appartient à [EF]."
+      },
+      {
+        "question": "Le point P est sur la médiatrice de [AB] et PA = 5 cm. Combien mesure PB ?",
+        "options": [
+          "10 cm",
+          "2,5 cm",
+          "On ne peut pas savoir",
+          "5 cm"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Un point de la médiatrice est équidistant des extrémités : PB = PA = 5 cm."
+      },
+      {
+        "question": "Que veut dire « équidistant de A et de B » ?",
+        "options": [
+          "Sur le segment [AB]",
+          "À la même distance de A et de B",
+          "Très loin de A et de B",
+          "Au milieu de la droite"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Équi = égal : le point est à la même distance de A et de B."
       }
     ]
   },
@@ -4042,7 +4097,7 @@
           "Dans une forêt"
         ],
         "correctAnswer": 1,
-        "explanation": "On a vu beaucoup de moustiques pendant une opération de salubrité dans un internat, et certains élèves sont malades."
+        "explanation": "À la suite de l'observation d'un grand nombre de moustiques lors d'une opération de salubrité dans un internat, et de l'état de santé de certains élèves."
       },
       {
         "question": "Quel est le problème posé dans ton cours ?",
@@ -4071,33 +4126,33 @@
         "options": [
           "Les moustiques ne piquent pas",
           "La prolifération des moustiques n'a aucun effet",
-          "Certaines conditions du milieu favorisent la prolifération des moustiques",
+          "La prolifération des moustiques agit grâce à certaines conditions du milieu",
           "Les moustiques vivent seulement en forêt"
         ],
         "correctAnswer": 2,
-        "explanation": "Hypothèse 1 : certaines conditions du milieu favorisent la prolifération des moustiques."
+        "explanation": "Hypothèse 1 : la prolifération des moustiques agit grâce à certaines conditions du milieu."
       },
       {
         "question": "Quelle est la deuxième hypothèse de ton cours ?",
         "options": [
           "Les moustiques nettoient l'internat",
-          "La prolifération des moustiques a des conséquences sur l'Homme",
+          "La prolifération des moustiques agit par des conséquences sur l'Homme",
           "Les moustiques aiment le froid",
           "Les élèves sont malades à cause de la nourriture"
         ],
         "correctAnswer": 1,
-        "explanation": "Hypothèse 2 : la prolifération des moustiques a des conséquences sur l'Homme."
+        "explanation": "Hypothèse 2 : la prolifération des moustiques agit par des conséquences sur l'Homme."
       },
       {
-        "question": "Dans les 4 étapes de la vérification, que vient-il après l'observation ?",
+        "question": "Dans la vérification de ton cahier, que vient-il juste après l'analyse ?",
         "options": [
-          "La conclusion",
-          "L'analyse",
           "Les résultats",
-          "Le problème"
+          "L'observation",
+          "L'interprétation",
+          "Le constat"
         ],
         "correctAnswer": 2,
-        "explanation": "Observation → résultats → analyse → conclusion."
+        "explanation": "Observation → résultats → analyse → interprétation → conclusion."
       },
       {
         "question": "Où la femelle du moustique pond-elle ses œufs ?",
@@ -4197,6 +4252,61 @@
         ],
         "correctAnswer": 2,
         "explanation": "Sans eau stagnante, les moustiques ne peuvent plus pondre."
+      },
+      {
+        "question": "D'après les résultats de ton cahier, lequel n'est PAS montré par le document ?",
+        "options": [
+          "Les ordures dans les caniveaux",
+          "Les pneus usés",
+          "L'eau stagnante",
+          "Un sol de sable sec"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le document montre les ordures dans les caniveaux ou dans la nature, les pneus usés et l'eau stagnante."
+      },
+      {
+        "question": "Dans quels deux milieux se déroule le développement du moustique ?",
+        "options": [
+          "Le milieu aquatique et le milieu aérien",
+          "La forêt et le désert",
+          "Le sol et les arbres",
+          "La maison et l'école"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Œufs, larves et nymphes vivent dans l'eau (milieu aquatique) ; l'adulte vit dans l'air (milieu aérien)."
+      },
+      {
+        "question": "Comment s'appelle le moment où le moustique est une larve ?",
+        "options": [
+          "Le stade nymphal",
+          "L'émergence",
+          "Le stade larvaire",
+          "La ponte"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Larve → stade larvaire ; nymphe → stade nymphal."
+      },
+      {
+        "question": "Qu'est-ce que l'émergence ?",
+        "options": [
+          "La femelle pond ses œufs",
+          "La cuticule de la nymphe se déchire et le moustique adulte sort",
+          "La larve mange",
+          "Le moustique pique"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La cuticule de la nymphe se déchire pour libérer le moustique adulte : c'est l'émergence."
+      },
+      {
+        "question": "Pourquoi le moustique adulte vit-il dans le milieu aérien ?",
+        "options": [
+          "Pour pondre dans le sable",
+          "Pour se nourrir et se reproduire",
+          "Pour devenir une larve",
+          "Pour boire l'eau des pneus"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dans l'air, le moustique adulte se nourrit et se reproduit ; puis la femelle revient pondre dans l'eau."
       }
     ]
   },

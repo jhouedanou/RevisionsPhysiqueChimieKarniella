@@ -40,8 +40,7 @@ III. Vérification de l'hypothèse générale
 
 1. Détermination des axes
 - H1 : texte descriptif, le portrait de César.
-- H2 : les actions passées de César [?] *(après « César », un mot mal
-  entendu : « soupirant », « Sandguiron »)*.
+- H2 : les actions passées de César.
 
 2. Tableau de vérification
 
@@ -186,6 +185,64 @@ encore le voir plus tard.
 
 ---
 
+## Mathématiques
+
+*Elle relit les leçons déjà envoyées le 04/10 (`maths-vocal-2026-10-04.md`) et
+le 09/10 (titres de « Segments »). Seuls les apports de cette lecture sont
+notés ici.*
+
+### Nombres décimaux relatifs
+- « −3,1 est un nombre décimal relatif négatif » : entendu deux fois
+  « moins 3,1 » (le 04/10, on avait compris « −23,1 »).
+- Après « 28 est un nombre décimal relatif positif, noté… », on entend
+  « grand D » [?] : peut-être « l'ensemble des nombres décimaux relatifs est
+  noté 𝔻 ».
+
+### Leçon 1 : Nombres premiers — I. Puissances
+- Vocabulaire : « aⁿ se lit a exposant n ; n est l'exposant » [?].
+- Cas particuliers : on entend « a¹ = a », « 1ⁿ = 1 » et une troisième
+  égalité qui vaut 1 [?] (peut-être a⁰ = 1).
+- Règle de priorité, premier exemple (inaudible le 04/10) :
+  3 (15 − 8) = 3 × 7 = 21.
+  Deuxième exemple : 2 (3² − 5) = 2 (9 − 5) = 2 × 4 = 8.
+
+### II. Division euclidienne
+- Exemple : division euclidienne de 57 par 4 : 57 = 4 × 14 + 1 (« 57 »
+  s'entend cette fois).
+- Remarque, exemple : 20 ÷ 4 = 5 ; 20 = 4 × 5.
+
+### Situation d'évaluation *(énoncé, inaudible le 04/10)*
+Le père de ton ami veut carreler une pièce de 47 m² dans son village [?]. Il
+dispose de 9 cartons de carreaux. Chacun des cartons de carreaux ne couvre
+que 5 m² *(entendu deux fois « 6 m² », mais la correction calcule avec 5 :
+avec 6 m², 9 cartons suffiraient)*. Son fils, ton ami, doit lui dire si les
+cartons de carreaux disponibles suffisent pour le travail, ou s'il doit en
+acheter d'autres. Afin de ne pas se tromper, il demande ton avis.
+1. Encadre 47 par deux multiples consécutifs de 5.
+2. Dis si la quantité de carreaux disponible est suffisante.
+
+Résolution : je fais la division euclidienne de 47 par 5 : 47 = 5 × 9 + 2 ;
+47 n'est pas un multiple de 5. On a 5 × 9 < 47 < 5 × 10 ; 45 < 47 < 50. Je
+donne mon avis : la quantité de carreaux disponible est insuffisante car
+45 < 47. Donc le père de mon ami doit acheter un autre carton de carreaux.
+
+### Leçon 2 : Segments *(nouveau : le texte du cahier)*
+
+1. Caractéristiques d'un segment
+1) Propriété : A, B et M sont trois points du plan. Si M appartient au
+   segment [AB], alors AM + MB = AB.
+2) Propriété : A, B et M sont trois points du plan. Si AM + MB = AB, alors M
+   appartient au segment [AB].
+
+2. Caractéristiques de la médiatrice d'un segment
+1) Définition : la médiatrice d'un segment est la droite qui passe par le
+   milieu de ce segment et qui est perpendiculaire à ce segment.
+2) Propriété : si un point appartient à la médiatrice d'un segment, alors il
+   est équidistant des extrémités de ce segment. Si un point est équidistant
+   des extrémités d'un segment, il appartient à la médiatrice de ce segment.
+
+---
+
 ## Physique-chimie
 
 *Elle relit d'abord les révisions (circuit électrique, états de la matière,
@@ -306,7 +363,7 @@ milieu [?].
 développement se déroule dans deux milieux :
 - le milieu aquatique, dans lequel la femelle pond des œufs qui se
   développent en larves (stade larvaire) ; les larves se développent en
-  nymphes (stade nymphal). Plus tard, la cuticule [?] de la nymphe se déchire
+  nymphes (stade nymphal). Plus tard, la cuticule de la nymphe se déchire
   pour libérer le moustique adulte : c'est l'émergence ;
 - le milieu aérien, dans lequel se trouve le moustique adulte pour se
   nourrir et se reproduire [?].
@@ -316,3 +373,60 @@ La prolifération des moustiques agit effectivement grâce à certaines
 conditions du milieu.
 
 *(Fin de la lecture pour la SVT.)*
+
+---
+
+## Géographie — Le milieu physique de la Côte d'Ivoire et l'installation des populations *(nouveau : le texte du cahier)*
+
+*La note du 04/10 s'arrêtait après le relief. Ici, elle lit toute la partie I.
+Le début (thème, introduction) est très mal entendu.*
+
+Thème 1 : L'homme et le milieu [?]
+Leçon 1 : Le milieu physique de la Côte d'Ivoire et l'installation des
+populations
+
+Introduction *(mal entendue)*
+[…] le milieu physique […] qui influence la vie. Les éléments du milieu
+physique en Côte d'Ivoire sont : le relief, le climat, la végétation, les sols
+et l'hydrographie. C'est en fonction de ces éléments que les populations
+s'installent [?].
+
+I. Description et localisation des éléments du milieu physique
+
+1. Le relief
+- les plaines au sud : l'altitude varie de 0 à 200 mètres ;
+- les bas plateaux au centre : de 200 à 500 mètres [?] ;
+- les hauts plateaux au nord : de 500 à 900 mètres [?] *(entendu « 500 à
+  9 mètres »)* ;
+- les montagnes à l'ouest de la Côte d'Ivoire : l'altitude varie de 900 à
+  1 752 mètres [?] *(entendu « 1 733 » ; le mont Nimba mesure 1 752 m)*.
+Le relief ivoirien est dominé par les surfaces planes [?] ; on dit qu'il est
+peu accidenté [?]. Cela favorise l'installation des populations et le
+développement de leurs activités économiques.
+
+2. Le climat
+*(Entendu « il y a […] types de climat ».)*
+- le climat attiéen ou climat subéquatorial, localisé au sud de la Côte
+  d'Ivoire ;
+- le climat baouléen [?] ou climat de transition [?], localisé au […] *(on
+  entend « au nord » ; d'habitude, le climat baouléen est au centre)* ;
+*(La suite, s'il y a un climat soudanais au nord et un climat de montagne à
+l'ouest, n'est pas lue ou ne s'entend pas.)*
+
+3. La végétation
+Les types de végétation de la Côte d'Ivoire sont :
+- la forêt : on trouve la forêt dense au sud, à l'ouest et à l'est de la Côte
+  d'Ivoire ; la forêt claire au centre ; la forêt galerie au nord, le long des
+  cours d'eau ; la forêt de mangroves dans les marais ;
+- la savane : la savane arborée au centre ; la savane arbustive [?] ou
+  herbeuse [?] au nord.
+
+4. Les sols
+Nous avons trois types de sols :
+- les sols ferrallitiques, situés au sud [?], à l'ouest et à l'est ;
+- les sols ferrugineux, situés au centre et au nord-est [?] ;
+- les sols hydromorphes, situés au bord des cours d'eau et dans les
+  bas-fonds ou les marais.
+
+5. L'hydrographie
+*(Inaudible : on entend « non, t'es si… ». Rien n'est lu.)*
