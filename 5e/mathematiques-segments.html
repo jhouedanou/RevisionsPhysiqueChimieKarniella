@@ -24,7 +24,8 @@
 </header>
 
 <div class="tabs">
-<button class="tab-button active" data-onglet="tab1">1. Caractéristiques d'un segment</button>
+<button class="tab-button active" data-onglet="cahier">Mon cahier</button>
+<button class="tab-button" data-onglet="tab1">1. Caractéristiques d'un segment</button>
 <button class="tab-button" data-onglet="tab2">2. La médiatrice</button>
 <button class="tab-button" data-onglet="tab3">Exercices</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
@@ -32,18 +33,149 @@
 
 <main class="content">
 
-<!-- ============ 1. CARACTÉRISTIQUES D'UN SEGMENT ============ -->
-<section class="tab-content active" id="tab1">
+<!-- ============ MON CAHIER (cours du professeur) ============ -->
+<section class="tab-content active" id="cahier">
   <div class="container">
     <div class="note-box" data-hors-chat>
       <h4>📖 D'où vient cette leçon ?</h4>
-      <p>Les <strong>titres</strong> sont ceux de ton cahier (ton message du 09/10 : « une
-      leçon qu'on a faite hier »). Tu n'as envoyé que les titres : les propriétés et la
-      définition sont rédigées d'après le programme de 5e. Vérifie avec ton cahier.</p>
+      <p>Cet onglet reprend <strong>ton cahier</strong>, d'après la note vocale du 14/10 où
+      tu le lis à voix haute : c'est le cours à apprendre. Les onglets suivants expliquent
+      avec d'autres exemples.</p>
     </div>
 
-    <p><strong>Leçon 2 :</strong> Segments</p>
+    <h2>Leçon 2 : Segments</h2>
 
+    <h3>1. Caractéristiques d'un segment</h3>
+
+    <p><strong>1) Propriété</strong></p>
+    <div class="definition-box">
+      <p>A, B et M sont trois points du plan.</p>
+      <p>Si M <strong>appartient</strong> au segment [AB], alors
+      <strong>AM + MB = AB</strong>.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 118" role="img" aria-label="Figure : le point M est sur le segment [AB]. La longueur AM plus la longueur MB est égale à la longueur AB.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="30" y1="45" x2="290" y2="45"/>
+          <line x1="24" y1="39" x2="36" y2="51"/><line x1="24" y1="51" x2="36" y2="39"/>
+          <line x1="124" y1="39" x2="136" y2="51"/><line x1="124" y1="51" x2="136" y2="39"/>
+          <line x1="284" y1="39" x2="296" y2="51"/><line x1="284" y1="51" x2="296" y2="39"/>
+        </g>
+        <g fill="none" stroke-width="1.5" stroke-linecap="round" style="stroke:var(--rose)">
+          <path d="M30 62 v8 M130 62 v8 M30 66 H130"/>
+          <path d="M130 62 v8 M290 62 v8 M130 66 H290"/>
+          <path d="M30 88 v8 M290 88 v8 M30 92 H290"/>
+        </g>
+        <g fill="currentColor" font-size="16" font-weight="700" text-anchor="middle">
+          <text x="30" y="30">A</text>
+          <text x="130" y="30">M</text>
+          <text x="290" y="30">B</text>
+        </g>
+        <g font-size="12" text-anchor="middle" style="fill:var(--rose)">
+          <text x="80" y="82">AM</text>
+          <text x="210" y="82">MB</text>
+          <text x="160" y="112">AB = AM + MB</text>
+        </g>
+      </svg>
+      <figcaption>M est sur [AB] : les deux petits morceaux AM et MB, mis bout à bout,
+      font tout le segment. Donc <strong>AM + MB = AB</strong>.</figcaption>
+    </figure>
+
+    <p><strong>2) Propriété</strong></p>
+    <div class="definition-box">
+      <p>A, B et M sont trois points du plan.</p>
+      <p>Si <strong>AM + MB = AB</strong>, alors M <strong>appartient</strong> au segment
+      [AB].</p>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 Les deux propriétés, dans les deux sens</h4>
+      <p>La 1<sup>re</sup> part du point sur le segment pour trouver une
+      <strong>longueur</strong> : « M est sur [AB], donc AM + MB = AB ».</p>
+      <p>La 2<sup>e</sup> part des <strong>longueurs</strong> pour prouver que le point est
+      sur le segment : « AM + MB = AB, donc M est sur [AB] ». Si M n'est pas sur [AB],
+      le chemin A → M → B fait un détour : AM + MB est <strong>plus grand</strong> que AB.</p>
+    </div>
+
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>M est sur [AB], AM = 3 cm et MB = 5 cm. Alors AB = 3 + 5 = <strong>8 cm</strong>.</p>
+      <p>E, F et G sont trois points avec EG = 2 cm, GF = 4 cm et EF = 6 cm. Comme
+      EG + GF = 2 + 4 = 6 = EF, le point G appartient au segment [EF].</p>
+    </div>
+
+    <h3>2. Caractéristiques de la médiatrice d'un segment</h3>
+
+    <p><strong>1) Définition</strong></p>
+    <div class="definition-box">
+      <p>La <strong>médiatrice</strong> d'un segment est la droite qui
+      <strong>passe par le milieu</strong> de ce segment et qui est
+      <strong>perpendiculaire</strong> à ce segment.</p>
+    </div>
+
+    <p><strong>2) Propriétés</strong></p>
+    <div class="definition-box">
+      <p>Si un point appartient à la médiatrice d'un segment, alors il est
+      <strong>équidistant</strong> des extrémités de ce segment.</p>
+      <p>Si un point est <strong>équidistant</strong> des extrémités d'un segment, alors
+      il appartient à la médiatrice de ce segment.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 230" role="img" aria-label="Figure : la droite (d) est la médiatrice du segment [AB]. Le point P est sur (d). Les longueurs PA et PB sont égales.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="40" y1="170" x2="280" y2="170"/>
+          <line x1="160" y1="20" x2="160" y2="220"/>
+          <polyline points="160,156 174,156 174,170" stroke-width="2"/>
+          <line x1="34" y1="164" x2="46" y2="176"/><line x1="34" y1="176" x2="46" y2="164"/>
+          <line x1="274" y1="164" x2="286" y2="176"/><line x1="274" y1="176" x2="286" y2="164"/>
+          <line x1="154" y1="54" x2="166" y2="66"/><line x1="154" y1="66" x2="166" y2="54"/>
+          <line x1="97" y1="161" x2="103" y2="179"/>
+          <line x1="217" y1="161" x2="223" y2="179"/>
+        </g>
+        <g fill="none" stroke-width="2" stroke-dasharray="6 5" style="stroke:var(--rose)">
+          <line x1="160" y1="60" x2="40" y2="170"/>
+          <line x1="160" y1="60" x2="280" y2="170"/>
+        </g>
+        <g stroke-width="2" style="stroke:var(--rose)">
+          <line x1="107.3" y1="117.8" x2="97.8" y2="107.5"/><line x1="102.2" y1="122.5" x2="92.7" y2="112.2"/>
+          <line x1="222.2" y1="107.5" x2="212.7" y2="117.8"/><line x1="227.3" y1="112.2" x2="217.8" y2="122.5"/>
+        </g>
+        <g fill="currentColor" font-size="16" font-weight="700" text-anchor="middle">
+          <text x="40" y="198">A</text>
+          <text x="280" y="198">B</text>
+          <text x="148" y="190">I</text>
+          <text x="180" y="52">P</text>
+          <text x="182" y="216">(d)</text>
+        </g>
+      </svg>
+      <figcaption>(d) est la médiatrice de [AB]. Le point P est sur (d) : il est à la même
+      distance de A et de B, donc <strong>PA = PB</strong> (les doubles petits traits).</figcaption>
+    </figure>
+
+    <div class="note-box">
+      <h4>🐴 « Équidistant », ça veut dire quoi ?</h4>
+      <p><strong>Équi</strong> = égal, <strong>distant</strong> = à une distance. Un point
+      équidistant de A et de B est à la <strong>même distance</strong> de A et de B :
+      PA = PB.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Les propriétés de la médiatrice sont lues très vite. Vérifie le titre :
+            « 2) Propriété » ou « 2) Propriétés » (il y a deux phrases).</li>
+        <li>Les deux exemples et les figures sont des <strong>aides en plus</strong> :
+            recopie ceux de ton professeur s'il en a donné.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1. CARACTÉRISTIQUES D'UN SEGMENT ============ -->
+<section class="tab-content" id="tab1">
+  <div class="container">
     <h2>1. Caractéristiques d'un segment</h2>
 
     <div class="note-box">
@@ -82,9 +214,20 @@
       <figcaption>I est le milieu de [AB] : les petits traits identiques disent que <strong>AI = IB</strong>.</figcaption>
     </figure>
 
-    <h3>1) Propriété</h3>
+    <h3>Le point sur le segment : AM + MB = AB</h3>
+    <p>C'est la propriété de ton cahier (onglet « Mon cahier »). Quand un point M est
+    <strong>sur</strong> [AB], il coupe le segment en deux morceaux : <strong>AM + MB =
+    AB</strong>. Si M n'est <strong>pas</strong> sur [AB], le chemin A → M → B fait un
+    détour, et AM + MB est <strong>plus grand</strong> que AB.</p>
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>AB = 10 cm et M est sur [AB] avec AM = 4 cm. Alors MB = 10 − 4 =
+      <strong>6 cm</strong>, car AM + MB = AB.</p>
+    </div>
+
+    <h3>En plus : le milieu d'un segment</h3>
     <div class="definition-box">
-      <h4>📘 Propriété</h4>
+      <h4>📘 Propriété du milieu</h4>
       <p>Si I est le <strong>milieu</strong> du segment [AB], alors I
       <strong>appartient</strong> à [AB] et <strong>IA = IB</strong>.</p>
       <p style="text-align: center; font-size: 19px;"><strong>IA = IB = AB ÷ 2</strong></p>
@@ -95,7 +238,6 @@
       <strong>4 cm</strong>.</p>
     </div>
 
-    <h3>2) Propriété</h3>
     <div class="definition-box">
       <h4>📘 Propriété (réciproque)</h4>
       <p>Si un point I <strong>appartient</strong> au segment [AB] et si
@@ -123,12 +265,11 @@
       donc… »).</p>
     </div>
 
-    <div class="important-box" data-hors-chat>
-      <h4>✏️ À vérifier dans ton cahier</h4>
-      <p>Ton message dit deux fois « Propriétés ». J'ai mis les deux propriétés du
-      <strong>milieu</strong> (le sens direct et la réciproque), c'est le plus courant.
-      Si ton cahier dit autre chose (par exemple « si M est sur [AB], alors AM + MB =
-      AB »), envoie-moi la page et je corrige.</p>
+    <div class="note-box" data-hors-chat>
+      <h4>📖 Ton cahier et cet onglet</h4>
+      <p>Dans ton cahier, les deux propriétés sont celles de « AM + MB = AB » (onglet
+      « Mon cahier »). Les propriétés du <strong>milieu</strong> ci-dessus sont une aide
+      en plus : on s'en sert tout le temps en 5e.</p>
     </div>
   </div>
 </section>
@@ -201,12 +342,31 @@
       milieu</strong>, bien droite, à angle droit.</p>
     </div>
 
+    <h3>2) Propriétés</h3>
+    <div class="definition-box">
+      <h4>📘 Propriétés (ton cahier)</h4>
+      <p>Si un point appartient à la <strong>médiatrice</strong> d'un segment, alors il
+      est <strong>équidistant</strong> des extrémités de ce segment.</p>
+      <p>Si un point est équidistant des extrémités d'un segment, alors il appartient à
+      la médiatrice de ce segment.</p>
+    </div>
+    <div class="example-box">
+      <h4>💡 Exemple</h4>
+      <p>(d) est la médiatrice de [AB] et le point P est sur (d), avec PA = 5 cm. Alors
+      <strong>PB = 5 cm</strong> aussi : P est équidistant de A et de B.</p>
+    </div>
+    <div class="note-box">
+      <h4>🐴 À quoi sert la 2<sup>e</sup> phrase ?</h4>
+      <p>Un point qui est à la même distance de A et de B est <strong>sur la
+      médiatrice</strong> de [AB]. C'est pour ça qu'on peut tracer la
+      médiatrice au <strong>compas</strong> : on trace deux arcs de même rayon, l'un
+      centré en A, l'autre en B ; les deux points où ils se coupent sont équidistants de
+      A et de B, donc sur la médiatrice.</p>
+    </div>
+
     <div class="important-box" data-hors-chat>
       <h4>✏️ À vérifier dans ton cahier</h4>
       <ul>
-        <li>Ton message s'arrête à « 1- Définition » : la suite (la propriété de la
-            médiatrice) viendra sans doute au prochain cours. Envoie-la-moi quand vous
-            l'aurez faite.</li>
         <li>La méthode pour tracer avec la règle et l'équerre est une <strong>aide en
             plus</strong>. Si ton professeur a montré le tracé au <strong>compas</strong>,
             dis-le-moi.</li>

@@ -2454,6 +2454,28 @@
         ],
         "correctAnswer": 1,
         "explanation": "On écrit toujours « Proto » collé devant : Protoakan, Protokrou, Protomandé, Protogur."
+      },
+      {
+        "question": "Selon les traditions orales de ton cahier, d'où les Ehotilé disent-ils être sortis ?",
+        "options": [
+          "D'une montagne",
+          "De l'eau, de la lagune",
+          "D'une forêt",
+          "D'une grotte"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les Ehotilé disent qu'ils sont sortis de l'eau, de la lagune : une légende qui dit « nous sommes ici depuis toujours »."
+      },
+      {
+        "question": "Avant d'étudier un document d'histoire, que fait-on d'abord ?",
+        "options": [
+          "On répond tout de suite aux questions",
+          "On recopie le texte",
+          "On numérote les lignes du texte",
+          "On apprend le texte par cœur"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La méthode : numéroter les lignes, lire crayon en main, souligner les mots difficiles et les mots-clés."
       }
     ]
   },
@@ -2557,6 +2579,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "L'hydrographie, ce sont les fleuves, rivières et lagunes."
+      },
+      {
+        "question": "D'après ton cahier, comment s'appelle le climat du sud de la Côte d'Ivoire ?",
+        "options": [
+          "Le climat soudanais",
+          "Le climat de montagne",
+          "Le climat attiéen ou climat subéquatorial",
+          "Le climat désertique"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Au sud, c'est le climat attiéen, qu'on appelle aussi climat subéquatorial : chaud et très humide."
+      },
+      {
+        "question": "Où trouve-t-on la forêt galerie ?",
+        "options": [
+          "Au nord, le long des cours d'eau",
+          "Au sud, au bord de la mer",
+          "Au sommet des montagnes de l'ouest",
+          "Au milieu des villes"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La forêt galerie est une bande d'arbres qui suit les cours d'eau, au nord, au milieu de la savane."
+      },
+      {
+        "question": "Où sont situés les sols hydromorphes ?",
+        "options": [
+          "Sur les hauts plateaux du nord",
+          "Au bord des cours d'eau, dans les bas-fonds et les marais",
+          "Au sommet des montagnes",
+          "Seulement sous la forêt dense"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Hydro veut dire « eau » : les sols hydromorphes sont gorgés d'eau. On les trouve au bord des cours d'eau, dans les bas-fonds et les marais."
+      },
+      {
+        "question": "Quelle végétation trouve-t-on au centre de la Côte d'Ivoire ?",
+        "options": [
+          "La mangrove",
+          "La forêt galerie seulement",
+          "Le désert",
+          "La forêt claire et la savane arborée"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Au centre, ton cahier place la forêt claire (arbres espacés) et la savane arborée (herbes et beaucoup d'arbres)."
       }
     ]
   },
@@ -3200,7 +3266,7 @@
           "Dans le clavier"
         ],
         "correctAnswer": 0,
-        "explanation": "L'unité centrale est le « cerveau » de l'ordinateur."
+        "explanation": "Dans l'unité centrale, c'est le processeur qui traite l'information : ton cahier l'appelle le « cerveau » de l'ordinateur."
       },
       {
         "question": "Windows et Android sont…",
@@ -3223,6 +3289,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Ils servent à faire un travail précis : écrire, dessiner, aller sur Internet."
+      },
+      {
+        "question": "D'après ton cahier, comment éteindre l'ordinateur à partir du clavier ?",
+        "options": [
+          "Ctrl + C, puis Espace",
+          "Alt + F4, puis la touche Entrée",
+          "Maj + A, puis Échap",
+          "On débranche la prise"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Alt + F4 ouvre une boîte de dialogue (quand on est sur le bureau) ; on valide avec la touche Entrée."
+      },
+      {
+        "question": "Quel élément de l'unité centrale est le « cerveau » de l'ordinateur ?",
+        "options": [
+          "Le disque dur",
+          "La RAM",
+          "L'écran",
+          "Le processeur"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Ton cahier le dit : le processeur est le cerveau de l'ordinateur. Il se trouve dans l'unité centrale."
+      },
+      {
+        "question": "La RAM, c'est…",
+        "options": [
+          "La mémoire vive",
+          "Le disque dur",
+          "Le système d'exploitation",
+          "Un périphérique de sortie"
+        ],
+        "correctAnswer": 0,
+        "explanation": "RAM veut dire random access memory : c'est la mémoire vive de l'ordinateur. Le disque dur, lui, garde les fichiers pour longtemps."
+      },
+      {
+        "question": "Comment appelle-t-on aussi la partie matérielle de l'ordinateur ?",
+        "options": [
+          "Le software",
+          "Internet",
+          "Le hardware",
+          "Le logiciel"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La partie matérielle, c'est la partie physique de l'ordinateur : on l'appelle aussi hardware. Le software, c'est la partie logicielle."
       }
     ]
   },
@@ -3348,6 +3458,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Le cercle avec une croix est le symbole de la lampe. Deux traits (un grand, un petit), c'est la pile."
+      },
+      {
+        "question": "Deux lampes sont montées en série. On relie les deux bornes de la lampe L1 avec un fil. Que se passe-t-il ?",
+        "options": [
+          "Les deux lampes s'éteignent",
+          "L1 s'éteint, et L2 continue de briller plus fort",
+          "L1 brille plus fort, et L2 s'éteint",
+          "Rien ne change"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ton cahier : dans un montage en série, la lampe court-circuitée s'éteint, mais l'autre continue de briller et son éclat augmente."
+      },
+      {
+        "question": "On court-circuite une seule lampe. Dans quel montage l'autre lampe reste-t-elle allumée ?",
+        "options": [
+          "En série",
+          "En dérivation",
+          "Dans les deux montages",
+          "Dans aucun des deux montages"
+        ],
+        "correctAnswer": 0,
+        "explanation": "En série, l'autre lampe brille même plus fort. En dérivation, toutes les lampes s'éteignent."
+      },
+      {
+        "question": "Pourquoi les lampadaires de la rue sont-ils montés en dérivation ?",
+        "options": [
+          "Pour qu'ils brillent moins fort",
+          "Pour qu'un seul fil suffise",
+          "Pour qu'ils s'éteignent tous en même temps",
+          "Pour que, si un lampadaire est en panne, les autres continuent de fonctionner"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Ton cahier : en dérivation, lorsqu'une lampe est en panne, les autres continuent de fonctionner. Exemples : les lampes de la maison et les lampadaires de la rue."
+      },
+      {
+        "question": "Sur un schéma, un fil relie les deux bornes d'une lampe. Que fait ce fil ?",
+        "options": [
+          "Il fait briller la lampe plus fort",
+          "Il remplace la pile",
+          "Il court-circuite la lampe : elle s'éteint",
+          "Il ouvre le circuit"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le courant passe par le fil, le chemin le plus facile, et plus par la lampe : la lampe court-circuitée s'éteint, en série comme en dérivation."
       }
     ]
   },
@@ -3473,6 +3627,61 @@
         ],
         "correctAnswer": 3,
         "explanation": "On place le milieu avec la règle graduée, puis on trace la perpendiculaire avec l'équerre."
+      },
+      {
+        "question": "D'après ton cahier, si M appartient au segment [AB], alors…",
+        "options": [
+          "AM = MB",
+          "AM + MB = AB",
+          "AM + MB est plus grand que AB",
+          "AB = 2 × AM"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Propriété 1 de ton cahier : si M appartient à [AB], alors AM + MB = AB."
+      },
+      {
+        "question": "M est sur [AB], AM = 3 cm et MB = 5 cm. Combien mesure AB ?",
+        "options": [
+          "2 cm",
+          "15 cm",
+          "8 cm",
+          "4 cm"
+        ],
+        "correctAnswer": 2,
+        "explanation": "AM + MB = AB, donc AB = 3 + 5 = 8 cm."
+      },
+      {
+        "question": "EG = 2 cm, GF = 4 cm et EF = 6 cm. Que peut-on dire du point G ?",
+        "options": [
+          "G appartient au segment [EF]",
+          "G est le milieu de [EF]",
+          "G n'est pas sur [EF]",
+          "On ne peut rien dire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "EG + GF = 2 + 4 = 6 = EF : d'après la propriété 2, G appartient à [EF]."
+      },
+      {
+        "question": "Le point P est sur la médiatrice de [AB] et PA = 5 cm. Combien mesure PB ?",
+        "options": [
+          "10 cm",
+          "2,5 cm",
+          "On ne peut pas savoir",
+          "5 cm"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Un point de la médiatrice est équidistant des extrémités : PB = PA = 5 cm."
+      },
+      {
+        "question": "Que veut dire « équidistant de A et de B » ?",
+        "options": [
+          "Sur le segment [AB]",
+          "À la même distance de A et de B",
+          "Très loin de A et de B",
+          "Au milieu de la droite"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Équi = égal : le point est à la même distance de A et de B."
       }
     ]
   },
@@ -3689,7 +3898,7 @@
           "un pronom relatif"
         ],
         "correctAnswer": 3,
-        "explanation": "Qui, que, dont, où… introduisent la subordonnée relative."
+        "explanation": "Qui, que, quoi, où, dont… introduisent la subordonnée relative."
       },
       {
         "question": "Dans « le garçon qui chante », quel est l'antécédent ?",
@@ -3700,7 +3909,7 @@
           "le"
         ],
         "correctAnswer": 1,
-        "explanation": "L'antécédent est le nom que la relative complète, placé juste avant le pronom relatif."
+        "explanation": "L'antécédent est le nom que la relative complète. Le plus souvent, il est placé juste avant le pronom relatif."
       },
       {
         "question": "Complète : « Le livre ___ je lis est passionnant. »",
@@ -3767,6 +3976,50 @@
         ],
         "correctAnswer": 0,
         "explanation": "« qui galope » commence par un pronom relatif et contient un verbe conjugué."
+      },
+      {
+        "question": "D'après ton cahier, lequel de ces mots est un pronom relatif ?",
+        "options": [
+          "quoi",
+          "avec",
+          "très",
+          "notre"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ton cahier cite les pronoms relatifs qui, que, quoi, où, dont…"
+      },
+      {
+        "question": "« Je l'avais vu qui combattait le géant. » Quel est l'antécédent de la relative ?",
+        "options": [
+          "le géant",
+          "vu",
+          "le pronom « l' »",
+          "combattait"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Quand l'antécédent est un pronom (ici « l' »), la subordonnée relative est séparée de lui."
+      },
+      {
+        "question": "D'après ton cahier, la subordonnée relative peut être supprimée, mais…",
+        "options": [
+          "elle s'accorde toujours avec le verbe",
+          "elle est toujours au début de la phrase",
+          "elle ne contient jamais de verbe",
+          "elle est rarement déplacée"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Comme l'adjectif épithète, c'est une expansion du nom : on peut la supprimer, mais on la déplace rarement."
+      },
+      {
+        "question": "Le complément du nom a un déterminant ou non. Dans quel GN n'a-t-il pas de déterminant ?",
+        "options": [
+          "le volant de la voiture",
+          "un sac en cuir",
+          "la porte de la maison",
+          "le cahier de la classe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« en cuir » : pas de déterminant devant « cuir ». Dans les autres, il y a « la »."
       }
     ]
   },
@@ -3892,6 +4145,50 @@
         ],
         "correctAnswer": 2,
         "explanation": "« Bien » ne dit presque rien. Choisis des mots précis."
+      },
+      {
+        "question": "D'après ton cahier, le portrait simple (ou statique) décrit un personnage…",
+        "options": [
+          "qui court et qui joue",
+          "qui raconte sa vie",
+          "qui n'est pas en mouvement ou en action",
+          "qu'on a inventé"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Statique veut dire qui ne bouge pas : on décrit le personnage comme sur une photo."
+      },
+      {
+        "question": "D'après ton cahier, par quoi commence le portrait physique ?",
+        "options": [
+          "Les pieds",
+          "Les vêtements",
+          "Les chaussures",
+          "La tête, le visage, les yeux"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le portrait physique commence par la tête, le visage, les yeux, avant de décrire les autres éléments."
+      },
+      {
+        "question": "Quelles sont les formes de phrase citées dans ton cahier ?",
+        "options": [
+          "Déclaratif, interrogatif, impératif",
+          "Affirmatif, négatif et emphatique",
+          "Présent, imparfait, passé composé",
+          "Physique, moral, sentiment"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les formes : affirmatif, négatif, emphatique. Déclaratif, interrogatif, impératif et exclamatif sont les types de phrase."
+      },
+      {
+        "question": "Dans le portrait de Didier Drogba, « humble » et « très gentille » sont des mots…",
+        "options": [
+          "mélioratifs : ils présentent la personne de façon positive",
+          "dépréciatifs : ils présentent la personne de façon négative",
+          "des verbes d'état",
+          "des compléments du nom"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ce sont des mots mélioratifs, du portrait moral. Le contraire : dépréciatif (paresseux, méchant)."
       }
     ]
   },
@@ -4028,6 +4325,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Le présent de description, ou l'imparfait dans un récit au passé."
+      },
+      {
+        "question": "Dans ton cahier, quelles sont les quatre colonnes du tableau de vérification ?",
+        "options": [
+          "Entrées, repérage, analyse, interprétation",
+          "Titre, auteur, thème, bilan",
+          "Indices, résumé, avis, conclusion",
+          "Axes, hypothèse, texte, vocabulaire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Entrées (l'axe : H1 ou H2), repérage (les mots du texte), analyse (l'outil), interprétation (ce que ça montre)."
+      },
+      {
+        "question": "Dans le texte sur César, « avaient été » et « étaient revenus » sont conjugués au…",
+        "options": [
+          "présent de l'indicatif",
+          "futur simple",
+          "plus-que-parfait de l'indicatif",
+          "passé simple"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Auxiliaire à l'imparfait + participe passé : c'est le plus-que-parfait. Il marque les actions passées de César."
+      },
+      {
+        "question": "« Il s'était engagé, il était revenu. » Quel type de phrase est-ce ?",
+        "options": [
+          "Une phrase interrogative",
+          "Une phrase déclarative",
+          "Une phrase impérative",
+          "Une phrase exclamative"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Elle donne une information et finit par un point : c'est une phrase déclarative. Elle précise les actions passées du personnage."
+      },
+      {
+        "question": "D'après ton cahier, que veut dire « martyriser » ?",
+        "options": [
+          "Soigner quelqu'un",
+          "Faire rire quelqu'un",
+          "Aider quelqu'un",
+          "Faire souffrir quelqu'un d'une grande douleur"
+        ],
+        "correctAnswer": 3,
+        "explanation": "« Martyrisé » est formé à partir du verbe « martyriser » : faire souffrir quelqu'un d'une grande douleur."
       }
     ]
   },
@@ -4042,7 +4383,7 @@
           "Dans une forêt"
         ],
         "correctAnswer": 1,
-        "explanation": "On a vu beaucoup de moustiques pendant une opération de salubrité dans un internat, et certains élèves sont malades."
+        "explanation": "À la suite de l'observation d'un grand nombre de moustiques lors d'une opération de salubrité dans un internat, et de l'état de santé de certains élèves."
       },
       {
         "question": "Quel est le problème posé dans ton cours ?",
@@ -4071,33 +4412,33 @@
         "options": [
           "Les moustiques ne piquent pas",
           "La prolifération des moustiques n'a aucun effet",
-          "Certaines conditions du milieu favorisent la prolifération des moustiques",
+          "La prolifération des moustiques agit grâce à certaines conditions du milieu",
           "Les moustiques vivent seulement en forêt"
         ],
         "correctAnswer": 2,
-        "explanation": "Hypothèse 1 : certaines conditions du milieu favorisent la prolifération des moustiques."
+        "explanation": "Hypothèse 1 : la prolifération des moustiques agit grâce à certaines conditions du milieu."
       },
       {
         "question": "Quelle est la deuxième hypothèse de ton cours ?",
         "options": [
           "Les moustiques nettoient l'internat",
-          "La prolifération des moustiques a des conséquences sur l'Homme",
+          "La prolifération des moustiques agit par des conséquences sur l'Homme",
           "Les moustiques aiment le froid",
           "Les élèves sont malades à cause de la nourriture"
         ],
         "correctAnswer": 1,
-        "explanation": "Hypothèse 2 : la prolifération des moustiques a des conséquences sur l'Homme."
+        "explanation": "Hypothèse 2 : la prolifération des moustiques agit par des conséquences sur l'Homme."
       },
       {
-        "question": "Dans les 4 étapes de la vérification, que vient-il après l'observation ?",
+        "question": "Dans la vérification de ton cahier, que vient-il juste après l'analyse ?",
         "options": [
-          "La conclusion",
-          "L'analyse",
           "Les résultats",
-          "Le problème"
+          "L'observation",
+          "L'interprétation",
+          "Le constat"
         ],
         "correctAnswer": 2,
-        "explanation": "Observation → résultats → analyse → conclusion."
+        "explanation": "Observation → résultats → analyse → interprétation → conclusion."
       },
       {
         "question": "Où la femelle du moustique pond-elle ses œufs ?",
@@ -4197,6 +4538,61 @@
         ],
         "correctAnswer": 2,
         "explanation": "Sans eau stagnante, les moustiques ne peuvent plus pondre."
+      },
+      {
+        "question": "D'après les résultats de ton cahier, lequel n'est PAS montré par le document ?",
+        "options": [
+          "Les ordures dans les caniveaux",
+          "Les pneus usés",
+          "L'eau stagnante",
+          "Un sol de sable sec"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le document montre les ordures dans les caniveaux ou dans la nature, les pneus usés et l'eau stagnante."
+      },
+      {
+        "question": "Dans quels deux milieux se déroule le développement du moustique ?",
+        "options": [
+          "Le milieu aquatique et le milieu aérien",
+          "La forêt et le désert",
+          "Le sol et les arbres",
+          "La maison et l'école"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Œufs, larves et nymphes vivent dans l'eau (milieu aquatique) ; l'adulte vit dans l'air (milieu aérien)."
+      },
+      {
+        "question": "Comment s'appelle le moment où le moustique est une larve ?",
+        "options": [
+          "Le stade nymphal",
+          "L'émergence",
+          "Le stade larvaire",
+          "La ponte"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Larve → stade larvaire ; nymphe → stade nymphal."
+      },
+      {
+        "question": "Qu'est-ce que l'émergence ?",
+        "options": [
+          "La femelle pond ses œufs",
+          "La cuticule de la nymphe se déchire et le moustique adulte sort",
+          "La larve mange",
+          "Le moustique pique"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La cuticule de la nymphe se déchire pour libérer le moustique adulte : c'est l'émergence."
+      },
+      {
+        "question": "Pourquoi le moustique adulte vit-il dans le milieu aérien ?",
+        "options": [
+          "Pour pondre dans le sable",
+          "Pour se nourrir et se reproduire",
+          "Pour devenir une larve",
+          "Pour boire l'eau des pneus"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dans l'air, le moustique adulte se nourrit et se reproduit ; puis la femelle revient pondre dans l'eau."
       }
     ]
   },

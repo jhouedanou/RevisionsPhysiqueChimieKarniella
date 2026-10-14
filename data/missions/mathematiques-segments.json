@@ -11,12 +11,12 @@
       "contenu": "Le milieu I de [AB] est sur le segment, à la même distance de A et de B : IA = IB = AB ÷ 2. Comme le point d'une balançoire où les deux côtés sont égaux."
     },
     {
-      "titre": "🔁 Les deux sens de la propriété",
-      "contenu": "Si I est le milieu, alors IA = IB. Et si I est SUR [AB] avec IA = IB, alors I est le milieu. Attention : un point hors du segment peut être à égale distance sans être le milieu !"
+      "titre": "🧩 Le point sur le chemin",
+      "contenu": "Si le bateau M est SUR le chemin [AB], les deux morceaux mis bout à bout font tout le trajet : AM + MB = AB. Et si AM + MB = AB, alors M est forcément sur [AB]. S'il sort du chemin, il fait un détour : AM + MB devient plus grand !"
     },
     {
       "titre": "✂️ La médiatrice, frontière parfaite",
-      "contenu": "La médiatrice de [AB] est la droite qui passe par le milieu et qui est perpendiculaire à [AB]. On la code avec des petits traits égaux et un petit carré."
+      "contenu": "La médiatrice de [AB] passe par le milieu et est perpendiculaire à [AB]. Chaque point de cette frontière est équidistant de A et de B : à la même distance des deux îles. Juste pour tout le monde !"
     }
   ],
   "quiz": [
@@ -32,26 +32,26 @@
       "explanation": "IA = AB ÷ 2 = 10 ÷ 2 = 5 km."
     },
     {
-      "question": "Un point N hors de [AB] avec NA = NB est-il le milieu ?",
+      "question": "Le bateau M est sur le chemin [AB], AM = 3 km et MB = 7 km. Combien mesure AB ?",
       "options": [
-        "Non, il doit être sur [AB]",
-        "Oui",
-        "Oui si NA = 3",
-        "Toujours"
+        "4 km",
+        "21 km",
+        "10 km",
+        "3 km"
       ],
-      "correct_answer_index": 0,
-      "explanation": "Le milieu doit être sur le segment."
+      "correct_answer_index": 2,
+      "explanation": "M est sur [AB], donc AM + MB = AB : 3 + 7 = 10 km."
     },
     {
-      "question": "La médiatrice de [AB] est…",
+      "question": "Une tour P est sur la médiatrice de [AB] et PA = 6 km. Que vaut PB ?",
       "options": [
-        "parallèle à [AB]",
-        "perpendiculaire à [AB] en son milieu",
-        "la droite (AB)",
-        "un cercle"
+        "3 km",
+        "12 km",
+        "On ne sait pas",
+        "6 km"
       ],
-      "correct_answer_index": 1,
-      "explanation": "Milieu + perpendiculaire : les deux conditions."
+      "correct_answer_index": 3,
+      "explanation": "Un point de la médiatrice est équidistant de A et de B : PB = PA = 6 km."
     }
   ]
 }

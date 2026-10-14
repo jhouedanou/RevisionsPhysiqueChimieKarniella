@@ -12,11 +12,11 @@
     },
     {
       "titre": "🦾 Le corps : la partie matérielle",
-      "contenu": "C'est tout ce qu'on peut toucher : l'unité centrale (le cerveau), les périphériques d'entrée (clavier, souris) et de sortie (écran, imprimante). Entrée = l'information va vers l'ordinateur ; sortie = elle en vient."
+      "contenu": "C'est tout ce qu'on peut toucher : l'unité centrale, avec le processeur (le cerveau), la RAM et le disque dur, et les périphériques d'entrée (clavier, souris) et de sortie (écran, imprimante). Entrée = l'information va vers l'ordinateur ; sortie = elle en vient."
     },
     {
       "titre": "🧠 Le savoir-faire : la partie logicielle",
-      "contenu": "Ce sont les programmes, qu'on ne touche pas. Le système d'exploitation (Windows, Android) fait tout marcher ; les logiciels d'application (Word, Paint, Chrome) font un travail précis. Matériel + logiciels = un système informatique."
+      "contenu": "Ce sont les programmes, qu'on ne touche pas. Le système d'exploitation (Windows, Linux, macOS) gère tout l'ordinateur ; les logiciels d'application font un travail précis. Et pour dormir, le vaisseau s'éteint proprement : menu Démarrer puis Arrêter, ou Alt + F4 puis Entrée. Jamais en débranchant !"
     }
   ],
   "quiz": [
