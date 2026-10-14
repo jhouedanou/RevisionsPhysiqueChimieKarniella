@@ -35,17 +35,11 @@
 <!-- ============ II. DIVISION EUCLIDIENNE ============ -->
 <section class="tab-content active" id="tab1">
   <div class="container">
-    <div class="note-box" data-hors-chat>
-      <h4>📖 D'où vient cette leçon ?</h4>
-      <p>Les encadrés 📘 reprennent <strong>ton cahier</strong>, d'après la note vocale
-      où tu le lis à voix haute : c'est le cours à apprendre. Les encadrés 🐴 et ⚠️
-      expliquent. La partie <strong>I. Puissance entière d'un nombre entier naturel</strong>
-      de cette leçon est dans la leçon
-      <a href="mathematiques-puissances-entieres.html">Puissances</a> (onglet « Mon cahier »).</p>
-    </div>
-
     <p><strong>Thème :</strong> Calculs algébriques<br>
     <strong>Leçon 1 :</strong> Nombres premiers</p>
+
+    <p>La partie I, les puissances, est dans la leçon
+    <a href="mathematiques-puissances-entieres.html">Puissances</a>.</p>
 
     <h2>II. Division euclidienne</h2>
 
@@ -83,16 +77,15 @@
 
     <div class="note-box">
       <h4>🐴 Comment trouver q et r ?</h4>
-      <p>Cherche le plus grand multiple de 4 qui ne dépasse pas 57 :
-      4 × 14 = 56 (et 4 × 15 = 60, c'est trop). Donc <strong>q = 14</strong>.
-      Il reste 57 − 56 = 1, donc <strong>r = 1</strong>.</p>
+      <p>Cherche le plus grand multiple de 4 qui ne dépasse pas 57 : 4 × 14 = 56
+      (4 × 15 = 60, c'est trop). Donc <strong>q = 14</strong>. Il reste 57 − 56 = 1,
+      donc <strong>r = 1</strong>.</p>
     </div>
 
     <div class="important-box">
       <h4>⚠️ Le reste doit être plus petit que le diviseur</h4>
-      <p>57 = 4 × 13 + 5 est une égalité juste, mais <strong>ce n'est pas</strong> la
-      division euclidienne de 57 par 4, car 5 n'est pas plus petit que 4. On peut
-      encore mettre un « 4 » de plus dans le quotient.</p>
+      <p>57 = 4 × 13 + 5 est juste, mais <strong>ce n'est pas</strong> la division
+      euclidienne : le reste 5 n'est pas plus petit que 4.</p>
     </div>
 
     <div class="definition-box">
@@ -104,11 +97,8 @@
     <div class="example-box">
       <p>20 ÷ 4 = 5 ; <strong>20 = 4 × 5</strong> (le reste est 0).</p>
     </div>
-    <div class="note-box">
-      <h4>🐴 Trois façons de dire la même chose</h4>
-      <p>Comme 20 = 4 × 5 avec un reste nul : 20 est un <strong>multiple</strong> de 4 ;
-      4 est un <strong>diviseur</strong> de 20 ; 20 est <strong>divisible</strong> par 4.</p>
-    </div>
+    <p>On dit alors : 20 est un <strong>multiple</strong> de 4 ; 4 est un
+    <strong>diviseur</strong> de 20 ; 20 est <strong>divisible</strong> par 4.</p>
 
     <h3>2. Encadrement d'un nombre entier naturel par deux multiples consécutifs d'un même nombre</h3>
     <div class="definition-box">
@@ -129,9 +119,8 @@
     </div>
     <div class="note-box">
       <h4>🐴 L'image à garder</h4>
-      <p>Les multiples de 6 sont comme des marches : 0, 6, 12, 18, 24… Le nombre 17
-      n'est pas sur une marche : il est <strong>entre</strong> la marche 12 et la marche
-      18, qui se suivent. Le quotient de la division euclidienne donne la marche du
+      <p>Les multiples de 6 sont des marches : 0, 6, 12, 18, 24… 17 n'est pas sur une
+      marche : il est <strong>entre</strong> 12 et 18. Le quotient donne la marche du
       dessous : 17 = 6 × 2 + 5, donc q = 2.</p>
     </div>
 
@@ -154,11 +143,10 @@
       <p><strong>2 ; 3 ; 5 ; 7 ; 11 ; 13</strong> sont des nombres premiers.</p>
     </div>
     <div class="note-box">
-      <h4>🐴 Pourquoi « premier » ?</h4>
-      <p>Les nombres premiers sont les <strong>briques</strong> des nombres : on ne peut
-      pas les casser en multiplication plus petite. 7 = 1 × 7 seulement : il est premier.
-      Mais 6 = 2 × 3 : il a 4 diviseurs (1, 2, 3, 6), il n'est pas premier.
-      Et <strong>1 n'est pas premier</strong> : il n'a qu'un seul diviseur, lui-même.</p>
+      <h4>🐴 Les briques des nombres</h4>
+      <p>Un nombre premier ne se casse pas en plus petit : 7 = 1 × 7 seulement. Mais
+      6 = 2 × 3 a 4 diviseurs (1, 2, 3, 6) : il n'est pas premier. Et <strong>1 n'est
+      pas premier</strong> : il n'a qu'un seul diviseur.</p>
     </div>
 
     <h3>2. Reconnaître un nombre premier</h3>
@@ -177,9 +165,8 @@
     <div class="example-box">
       <h4>💡 Exemple : 11 est-il premier ?</h4>
       <ul>
-        <li>Par 2 : 11 = 2 × 5 + 1. Reste 1, pas nul. Quotient 5, plus grand que 2 :
-            on continue.</li>
-        <li>Par 3 : 11 = 3 × 3 + 2. Reste 2, pas nul. Quotient 3, <strong>égal au
+        <li>Par 2 : 11 = 2 × 5 + 1. Reste non nul, quotient 5 &gt; 2 : on continue.</li>
+        <li>Par 3 : 11 = 3 × 3 + 2. Reste non nul, quotient 3 <strong>égal au
             diviseur 3</strong> : on s'arrête.</li>
       </ul>
       <p>Donc <strong>11 est un nombre premier</strong>.</p>
@@ -201,8 +188,8 @@
     </div>
     <div class="example-box">
       <h4>💡 Exemple : décomposer 60</h4>
-      <p>On divise par le plus petit nombre premier possible, et on recommence avec le
-      quotient, jusqu'à arriver à 1 :</p>
+      <p>On divise par le plus petit nombre premier possible. On recommence avec le
+      quotient, jusqu'à 1 :</p>
       <p style="font-family: monospace; font-size: 18px; line-height: 1.6; text-align: center;">
         60 | 2<br>
         30 | 2<br>
@@ -214,20 +201,15 @@
     </div>
     <div class="note-box">
       <h4>🐴 Le lien avec les puissances</h4>
-      <p>Quand un facteur premier revient plusieurs fois, on l'écrit avec une
-      puissance : 2 × 2 = 2<sup>2</sup>. C'est pour ça que la leçon commence par les
-      puissances !</p>
+      <p>Un facteur qui revient plusieurs fois s'écrit avec une puissance :
+      2 × 2 = 2<sup>2</sup>. C'est pour ça que la leçon commence par les puissances !</p>
     </div>
 
     <div class="important-box" data-hors-chat>
       <h4>✏️ À vérifier dans ton cahier</h4>
       <ul>
-        <li>Pour 11, les calculs ne s'entendent pas dans l'enregistrement : j'ai écrit
-            ceux qui suivent la méthode. Compare avec ton cahier.</li>
-        <li>Pour la décomposition, tu ne lis pas d'exemple. Celui de 60 est ajouté ici :
-            si ton professeur en a donné un autre, envoie-le moi.</li>
-        <li>Les exemples de 91 et l'encadré « Pourquoi premier ? » ne sont pas dans ton
-            cahier : ils servent à comprendre.</li>
+        <li>Les calculs de l'exemple « 11 est-il premier ? ».</li>
+        <li>L'exemple de décomposition (ici 60).</li>
       </ul>
     </div>
   </div>
@@ -252,7 +234,7 @@
         <li>Dis si la quantité de carreaux disponible est suffisante.</li>
       </ol>
       <details>
-        <summary>Voir la correction (ton cahier)</summary>
+        <summary>Voir la correction</summary>
         <ol>
           <li>Je fais la division euclidienne de 47 par 5 : <strong>47 = 5 × 9 + 2</strong>.
               47 n'est pas un multiple de 5. On a 5 × 9 &lt; 47 &lt; 5 × 10 ;
@@ -263,15 +245,6 @@
               carton</strong> de carreaux (10 cartons couvrent 50 m²).</li>
         </ol>
       </details>
-    </div>
-
-    <div class="important-box" data-hors-chat>
-      <h4>✏️ À vérifier dans ton cahier</h4>
-      <p>Dans la note du 14/10, tu lis l'énoncé. On entend deux fois « <strong>6</strong>
-      m² » par carton, mais ta correction calcule avec <strong>5</strong> (47 = 5 × 9 +
-      2). Avec 6 m², les 9 cartons couvriraient 54 m² et suffiraient : c'est donc
-      sûrement <strong>5 m²</strong>. Le début de l'énoncé (« la pièce de son village »)
-      s'entend mal : recopie-le.</p>
     </div>
 
     <div class="exercice">
@@ -339,6 +312,14 @@
           <li><strong>Vrai</strong> : ses seuls diviseurs sont 1 et 13.</li>
         </ol>
       </details>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>Les carreaux : un carton couvre bien <strong>5 m²</strong> ?</li>
+        <li>Le début de l'énoncé : « une pièce de 47 m² dans son village ».</li>
+      </ul>
     </div>
   </div>
 </section>
