@@ -21,6 +21,12 @@
     var MAX_QUIZ_GARDES = 10;   // par page : de quoi voir une évolution, pas un journal
     var MAX_JOURS_GARDES = 60;  // assez pour la série en cours ; le record est gardé à part
 
+    // Leçons déplacées d'une matière à une autre : l'ancien slug garde les
+    // visites et les scores déjà faits, on les reporte sur le nouveau.
+    var RENOMMEES = {
+        'francais-exploitation-documents': { slug: 'histoire-geo-exploitation-documents', matiere: 'histoire-geo' }
+    };
+
     /* ============================================================
        Stockage
        ============================================================ */
@@ -30,6 +36,14 @@
             var brut = JSON.parse(window.localStorage.getItem(CLE));
             if (!brut || brut.version !== VERSION) { return { version: VERSION, pages: {} }; }
             if (!brut.pages) { brut.pages = {}; }
+            Object.keys(RENOMMEES).forEach(function (ancien) {
+                var nouveau = RENOMMEES[ancien];
+                if (brut.pages[ancien] && !brut.pages[nouveau.slug]) {
+                    brut.pages[nouveau.slug] = brut.pages[ancien];
+                    brut.pages[nouveau.slug].matiere = nouveau.matiere;
+                }
+                delete brut.pages[ancien];
+            });
             return brut;
         } catch (err) {
             return { version: VERSION, pages: {} };
