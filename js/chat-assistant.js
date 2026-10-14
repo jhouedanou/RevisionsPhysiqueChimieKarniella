@@ -1397,6 +1397,13 @@
             ' bonne' + (quizEnCours.justes > 1 ? 's' : '') + ' réponse' +
             (quizEnCours.justes > 1 ? 's' : '') + ' sur ' + quizEnCours.total + '.';
 
+        // Récapitulatif : chaque question, et la bonne réponse quand elle a été ratée.
+        texte += '\n\n📋 **Récapitulatif du quiz**';
+        quizEnCours.details.forEach(function (d, i) {
+            texte += '\n' + (d.ok ? '✅ ' : '❌ ') + (i + 1) + '. ' + d.q +
+                (d.ok ? '' : ' → bonne réponse : **' + d.b + '**');
+        });
+
         // Rien à enregistrer ici : chaque réponse a déjà mis la série à jour.
         ajouterTexteBot(texte);
         if (pourcentage >= 80 && quizEnCours.total >= 3 && window.KarniellaFete) { window.KarniellaFete(); }

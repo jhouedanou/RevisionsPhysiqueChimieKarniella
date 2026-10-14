@@ -359,6 +359,49 @@
             color: #0d47a1;
         }
 
+        /* Récapitulatif de fin de quiz */
+        .recap {
+            text-align: left;
+            margin: 10px 0 20px;
+        }
+
+        .recap h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .recap ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .recap li {
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .recap li.juste {
+            background: #d4edda;
+            border: 2px solid #2ecc71;
+            color: #155724;
+        }
+
+        .recap li.faux {
+            background: #f8d7da;
+            border: 2px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .recap li p {
+            margin: 4px 0 0;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 24px;
@@ -422,6 +465,7 @@
                 <div class="score-display" id="scoreDisplay"></div>
                 <div class="score-text" id="scoreText"></div>
                 <div class="score-message" id="scoreMessage"></div>
+                <div class="recap" id="recap"></div>
                 <button class="btn btn-reset" onclick="resetQuiz()">🔄 Recommencer</button>
             </div>
         </div>
@@ -989,6 +1033,7 @@
 
             const percentage = Math.round((correct / filtered.length) * 100);
             displayResults(correct, filtered.length, percentage);
+            afficherRecap(filtered);
         }
 
         // Display results
@@ -1017,6 +1062,22 @@
             scoreMessage.textContent = message;
             resultsDiv.classList.add('show');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Récapitulatif de fin de quiz : chaque question, ta réponse et,
+        // si elle est fausse, la bonne réponse avec l'explication.
+        function afficherRecap(questions) {
+            const lignes = questions.map((q, index) => {
+                const reponse = userAnswers[q.id];
+                const juste = reponse === q.correct;
+                return `
+                    <li class="${juste ? 'juste' : 'faux'}">
+                        <strong>${juste ? '✅' : '❌'} ${index + 1}. ${q.question}</strong>
+                        <p>Ta réponse : ${reponse === undefined ? '<em>pas de réponse</em>' : q.options[reponse]}</p>
+                        ${juste ? '' : `<p>Bonne réponse : <strong>${q.options[q.correct]}</strong></p><p>${q.explanation}</p>`}
+                    </li>`;
+            }).join('');
+            document.getElementById('recap').innerHTML = `<h3>📋 Récapitulatif du quiz</h3><ol>${lignes}</ol>`;
         }
 
         // Reset quiz

@@ -31,6 +31,47 @@ function echapperHTML(texte) {
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+/**
+ * Le récapitulatif de fin de quiz : chaque question avec la réponse donnée.
+ * Pour une erreur, il redonne la bonne réponse et l'explication : Karniella
+ * revoit ce qu'elle a raté sans refaire tout le quiz.
+ *
+ * `choix[i]` est l'indice de l'option choisie à la question i. Les énoncés
+ * et les options sont insérés tels quels, comme dans le reste du quiz : ils
+ * viennent de nos fichiers de données et peuvent contenir du HTML.
+ */
+function recapitulatifHTML(questions, choix) {
+    const erreurs = questions.filter((q, i) => choix[i] !== q.correctAnswer).length;
+    const bilan = erreurs === 0
+        ? 'Aucune erreur : tout est juste ! 🎉'
+        : `${erreurs} erreur${erreurs > 1 ? 's' : ''} à revoir : ${erreurs > 1 ? 'elles sont marquées' : 'elle est marquée'} ✗.`;
+
+    const lignes = questions.map((q, i) => {
+        const juste = choix[i] === q.correctAnswer;
+        const langEnonce = attributLangue(q.langue);
+        const langOptions = attributLangue(q.optionsLangue || q.langue);
+        const donnee = q.options[choix[i]];
+        const correction = juste ? '' : `
+                    <p>Bonne réponse : <strong${langOptions}>${q.options[q.correctAnswer]}</strong></p>
+                    ${q.explanation ? `<p class="quiz-recap-explication">${q.explanation}</p>` : ''}`;
+        return `
+            <li class="quiz-recap-ligne ${juste ? 'juste' : 'faux'}">
+                <span class="quiz-recap-marque" role="img" aria-label="${juste ? 'Juste' : 'Faux'}">${juste ? '✓' : '✗'}</span>
+                <div>
+                    <p class="quiz-recap-question"${langEnonce}><strong>${i + 1}.</strong> ${q.question}</p>
+                    <p>Ta réponse : ${donnee === undefined ? '<em>pas de réponse</em>' : `<strong${langOptions}>${donnee}</strong>`}</p>${correction}
+                </div>
+            </li>`;
+    }).join('');
+
+    return `
+        <div class="quiz-recap">
+            <h5 class="quiz-recap-titre">📋 Récapitulatif du quiz</h5>
+            <p class="quiz-recap-bilan">${bilan}</p>
+            <ol class="quiz-recap-liste" role="list">${lignes}</ol>
+        </div>`;
+}
+
 class SectionQuiz {
     /**
      * @param {string} containerId
@@ -71,6 +112,7 @@ class SectionQuiz {
                 <div class="section-quiz-score" id="${this.container.id}-score" style="display: none;">
                     <p></p>
                 </div>
+                <div id="${this.container.id}-recap"></div>
             </div>
         `;
 
@@ -124,6 +166,7 @@ class SectionQuiz {
         let total = this.questions.length;
         let allAnswered = true;
         const details = [];   // pour le suivi de tonton (js/suivi.js)
+        const choix = [];     // pour le récapitulatif
 
         this.questions.forEach((question, index) => {
             const qId = `${this.container.id}-q${index}`;
@@ -139,6 +182,7 @@ class SectionQuiz {
 
             const selectedValue = parseInt(selected.value);
             const isCorrect = selectedValue === question.correctAnswer;
+            choix[index] = selectedValue;
             details.push({ q: question.question, r: question.options[selectedValue], b: question.options[question.correctAnswer], ok: isCorrect });
 
             if (isCorrect) {
@@ -180,6 +224,7 @@ class SectionQuiz {
         scoreDiv.innerHTML = `
             <p>${emoji} <strong>${message}</strong> - Score : ${correct}/${total} (${percentage}%)</p>
         `;
+        document.getElementById(`${this.container.id}-recap`).innerHTML = recapitulatifHTML(this.questions, choix);
 
         // 🎉 à partir de 80 % (js/badges.js, chargé par le chat).
         if (percentage >= 80 && window.KarniellaFete) { window.KarniellaFete(); }
@@ -203,6 +248,7 @@ class SectionQuiz {
         this.index = 0;
         this.correct = 0;
         this.reponses = [];
+        this.choix = [];
         this.details = [];
         this.debut = null;
         this.fantomeActif = false;
@@ -356,6 +402,7 @@ class SectionQuiz {
         });
         if (juste) { this.correct++; }
         this.reponses[this.index] = juste;
+        this.choix[this.index] = choix;
         this.details[this.index] = { q: q.question, r: q.options[choix], b: q.options[q.correctAnswer], ok: juste };
 
         const retour = this.elScene.querySelector('.question-feedback');
@@ -453,7 +500,8 @@ class SectionQuiz {
                     <button type="button" class="quiz-btn quiz-btn-plein quiz-rejouer">👻 Rejouer contre mon fantôme</button>
                     ${boutique && xp ? `<a class="quiz-btn quiz-btn-or" href="${boutique}">⭐ Boutique</a>` : ''}
                 </div>
-            </div>`;
+            </div>
+            ${recapitulatifHTML(this.questions, this.choix)}`;
         this.elScene.querySelector('.quiz-rejouer').addEventListener('click', () => this.rendreEtapes());
         this.elScene.querySelector('.quiz-fin-titre').setAttribute('tabindex', '-1');
         this.elScene.querySelector('.quiz-fin-titre').focus({ preventScroll: true });
