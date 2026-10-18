@@ -1,0 +1,139 @@
+/* ============================================================
+   Emploi du temps (js/emploi-du-temps.js)
+   ============================================================
+   La carte « Demain » de l'accueil et la page 5e/emploi-du-temps.html.
+   Chaque matière prend sa couleur de css/matieres.css (data-matiere). */
+
+.edt-matiere {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 4px 12px;
+    border: 1px solid var(--matiere, var(--bord));
+    border-radius: 999px;
+    background: var(--matiere-pale, var(--surface-douce));
+    color: var(--matiere-texte, var(--encre));
+    font-weight: 800;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+a.edt-matiere:hover { text-decoration: underline; }
+a.edt-matiere:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.edt-matiere.edt-devoir { border-color: var(--boite-important-bord); background: var(--boite-important); color: var(--boite-important-texte); }
+
+.edt-titre {
+    margin: 0;
+    font-family: var(--police-titre, inherit);
+    font-size: 21px;
+    font-weight: 800;
+}
+
+/* ---------- Accueil : la carte du prochain jour ---------- */
+
+.emploi-prochain {
+    margin: 0 0 26px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    border-radius: var(--rayon-carte, 18px);
+    box-shadow: var(--ombre-clay, var(--ombre));
+}
+
+.edt-tete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 12px;
+}
+
+.edt-lien { font-size: 14px; font-weight: 800; color: var(--rose); text-decoration: none; }
+.edt-lien:hover { text-decoration: underline; }
+.edt-lien:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.edt-consigne { margin: 6px 0 10px; font-size: 15px; color: var(--doux); }
+
+.edt-matieres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.edt-alerte-devoir {
+    margin: 12px 0 0;
+    padding: 8px 12px;
+    border-left: 4px solid var(--boite-important-bord);
+    border-radius: 8px;
+    background: var(--boite-important);
+    color: var(--boite-important-texte);
+    font-weight: 800;
+}
+
+/* ---------- Page : un jour, puis la semaine ---------- */
+
+body.emploi-page { background: var(--fond); color: var(--encre); font-family: var(--police-texte, sans-serif); }
+.edt-page { max-width: 760px; margin: 0 auto; padding: 16px 16px 40px; }
+.edt-page > h1 { margin: 8px 0 4px; font-family: var(--police-titre, inherit); font-size: clamp(26px, 6vw, 34px); }
+.edt-classe { margin: 0 0 18px; color: var(--doux); }
+
+.edt-choix { display: flex; gap: 6px; margin-bottom: 16px; }
+
+.edt-bouton-jour {
+    flex: 1 1 0;
+    min-height: 44px;
+    padding: 6px 0;
+    border: 1px solid var(--bord);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--encre);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.edt-bouton-jour[aria-pressed="true"] { border-color: var(--rose); background: var(--rose); color: var(--surface); }
+.edt-bouton-jour:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.edt-jour {
+    margin-bottom: 26px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    border-radius: var(--rayon-carte, 18px);
+}
+
+.edt-journee { margin: 12px 0 0; padding: 0; list-style: none; }
+
+.edt-creneau {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-top: 1px solid var(--bord);
+}
+
+.edt-heure { flex: 0 0 118px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--doux); }
+.edt-quoi { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; }
+.edt-detail { font-size: 14px; font-style: italic; color: var(--doux); }
+.edt-recreation .edt-recre { font-style: italic; color: var(--doux); }
+.edt-apres-midi { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--bord); color: var(--doux); }
+
+/* Le tableau de la semaine : les abréviations du papier, pour tenir à 390 px. */
+.edt-defile { overflow-x: auto; margin: 12px 0 26px; padding: 1px; }
+
+.edt-semaine { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 13px; }
+.edt-semaine th,
+.edt-semaine td { padding: 3px 1px; border: 1px solid var(--bord); text-align: center; }
+.edt-semaine thead th { font-weight: 800; }
+.edt-semaine tbody th,
+.edt-semaine thead th:first-child { width: 42px; font-weight: 800; color: var(--doux); font-variant-numeric: tabular-nums; }
+.edt-semaine .edt-choisi { background: var(--surface-douce); }
+.edt-semaine thead .edt-choisi { color: var(--rose); }
+.edt-semaine .edt-matiere { justify-content: center; width: 100%; min-height: 32px; padding: 2px 1px; gap: 0; border-radius: 8px; font-size: 11.5px; }
+.edt-semaine .edt-icone { display: none; }
+.edt-semaine .edt-recreation td { font-style: italic; color: var(--doux); }

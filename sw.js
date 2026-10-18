@@ -10,7 +10,7 @@
 // Seules les images et les polices, qui ne changent jamais, restent
 // « cache d'abord ».
 
-const CACHE_NAME = 'karniella-cache-v52';
+const CACHE_NAME = 'karniella-cache-v53';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Au-delà, on sert la copie en cache (si on en a une) et le réseau continue
@@ -28,6 +28,7 @@ const FILES_TO_CACHE = [
     '/index.html',
     '/boutique.html',
     '/5e/mission.html',
+    '/5e/emploi-du-temps.html',
 
     '/css/theme.css',
     '/css/matieres.css',
@@ -39,6 +40,7 @@ const FILES_TO_CACHE = [
     '/css/section-quiz.css',
     '/css/recherche.css',
     '/css/badges.css',
+    '/css/emploi-du-temps.css',
 
     '/js/accueil.js',
     '/js/programme-5e.js',
@@ -57,6 +59,7 @@ const FILES_TO_CACHE = [
     '/js/boutique.js',
     '/js/mission.js',
     '/js/suivi.js',
+    '/js/emploi-du-temps.js',
 
     '/data/section-questions.json',
     '/data/programme-5e.json',

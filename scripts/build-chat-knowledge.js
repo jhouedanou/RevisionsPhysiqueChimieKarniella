@@ -43,6 +43,7 @@ const PROGRAMME = path.join(RACINE, 'data', 'programme-5e.json');
 // dans le périmètre depuis qu'on ne scanne que 5e/, mais le filtre reste : rien
 // ne garantit qu'un script de thème n'en déposera pas là un jour.
 const EST_SAUVEGARDE = /\.(bak|contrast-backup|theme_backup_\d+|backup_\d+)$/;
+const PAGES_COQUILLES = new Set(['mission.html', 'emploi-du-temps.html']);
 
 function listerPages() {
     if (!fs.existsSync(DOSSIER_5E)) {
@@ -51,8 +52,9 @@ function listerPages() {
     }
 
     return fs.readdirSync(DOSSIER_5E)
-        // mission.html est une coquille remplie par js/mission.js : rien à indexer.
-        .filter((nom) => nom.endsWith('.html') && nom !== 'mission.html' && !EST_SAUVEGARDE.test(nom))
+        // mission.html et emploi-du-temps.html sont des coquilles remplies par
+        // js/mission.js et js/emploi-du-temps.js : rien à indexer.
+        .filter((nom) => nom.endsWith('.html') && !PAGES_COQUILLES.has(nom) && !EST_SAUVEGARDE.test(nom))
         .map((nom) => ({
             slug: nom.slice(0, -'.html'.length),
             chemin: path.join(DOSSIER_5E, nom)
