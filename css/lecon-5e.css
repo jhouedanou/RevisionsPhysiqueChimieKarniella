@@ -1007,6 +1007,8 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 .fiche-option input { flex: 0 0 auto; width: 22px; height: 22px; margin: 0; accent-color: var(--l5-fort); }
 .fiche-option:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 .fiche-option-traductions { border-style: dashed; }
+.fiche-taille { margin: 0; font-size: 14px; font-weight: 800; color: var(--succes-texte); }
+.fiche-taille.trop-long { color: var(--erreur-texte); }
 .fiche-boite .cartes-nav:disabled { opacity: 0.4; cursor: default; }
 
 /* Le quiz version papier (quizSurPapier) n'existe que pour l'impression. */
@@ -1074,7 +1076,12 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 
     /* Presque pas de marge : la plupart des imprimantes ne descendent pas
        sous 5 mm. */
-    @page { margin: 8mm; }
+    @page { size: A4; margin: 8mm; }
+
+    /* Une fiche = une feuille : js/lecon-5e.js (mesurerFiche) calcule le
+       zoom, en mesurant la page à la largeur de la feuille (fiche-mesure). */
+    html.fiche-mesure { width: 194mm; }
+    body.lecon-5e { zoom: var(--fiche-zoom, 1); }
 
     html[data-texte] body.lecon-5e > * { zoom: 1; }
 
@@ -1158,6 +1165,17 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 
     .dialogue { margin: 3pt 0; padding: 2pt 5pt; border-radius: 0; }
     .dialogue p { margin: 0 0 1pt; }
+
+    /* Sur téléphone, les tableaux deviennent des cartes empilées (max-width:
+       560px). Sur papier comme pendant la mesure (faite à l'écran), on garde
+       le vrai tableau : sinon la mesure croyait la fiche bien plus longue. */
+    .table-vocab { display: table; width: 100%; }
+    .table-vocab thead { display: table-header-group; }
+    .table-vocab tbody { display: table-row-group; }
+    .table-vocab tr { display: table-row; margin: 0; border: 0; }
+    .table-vocab th,
+    .table-vocab td { display: table-cell; width: auto; border: 1px solid var(--l5-bord); }
+    .table-vocab td[data-titre]::before { content: none; }
 
     /* Le fond coloré des en-têtes ne s'imprime pas : le texte blanc disparaîtrait. */
     .table-vocab { margin: 3pt 0; }

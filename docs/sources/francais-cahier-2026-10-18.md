@@ -27,7 +27,7 @@ II – Le pluriel des noms simples.
 Le plus souvent, le pluriel des noms simples se forme en ajoutant un s au singulier.
 Exemples : un chien, des chiens. Il y a des exceptions.
 
-1 – Les noms terminés au singulier par s.   [la règle s'arrête là ; les exemples finissent aussi par x et z]
+1 – Les noms terminés au singulier par s ne changent pas au pluriel.   [fin de phrase confirmée le 18/10 : « ne changent pas au pluriel »]
 Exemples : la souris, les souris ; le pays, les pays ; une perdrix, des perdrix ;
 le prix, les prix ; un gaz, des gaz ; un nez, des nez.
 

@@ -658,12 +658,22 @@
        La mise en page du papier est dans css/lecon-5e.css (@media print) :
        deux colonnes, petite police, presque pas de marges. Les étapes
        cochées au départ portent data-fiche-defaut : un Ctrl+P sans passer
-       par le bouton imprime la même fiche. */
+       par le bouton imprime la même fiche.
+
+       Une fiche = une feuille A4. Avant d'imprimer, mesurerFiche() calcule
+       le zoom qui fait tout tenir sur une page ; la fenêtre dit si ça tient. */
 
     var ONGLETS_ENTRAINEMENT = /exercice|practice|entra[iî]n/i;
     var ONGLETS_ESSENTIEL = /retiens|retenir|essentiel/i;
     var LETTRES = 'ABCDEFGH';
-    var fiche = { etapes: [], prete: false, detailsOuverts: [] };
+    var fiche = { etapes: [], prete: false, detailsOuverts: [], regle: null };
+
+    // La feuille A4 moins les marges de @page (8 mm de chaque côté), en px CSS.
+    // 2 % de hauteur en moins : le navigateur arrondit un peu en imprimant.
+    var MM = 96 / 25.4;
+    var PAGE_HAUTEUR = (297 - 16) * MM * 0.98;
+    // En dessous, le texte devient illisible : la fiche passe alors sur 2 feuilles.
+    var ZOOM_MIN = 0.55;
 
     function preparerEtapesFiche(boutons) {
         for (var i = 0; i < boutons.length; i++) {
@@ -718,7 +728,8 @@
         return { etapes: etapes, traductions: !!document.querySelector('.trad-tout[aria-pressed="true"]') };
     }
 
-    function preparerFiche(choix) {
+    /** Met la page dans l'état de la fiche choisie (étapes, traductions, quiz…). */
+    function appliquerChoix(choix) {
         var racine = document.documentElement;
         fiche.etapes.forEach(function (e) {
             var contenu = document.getElementById(e.id);
@@ -751,7 +762,79 @@
             bandeau.insertBefore(mention, bandeau.firstChild);
         }
         if (mention) { mention.textContent = '📝 Fiche de révision · imprimée le ' + new Date().toLocaleDateString('fr-FR'); }
+    }
+
+    /** La règle @media print de css/lecon-5e.css (celle qui contient @page). */
+    function regleImpression() {
+        if (fiche.regle) { return fiche.regle; }
+        var feuilles = document.styleSheets;
+        for (var i = 0; i < feuilles.length; i++) {
+            if (!/\/css\/lecon-5e\.css(\?|$)/.test(feuilles[i].href || '')) { continue; }
+            var regles;
+            try { regles = feuilles[i].cssRules; } catch (err) { return null; }
+            for (var j = 0; j < regles.length; j++) {
+                var r = regles[j];
+                if (!r.media || r.media.mediaText !== 'print' || !r.cssRules) { continue; }
+                for (var k = 0; k < r.cssRules.length; k++) {
+                    if (r.cssRules[k].type === 6) { fiche.regle = r; return r; }   // 6 : @page
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Le zoom qui fait tenir la fiche sur une feuille. On applique un instant
+     * les règles @media print à l'écran, sur une page large comme la feuille
+     * (html.fiche-mesure), on mesure, puis on remet tout : rien ne s'affiche
+     * entre les deux. Renvoie { zoom, tient }.
+     */
+    function mesurerFiche() {
+        var regle = regleImpression();
+        if (!regle) { return { zoom: 1, tient: true }; }
+        var racine = document.documentElement;
+        var avant = racine.style.getPropertyValue('--fiche-zoom');
+        function hauteur(zoom) {
+            racine.style.setProperty('--fiche-zoom', String(zoom));
+            return document.body.getBoundingClientRect().height;
+        }
+        var resultat = { zoom: 1, tient: true };
+        regle.media.mediaText = 'all';
+        racine.classList.add('fiche-mesure');
+        try {
+            if (hauteur(1) > PAGE_HAUTEUR) {
+                if (hauteur(ZOOM_MIN) > PAGE_HAUTEUR) {
+                    resultat = { zoom: ZOOM_MIN, tient: false };
+                } else {
+                    var bas = ZOOM_MIN;
+                    var haut = 1;
+                    for (var i = 0; i < 7; i++) {
+                        var milieu = (bas + haut) / 2;
+                        if (hauteur(milieu) <= PAGE_HAUTEUR) { bas = milieu; } else { haut = milieu; }
+                    }
+                    resultat = { zoom: Math.floor(bas * 100) / 100, tient: true };
+                }
+            }
+        } finally {
+            racine.classList.remove('fiche-mesure');
+            regle.media.mediaText = 'print';
+            if (avant) { racine.style.setProperty('--fiche-zoom', avant); } else { racine.style.removeProperty('--fiche-zoom'); }
+        }
+        return resultat;
+    }
+
+    function preparerFiche(choix) {
+        appliquerChoix(choix);
+        document.documentElement.style.setProperty('--fiche-zoom', String(mesurerFiche().zoom));
         fiche.prete = true;
+    }
+
+    /** Pour la fenêtre : la taille de la fiche, sans rien imprimer. */
+    function estimerFiche(choix) {
+        appliquerChoix(choix);
+        var taille = mesurerFiche();
+        retirerChoix();
+        return taille;
     }
 
     /**
@@ -808,13 +891,18 @@
         return true;
     }
 
-    function rangerFiche() {
+    function retirerChoix() {
         var racine = document.documentElement;
         racine.classList.remove('fiche-choix');
         racine.classList.remove('fiche-traductions');
         fiche.etapes.forEach(function (e) { document.getElementById(e.id).removeAttribute('data-fiche'); });
         fiche.detailsOuverts.forEach(function (d) { d.open = false; });
         fiche.detailsOuverts = [];
+    }
+
+    function rangerFiche() {
+        retirerChoix();
+        document.documentElement.style.removeProperty('--fiche-zoom');
         fiche.prete = false;
     }
 
@@ -875,6 +963,10 @@
             caseTraductions.classList.add('fiche-option-traductions');
         }
 
+        var taille = document.createElement('p');
+        taille.className = 'fiche-taille';
+        taille.setAttribute('aria-live', 'polite');
+
         var bas = document.createElement('div');
         bas.className = 'cartes-bas';
         var annuler = document.createElement('button');
@@ -891,19 +983,31 @@
         boite.appendChild(titre);
         boite.appendChild(groupe);
         if (caseTraductions) { boite.appendChild(caseTraductions); }
+        boite.appendChild(taille);
         boite.appendChild(bas);
         voile.appendChild(boite);
         document.body.appendChild(voile);
         document.documentElement.classList.add('cartes-ouvertes');
 
         var cases = groupe.querySelectorAll('input[type="checkbox"]');
-        function majImprimer() {
+        function lireChoix() {
+            var choix = { etapes: {}, traductions: !!(caseTraductions && caseTraductions.querySelector('input').checked) };
+            for (var i = 0; i < cases.length; i++) { choix.etapes[cases[i].value] = cases[i].checked; }
+            return choix;
+        }
+        function majFenetre() {
             var une = false;
             for (var i = 0; i < cases.length; i++) { if (cases[i].checked) { une = true; } }
             imprimer.disabled = !une;
+            if (!une) { taille.textContent = ''; return; }
+            var t = estimerFiche(lireChoix());
+            taille.classList.toggle('trop-long', !t.tient);
+            taille.textContent = !t.tient ? '⚠️ Trop long pour une feuille. Décoche une étape.'
+                : t.zoom < 1 ? '📄 Tient sur 1 feuille, texte réduit à ' + Math.round(t.zoom * 100) + ' %.'
+                : '📄 Tient sur 1 feuille.';
         }
-        groupe.addEventListener('change', majImprimer);
-        majImprimer();
+        boite.addEventListener('change', majFenetre);
+        majFenetre();
 
         function fermer() {
             document.removeEventListener('keydown', clavier);
@@ -925,8 +1029,7 @@
 
         annuler.addEventListener('click', fermer);
         imprimer.addEventListener('click', function () {
-            var choix = { etapes: {}, traductions: !!(caseTraductions && caseTraductions.querySelector('input').checked) };
-            for (var i = 0; i < cases.length; i++) { choix.etapes[cases[i].value] = cases[i].checked; }
+            var choix = lireChoix();
             fermer();
             preparerFiche(choix);
             window.print();
