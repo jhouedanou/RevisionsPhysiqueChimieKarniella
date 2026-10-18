@@ -656,12 +656,14 @@
        départ.
 
        La mise en page du papier est dans css/lecon-5e.css (@media print) :
-       une colonne, petite police, presque pas de marges. Les étapes
+       une colonne, texte à 12 pt, presque pas de marges. Les étapes
        cochées au départ portent data-fiche-defaut : un Ctrl+P sans passer
        par le bouton imprime la même fiche.
 
-       Une fiche = une feuille A4. Avant d'imprimer, mesurerFiche() calcule
-       le zoom qui fait tout tenir sur une page ; la fenêtre dit si ça tient. */
+       Le texte n'est jamais réduit pour tenir sur une feuille : à 5 ou 6 pt,
+       la fiche était illisible sur A4 (retour de Karniella, 18/10, qui a
+       demandé 12 pt). Une fiche trop longue prend plusieurs feuilles ; la
+       fenêtre dit combien (mesurerFiche). */
 
     var ONGLETS_ENTRAINEMENT = /exerci[cs]e|practice|entra[iî]n/i;
     var ONGLETS_ESSENTIEL = /retiens|retenir|essentiel/i;
@@ -672,8 +674,6 @@
     // 2 % de hauteur en moins : le navigateur arrondit un peu en imprimant.
     var MM = 96 / 25.4;
     var PAGE_HAUTEUR = (297 - 16) * MM * 0.98;
-    // En dessous, le texte devient illisible : la fiche passe alors sur 2 feuilles.
-    var ZOOM_MIN = 0.55;
 
     function preparerEtapesFiche(boutons) {
         for (var i = 0; i < boutons.length; i++) {
@@ -784,57 +784,36 @@
     }
 
     /**
-     * Le zoom qui fait tenir la fiche sur une feuille. On applique un instant
-     * les règles @media print à l'écran, sur une page large comme la feuille
+     * Le nombre de feuilles A4 de la fiche. On applique un instant les règles
+     * @media print à l'écran, sur une page large comme la feuille
      * (html.fiche-mesure), on mesure, puis on remet tout : rien ne s'affiche
-     * entre les deux. Renvoie { zoom, tient }.
+     * entre les deux.
      */
     function mesurerFiche() {
         var regle = regleImpression();
-        if (!regle) { return { zoom: 1, tient: true }; }
+        if (!regle) { return 1; }
         var racine = document.documentElement;
-        var avant = racine.style.getPropertyValue('--fiche-zoom');
-        function hauteur(zoom) {
-            racine.style.setProperty('--fiche-zoom', String(zoom));
-            return document.body.getBoundingClientRect().height;
-        }
-        var resultat = { zoom: 1, tient: true };
         regle.media.mediaText = 'all';
         racine.classList.add('fiche-mesure');
         try {
-            if (hauteur(1) > PAGE_HAUTEUR) {
-                if (hauteur(ZOOM_MIN) > PAGE_HAUTEUR) {
-                    resultat = { zoom: ZOOM_MIN, tient: false };
-                } else {
-                    var bas = ZOOM_MIN;
-                    var haut = 1;
-                    for (var i = 0; i < 7; i++) {
-                        var milieu = (bas + haut) / 2;
-                        if (hauteur(milieu) <= PAGE_HAUTEUR) { bas = milieu; } else { haut = milieu; }
-                    }
-                    resultat = { zoom: Math.floor(bas * 100) / 100, tient: true };
-                }
-            }
+            return Math.max(1, Math.ceil(document.body.getBoundingClientRect().height / PAGE_HAUTEUR));
         } finally {
             racine.classList.remove('fiche-mesure');
             regle.media.mediaText = 'print';
-            if (avant) { racine.style.setProperty('--fiche-zoom', avant); } else { racine.style.removeProperty('--fiche-zoom'); }
         }
-        return resultat;
     }
 
     function preparerFiche(choix) {
         appliquerChoix(choix);
-        document.documentElement.style.setProperty('--fiche-zoom', String(mesurerFiche().zoom));
         fiche.prete = true;
     }
 
-    /** Pour la fenêtre : la taille de la fiche, sans rien imprimer. */
+    /** Pour la fenêtre : le nombre de feuilles, sans rien imprimer. */
     function estimerFiche(choix) {
         appliquerChoix(choix);
-        var taille = mesurerFiche();
+        var feuilles = mesurerFiche();
         retirerChoix();
-        return taille;
+        return feuilles;
     }
 
     /**
@@ -902,7 +881,6 @@
 
     function rangerFiche() {
         retirerChoix();
-        document.documentElement.style.removeProperty('--fiche-zoom');
         fiche.prete = false;
     }
 
@@ -1000,10 +978,9 @@
             for (var i = 0; i < cases.length; i++) { if (cases[i].checked) { une = true; } }
             imprimer.disabled = !une;
             if (!une) { taille.textContent = ''; return; }
-            var t = estimerFiche(lireChoix());
-            taille.classList.toggle('trop-long', !t.tient);
-            taille.textContent = !t.tient ? '⚠️ Trop long pour une feuille. Décoche une étape.'
-                : t.zoom < 1 ? '📄 Tient sur 1 feuille, texte réduit à ' + Math.round(t.zoom * 100) + ' %.'
+            var feuilles = estimerFiche(lireChoix());
+            taille.classList.toggle('trop-long', feuilles > 1);
+            taille.textContent = feuilles > 1 ? '📄 ' + feuilles + ' feuilles. Pour une seule, décoche une étape.'
                 : '📄 Tient sur 1 feuille.';
         }
         boite.addEventListener('change', majFenetre);
