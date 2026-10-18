@@ -8,15 +8,15 @@
   "micro_learning_blocks": [
     {
       "titre": "🧒 Qui est un enfant ?",
-      "contenu": "Toute personne de moins de 18 ans. Ses droits sont écrits dans la Convention relative aux droits de l'enfant (ONU, 20 novembre 1989), en quatre groupes : survie, développement, protection, participation."
+      "contenu": "Toute personne de moins de 18 ans. Ses droits sont écrits dans la CIDE, la Convention internationale relative aux droits de l'enfant (ONU, 20 novembre 1989)."
     },
     {
       "titre": "🌱 Le droit de grandir",
-      "contenu": "Les droits au développement, c'est l'eau et le soleil de la plante : aller à l'école (obligatoire de 6 à 16 ans en Côte d'Ivoire), jouer, se reposer, s'informer, avoir ses idées."
+      "contenu": "Les droits au développement, c'est l'eau et le soleil de la plante : être soigné (art. 24), aller à l'école (art. 28), jouer et se reposer (art. 31)."
     },
     {
       "titre": "🗳️ Le droit de donner son avis",
-      "contenu": "Les droits à la participation : être entendu, s'exprimer avec respect, former un club, voter pour le délégué. Et en échange, des devoirs : respecter parents et enseignants, travailler, protéger les biens publics."
+      "contenu": "Les droits à la participation sont des libertés : donner son opinion, s'exprimer avec respect, avoir ses idées, former une association, s'informer. Et en échange, des devoirs : respecter parents et enseignants, travailler, protéger les biens publics."
     }
   ],
   "quiz": [

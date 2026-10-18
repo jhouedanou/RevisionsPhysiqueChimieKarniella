@@ -1,0 +1,57 @@
+{
+  "id": "tice-performance-ordinateur",
+  "lecon": "tice-performance-ordinateur",
+  "matiere": "tice",
+  "titre": "Le vaisseau au ralenti",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, l'ordinateur du vaisseau rame ! Pour en choisir un plus rapide, tu dois lire sa fiche. Trois indices s'y cachent : le processeur, la RAM et le disque dur.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🧠 Le processeur, le chef des calculs",
+      "contenu": "Il traite toutes les commandes : c'est le cerveau. Sa vitesse, la fréquence, se mesure en hertz : 1 GHz = 1 000 MHz. Plus il y a de GHz, plus il réfléchit vite !"
+    },
+    {
+      "titre": "🗂️ La RAM, la table de travail",
+      "contenu": "Chaque application ouverte est posée sur la RAM. Sa taille se mesure en octets : Ko, Mo, Go. Avec 8 Go plutôt que 4 Go, ta table est plus grande : tu ouvres plus d'applications sans ralentir."
+    },
+    {
+      "titre": "🔎 Lire une fiche d'ordinateur",
+      "contenu": "« 3,2 GHz · 8 Go » : le premier nombre parle du processeur, le second de la RAM. Compare-les pour trouver l'ordinateur le plus performant."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "La fréquence du processeur se mesure en…",
+      "options": [
+        "octets",
+        "hertz",
+        "litres",
+        "mètres"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Hz, MHz, GHz : ce sont des hertz."
+    },
+    {
+      "question": "La taille de la RAM se mesure en…",
+      "options": [
+        "gigahertz",
+        "degrés",
+        "gigaoctets",
+        "volts"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Octets, Ko, Mo, Go : la taille de la mémoire."
+    },
+    {
+      "question": "Quel ordinateur est le plus performant ?",
+      "options": [
+        "2,4 GHz · 4 Go",
+        "3,2 GHz · 8 Go",
+        "1,8 GHz · 2 Go",
+        "2,0 GHz · 4 Go"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Le processeur le plus rapide et le plus de RAM."
+    }
+  ]
+}

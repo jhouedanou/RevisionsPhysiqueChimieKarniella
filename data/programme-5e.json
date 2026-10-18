@@ -281,10 +281,10 @@
       "lecons": [
         {
           "id": "edhc-droits-developpement-participation",
-          "titre": "Les droits au développement et à la participation de l'enfant",
-          "sousTitre": "Thème 1 : Les droits et devoirs du citoyen en temps de paix ou de conflits armés, leçon 1",
+          "titre": "Les droits au développement et les droits à la participation de l'enfant",
+          "sousTitre": "Thème 1 : Les droits et devoirs du citoyen en temps de paix ou de conflits, leçon 1",
           "icone": "🧒",
-          "description": "Aller à l'école, jouer, s'informer, donner son avis, et les devoirs qui vont avec.",
+          "description": "Être soigné, aller à l'école, jouer, donner son avis, s'informer : les droits de la CIDE, leurs bienfaits et les devoirs de l'enfant.",
           "statut": "prete",
           "mission": true
         }
@@ -303,7 +303,16 @@
           "titre": "Initiation à l'utilisation d'un ordinateur",
           "sousTitre": "Révision des notions — Leçon 1",
           "icone": "💻",
-          "description": "Ton cahier : l'informatique, le système informatique, le matériel et le logiciel, puis démarrer, éteindre et l'intérieur de l'unité centrale.",
+          "description": "Ton cahier : l'informatique, le système informatique, le matériel et le logiciel, puis démarrer et éteindre l'ordinateur.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "tice-performance-ordinateur",
+          "titre": "Éléments de performance d'un ordinateur",
+          "sousTitre": "Leçon 2",
+          "icone": "⚙️",
+          "description": "Ton cahier : le processeur (Hz, GHz), la mémoire RAM (octets, Go) et le disque dur.",
           "statut": "prete",
           "mission": true
         }
