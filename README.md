@@ -555,8 +555,11 @@ Ajouté par `js/lecon-5e.js`, sans rien à écrire dans les pages :
   leurs corrigés) et le quiz (questions à cocher, corrigé en une ligne à la
   fin). Les encadrés « ✏️ À vérifier » restent à l'écran. Le papier est
   condensé au maximum et toujours en clair : deux colonnes, 9 pt, marges de
-  8 mm (`@media print` dans `css/lecon-5e.css`). Un Ctrl+P donne la même
-  fiche ;
+  8 mm (`@media print` dans `css/lecon-5e.css`). **Une fiche = une feuille
+  A4** : `mesurerFiche()` applique un instant les règles d'impression à
+  l'écran, mesure la hauteur, et réduit le texte (zoom, jusqu'à 55 %) pour
+  tout faire tenir ; la fenêtre dit « Tient sur 1 feuille » ou « Trop long ».
+  Un Ctrl+P donne la même fiche ;
 - des **confettis** 🎉 à 80 % et plus à un quiz, à chaque nouveau badge et à la
   fin d'un paquet de cartes (`window.KarniellaFete`, dans `js/badges.js`).
 

@@ -5111,6 +5111,54 @@
         "explanation": "On lit les deux nombres : ten fifteen.",
         "langue": "fr",
         "optionsLangue": "en"
+      },
+      {
+        "question": "Que veut dire « Civics » ?",
+        "options": [
+          "l'informatique",
+          "l'éducation civique",
+          "les sciences",
+          "l'histoire"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Civics = l'éducation civique (l'EDHC).",
+        "langue": "fr"
+      },
+      {
+        "question": "Que veut dire « Computer science » ?",
+        "options": [
+          "la physique",
+          "les mathématiques",
+          "l'informatique",
+          "la géographie"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Computer science = l'informatique (les TICE).",
+        "langue": "fr"
+      },
+      {
+        "question": "« How long is your English class? » — Which answer is correct?",
+        "options": [
+          "It's on Monday.",
+          "From 9:20 to 10:15.",
+          "I find it easy.",
+          "In the classroom."
+        ],
+        "correctAnswer": 1,
+        "explanation": "How long…? demande combien de temps : on répond avec from… to…",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: He ___ English very interesting.",
+        "options": [
+          "find",
+          "finds",
+          "finding",
+          "is find"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Avec he ou she, find prend un s : He finds English very interesting.",
+        "langue": "en"
       }
     ]
   }
