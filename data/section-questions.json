@@ -3266,7 +3266,7 @@
           "Dans le clavier"
         ],
         "correctAnswer": 0,
-        "explanation": "Dans l'unité centrale, c'est le processeur qui traite l'information : ton cahier l'appelle le « cerveau » de l'ordinateur."
+        "explanation": "Dans l'unité centrale. Tu verras dans la leçon 2 que c'est le processeur qui traite les commandes."
       },
       {
         "question": "Windows et Android sont…",
@@ -3302,28 +3302,6 @@
         "explanation": "Alt + F4 ouvre une boîte de dialogue (quand on est sur le bureau) ; on valide avec la touche Entrée."
       },
       {
-        "question": "Quel élément de l'unité centrale est le « cerveau » de l'ordinateur ?",
-        "options": [
-          "Le disque dur",
-          "La RAM",
-          "L'écran",
-          "Le processeur"
-        ],
-        "correctAnswer": 3,
-        "explanation": "Ton cahier le dit : le processeur est le cerveau de l'ordinateur. Il se trouve dans l'unité centrale."
-      },
-      {
-        "question": "La RAM, c'est…",
-        "options": [
-          "La mémoire vive",
-          "Le disque dur",
-          "Le système d'exploitation",
-          "Un périphérique de sortie"
-        ],
-        "correctAnswer": 0,
-        "explanation": "RAM veut dire random access memory : c'est la mémoire vive de l'ordinateur. Le disque dur, lui, garde les fichiers pour longtemps."
-      },
-      {
         "question": "Comment appelle-t-on aussi la partie matérielle de l'ordinateur ?",
         "options": [
           "Le software",
@@ -3333,6 +3311,28 @@
         ],
         "correctAnswer": 2,
         "explanation": "La partie matérielle, c'est la partie physique de l'ordinateur : on l'appelle aussi hardware. Le software, c'est la partie logicielle."
+      },
+      {
+        "question": "À la fin du démarrage, l'écran affiche…",
+        "options": [
+          "le « Bureau »",
+          "une page blanche",
+          "le clavier",
+          "l'imprimante"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ton cahier : « À la fin du démarrage, l'écran affiche le Bureau. »"
+      },
+      {
+        "question": "Pour éteindre avec le menu Démarrer, on choisit…",
+        "options": [
+          "« Marche/Arrêt », puis « Arrêter »",
+          "« Paramètres », puis « Imprimer »",
+          "« Word », puis « Fermer »",
+          "On débranche la prise"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Clic gauche sur Démarrer, puis « Marche/Arrêt » ⏻, puis « Arrêter »."
       }
     ]
   },
@@ -3688,7 +3688,7 @@
   "edhc-droits-developpement-participation": {
     "tab6": [
       {
-        "question": "Selon la Convention relative aux droits de l'enfant, un enfant est un être humain âgé de moins de…",
+        "question": "Selon la CIDE, un enfant est un être humain âgé de moins de…",
         "options": [
           "12 ans",
           "15 ans",
@@ -3699,7 +3699,7 @@
         "explanation": "Un enfant est tout être humain âgé de moins de 18 ans."
       },
       {
-        "question": "La Convention relative aux droits de l'enfant a été adoptée par l'ONU le…",
+        "question": "La Convention internationale relative aux droits de l'enfant (CIDE) a été adoptée par l'ONU le…",
         "options": [
           "20 novembre 1989",
           "10 décembre 1948",
@@ -3724,34 +3724,34 @@
         "question": "Les droits au développement permettent à l'enfant de…",
         "options": [
           "donner son avis",
-          "grandir et développer toutes ses capacités",
+          "recevoir tout ce dont il a besoin pour vivre et développer toutes ses capacités",
           "être protégé contre la violence",
           "voter aux élections"
         ],
         "correctAnswer": 1,
-        "explanation": "Ils l'aident à grandir dans son corps et dans sa tête : école, jeu, information…"
+        "explanation": "Ce sont la santé et les soins médicaux, l'éducation et les loisirs."
       },
       {
         "question": "Lequel de ces droits est un droit au développement ?",
         "options": [
           "La liberté d'association",
-          "Le droit d'être entendu",
+          "La liberté d'opinion",
           "Le droit à l'éducation",
           "Le droit de vote"
         ],
         "correctAnswer": 2,
-        "explanation": "Aller à l'école permet à l'enfant de développer ses capacités."
+        "explanation": "Le droit à l'éducation (art. 28) est un droit au développement."
       },
       {
         "question": "Les droits à la participation permettent à l'enfant de…",
         "options": [
-          "donner son avis et prendre part aux décisions qui le concernent",
+          "donner son avis sur toutes les décisions qui le concernent",
           "jouer au football",
           "aller à l'école",
           "manger à sa faim"
         ],
         "correctAnswer": 0,
-        "explanation": "Participer, c'est s'exprimer, être entendu et prendre part à la vie de son école ou de sa famille."
+        "explanation": "Ce sont des libertés : opinion, expression, pensée, association, information."
       },
       {
         "question": "Voter pour élire le délégué de sa classe, c'est exercer…",
@@ -3817,7 +3817,73 @@
           "La Journée internationale des droits de l'enfant"
         ],
         "correctAnswer": 3,
-        "explanation": "C'est le jour anniversaire de l'adoption de la Convention relative aux droits de l'enfant (1989)."
+        "explanation": "C'est le jour anniversaire de l'adoption de la CIDE (1989)."
+      },
+      {
+        "question": "Le droit à la santé et aux soins médicaux (art. 24) est un droit…",
+        "options": [
+          "à la participation",
+          "au développement",
+          "d'association",
+          "de vote"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Être soigné permet à l'enfant de vivre et de développer ses capacités."
+      },
+      {
+        "question": "Le droit à l'information (art. 17) est un droit…",
+        "options": [
+          "au développement",
+          "à la survie",
+          "à la participation",
+          "à la protection"
+        ],
+        "correctAnswer": 2,
+        "explanation": "S'informer aide l'enfant à donner son avis : c'est la participation."
+      },
+      {
+        "question": "La liberté de pensée, de conscience et de religion (art. 14) est un droit…",
+        "options": [
+          "à la participation",
+          "au développement",
+          "à la survie",
+          "à la protection"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Avoir ses idées et sa religion, c'est une liberté : un droit à la participation."
+      },
+      {
+        "question": "Des enfants créent l'« Association des enfants de la cité ». Ils utilisent…",
+        "options": [
+          "le droit aux loisirs",
+          "la liberté d'association",
+          "le droit à la santé",
+          "le droit à l'éducation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Former une association, c'est la liberté d'association (art. 15)."
+      },
+      {
+        "question": "Un bienfait du respect de ces droits pour la famille, c'est…",
+        "options": [
+          "la quiétude et l'harmonie",
+          "la pauvreté",
+          "les disputes",
+          "le travail des enfants"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Pour la famille : la quiétude (le calme) et l'harmonie."
+      },
+      {
+        "question": "Un homme propose de faire servir la boisson dans un restaurant par une petite fille en vacances. Qu'en penses-tu ?",
+        "options": [
+          "C'est une bonne idée",
+          "Ce n'est pas bien : elle a droit aux loisirs et à la santé",
+          "C'est bien si elle est payée",
+          "C'est bien pendant les vacances"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une enfant en vacances a droit au repos et aux loisirs. Ce travail met sa santé en danger."
       }
     ]
   },
@@ -5159,6 +5225,142 @@
         "correctAnswer": 1,
         "explanation": "Avec he ou she, find prend un s : He finds English very interesting.",
         "langue": "en"
+      }
+    ]
+  },
+  "tice-performance-ordinateur": {
+    "tab5": [
+      {
+        "question": "Pour déterminer la performance d'un ordinateur, on se base sur…",
+        "options": [
+          "le processeur, la RAM et le disque dur",
+          "l'écran, le clavier et la souris",
+          "la couleur et le poids",
+          "l'imprimante et la clé USB"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Ce sont les indicateurs de performance de ton cahier."
+      },
+      {
+        "question": "D'après ton cahier, le processeur…",
+        "options": [
+          "traite toutes les commandes passées par l'utilisateur",
+          "imprime les documents",
+          "garde l'électricité",
+          "affiche les images"
+        ],
+        "correctAnswer": 0,
+        "explanation": "C'est le composant essentiel de l'ordinateur."
+      },
+      {
+        "question": "Quel élément de l'unité centrale est le « cerveau » de l'ordinateur ?",
+        "options": [
+          "Le disque dur",
+          "La RAM",
+          "L'écran",
+          "Le processeur"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le processeur traite toutes les commandes : c'est le cerveau de l'ordinateur."
+      },
+      {
+        "question": "La fréquence du processeur s'exprime en…",
+        "options": [
+          "octets",
+          "hertz (Hz)",
+          "mètres",
+          "volts"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La fréquence de travail s'exprime en hertz (Hz)."
+      },
+      {
+        "question": "1 GHz, c'est…",
+        "options": [
+          "1 000 MHz",
+          "100 MHz",
+          "10 Hz",
+          "1 000 Go"
+        ],
+        "correctAnswer": 0,
+        "explanation": "1 GHz = 1 000 MHz = 1 milliard de Hz."
+      },
+      {
+        "question": "Quel processeur est le plus rapide ?",
+        "options": [
+          "1,8 GHz",
+          "2,4 GHz",
+          "3,2 GHz",
+          "900 MHz"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Plus la fréquence est grande, plus le processeur est rapide. 900 MHz = 0,9 GHz."
+      },
+      {
+        "question": "D'après ton cahier, la RAM est…",
+        "options": [
+          "la mémoire de travail",
+          "l'écran",
+          "un logiciel",
+          "un câble"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La RAM est l'espace où les applications sont chargées pour être utilisées."
+      },
+      {
+        "question": "La RAM, c'est…",
+        "options": [
+          "La mémoire vive",
+          "Le disque dur",
+          "Le système d'exploitation",
+          "Un périphérique de sortie"
+        ],
+        "correctAnswer": 0,
+        "explanation": "RAM veut dire Random Access Memory : la mémoire vive, la mémoire de travail."
+      },
+      {
+        "question": "La taille de la RAM s'exprime en…",
+        "options": [
+          "hertz",
+          "octets",
+          "degrés",
+          "litres"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Elle s'exprime en octets : Ko, Mo, Go."
+      },
+      {
+        "question": "Quelle unité est la plus grande ?",
+        "options": [
+          "1 Ko",
+          "1 Mo",
+          "1 Go",
+          "1 octet"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Octet < Ko < Mo < Go."
+      },
+      {
+        "question": "Ordinateur A : 4 Go de RAM. Ordinateur B : 8 Go. Lequel peut ouvrir le plus d'applications en même temps ?",
+        "options": [
+          "A",
+          "B",
+          "Les deux pareil",
+          "Aucun"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Plus il y a de RAM, plus on peut ouvrir d'applications sans ralentir."
+      },
+      {
+        "question": "Que devient le contenu de la RAM quand on éteint l'ordinateur ?",
+        "options": [
+          "Il s'efface",
+          "Il est imprimé",
+          "Il double",
+          "Il part dans la souris"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La RAM est une mémoire vive : elle s'efface quand on éteint."
       }
     ]
   }
