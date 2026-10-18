@@ -33,3 +33,22 @@ le prix, les prix ; un gaz, des gaz ; un nez, des nez.
 
 2 – Les noms singuliers terminés par al font leur pluriel en aux.   [« Les noms terminés au singulier par al » raturé et réécrit]
 Exemple : un cheval → des chevaux ; un animal → des animaux.
+
+---
+
+## Note vocale (18 oct. 13 h 53, 1 min 29)
+
+*Transcription automatique (Whisper large-v3, français forcé, son normalisé et
+filtré, avec en invite le titre de la séance). Le son est très bruité : seuls
+les passages qui recoupent les photos sont fiables. Extraits utiles :*
+
+- « Activité : Grammaire. Leçon 1. Le groupe nominal. Séance 4. »
+- « Séance 4. Le pluriel des noms simples et des noms composés. I – Définition
+  des notions. Au singulier comme au pluriel, les noms simples sont des noms
+  formés d'un seul mot. Exemples. Pays [?], cheval. »
+- Noms composés : « pique-nique [?], pique-bœuf, beau-… [inaudible], grand-… [inaudible] ».
+  Les photos ne montrent que « pique-bœufs ; beaux-ch… » (coupé au bord).
+- « Un chien, deux [des] chiens » ; « la souris », « le pays », « [une perdrix] »,
+  « les prix », « un gaz, [des] gaz, un [nez] » ; « un animal, des animaux ».
+- Les 20 dernières secondes ne sont pas du cours (on entend « Maman… »). Les
+  photos s'arrêtent à « des animaux » : rien d'autre n'est ajouté à la leçon.
