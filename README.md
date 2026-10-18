@@ -551,10 +551,12 @@ Ajouté par `js/lecon-5e.js`, sans rien à écrire dans les pages :
 - **🖨️ Fiche à imprimer**, dans le bandeau : on coche les étapes, puis on
   imprime. Au départ, seul l'essentiel est coché : l'onglet « À retenir » /
   « Retiens l'essentiel », sinon « Mon cahier » (`data-onglet="cahier"`),
-  sinon tout le cours. Le quiz ne s'imprime pas ; les exercices s'impriment
-  sans leurs corrigés ; les encadrés « ✏️ À vérifier » restent à l'écran.
-  Le papier est toujours en clair (`@media print` dans `css/lecon-5e.css`) ;
-  un Ctrl+P donne la même fiche ;
+  sinon tout le cours. On peut cocher en plus les exercices (imprimés sans
+  leurs corrigés) et le quiz (questions à cocher, corrigé en une ligne à la
+  fin). Les encadrés « ✏️ À vérifier » restent à l'écran. Le papier est
+  condensé au maximum et toujours en clair : deux colonnes, 9 pt, marges de
+  8 mm (`@media print` dans `css/lecon-5e.css`). Un Ctrl+P donne la même
+  fiche ;
 - des **confettis** 🎉 à 80 % et plus à un quiz, à chaque nouveau badge et à la
   fin d'un paquet de cartes (`window.KarniellaFete`, dans `js/badges.js`).
 

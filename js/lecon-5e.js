@@ -650,30 +650,40 @@
          1. l'onglet « À retenir » / « Retiens l'essentiel », s'il existe ;
          2. sinon « Mon cahier » (le cours du professeur) ;
          3. sinon toutes les étapes du cours.
-       Le quiz n'est pas proposé (il ne s'imprime pas). Les exercices
-       s'impriment sans leurs corrigés, pour être faits au stylo.
+       Les exercices s'impriment sans leurs corrigés, pour être faits au
+       stylo. Le quiz s'imprime en questions à cocher, le corrigé en une
+       ligne à la fin (quizSurPapier). Ni l'un ni l'autre n'est coché au
+       départ.
 
-       La mise en page du papier est dans css/lecon-5e.css (@media print).
-       Les étapes cochées au départ portent data-fiche-defaut : un Ctrl+P
-       sans passer par le bouton imprime la même fiche. */
+       La mise en page du papier est dans css/lecon-5e.css (@media print) :
+       deux colonnes, petite police, presque pas de marges. Les étapes
+       cochées au départ portent data-fiche-defaut : un Ctrl+P sans passer
+       par le bouton imprime la même fiche. */
 
     var ONGLETS_ENTRAINEMENT = /exercice|practice|entra[iî]n/i;
     var ONGLETS_ESSENTIEL = /retiens|retenir|essentiel/i;
+    var LETTRES = 'ABCDEFGH';
     var fiche = { etapes: [], prete: false, detailsOuverts: [] };
 
     function preparerEtapesFiche(boutons) {
         for (var i = 0; i < boutons.length; i++) {
             var id = boutons[i].getAttribute('data-onglet');
-            if (!document.getElementById(id) || estOngletQuiz(boutons[i])) { continue; }
+            var contenu = document.getElementById(id);
+            if (!contenu) { continue; }
             var libelle = boutons[i].textContent.trim();
-            fiche.etapes.push({
-                id: id,
-                libelle: libelle,
-                role: ONGLETS_ENTRAINEMENT.test(libelle) ? 'exercices' : 'cours',
-                defaut: false
-            });
+            var role = estOngletQuiz(boutons[i]) ? 'quiz'
+                : ONGLETS_ENTRAINEMENT.test(libelle) ? 'exercices' : 'cours';
+            if (role === 'quiz') { contenu.setAttribute('data-fiche-quiz', ''); }
+            fiche.etapes.push({ id: id, libelle: libelle, role: role, defaut: false });
         }
         if (!fiche.etapes.length) { return; }
+
+        // « 🔊 Écoute avant de répéter » parle des boutons de l'écran.
+        var titres = document.querySelectorAll('main h4');
+        for (var j = 0; j < titres.length; j++) {
+            var boite = titres[j].closest('.note-box, .example-box');
+            if (boite && /^\s*🔊/.test(titres[j].textContent)) { boite.classList.add('fiche-ecran'); }
+        }
 
         var cours = fiche.etapes.filter(function (e) { return e.role === 'cours'; });
         var essentiel = cours.filter(function (e) { return ONGLETS_ESSENTIEL.test(e.libelle); });
@@ -716,6 +726,12 @@
         });
         racine.classList.add('fiche-choix');
         racine.classList.toggle('fiche-traductions', !!choix.traductions);
+        fiche.etapes.forEach(function (e) {
+            var contenu = document.getElementById(e.id);
+            if (e.role === 'quiz' && choix.etapes[e.id] && !quizSurPapier(contenu)) {
+                contenu.removeAttribute('data-fiche');   // questions pas encore chargées
+            }
+        });
 
         // Sur papier, on ne peut pas déplier : les <details> du cours s'ouvrent.
         // Pas ceux des exercices, qui cachent les corrigés.
@@ -736,6 +752,60 @@
         }
         if (mention) { mention.textContent = '📝 Fiche de révision · imprimée le ' + new Date().toLocaleDateString('fr-FR'); }
         fiche.prete = true;
+    }
+
+    /**
+     * Le quiz de l'onglet en une liste à cocher : l'énoncé, les propositions
+     * A, B, C, D sur une ligne, et le corrigé en une ligne à la fin. Les
+     * questions sont celles que la page a passées à initSectionQuiz
+     * (js/section-quiz.js les garde dans window.sectionQuizInstances).
+     * Construite une fois, cachée à l'écran par css/lecon-5e.css.
+     */
+    function quizSurPapier(contenu) {
+        if (contenu.querySelector('.fiche-quiz')) { return true; }
+        var instances = window.sectionQuizInstances || {};
+        var questions = [];
+        var hote = null;
+        Object.keys(instances).forEach(function (cle) {
+            var quiz = instances[cle];
+            if (quiz && quiz.container && quiz.questions && contenu.contains(quiz.container)) {
+                questions = questions.concat(quiz.questions);
+                hote = hote || quiz.container;
+            }
+        });
+        if (!questions.length) { return false; }
+
+        var bloc = document.createElement('div');
+        bloc.className = 'fiche-quiz';
+        var liste = document.createElement('ol');
+        var corrige = [];
+        questions.forEach(function (q, n) {
+            var li = document.createElement('li');
+            if (q.langue) { li.lang = q.langue; }
+            var enonce = document.createElement('span');
+            enonce.className = 'fiche-quiz-question';
+            enonce.textContent = q.question;
+            var propositions = document.createElement('span');
+            propositions.className = 'fiche-quiz-options';
+            if (q.optionsLangue || q.langue) { propositions.lang = q.optionsLangue || q.langue; }
+            (q.options || []).forEach(function (o, k) {
+                var proposition = document.createElement('span');
+                proposition.textContent = '☐ ' + LETTRES.charAt(k) + '. ' + o;
+                propositions.appendChild(proposition);
+                propositions.appendChild(document.createTextNode(' '));
+            });
+            li.appendChild(enonce);
+            li.appendChild(propositions);
+            liste.appendChild(li);
+            corrige.push((n + 1) + ' ' + (LETTRES.charAt(q.correctAnswer) || '?'));
+        });
+        var ligne = document.createElement('p');
+        ligne.className = 'fiche-quiz-corrige';
+        ligne.textContent = 'Corrigé : ' + corrige.join(' · ');
+        bloc.appendChild(liste);
+        bloc.appendChild(ligne);
+        hote.parentNode.insertBefore(bloc, hote.nextSibling);
+        return true;
     }
 
     function rangerFiche() {
@@ -793,9 +863,9 @@
         legende.className = 'fiche-legende';
         legende.textContent = 'Coche ce que tu veux sur ta fiche :';
         groupe.appendChild(legende);
+        var precisions = { exercices: ' (sans les corrigés)', quiz: ' (questions à cocher, corrigé à la fin)' };
         fiche.etapes.forEach(function (e) {
-            var libelle = e.role === 'exercices' ? e.libelle + ' (sans les corrigés)' : e.libelle;
-            groupe.appendChild(caseACocher(libelle, defaut.etapes[e.id], e.id));
+            groupe.appendChild(caseACocher(e.libelle + (precisions[e.role] || ''), defaut.etapes[e.id], e.id));
         });
 
         // Leçon d'anglais : la traduction sous chaque phrase, au choix.

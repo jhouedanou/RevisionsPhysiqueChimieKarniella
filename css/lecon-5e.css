@@ -1009,13 +1009,17 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 .fiche-option-traductions { border-style: dashed; }
 .fiche-boite .cartes-nav:disabled { opacity: 0.4; cursor: default; }
 
+/* Le quiz version papier (quizSurPapier) n'existe que pour l'impression. */
+.fiche-quiz { display: none; }
+
 /* ============================================================
    Sur papier
    ============================================================
-   On imprime le bandeau et les étapes choisies (data-fiche, posé par le
-   bouton) ou, si rien n'a été choisi, celles cochées au départ
-   (data-fiche-defaut). Tout ce qui sert à naviguer, écouter ou jouer reste
-   à l'écran. */
+   Une fiche condensée au maximum : deux colonnes, police de 9 pt, marges de
+   8 mm, encadrés et tableaux resserrés. On imprime le bandeau et les étapes
+   choisies (data-fiche, posé par le bouton) ou, si rien n'a été choisi,
+   celles cochées au départ (data-fiche-defaut). Tout ce qui sert à
+   naviguer, écouter ou jouer reste à l'écran. */
 
 @media print {
     /* Le papier est toujours clair, quel que soit le thème choisi à l'écran.
@@ -1027,7 +1031,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
         --surface: #fff;
         --surface-douce: #fff;
         --surface-grise: #fff;
-        --encre: #222;
+        --encre: #1a1a1a;
         --doux: #555;
         --bord: #bbb;
         --rose: #9D2F5C;
@@ -1059,15 +1063,23 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
         --l5-pale: #fff;
         display: block;
         min-height: 0;
+        margin: 0;
+        /* css/coquille.css garde 64 px en bas pour le menu : une page blanche de plus. */
+        padding: 0;
         background: #fff;
         color: var(--encre);
-        font-size: 10.5pt;
-        line-height: 1.4;
+        font-size: 9pt;
+        line-height: 1.3;
     }
 
-    @page { margin: 14mm 12mm; }
+    /* Presque pas de marge : la plupart des imprimantes ne descendent pas
+       sous 5 mm. */
+    @page { margin: 8mm; }
 
     html[data-texte] body.lecon-5e > * { zoom: 1; }
+
+    /* js/chat-assistant.js garde 84 px sous la page pour sa bulle. */
+    body.lecon-5e::after { display: none; }
 
     body.lecon-5e > :not(header):not(main):not(.pied),
     .lecon-5e .coquille-barre,
@@ -1078,24 +1090,36 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .exercice details,
     .section-quiz,
     [id^="quiz"],
+    /* « 🔊 Écoute avant de répéter » : un conseil pour l'écran. */
+    .fiche-ecran,
     /* « ✏️ À vérifier dans ton cahier » : une question pour l'adulte, pas une notion. */
     .important-box[data-hors-chat] { display: none !important; }
 
+    /* Le bandeau : la matière, le titre et le sous-titre, la date à droite. */
     .lecon-5e header:not(.coquille-barre) {
         width: auto;
-        margin: 0 0 12pt;
-        padding: 0 0 8pt;
+        align-items: baseline;
+        gap: 0 8pt;
+        margin: 0 0 5pt;
+        padding: 0 0 3pt;
         border: 0;
-        border-bottom: 2pt solid var(--l5-fort);
+        border-bottom: 1.5pt solid var(--l5-fort);
         border-radius: 0;
         background: none;
     }
 
-    .lecon-5e header:not(.coquille-barre) h1 { font-size: 20pt; }
-    .lecon-5e header .fiche-mention { display: block; order: -1; margin: 0 0 4pt; font-size: 9.5pt; }
-    .badge-niveau { padding: 0; border: 0; }
+    .lecon-5e header:not(.coquille-barre) h1 { flex: 0 1 auto; font-size: 13pt; }
+    .lecon-5e header:not(.coquille-barre) p { flex: 1 1 auto; margin: 0; font-size: 8pt; }
+    .lecon-5e header:not(.coquille-barre) .fiche-mention { display: block; flex: 0 0 auto; order: 9; margin-left: auto; font-size: 7pt; }
+    .badge-niveau { padding: 0; border: 0; font-size: 7pt; }
 
-    .content { max-width: none; padding: 0; }
+    .content {
+        max-width: none;
+        padding: 0;
+        column-count: 2;
+        column-gap: 6mm;
+        column-rule: 0.5pt solid #ccc;
+    }
 
     html.fiche-roles .tab-content { display: none; animation: none; }
     html.fiche-roles:not(.fiche-choix) .tab-content[data-fiche-defaut],
@@ -1104,53 +1128,68 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .container { padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
 
     .lecon-5e h2 {
-        margin: 14pt 0 6pt;
-        padding-bottom: 3pt;
-        border-bottom: 1pt solid var(--bord);
-        font-size: 14pt;
+        margin: 5pt 0 2pt;
+        padding-bottom: 1pt;
+        border-bottom: 0.75pt solid var(--l5-fort);
+        font-size: 10.5pt;
     }
-    .lecon-5e h3 { margin: 10pt 0 5pt; font-size: 12pt; }
-    .lecon-5e h4 { margin-bottom: 4pt; font-size: 11pt; }
+    .lecon-5e h3 { margin: 4pt 0 1pt; font-size: 9.5pt; }
+    .lecon-5e h4 { margin: 0 0 1pt; font-size: 9pt; }
     .lecon-5e p,
     .lecon-5e ul,
-    .lecon-5e ol { margin-bottom: 6pt; }
-    .lecon-5e li { margin-bottom: 2pt; }
+    .lecon-5e ol { margin: 0 0 3pt; }
+    .lecon-5e ul,
+    .lecon-5e ol { padding-left: 12pt; }
+    .lecon-5e li { margin-bottom: 1pt; }
     .lecon-5e h2,
     .lecon-5e h3,
     .lecon-5e h4 { break-after: avoid; }
 
-    .definition-box,
-    .example-box,
-    .important-box,
-    .note-box,
-    .dialogue,
-    .exercice,
+    /* Les encadrés peuvent se couper : pas de colonne à moitié vide. */
     .schema,
-    .table-vocab tr { break-inside: avoid; }
+    .table-vocab tr,
+    .dialogue p,
+    .fiche-quiz li { break-inside: avoid; }
 
     .definition-box,
     .example-box,
     .important-box,
-    .note-box { margin: 8pt 0; padding: 6pt 10pt; border-radius: 0; }
+    .note-box { margin: 3pt 0; padding: 1pt 0 1pt 5pt; border-left-width: 2pt; border-radius: 0; }
+
+    .dialogue { margin: 3pt 0; padding: 2pt 5pt; border-radius: 0; }
+    .dialogue p { margin: 0 0 1pt; }
 
     /* Le fond coloré des en-têtes ne s'imprime pas : le texte blanc disparaîtrait. */
-    .table-vocab th { background: none; color: var(--encre); border-bottom: 1.5pt solid var(--l5-fort); }
+    .table-vocab { margin: 3pt 0; }
+    .table-vocab th { background: none; color: var(--encre); border-bottom: 1pt solid var(--l5-fort); }
     .table-vocab th,
-    .table-vocab td { padding: 3pt 6pt; font-size: 10pt; }
+    .table-vocab td { padding: 1pt 3pt; font-size: 8pt; line-height: 1.2; }
 
-    .schema { padding: 6pt; border-radius: 0; }
-    .schema svg { max-width: 300px; }
-    .schema figcaption { font-size: 10pt; }
+    .schema { margin: 3pt 0; padding: 2pt; border-width: 0.5pt; border-radius: 0; }
+    .schema svg { max-width: 150px; }
+    .schema figcaption { margin-top: 1pt; font-size: 7.5pt; }
 
     /* La traduction sous chaque phrase, si elle a été demandée ; sinon aucune. */
     html:not(.fiche-traductions) .trad-texte { display: none; }
     html.fiche-traductions .trad-texte[hidden] { display: block; }
-    .trad-texte { margin-top: 2pt; padding: 0 0 0 6pt; border-radius: 0; background: none; }
+    .trad-texte { margin-top: 0; padding: 0 0 0 4pt; border-left-width: 1.5pt; border-radius: 0; background: none; font-size: 7.5pt; }
 
-    .exercice { padding: 8pt 10pt; border-radius: 0; box-shadow: none; }
-    .trou { min-width: 90px; }
+    .exercice { margin: 3pt 0; padding: 2pt 5pt; border-width: 0.5pt; border-radius: 0; box-shadow: none; }
+    .exercice h3 { margin-top: 0; }
+    .exercice .consigne { font-size: 8.5pt; }
+    .exercice li { margin-bottom: 2pt; }
+    .trou { min-width: 55px; }
+
+    /* Le quiz : l'énoncé, puis A B C D à la suite, le corrigé en une ligne. */
+    [data-fiche-quiz] .container > :not(h2):not(.fiche-quiz) { display: none; }
+    .fiche-quiz { display: block; }
+    .fiche-quiz ol { margin: 0 0 3pt; padding-left: 14pt; }
+    .fiche-quiz li { margin-bottom: 2.5pt; }
+    .fiche-quiz-question { display: block; font-weight: 700; }
+    .fiche-quiz-options span { display: inline-block; margin-right: 6pt; font-size: 8.5pt; }
+    .fiche-quiz-corrige { padding-top: 2pt; border-top: 0.5pt dashed var(--bord); color: var(--doux); font-size: 7.5pt; }
 
     .lecon-5e a { color: inherit; text-decoration: none; }
 
-    .pied { margin: 14pt 0 0; padding: 0; font-size: 9pt; }
+    .pied { margin: 4pt 0 0; padding: 0; font-size: 7pt; }
 }
