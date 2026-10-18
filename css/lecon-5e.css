@@ -949,3 +949,208 @@ html.cartes-ouvertes { overflow: hidden; }
 .trad-tout[aria-pressed="true"] { background: var(--l5-pale); border-color: var(--l5-fort); }
 .trad-tout:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
+
+/* ============================================================
+   Fiche à imprimer 🖨️ (js/lecon-5e.js)
+   ============================================================
+   À l'écran : le bouton du bandeau et la fenêtre où l'on coche les étapes.
+   La fenêtre reprend le voile et la boîte des cartes 🃏. */
+
+.bouton-fiche {
+    min-height: 44px;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: 1px solid var(--l5-fort);
+    border-radius: 11px;
+    background: var(--surface);
+    color: var(--l5-rose);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.bouton-fiche:hover { background: var(--l5-pale); }
+.bouton-fiche:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* La date d'impression, posée en tête du bandeau : seulement sur papier. */
+.fiche-mention { display: none; }
+
+.fiche-titre { margin: 0; font-size: 21px; }
+
+.fiche-etapes {
+    display: grid;
+    gap: 8px;
+    max-height: 52vh;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    border: 0;
+}
+
+.fiche-legende { margin-bottom: 6px; padding: 0; font-size: 15px; color: var(--doux); }
+
+.fiche-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 6px 12px;
+    border: 1px solid var(--l5-bord);
+    border-radius: 12px;
+    background: var(--surface);
+    font-weight: 700;
+    line-height: 1.3;
+    cursor: pointer;
+}
+
+.fiche-option input { flex: 0 0 auto; width: 22px; height: 22px; margin: 0; accent-color: var(--l5-fort); }
+.fiche-option:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.fiche-option-traductions { border-style: dashed; }
+.fiche-boite .cartes-nav:disabled { opacity: 0.4; cursor: default; }
+
+/* ============================================================
+   Sur papier
+   ============================================================
+   On imprime le bandeau et les étapes choisies (data-fiche, posé par le
+   bouton) ou, si rien n'a été choisi, celles cochées au départ
+   (data-fiche-defaut). Tout ce qui sert à naviguer, écouter ou jouer reste
+   à l'écran. */
+
+@media print {
+    /* Le papier est toujours clair, quel que soit le thème choisi à l'écran.
+       :root:root l'emporte sur html[data-theme="dark"] et html[data-skin]. */
+    html:root:root {
+        color-scheme: light;
+        --fond: #fff;
+        --fond-degrade: #fff;
+        --surface: #fff;
+        --surface-douce: #fff;
+        --surface-grise: #fff;
+        --encre: #222;
+        --doux: #555;
+        --bord: #bbb;
+        --rose: #9D2F5C;
+        --rose-clair: #9D2F5C;
+        --rose-pale: #fff;
+        --rose-tres-pale: #fff;
+        --succes-fond: #fff;
+        --succes-texte: #1F5C33;
+        --succes-bord: #3C9A57;
+        --boite-exemple: #fff;
+        --boite-exemple-texte: #2F6F9D;
+        --boite-important: #fff;
+        --boite-important-texte: #8A5E0E;
+        --boite-important-bord: #C98A1E;
+        --boite-note: #fff;
+        --boite-note-texte: #2C7742;
+        --boite-dialogue: #fff;
+        --ombre: none;
+        --ombre-forte: none;
+        --ombre-clay: none;
+        --ombre-clay-forte: none;
+    }
+
+    /* La teinte de la matière : sa version forte, lisible sur blanc (le mode
+       sombre n'éclaircit que --matiere-texte et --matiere-pale). */
+    body.lecon-5e {
+        --l5-rose: var(--matiere-fort, #9D2F5C);
+        --l5-rose-clair: var(--matiere-fort, #9D2F5C);
+        --l5-pale: #fff;
+        display: block;
+        min-height: 0;
+        background: #fff;
+        color: var(--encre);
+        font-size: 10.5pt;
+        line-height: 1.4;
+    }
+
+    @page { margin: 14mm 12mm; }
+
+    html[data-texte] body.lecon-5e > * { zoom: 1; }
+
+    body.lecon-5e > :not(header):not(main):not(.pied),
+    .lecon-5e .coquille-barre,
+    .lecon-5e .tabs,
+    .lecon-5e button,
+    .suite-onglets,
+    .kv-reglage,
+    .exercice details,
+    .section-quiz,
+    [id^="quiz"],
+    /* « ✏️ À vérifier dans ton cahier » : une question pour l'adulte, pas une notion. */
+    .important-box[data-hors-chat] { display: none !important; }
+
+    .lecon-5e header:not(.coquille-barre) {
+        width: auto;
+        margin: 0 0 12pt;
+        padding: 0 0 8pt;
+        border: 0;
+        border-bottom: 2pt solid var(--l5-fort);
+        border-radius: 0;
+        background: none;
+    }
+
+    .lecon-5e header:not(.coquille-barre) h1 { font-size: 20pt; }
+    .lecon-5e header .fiche-mention { display: block; order: -1; margin: 0 0 4pt; font-size: 9.5pt; }
+    .badge-niveau { padding: 0; border: 0; }
+
+    .content { max-width: none; padding: 0; }
+
+    html.fiche-roles .tab-content { display: none; animation: none; }
+    html.fiche-roles:not(.fiche-choix) .tab-content[data-fiche-defaut],
+    html.fiche-choix .tab-content[data-fiche] { display: block; }
+
+    .container { padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+
+    .lecon-5e h2 {
+        margin: 14pt 0 6pt;
+        padding-bottom: 3pt;
+        border-bottom: 1pt solid var(--bord);
+        font-size: 14pt;
+    }
+    .lecon-5e h3 { margin: 10pt 0 5pt; font-size: 12pt; }
+    .lecon-5e h4 { margin-bottom: 4pt; font-size: 11pt; }
+    .lecon-5e p,
+    .lecon-5e ul,
+    .lecon-5e ol { margin-bottom: 6pt; }
+    .lecon-5e li { margin-bottom: 2pt; }
+    .lecon-5e h2,
+    .lecon-5e h3,
+    .lecon-5e h4 { break-after: avoid; }
+
+    .definition-box,
+    .example-box,
+    .important-box,
+    .note-box,
+    .dialogue,
+    .exercice,
+    .schema,
+    .table-vocab tr { break-inside: avoid; }
+
+    .definition-box,
+    .example-box,
+    .important-box,
+    .note-box { margin: 8pt 0; padding: 6pt 10pt; border-radius: 0; }
+
+    /* Le fond coloré des en-têtes ne s'imprime pas : le texte blanc disparaîtrait. */
+    .table-vocab th { background: none; color: var(--encre); border-bottom: 1.5pt solid var(--l5-fort); }
+    .table-vocab th,
+    .table-vocab td { padding: 3pt 6pt; font-size: 10pt; }
+
+    .schema { padding: 6pt; border-radius: 0; }
+    .schema svg { max-width: 300px; }
+    .schema figcaption { font-size: 10pt; }
+
+    /* La traduction sous chaque phrase, si elle a été demandée ; sinon aucune. */
+    html:not(.fiche-traductions) .trad-texte { display: none; }
+    html.fiche-traductions .trad-texte[hidden] { display: block; }
+    .trad-texte { margin-top: 2pt; padding: 0 0 0 6pt; border-radius: 0; background: none; }
+
+    .exercice { padding: 8pt 10pt; border-radius: 0; box-shadow: none; }
+    .trou { min-width: 90px; }
+
+    .lecon-5e a { color: inherit; text-decoration: none; }
+
+    .pied { margin: 14pt 0 0; padding: 0; font-size: 9pt; }
+}

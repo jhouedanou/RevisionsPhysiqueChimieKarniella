@@ -10,7 +10,8 @@
  *   - des boutons « Précédent / Suivant » au bas de chaque onglet ;
  *   - les cartes à retourner 🃏, tirées des notions de la leçon ;
  *   - les liens directs vers une notion, posés par la recherche ;
- *   - le suivi de lecture : la mission 🚀 n'apparaît qu'une fois la leçon lue.
+ *   - le suivi de lecture : la mission 🚀 n'apparaît qu'une fois la leçon lue ;
+ *   - la fiche à imprimer 🖨️, un bouton dans le bandeau de la leçon.
  *
  * L'onglet ouvert est écrit dans l'adresse (#tab3) : si le téléphone recharge
  * la page, Karniella revient où elle en était.
@@ -255,6 +256,8 @@
         ajouterNavigation(boutons);
         preparerCartes(groupe);
         ajouterMission(groupe);
+        preparerEtapesFiche(boutons);
+        ajouterBoutonFiche();
         ajouterSuiteParcours(groupe, boutons);
         majTitreParcours(rangActif, boutons.length);
         brancherClavier(groupe);
@@ -636,6 +639,232 @@
 
         montrer();
         carte.focus();
+    }
+
+    /* ============================================================
+       Fiche à imprimer 🖨️
+       ============================================================
+       Le bouton du bandeau ouvre une petite fenêtre : on coche les étapes à
+       mettre sur papier, puis on imprime. Une fiche doit tenir en peu de
+       pages, donc au départ seul l'essentiel est coché :
+         1. l'onglet « À retenir » / « Retiens l'essentiel », s'il existe ;
+         2. sinon « Mon cahier » (le cours du professeur) ;
+         3. sinon toutes les étapes du cours.
+       Le quiz n'est pas proposé (il ne s'imprime pas). Les exercices
+       s'impriment sans leurs corrigés, pour être faits au stylo.
+
+       La mise en page du papier est dans css/lecon-5e.css (@media print).
+       Les étapes cochées au départ portent data-fiche-defaut : un Ctrl+P
+       sans passer par le bouton imprime la même fiche. */
+
+    var ONGLETS_ENTRAINEMENT = /exercice|practice|entra[iî]n/i;
+    var ONGLETS_ESSENTIEL = /retiens|retenir|essentiel/i;
+    var fiche = { etapes: [], prete: false, detailsOuverts: [] };
+
+    function preparerEtapesFiche(boutons) {
+        for (var i = 0; i < boutons.length; i++) {
+            var id = boutons[i].getAttribute('data-onglet');
+            if (!document.getElementById(id) || estOngletQuiz(boutons[i])) { continue; }
+            var libelle = boutons[i].textContent.trim();
+            fiche.etapes.push({
+                id: id,
+                libelle: libelle,
+                role: ONGLETS_ENTRAINEMENT.test(libelle) ? 'exercices' : 'cours',
+                defaut: false
+            });
+        }
+        if (!fiche.etapes.length) { return; }
+
+        var cours = fiche.etapes.filter(function (e) { return e.role === 'cours'; });
+        var essentiel = cours.filter(function (e) { return ONGLETS_ESSENTIEL.test(e.libelle); });
+        var cahier = cours.filter(function (e) { return e.id === 'cahier'; });
+        var parDefaut = essentiel.length ? essentiel : cahier.length ? cahier : cours.length ? cours : fiche.etapes;
+        parDefaut.forEach(function (e) {
+            e.defaut = true;
+            document.getElementById(e.id).setAttribute('data-fiche-defaut', '');
+        });
+        document.documentElement.classList.add('fiche-roles');
+    }
+
+    function bandeauLecon() {
+        return document.querySelector('body > header:not(.coquille-barre)');
+    }
+
+    function ajouterBoutonFiche() {
+        var bandeau = bandeauLecon();
+        if (!bandeau || !fiche.etapes.length || typeof window.print !== 'function') { return; }
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'bouton-fiche';
+        b.textContent = '🖨️ Fiche à imprimer';
+        b.addEventListener('click', function () { ouvrirChoixFiche(b); });
+        bandeau.appendChild(b);
+    }
+
+    /** L'essentiel coché ; les traductions si elles sont affichées à l'écran. */
+    function choixFicheParDefaut() {
+        var etapes = {};
+        fiche.etapes.forEach(function (e) { etapes[e.id] = e.defaut; });
+        return { etapes: etapes, traductions: !!document.querySelector('.trad-tout[aria-pressed="true"]') };
+    }
+
+    function preparerFiche(choix) {
+        var racine = document.documentElement;
+        fiche.etapes.forEach(function (e) {
+            var contenu = document.getElementById(e.id);
+            if (choix.etapes[e.id]) { contenu.setAttribute('data-fiche', ''); } else { contenu.removeAttribute('data-fiche'); }
+        });
+        racine.classList.add('fiche-choix');
+        racine.classList.toggle('fiche-traductions', !!choix.traductions);
+
+        // Sur papier, on ne peut pas déplier : les <details> du cours s'ouvrent.
+        // Pas ceux des exercices, qui cachent les corrigés.
+        var details = document.querySelectorAll('main details:not([open])');
+        for (var i = 0; i < details.length; i++) {
+            if (!details[i].closest('.exercice')) {
+                details[i].open = true;
+                fiche.detailsOuverts.push(details[i]);
+            }
+        }
+
+        var bandeau = bandeauLecon();
+        var mention = bandeau && bandeau.querySelector('.fiche-mention');
+        if (bandeau && !mention) {
+            mention = document.createElement('p');
+            mention.className = 'fiche-mention';
+            bandeau.insertBefore(mention, bandeau.firstChild);
+        }
+        if (mention) { mention.textContent = '📝 Fiche de révision · imprimée le ' + new Date().toLocaleDateString('fr-FR'); }
+        fiche.prete = true;
+    }
+
+    function rangerFiche() {
+        var racine = document.documentElement;
+        racine.classList.remove('fiche-choix');
+        racine.classList.remove('fiche-traductions');
+        fiche.etapes.forEach(function (e) { document.getElementById(e.id).removeAttribute('data-fiche'); });
+        fiche.detailsOuverts.forEach(function (d) { d.open = false; });
+        fiche.detailsOuverts = [];
+        fiche.prete = false;
+    }
+
+    // Ctrl+P ou le menu du navigateur : la fiche par défaut.
+    window.addEventListener('beforeprint', function () {
+        if (!fiche.prete && fiche.etapes.length) { preparerFiche(choixFicheParDefaut()); }
+    });
+    window.addEventListener('afterprint', function () {
+        if (fiche.prete) { rangerFiche(); }
+    });
+
+    function caseACocher(libelle, coche, valeur) {
+        var label = document.createElement('label');
+        label.className = 'fiche-option';
+        var input = document.createElement('input');
+        input.type = 'checkbox';
+        input.checked = coche;
+        if (valeur) { input.value = valeur; }
+        var texte = document.createElement('span');
+        texte.textContent = libelle;
+        label.appendChild(input);
+        label.appendChild(texte);
+        return label;
+    }
+
+    function ouvrirChoixFiche(declencheur) {
+        var defaut = choixFicheParDefaut();
+
+        var voile = document.createElement('div');
+        voile.className = 'cartes-voile';
+
+        var boite = document.createElement('div');
+        boite.className = 'cartes-boite fiche-boite';
+        boite.setAttribute('role', 'dialog');
+        boite.setAttribute('aria-modal', 'true');
+        boite.setAttribute('aria-labelledby', 'fiche-titre');
+
+        var titre = document.createElement('h2');
+        titre.id = 'fiche-titre';
+        titre.className = 'fiche-titre';
+        titre.textContent = '🖨️ Fiche à imprimer';
+
+        var groupe = document.createElement('fieldset');
+        groupe.className = 'fiche-etapes';
+        var legende = document.createElement('legend');
+        legende.className = 'fiche-legende';
+        legende.textContent = 'Coche ce que tu veux sur ta fiche :';
+        groupe.appendChild(legende);
+        fiche.etapes.forEach(function (e) {
+            var libelle = e.role === 'exercices' ? e.libelle + ' (sans les corrigés)' : e.libelle;
+            groupe.appendChild(caseACocher(libelle, defaut.etapes[e.id], e.id));
+        });
+
+        // Leçon d'anglais : la traduction sous chaque phrase, au choix.
+        var caseTraductions = null;
+        if (document.querySelector('[data-fr]')) {
+            caseTraductions = caseACocher('Avec la traduction en français de chaque phrase', defaut.traductions);
+            caseTraductions.classList.add('fiche-option-traductions');
+        }
+
+        var bas = document.createElement('div');
+        bas.className = 'cartes-bas';
+        var annuler = document.createElement('button');
+        annuler.type = 'button';
+        annuler.className = 'cartes-outil';
+        annuler.textContent = 'Annuler';
+        var imprimer = document.createElement('button');
+        imprimer.type = 'button';
+        imprimer.className = 'cartes-nav cartes-nav-suivante';
+        imprimer.textContent = '🖨️ Imprimer';
+        bas.appendChild(annuler);
+        bas.appendChild(imprimer);
+
+        boite.appendChild(titre);
+        boite.appendChild(groupe);
+        if (caseTraductions) { boite.appendChild(caseTraductions); }
+        boite.appendChild(bas);
+        voile.appendChild(boite);
+        document.body.appendChild(voile);
+        document.documentElement.classList.add('cartes-ouvertes');
+
+        var cases = groupe.querySelectorAll('input[type="checkbox"]');
+        function majImprimer() {
+            var une = false;
+            for (var i = 0; i < cases.length; i++) { if (cases[i].checked) { une = true; } }
+            imprimer.disabled = !une;
+        }
+        groupe.addEventListener('change', majImprimer);
+        majImprimer();
+
+        function fermer() {
+            document.removeEventListener('keydown', clavier);
+            document.documentElement.classList.remove('cartes-ouvertes');
+            voile.parentNode.removeChild(voile);
+            if (declencheur) { declencheur.focus(); }
+        }
+
+        function clavier(e) {
+            if (e.key === 'Escape') { e.preventDefault(); fermer(); }
+            else if (e.key === 'Tab') {
+                var focusables = boite.querySelectorAll('input, button:not(:disabled)');
+                var premier = focusables[0];
+                var dernier = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === premier) { e.preventDefault(); dernier.focus(); }
+                else if (!e.shiftKey && document.activeElement === dernier) { e.preventDefault(); premier.focus(); }
+            }
+        }
+
+        annuler.addEventListener('click', fermer);
+        imprimer.addEventListener('click', function () {
+            var choix = { etapes: {}, traductions: !!(caseTraductions && caseTraductions.querySelector('input').checked) };
+            for (var i = 0; i < cases.length; i++) { choix.etapes[cases[i].value] = cases[i].checked; }
+            fermer();
+            preparerFiche(choix);
+            window.print();
+        });
+        voile.addEventListener('mousedown', function (e) { if (e.target === voile) { fermer(); } });
+        document.addEventListener('keydown', clavier);
+
+        if (cases[0]) { cases[0].focus(); }
     }
 
     /* ============================================================

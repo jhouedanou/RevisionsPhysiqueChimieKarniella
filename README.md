@@ -548,6 +548,13 @@ Ajouté par `js/lecon-5e.js`, sans rien à écrire dans les pages :
 - des boutons **Précédent / Suivant** au bas de chaque onglet ;
 - **🃏 Réviser en cartes** : les notions de la leçon (hors situation, correction
   et quiz) en cartes à retourner, tirées de `data/chat/<slug>.json` ;
+- **🖨️ Fiche à imprimer**, dans le bandeau : on coche les étapes, puis on
+  imprime. Au départ, seul l'essentiel est coché : l'onglet « À retenir » /
+  « Retiens l'essentiel », sinon « Mon cahier » (`data-onglet="cahier"`),
+  sinon tout le cours. Le quiz ne s'imprime pas ; les exercices s'impriment
+  sans leurs corrigés ; les encadrés « ✏️ À vérifier » restent à l'écran.
+  Le papier est toujours en clair (`@media print` dans `css/lecon-5e.css`) ;
+  un Ctrl+P donne la même fiche ;
 - des **confettis** 🎉 à 80 % et plus à un quiz, à chaque nouveau badge et à la
   fin d'un paquet de cartes (`window.KarniellaFete`, dans `js/badges.js`).
 
