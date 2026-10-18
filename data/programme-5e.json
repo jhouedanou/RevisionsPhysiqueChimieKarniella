@@ -217,10 +217,10 @@
         },
         {
           "id": "francais-groupe-nominal",
-          "titre": "Le groupe nominal : les expansions du nom",
-          "sousTitre": "Grammaire · Séances 1 à 3 : adjectif, relative, complément du nom",
+          "titre": "Le groupe nominal",
+          "sousTitre": "Grammaire · Séances 1 à 4 : adjectif, relative, complément du nom, pluriel des noms",
           "icone": "🧩",
-          "description": "L'adjectif qualificatif, la subordonnée relative et le complément du nom, avec ton cahier pour les séances 2 et 3.",
+          "description": "Les trois expansions du nom et le pluriel des noms simples, avec ton cahier pour les séances 2, 3 et 4.",
           "statut": "prete",
           "mission": true
         },

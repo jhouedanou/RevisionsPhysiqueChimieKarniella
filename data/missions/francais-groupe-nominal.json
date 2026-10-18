@@ -17,6 +17,10 @@
     {
       "titre": "🧲 Pouvoir 3 : la relative",
       "contenu": "Elle commence par un pronom relatif (qui, que, dont, où) et a son propre verbe : un cheval qui galope. Le nom qu'elle complète s'appelle l'antécédent."
+    },
+    {
+      "titre": "🔢 Pouvoir 4 : le pluriel",
+      "contenu": "Pour mettre un nom au pluriel, ajoute un s : un chien → des chiens. S'il finit déjà par s, x ou z, il ne bouge pas : une souris → des souris. Les noms en -al deviennent -aux : un cheval → des chevaux."
     }
   ],
   "quiz": [
@@ -52,6 +56,17 @@
       ],
       "correct_answer_index": 1,
       "explanation": "On peut la supprimer, la phrase reste correcte."
+    },
+    {
+      "question": "Le pluriel de « un cheval » est…",
+      "options": [
+        "des chevals",
+        "des chevaux",
+        "des chevales",
+        "des cheval"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Les noms en -al font leur pluriel en -aux."
     }
   ]
 }
