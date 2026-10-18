@@ -442,6 +442,16 @@ leçon ouverte. `js/badges.js` déduit les badges de la progression, les garde u
 gagnés (clé `karniella-badges`) et affiche un message de félicitations à chaque nouveau
 badge, ou au premier progrès du jour quand la série continue.
 
+### 📅 Emploi du temps
+
+L'emploi du temps de la 5e 2 est écrit dans `js/emploi-du-temps.js` (tableau
+`SEMAINE`, d'après `docs/sources/emploi-du-temps-2026-10-18.md`). Sous la série,
+l'accueil montre les cours du prochain jour de classe : aujourd'hui jusqu'à
+12 h 30, sinon le jour suivant. Chaque matière mène à sa page pour la réviser, et
+un devoir prévu est signalé. `5e/emploi-du-temps.html` montre un jour au choix et
+toute la semaine. Pour changer l'emploi du temps : modifier `SEMAINE`, puis
+incrémenter `CACHE_NAME` dans `sw.js`.
+
 ### 🌙 Mode sombre, A+ et couleurs des matières
 
 - `css/theme.css` porte **toutes** les couleurs du site, en clair et en sombre.

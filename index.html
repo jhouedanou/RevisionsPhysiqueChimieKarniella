@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="css/coquille.css">
 <script src="js/coquille.js"></script>
 <link rel="stylesheet" href="css/accueil.css">
+<link rel="stylesheet" href="css/emploi-du-temps.css">
 </head>
 <body>
 
@@ -31,6 +32,9 @@
   <!-- Série de jours, objectif du jour, « Reprendre » : rempli par js/accueil.js
        quand la progression est disponible. Caché sinon. -->
   <section id="mon-galop" class="mon-galop" aria-label="Ma série de révisions" hidden></section>
+
+  <!-- Les cours du prochain jour de classe : rempli par js/emploi-du-temps.js -->
+  <section id="emploi-prochain" class="emploi-prochain" data-base="5e/" aria-label="Mes prochains cours" hidden></section>
 
   <div class="section-titre"><h2 id="titre-matieres">Mes matières</h2><a href="#mes-badges">🏅 Mes badges</a></div>
 
@@ -72,6 +76,7 @@
 </footer>
 
 <script src="js/accueil.js" defer></script>
+<script src="js/emploi-du-temps.js" defer></script>
 <script src="js/chat-assistant.js" defer></script>
 <script src="js/inscrire-sw.js" defer></script>
 </body>
