@@ -33,11 +33,15 @@ Answers.
 
 Exercise 3, page 33.   [dialogue à compléter : les trous sont vides dans le cahier]
 Alex: Hey Jordan, what subjects do you have today?
-Alex: ______ What do you learn in maths?   [deux répliques de suite à Alex]
-Jordan: ______ How long is your science class?
-Alex: ______ What next after maths for you?
-Jordan: What about you?
-Alex: ______ Do you like history?
-Jordan: ______ How long is your English?
-Alex: ______ What do you do in history?
+Jordan: ______ What do you learn in maths?
+Alex: ______ How long is your science class?
+Jordan: ______ What next after maths for you?
+Alex: What about you?
+Jordan: ______ Do you like history?
+Alex: ______ How long is your English?
+Jordan: ______ What do you do in history?
+
+[Sur la photo, la 2e ligne est notée « Alex » et les noms suivants sont décalés
+d'un cran. Confirmé le 18/10 : « Alex puis Jordan ». Les répliques alternent
+donc, chacune répondant à la question d'avant.]
 [la photo s'arrête là]

@@ -1017,7 +1017,8 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 /* ============================================================
    Sur papier
    ============================================================
-   Une fiche condensée au maximum : deux colonnes, police de 9 pt, marges de
+   Une fiche condensée au maximum, sur une seule colonne (deux colonnes
+   ressemblaient à deux pages sur une feuille) : police de 9 pt, marges de
    8 mm, encadrés et tableaux resserrés. On imprime le bandeau et les étapes
    choisies (data-fiche, posé par le bouton) ou, si rien n'a été choisi,
    celles cochées au départ (data-fiche-defaut). Tout ce qui sert à
@@ -1120,13 +1121,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e header:not(.coquille-barre) .fiche-mention { display: block; flex: 0 0 auto; order: 9; margin-left: auto; font-size: 7pt; }
     .badge-niveau { padding: 0; border: 0; font-size: 7pt; }
 
-    .content {
-        max-width: none;
-        padding: 0;
-        column-count: 2;
-        column-gap: 6mm;
-        column-rule: 0.5pt solid #ccc;
-    }
+    .content { max-width: none; padding: 0; }
 
     html.fiche-roles .tab-content { display: none; animation: none; }
     html.fiche-roles:not(.fiche-choix) .tab-content[data-fiche-defaut],
@@ -1152,7 +1147,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e h3,
     .lecon-5e h4 { break-after: avoid; }
 
-    /* Les encadrés peuvent se couper : pas de colonne à moitié vide. */
+    /* Les encadrés peuvent se couper : pas de grand blanc en bas de page. */
     .schema,
     .table-vocab tr,
     .dialogue p,

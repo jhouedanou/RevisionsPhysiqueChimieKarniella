@@ -656,14 +656,14 @@
        départ.
 
        La mise en page du papier est dans css/lecon-5e.css (@media print) :
-       deux colonnes, petite police, presque pas de marges. Les étapes
+       une colonne, petite police, presque pas de marges. Les étapes
        cochées au départ portent data-fiche-defaut : un Ctrl+P sans passer
        par le bouton imprime la même fiche.
 
        Une fiche = une feuille A4. Avant d'imprimer, mesurerFiche() calcule
        le zoom qui fait tout tenir sur une page ; la fenêtre dit si ça tient. */
 
-    var ONGLETS_ENTRAINEMENT = /exercice|practice|entra[iî]n/i;
+    var ONGLETS_ENTRAINEMENT = /exerci[cs]e|practice|entra[iî]n/i;
     var ONGLETS_ESSENTIEL = /retiens|retenir|essentiel/i;
     var LETTRES = 'ABCDEFGH';
     var fiche = { etapes: [], prete: false, detailsOuverts: [], regle: null };
