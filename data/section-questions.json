@@ -4020,6 +4020,72 @@
         ],
         "correctAnswer": 1,
         "explanation": "« en cuir » : pas de déterminant devant « cuir ». Dans les autres, il y a « la »."
+      },
+      {
+        "question": "Un nom simple est formé…",
+        "options": [
+          "d'un seul mot",
+          "de deux mots",
+          "de trois mots",
+          "d'un trait d'union"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Un nom simple n'a qu'un mot : un loup, un cheval."
+      },
+      {
+        "question": "Lequel est un nom composé ?",
+        "options": [
+          "un cheval",
+          "un pique-bœuf",
+          "une souris",
+          "un chien"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Pique-bœuf est formé de deux mots, reliés par un trait d'union."
+      },
+      {
+        "question": "Le plus souvent, pour mettre un nom simple au pluriel, on ajoute…",
+        "options": [
+          "un x",
+          "rien",
+          "un s",
+          "-aux"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un chien → des chiens : on ajoute un s."
+      },
+      {
+        "question": "Quel est le pluriel de « une perdrix » ?",
+        "options": [
+          "des perdrixs",
+          "des perdrix",
+          "des perdrixes",
+          "des perdrieux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Perdrix finit déjà par x : le nom ne change pas au pluriel."
+      },
+      {
+        "question": "Quel est le pluriel de « un animal » ?",
+        "options": [
+          "des animals",
+          "des animales",
+          "des animal",
+          "des animaux"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les noms en -al font leur pluriel en -aux : un animal → des animaux."
+      },
+      {
+        "question": "Pourquoi écrit-on « les souris », sans s en plus ?",
+        "options": [
+          "parce que c'est un nom composé",
+          "parce que le nom finit déjà par s",
+          "parce que c'est un animal",
+          "parce que c'est un nom féminin"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un nom qui finit déjà par s, x ou z ne change pas au pluriel."
       }
     ]
   },
