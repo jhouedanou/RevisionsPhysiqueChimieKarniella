@@ -150,6 +150,11 @@ function extraireNotions($, conteneur, idOnglet) {
     // ton cahier »), pas au chat : les proposer comme sujet de révision n'a
     // aucun sens.
     conteneur.find('[data-hors-chat]').remove();
+    // Page d'une matière : chaque leçon est une étape du chemin (<li> avec un
+    // rond numéroté). On ne garde que la carte, sinon le texte du <li> entier
+    // se collerait à la notion précédente.
+    conteneur.find('.chemin-numero').remove();
+    conteneur.find('li.chemin-etape').each((_, li) => { $(li).replaceWith($(li).html()); });
 
     conteneur.find(TITRES + ', p, li, tr, .definition, .encadre, .important').each((_, el) => {
         const $el = $(el);

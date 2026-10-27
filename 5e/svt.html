@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="svt">
+<body class="lecon-5e page-matiere" data-matiere="svt">
 <header>
 <span class="badge-niveau">Classe de 5e</span>
 <h1>🌱 SVT</h1>
@@ -24,34 +25,45 @@
 <main class="content">
   <section class="container">
     <h2>Mes leçons — 3 leçons disponibles</h2>
-      <div class="grille-lecons">
-      <a class="carte-lecon" href="svt-proliferation-criquets.html">
-        <span class="icone" aria-hidden="true">🦗</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>La prolifération des criquets</h3>
-        <p>Ses actions néfastes et ses conséquences sur l&#39;environnement et sur l&#39;Homme</p>
-        <p>Manuel p. 72 à 76 : les actions néfastes du criquet, ses conséquences sur l&#39;environnement et sur l&#39;Homme, et les exercices corrigés.</p>
-      </a>
-      <a class="carte-lecon" href="svt-proliferation-moustiques.html">
-        <span class="icone" aria-hidden="true">🦟</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>La prolifération des moustiques</h3>
-        <p>Les conditions du milieu qui la favorisent et ses conséquences sur l&#39;Homme</p>
-        <p>D&#39;après ton cahier : constat, hypothèses, les conditions du milieu (ordures, pneus, eau stagnante), le développement du moustique dans l&#39;eau et dans l&#39;air, le paludisme.</p>
-      </a>
-      <a class="carte-lecon" href="svt-lutte-moustiques.html">
-        <span class="icone" aria-hidden="true">🛡️</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>La lutte contre la prolifération des moustiques</h3>
-        <p>Détruire les gîtes, tuer les moustiques, se protéger des piqûres</p>
-        <p>Lutte physique, chimique et biologique, moustiquaire imprégnée, et les exercices corrigés. Rédigée d&#39;après le titre du cahier.</p>
-      </a>
-      </div>
+      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+      <li class="chemin-etape" data-lecon="svt-proliferation-criquets">
+        <span class="chemin-numero" aria-hidden="true">1</span>
+        <a class="carte-lecon" href="svt-proliferation-criquets.html">
+          <span class="icone" aria-hidden="true">🦗</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>La prolifération des criquets</h3>
+          <p>Ses actions néfastes et ses conséquences sur l&#39;environnement et sur l&#39;Homme</p>
+          <p>Manuel p. 72 à 76 : les actions néfastes du criquet, ses conséquences sur l&#39;environnement et sur l&#39;Homme, et les exercices corrigés.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="svt-proliferation-moustiques">
+        <span class="chemin-numero" aria-hidden="true">2</span>
+        <a class="carte-lecon" href="svt-proliferation-moustiques.html">
+          <span class="icone" aria-hidden="true">🦟</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>La prolifération des moustiques</h3>
+          <p>Les conditions du milieu qui la favorisent et ses conséquences sur l&#39;Homme</p>
+          <p>D&#39;après ton cahier : constat, hypothèses, les conditions du milieu (ordures, pneus, eau stagnante), le développement du moustique dans l&#39;eau et dans l&#39;air, le paludisme.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="svt-lutte-moustiques">
+        <span class="chemin-numero" aria-hidden="true">3</span>
+        <a class="carte-lecon" href="svt-lutte-moustiques.html">
+          <span class="icone" aria-hidden="true">🛡️</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>La lutte contre la prolifération des moustiques</h3>
+          <p>Détruire les gîtes, tuer les moustiques, se protéger des piqûres</p>
+          <p>Lutte physique, chimique et biologique, moustiquaire imprégnée, et les exercices corrigés. Rédigée d&#39;après le titre du cahier.</p>
+        </a>
+      </li>
+      </ol>
   </section>
 </main>
 
 <p class="pied">Révisions de Karniella · 5e · 2026-2027</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

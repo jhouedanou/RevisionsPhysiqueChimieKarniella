@@ -2,6 +2,10 @@
  * xp.js — Les points d'expérience ⭐ et la boutique.
  *
  * Chaque bonne réponse à un quiz vaut 10 XP, un sans-faute 50 XP de plus.
+ * Deux bonus du quiz en étapes, repris de brikelec : « Éclair » (au moins
+ * 80 % juste, 8 secondes au plus par question) et « Série » (5 bonnes
+ * réponses de suite) valent 20 XP chacun. Une révision des erreurs ne
+ * rapporte que les bonnes réponses.
  * Les XP s'échangent dans la boutique (boutique.html) contre des récompenses
  * qui changent vraiment l'application : badges, thèmes, avatars, cadres
  * d'avatar, pluies de confettis, titres. Un achat ne se perd jamais.
@@ -21,6 +25,11 @@
     var XP_BONNE_REPONSE = 10;
     var XP_SANS_FAUTE = 50;
     var QUESTIONS_MIN_BONUS = 3;   // un sans-faute sur 2 questions, ce n'est pas un exploit
+    var XP_ECLAIR = 20;
+    var XP_SERIE = 20;
+    var ECLAIR_SECONDES = 8;       // par question
+    var ECLAIR_QUESTIONS_MIN = 5;
+    var SERIE_MIN = 5;
 
     /* ============================================================
        Le catalogue — 27 récompenses, par paliers
@@ -169,16 +178,30 @@
         return points;
     }
 
-    /** Ce que vaut un quiz : { total, base, bonus }. */
-    function valeurQuiz(correct, total) {
+    /** Le quiz mérite-t-il le bonus « Éclair » ? `temps` en secondes. */
+    function estEclair(correct, total, temps) {
+        return total >= ECLAIR_QUESTIONS_MIN && typeof temps === 'number' && temps > 0 &&
+            correct * 5 >= total * 4 && temps <= total * ECLAIR_SECONDES;
+    }
+
+    /**
+     * Ce que vaut un quiz : { total, base, bonus, eclair, serie }.
+     * extra (facultatif) : { temps, suite, revision } — suite = la plus
+     * longue série de bonnes réponses.
+     */
+    function valeurQuiz(correct, total, extra) {
+        extra = extra || {};
         var base = correct * XP_BONNE_REPONSE;
+        if (extra.revision) { return { total: base, base: base, bonus: 0, eclair: 0, serie: 0 }; }
         var bonus = (total >= QUESTIONS_MIN_BONUS && correct === total) ? XP_SANS_FAUTE : 0;
-        return { total: base + bonus, base: base, bonus: bonus };
+        var eclair = estEclair(correct, total, extra.temps) ? XP_ECLAIR : 0;
+        var serie = (extra.suite || 0) >= SERIE_MIN ? XP_SERIE : 0;
+        return { total: base + bonus + eclair + serie, base: base, bonus: bonus, eclair: eclair, serie: serie };
     }
 
     /** Enregistre les XP d'un quiz terminé et renvoie le détail. */
-    function gagnerQuiz(correct, total, slug) {
-        var v = valeurQuiz(correct, total);
+    function gagnerQuiz(correct, total, slug, extra) {
+        var v = valeurQuiz(correct, total, extra);
         gagner(v.total, 'quiz:' + (slug || ''));
         return v;
     }
@@ -258,7 +281,7 @@
     function badgesAchetes() {
         var d = lire();
         return CATALOGUE.filter(function (a) { return a.type === 'badge' && d.achats.indexOf(a.id) !== -1; })
-            .map(function (a) { return { id: a.id, icone: a.icone, nom: a.nom, quoi: a.quoi, obtenu: true }; });
+            .map(function (a) { return { id: a.id, icone: a.icone, nom: a.nom, quoi: a.quoi, obtenu: true, achete: true }; });
     }
 
     window.KarniellaXP = {
@@ -268,6 +291,8 @@
         gagner: gagner,
         gagnerQuiz: gagnerQuiz,
         valeurQuiz: valeurQuiz,
+        estEclair: estEclair,
+        SERIE_MIN: SERIE_MIN,
         solde: solde,
         total: function () { return lire().total; },
         possede: possede,

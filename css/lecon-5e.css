@@ -65,6 +65,8 @@ body.lecon-5e > * { grid-column: 1 / -1; }
     body.lecon-5e > .tabs { grid-column: 2; }
     body.lecon-5e > main.content { grid-column: 3; }
     body.lecon-5e > header:not(.coquille-barre) { grid-column: 2 / 4; }
+    /* Page d'une matière : pas d'onglets, le chemin prend toute la largeur. */
+    body.page-matiere > main.content { grid-column: 2 / 4; }
 }
 
 /* ============================================================
@@ -610,6 +612,66 @@ a.carte-lecon:focus-visible { outline: 3px solid var(--focus); outline-offset: 3
 .carte-lecon .icone { font-size: 28px; line-height: 1; }
 .carte-lecon h3 { margin: 0; color: var(--l5-rose); font-size: 17px; }
 .carte-lecon p { margin: 0; font-size: 14px; opacity: 0.85; }
+
+/* Le chemin des leçons d'une matière (js/chemin.js) : un rond numéroté par leçon,
+   relié au suivant. Le rond prend la couleur de la matière quand le quiz de
+   la leçon est fait ; la prochaine leçon à faire est entourée d'orange. */
+.chemin { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 16px; }
+
+.chemin-etape {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.chemin-etape:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 60px;
+    bottom: -8px;
+    width: 4px;
+    border-radius: 4px;
+    background: var(--bord);
+}
+
+.chemin-etape.faite:not(:last-child)::before { background: var(--l5-fort); }
+
+.chemin-numero {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-top: 8px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--encre);
+    font-family: var(--police-titre, inherit);
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.chemin-etape.faite .chemin-numero { background: var(--l5-fort); color: #fff; }
+.chemin-etape.suivante .chemin-numero { background: var(--orange-pale, var(--surface)); box-shadow: 0 0 0 5px var(--surligne, #FFD9AE); }
+.chemin-etape.a-venir .chemin-numero { border-style: dashed; border-color: var(--bord); color: var(--doux); }
+
+.chemin-infos { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
+.chemin-action { margin-left: auto; }
+.chemin-infos .chip { min-height: 32px; padding: 2px 11px; font-size: .92rem; }
+.chemin-jauge { margin: 4px 0 18px; padding: 16px 18px; border: 2px solid var(--bord); border-radius: 20px; background: var(--surface); }
+.chemin-jauge[hidden] { display: none; }
+
+@media (max-width: 480px) {
+    .chemin-etape { grid-template-columns: 40px minmax(0, 1fr); gap: 10px; }
+    .chemin-numero { width: 40px; height: 40px; font-size: 1.1rem; }
+    .chemin-etape:not(:last-child)::before { left: 18px; top: 48px; }
+    .chemin-action { margin-left: 0; }
+}
 
 /* Leçon pas encore saisie : visible, mais clairement inerte. */
 .carte-lecon.a-venir {

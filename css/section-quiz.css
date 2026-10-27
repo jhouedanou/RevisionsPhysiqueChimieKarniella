@@ -223,43 +223,44 @@
 }
 
 /* ============================================================
-   Mode étapes : une question à la fois, chrono, XP, fantôme 👻
-   ============================================================ */
+   Mode étapes : une question à la fois, comme expertenergie
+   ============================================================
+   Les boutons (.btn), les puces (.chip), les pastilles et Aya viennent de
+   css/jeu.css. Ici : la carte du quiz, les réponses A à D, le retour. */
 
-.quiz-etapes { padding: 20px; }
+.quiz-etapes {
+    padding: 20px;
+    background: var(--surface-douce, var(--surface));
+    border: 3px solid var(--contour, var(--bord));
+    border-radius: var(--rayon-carte, 22px);
+}
 
 .quiz-etapes-haut {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
-.quiz-etapes-haut h4 { margin: 0; color: var(--l5-rose, var(--rose)); font-size: 18px; font-weight: 800; }
-
-.quiz-chrono {
-    font-variant-numeric: tabular-nums;
-    font-weight: 900;
-    font-size: 15px;
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: var(--surface);
-    border: 1px solid var(--bord);
+.quiz-etapes-haut h4 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: var(--encre);
+    font-family: var(--police-titre, inherit);
+    font-size: 1.3rem;
+    font-weight: 800;
 }
 
-/* Les points d'avancement : un par question. */
-.quiz-points { display: flex; gap: 6px; margin-bottom: 14px; }
-.quiz-points i {
-    flex: 1;
-    height: 7px;
-    border-radius: 7px;
-    background: var(--surface);
-    border: 1px solid var(--bord);
-}
-.quiz-points i.actif { background: var(--l5-fort, var(--rose)); border-color: transparent; }
-.quiz-points i.juste { background: var(--succes-bord); border-color: transparent; }
-.quiz-points i.faux { background: var(--erreur-bord); border-color: transparent; }
+.quiz-etapes-haut h4 .ico-svg { color: var(--orange, var(--rose)); }
+.quiz-outils { display: flex; align-items: center; gap: 8px; }
+.quiz-chrono .ico-svg { color: var(--doux); }
+
+.quiz-points { margin-bottom: 16px; }
+.quiz-points[hidden] { display: none; }
 
 /* La course contre le fantôme. */
 .quiz-fantome {
@@ -267,133 +268,211 @@
     gap: 8px;
     margin-bottom: 14px;
     padding: 10px 14px 14px;
-    border-radius: 12px;
+    border-radius: 16px;
     background: var(--surface);
-    border: 1px solid var(--bord);
-    font-size: 13.5px;
+    border: 2px solid var(--bord);
+    font-size: 14px;
 }
 .quiz-fantome[hidden] { display: none; }
-.quiz-fantome-ligne { display: flex; justify-content: space-between; gap: 10px; font-weight: 800; }
-.quiz-piste { position: relative; height: 10px; border-radius: 10px; background: var(--surface-grise); }
+.quiz-fantome-ligne { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 10px; font-weight: 800; }
+.quiz-fantome-ligne span { display: inline-flex; align-items: center; gap: 6px; }
+.quiz-piste { position: relative; height: 12px; border-radius: 12px; background: var(--surface-grise); border: 2px solid var(--bord); }
 .quiz-piste i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 10px; width: 0; transition: width 0.25s linear; }
 .quiz-piste-lui { background: repeating-linear-gradient(90deg, var(--doux) 0 6px, transparent 6px 10px); opacity: 0.6; }
-.quiz-piste-toi { background: var(--l5-fort, var(--rose)); }
-.quiz-piste-marque { position: absolute; top: -9px; left: 0; transform: translateX(-50%); font-size: 16px; transition: left 0.25s linear; }
+.quiz-piste-toi { background: var(--orange, var(--rose)); }
+.quiz-piste-marque { position: absolute; top: -12px; left: 0; transform: translateX(-50%); color: var(--doux); line-height: 0; transition: left 0.25s linear; }
+
+/* La question */
+.quiz-question {
+    background: var(--surface);
+    border: 2px solid var(--bord);
+    border-radius: 20px;
+    padding: 18px;
+}
 
 .quiz-compte {
     display: block;
     margin-bottom: 6px;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--doux);
 }
 
-.quiz-question {
-    background: var(--surface);
-    border: 2px solid var(--bord);
-    border-radius: 14px;
-    padding: 18px;
+.quiz-question .question-text {
+    margin-bottom: 14px;
+    font-family: var(--police-titre, inherit);
+    font-size: 1.25rem;
+    line-height: 1.4;
 }
 
-.quiz-question .question-text { font-size: 18px; line-height: 1.45; }
-
-.quiz-options { display: grid; gap: 8px; }
+/* Les réponses : des pilules A, B, C, D (AnswerOption d'expertenergie). */
+.quiz-options { display: grid; gap: 10px; }
 
 .quiz-option {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 12px;
-    width: 100%;
-    min-height: 48px;
-    padding: 10px 14px;
-    border-radius: 12px;
+    gap: 14px;
+    min-height: 60px;
+    padding: 8px 16px 8px 10px;
     border: 2px solid var(--bord);
-    background: var(--surface-grise);
+    border-radius: 22px;
+    background: var(--surface);
     color: var(--encre);
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: left;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.35;
     cursor: pointer;
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: background .15s var(--ease-out, ease), border-color .15s var(--ease-out, ease), transform .15s var(--ease-out, ease);
 }
 
-.quiz-option b {
+/* Le bouton radio reste là pour le clavier et les lecteurs d'écran. */
+.quiz-radio {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.quiz-lettre {
     flex: 0 0 auto;
-    width: 28px;
-    height: 28px;
-    border-radius: 9px;
     display: inline-grid;
     place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: 50%;
     background: var(--surface);
-    border: 1px solid var(--bord);
-    font-size: 13px;
-}
-
-.quiz-option:hover:not(:disabled) { background: var(--l5-pale, var(--rose-pale)); border-color: var(--l5-fort, var(--rose)); }
-.quiz-option:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.quiz-option:disabled { cursor: default; opacity: 0.7; }
-.quiz-option.juste { opacity: 1; border-color: var(--succes-bord); background: var(--succes-fond); color: var(--succes-texte); }
-.quiz-option.juste b { background: var(--succes-bord); border-color: var(--succes-bord); color: #fff; }
-.quiz-option.faux { opacity: 1; border-color: var(--erreur-bord); background: var(--erreur-fond); color: var(--erreur-texte); }
-.quiz-option.faux b { background: var(--erreur-bord); border-color: var(--erreur-bord); color: #fff; }
-
-.quiz-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 46px;
-    padding: 0 18px;
-    border-radius: 12px;
-    border: 1px solid var(--bord);
-    background: var(--surface);
-    color: var(--l5-rose, var(--rose));
-    font-family: inherit;
-    font-size: 15.5px;
+    font-family: var(--police-titre, inherit);
+    font-size: 1.05rem;
     font-weight: 800;
-    text-decoration: none;
-    cursor: pointer;
 }
-.quiz-btn:hover { filter: brightness(1.05); }
-.quiz-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.quiz-btn-plein { background: var(--l5-fort, var(--rose)); border-color: var(--l5-fort, var(--rose)); color: #fff; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18); transition: transform var(--duree-rapide, 150ms) ease, box-shadow var(--duree-rapide, 150ms) ease; }
-.quiz-btn-plein:active { transform: translateY(2px); box-shadow: none; }
-.quiz-option:active:not(:disabled) { transform: scale(0.99); }
-.quiz-fin-titre, .quiz-depart-titre { font-family: var(--police-titre, inherit); }
-.quiz-btn-or { background: var(--or-pale, #FFF3DC); border-color: transparent; color: var(--or-texte, #9A6A12); }
-.quiz-suivant { margin-top: 14px; width: 100%; }
-.quiz-suivant[hidden] { display: none; }
 
+.quiz-option > span { min-width: 0; overflow-wrap: anywhere; }
+
+.quiz-option:hover:not(.juste):not(.faux):not(.grisee) { border-color: var(--contour, var(--rose)); background: var(--rose-tres-pale, var(--surface-grise)); }
+.quiz-option:has(.quiz-radio:focus-visible) { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.quiz-option.choisie { border: 3px solid var(--contour, var(--encre)); background: var(--orange-pale, var(--rose-pale)); padding-left: 9px; }
+.quiz-option.choisie .quiz-lettre { background: var(--orange, var(--rose)); color: #1F2832; }
+
+.quiz-option.juste { border: 3px solid var(--succes-bord); background: var(--succes-fond); color: var(--succes-texte); padding-left: 9px; cursor: default; }
+.quiz-option.juste .quiz-lettre { border-color: var(--succes-bord); background: var(--succes-bord); color: #fff; }
+.quiz-option.faux { border: 3px solid var(--erreur-bord); background: var(--erreur-fond); color: var(--erreur-texte); padding-left: 9px; cursor: default; }
+.quiz-option.faux .quiz-lettre { border-color: var(--erreur-bord); background: var(--erreur-bord); color: #fff; }
+.quiz-option.grisee { background: var(--surface-grise); color: var(--doux); cursor: default; }
+.quiz-option.grisee .quiz-lettre { border-color: var(--bord); color: var(--doux); }
+
+.quiz-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    margin-top: 16px;
+}
+.quiz-valider { min-width: 160px; }
+.quiz-aide-clavier { margin: 0; font-size: 13.5px; color: var(--doux); }
+
+/* Le retour après « Valider » : Aya, la bonne réponse, l'explication. */
+.quiz-retour {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 12px 16px 12px 10px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: 20px;
+    background: var(--succes-fond);
+    color: var(--encre);
+    animation: quiz-apparait .35s var(--ease-out, ease) both;
+}
+.quiz-retour.faux { background: var(--erreur-fond); }
+.quiz-retour-aya { flex: 0 0 auto; margin-top: -4px; }
+.quiz-retour-texte { min-width: 0; }
+.quiz-retour-titre { display: block; margin-bottom: 4px; font-family: var(--police-titre, inherit); font-size: 1.15rem; }
+.quiz-retour.juste .quiz-retour-titre { color: var(--succes-texte); }
+.quiz-retour.faux .quiz-retour-titre { color: var(--erreur-texte); }
+.quiz-retour p { margin: 0 0 4px; line-height: 1.5; overflow-wrap: anywhere; }
+.quiz-retour p:last-child { margin-bottom: 0; }
+.quiz-explication { color: var(--doux); }
+
+@keyframes quiz-apparait {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Écran de départ et écran de fin */
 .quiz-depart, .quiz-fin {
-    text-align: center;
-    padding: 22px 16px;
+    padding: 20px 16px;
     background: var(--surface);
     border: 2px solid var(--bord);
-    border-radius: 14px;
+    border-radius: 20px;
+    text-align: center;
 }
 .quiz-depart p, .quiz-fin p { margin: 0 0 10px; }
-.quiz-depart-titre { font-size: 20px; font-weight: 900; color: var(--l5-rose, var(--rose)); }
-.quiz-depart-boutons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+.quiz-depart-guide, .quiz-fin-guide { margin: 0 auto 14px; max-width: 520px; text-align: left; }
+.quiz-depart-record { font-weight: 700; }
+.quiz-depart-niveau, .quiz-fin-niveau { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+.quiz-depart-niveau:empty, .quiz-fin-niveau:empty { display: none; }
+.quiz-depart-boutons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
 
-.quiz-fin { border-color: var(--succes-bord); }
-.quiz-fin-emoji { display: block; font-size: 46px; line-height: 1; margin-bottom: 8px; }
-.quiz-fin-titre { font-size: 22px; font-weight: 900; }
-.quiz-fin-titre:focus { outline: none; }
-.quiz-fin-score { color: var(--doux); }
-.quiz-fin-fantome { font-weight: 800; }
-.quiz-gains { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 8px 0 12px; }
+.quiz-fin-score { margin: 4px 0 8px; font-family: var(--police-titre, inherit); line-height: 1; }
+.quiz-fin-nombre { font-size: 3.4rem; font-weight: 800; color: var(--encre); }
+.quiz-fin-sur { font-size: 1.6rem; font-weight: 700; color: var(--doux); }
+.quiz-fin-pastilles { justify-content: center; margin: 14px 0 12px; }
+.quiz-fin-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 10px; }
+.quiz-fin-chips .ico-svg { color: var(--doux); }
+.quiz-fin-chips .chip-ok .ico-svg { color: currentColor; }
+.quiz-fin-fantome { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; }
+.guide-titre:focus { outline: none; }
+
+.quiz-gains { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 6px 0 4px; padding: 0; }
 .quiz-gain {
-    padding: 6px 12px;
+    padding: 6px 14px;
+    border: 2px solid var(--contour, var(--bord));
     border-radius: 999px;
-    background: var(--or-pale, #FFF3DC);
-    color: var(--or-texte, #9A6A12);
-    font-weight: 900;
-    font-size: 14px;
+    background: var(--energie, #F5C242);
+    color: #1F2832;
+    font-family: var(--police-titre, inherit);
+    font-weight: 700;
+    font-size: 0.98rem;
 }
-.quiz-gain.bonus { background: var(--succes-fond); color: var(--succes-texte); }
+
+/* La correction, repliable. */
+.quiz-correction { margin-top: 14px; }
+.quiz-correction > summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 16px;
+    border: 2px solid var(--bord);
+    border-radius: 999px;
+    background: var(--surface);
+    font-family: var(--police-titre, inherit);
+    font-weight: 700;
+    cursor: pointer;
+}
+.quiz-correction > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.quiz-correction .quiz-recap { margin-top: 10px; }
+
+@media (max-width: 480px) {
+    .quiz-etapes { padding: 14px 10px; }
+    .quiz-question { padding: 14px 12px; }
+    .quiz-question .question-text { font-size: 1.12rem; }
+    .quiz-option { gap: 10px; font-size: 1rem; }
+    .quiz-valider { flex: 1 1 100%; }
+    .quiz-retour-aya svg { width: 48px; height: auto; }
+}
+
+/* Un écran plus simple pour qui demande moins de mouvement. */
+@media (prefers-reduced-motion: reduce) {
+    .quiz-retour { animation: none; }
+    .quiz-option { transition: none; }
+}
 
 /* Récapitulatif de fin de quiz (les deux modes) */
 .quiz-recap {
@@ -424,9 +503,9 @@
 .quiz-recap-ligne p:last-child { margin-bottom: 0; }
 .quiz-recap-marque {
     flex: 0 0 auto;
-    width: 26px;
-    height: 26px;
-    border-radius: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     display: inline-grid;
     place-items: center;
     background: var(--succes-bord);

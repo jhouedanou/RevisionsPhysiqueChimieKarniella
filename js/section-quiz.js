@@ -40,10 +40,11 @@ function echapperHTML(texte) {
  * et les options sont insérés tels quels, comme dans le reste du quiz : ils
  * viennent de nos fichiers de données et peuvent contenir du HTML.
  */
-function recapitulatifHTML(questions, choix) {
+function recapitulatifHTML(questions, choix, reglages) {
+    const avecTitre = !(reglages && reglages.titre === false);
     const erreurs = questions.filter((q, i) => choix[i] !== q.correctAnswer).length;
     const bilan = erreurs === 0
-        ? 'Aucune erreur : tout est juste ! 🎉'
+        ? 'Aucune erreur : tout est juste !'
         : `${erreurs} erreur${erreurs > 1 ? 's' : ''} à revoir : ${erreurs > 1 ? 'elles sont marquées' : 'elle est marquée'} ✗.`;
 
     const lignes = questions.map((q, i) => {
@@ -56,7 +57,7 @@ function recapitulatifHTML(questions, choix) {
                     ${q.explanation ? `<p class="quiz-recap-explication">${q.explanation}</p>` : ''}`;
         return `
             <li class="quiz-recap-ligne ${juste ? 'juste' : 'faux'}">
-                <span class="quiz-recap-marque" role="img" aria-label="${juste ? 'Juste' : 'Faux'}">${juste ? '✓' : '✗'}</span>
+                <span class="quiz-recap-marque" role="img" aria-label="${juste ? 'Juste' : 'Faux'}">${quizIcone(juste ? 'coche' : 'croix', 16) || (juste ? '✓' : '✗')}</span>
                 <div>
                     <p class="quiz-recap-question"${langEnonce}><strong>${i + 1}.</strong> ${q.question}</p>
                     <p>Ta réponse : ${donnee === undefined ? '<em>pas de réponse</em>' : `<strong${langOptions}>${donnee}</strong>`}</p>${correction}
@@ -66,7 +67,7 @@ function recapitulatifHTML(questions, choix) {
 
     return `
         <div class="quiz-recap">
-            <h5 class="quiz-recap-titre">📋 Récapitulatif du quiz</h5>
+            ${avecTitre ? '<h5 class="quiz-recap-titre">Récapitulatif du quiz</h5>' : ''}
             <p class="quiz-recap-bilan">${bilan}</p>
             <ol class="quiz-recap-liste" role="list">${lignes}</ol>
         </div>`;
@@ -77,7 +78,7 @@ class SectionQuiz {
      * @param {string} containerId
      * @param {Array} questions
      * @param {Object} [options]
-     *   etapes  : true pour le quiz « une question à la fois » (chrono, XP, fantôme)
+     *   etapes  : true pour le quiz « une question à la fois » (Valider, chrono, XP, fantôme, révision)
      *   slug    : identifiant pour la progression (par défaut, la page)
      *   titre   : titre affiché en haut
      *   finir   : fonction appelée avec { correct, total, temps, xp } à la fin
@@ -238,28 +239,39 @@ class SectionQuiz {
     }
 
     /* ============================================================
-       Mode étapes : une question à la fois, chrono, XP, fantôme 👻
-       ============================================================ */
+       Mode étapes : une question à la fois, comme expertenergie
+       ============================================================
+       Choisir une réponse (clic, ou touches A à D), puis « Valider » (ou
+       Entrée). Aya réagit, les pastilles suivent l'avancement, et la fin
+       donne un niveau, des étoiles et les XP gagnés. Les erreurs sont
+       gardées pour « Réviser mes erreurs ». Un quiz commencé reprend où il
+       s'était arrêté si la page est rechargée.
+
+       `this.questions` reste la liste complète : la fiche à imprimer
+       (js/lecon-5e.js) la lit. Les questions jouées sont dans `this.serie`
+       (leurs numéros), qui n'en garde que les erreurs pendant une révision. */
 
     rendreEtapes() {
         if (!this.container) { console.error('Container not found for section quiz'); return; }
         const P = window.KarniellaProgression;
         this.record = P ? P.record(this.slug) : null;
-        this.index = 0;
-        this.correct = 0;
-        this.reponses = [];
-        this.choix = [];
-        this.details = [];
+        window.clearInterval(this.tic);
+        if (this.guetteur) { this.guetteur.disconnect(); }
         this.debut = null;
         this.fantomeActif = false;
+        this.revision = false;
+        this.serie = this.questions.map((q, i) => i);
+        this.remettreAZero();
 
         this.container.innerHTML = `
             <div class="section-quiz-wrapper quiz-etapes">
                 <div class="quiz-etapes-haut">
-                    <h4>${echapperHTML(this.options.titre || '🎯 Le quiz')}</h4>
-                    <span class="quiz-chrono" aria-live="off" title="Temps écoulé">⏱ <span class="quiz-chrono-n">0:00</span></span>
+                    <h4>${quizIcone('cible', 22)}<span>${echapperHTML(this.options.titre || 'Le quiz')}</span></h4>
+                    <div class="quiz-outils">
+                        <span class="chip quiz-chrono" title="Temps écoulé">${quizIcone('horloge', 16)}<span class="quiz-chrono-n">0:00</span></span>
+                    </div>
                 </div>
-                <div class="quiz-points" role="progressbar" aria-valuemin="0" aria-valuemax="${this.questions.length}" aria-valuenow="0" aria-label="Avancement du quiz"></div>
+                <div class="pastilles quiz-points" role="progressbar" aria-valuemin="0" aria-label="Avancement du quiz"></div>
                 <div class="quiz-fantome" hidden></div>
                 <div class="quiz-scene"></div>
             </div>`;
@@ -267,58 +279,183 @@ class SectionQuiz {
         this.elChrono = this.container.querySelector('.quiz-chrono-n');
         this.elFantome = this.container.querySelector('.quiz-fantome');
         this.elScene = this.container.querySelector('.quiz-scene');
+        this.elOutils = this.container.querySelector('.quiz-outils');
+        this.boutonSon = null;
+        this.poserBoutonSon();
+        this.poserPastilles();
 
-        this.questions.forEach(() => {
-            const i = document.createElement('i');
-            this.elPoints.appendChild(i);
-        });
+        if (!this.clavierBranche) {
+            this.clavierBranche = true;
+            document.addEventListener('keydown', (e) => this.clavier(e));
+        }
 
-        if (this.record && typeof this.record.temps === 'number') {
-            this.rendreAccueilFantome();
+        const enCours = lireEnCours(this.slug, this.questions.length);
+        if (enCours || this.record || this.revisables().length) {
+            this.rendreAccueil(enCours);
         } else {
-            this.demarrer(false);
+            this.lancer({});
         }
     }
 
-    /** Avant le départ, si un record existe : courir contre son fantôme, ou pas. */
-    rendreAccueilFantome() {
+    remettreAZero() {
+        this.index = 0;
+        this.correct = 0;
+        this.suite = 0;
+        this.meilleureSuite = 0;
+        this.reponses = [];
+        this.choix = [];
+        this.details = [];
+        this.selection = null;
+        this.valide = false;
+        this.dejaPasse = 0;
+    }
+
+    /** Le bouton « son » (js/jeu.js arrive parfois après le quiz). */
+    poserBoutonSon() {
+        const J = window.KarniellaJeu;
+        if (this.boutonSon || !J || !this.elOutils) { return; }
+        this.boutonSon = J.sons.bouton('btn btn-ghost btn-icone btn-petit quiz-son');
+        this.elOutils.appendChild(this.boutonSon);
+    }
+
+    poserPastilles() {
+        this.elPoints.hidden = false;
+        this.elPoints.textContent = '';
+        this.serie.forEach(() => this.elPoints.appendChild(document.createElement('i')));
+        this.elPoints.setAttribute('aria-valuemax', String(this.serie.length));
+        this.majPastilles();
+    }
+
+    majPastilles() {
+        this.elPoints.setAttribute('aria-valuenow', String(this.index + (this.valide ? 1 : 0)));
+        Array.prototype.forEach.call(this.elPoints.children, (i, k) => {
+            const fait = k < this.index || (k === this.index && this.valide);
+            i.className = fait ? (this.reponses[k] ? 'juste' : 'faux') : (k === this.index ? 'actif' : '');
+        });
+    }
+
+    /** Les numéros des questions ratées au dernier quiz (js/progression.js). */
+    revisables() {
+        const P = window.KarniellaProgression;
+        if (!P || !P.erreurs) { return []; }
+        const ratees = P.erreurs(this.slug);
+        if (!ratees.length) { return []; }
+        const liste = [];
+        this.questions.forEach((q, i) => {
+            if (ratees.indexOf(String(q.question).slice(0, 300)) !== -1) { liste.push(i); }
+        });
+        return liste;
+    }
+
+    /** Avant le départ : reprendre, battre son fantôme, ou réviser ses erreurs. */
+    rendreAccueil(enCours) {
+        const J = window.KarniellaJeu;
         const r = this.record;
+        const n = this.questions.length;
+        const erreurs = this.revisables();
+
+        let boutons = '';
+        if (enCours) {
+            boutons += `<button type="button" class="btn" data-depart="reprendre">${quizIcone('suivant', 20)}Reprendre à la question ${enCours.index + 1}</button>
+                <button type="button" class="btn btn-ghost" data-depart="normal">${quizIcone('rejouer', 20)}Recommencer</button>`;
+        } else if (r && typeof r.temps === 'number') {
+            boutons += `<button type="button" class="btn" data-depart="fantome">${quizIcone('fantome', 20)}Battre mon fantôme</button>
+                <button type="button" class="btn btn-ghost" data-depart="normal">Refaire tranquillement</button>`;
+        } else {
+            boutons += `<button type="button" class="btn" data-depart="normal">Commencer</button>`;
+        }
+        if (erreurs.length) {
+            boutons += `<button type="button" class="btn btn-energie" data-depart="revision">${quizIcone('rejouer', 20)}Réviser mes ${erreurs.length} erreur${erreurs.length > 1 ? 's' : ''}</button>`;
+        }
+
         this.elScene.innerHTML = `
             <div class="quiz-depart">
-                <p class="quiz-depart-titre">👻 Ton fantôme t'attend</p>
-                <p>Ton record ici : <strong>${r.correct}/${r.total}</strong> en <strong>${formaterTemps(r.temps)}</strong>.
-                Fais mieux, ou plus vite !</p>
-                <div class="quiz-depart-boutons">
-                    <button type="button" class="quiz-btn quiz-btn-plein" data-fantome="1">👻 Battre mon fantôme</button>
-                    <button type="button" class="quiz-btn" data-fantome="0">Refaire le quiz tranquillement</button>
-                </div>
+                <div class="quiz-depart-guide"></div>
+                ${r ? `<p class="quiz-depart-record">Ton record : <strong>${r.correct}/${r.total}</strong>${typeof r.temps === 'number' ? ` en <strong>${formaterTemps(r.temps)}</strong>` : ''}</p>
+                <div class="quiz-depart-niveau"></div>` : ''}
+                <div class="quiz-depart-boutons">${boutons}</div>
             </div>`;
-        this.elScene.querySelectorAll('[data-fantome]').forEach((b) => {
-            b.addEventListener('click', () => this.demarrer(b.getAttribute('data-fantome') === '1'));
+
+        const texte = enCours
+            ? `Tu t'étais arrêtée à la question ${enCours.index + 1} sur ${enCours.serie.length}.`
+            : `${n} questions. Choisis une réponse, puis valide.`;
+        const zoneGuide = this.elScene.querySelector('.quiz-depart-guide');
+        if (J) {
+            zoneGuide.appendChild(J.guide({ pose: 'wave', taille: 92, titre: enCours ? 'On reprend ?' : 'Prête pour le quiz ?', texte: texte }).el);
+        } else {
+            zoneGuide.innerHTML = `<p><strong>${enCours ? 'On reprend ?' : 'Prête pour le quiz ?'}</strong> ${texte}</p>`;
+        }
+        const zoneNiveau = this.elScene.querySelector('.quiz-depart-niveau');
+        if (zoneNiveau && J && r) {
+            const niv = J.niveau(r.correct, r.total);
+            zoneNiveau.appendChild(J.pastilleNiveau(niv));
+            zoneNiveau.appendChild(J.etoiles(niv.etoiles));
+        }
+
+        this.elScene.querySelectorAll('[data-depart]').forEach((b) => {
+            b.addEventListener('click', () => {
+                const quoi = b.getAttribute('data-depart');
+                if (quoi === 'reprendre') { this.lancer({ reprise: enCours }); }
+                else if (quoi === 'revision') { this.lancer({ revision: erreurs }); }
+                else {
+                    effacerEnCours(this.slug);
+                    this.lancer({ fantome: quoi === 'fantome' });
+                }
+            });
         });
     }
 
-    demarrer(fantome) {
-        this.fantomeActif = Boolean(fantome);
-        this.debut = null;
-        if (this.fantomeActif) {
-            this.elFantome.hidden = false;
-            this.elFantome.innerHTML = `
-                <div class="quiz-fantome-ligne"><span>👻 Fantôme : ${this.record.correct}/${this.record.total} en ${formaterTemps(this.record.temps)}</span><span class="quiz-fantome-toi">Toi : 0/${this.questions.length}</span></div>
-                <div class="quiz-piste"><i class="quiz-piste-lui"></i><i class="quiz-piste-toi"></i><span class="quiz-piste-marque" aria-hidden="true">👻</span></div>`;
+    /**
+     * Lance le quiz. mode.fantome : course contre le record ; mode.revision :
+     * les numéros des questions à revoir ; mode.reprise : le quiz sauvegardé.
+     */
+    lancer(mode) {
+        this.remettreAZero();
+        this.revision = Boolean(mode.revision || (mode.reprise && mode.reprise.revision));
+        this.fantomeActif = Boolean(mode.fantome && this.record && typeof this.record.temps === 'number');
+        this.serie = this.questions.map((q, i) => i);
+        if (mode.revision) { this.serie = mode.revision.slice(); }
+
+        const s = mode.reprise;
+        if (s) {
+            this.serie = s.serie.slice();
+            this.index = s.index;
+            this.reponses = s.reponses.slice();
+            this.choix = s.choix.slice();
+            this.dejaPasse = s.temps || 0;
+            this.reponses.forEach((juste, k) => {
+                const q = this.questions[this.serie[k]];
+                if (juste) { this.correct++; }
+                this.suite = juste ? this.suite + 1 : 0;
+                this.meilleureSuite = Math.max(this.meilleureSuite, this.suite);
+                this.details[k] = { q: q.question, r: q.options[this.choix[k]], b: q.options[q.correctAnswer], ok: juste };
+            });
         }
+
+        this.elFantome.hidden = !this.fantomeActif;
+        this.elFantome.textContent = '';
+        if (this.fantomeActif) {
+            this.elFantome.innerHTML = `
+                <div class="quiz-fantome-ligne"><span>${quizIcone('fantome', 18)} Fantôme : ${this.record.correct}/${this.record.total} en ${formaterTemps(this.record.temps)}</span><span class="quiz-fantome-toi">Toi : 0/${this.serie.length}</span></div>
+                <div class="quiz-piste"><i class="quiz-piste-lui"></i><i class="quiz-piste-toi"></i><span class="quiz-piste-marque" aria-hidden="true">${quizIcone('fantome', 18)}</span></div>`;
+        }
+        this.poserPastilles();
         this.rendreQuestion();
+        if (mode.fantome || mode.revision || mode.reprise) { this.remonter(); }
 
         // Le quiz est construit au chargement de la page, souvent dans un onglet
         // encore caché : le chrono ne part que quand il arrive à l'écran. Sinon
         // tout le temps de lecture de la leçon comptait dans le premier record
         // du fantôme et dans la durée envoyée au suivi.
+        this.debut = null;
+        window.clearInterval(this.tic);
         const partir = () => {
             if (this.debut) { return; }
             this.debut = Date.now();
             this.tic = window.setInterval(() => this.majChrono(), 250);
             this.majChrono();
         };
+        this.majChrono();
         if (!this.container || !('IntersectionObserver' in window)) { partir(); return; }
         if (this.guetteur) { this.guetteur.disconnect(); }
         this.guetteur = new window.IntersectionObserver((entrees) => {
@@ -331,7 +468,7 @@ class SectionQuiz {
     }
 
     secondes() {
-        return this.debut ? (Date.now() - this.debut) / 1000 : 0;
+        return this.dejaPasse + (this.debut ? (Date.now() - this.debut) / 1000 : 0);
     }
 
     majChrono() {
@@ -349,73 +486,157 @@ class SectionQuiz {
     majPiste() {
         const toi = this.elFantome && this.elFantome.querySelector('.quiz-piste-toi');
         const texte = this.elFantome && this.elFantome.querySelector('.quiz-fantome-toi');
-        if (toi) { toi.style.width = (this.index / this.questions.length * 100) + '%'; }
-        if (texte) { texte.textContent = 'Toi : ' + this.index + '/' + this.questions.length; }
+        if (toi) { toi.style.width = (this.index / this.serie.length * 100) + '%'; }
+        if (texte) { texte.textContent = 'Toi : ' + this.index + '/' + this.serie.length; }
+    }
+
+    questionCourante() {
+        return this.questions[this.serie[this.index]];
     }
 
     rendreQuestion() {
-        const q = this.questions[this.index];
+        const q = this.questionCourante();
         const n = this.index + 1;
+        const total = this.serie.length;
         const langEnonce = attributLangue(q.langue);
         const langOptions = attributLangue(q.optionsLangue || q.langue);
-        const lettres = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-        this.elPoints.setAttribute('aria-valuenow', String(this.index));
-        Array.prototype.forEach.call(this.elPoints.children, (i, k) => {
-            i.className = k < this.index ? (this.reponses[k] ? 'juste' : 'faux') : (k === this.index ? 'actif' : '');
-        });
+        const id = `${this.container.id}-e${this.index}`;
+        this.selection = null;
+        this.valide = false;
+        this.poserBoutonSon();
+        this.majPastilles();
 
         this.elScene.innerHTML = `
             <div class="quiz-question">
-                <span class="quiz-compte">Question ${n} sur ${this.questions.length}</span>
-                <p class="question-text"${langEnonce}>${q.question}</p>
-                <div class="quiz-options">
+                <span class="quiz-compte">${this.revision ? 'Révision · ' : ''}Question ${n} sur ${total}</span>
+                <p class="question-text" id="${id}-enonce"${langEnonce}>${q.question}</p>
+                <div class="quiz-options" role="radiogroup" aria-labelledby="${id}-enonce">
                     ${q.options.map((o, i) => `
-                        <button type="button" class="quiz-option" data-index="${i}">
-                            <b data-lire-ignore>${lettres[i] || i + 1}</b><span${langOptions}>${o}</span>
-                        </button>`).join('')}
+                        <label class="quiz-option" data-index="${i}">
+                            <input type="radio" class="quiz-radio" name="${id}" value="${i}">
+                            <b class="quiz-lettre" data-lire-ignore aria-hidden="true">${QUIZ_LETTRES[i] || i + 1}</b><span${langOptions}>${o}</span>
+                        </label>`).join('')}
                 </div>
-                <div class="question-feedback" aria-live="polite"></div>
-                <button type="button" class="quiz-btn quiz-btn-plein quiz-suivant" hidden>
-                    ${n < this.questions.length ? 'Question suivante →' : 'Voir mon résultat →'}
-                </button>
+                <div class="quiz-actions">
+                    <button type="button" class="btn quiz-valider" disabled>Valider</button>
+                    <p class="quiz-aide-clavier">Touches A à ${QUIZ_LETTRES[q.options.length - 1] || 'D'} pour choisir, Entrée pour valider.</p>
+                </div>
+                <div class="quiz-retour-zone" aria-live="polite"></div>
             </div>`;
 
-        this.elScene.querySelectorAll('.quiz-option').forEach((b) => {
-            b.addEventListener('click', () => this.repondre(parseInt(b.getAttribute('data-index'), 10)));
+        this.elScene.querySelectorAll('.quiz-radio').forEach((r) => {
+            r.addEventListener('change', () => this.choisir(parseInt(r.value, 10), false));
         });
-        this.elScene.querySelector('.quiz-suivant').addEventListener('click', () => this.suivant());
+        this.elScene.querySelector('.quiz-valider').addEventListener('click', () => this.action());
 
         if (window.LectureVocale) { window.LectureVocale.equiper(this.elScene); }
-        const premier = this.elScene.querySelector('.quiz-option');
+        const premier = this.elScene.querySelector('.quiz-radio');
         if (premier && this.index > 0) { premier.focus({ preventScroll: true }); }
     }
 
-    repondre(choix) {
-        const q = this.questions[this.index];
+    /** Une réponse choisie, pas encore validée. */
+    choisir(i, auClavier) {
+        if (this.valide) { return; }
+        const radios = this.elScene.querySelectorAll('.quiz-radio');
+        if (!radios[i]) { return; }
+        if (this.selection !== i && window.KarniellaJeu) { window.KarniellaJeu.sons.jouer('choix'); }
+        this.selection = i;
+        radios[i].checked = true;
+        if (auClavier) { radios[i].focus({ preventScroll: true }); }
+        this.elScene.querySelectorAll('.quiz-option').forEach((l, k) => l.classList.toggle('choisie', k === i));
+        this.elScene.querySelector('.quiz-valider').disabled = false;
+    }
+
+    /** Le bouton du bas : « Valider », puis « Question suivante ». */
+    action() {
+        if (this.valide) { this.suivant(); } else { this.valider(); }
+    }
+
+    /**
+     * Touches A à D (ou 1 à 4) pour choisir, Entrée pour valider puis passer
+     * à la suite. Seulement quand le quiz est à l'écran et que Karniella
+     * n'écrit pas ailleurs (le chat, la recherche).
+     */
+    clavier(e) {
+        if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) { return; }
+        if (!this.elScene || !this.elScene.isConnected || !this.elScene.offsetParent) { return; }
+        if (!this.elScene.querySelector('.quiz-question')) { return; }
+        const cible = e.target;
+        if (cible !== document.body && !this.container.contains(cible)) { return; }
+        if (e.key === 'Enter') {
+            // Sur un bouton, le navigateur fait déjà le clic.
+            if (cible.closest && cible.closest('button, a, summary')) { return; }
+            if (!this.valide && this.selection === null) { return; }
+            e.preventDefault();
+            this.action();
+            return;
+        }
+        if (this.valide || !e.key || e.key.length !== 1) { return; }
+        let i = QUIZ_LETTRES.indexOf(e.key.toUpperCase());
+        if (i === -1 && /^[1-6]$/.test(e.key)) { i = parseInt(e.key, 10) - 1; }
+        if (i < 0 || i >= this.questionCourante().options.length) { return; }
+        e.preventDefault();
+        this.choisir(i, true);
+    }
+
+    valider() {
+        if (this.valide || this.selection === null) { return; }
+        const J = window.KarniellaJeu;
+        const q = this.questionCourante();
+        const choix = this.selection;
         const juste = choix === q.correctAnswer;
-        const boutons = this.elScene.querySelectorAll('.quiz-option');
-        boutons.forEach((b, i) => {
-            b.disabled = true;
-            if (i === q.correctAnswer) { b.classList.add('juste'); b.querySelector('b').textContent = '✓'; }
-            else if (i === choix) { b.classList.add('faux'); b.querySelector('b').textContent = '✗'; }
+        this.valide = true;
+
+        this.elScene.querySelectorAll('.quiz-option').forEach((l, i) => {
+            l.querySelector('.quiz-radio').disabled = true;
+            const lettre = l.querySelector('.quiz-lettre');
+            if (i === q.correctAnswer) { l.classList.add('juste'); lettre.innerHTML = quizIcone('coche', 20) || '✓'; }
+            else if (i === choix) { l.classList.add('faux'); lettre.innerHTML = quizIcone('croix', 20) || '✗'; }
+            else { l.classList.add('grisee'); }
         });
+
         if (juste) { this.correct++; }
+        this.suite = juste ? this.suite + 1 : 0;
+        this.meilleureSuite = Math.max(this.meilleureSuite, this.suite);
         this.reponses[this.index] = juste;
         this.choix[this.index] = choix;
         this.details[this.index] = { q: q.question, r: q.options[choix], b: q.options[q.correctAnswer], ok: juste };
+        if (J) { J.sons.jouer(juste ? 'juste' : 'faux'); }
+        this.majPastilles();
+        ecrireEnCours(this.slug, {
+            n: this.questions.length,
+            serie: this.serie,
+            index: this.index + 1,
+            reponses: this.reponses,
+            choix: this.choix,
+            revision: this.revision,
+            temps: Math.round(this.secondes())
+        });
 
-        const retour = this.elScene.querySelector('.question-feedback');
-        retour.className = 'question-feedback ' + (juste ? 'feedback-correct' : 'feedback-incorrect');
-        retour.innerHTML = juste
-            ? `✓ <strong>Exact !</strong> ${q.explanation || ''}`
-            : `✗ <strong>Pas tout à fait.</strong> La bonne réponse : <strong>${q.options[q.correctAnswer]}</strong><br>${q.explanation || ''}`;
+        // La réaction d'Aya, la bonne réponse et l'explication.
+        const langOptions = attributLangue(q.optionsLangue || q.langue);
+        const titre = juste
+            ? (this.suite >= 3 ? `${this.suite} bonnes réponses de suite !` : quizAuHasard(QUIZ_REACTIONS_JUSTE))
+            : quizAuHasard(QUIZ_REACTIONS_FAUX);
+        const zone = this.elScene.querySelector('.quiz-retour-zone');
+        zone.innerHTML = `
+            <div class="quiz-retour ${juste ? 'juste' : 'faux'}">
+                ${J ? `<div class="quiz-retour-aya" aria-hidden="true">${J.dessin(juste ? 'cheer' : 'think', 64)}</div>` : ''}
+                <div class="quiz-retour-texte">
+                    <strong class="quiz-retour-titre">${titre}</strong>
+                    ${juste ? '' : `<p>Bonne réponse : <b>${QUIZ_LETTRES[q.correctAnswer]}.</b> <span${langOptions}>${q.options[q.correctAnswer]}</span></p>`}
+                    ${q.explanation ? `<p class="quiz-explication">${q.explanation}</p>` : ''}
+                </div>
+            </div>`;
 
-        const suivant = this.elScene.querySelector('.quiz-suivant');
-        suivant.hidden = false;
-        suivant.focus({ preventScroll: true });
+        const bouton = this.elScene.querySelector('.quiz-valider');
+        const dernier = this.index + 1 >= this.serie.length;
+        bouton.innerHTML = (dernier ? 'Voir mon résultat' : 'Question suivante') + quizIcone('suivant', 20);
+        bouton.focus({ preventScroll: true });
+        const aide = this.elScene.querySelector('.quiz-aide-clavier');
+        if (aide) { aide.textContent = 'Entrée pour continuer.'; }
         // Sur téléphone, l'explication peut pousser le bouton sous l'écran : on le montre.
-        const bas = suivant.getBoundingClientRect().bottom;
+        const bas = zone.getBoundingClientRect().bottom;
         if (bas > window.innerHeight) {
             const doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             window.scrollBy({ top: bas - window.innerHeight + 16, behavior: doux ? 'smooth' : 'auto' });
@@ -424,8 +645,9 @@ class SectionQuiz {
 
     suivant() {
         this.index++;
+        this.valide = false;
         this.majPiste();
-        if (this.index < this.questions.length) { this.rendreQuestion(); } else { this.terminer(); }
+        if (this.index < this.serie.length) { this.rendreQuestion(); } else { this.terminer(); }
         this.remonter();
     }
 
@@ -450,13 +672,16 @@ class SectionQuiz {
 
     terminer() {
         window.clearInterval(this.tic);
+        effacerEnCours(this.slug);
+        const J = window.KarniellaJeu;
+        const XP = window.KarniellaXP;
+        const P = window.KarniellaProgression;
         const temps = this.secondes();
-        const total = this.questions.length;
+        const total = this.serie.length;
         const correct = this.correct;
         const pct = Math.round(correct / total * 100);
-
-        Array.prototype.forEach.call(this.elPoints.children, (i, k) => { i.className = this.reponses[k] ? 'juste' : 'faux'; });
-        this.elPoints.setAttribute('aria-valuenow', String(total));
+        const jouees = this.serie.map((i) => this.questions[i]);
+        const ratees = jouees.filter((q, k) => !this.reponses[k]).map((q) => q.question);
 
         // Le fantôme : battu ou pas ? (comparé AVANT d'enregistrer le nouveau record)
         let fantome = '';
@@ -464,52 +689,164 @@ class SectionQuiz {
             const r = this.record;
             const battu = correct > r.correct || (correct === r.correct && temps < r.temps);
             fantome = battu
-                ? `👻 Tu as battu ton fantôme${correct === r.correct ? ' de ' + formaterTemps(r.temps - temps) : ' avec un meilleur score'} !`
-                : '👻 Le fantôme gagne cette fois. Rejoue, tu le rattrapes !';
+                ? `Tu as battu ton fantôme${correct === r.correct ? ' de ' + formaterTemps(r.temps - temps) : ' avec un meilleur score'} !`
+                : 'Le fantôme gagne cette fois. Rejoue, tu vas le rattraper !';
         }
 
         // XP (js/xp.js) et progression (js/progression.js), chargés par le chat.
+        // Une révision ne compte pas pour le record : elle ne rapporte que ses bonnes réponses.
         let xp = null;
-        if (window.KarniellaXP) { xp = window.KarniellaXP.gagnerQuiz(correct, total, this.slug); }
-        if (window.KarniellaProgression) {
-            window.KarniellaProgression.enregistrerQuiz(this.slug, correct, total, null, { temps: temps, fantome: this.fantomeActif, details: this.details });
+        if (XP) { xp = XP.gagnerQuiz(correct, total, this.slug, { temps: temps, suite: this.meilleureSuite, revision: this.revision }); }
+        if (P) {
+            if (this.revision) {
+                if (P.enregistrerRevision) { P.enregistrerRevision(this.slug, correct, total); }
+            } else {
+                P.enregistrerQuiz(this.slug, correct, total, null, { temps: temps, fantome: this.fantomeActif, details: this.details, suite: this.meilleureSuite });
+            }
+            if (P.noterErreurs) { P.noterErreurs(this.slug, ratees); }
         }
         if (pct >= 80 && window.KarniellaFete) { window.KarniellaFete(); }
 
-        let emoji = '📚', message = 'Relis la leçon et retente !';
-        if (pct === 100) { emoji = '🎉'; message = 'Sans faute, bravo !'; }
-        else if (pct >= 66) { emoji = '👍'; message = 'Bien joué !'; }
-        else if (pct >= 33) { emoji = '💪'; message = 'Continue tes efforts !'; }
+        const niv = J ? J.niveau(correct, total) : null;
+        if (J) { J.sons.jouer(niv && niv.id === 'expert' && !this.revision ? 'fanfare' : 'fini'); }
+        const eclair = !this.revision && XP && XP.estEclair && XP.estEclair(correct, total, temps);
 
-        const gains = xp ? `
-            <div class="quiz-gains">
-                <span class="quiz-gain">+${xp.base} XP · ${correct} bonne${correct > 1 ? 's' : ''} réponse${correct > 1 ? 's' : ''}</span>
-                ${xp.bonus ? `<span class="quiz-gain bonus">+${xp.bonus} XP · sans faute</span>` : ''}
-            </div>` : '';
+        let titre;
+        let message;
+        if (this.revision) {
+            titre = correct === total ? 'Toutes tes erreurs sont corrigées !' : 'Révision terminée';
+            message = ratees.length
+                ? `Il reste ${ratees.length} question${ratees.length > 1 ? 's' : ''} à revoir.`
+                : 'La révision ne change pas ton record.';
+        } else {
+            titre = pct === 100 ? 'Sans faute, bravo !' : niv && niv.id === 'expert' ? 'Excellent !' : niv && niv.id === 'acquis' ? 'Bien joué !' : 'Courage !';
+            message = niv ? niv.message : '';
+        }
+
+        const gains = [];
+        if (xp) {
+            gains.push(`+${xp.base} XP · ${correct} bonne${correct > 1 ? 's' : ''} réponse${correct > 1 ? 's' : ''}`);
+            if (xp.bonus) { gains.push(`+${xp.bonus} XP · sans faute`); }
+            if (xp.eclair) { gains.push(`+${xp.eclair} XP · éclair`); }
+            if (xp.serie) { gains.push(`+${xp.serie} XP · série de ${this.meilleureSuite}`); }
+        }
         const boutique = window.KarniellaCoquille ? window.KarniellaCoquille.racine + 'boutique.html' : null;
+        const nbRatees = ratees.length;
+        const peutReviser = nbRatees > 0 && P && P.erreurs;
 
+        // Les pastilles du haut reviennent dans le résultat.
         this.elFantome.hidden = true;
+        this.elPoints.hidden = true;
         this.elScene.innerHTML = `
-            <div class="quiz-fin">
-                <span class="quiz-fin-emoji" aria-hidden="true">${emoji}</span>
-                <p class="quiz-fin-titre">${message}</p>
-                <p class="quiz-fin-score">Score : <strong>${correct}/${total}</strong> en <strong>${formaterTemps(temps)}</strong></p>
-                ${gains}
-                ${fantome ? `<p class="quiz-fin-fantome">${fantome}</p>` : ''}
+            <div class="quiz-fin${this.revision ? ' quiz-fin-revision' : ''}">
+                <div class="quiz-fin-guide"></div>
+                <p class="quiz-fin-score"><span class="lecteur-seul">Score : </span><strong class="quiz-fin-nombre">${correct}</strong><span class="quiz-fin-sur">/${total}</span></p>
+                <div class="quiz-fin-niveau"></div>
+                <div class="pastilles quiz-fin-pastilles" aria-hidden="true">${this.reponses.map((j) => `<i class="${j ? 'juste' : 'faux'}"></i>`).join('')}</div>
+                <div class="quiz-fin-chips">
+                    <span class="chip">${quizIcone('horloge', 16)}${formaterTemps(temps)}</span>
+                    ${eclair ? `<span class="chip chip-ok">${quizIcone('eclair', 16)}Éclair</span>` : ''}
+                    ${this.meilleureSuite >= 3 ? `<span class="chip">${quizIcone('cible', 16)}Série de ${this.meilleureSuite}</span>` : ''}
+                </div>
+                ${fantome ? `<p class="quiz-fin-fantome">${quizIcone('fantome', 20)} ${fantome}</p>` : ''}
+                ${gains.length ? `<ul class="quiz-gains" role="list">${gains.map((g) => `<li class="quiz-gain">${g}</li>`).join('')}</ul>` : ''}
                 <div class="quiz-depart-boutons">
-                    <button type="button" class="quiz-btn quiz-btn-plein quiz-rejouer">👻 Rejouer contre mon fantôme</button>
-                    ${boutique && xp ? `<a class="quiz-btn quiz-btn-or" href="${boutique}">⭐ Boutique</a>` : ''}
+                    ${peutReviser ? `<button type="button" class="btn btn-energie quiz-reviser">${quizIcone('rejouer', 20)}Réviser ${nbRatees > 1 ? `mes ${nbRatees} erreurs` : 'mon erreur'}</button>` : ''}
+                    <button type="button" class="btn${peutReviser ? ' btn-ghost' : ''} quiz-rejouer">${quizIcone('rejouer', 20)}${this.revision ? 'Refaire tout le quiz' : 'Rejouer'}</button>
+                    ${boutique && xp ? `<a class="btn btn-ghost" href="${boutique}">${quizIcone('trophee', 20)}Boutique</a>` : ''}
                 </div>
             </div>
-            ${recapitulatifHTML(this.questions, this.choix)}`;
-        this.elScene.querySelector('.quiz-rejouer').addEventListener('click', () => this.rendreEtapes());
-        this.elScene.querySelector('.quiz-fin-titre').setAttribute('tabindex', '-1');
-        this.elScene.querySelector('.quiz-fin-titre').focus({ preventScroll: true });
+            <details class="quiz-correction"${nbRatees ? ' open' : ''}>
+                <summary>Voir la correction</summary>
+                ${recapitulatifHTML(jouees, this.choix, { titre: false })}
+            </details>`;
+
+        const zoneGuide = this.elScene.querySelector('.quiz-fin-guide');
+        if (J) {
+            const reussi = this.revision ? !nbRatees : niv.id !== 'a-reprendre';
+            const g = J.guide({ pose: reussi ? 'cheer' : 'think', taille: 96, titre: titre, texte: message });
+            zoneGuide.appendChild(g.el);
+        } else {
+            zoneGuide.innerHTML = `<p><strong>${titre}</strong> ${message}</p>`;
+        }
+        const zoneNiveau = this.elScene.querySelector('.quiz-fin-niveau');
+        if (J && niv && !this.revision) {
+            zoneNiveau.appendChild(J.pastilleNiveau(niv, true));
+            zoneNiveau.appendChild(J.etoiles(niv.etoiles, true));
+        }
+
+        const reviser = this.elScene.querySelector('.quiz-reviser');
+        if (reviser) {
+            reviser.addEventListener('click', () => {
+                const liste = this.revisables();
+                if (liste.length) { this.lancer({ revision: liste }); this.remonter(); }
+            });
+        }
+        this.elScene.querySelector('.quiz-rejouer').addEventListener('click', () => {
+            this.rendreEtapes();
+            this.remonter();
+        });
+        const titreFin = this.elScene.querySelector('.guide-titre, .quiz-fin-guide strong');
+        if (titreFin) {
+            titreFin.setAttribute('tabindex', '-1');
+            titreFin.focus({ preventScroll: true });
+        }
 
         if (typeof this.options.finir === 'function') {
-            this.options.finir({ correct: correct, total: total, temps: temps, xp: xp });
+            this.options.finir({ correct: correct, total: total, temps: temps, xp: xp, revision: this.revision });
         }
     }
+}
+
+const QUIZ_LETTRES = 'ABCDEF';
+const QUIZ_REACTIONS_JUSTE = ['Exactement.', 'Bien vu !', 'C’est ça.', 'Juste !', 'Parfait.'];
+const QUIZ_REACTIONS_FAUX = ['Pas tout à fait.', 'Presque.', 'Ce n’est pas celle-là.'];
+
+function quizAuHasard(liste) {
+    return liste[Math.floor(Math.random() * liste.length)];
+}
+
+/** Un pictogramme au trait de js/coquille.js, ou rien. */
+function quizIcone(nom, taille) {
+    return window.KarniellaIcones ? window.KarniellaIcones.svg(nom, taille) : '';
+}
+
+/* Le quiz en cours, pour reprendre après un rechargement : une entrée par
+   page, oubliée au bout de 7 jours ou si le nombre de questions a changé. */
+const QUIZ_CLE_EN_COURS = 'karniella-quiz-en-cours';
+const QUIZ_EN_COURS_DUREE = 7 * 24 * 3600 * 1000;
+
+function lireTousEnCours() {
+    try {
+        const d = JSON.parse(window.localStorage.getItem(QUIZ_CLE_EN_COURS) || '{}');
+        return d && typeof d === 'object' ? d : {};
+    } catch (err) { return {}; }
+}
+
+function lireEnCours(slug, n) {
+    const e = lireTousEnCours()[slug];
+    if (!e || e.n !== n || !Array.isArray(e.serie) || !Array.isArray(e.reponses)) { return null; }
+    if (Date.now() - (e.date || 0) > QUIZ_EN_COURS_DUREE) { return null; }
+    if (e.index < 1 || e.index >= e.serie.length) { return null; }
+    if (e.serie.some((i) => typeof i !== 'number' || i < 0 || i >= n)) { return null; }
+    return e;
+}
+
+function ecrireEnCours(slug, etat) {
+    const tous = lireTousEnCours();
+    etat.date = Date.now();
+    tous[slug] = etat;
+    // Pas plus de 10 quiz en attente : on oublie les plus anciens.
+    const cles = Object.keys(tous).sort((a, b) => (tous[b].date || 0) - (tous[a].date || 0));
+    cles.slice(10).forEach((c) => { delete tous[c]; });
+    try { window.localStorage.setItem(QUIZ_CLE_EN_COURS, JSON.stringify(tous)); } catch (err) { /* sans conséquence */ }
+}
+
+function effacerEnCours(slug) {
+    const tous = lireTousEnCours();
+    if (!tous[slug]) { return; }
+    delete tous[slug];
+    try { window.localStorage.setItem(QUIZ_CLE_EN_COURS, JSON.stringify(tous)); } catch (err) { /* sans conséquence */ }
 }
 
 /** 42 → « 0:42 », 75.4 → « 1:15 ». */

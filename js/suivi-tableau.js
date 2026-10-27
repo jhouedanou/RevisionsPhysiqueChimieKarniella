@@ -309,7 +309,7 @@
 
     /** La leçon, et sous elle, en dépliant : chaque question, sa réponse, la bonne. */
     function celluleQuiz(q) {
-        var titre = nomPage(q.page) + (q.serie ? ' (chat)' : '');
+        var titre = nomPage(q.page) + (!q.serie ? '' : /^revision-/.test(q.serie) ? ' (révision des erreurs)' : ' (chat)');
         if (!q.details || !q.details.length) { return titre; }
         var bloc = el('details', 'reponses');
         bloc.appendChild(el('summary', '', titre));

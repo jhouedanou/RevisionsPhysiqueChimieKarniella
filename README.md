@@ -440,7 +440,9 @@ Chargée par `chat-assistant.js` : aucune page HTML à modifier.
 L'accueil affiche la série, l'objectif du jour (une leçon + un quiz) et la dernière
 leçon ouverte. `js/badges.js` déduit les badges de la progression, les garde une fois
 gagnés (clé `karniella-badges`) et affiche un message de félicitations à chaque nouveau
-badge, ou au premier progrès du jour quand la série continue.
+badge, ou au premier progrès du jour quand la série continue. Chaque nouveau badge
+s'affiche dans la bannière « Récompense débloquée » avec sa médaille dessinée
+(`js/jeu.js`). Badges du quiz : Série de 5, Éclair, Niveau expert, Réviseuse.
 
 ### 📅 Emploi du temps
 
@@ -493,7 +495,9 @@ Comme sur une plateforme de cours en ligne :
 ### ⭐ XP et boutique
 
 `js/xp.js` (clé `karniella-xp`) : **+10 XP par bonne réponse, +50 XP pour un
-sans-faute** (quiz d'au moins 3 questions). `boutique.html` propose **27
+sans-faute** (quiz d'au moins 3 questions), **+20 XP « Éclair »** (80 % juste, 8 s
+au plus par question, au moins 5 questions) et **+20 XP « Série »** (5 bonnes
+réponses de suite). Une révision des erreurs ne rapporte que ses bonnes réponses. `boutique.html` propose **27
 récompenses en 6 rayons**, de 100 à 1 500 XP, qui changent vraiment l'application :
 
 | Rayon | Effet | Exemples |
@@ -528,14 +532,49 @@ traductions vivent dans `scripts/traductions-anglais.json` ;
 ### 🎯 Quiz en étapes et mode Ghost 👻
 
 `initSectionQuiz(id, questions, { etapes: true })` affiche **une question à la
-fois** : feedback immédiat, chrono, points d'avancement, écran final avec les XP.
-Sous l'écran final, un **📋 récapitulatif** reprend chaque question avec la
-réponse donnée ; pour une erreur, il redonne la bonne réponse et l'explication.
+fois**, comme expertenergie : on **choisit** une réponse (clic, ou touches **A à D**
+/ 1 à 4), puis on **valide** (bouton ou **Entrée**). Aya réagit (« Bien vu ! »,
+« Presque. »), redonne la bonne réponse et l'explication ; des pastilles suivent
+l'avancement. L'écran final donne le score, un **niveau** (À reprendre, Acquis,
+Niveau expert : 12/15 et 8/15 au prorata), **1 à 3 étoiles**, le temps, la meilleure
+série et le détail des XP. La **correction** est repliée dessous (ouverte s'il y a
+des erreurs).
+
+- **Réviser mes erreurs** : les questions ratées sont gardées
+  (`KarniellaProgression.noterErreurs` / `erreurs`) ; le bouton les repose seules.
+  Une révision ne change pas le record (`enregistrerRevision`).
+- **Reprise** : un quiz commencé est sauvé à chaque réponse (clé
+  `karniella-quiz-en-cours`) ; après un rechargement, « Reprendre à la question N ».
+- `this.questions` reste la liste complète : la **fiche à imprimer** la lit pour
+  le quiz à cocher et son corrigé.
+
 Le quiz « toutes les questions d'un coup », le mode « Interroge-moi » du chat et
 les pages `francais-quiz.html` / `education-civique-quiz.html` ont le même.
 `js/progression.js` garde le **record chronométré** de chaque quiz
 (`KarniellaProgression.record(slug)`). Au quiz suivant, « 👻 Battre mon fantôme »
 fait courir l'ancien record sur une piste pendant qu'on répond.
+
+### 🎮 Mécanismes de jeu (repris de brikelec, expertenergie et quizRH)
+
+`css/jeu.css` (chargé en dernier sur chaque page) et `js/jeu.js` (chargé par
+`js/coquille.js`, exposé en `window.KarniellaJeu`) :
+
+- **Le look** : fond bleu clair, cartes blanches, traits d'encre de 3 px, boutons
+  pilules orange (`.btn`, `.btn-ghost`, `.btn-energie`), puces (`.chip`). Les
+  couleurs sont des variables de `css/theme.css` (`--orange`, `--contour`,
+  `--energie`, `--marine`…), avec leur version sombre ; les thèmes de la boutique
+  marchent toujours.
+- **Aya**, l'élève dessinée qui guide Karniella (`KarniellaJeu.guide`,
+  `dessin(pose)` : idle, wave, cheer, point, think). Son visage sert de logo.
+- **Sons** synthétisés (Web Audio) : choix, juste, faux, fin, fanfare, récompense.
+  Bouton son dans la barre (caché sous 480 px) et dans le quiz ; clé `karniella-son`.
+- **Récompense débloquée** : la bannière des badges (`KarniellaJeu.recompense`).
+- **Jauge** (`KarniellaJeu.jauge`) : « Ma jauge de l'année » sur l'accueil (moyenne
+  des meilleurs scores), « Ma jauge » sur chaque page de matière.
+- **Chemin des leçons** (`js/chemin.js`, pages `5e/<matiere>.html`) : un rond
+  numéroté par leçon, relié au suivant, coloré quand le quiz est fait ; la
+  prochaine leçon est entourée. Chaque carte montre étoiles, niveau, meilleur
+  score et erreurs à réviser.
 
 ### 🚀 Missions de 3 minutes
 

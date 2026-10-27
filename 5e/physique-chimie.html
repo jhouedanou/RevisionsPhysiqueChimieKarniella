@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="physique-chimie">
+<body class="lecon-5e page-matiere" data-matiere="physique-chimie">
 <header>
 <span class="badge-niveau">Classe de 5e</span>
 <h1>⚡ Physique-Chimie</h1>
@@ -24,41 +25,55 @@
 <main class="content">
   <section class="container">
     <h2>Mes leçons — 4 leçons disponibles</h2>
-      <div class="grille-lecons">
-      <a class="carte-lecon" href="physique-chimie-revisions-rentree.html">
-        <span class="icone" aria-hidden="true">🔌</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Révisions de rentrée</h3>
-        <p>Circuits électriques et états de la matière</p>
-        <p>Ce qu&#39;il faut avoir retenu de la 6e avant d&#39;attaquer le programme.</p>
-      </a>
-      <a class="carte-lecon" href="physique-chimie-les-melanges.html">
-        <span class="icone" aria-hidden="true">🥤</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Les mélanges</h3>
-        <p>Dissolution et mélange homogène</p>
-        <p>Le sucre dans l&#39;eau : il ne disparaît pas, il se dissout.</p>
-      </a>
-      <a class="carte-lecon" href="physique-chimie-tension-nominale.html">
-        <span class="icone" aria-hidden="true">🔋</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Tension nominale d&#39;un générateur et d&#39;un récepteur</h3>
-        <p>Leçon 1 — Sous-tension, surtension, lampe adaptée</p>
-        <p>Les inscriptions sur une pile et une lampe, et ce qui se passe quand les tensions ne vont pas ensemble.</p>
-      </a>
-      <a class="carte-lecon" href="physique-chimie-association-lampes.html">
-        <span class="icone" aria-hidden="true">💡</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Association de lampes électriques</h3>
-        <p>Leçon 2 — En série, en dérivation, court-circuit</p>
-        <p>Une seule boucle ou une boucle par lampe : ce qui change quand une lampe grille.</p>
-      </a>
-      </div>
+      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+      <li class="chemin-etape" data-lecon="physique-chimie-revisions-rentree">
+        <span class="chemin-numero" aria-hidden="true">1</span>
+        <a class="carte-lecon" href="physique-chimie-revisions-rentree.html">
+          <span class="icone" aria-hidden="true">🔌</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Révisions de rentrée</h3>
+          <p>Circuits électriques et états de la matière</p>
+          <p>Ce qu&#39;il faut avoir retenu de la 6e avant d&#39;attaquer le programme.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="physique-chimie-les-melanges">
+        <span class="chemin-numero" aria-hidden="true">2</span>
+        <a class="carte-lecon" href="physique-chimie-les-melanges.html">
+          <span class="icone" aria-hidden="true">🥤</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Les mélanges</h3>
+          <p>Dissolution et mélange homogène</p>
+          <p>Le sucre dans l&#39;eau : il ne disparaît pas, il se dissout.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="physique-chimie-tension-nominale">
+        <span class="chemin-numero" aria-hidden="true">3</span>
+        <a class="carte-lecon" href="physique-chimie-tension-nominale.html">
+          <span class="icone" aria-hidden="true">🔋</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Tension nominale d&#39;un générateur et d&#39;un récepteur</h3>
+          <p>Leçon 1 — Sous-tension, surtension, lampe adaptée</p>
+          <p>Les inscriptions sur une pile et une lampe, et ce qui se passe quand les tensions ne vont pas ensemble.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="physique-chimie-association-lampes">
+        <span class="chemin-numero" aria-hidden="true">4</span>
+        <a class="carte-lecon" href="physique-chimie-association-lampes.html">
+          <span class="icone" aria-hidden="true">💡</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Association de lampes électriques</h3>
+          <p>Leçon 2 — En série, en dérivation, court-circuit</p>
+          <p>Une seule boucle ou une boucle par lampe : ce qui change quand une lampe grille.</p>
+        </a>
+      </li>
+      </ol>
   </section>
 </main>
 
 <p class="pied">Révisions de Karniella · 5e · 2026-2027</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

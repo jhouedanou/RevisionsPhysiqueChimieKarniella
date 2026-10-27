@@ -393,6 +393,75 @@
         return li;
     }
 
+    /* ------------------------------------------------------------
+       Aya, la jauge de l'année et les récompenses (js/jeu.js)
+       ------------------------------------------------------------ */
+
+    /** Toutes les leçons prêtes, avec leur meilleur score au quiz (ou null). */
+    function bilanAnnee() {
+        var pages = window.KarniellaProgression.pages();
+        var bilan = { total: 0, somme: 0, acquises: 0, aReviser: null };
+        window.KarniellaProgramme.matieres.forEach(function (m) {
+            (m.lecons || []).forEach(function (l) {
+                if (l.statut !== 'prete') { return; }
+                bilan.total++;
+                var p = pages[l.id];
+                if (!p || p.meilleurScore === null) { return; }
+                bilan.somme += p.meilleurScore;
+                if (p.meilleurScore * 15 >= 8 * 100) { bilan.acquises++; }
+                if (p.erreurs && (!bilan.aReviser || p.erreurs > bilan.aReviser.erreurs)) {
+                    bilan.aReviser = { lecon: l, erreurs: p.erreurs };
+                }
+            });
+        });
+        return bilan;
+    }
+
+    /** Ce que dit Aya : le plus utile d'abord. L'objectif du jour a déjà sa carte. */
+    function conseilAya(jour, bilan, lecon) {
+        if (bilan.aReviser) {
+            var n = bilan.aReviser.erreurs;
+            return { pose: 'point', titre: 'Petit défi', texte: 'Révise ' + (n > 1 ? 'tes ' + n + ' erreurs' : 'ton erreur') +
+                ' dans « ' + bilan.aReviser.lecon.titre + ' ». C\'est dans son quiz.' };
+        }
+        if (jour.lecons > 0 && jour.quiz > 0) {
+            return { pose: 'cheer', titre: 'Bravo pour aujourd\'hui !', texte: 'Refais un quiz pour gagner une étoile de plus.' };
+        }
+        if (lecon) {
+            return { pose: 'wave', titre: 'On continue ?', texte: 'Reprends « ' + lecon.titre + ' », puis fais son quiz.' };
+        }
+        return { pose: 'wave', titre: 'Bienvenue !', texte: 'Choisis une matière. Lis une leçon, puis fais son quiz.' };
+    }
+
+    function heros(jour) {
+        var J = window.KarniellaJeu;
+        if (!J || !window.KarniellaProgramme) { return null; }
+        var bilan = bilanAnnee();
+        var bloc = creer('div', 'galop-heros');
+
+        var conseil = conseilAya(jour, bilan, leconAReprendre());
+        bloc.appendChild(J.guide({ pose: conseil.pose, taille: 100, titre: conseil.titre, texte: conseil.texte }).el);
+
+        var cote = creer('div', 'galop-jauge');
+        cote.appendChild(J.jauge({
+            titre: 'Ma jauge de l\'année',
+            pct: bilan.total ? bilan.somme / bilan.total : 0,
+            aide: bilan.acquises + ' leçon' + (bilan.acquises > 1 ? 's' : '') + ' acquise' + (bilan.acquises > 1 ? 's' : '') +
+                ' au quiz, sur ' + bilan.total + '.'
+        }));
+        if (window.KarniellaBadges) {
+            var badges = window.KarniellaBadges.liste();
+            var gagnes = badges.filter(function (b) { return b.obtenu; }).length;
+            var lien = creer('a', 'chip galop-recompenses');
+            lien.href = '#mes-badges';
+            lien.innerHTML = window.KarniellaIcones ? window.KarniellaIcones.svg('trophee', 18) : '';
+            lien.appendChild(document.createTextNode('Récompenses ' + gagnes + '/' + badges.length));
+            cote.appendChild(lien);
+        }
+        bloc.appendChild(cote);
+        return bloc;
+    }
+
     function rendreGalop() {
         var zone = $('mon-galop');
         if (!zone) { return; }
@@ -406,6 +475,8 @@
         zone.appendChild(creer('h1', 'salut', salutation()));
         var titreAchete = window.KarniellaXP && window.KarniellaXP.titre();
         if (titreAchete) { zone.appendChild(creer('p', 'titre-achete', '👑 ' + titreAchete)); }
+        var bandeau = heros(jour);
+        if (bandeau) { zone.appendChild(bandeau); }
 
         var grille = creer('div', 'galop-grille');
 
@@ -477,9 +548,19 @@
         if (gagnes === badges.length) { $('badges-compte').textContent = 'Tous gagnés ! Tu es la reine de l\'écurie. 👑'; }
 
         liste.textContent = '';
+        var jeu = window.KarniellaJeu;
         badges.forEach(function (b) {
             var li = creer('li', 'badge' + (b.obtenu ? ' obtenu' : ''));
-            li.appendChild(creer('span', 'badge-icone', b.obtenu ? b.icone : '🔒')).setAttribute('aria-hidden', 'true');
+            var icone = creer('span', 'badge-icone');
+            // Médaille dessinée (js/jeu.js) ; les badges de la boutique gardent leur emoji.
+            if (jeu && !b.achete) {
+                icone.className += ' badge-medaille';
+                icone.innerHTML = jeu.medaille(b.id, 52, !b.obtenu, b.teinte);
+            } else {
+                icone.textContent = b.obtenu ? b.icone : '🔒';
+            }
+            icone.setAttribute('aria-hidden', 'true');
+            li.appendChild(icone);
             li.appendChild(creer('strong', 'badge-nom', b.nom));
             li.appendChild(creer('span', 'badge-quoi', b.quoi));
             li.appendChild(creer('span', 'lecteur-seul', b.obtenu ? ' — gagné' : ' — pas encore gagné'));

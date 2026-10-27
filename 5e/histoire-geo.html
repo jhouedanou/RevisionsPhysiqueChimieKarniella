@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="histoire-geo">
+<body class="lecon-5e page-matiere" data-matiere="histoire-geo">
 <header>
 <span class="badge-niveau">Classe de 5e</span>
 <h1>🌍 Histoire-Géographie</h1>
@@ -24,34 +25,45 @@
 <main class="content">
   <section class="container">
     <h2>Mes leçons — 3 leçons disponibles</h2>
-      <div class="grille-lecons">
-      <a class="carte-lecon" href="histoire-geo-exploitation-documents.html">
-        <span class="icone" aria-hidden="true">📑</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>L&#39;exploitation de documents</h3>
-        <p>Histoire — Méthode, avant la leçon 1</p>
-        <p>Ton cahier d&#39;histoire : les trois gestes avant de répondre, et les formules pour l&#39;idée générale et l&#39;explication.</p>
-      </a>
-      <a class="carte-lecon" href="histoire-geo-premiers-habitants.html">
-        <span class="icone" aria-hidden="true">🗺️</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Les premiers habitants de la Côte d&#39;Ivoire</h3>
-        <p>Histoire — Thème 1 : Le peuplement de la Côte d&#39;Ivoire, leçon 1</p>
-        <p>Les traces, les quatre groupes proto, les Pygmées et les Gban.</p>
-      </a>
-      <a class="carte-lecon" href="histoire-geo-milieu-physique.html">
-        <span class="icone" aria-hidden="true">🏞️</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Le milieu physique de la Côte d&#39;Ivoire et l&#39;installation des populations</h3>
-        <p>Géographie — Thème 1 : L&#39;homme et le milieu, leçon 1</p>
-        <p>Ton cahier : le relief (plaines, plateaux, montagnes), le climat, la végétation et les sols, puis où les hommes s&#39;installent.</p>
-      </a>
-      </div>
+      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+      <li class="chemin-etape" data-lecon="histoire-geo-exploitation-documents">
+        <span class="chemin-numero" aria-hidden="true">1</span>
+        <a class="carte-lecon" href="histoire-geo-exploitation-documents.html">
+          <span class="icone" aria-hidden="true">📑</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>L&#39;exploitation de documents</h3>
+          <p>Histoire — Méthode, avant la leçon 1</p>
+          <p>Ton cahier d&#39;histoire : les trois gestes avant de répondre, et les formules pour l&#39;idée générale et l&#39;explication.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="histoire-geo-premiers-habitants">
+        <span class="chemin-numero" aria-hidden="true">2</span>
+        <a class="carte-lecon" href="histoire-geo-premiers-habitants.html">
+          <span class="icone" aria-hidden="true">🗺️</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Les premiers habitants de la Côte d&#39;Ivoire</h3>
+          <p>Histoire — Thème 1 : Le peuplement de la Côte d&#39;Ivoire, leçon 1</p>
+          <p>Les traces, les quatre groupes proto, les Pygmées et les Gban.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="histoire-geo-milieu-physique">
+        <span class="chemin-numero" aria-hidden="true">3</span>
+        <a class="carte-lecon" href="histoire-geo-milieu-physique.html">
+          <span class="icone" aria-hidden="true">🏞️</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Le milieu physique de la Côte d&#39;Ivoire et l&#39;installation des populations</h3>
+          <p>Géographie — Thème 1 : L&#39;homme et le milieu, leçon 1</p>
+          <p>Ton cahier : le relief (plaines, plateaux, montagnes), le climat, la végétation et les sols, puis où les hommes s&#39;installent.</p>
+        </a>
+      </li>
+      </ol>
   </section>
 </main>
 
 <p class="pied">Révisions de Karniella · 5e · 2026-2027</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

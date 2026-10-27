@@ -42,7 +42,21 @@
         soleil: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
         loupe: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
         fusee: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
-        panier: '<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>'
+        panier: '<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>',
+        son: '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',
+        muet: '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M22 9l-6 6M16 9l6 6"/>',
+        croix: '<path d="M18 6 6 18M6 6l12 12"/>',
+        coche: '<path d="M20 6 9 17l-5-5"/>',
+        horloge: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+        eclair: '<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',
+        imprimer: '<path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>',
+        cartes: '<rect x="2" y="6" width="14" height="16" rx="2"/><path d="M8 2h12a2 2 0 0 1 2 2v14"/>',
+        suivant: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+        rejouer: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+        cible: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+        trophee: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
+        fantome: '<path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>',
+        calendrier: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'
     };
 
     function svg(nom, taille) {
@@ -79,6 +93,33 @@
         document.head.appendChild(script);
     }
     chargerServiceWorker();
+
+    /**
+     * Les mécanismes de jeu (js/jeu.js) : sons, récompenses, Aya la guide.
+     * À leur arrivée, le logo prend le visage d'Aya et le bouton du son
+     * rejoint la barre.
+     */
+    function chargerJeu() {
+        if (window.KarniellaJeu) { return; }
+        var script = document.createElement('script');
+        script.src = RACINE + 'js/jeu.js';
+        script.onload = brancherJeu;
+        document.head.appendChild(script);
+    }
+    chargerJeu();
+
+    var jeuBranche = false;
+
+    /** Appelé à l'arrivée de js/jeu.js et à la construction de la barre : le premier des deux attend l'autre. */
+    function brancherJeu() {
+        var J = window.KarniellaJeu;
+        if (jeuBranche || !J || !barre || !zoneOutils) { return; }
+        jeuBranche = true;
+        var signe = barre.querySelector('.coquille-logo .signe');
+        if (signe) { signe.innerHTML = J.visage(34); }
+        zoneOutils.appendChild(J.sons.bouton('reglage'));
+        placerAvatar();
+    }
 
     var barre = null;
     var zoneOutils = null;
@@ -405,6 +446,7 @@
     function initialiser() {
         assurerBarre();
         placerAvatar();
+        brancherJeu();
         attendreModules();
     }
 
