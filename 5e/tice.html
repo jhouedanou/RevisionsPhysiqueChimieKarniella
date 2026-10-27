@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="tice">
+<body class="lecon-5e page-matiere" data-matiere="tice">
 <header>
 <span class="badge-niveau">Classe de 5e</span>
 <h1>💻 TICE</h1>
@@ -24,27 +25,35 @@
 <main class="content">
   <section class="container">
     <h2>Mes leçons — 2 leçons disponibles</h2>
-      <div class="grille-lecons">
-      <a class="carte-lecon" href="tice-initiation-ordinateur.html">
-        <span class="icone" aria-hidden="true">💻</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Initiation à l&#39;utilisation d&#39;un ordinateur</h3>
-        <p>Révision des notions — Leçon 1</p>
-        <p>Ton cahier : l&#39;informatique, le système informatique, le matériel et le logiciel, puis démarrer et éteindre l&#39;ordinateur.</p>
-      </a>
-      <a class="carte-lecon" href="tice-performance-ordinateur.html">
-        <span class="icone" aria-hidden="true">⚙️</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Éléments de performance d&#39;un ordinateur</h3>
-        <p>Leçon 2</p>
-        <p>Ton cahier : le processeur (Hz, GHz), la mémoire RAM (octets, Go) et le disque dur.</p>
-      </a>
-      </div>
+      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+      <li class="chemin-etape" data-lecon="tice-initiation-ordinateur">
+        <span class="chemin-numero" aria-hidden="true">1</span>
+        <a class="carte-lecon" href="tice-initiation-ordinateur.html">
+          <span class="icone" aria-hidden="true">💻</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Initiation à l&#39;utilisation d&#39;un ordinateur</h3>
+          <p>Révision des notions — Leçon 1</p>
+          <p>Ton cahier : l&#39;informatique, le système informatique, le matériel et le logiciel, puis démarrer et éteindre l&#39;ordinateur.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="tice-performance-ordinateur">
+        <span class="chemin-numero" aria-hidden="true">2</span>
+        <a class="carte-lecon" href="tice-performance-ordinateur.html">
+          <span class="icone" aria-hidden="true">⚙️</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Éléments de performance d&#39;un ordinateur</h3>
+          <p>Leçon 2</p>
+          <p>Ton cahier : le processeur (Hz, GHz), la mémoire RAM (octets, Go) et le disque dur.</p>
+        </a>
+      </li>
+      </ol>
   </section>
 </main>
 
 <p class="pied">Révisions de Karniella · 5e · 2026-2027</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

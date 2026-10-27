@@ -175,6 +175,8 @@
             // Mode Ghost 👻 : le temps mis, en secondes, et si c'était une course contre le fantôme.
             if (extra && typeof extra.temps === 'number') { tentative.temps = Math.round(extra.temps); }
             if (extra && extra.fantome) { tentative.fantome = true; }
+            // La plus longue suite de bonnes réponses (badge « Série de 5 »).
+            if (extra && typeof extra.suite === 'number') { tentative.suite = extra.suite; }
             page.quiz.push(tentative);
             page.quiz = page.quiz.slice(-MAX_QUIZ_GARDES);
             // Un quiz compte une fois, pas à chaque réponse d'une même série.
@@ -189,6 +191,41 @@
             serie: serie ? String(serie).slice(0, 80) : null,
             details: (extra && extra.details) ? detailsCourts(extra.details) : null
         });
+    }
+
+    /**
+     * « Réviser mes erreurs » : un quiz réduit aux questions ratées. Il compte
+     * pour la série de jours et le badge « Réviseuse », mais pas pour le
+     * meilleur score, le record ni le niveau de la leçon : 3/3 sur les erreurs
+     * ne vaut pas un sans-faute sur tout le quiz.
+     */
+    function enregistrerRevision(slug, correct, total) {
+        if (!slug || !total) { return; }
+        var donnees = lire();
+        var page = entree(donnees, slug);
+        page.revisions = (page.revisions || 0) + 1;
+        noterJour(donnees, 'quiz');
+        ecrire(donnees);
+        // Une série unique par révision : le tableau de suivi garde une ligne par série.
+        signaler({ type: 'quiz', page: slug, matiere: page.matiere || null, score: correct, total: total, duree: null, serie: 'revision-' + Date.now(), details: null });
+    }
+
+    /**
+     * Les questions ratées au dernier quiz d'une page (leur énoncé), pour
+     * « Réviser mes erreurs ». `liste` remplace la précédente ; vide, elle l'efface.
+     */
+    function noterErreurs(slug, liste) {
+        if (!slug) { return; }
+        var donnees = lire();
+        var page = entree(donnees, slug);
+        var propre = (liste || []).map(function (q) { return String(q).slice(0, 300); }).slice(0, 60);
+        if (propre.length) { page.erreurs = propre; } else { delete page.erreurs; }
+        ecrire(donnees);
+    }
+
+    function erreurs(slug) {
+        var page = lire().pages[slug];
+        return (page && page.erreurs) ? page.erreurs.slice() : [];
     }
 
     /** Meilleure tentative chronométrée : d'abord le score, puis le temps le plus court. */
@@ -264,7 +301,9 @@
             meilleurScore: meilleurScore(page),
             derniereVisite: page.derniereVisite || null,
             etapesLues: (page.etapesLues || []).slice(),
-            lue: !!page.lue
+            lue: !!page.lue,
+            erreurs: (page.erreurs || []).length,
+            revisions: page.revisions || 0
         };
     }
 
@@ -353,7 +392,9 @@
                 meilleurScore: meilleurScore(p),
                 derniereVisite: p.derniereVisite || null,
                 matiere: p.matiere,
-                lue: !!p.lue
+                lue: !!p.lue,
+                erreurs: (p.erreurs || []).length,
+                revisions: p.revisions || 0
             };
         });
         return liste;
@@ -377,6 +418,9 @@
     window.KarniellaProgression = {
         marquerVisite: marquerVisite,
         enregistrerQuiz: enregistrerQuiz,
+        enregistrerRevision: enregistrerRevision,
+        noterErreurs: noterErreurs,
+        erreurs: erreurs,
         enregistrerQuestion: enregistrerQuestion,
         marquerLecture: marquerLecture,
         record: record,

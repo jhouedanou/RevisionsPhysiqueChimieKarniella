@@ -42,6 +42,14 @@
           quoi: 'Fais 100 % à un quiz.', test: function (s) { return s.sansFaute >= 1; } },
         { id: 'cavaliere-quiz', icone: '🎖️', nom: 'Cavalière des quiz',
           quoi: 'Termine 10 quiz.', test: function (s) { return s.quiz >= 10; } },
+        { id: 'serie-5', icone: '📈', nom: 'Série de 5',
+          quoi: 'Enchaîne 5 bonnes réponses dans un quiz.', test: function (s) { return s.suite5 >= 1; } },
+        { id: 'eclair', icone: '⚡', nom: 'Éclair',
+          quoi: 'Réussis un quiz à 80 % en moins de 8 secondes par question.', test: function (s) { return s.eclair >= 1; } },
+        { id: 'expert', icone: '⭐', nom: 'Niveau expert',
+          quoi: 'Atteins le niveau expert à un quiz.', test: function (s) { return s.expert >= 1; } },
+        { id: 'revision', icone: '🔁', nom: 'Réviseuse',
+          quoi: 'Révise tes erreurs avec « Réviser mes erreurs ».', test: function (s) { return s.revisions >= 1; } },
         { id: 'exploratrice', icone: '🧭', nom: 'Exploratrice',
           quoi: 'Révise dans 3 matières différentes.', test: function (s) { return s.matieres >= 3; } },
         { id: 'serie-3', icone: '🔥', nom: 'Trois jours au trot',
@@ -62,6 +70,7 @@
             return {
                 id: 'matiere-' + m.id,
                 icone: m.icone,
+                teinte: m.couleur,
                 nom: m.nom + ' : tout vu',
                 quoi: 'Ouvre toutes les leçons de ' + m.nom + '.',
                 test: function (s) {
@@ -86,16 +95,22 @@
             (m.lecons || []).forEach(function (l) { lecons[l.id] = m.id; });
         });
 
-        var s = { pages: pages, lecons: 0, matieres: 0, questions: 0, quiz: 0, sansFaute: 0, record: serie.record };
+        var s = { pages: pages, lecons: 0, matieres: 0, questions: 0, quiz: 0, sansFaute: 0, record: serie.record,
+                  suite5: 0, eclair: 0, expert: 0, revisions: 0 };
         var matieres = {};
 
         Object.keys(pages).forEach(function (slug) {
             var p = pages[slug];
             s.questions += p.questions || 0;
+            s.revisions += p.revisions || 0;
             (p.quiz || []).forEach(function (q) {
                 if (q.total < QUESTIONS_MIN_QUIZ) { return; }
                 s.quiz += 1;
                 if (q.correct === q.total) { s.sansFaute += 1; }
+                if ((q.suite || 0) >= 5) { s.suite5 += 1; }
+                // Barème d'expertenergie : 12 sur 15, au prorata.
+                if (q.correct * 15 >= 12 * q.total) { s.expert += 1; }
+                if (q.total >= 5 && typeof q.temps === 'number' && q.temps > 0 && q.correct >= 0.8 * q.total && q.temps <= 8 * q.total) { s.eclair += 1; }
             });
             if (lecons[slug] && p.visites > 0) {
                 s.lecons += 1;
@@ -139,7 +154,7 @@
                     nouveaux.push(b);
                 }
             }
-            return { id: b.id, icone: b.icone, nom: b.nom, quoi: b.quoi, obtenu: obtenu, date: stock.obtenus[b.id] || null };
+            return { id: b.id, icone: b.icone, teinte: b.teinte || null, nom: b.nom, quoi: b.quoi, obtenu: obtenu, date: stock.obtenus[b.id] || null };
         });
 
         if (nouveaux.length) { ecrireStock(stock); }
@@ -153,7 +168,12 @@
     var elToast = null;
     var minuteur = null;
 
-    function feliciter(icone, titre, texte) {
+    function feliciter(icone, titre, texte, recompense) {
+        // La bannière de brikelec (js/jeu.js) ; l'ancienne si elle n'est pas là.
+        if (window.KarniellaJeu && recompense) {
+            window.KarniellaJeu.recompense(recompense);
+            return;
+        }
         if (!elToast) {
             elToast = document.createElement('a');
             elToast.className = 'badge-toast';
@@ -225,6 +245,15 @@
         var r = calculer(true);
 
         if (r.nouveaux.length) { feter(); }
+        if (window.KarniellaJeu && r.nouveaux.length) {
+            // Une bannière par récompense, empilées, comme dans brikelec.
+            r.nouveaux.forEach(function (x, i) {
+                window.setTimeout(function () {
+                    feliciter(x.icone, x.nom, x.quoi, { id: x.id, nom: x.nom, quoi: x.quoi, teinte: x.teinte });
+                }, i * 400);
+            });
+            return;
+        }
         if (r.nouveaux.length === 1) {
             var b = r.nouveaux[0];
             feliciter(b.icone, 'Nouveau badge : ' + b.nom + ' !', b.quoi + ' C\'est fait. 🎉');
@@ -242,8 +271,9 @@
         if (actif && serie.actuelle >= 2 && r.stock.serieAnnoncee !== serie.jour) {
             r.stock.serieAnnoncee = serie.jour;
             ecrireStock(r.stock);
-            feliciter('🔥', serie.actuelle + ' jours de suite !',
-                serie.actuelle >= serie.record ? 'C\'est ton record. Continue comme ça !' : 'Ton record : ' + serie.record + ' jours.');
+            var quoi = serie.actuelle >= serie.record ? 'C\'est ton record. Continue comme ça !' : 'Ton record : ' + serie.record + ' jours.';
+            feliciter('🔥', serie.actuelle + ' jours de suite !', quoi,
+                { id: 'serie-3', etiquette: 'Série de jours', nom: serie.actuelle + ' jours de suite !', quoi: quoi });
         }
     }
 

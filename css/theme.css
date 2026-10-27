@@ -13,6 +13,12 @@
  * depuis data/programme-5e.json.
  */
 
+/* Le look « jeu illustré » de brikelec et d'expertenergie : fond ciel, encre
+   foncée, traits épais sur les boutons et les pastilles, orange pour l'action,
+   vert pour la réussite. Les composants de ce style sont dans css/jeu.css.
+   Les anciens noms (--rose…) sont gardés : toutes les feuilles les lisent.
+   --rose est maintenant l'accent du texte (marine), plus un rose. */
+
 :root {
     color-scheme: light;
 
@@ -22,106 +28,126 @@
     --police-titre: 'Baloo 2', 'Nunito', 'Avenir Next', 'Segoe UI', sans-serif;
     --police-texte: 'Nunito', 'Nunito Sans', 'Avenir Next', 'Segoe UI', sans-serif;
 
-    /* Style « clay » : cartes rebondies, ombres douces, pression au toucher. */
-    --rayon-carte: 20px;
-    --rayon-bouton: 14px;
-    --ombre-clay: 0 2px 0 rgba(73, 30, 50, 0.06), 0 12px 28px rgba(73, 30, 50, 0.10);
-    --ombre-clay-forte: 0 3px 0 rgba(73, 30, 50, 0.08), 0 18px 40px rgba(73, 30, 50, 0.16);
-    --duree-rapide: 150ms;
-    --duree-normale: 220ms;
+    --rayon-carte: 26px;
+    --rayon-bouton: 999px;
+    --ombre-clay: 0 6px 18px rgba(31, 40, 50, 0.10);
+    --ombre-clay-forte: 0 10px 26px rgba(31, 40, 50, 0.16);
+    --duree-rapide: 180ms;
+    --duree-normale: 250ms;
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
 
-    --fond: #FFF9FB;
-    --fond-degrade: linear-gradient(165deg, #FFE9F2 0%, #FFF9FB 45%, #FDF3E7 100%);
+    --fond: #E6F3F9;
+    --fond-degrade: #E6F3F9;
     --surface: #FFFFFF;
-    --surface-douce: #FFF6FA;
-    --surface-grise: #FAF6F8;
-    --surface-voilee: rgba(255, 255, 255, 0.6);
+    --surface-douce: #F3F9FC;
+    --surface-grise: #F1F5F8;
+    --surface-voilee: rgba(255, 255, 255, 0.75);
 
-    --encre: #49353F;
-    --doux: #75606B;          /* 5:1 sur blanc — l'ancien #8A7480 tombait à 4:1 */
-    --bord: rgba(72, 40, 55, 0.14);
-    --ombre: 0 10px 30px rgba(73, 30, 50, 0.12);
-    --ombre-forte: 0 14px 28px rgba(73, 30, 50, 0.16);
+    --encre: #1F2832;
+    --doux: #44525F;
+    --bord: #C9DBE6;
+    --ombre: 0 6px 18px rgba(31, 40, 50, 0.10);
+    --ombre-forte: 0 10px 26px rgba(31, 40, 50, 0.16);
 
-    --rose: #9D2F5C;
-    --rose-clair: #C83F76;
-    --rose-pale: #FBE7EF;
-    --rose-tres-pale: #FFF4F8;
-    --entete-fonce: #35212D;
+    --rose: #26456F;
+    --rose-clair: #3F80C4;
+    --rose-pale: #E3EEF7;
+    --rose-tres-pale: #F1F7FB;
+    --entete-fonce: #1F2832;
 
-    --focus: #8A2BE2;
-    --surligne: #FFE08A;
+    --focus: #26456F;
+    --surligne: #FFD9AE;
 
-    --succes-fond: #E4F5E8;
-    --succes-texte: #1F5C33;
-    --succes-bord: #3C9A57;
-    --erreur-fond: #FBE4E9;
-    --erreur-texte: #8B2318;
-    --erreur-bord: #C0392B;
+    --succes-fond: #E1F3E5;
+    --succes-texte: #0B7A28;
+    --succes-bord: #0B7A28;
+    --erreur-fond: #FBE3E0;
+    --erreur-texte: #B3392F;
+    --erreur-bord: #B3392F;
 
     /* Encadrés des leçons, un ton par nature d'information */
-    --boite-exemple: #E9F3FB;
-    --boite-exemple-texte: #2F6F9D;
-    --boite-important: #FFF3DC;
-    --boite-important-texte: #8A5E0E;
-    --boite-important-bord: #C98A1E;
-    --boite-note: #EAF5EC;
-    --boite-note-texte: #2C7742;
-    --boite-dialogue: #F7F2FA;
+    --boite-exemple: #E8F3FA;
+    --boite-exemple-texte: #26456F;
+    --boite-important: #FFF6E3;
+    --boite-important-texte: #A85200;
+    --boite-important-bord: #E3C99B;
+    --boite-note: #E1F3E5;
+    --boite-note-texte: #0B7A28;
+    --boite-dialogue: #F3F9FC;
 
     /* Série de jours */
-    --chaud-debut: #FFF3E0;
-    --chaud-fin: #FFE3EE;
-    --or-debut: #FFF8E1;
+    --chaud-debut: #FFF3D1;
+    --chaud-fin: #FFF3D1;
+    --or-debut: #FFF6E3;
+
+    /* Le jeu (css/jeu.css) */
+    --contour: #1F2832;          /* le trait épais des boutons et des pastilles */
+    --orange: #ED7F06;           /* l'action ; jamais en texte (2,9:1) */
+    --orange-survol: #D97100;
+    --orange-encre: #A85200;     /* l'orange lisible en texte (5,4:1) */
+    --orange-pale: #FFF3D1;
+    --vert: #0D9330;
+    --energie: #F5C242;
+    --energie-survol: #EBB52C;
+    --marine: #26456F;
+    --ombre-bouton: 0 3px 8px rgba(31, 40, 50, 0.14);
+    --ombre-bouton-survol: 0 6px 14px rgba(31, 40, 50, 0.18);
 }
 
 html[data-theme="dark"] {
     color-scheme: dark;
 
-    --ombre-clay: 0 2px 0 rgba(0, 0, 0, 0.25), 0 12px 28px rgba(0, 0, 0, 0.35);
-    --ombre-clay-forte: 0 3px 0 rgba(0, 0, 0, 0.3), 0 18px 40px rgba(0, 0, 0, 0.5);
+    --ombre-clay: 0 6px 18px rgba(0, 0, 0, 0.35);
+    --ombre-clay-forte: 0 10px 26px rgba(0, 0, 0, 0.5);
 
-    --fond: #1B1418;
-    --fond-degrade: linear-gradient(165deg, #241820 0%, #1B1418 50%, #1E1915 100%);
-    --surface: #2A2027;
-    --surface-douce: #32262E;
-    --surface-grise: #2E242B;
-    --surface-voilee: rgba(42, 32, 39, 0.7);
+    --fond: #121A23;
+    --fond-degrade: #121A23;
+    --surface: #1C2733;
+    --surface-douce: #223142;
+    --surface-grise: #1F2B38;
+    --surface-voilee: rgba(28, 39, 51, 0.8);
 
-    --encre: #F3E6EC;
-    --doux: #C4B0BA;
-    --bord: rgba(255, 220, 235, 0.14);
-    --ombre: 0 10px 30px rgba(0, 0, 0, 0.35);
-    --ombre-forte: 0 14px 28px rgba(0, 0, 0, 0.45);
+    --encre: #EAF2F7;
+    --doux: #B3C2CE;
+    --bord: #34485C;
+    --ombre: 0 6px 18px rgba(0, 0, 0, 0.35);
+    --ombre-forte: 0 10px 26px rgba(0, 0, 0, 0.5);
 
-    --rose: #F28DB5;
-    --rose-clair: #F7A8C8;
-    --rose-pale: #45283A;
-    --rose-tres-pale: #30222B;
-    --entete-fonce: #140E12;
+    --rose: #9CC3EC;
+    --rose-clair: #BBD6F2;
+    --rose-pale: #22364D;
+    --rose-tres-pale: #1A2633;
+    --entete-fonce: #0B1118;
 
-    --focus: #C9A2FF;
-    --surligne: #7A5C0C;
+    --focus: #9CC3EC;
+    --surligne: #6B4A12;
 
-    --succes-fond: #1E3A27;
-    --succes-texte: #A8E6BC;
-    --succes-bord: #5CC27F;
-    --erreur-fond: #45202A;
-    --erreur-texte: #FFB4BF;
-    --erreur-bord: #E0707F;
+    --succes-fond: #163824;
+    --succes-texte: #8FE0A8;
+    --succes-bord: #4CC57A;
+    --erreur-fond: #42201E;
+    --erreur-texte: #FFB0A8;
+    --erreur-bord: #E06A5E;
 
-    --boite-exemple: #1D2F3D;
-    --boite-exemple-texte: #93C8EE;
+    --boite-exemple: #18304A;
+    --boite-exemple-texte: #9CC3EC;
     --boite-important: #3A2E17;
-    --boite-important-texte: #F0C46A;
-    --boite-important-bord: #C98A1E;
-    --boite-note: #1D3325;
-    --boite-note-texte: #92D8A7;
-    --boite-dialogue: #2F2535;
+    --boite-important-texte: #F5C88A;
+    --boite-important-bord: #8A6424;
+    --boite-note: #163824;
+    --boite-note-texte: #8FE0A8;
+    --boite-dialogue: #1F2B38;
 
-    --chaud-debut: #3A2618;
-    --chaud-fin: #3A1E2B;
+    --chaud-debut: #3D2A12;
+    --chaud-fin: #3D2A12;
     --or-debut: #3A3018;
+
+    --contour: #8DA4B6;
+    --orange-encre: #FFB15C;
+    --orange-pale: #3D2A12;
+    --marine: #9CC3EC;
+    --ombre-bouton: 0 3px 8px rgba(0, 0, 0, 0.4);
+    --ombre-bouton-survol: 0 6px 14px rgba(0, 0, 0, 0.5);
 }
 
 /* ============================================================

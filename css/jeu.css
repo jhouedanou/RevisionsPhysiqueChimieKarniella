@@ -1,0 +1,572 @@
+/**
+ * jeu.css — Le look « jeu illustré », repris de brikelec et d'expertenergie.
+ *
+ * Aplats sur fond ciel, encre foncée, traits épais sur les boutons, les
+ * pastilles et les bulles ; orange pour l'action, vert pour la réussite,
+ * jaune énergie pour les étoiles et les jauges. Les couleurs sont dans
+ * css/theme.css (--contour, --orange, --energie…), en clair et en sombre.
+ *
+ * Chargée en DERNIER sur chaque page : la partie « Habillage » repeint les
+ * composants des autres feuilles (boutons, onglets, encadrés, cartes) sans
+ * toucher à leur mise en page. Elle est réservée à l'écran : la fiche à
+ * imprimer garde ses règles (css/lecon-5e.css, @media print).
+ *
+ * Règles du style (DESIGN.md de brikelec) :
+ *   - pas de dégradé, pas de verre dépoli, pas de liseré épais sur un côté ;
+ *   - des pictogrammes dessinés (KarniellaIcones) pour les commandes ;
+ *   - contraste d'au moins 4,5:1, focus visible (anneau marine de 3 px) ;
+ *   - prefers-reduced-motion arrête toutes les animations en boucle.
+ */
+
+/* ============================================================
+   Composants
+   ============================================================ */
+
+/* Texte pour les lecteurs d'écran seulement (quiz, parcours). */
+.lecteur-seul {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 8px 20px;
+    border: 3px solid var(--contour);
+    border-radius: 999px;
+    background: var(--orange);
+    color: #1F2832;
+    font-family: var(--police-titre);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: var(--ombre-bouton);
+    cursor: pointer;
+    transition: background .18s var(--ease-out), transform .18s var(--ease-out), box-shadow .18s var(--ease-out);
+}
+
+.btn:hover { background: var(--orange-survol); transform: translateY(-1px); box-shadow: var(--ombre-bouton-survol); }
+.btn:active { transform: translateY(1px); box-shadow: 0 1px 3px rgba(31, 40, 50, .2); }
+.btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .5; cursor: default; transform: none; box-shadow: none; }
+.btn .ico-svg { flex: 0 0 auto; }
+
+.btn-ghost { background: var(--surface); color: var(--marine); }
+.btn-ghost:hover { background: var(--rose-tres-pale); }
+.btn-energie { background: var(--energie); }
+.btn-energie:hover { background: var(--energie-survol); }
+.btn-icone { width: 48px; min-width: 48px; padding: 0; }
+.btn-petit { min-height: 40px; padding: 4px 14px; font-size: .98rem; }
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 38px;
+    padding: 4px 13px;
+    border: 2px solid var(--bord);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--encre);
+    font-family: var(--police-titre);
+    font-size: 1.02rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+.chip-ok { color: var(--succes-texte); border-color: var(--succes-bord); }
+.chip-mauvais { color: var(--erreur-texte); border-color: var(--erreur-bord); }
+
+.panneau {
+    padding: 20px;
+    border-radius: var(--rayon-carte);
+    background: var(--surface);
+    box-shadow: var(--ombre);
+}
+
+/* La pastille de niveau : À reprendre, Acquis, Niveau expert. */
+.niveau {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 11px;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    font-family: var(--police-titre);
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.niveau-a-reprendre { color: #B3392F; background: #FBE3E0; }
+.niveau-acquis { color: #A85200; background: #FFF3CC; }
+.niveau-expert { color: #0B7A28; background: #E1F3E5; }
+html[data-theme="dark"] .niveau-a-reprendre { color: #FFB0A8; background: #42201E; }
+html[data-theme="dark"] .niveau-acquis { color: #FFC978; background: #3D2A12; }
+html[data-theme="dark"] .niveau-expert { color: #8FE0A8; background: #163824; }
+.niveau-grand { padding: 6px 18px; border-width: 3px; font-size: 1.2rem; }
+
+/* Trois étoiles, jaune énergie. */
+.etoiles { display: inline-flex; gap: 2px; vertical-align: middle; }
+.etoiles svg { width: 20px; height: 20px; }
+.etoiles .on { fill: var(--energie); stroke: #9A6A12; }
+.etoiles .off { fill: #C3CBD3; stroke: #9AA5B1; }
+html[data-theme="dark"] .etoiles .off { fill: #3A4B5C; stroke: #556B80; }
+.etoiles-grandes svg { width: 32px; height: 32px; }
+
+/* La jauge : une barre cerclée d'encre, qui se remplit d'énergie. */
+.jauge {
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+    border: 3px solid var(--contour);
+    border-radius: 999px;
+    background: var(--surface);
+}
+
+.jauge-remplie {
+    height: 100%;
+    width: 0;
+    background: var(--energie);
+    box-shadow: inset -3px 0 0 var(--contour);
+    transition: width .8s var(--ease-out);
+}
+
+.jauge::after {
+    content: "";
+    position: absolute;
+    inset: 3px 0;
+    background: linear-gradient(90deg, transparent calc(20% - 1px), rgba(31, 40, 50, .25) calc(20% - 1px) 20%, transparent 20% calc(40% - 1px), rgba(31, 40, 50, .25) calc(40% - 1px) 40%, transparent 40% calc(60% - 1px), rgba(31, 40, 50, .25) calc(60% - 1px) 60%, transparent 60% calc(80% - 1px), rgba(31, 40, 50, .25) calc(80% - 1px) 80%, transparent 80%);
+    pointer-events: none;
+}
+
+.jauge-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.jauge-tete strong { display: inline-flex; align-items: center; gap: 6px; font-family: var(--police-titre); font-size: 1.05rem; }
+.jauge-pct { font-family: var(--police-titre); font-size: 1.6rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.jauge-aide { margin: 6px 0 0; font-size: 14px; color: var(--doux); }
+
+/* Les pastilles de réponses : une par question. */
+.pastilles { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; padding: 0; list-style: none; }
+.pastilles i {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #9FB0BF;
+    border-radius: 999px;
+    background: var(--surface);
+    transition: background .25s var(--ease-out), transform .25s var(--ease-out);
+}
+.pastilles i.actif { border: 3px solid var(--orange); background: var(--orange-pale); transform: scale(1.08); }
+.pastilles i.juste { border-color: var(--succes-bord); background: var(--succes-bord); }
+.pastilles i.faux { border-color: var(--erreur-bord); background: var(--erreur-bord); }
+
+/* La médaille d'une récompense : un disque coloré, un pictogramme blanc. */
+.medaille { display: inline-block; flex: 0 0 auto; }
+.medaille circle { fill: var(--teinte, #E1A801); stroke: var(--teinte, #E1A801); }
+.medaille path { fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.medaille.verrouillee circle { fill: #EEF1F4; stroke: #B5BEC7; }
+.medaille.verrouillee path { stroke: #9AA5B1; }
+html[data-theme="dark"] .medaille.verrouillee circle { fill: #2A3846; stroke: #4A5D70; }
+html[data-theme="dark"] .medaille.verrouillee path { stroke: #6E8295; }
+
+/* ============================================================
+   Aya, la guide (js/jeu.js) — poses reprises des techniciens de brikelec
+   ============================================================ */
+
+.aya { display: block; flex: none; overflow: visible; max-width: 100%; height: auto; }
+.aya g { transform-box: view-box; }
+.aya-corps { transform-origin: 80px 206px; }
+.aya-haut { transform-origin: 80px 135px; }
+.aya-tete { transform-origin: 80px 80px; }
+.aya-yeux { transform-origin: 80px 62.5px; }
+.aya-jambe-g { transform-origin: 72px 128px; }
+.aya-jambe-d { transform-origin: 88px 128px; }
+.aya-bras-g { transform-origin: 62px 93px; transform: rotate(7deg); }
+.aya-bras-d { transform-origin: 98px 93px; transform: rotate(-7deg); }
+.aya-bras-g .aya-avant-bras { transform-origin: 62px 113.5px; }
+.aya-bras-d .aya-avant-bras { transform-origin: 98px 113.5px; }
+
+/* Poses figées (aussi celles du mouvement réduit) */
+.aya-wave .aya-bras-d { transform: rotate(-150deg); }
+.aya-wave .aya-bras-d .aya-avant-bras { transform: rotate(-8deg); }
+.aya-cheer .aya-bras-g { transform: rotate(134deg); }
+.aya-cheer .aya-bras-d { transform: rotate(-134deg); }
+.aya-cheer .aya-bras-g .aya-avant-bras { transform: rotate(16deg); }
+.aya-cheer .aya-bras-d .aya-avant-bras { transform: rotate(-16deg); }
+.aya-point .aya-bras-d { transform: rotate(-84deg); }
+.aya-point .aya-bras-g { transform: rotate(35deg); }
+.aya-point .aya-bras-g .aya-avant-bras { transform: rotate(-82deg); }
+.aya-point .aya-tete { transform: rotate(4deg); }
+.aya-think .aya-bras-g { transform: rotate(-50deg); }
+.aya-think .aya-bras-g .aya-avant-bras { transform: rotate(-122deg); }
+.aya-think .aya-tete { transform: rotate(-5deg); }
+.aya-think .aya-pupilles { transform: translate(1.2px, -1.2px); }
+
+/* Mouvements */
+.aya-yeux { animation: aya-cligne 4.6s infinite; }
+@keyframes aya-cligne { 0%, 93%, 100% { transform: scaleY(1); } 95.5% { transform: scaleY(.12); } }
+
+.aya-idle .aya-haut, .aya-point .aya-haut, .aya-think .aya-haut, .aya-wave .aya-haut { animation: aya-respire 3.2s ease-in-out infinite; }
+@keyframes aya-respire { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.3px); } }
+
+.aya-wave .aya-bras-d .aya-avant-bras { animation: aya-salue .5s ease-in-out infinite alternate; }
+@keyframes aya-salue { from { transform: rotate(-28deg); } to { transform: rotate(18deg); } }
+
+.aya-cheer .aya-corps { animation: aya-saute 1s cubic-bezier(.4, 0, .4, 1) infinite; }
+.aya-cheer .aya-bras-g { animation: aya-joie-g 1s ease-in-out infinite; }
+.aya-cheer .aya-bras-d { animation: aya-joie-d 1s ease-in-out infinite; }
+@keyframes aya-saute { 0%, 100% { transform: translateY(0); } 12% { transform: translateY(1.5px); } 42% { transform: translateY(-11px); } 72% { transform: translateY(0); } }
+@keyframes aya-joie-g { 0%, 100% { transform: rotate(128deg); } 42% { transform: rotate(142deg); } }
+@keyframes aya-joie-d { 0%, 100% { transform: rotate(-128deg); } 42% { transform: rotate(-142deg); } }
+
+.aya-point .aya-bras-d { animation: aya-montre 1.4s ease-in-out infinite; }
+@keyframes aya-montre { 0%, 100% { transform: rotate(-84deg); } 50% { transform: rotate(-79deg); } }
+
+.aya-think .aya-tete { animation: aya-pense 3.2s ease-in-out infinite; }
+@keyframes aya-pense { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(-2deg); } }
+.aya-pensee { animation: aya-bulle 2.4s ease-in-out infinite; }
+.aya-pensee:nth-child(2) { animation-delay: .3s; }
+.aya-pensee:nth-child(3) { animation-delay: .6s; }
+@keyframes aya-bulle { 0%, 100% { opacity: .25; } 35%, 60% { opacity: 1; } }
+
+.aya-visage .aya-yeux { animation: none; }
+
+/* La bulle : trait d'encre, pointe vers Aya ; empilée sous 380 px. */
+.guide { container-type: inline-size; }
+.guide-interieur { display: flex; align-items: flex-start; gap: 18px; }
+.guide-perso { flex: none; }
+.guide-bulle {
+    position: relative;
+    max-width: 320px;
+    margin-top: 12px;
+    padding: 12px 16px;
+    border: 3px solid var(--contour);
+    border-radius: 18px;
+    background: var(--surface);
+    color: var(--encre);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.guide-bulle::before {
+    content: "";
+    position: absolute;
+    top: 22px;
+    left: -10.5px;
+    width: 16px;
+    height: 16px;
+    background: var(--surface);
+    border-left: 3px solid var(--contour);
+    border-bottom: 3px solid var(--contour);
+    transform: rotate(45deg);
+}
+
+.guide-bulle p { margin: 0; }
+.guide-bulle p + p { margin-top: 6px; }
+.guide-titre { display: block; margin-bottom: 2px; font-family: var(--police-titre); font-size: 1.15rem; font-weight: 800; }
+
+@container (max-width: 380px) {
+    .guide-interieur { flex-direction: column; align-items: center; gap: 12px; }
+    .guide-bulle { margin-top: 0; max-width: none; }
+    .guide-bulle::before { top: -10.5px; left: calc(50% - 8px); transform: rotate(135deg); }
+}
+
+/* Le logo de la barre : le visage d'Aya. */
+.coquille-logo .signe .aya-visage { display: block; }
+.coquille-logo { flex: none; }
+
+/* Sur téléphone, la barre est pleine : le bouton « son » reste dans le quiz,
+   et les boutons rétrécissent un peu pour tenir à 360 px. */
+@media (max-width: 479px) {
+    .coquille-outils > .reglage[data-reglage="son"] { display: none; }
+}
+@media screen and (max-width: 400px) {
+    .coquille-outils { gap: 4px; }
+    .coquille-outils .reglages { gap: 4px; }
+    .coquille-outils .reglage,
+    .coquille-outils .rech-bouton,
+    .coquille-rond { width: 36px; min-width: 36px; height: 36px; border-width: 2px; }
+    .coquille-puce { height: 36px; padding: 0 8px 0 6px; gap: 3px; }
+    .coquille-logo .signe svg { width: 30px; height: 30px; }
+    .coquille-logo { padding-left: 2px; padding-right: 2px; }
+    .coquille-barre { padding: 0 8px; gap: 6px; }
+}
+
+/* ============================================================
+   Bannière « Récompense débloquée » (js/jeu.js)
+   ============================================================ */
+
+.toasts {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(380px, calc(100vw - 24px));
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 12px 12px 14px;
+    border: 3px solid var(--contour);
+    border-radius: 22px;
+    background: var(--surface);
+    color: var(--encre);
+    box-shadow: var(--ombre-forte);
+    pointer-events: auto;
+    animation: toast-entre .5s var(--ease-out);
+}
+
+.toast-sortie { animation: toast-sort .3s ease-in forwards; }
+@keyframes toast-entre { from { opacity: 0; transform: translateY(-24px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes toast-sort { to { opacity: 0; transform: translateY(-12px); } }
+
+.toast-corps { display: flex; flex-direction: column; min-width: 0; flex: 1 1 auto; }
+.toast-etiquette { font-size: .85rem; font-weight: 700; color: var(--doux); }
+.toast-nom { font-family: var(--police-titre); font-size: 1.2rem; font-weight: 800; line-height: 1.2; }
+.toast-quoi { font-size: .92rem; color: var(--doux); }
+.toast-fermer {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 2px solid var(--bord);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--encre);
+    cursor: pointer;
+}
+.toast-fermer:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* ============================================================
+   Habillage des composants existants (écran seulement)
+   ============================================================ */
+
+@media screen {
+    body,
+    body.lecon-5e { background: var(--fond); }
+
+    /* --- Boutons d'action : pilule orange, trait d'encre --- */
+    .suite-onglets button,
+    .bouton-fiche,
+    .bouton-cartes,
+    .bouton-mission,
+    .cartes-nav,
+    .cartes-outil,
+    .recherche-partout {
+        min-height: 48px;
+        padding: 8px 20px;
+        border: 3px solid var(--contour);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--marine);
+        font-family: var(--police-titre);
+        font-size: 1.02rem;
+        font-weight: 700;
+        box-shadow: var(--ombre-bouton);
+        filter: none;
+        transition: background .18s var(--ease-out), transform .18s var(--ease-out), box-shadow .18s var(--ease-out);
+    }
+
+    .suite-suivant,
+    .cartes-nav-suivante,
+    .bouton-mission {
+        background: var(--orange);
+        border-color: var(--contour);
+        color: #1F2832;
+    }
+
+    .suite-onglets button:hover,
+    .bouton-fiche:hover,
+    .bouton-cartes:hover,
+    .bouton-mission:hover,
+    .cartes-nav:hover:not(:disabled),
+    .cartes-outil:hover,
+    .recherche-partout:hover { transform: translateY(-1px); box-shadow: var(--ombre-bouton-survol); filter: none; border-style: solid; }
+
+    .suite-onglets button:active,
+    .bouton-fiche:active,
+    .bouton-cartes:active,
+    .cartes-nav:active,
+    .cartes-outil:active { transform: translateY(1px); box-shadow: 0 1px 3px rgba(31, 40, 50, .2); }
+
+    .suite-suivant:hover,
+    .cartes-nav-suivante:hover:not(:disabled),
+    .bouton-mission:hover { background: var(--orange-survol); }
+    .suite-precedent:hover,
+    .bouton-fiche:hover,
+    .bouton-cartes:hover,
+    .cartes-nav:not(.cartes-nav-suivante):hover:not(:disabled),
+    .cartes-outil:hover,
+    .recherche-partout:hover { background: var(--rose-tres-pale); }
+
+    /* Boutons à pictogramme (js/lecon-5e.js) : le dessin à gauche du texte. */
+    .bouton-fiche,
+    .bouton-cartes,
+    .bouton-mission:not([hidden]),
+    .cartes-outil,
+    .cartes-nav-suivante { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+
+    /* --- Liens dans le texte des leçons --- */
+    .lecon-5e main.content a:not([class]) { color: var(--marine); font-weight: 700; text-underline-offset: 3px; }
+    .lecon-5e main.content a:not([class]):hover { text-decoration-thickness: 2px; }
+
+    /* --- Le chat (styles posés par js/chat-assistant.js) --- */
+    html body #kc-bulle {
+        border: 3px solid var(--contour);
+        border-radius: 50%;
+        background: var(--orange);
+        color: #1F2832;
+        box-shadow: var(--ombre-bouton);
+    }
+    html body #kc-bulle:hover { background: var(--orange-survol); box-shadow: var(--ombre-bouton-survol); }
+    html body #kc-fenetre { border: 3px solid var(--contour); }
+    html body #kc-entete { background: #26456F; }
+    html body #kc-invite { border: 3px solid var(--contour); border-radius: 18px 18px 4px 18px; box-shadow: var(--ombre); }
+    html body #kc-invite strong { color: var(--marine); }
+    html body .kc-bot { border-left-width: 1px; }
+    html body .kc-jauge span { background: var(--energie); }
+    html body #kc-envoyer { border: 2px solid var(--contour); border-radius: 999px; background: var(--orange); color: #1F2832; }
+
+    /* --- Barre du haut et navigation du bas --- */
+    .coquille-barre { background: var(--surface); border-bottom: 2px solid var(--bord); box-shadow: 0 2px 10px rgba(31, 40, 50, .06); }
+    .coquille-logo { color: var(--encre); font-family: var(--police-titre); font-size: 19px; font-weight: 800; }
+    .coquille-logo:hover { background: var(--rose-tres-pale); }
+
+    .coquille-outils .reglage,
+    .coquille-outils .rech-bouton,
+    .coquille-rond {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        border: 2.5px solid var(--contour);
+        background: var(--surface);
+        color: var(--marine);
+    }
+
+    .coquille-outils .reglage:hover,
+    .coquille-outils .rech-bouton:hover,
+    .coquille-rond:hover { background: var(--rose-tres-pale); }
+    .coquille-outils .reglage[aria-pressed="true"] { background: var(--orange-pale); border-color: var(--contour); }
+    .coquille-avatar { background: var(--orange-pale); border-color: var(--contour); }
+
+    .coquille-puce {
+        height: 38px;
+        border: 2px solid var(--bord);
+        background: var(--surface);
+        font-family: var(--police-titre);
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .coquille-flamme { color: var(--orange-encre); background: var(--surface); }
+    .coquille-flamme.eteinte { color: var(--doux); background: var(--surface); }
+    .coquille-xp { color: var(--orange-encre); background: var(--surface); }
+    .coquille-xp .ico-svg { color: var(--energie); stroke: #9A6A12; stroke-width: 1.5; }
+    html[data-theme="dark"] .coquille-xp .ico-svg { stroke: none; }
+
+    .coquille-panneau { border: 3px solid var(--contour); box-shadow: var(--ombre-forte); }
+
+    .coquille-nav-bas { border-top: 2px solid var(--bord); }
+    .coquille-nav-bas a { font-family: var(--police-titre); font-size: 12.5px; font-weight: 700; border: 2px solid transparent; border-radius: 16px; }
+    .coquille-nav-bas a.actif { color: var(--encre); background: var(--orange-pale); border-color: var(--contour); }
+    .coquille-nav-bas a.actif .ico-svg { color: var(--orange-encre); fill: var(--orange); fill-opacity: .35; }
+
+    /* --- Leçons : bandeau, étapes, encadrés --- */
+    .lecon-5e header:not(.coquille-barre) {
+        border: 0;
+        background: var(--surface);
+        box-shadow: var(--ombre);
+    }
+
+    .badge-niveau {
+        border: 2px solid var(--bord);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--l5-rose);
+        font-family: var(--police-titre);
+        font-weight: 700;
+    }
+
+    .container { border: 0; box-shadow: var(--ombre); border-radius: var(--rayon-carte); }
+
+    .tab-button { border: 2px solid var(--bord); border-radius: 999px; background: var(--surface); font-family: var(--police-titre); font-weight: 700; }
+    .tab-button::before { border: 2.5px solid var(--contour); background: var(--surface); color: var(--encre); }
+    .tab-button:hover { background: var(--rose-tres-pale); }
+    .tab-button.active { border: 3px solid var(--contour); background: var(--orange-pale); color: var(--encre); }
+    .tab-button.active::before { background: var(--orange); border-color: var(--contour); color: #1F2832; }
+    .tab-button.vu::before { background: var(--succes-bord); border-color: var(--contour); }
+
+    .definition-box,
+    .example-box,
+    .important-box,
+    .note-box {
+        border: 2px solid var(--bord);
+        border-radius: 18px;
+    }
+
+    .definition-box { border-color: color-mix(in srgb, var(--l5-fort) 35%, transparent); }
+    .example-box { border-color: color-mix(in srgb, var(--boite-exemple-texte) 30%, transparent); }
+    .important-box { border-color: var(--boite-important-bord); }
+    .note-box { border-color: color-mix(in srgb, var(--succes-bord) 35%, transparent); }
+
+    .exercice { border: 2px solid var(--bord); border-radius: 22px; }
+    .exercice details summary { font-family: var(--police-titre); font-weight: 700; color: var(--marine); }
+
+    .table-vocab { border-radius: 18px; overflow: hidden; }
+
+    .schema { border: 2px solid var(--bord); border-radius: 22px; }
+
+    /* --- Accueil : cartes et blocs --- */
+    .carte,
+    .galop-carte,
+    .bloc-matiere,
+    .mes-badges { border-color: var(--bord); box-shadow: var(--ombre); }
+
+    .galop-reprendre { background: var(--orange); border: 3px solid var(--contour); color: #1F2832; }
+    html[data-theme="dark"] .galop-reprendre { color: #1F2832; }
+    .galop-reprendre .fleche { border: 3px solid var(--contour); background: var(--surface); color: var(--encre); }
+    .galop-serie { background: var(--orange-pale); border-color: var(--bord); }
+
+    .champ-recherche { border: 3px solid var(--contour); border-radius: 999px; }
+    .champ-recherche:focus-within { box-shadow: 0 0 0 4px rgba(38, 69, 111, .25); }
+
+    ::selection { background: #FFD9AE; color: #1F2832; }
+}
+
+/* ============================================================
+   Mouvement réduit
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .aya, .aya * { animation: none !important; }
+    .toast, .toast-sortie { animation: none; }
+    .btn, .suite-onglets button, .bouton-fiche, .bouton-cartes,
+    .bouton-mission, .cartes-nav, .cartes-outil { transition: none; }
+    .btn:hover, .suite-onglets button:hover { transform: none; }
+    .jauge-remplie, .pastilles i { transition: none; }
+}
+
+/* La fiche imprimée ne garde ni les bannières de récompense ni le bouton son. */
+@media print {
+    .toasts, .quiz-son { display: none !important; }
+}

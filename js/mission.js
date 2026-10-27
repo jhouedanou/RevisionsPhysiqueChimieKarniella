@@ -115,7 +115,7 @@
             window.initSectionQuiz('mission-quiz', questions, {
                 etapes: true,
                 slug: 'mission-' + id,
-                titre: '🎯 Valide ta mission'
+                titre: 'Valide ta mission'
             });
         }, 0);
         return carte;

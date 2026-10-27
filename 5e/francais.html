@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="francais">
+<body class="lecon-5e page-matiere" data-matiere="francais">
 <header>
 <span class="badge-niveau">Classe de 5e</span>
 <h1>📖 Français</h1>
@@ -24,41 +25,55 @@
 <main class="content">
   <section class="container">
     <h2>Mes leçons — 4 leçons disponibles</h2>
-      <div class="grille-lecons">
-      <a class="carte-lecon" href="francais-expose-oral.html">
-        <span class="icone" aria-hidden="true">🎤</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>L&#39;exposé : donner un point de vue sur un thème</h3>
-        <p>Expression orale · Séance 1 : comment faire un exposé oral</p>
-        <p>Définition, point de vue, phase de préparation et phase de présentation.</p>
-      </a>
-      <a class="carte-lecon" href="francais-portrait-simple.html">
-        <span class="icone" aria-hidden="true">🖼️</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Le portrait simple</h3>
-        <p>Expression écrite · Séance 1 : rédaction d&#39;un portrait simple</p>
-        <p>Ton cahier : le portrait statique, les outils de la langue, le lexique, et le portrait de Didier Drogba rédigé en classe.</p>
-      </a>
-      <a class="carte-lecon" href="francais-groupe-nominal.html">
-        <span class="icone" aria-hidden="true">🧩</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Le groupe nominal</h3>
-        <p>Grammaire · Séances 1 à 4 : adjectif, relative, complément du nom, pluriel des noms</p>
-        <p>Les trois expansions du nom et le pluriel des noms simples, avec ton cahier pour les séances 2, 3 et 4.</p>
-      </a>
-      <a class="carte-lecon" href="francais-description.html">
-        <span class="icone" aria-hidden="true">🔎</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>La description</h3>
-        <p>Lecture · Séance 1 : lecture méthodique d&#39;un texte descriptif</p>
-        <p>Ton cahier : le portrait de César (axes, tableau de vérification, bilan, vocabulaire), puis la méthode sur d&#39;autres textes.</p>
-      </a>
-      </div>
+      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+      <li class="chemin-etape" data-lecon="francais-expose-oral">
+        <span class="chemin-numero" aria-hidden="true">1</span>
+        <a class="carte-lecon" href="francais-expose-oral.html">
+          <span class="icone" aria-hidden="true">🎤</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>L&#39;exposé : donner un point de vue sur un thème</h3>
+          <p>Expression orale · Séance 1 : comment faire un exposé oral</p>
+          <p>Définition, point de vue, phase de préparation et phase de présentation.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="francais-portrait-simple">
+        <span class="chemin-numero" aria-hidden="true">2</span>
+        <a class="carte-lecon" href="francais-portrait-simple.html">
+          <span class="icone" aria-hidden="true">🖼️</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Le portrait simple</h3>
+          <p>Expression écrite · Séance 1 : rédaction d&#39;un portrait simple</p>
+          <p>Ton cahier : le portrait statique, les outils de la langue, le lexique, et le portrait de Didier Drogba rédigé en classe.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="francais-groupe-nominal">
+        <span class="chemin-numero" aria-hidden="true">3</span>
+        <a class="carte-lecon" href="francais-groupe-nominal.html">
+          <span class="icone" aria-hidden="true">🧩</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Le groupe nominal</h3>
+          <p>Grammaire · Séances 1 à 4 : adjectif, relative, complément du nom, pluriel des noms</p>
+          <p>Les trois expansions du nom et le pluriel des noms simples, avec ton cahier pour les séances 2, 3 et 4.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="francais-description">
+        <span class="chemin-numero" aria-hidden="true">4</span>
+        <a class="carte-lecon" href="francais-description.html">
+          <span class="icone" aria-hidden="true">🔎</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>La description</h3>
+          <p>Lecture · Séance 1 : lecture méthodique d&#39;un texte descriptif</p>
+          <p>Ton cahier : le portrait de César (axes, tableau de vérification, bilan, vocabulaire), puis la méthode sur d&#39;autres textes.</p>
+        </a>
+      </li>
+      </ol>
   </section>
 </main>
 
 <p class="pied">Révisions de Karniella · 5e · 2026-2027</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

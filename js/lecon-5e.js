@@ -19,6 +19,20 @@
 (function () {
     'use strict';
 
+    /**
+     * Le libellé d'un bouton : un pictogramme au trait (js/coquille.js), puis
+     * le texte. Sans les pictogrammes, l'emoji de secours.
+     */
+    function libelle(el, icone, texte, secours) {
+        el.textContent = '';
+        if (window.KarniellaIcones) {
+            el.insertAdjacentHTML('beforeend', window.KarniellaIcones.svg(icone, 20));
+            el.appendChild(document.createTextNode(texte));
+        } else {
+            el.textContent = secours + ' ' + texte;
+        }
+    }
+
     /** Affiche l'onglet demandé et met à jour le bouton actif. */
     function ouvrirOnglet(id, bouton) {
         var contenus = document.querySelectorAll('.tab-content');
@@ -349,7 +363,7 @@
         var a = document.createElement('a');
         a.className = 'bouton-mission';
         a.href = 'mission.html?id=' + encodeURIComponent(slug);
-        a.textContent = '🚀 Mission 3 min';
+        libelle(a, 'eclair', 'Mission 3 min', '🚀');
         a.setAttribute('title', 'La version express : une histoire, trois cartes, un quiz');
         // Cachée tant que la leçon n'est pas lue (voir « Suivi de lecture »).
         a.hidden = !lecture.lue;
@@ -498,7 +512,7 @@
                 var b = document.createElement('button');
                 b.type = 'button';
                 b.className = 'bouton-cartes';
-                b.textContent = '🃏 Réviser en cartes';
+                libelle(b, 'cartes', 'Réviser en cartes', '🃏');
                 b.addEventListener('click', function () { ouvrirCartes(cartes, b); });
                 groupe.insertBefore(b, groupe.querySelector('.barre-lecture'));
                 majBordsOnglets();
@@ -526,7 +540,7 @@
         var melanger = document.createElement('button');
         melanger.type = 'button';
         melanger.className = 'cartes-outil';
-        melanger.textContent = '🔀 Mélanger';
+        libelle(melanger, 'rejouer', 'Mélanger', '🔀');
         var fermerBtn = document.createElement('button');
         fermerBtn.type = 'button';
         fermerBtn.className = 'cartes-outil';
@@ -716,7 +730,7 @@
         var b = document.createElement('button');
         b.type = 'button';
         b.className = 'bouton-fiche';
-        b.textContent = '🖨️ Fiche à imprimer';
+        libelle(b, 'imprimer', 'Fiche à imprimer', '🖨️');
         b.addEventListener('click', function () { ouvrirChoixFiche(b); });
         bandeau.appendChild(b);
     }
@@ -954,7 +968,7 @@
         var imprimer = document.createElement('button');
         imprimer.type = 'button';
         imprimer.className = 'cartes-nav cartes-nav-suivante';
-        imprimer.textContent = '🖨️ Imprimer';
+        libelle(imprimer, 'imprimer', 'Imprimer', '🖨️');
         bas.appendChild(annuler);
         bas.appendChild(imprimer);
 

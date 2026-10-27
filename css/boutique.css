@@ -45,8 +45,9 @@ body.boutique-page {
 .solde .detail { display: block; font-size: 13.5px; color: var(--doux); }
 .solde .prochain { margin-left: auto; min-width: 220px; font-size: 13.5px; color: var(--doux); }
 .solde .prochain strong { color: var(--encre); }
-.solde .jauge { height: 10px; margin-top: 6px; border-radius: 10px; background: var(--surface-grise); border: 1px solid var(--bord); overflow: hidden; }
-.solde .jauge i { display: block; height: 100%; border-radius: 10px; background: var(--or-texte, #9A6A12); transition: width var(--duree-normale, 220ms) ease; }
+/* La jauge vers la prochaine récompense : celle de css/jeu.css, en plus fine. */
+.solde .jauge { height: 18px; margin-top: 6px; }
+.solde .jauge i { display: block; height: 100%; background: var(--energie, #F5C242); box-shadow: inset -3px 0 0 var(--contour, #1F2832); transition: width var(--duree-normale, 220ms) ease; }
 
 /* Les rayons, en puces filtrantes. */
 .filtres {

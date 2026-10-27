@@ -397,6 +397,30 @@ html[data-theme="dark"] .mission-lecon { color: #1B1418; }
     color: var(--or-texte, #9A6A12);
 }
 
+/* Aya et la jauge de l'année (js/jeu.js), au-dessus des cartes. */
+.galop-heros {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 14px 22px;
+    margin-bottom: 14px;
+    padding: 16px 18px;
+    border: 2px solid var(--bord);
+    border-radius: 22px;
+    background: var(--surface);
+}
+
+.galop-jauge { display: grid; gap: 10px; justify-items: start; }
+.galop-jauge .jauge-bloc { width: 100%; }
+.galop-recompenses { text-decoration: none; color: var(--encre); }
+.galop-recompenses:hover { border-color: var(--contour, var(--bord)); }
+.galop-recompenses:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.galop-recompenses .ico-svg { color: var(--orange-encre, currentColor); }
+
+@media (max-width: 640px) {
+    .galop-heros { grid-template-columns: minmax(0, 1fr); padding: 14px; }
+}
+
 .galop-grille {
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
@@ -599,6 +623,9 @@ html[data-theme="dark"] .galop-reprendre { color: #1B1418; }
 }
 
 .badge.obtenu .badge-icone { filter: none; opacity: 1; }
+
+/* Médaille dessinée par js/jeu.js : elle porte déjà son style « verrouillée ». */
+.badge-icone.badge-medaille { filter: none; opacity: 1; line-height: 0; }
 
 /* Texte pour les lecteurs d'écran seulement. */
 .lecteur-seul {

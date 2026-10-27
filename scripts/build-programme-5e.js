@@ -29,30 +29,40 @@ function echapper(texte) {
         .replace(/'/g, '&#39;');
 }
 
-/** Une carte de leçon : lien cliquable si la page existe, grisée sinon. */
-function carteLecon(lecon) {
+/**
+ * Une étape du parcours : un rond numéroté et la carte de la leçon (lien
+ * cliquable si la page existe, grisée sinon). js/chemin.js y ajoute les
+ * étoiles, le niveau et le meilleur score quand la progression est là.
+ */
+function etapeLecon(lecon, n) {
     const titre = echapper(lecon.titre);
     const sousTitre = lecon.sousTitre ? `<p>${echapper(lecon.sousTitre)}</p>` : '';
     const description = lecon.description ? `<p>${echapper(lecon.description)}</p>` : '';
     const icone = echapper(lecon.icone || '📄');
 
     if (lecon.statut === 'prete') {
-        return `      <a class="carte-lecon" href="${echapper(lecon.id)}.html">
-        <span class="icone" aria-hidden="true">${icone}</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>${titre}</h3>
-        ${sousTitre}
-        ${description}
-      </a>`;
+        return `      <li class="chemin-etape" data-lecon="${echapper(lecon.id)}">
+        <span class="chemin-numero" aria-hidden="true">${n}</span>
+        <a class="carte-lecon" href="${echapper(lecon.id)}.html">
+          <span class="icone" aria-hidden="true">${icone}</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>${titre}</h3>
+          ${sousTitre}
+          ${description}
+        </a>
+      </li>`;
     }
 
-    return `      <div class="carte-lecon a-venir">
-        <span class="icone" aria-hidden="true">${icone}</span>
-        <span class="etiquette attente">À venir</span>
-        <h3>${titre}</h3>
-        ${sousTitre}
-        ${description}
-      </div>`;
+    return `      <li class="chemin-etape a-venir">
+        <span class="chemin-numero" aria-hidden="true">${n}</span>
+        <div class="carte-lecon a-venir">
+          <span class="icone" aria-hidden="true">${icone}</span>
+          <span class="etiquette attente">À venir</span>
+          <h3>${titre}</h3>
+          ${sousTitre}
+          ${description}
+        </div>
+      </li>`;
 }
 
 /** Message affiché quand aucune leçon n'a encore été saisie. */
@@ -69,9 +79,10 @@ function pageMatiere(matiere, programme) {
     const pretes = lecons.filter((l) => l.statut === 'prete').length;
 
     const corps = lecons.length
-        ? `      <div class="grille-lecons">
-${lecons.map(carteLecon).join('\n')}
-      </div>`
+        ? `      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+${lecons.map((l, i) => etapeLecon(l, i + 1)).join('\n')}
+      </ol>`
         : sommaireVide(matiere);
 
     const compte = lecons.length
@@ -94,8 +105,9 @@ ${lecons.map(carteLecon).join('\n')}
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="${echapper(matiere.id)}">
+<body class="lecon-5e page-matiere" data-matiere="${echapper(matiere.id)}">
 <header>
 <span class="badge-niveau">Classe de ${echapper(programme.niveau)}</span>
 <h1>${echapper(matiere.icone)} ${echapper(matiere.nom)}</h1>
@@ -111,6 +123,7 @@ ${corps}
 
 <p class="pied">Révisions de Karniella · ${echapper(programme.niveau)} · ${echapper(programme.anneeScolaire)}</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/jeu.css">
 </head>
-<body class="lecon-5e" data-matiere="anglais">
+<body class="lecon-5e page-matiere" data-matiere="anglais">
 <header>
 <span class="badge-niveau">Classe de 5e</span>
 <h1>🇬🇧 Anglais</h1>
@@ -24,41 +25,55 @@
 <main class="content">
   <section class="container">
     <h2>Mes leçons — 4 leçons disponibles</h2>
-      <div class="grille-lecons">
-      <a class="carte-lecon" href="anglais-unit1-discover-my-school.html">
-        <span class="icone" aria-hidden="true">🏫</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Unit 1 — At school : Discover my school</h3>
-        <p>Session 1 — Vocabulary &amp; Language function</p>
-        <p>Les lieux de l&#39;école en anglais, et comment demander son chemin.</p>
-      </a>
-      <a class="carte-lecon" href="anglais-unit1-session2.html">
-        <span class="icone" aria-hidden="true">💬</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Unit 1 — At school : Session 2</h3>
-        <p>Vocabulary &amp; Expressing like and dislike</p>
-        <p>Les autres lieux de l&#39;école, et dire ce qu&#39;on aime ou pas.</p>
-      </a>
-      <a class="carte-lecon" href="anglais-unit1-lesson2-college.html">
-        <span class="icone" aria-hidden="true">🎒</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Unit 1 — At school : Lesson 2, Life at Collège Moderne Kasséré</h3>
-        <p>Sessions 1 à 3 — Vocabulary, present continuous, can / may, dialogue</p>
-        <p>La vie au collège (line up, be late, do research, deliver a presentation…), le présent continu (affirmatif, négatif, questions) et can / may.</p>
-      </a>
-      <a class="carte-lecon" href="anglais-unit1-lesson3-learn-at-school.html">
-        <span class="icone" aria-hidden="true">📚</span>
-        <span class="etiquette prete">Disponible</span>
-        <h3>Unit 1 — At school : Lesson 3, What do you learn at school?</h3>
-        <p>Sessions 1 à 3 — Vocabulary, giving opinion, from / in / at, exercises</p>
-        <p>Les matières et l&#39;emploi du temps (timetable, period, a mark, to be good at…), donner son avis (How do you find…?), from… to / in the / at, et les exercices du livre p. 32-33.</p>
-      </a>
-      </div>
+      <div class="chemin-jauge" hidden></div>
+      <ol class="chemin">
+      <li class="chemin-etape" data-lecon="anglais-unit1-discover-my-school">
+        <span class="chemin-numero" aria-hidden="true">1</span>
+        <a class="carte-lecon" href="anglais-unit1-discover-my-school.html">
+          <span class="icone" aria-hidden="true">🏫</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Unit 1 — At school : Discover my school</h3>
+          <p>Session 1 — Vocabulary &amp; Language function</p>
+          <p>Les lieux de l&#39;école en anglais, et comment demander son chemin.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="anglais-unit1-session2">
+        <span class="chemin-numero" aria-hidden="true">2</span>
+        <a class="carte-lecon" href="anglais-unit1-session2.html">
+          <span class="icone" aria-hidden="true">💬</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Unit 1 — At school : Session 2</h3>
+          <p>Vocabulary &amp; Expressing like and dislike</p>
+          <p>Les autres lieux de l&#39;école, et dire ce qu&#39;on aime ou pas.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="anglais-unit1-lesson2-college">
+        <span class="chemin-numero" aria-hidden="true">3</span>
+        <a class="carte-lecon" href="anglais-unit1-lesson2-college.html">
+          <span class="icone" aria-hidden="true">🎒</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Unit 1 — At school : Lesson 2, Life at Collège Moderne Kasséré</h3>
+          <p>Sessions 1 à 3 — Vocabulary, present continuous, can / may, dialogue</p>
+          <p>La vie au collège (line up, be late, do research, deliver a presentation…), le présent continu (affirmatif, négatif, questions) et can / may.</p>
+        </a>
+      </li>
+      <li class="chemin-etape" data-lecon="anglais-unit1-lesson3-learn-at-school">
+        <span class="chemin-numero" aria-hidden="true">4</span>
+        <a class="carte-lecon" href="anglais-unit1-lesson3-learn-at-school.html">
+          <span class="icone" aria-hidden="true">📚</span>
+          <span class="etiquette prete">Disponible</span>
+          <h3>Unit 1 — At school : Lesson 3, What do you learn at school?</h3>
+          <p>Sessions 1 à 3 — Vocabulary, giving opinion, from / in / at, exercises</p>
+          <p>Les matières et l&#39;emploi du temps (timetable, period, a mark, to be good at…), donner son avis (How do you find…?), from… to / in the / at, et les exercices du livre p. 32-33.</p>
+        </a>
+      </li>
+      </ol>
   </section>
 </main>
 
 <p class="pied">Révisions de Karniella · 5e · 2026-2027</p>
 
+<script src="../js/chemin.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>
