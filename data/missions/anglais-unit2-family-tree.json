@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit2-family-tree",
+  "lecon": "anglais-unit2-family-tree",
+  "matiere": "anglais",
+  "titre": "The broken family tree",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, une tempête a secoué le vaisseau : l'arbre généalogique d'Aya est tombé en morceaux ! Les étiquettes sont mélangées. Retrouve qui est qui, puis recolle tout avec le 's magique.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🌳 Les branches de la famille",
+      "contenu": "Grandfather et grandmother sont en haut de l'arbre. Uncle et aunt : le frère et la sœur de ton père ou de ta mère. Cousin : l'enfant de ton oncle ou de ta tante, garçon ou fille."
+    },
+    {
+      "titre": "🔑 Le 's, la clé de la possession",
+      "contenu": "Le 's est une étiquette collée sur le possesseur, qui vient en premier. Le frère d'Aya → Aya's brother. Jamais de the devant le prénom."
+    },
+    {
+      "titre": "🧩 Pluriels et Whose ?",
+      "contenu": "Pluriel en -s : l'apostrophe seule, my parents' house. Children : the children's toys. Whose bag is this? (À qui est ce sac ?) — It's Koffi's."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "The sister of your mother is your…",
+      "options": [
+        "uncle",
+        "cousin",
+        "aunt",
+        "grandmother"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "An aunt: the sister of your father or of your mother."
+    },
+    {
+      "question": "« Le frère d'Aya » in English is…",
+      "options": [
+        "the Aya's brother",
+        "Aya's brother",
+        "brother's Aya",
+        "the brother Aya"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Possesseur + 's : Aya's brother, sans the."
+    },
+    {
+      "question": "« La maison de mes parents » in English is…",
+      "options": [
+        "my parents's house",
+        "my house parents",
+        "the parents house",
+        "my parents' house"
+      ],
+      "correct_answer_index": 3,
+      "explanation": "Parents finit par s : l'apostrophe seule."
+    }
+  ]
+}
