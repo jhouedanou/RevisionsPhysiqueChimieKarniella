@@ -2300,7 +2300,7 @@
     ]
   },
   "histoire-geo-premiers-habitants": {
-    "tab5": [
+    "tab6": [
       {
         "question": "Comment connaît-on les premiers habitants de la Côte d'Ivoire ?",
         "options": [
@@ -2476,6 +2476,94 @@
         ],
         "correctAnswer": 2,
         "explanation": "La méthode : numéroter les lignes, lire crayon en main, souligner les mots difficiles et les mots-clés."
+      },
+      {
+        "question": "Que veut dire « autochtone » ?",
+        "options": [
+          "Venu d'un autre pays",
+          "Qui habite le pays depuis toujours, sans venir d'ailleurs",
+          "Qui vit dans une grande ville",
+          "Qui parle plusieurs langues"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Autochtone : là depuis toujours. Le 3 de ton cahier donne les preuves de l'autochtonie des premières ethnies."
+      },
+      {
+        "question": "Quelles sont les deux sortes de preuves de l'autochtonie ?",
+        "options": [
+          "Les livres et les photos",
+          "Les cartes et les journaux",
+          "Les preuves orales (récits) et les preuves matérielles (vestiges)",
+          "Les chansons et les danses"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Preuves orales : les récits des traditions. Preuves matérielles : nécropoles, poteries, restes du travail du fer."
+      },
+      {
+        "question": "Un peuple raconte qu'il est descendu du ciel dans une bassine en cuivre. Que veut-il montrer ?",
+        "options": [
+          "Qu'il est né ici et n'est pas venu d'ailleurs",
+          "Qu'il est venu d'un pays lointain",
+          "Qu'il savait voler",
+          "Qu'il fabriquait des bassines"
+        ],
+        "correctAnswer": 0,
+        "explanation": "C'est une légende. Elle dit : « nous sommes ici depuis toujours ». C'est une preuve orale de l'autochtonie."
+      },
+      {
+        "question": "Le titre II de ton cahier étudie l'organisation des premières ethnies. Quels sont les quatre points ?",
+        "options": [
+          "Sportive, musicale, scolaire et religieuse",
+          "Politique, économique, sociale et religieuse",
+          "Politique, militaire, scolaire et sportive",
+          "Économique, musicale, sociale et familiale"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Politique (qui commande), économique (de quoi on vit), sociale (la famille), religieuse (les croyances)."
+      },
+      {
+        "question": "Chez les premiers habitants, qui prend les décisions ?",
+        "options": [
+          "Un roi venu d'Europe",
+          "Le maire de la ville",
+          "Les élèves de l'école",
+          "Le chef de village ou le chef de terre, avec les anciens"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le pouvoir est au village : le chef décide avec les anciens du lignage."
+      },
+      {
+        "question": "Où vivent les Protoakan lagunaires, comme les Ehotilé ?",
+        "options": [
+          "Au nord, dans la savane",
+          "Dans les montagnes de l'ouest",
+          "Au sud-est, au bord des lagunes",
+          "Au nord-ouest"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ils vivent au bord des lagunes, au sud-est. Ils sont surtout pêcheurs."
+      },
+      {
+        "question": "De quoi vivent les Protokrou, dans la forêt de l'ouest ?",
+        "options": [
+          "De la chasse, de la cueillette, de la pêche et du riz",
+          "Du commerce avec l'Europe",
+          "De l'élevage de chameaux",
+          "Du travail en usine"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Comme les autres groupes, ils vivent de la chasse, de la cueillette, de la pêche et de l'agriculture."
+      },
+      {
+        "question": "Que veut dire « culte des ancêtres » ?",
+        "options": [
+          "Apprendre l'histoire à l'école",
+          "Honorer les morts de la famille et leur demander protection",
+          "Construire de vieilles maisons",
+          "Collectionner de vieux objets"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les premières ethnies honorent les ancêtres et les génies de la forêt, de l'eau et de la terre."
       }
     ]
   },
