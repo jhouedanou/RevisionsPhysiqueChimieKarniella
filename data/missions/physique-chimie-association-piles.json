@@ -1,0 +1,42 @@
+{
+  "id": "physique-chimie-association-piles",
+  "lecon": "physique-chimie-association-piles",
+  "matiere": "physique-chimie",
+  "titre": "La torche de la grotte",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, ton équipe explore une grotte très sombre. Mais la lampe torche reste éteinte, alors que ses deux piles sont neuves ! Trouve ce qui cloche avant que la dernière bougie s'éteigne.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🔗 En concordance : les tensions s'ajoutent",
+      "contenu": "Le + d'une pile touche le − de la suivante, comme des wagons accrochés dans le même sens. Les tensions s'additionnent : 1,5 V + 1,5 V = 3 V. La lampe brille plus fort."
+    },
+    {
+      "titre": "🪢 En opposition : les tensions se retranchent",
+      "contenu": "Le + touche le + : les piles poussent l'une contre l'autre, comme deux équipes qui tirent sur une corde. La tension est la plus grande moins la plus petite. Deux piles pareilles : 0 V, la lampe reste éteinte."
+    },
+    {
+      "titre": "🔦 Dans la vraie vie",
+      "contenu": "La pile plate de 4,5 V cache 3 éléments de 1,5 V en concordance. Dans une torche, une seule pile à l'envers suffit pour tout éteindre. Indice : regarde de quel côté est le petit bouton + !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Dans la torche, le + de la pile 1 touche le + de la pile 2. Les piles sont…",
+      "options": ["en concordance", "en opposition", "en dérivation", "déchargées"],
+      "correct_answer_index": 1,
+      "explanation": "Deux bornes de même signe reliées : c'est l'opposition."
+    },
+    {
+      "question": "Avec deux piles de 1,5 V en opposition, la lampe reçoit…",
+      "options": ["3 V", "1,5 V", "0 V", "4,5 V"],
+      "correct_answer_index": 2,
+      "explanation": "1,5 V − 1,5 V = 0 V : la lampe reste éteinte."
+    },
+    {
+      "question": "Tu retournes la pile 2. Les piles sont en concordance. La lampe reçoit…",
+      "options": ["3 V", "0 V", "1,5 V", "6 V"],
+      "correct_answer_index": 0,
+      "explanation": "En concordance, les tensions s'ajoutent : 1,5 V + 1,5 V = 3 V."
+    }
+  ]
+}

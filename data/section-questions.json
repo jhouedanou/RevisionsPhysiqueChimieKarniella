@@ -2300,7 +2300,7 @@
     ]
   },
   "histoire-geo-premiers-habitants": {
-    "tab5": [
+    "tab6": [
       {
         "question": "Comment connaît-on les premiers habitants de la Côte d'Ivoire ?",
         "options": [
@@ -2476,6 +2476,94 @@
         ],
         "correctAnswer": 2,
         "explanation": "La méthode : numéroter les lignes, lire crayon en main, souligner les mots difficiles et les mots-clés."
+      },
+      {
+        "question": "Que veut dire « autochtone » ?",
+        "options": [
+          "Venu d'un autre pays",
+          "Qui habite le pays depuis toujours, sans venir d'ailleurs",
+          "Qui vit dans une grande ville",
+          "Qui parle plusieurs langues"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Autochtone : là depuis toujours. Le 3 de ton cahier donne les preuves de l'autochtonie des premières ethnies."
+      },
+      {
+        "question": "Quelles sont les deux sortes de preuves de l'autochtonie ?",
+        "options": [
+          "Les livres et les photos",
+          "Les cartes et les journaux",
+          "Les preuves orales (récits) et les preuves matérielles (vestiges)",
+          "Les chansons et les danses"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Preuves orales : les récits des traditions. Preuves matérielles : nécropoles, poteries, restes du travail du fer."
+      },
+      {
+        "question": "Un peuple raconte qu'il est descendu du ciel dans une bassine en cuivre. Que veut-il montrer ?",
+        "options": [
+          "Qu'il est né ici et n'est pas venu d'ailleurs",
+          "Qu'il est venu d'un pays lointain",
+          "Qu'il savait voler",
+          "Qu'il fabriquait des bassines"
+        ],
+        "correctAnswer": 0,
+        "explanation": "C'est une légende. Elle dit : « nous sommes ici depuis toujours ». C'est une preuve orale de l'autochtonie."
+      },
+      {
+        "question": "Le titre II de ton cahier étudie l'organisation des premières ethnies. Quels sont les quatre points ?",
+        "options": [
+          "Sportive, musicale, scolaire et religieuse",
+          "Politique, économique, sociale et religieuse",
+          "Politique, militaire, scolaire et sportive",
+          "Économique, musicale, sociale et familiale"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Politique (qui commande), économique (de quoi on vit), sociale (la famille), religieuse (les croyances)."
+      },
+      {
+        "question": "Chez les premiers habitants, qui prend les décisions ?",
+        "options": [
+          "Un roi venu d'Europe",
+          "Le maire de la ville",
+          "Les élèves de l'école",
+          "Le chef de village ou le chef de terre, avec les anciens"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le pouvoir est au village : le chef décide avec les anciens du lignage."
+      },
+      {
+        "question": "Où vivent les Protoakan lagunaires, comme les Ehotilé ?",
+        "options": [
+          "Au nord, dans la savane",
+          "Dans les montagnes de l'ouest",
+          "Au sud-est, au bord des lagunes",
+          "Au nord-ouest"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ils vivent au bord des lagunes, au sud-est. Ils sont surtout pêcheurs."
+      },
+      {
+        "question": "De quoi vivent les Protokrou, dans la forêt de l'ouest ?",
+        "options": [
+          "De la chasse, de la cueillette, de la pêche et du riz",
+          "Du commerce avec l'Europe",
+          "De l'élevage de chameaux",
+          "Du travail en usine"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Comme les autres groupes, ils vivent de la chasse, de la cueillette, de la pêche et de l'agriculture."
+      },
+      {
+        "question": "Que veut dire « culte des ancêtres » ?",
+        "options": [
+          "Apprendre l'histoire à l'école",
+          "Honorer les morts de la famille et leur demander protection",
+          "Construire de vieilles maisons",
+          "Collectionner de vieux objets"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les premières ethnies honorent les ancêtres et les génies de la forêt, de l'eau et de la terre."
       }
     ]
   },
@@ -4152,6 +4240,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Un nom qui finit déjà par s, x ou z ne change pas au pluriel."
+      },
+      {
+        "question": "Dans un nom composé, quels mots prennent la marque du pluriel ?",
+        "options": [
+          "Tous les mots",
+          "Le nom et l'adjectif",
+          "Le verbe et l'adverbe",
+          "Aucun mot"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Seuls le nom et l'adjectif s'accordent. Le verbe, l'adverbe et la préposition ne changent pas."
+      },
+      {
+        "question": "Quel est le pluriel de « un arc-en-ciel » ?",
+        "options": [
+          "des arcs-en-ciels",
+          "des arc-en-ciels",
+          "des arcs-en-ciel",
+          "des arc-en-ciel"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Nom + préposition + nom : seul le premier nom prend un s."
+      },
+      {
+        "question": "Quel est le pluriel de « un tire-bouchon » ?",
+        "options": [
+          "des tires-bouchons",
+          "des tire-bouchons",
+          "des tires-bouchon",
+          "des tire-bouchon"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« Tire » est un verbe : il ne change pas. Le nom « bouchon » prend un s."
+      },
+      {
+        "question": "Un nom composé écrit en un seul mot, comme « portefeuille », fait son pluriel…",
+        "options": [
+          "comme un nom simple : des portefeuilles",
+          "au milieu : des portesfeuille",
+          "jamais : des portefeuille",
+          "en -aux : des portefeuillaux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Écrit en un seul mot, il se comporte comme un nom simple : on ajoute un s à la fin."
       }
     ]
   },
@@ -5361,6 +5493,793 @@
         ],
         "correctAnswer": 0,
         "explanation": "La RAM est une mémoire vive : elle s'efface quand on éteint."
+      },
+      {
+        "question": "Le disque dur, c'est…",
+        "options": [
+          "la mémoire de travail, qui s'efface",
+          "la mémoire de stockage, qui garde tout",
+          "le cerveau de l'ordinateur",
+          "l'écran de l'ordinateur"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le disque dur garde les fichiers et les logiciels, même quand l'ordinateur est éteint."
+      },
+      {
+        "question": "Combien de bits y a-t-il dans 1 octet ?",
+        "options": [
+          "2",
+          "8",
+          "10",
+          "1 024"
+        ],
+        "correctAnswer": 1,
+        "explanation": "1 octet = 8 bits. Le bit est la plus petite unité."
+      },
+      {
+        "question": "Quelle est la plus petite unité de mesure informatique ?",
+        "options": [
+          "l'octet",
+          "le kilooctet",
+          "le bit",
+          "le téraoctet"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Dans l'ordre : bit, octet, Ko, Mo, Go, To."
+      },
+      {
+        "question": "2 Go, c'est combien de Mo ?",
+        "options": [
+          "200 Mo",
+          "1 024 Mo",
+          "2 000 Mo",
+          "2 048 Mo"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Vers une unité plus petite, on multiplie par 1 024 : 2 × 1 024 = 2 048 Mo."
+      }
+    ]
+  },
+  "edhc-principes-droits-homme": {
+    "tab4": [
+      {
+        "question": "Les droits de l'homme sont les droits que toute personne a…",
+        "options": [
+          "seulement à partir de 18 ans",
+          "dès sa naissance, parce qu'elle est un être humain",
+          "quand elle va à l'école",
+          "quand l'État les lui donne"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Toute personne a ces droits dès sa naissance, parce qu'elle est un être humain."
+      },
+      {
+        "question": "Dans « droits de l'homme », le mot « homme » veut dire…",
+        "options": [
+          "seulement les hommes adultes",
+          "les pères de famille",
+          "tout être humain",
+          "les hommes politiques"
+        ],
+        "correctAnswer": 2,
+        "explanation": "« Homme » veut dire ici tout être humain : fille ou garçon, enfant ou adulte."
+      },
+      {
+        "question": "La Déclaration universelle des droits de l'homme (DUDH) a été adoptée par l'ONU le…",
+        "options": [
+          "10 décembre 1948",
+          "20 novembre 1989",
+          "7 août 1960",
+          "1er janvier 2000"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le 10 décembre 1948. Le 20 novembre 1989, c'est la CIDE, pour les enfants."
+      },
+      {
+        "question": "Un principe, c'est…",
+        "options": [
+          "une punition",
+          "une loi qui change chaque année",
+          "un simple exemple",
+          "une règle de base qu'on respecte toujours"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Un principe est une règle de base. On la respecte toujours."
+      },
+      {
+        "question": "« Les droits de l'homme sont les mêmes pour tous, partout dans le monde. » Quel principe ?",
+        "options": [
+          "L'inaliénabilité",
+          "L'universalité",
+          "L'interdépendance",
+          "L'indivisibilité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Universel veut dire : pour tout le monde, partout."
+      },
+      {
+        "question": "« Personne ne peut t'enlever tes droits, et tu ne peux pas les vendre. » Quel principe ?",
+        "options": [
+          "L'inaliénabilité",
+          "L'égalité",
+          "L'universalité",
+          "L'interdépendance"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Inaliénable : on ne peut ni enlever, ni vendre, ni donner ses droits."
+      },
+      {
+        "question": "« Les droits forment un tout : on ne peut pas en respecter seulement quelques-uns. » Quel principe ?",
+        "options": [
+          "L'universalité",
+          "L'égalité",
+          "L'indivisibilité",
+          "L'inaliénabilité"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Indivisible : on ne sépare pas les droits, ils vont tous ensemble."
+      },
+      {
+        "question": "« Une élève malade apprend mal : sa santé aide son éducation. » Quel principe ?",
+        "options": [
+          "L'universalité",
+          "L'inaliénabilité",
+          "L'égalité",
+          "L'interdépendance"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les droits dépendent les uns des autres : un droit respecté aide les autres."
+      },
+      {
+        "question": "Un club refuse une élève parce qu'elle a un handicap. Quel principe n'est pas respecté ?",
+        "options": [
+          "L'indivisibilité",
+          "L'égalité et la non-discrimination",
+          "L'interdépendance",
+          "L'universalité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On ne traite personne moins bien à cause de son handicap : c'est une discrimination."
+      },
+      {
+        "question": "Discriminer une personne, c'est…",
+        "options": [
+          "la traiter moins bien à cause de son sexe, sa religion ou son ethnie",
+          "l'aider à faire ses devoirs",
+          "écouter son avis",
+          "la soigner quand elle est malade"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La discrimination, c'est traiter quelqu'un moins bien à cause de ce qu'il est."
+      },
+      {
+        "question": "Lequel n'est pas un principe des droits de l'homme ?",
+        "options": [
+          "L'universalité",
+          "L'indivisibilité",
+          "La supériorité",
+          "L'égalité"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Personne n'est supérieur aux autres : tous les êtres humains sont égaux en droits."
+      },
+      {
+        "question": "Les droits sont comme les doigts d'une main : une seule main, et des doigts qui s'aident. Quels principes ?",
+        "options": [
+          "L'universalité et l'égalité",
+          "L'inaliénabilité et l'universalité",
+          "L'égalité et l'inaliénabilité",
+          "L'indivisibilité et l'interdépendance"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Une seule main : indivisibilité. Des doigts qui s'aident : interdépendance."
+      }
+    ]
+  },
+  "anglais-unit2-family-tree": {
+    "tab4": [
+      {
+        "question": "The sister of your father or of your mother is your…",
+        "options": [
+          "uncle",
+          "aunt",
+          "cousin",
+          "grandmother"
+        ],
+        "correctAnswer": 1,
+        "explanation": "An aunt: the sister of your father or of your mother (une tante).",
+        "langue": "en"
+      },
+      {
+        "question": "The child of your uncle or of your aunt is your…",
+        "options": [
+          "brother",
+          "son",
+          "cousin",
+          "grandfather"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A cousin: the child of your uncle or of your aunt. Même mot pour un garçon et une fille.",
+        "langue": "en"
+      },
+      {
+        "question": "Your father and your mother are your…",
+        "options": [
+          "grandparents",
+          "cousins",
+          "children",
+          "parents"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Parents = your father and your mother, seulement eux.",
+        "langue": "en"
+      },
+      {
+        "question": "The father of your mother is your…",
+        "options": [
+          "uncle",
+          "father",
+          "grandfather",
+          "brother"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A grandfather: the father of your father or of your mother.",
+        "langue": "en"
+      },
+      {
+        "question": "A married woman is a…",
+        "options": [
+          "wife",
+          "husband",
+          "sister",
+          "daughter"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A wife = a married woman. A husband = a married man.",
+        "langue": "en"
+      },
+      {
+        "question": "Your father is your mother's…",
+        "options": [
+          "brother",
+          "husband",
+          "son",
+          "uncle"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Your father is your mother's husband (le mari de ta mère).",
+        "langue": "en"
+      },
+      {
+        "question": "Comment dit-on « le frère d'Aya » ?",
+        "options": [
+          "the brother Aya",
+          "the Aya's brother",
+          "Aya brother's",
+          "Aya's brother"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Possesseur + 's + ce qu'il possède : Aya's brother. Pas de the devant le prénom.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Comment dit-on « la maison de mes parents » ?",
+        "options": [
+          "my parents' house",
+          "my parents's house",
+          "the house my parents",
+          "my house's parents"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Parents finit par s : on ajoute seulement l'apostrophe → my parents' house.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complète : « les jouets des enfants » = the ___ toys.",
+        "options": [
+          "childrens'",
+          "children's",
+          "childs'",
+          "children"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Children ne finit pas par s : on ajoute 's → the children's toys.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: ___ bag is this? — It's Koffi's.",
+        "options": [
+          "Who",
+          "Where",
+          "Whose",
+          "What"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Whose = à qui. Whose bag is this? — It's Koffi's bag.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "The Aya's brother is Koffi.",
+          "Koffi is brother's Aya.",
+          "Koffi is Aya brother.",
+          "Koffi is Aya's brother."
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le possesseur d'abord, avec 's, et pas de the : Koffi is Aya's brother.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Dans « my parents' house », pourquoi l'apostrophe est-elle après le s ?",
+        "options": [
+          "Parce que parents est un pluriel en -s.",
+          "Parce que house est au pluriel.",
+          "C'est une faute.",
+          "Parce que parents est un prénom."
+        ],
+        "correctAnswer": 0,
+        "explanation": "Un pluriel en -s prend seulement l'apostrophe : my parents', my sisters'.",
+        "langue": "fr"
+      }
+    ]
+  },
+  "anglais-unit2-family-tree-session2": {
+    "tab4": [
+      {
+        "question": "The son of your brother or of your sister is your…",
+        "options": [
+          "nephew",
+          "niece",
+          "grandson",
+          "cousin"
+        ],
+        "correctAnswer": 0,
+        "explanation": "A nephew: the son of your brother or of your sister (un neveu).",
+        "langue": "en"
+      },
+      {
+        "question": "The daughter of your son or of your daughter is your…",
+        "options": [
+          "niece",
+          "granddaughter",
+          "aunt",
+          "sister"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A granddaughter: the daughter of your son or of your daughter (une petite-fille).",
+        "langue": "en"
+      },
+      {
+        "question": "A child with no brother and no sister is…",
+        "options": [
+          "a nephew",
+          "a grandson",
+          "a niece",
+          "an only child"
+        ],
+        "correctAnswer": 3,
+        "explanation": "An only child = un enfant unique.",
+        "langue": "en"
+      },
+      {
+        "question": "It's the room where we cook food.",
+        "options": [
+          "A bedroom",
+          "A bathroom",
+          "A kitchen",
+          "A living room"
+        ],
+        "correctAnswer": 2,
+        "explanation": "A kitchen: the room where we cook food (une cuisine).",
+        "langue": "en"
+      },
+      {
+        "question": "It's the room where we sleep.",
+        "options": [
+          "A kitchen",
+          "A bedroom",
+          "A living room",
+          "A bathroom"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A bedroom: the room where we sleep (une chambre).",
+        "langue": "en"
+      },
+      {
+        "question": "« Be going to » sert à exprimer…",
+        "options": [
+          "une action passée",
+          "une action en train de se faire",
+          "un futur proche",
+          "une habitude"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Be going to = le futur proche : ce que tu vas faire bientôt.",
+        "langue": "fr"
+      },
+      {
+        "question": "Complete: I ___ visit my grandparents tomorrow.",
+        "options": [
+          "am going to",
+          "is going to",
+          "going to",
+          "am go to"
+        ],
+        "correctAnswer": 0,
+        "explanation": "I + am + going to + verb: I am going to visit.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: She ___ cook rice tonight.",
+        "options": [
+          "are going to",
+          "is going",
+          "is going to",
+          "going to"
+        ],
+        "correctAnswer": 2,
+        "explanation": "She + is + going to + verb: She is going to cook.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "We are going to watches TV.",
+          "We going to watch TV.",
+          "We are going to watch TV.",
+          "We are going watch TV."
+        ],
+        "correctAnswer": 2,
+        "explanation": "BE + going to + verbe sans changement : We are going to watch TV.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Quelle est la forme négative de « They are going to play. » ?",
+        "options": [
+          "They don't going to play.",
+          "They aren't going to play.",
+          "They are going not to play.",
+          "They not going to play."
+        ],
+        "correctAnswer": 1,
+        "explanation": "On ajoute not après BE : They are not (aren't) going to play.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Choose the correct question.",
+        "options": [
+          "You are going to cook?",
+          "Do you going to cook?",
+          "Are you go to cook?",
+          "Are you going to cook?"
+        ],
+        "correctAnswer": 3,
+        "explanation": "BE goes before the subject: Are you going to cook?",
+        "langue": "en"
+      },
+      {
+        "question": "Which word shows the future?",
+        "options": [
+          "yesterday",
+          "last week",
+          "tomorrow",
+          "every day"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Tomorrow (demain), tonight, next week, this weekend: les mots du futur.",
+        "langue": "en"
+      }
+    ]
+  },
+  "mathematiques-angles": {
+    "tab4": [
+      {
+        "question": "Quel est le sommet de l'angle AÔB ?",
+        "options": [
+          "le point O",
+          "le point A",
+          "le point B",
+          "la demi-droite [OA)"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le sommet est la lettre du milieu : O."
+      },
+      {
+        "question": "Quels sont les côtés de l'angle AÔB ?",
+        "options": [
+          "[AO) et [AB)",
+          "[OA) et [OB)",
+          "Les points A et B",
+          "Le segment [AB]"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les côtés sont les deux demi-droites qui partent du sommet O : [OA) et [OB)."
+      },
+      {
+        "question": "AÔB et BÔA, c'est…",
+        "options": [
+          "le même angle",
+          "deux angles adjacents",
+          "deux angles différents",
+          "une erreur d'écriture"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le sommet O reste au milieu : AÔB et BÔA désignent le même angle."
+      },
+      {
+        "question": "Les côtés d'un angle s'appellent [Ox) et [Oy). Comment s'écrit cet angle ?",
+        "options": [
+          "xÔy",
+          "Ôxy",
+          "xyÔ",
+          "Oxy"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le sommet O se met au milieu, avec le chapeau : xÔy."
+      },
+      {
+        "question": "Deux angles adjacents ont toujours…",
+        "options": [
+          "la même taille",
+          "le même sommet",
+          "le même nom",
+          "aucun point commun"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La première condition : le même sommet. Il faut aussi un côté commun, et un angle de chaque côté."
+      },
+      {
+        "question": "Combien de conditions faut-il pour que deux angles soient adjacents ?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Trois : le même sommet, un côté commun, et de part et d'autre de ce côté."
+      },
+      {
+        "question": "« De part et d'autre du côté commun » veut dire…",
+        "options": [
+          "du même côté",
+          "un angle de chaque côté",
+          "l'un dans l'autre",
+          "très loin l'un de l'autre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "De part et d'autre : un angle d'un côté, l'autre angle de l'autre côté."
+      },
+      {
+        "question": "AÔB et BÔC sont adjacents. Quel est leur côté commun ?",
+        "options": [
+          "[OA)",
+          "[OC)",
+          "[AC]",
+          "[OB)"
+        ],
+        "correctAnswer": 3,
+        "explanation": "La lettre B est dans les deux noms, à côté de O : le côté commun est [OB)."
+      },
+      {
+        "question": "AÔB et CÔD ont le même sommet O, mais aucun côté commun. Ils sont…",
+        "options": [
+          "adjacents",
+          "pas adjacents",
+          "égaux",
+          "on ne peut pas savoir"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Sans côté commun, deux angles ne sont pas adjacents."
+      },
+      {
+        "question": "AÔB et AÔC ont le côté commun [OA), mais AÔB est dans AÔC. Ils sont…",
+        "options": [
+          "adjacents",
+          "adjacents, car ils ont un côté commun",
+          "pas adjacents, car ils se recouvrent",
+          "pas adjacents, car leurs sommets sont différents"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ils sont du même côté de [OA) : ils se recouvrent, donc pas adjacents."
+      },
+      {
+        "question": "AÔE a pour sommet O et OÊF a pour sommet E. Ces angles sont-ils adjacents ?",
+        "options": [
+          "Oui, ils se touchent",
+          "Oui, ils ont le segment [OE]",
+          "Non, ils sont trop petits",
+          "Non, ils n'ont pas le même sommet"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les sommets O et E sont différents : pas adjacents."
+      },
+      {
+        "question": "Vrai ou faux : deux angles qui ont le même sommet sont toujours adjacents.",
+        "options": [
+          "Vrai, toujours",
+          "Vrai, s'ils sont petits",
+          "Faux : il faut des sommets différents",
+          "Faux : il faut aussi un côté commun, et un angle de chaque côté"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Le même sommet ne suffit pas : il faut les trois conditions."
+      }
+    ]
+  },
+  "physique-chimie-association-piles": {
+    "tab5": [
+      {
+        "question": "Deux piles sont associées en série concordance quand…",
+        "options": [
+          "la borne + de l'une est reliée à la borne + de l'autre",
+          "la borne + de l'une est reliée à la borne − de l'autre",
+          "la borne − de l'une est reliée à la borne − de l'autre",
+          "elles ne se touchent pas"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En concordance, le + de chaque pile est relié au − de la pile suivante."
+      },
+      {
+        "question": "Deux piles sont associées en série opposition quand on relie…",
+        "options": [
+          "le + de l'une au − de l'autre",
+          "les piles à une lampe",
+          "deux bornes de même signe",
+          "les piles à un voltmètre"
+        ],
+        "correctAnswer": 2,
+        "explanation": "En opposition, on relie + avec +, ou − avec −."
+      },
+      {
+        "question": "En série concordance, la tension de l'association est…",
+        "options": [
+          "la somme des tensions des piles",
+          "la plus grande moins la plus petite",
+          "toujours 0 V",
+          "la tension d'une seule pile"
+        ],
+        "correctAnswer": 0,
+        "explanation": "En concordance, les tensions s'ajoutent : U = U₁ + U₂."
+      },
+      {
+        "question": "En série opposition, la tension de l'association est…",
+        "options": [
+          "la somme des tensions",
+          "toujours 3 V",
+          "la tension de la plus petite pile",
+          "la plus grande tension moins la plus petite"
+        ],
+        "correctAnswer": 3,
+        "explanation": "En opposition, U = U₁ − U₂, avec U₁ la plus grande."
+      },
+      {
+        "question": "Deux piles de 1,5 V en concordance donnent une tension de…",
+        "options": [
+          "0 V",
+          "1,5 V",
+          "3 V",
+          "4,5 V"
+        ],
+        "correctAnswer": 2,
+        "explanation": "1,5 V + 1,5 V = 3 V."
+      },
+      {
+        "question": "Deux piles de 1,5 V en opposition donnent une tension de…",
+        "options": [
+          "0 V",
+          "1,5 V",
+          "3 V",
+          "6 V"
+        ],
+        "correctAnswer": 0,
+        "explanation": "1,5 V − 1,5 V = 0 V : les deux piles s'annulent."
+      },
+      {
+        "question": "Une pile de 4,5 V et une pile de 1,5 V en concordance donnent…",
+        "options": [
+          "3 V",
+          "4,5 V",
+          "1,5 V",
+          "6 V"
+        ],
+        "correctAnswer": 3,
+        "explanation": "En concordance, on additionne : 4,5 V + 1,5 V = 6 V."
+      },
+      {
+        "question": "Une pile de 4,5 V et une pile de 1,5 V en opposition donnent…",
+        "options": [
+          "6 V",
+          "3 V",
+          "0 V",
+          "4,5 V"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En opposition, la plus grande moins la plus petite : 4,5 V − 1,5 V = 3 V."
+      },
+      {
+        "question": "Une lampe brille sur une pile. On ajoute une deuxième pile en concordance. La lampe…",
+        "options": [
+          "s'éteint",
+          "brille pareil",
+          "brille plus fort",
+          "brille moins fort"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La tension augmente : la lampe brille plus fort."
+      },
+      {
+        "question": "Une lampe est branchée sur deux piles identiques en opposition. Que se passe-t-il ?",
+        "options": [
+          "La lampe ne s'allume pas",
+          "La lampe brille plus fort",
+          "La lampe grille",
+          "La lampe clignote"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La tension est 0 V : la lampe reste éteinte."
+      },
+      {
+        "question": "Une pile plate de 4,5 V contient…",
+        "options": [
+          "2 éléments de 1,5 V en opposition",
+          "3 éléments de 1,5 V en concordance",
+          "1 seul élément de 4,5 V",
+          "4 éléments de 1,5 V en concordance"
+        ],
+        "correctAnswer": 1,
+        "explanation": "1,5 V + 1,5 V + 1,5 V = 4,5 V : 3 éléments en série concordance."
+      },
+      {
+        "question": "Une lampe torche contient 2 piles de 1,5 V bien placées. La lampe reçoit…",
+        "options": [
+          "1,5 V",
+          "0 V",
+          "4,5 V",
+          "3 V"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les piles sont en concordance : 1,5 V + 1,5 V = 3 V."
+      },
+      {
+        "question": "Ta lampe torche reste éteinte avec deux piles neuves. Quelle est la cause la plus probable ?",
+        "options": [
+          "Les piles sont trop neuves",
+          "Une pile est mise à l'envers",
+          "La torche a trop de piles",
+          "Il fait jour"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une pile à l'envers met les piles en opposition : 0 V."
+      },
+      {
+        "question": "Combien de piles de 1,5 V faut-il associer en concordance pour obtenir 9 V ?",
+        "options": [
+          "3",
+          "4",
+          "6",
+          "9"
+        ],
+        "correctAnswer": 2,
+        "explanation": "6 × 1,5 V = 9 V."
+      },
+      {
+        "question": "Quel appareil mesure la tension aux bornes d'une association de piles ?",
+        "options": [
+          "Le voltmètre",
+          "Le thermomètre",
+          "La balance",
+          "La lampe"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La tension se mesure en volts (V) avec un voltmètre."
       }
     ]
   }

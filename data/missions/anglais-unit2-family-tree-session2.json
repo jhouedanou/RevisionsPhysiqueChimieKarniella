@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit2-family-tree-session2",
+  "lecon": "anglais-unit2-family-tree-session2",
+  "matiere": "anglais",
+  "titre": "The future machine",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, la machine du vaisseau peut lire le futur ! Elle veut annoncer ce que la famille d'Aya va faire ce week-end. Mais elle ne parle qu'anglais et oublie toujours un mot. Aide-la avant l'atterrissage.",
+  "micro_learning_blocks": [
+    {
+      "titre": "👶 Les petits de la famille",
+      "contenu": "Grandson et granddaughter : grand + son, grand + daughter. Ensemble, ce sont les grandchildren. Nephew et niece : le fils et la fille de ton frère ou de ta sœur. Pas de frère ni de sœur ? Tu es an only child."
+    },
+    {
+      "titre": "🏠 Les pièces de la maison",
+      "contenu": "Kitchen pour cuisiner, bedroom pour dormir, bathroom pour la douche, living room pour regarder la télé en famille."
+    },
+    {
+      "titre": "🔮 Be going to, la machine du futur",
+      "contenu": "Sujet + am / is / are + going to + verbe : I'm going to visit my grandparents tomorrow. Négatif : I'm not going to… Question : Are you going to…? Le verbe ne change jamais."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "The son of your sister is your…",
+      "options": [
+        "nephew",
+        "niece",
+        "grandson",
+        "cousin"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "A nephew: the son of your brother or of your sister."
+    },
+    {
+      "question": "Complete: She ___ cook rice tonight.",
+      "options": [
+        "going to",
+        "are going to",
+        "is going to",
+        "is go to"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "She + is + going to + verb."
+    },
+    {
+      "question": "Choose the correct question.",
+      "options": [
+        "You going to sleep?",
+        "Are you going to sleep?",
+        "Do you going to sleep?",
+        "Are you going sleep?"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "BE goes before the subject: Are you going to sleep?"
+    }
+  ]
+}

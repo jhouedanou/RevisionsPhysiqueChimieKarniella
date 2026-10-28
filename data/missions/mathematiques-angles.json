@@ -1,0 +1,42 @@
+{
+  "id": "mathematiques-angles",
+  "lecon": "mathematiques-angles",
+  "matiere": "mathematiques",
+  "titre": "Les zones du phare",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le phare O de l'île lance trois rayons de lumière : [OA), [OB) et [OC). Le gardien veut deux zones de surveillance voisines, sans qu'elles se recouvrent. Trouve les bons angles avant la nuit !",
+  "micro_learning_blocks": [
+    {
+      "titre": "📐 Le nom d'un angle",
+      "contenu": "Un angle, c'est deux demi-droites qui partent du même point : le sommet. On l'écrit AÔB, avec le sommet O toujours au milieu, comme le phare entre ses deux rayons."
+    },
+    {
+      "titre": "🍰 Adjacents = voisins",
+      "contenu": "Deux angles sont adjacents s'ils ont le même sommet, un côté commun, et sont de part et d'autre de ce côté. Comme deux parts de gâteau voisines : même pointe, un bord commun, et elles ne se recouvrent pas."
+    },
+    {
+      "titre": "🚫 Les deux pièges",
+      "contenu": "Indice : un côté commun ne suffit pas. Si une zone est dans l'autre, elles se recouvrent : pas adjacentes. Et deux angles avec des sommets différents ne sont jamais adjacents."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Le gardien parle de la zone AÔB. Où est le phare, le sommet ?",
+      "options": ["Au point A", "Au point B", "Au point O", "Entre A et B"],
+      "correct_answer_index": 2,
+      "explanation": "Dans AÔB, le sommet est la lettre du milieu : O."
+    },
+    {
+      "question": "B est entre les rayons [OA) et [OC). Quelles zones sont adjacentes ?",
+      "options": ["AÔB et AÔC", "AÔB et BÔC", "BÔC et AÔC", "Aucune"],
+      "correct_answer_index": 1,
+      "explanation": "AÔB et BÔC ont le sommet O, le côté commun [OB), et sont un de chaque côté de [OB)."
+    },
+    {
+      "question": "AÔB est à l'intérieur de AÔC. Ces deux zones sont-elles adjacentes ?",
+      "options": ["Oui, elles ont le côté [OA) en commun", "Oui, elles ont le même sommet", "Non, elles se recouvrent", "On ne peut pas savoir"],
+      "correct_answer_index": 2,
+      "explanation": "Elles sont du même côté de [OA) : elles se recouvrent, donc pas adjacentes."
+    }
+  ]
+}
