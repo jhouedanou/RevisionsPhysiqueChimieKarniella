@@ -263,7 +263,7 @@
         {
           "id": "histoire-geo-milieu-physique",
           "titre": "Le milieu physique de la Côte d'Ivoire et l'installation des populations",
-          "sousTitre": "Géographie — Thème 1 : L'homme et le milieu, leçon 1",
+          "sousTitre": "Géographie — Thème 1 : L'homme et son milieu en Côte d'Ivoire, leçon 1",
           "icone": "🏞️",
           "description": "Ton cahier : le relief (plaines, plateaux, montagnes), le climat, la végétation et les sols, puis où les hommes s'installent.",
           "statut": "prete",
@@ -285,6 +285,15 @@
           "sousTitre": "Thème 1 : Les droits et devoirs du citoyen en temps de paix ou de conflits, leçon 1",
           "icone": "🧒",
           "description": "Être soigné, aller à l'école, jouer, donner son avis, s'informer : les droits de la CIDE, leurs bienfaits et les devoirs de l'enfant.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "edhc-principes-droits-homme",
+          "titre": "Les principes des droits de l'homme",
+          "sousTitre": "Thème 1 : Les droits et devoirs du citoyen en temps de paix ou de conflits, leçon 2",
+          "icone": "🌍",
+          "description": "Les droits de toute personne dès sa naissance et leurs principes : universalité, inaliénabilité, indivisibilité, interdépendance, égalité et non-discrimination.",
           "statut": "prete",
           "mission": true
         }

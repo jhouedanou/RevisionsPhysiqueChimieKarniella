@@ -4152,6 +4152,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "Un nom qui finit déjà par s, x ou z ne change pas au pluriel."
+      },
+      {
+        "question": "Dans un nom composé, quels mots prennent la marque du pluriel ?",
+        "options": [
+          "Tous les mots",
+          "Le nom et l'adjectif",
+          "Le verbe et l'adverbe",
+          "Aucun mot"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Seuls le nom et l'adjectif s'accordent. Le verbe, l'adverbe et la préposition ne changent pas."
+      },
+      {
+        "question": "Quel est le pluriel de « un arc-en-ciel » ?",
+        "options": [
+          "des arcs-en-ciels",
+          "des arc-en-ciels",
+          "des arcs-en-ciel",
+          "des arc-en-ciel"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Nom + préposition + nom : seul le premier nom prend un s."
+      },
+      {
+        "question": "Quel est le pluriel de « un tire-bouchon » ?",
+        "options": [
+          "des tires-bouchons",
+          "des tire-bouchons",
+          "des tires-bouchon",
+          "des tire-bouchon"
+        ],
+        "correctAnswer": 1,
+        "explanation": "« Tire » est un verbe : il ne change pas. Le nom « bouchon » prend un s."
+      },
+      {
+        "question": "Un nom composé écrit en un seul mot, comme « portefeuille », fait son pluriel…",
+        "options": [
+          "comme un nom simple : des portefeuilles",
+          "au milieu : des portesfeuille",
+          "jamais : des portefeuille",
+          "en -aux : des portefeuillaux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Écrit en un seul mot, il se comporte comme un nom simple : on ajoute un s à la fin."
       }
     ]
   },
@@ -5361,6 +5405,186 @@
         ],
         "correctAnswer": 0,
         "explanation": "La RAM est une mémoire vive : elle s'efface quand on éteint."
+      },
+      {
+        "question": "Le disque dur, c'est…",
+        "options": [
+          "la mémoire de travail, qui s'efface",
+          "la mémoire de stockage, qui garde tout",
+          "le cerveau de l'ordinateur",
+          "l'écran de l'ordinateur"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le disque dur garde les fichiers et les logiciels, même quand l'ordinateur est éteint."
+      },
+      {
+        "question": "Combien de bits y a-t-il dans 1 octet ?",
+        "options": [
+          "2",
+          "8",
+          "10",
+          "1 024"
+        ],
+        "correctAnswer": 1,
+        "explanation": "1 octet = 8 bits. Le bit est la plus petite unité."
+      },
+      {
+        "question": "Quelle est la plus petite unité de mesure informatique ?",
+        "options": [
+          "l'octet",
+          "le kilooctet",
+          "le bit",
+          "le téraoctet"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Dans l'ordre : bit, octet, Ko, Mo, Go, To."
+      },
+      {
+        "question": "2 Go, c'est combien de Mo ?",
+        "options": [
+          "200 Mo",
+          "1 024 Mo",
+          "2 000 Mo",
+          "2 048 Mo"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Vers une unité plus petite, on multiplie par 1 024 : 2 × 1 024 = 2 048 Mo."
+      }
+    ]
+  },
+  "edhc-principes-droits-homme": {
+    "tab4": [
+      {
+        "question": "Les droits de l'homme sont les droits que toute personne a…",
+        "options": [
+          "seulement à partir de 18 ans",
+          "dès sa naissance, parce qu'elle est un être humain",
+          "quand elle va à l'école",
+          "quand l'État les lui donne"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Toute personne a ces droits dès sa naissance, parce qu'elle est un être humain."
+      },
+      {
+        "question": "Dans « droits de l'homme », le mot « homme » veut dire…",
+        "options": [
+          "seulement les hommes adultes",
+          "les pères de famille",
+          "tout être humain",
+          "les hommes politiques"
+        ],
+        "correctAnswer": 2,
+        "explanation": "« Homme » veut dire ici tout être humain : fille ou garçon, enfant ou adulte."
+      },
+      {
+        "question": "La Déclaration universelle des droits de l'homme (DUDH) a été adoptée par l'ONU le…",
+        "options": [
+          "10 décembre 1948",
+          "20 novembre 1989",
+          "7 août 1960",
+          "1er janvier 2000"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le 10 décembre 1948. Le 20 novembre 1989, c'est la CIDE, pour les enfants."
+      },
+      {
+        "question": "Un principe, c'est…",
+        "options": [
+          "une punition",
+          "une loi qui change chaque année",
+          "un simple exemple",
+          "une règle de base qu'on respecte toujours"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Un principe est une règle de base. On la respecte toujours."
+      },
+      {
+        "question": "« Les droits de l'homme sont les mêmes pour tous, partout dans le monde. » Quel principe ?",
+        "options": [
+          "L'inaliénabilité",
+          "L'universalité",
+          "L'interdépendance",
+          "L'indivisibilité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Universel veut dire : pour tout le monde, partout."
+      },
+      {
+        "question": "« Personne ne peut t'enlever tes droits, et tu ne peux pas les vendre. » Quel principe ?",
+        "options": [
+          "L'inaliénabilité",
+          "L'égalité",
+          "L'universalité",
+          "L'interdépendance"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Inaliénable : on ne peut ni enlever, ni vendre, ni donner ses droits."
+      },
+      {
+        "question": "« Les droits forment un tout : on ne peut pas en respecter seulement quelques-uns. » Quel principe ?",
+        "options": [
+          "L'universalité",
+          "L'égalité",
+          "L'indivisibilité",
+          "L'inaliénabilité"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Indivisible : on ne sépare pas les droits, ils vont tous ensemble."
+      },
+      {
+        "question": "« Une élève malade apprend mal : sa santé aide son éducation. » Quel principe ?",
+        "options": [
+          "L'universalité",
+          "L'inaliénabilité",
+          "L'égalité",
+          "L'interdépendance"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Les droits dépendent les uns des autres : un droit respecté aide les autres."
+      },
+      {
+        "question": "Un club refuse une élève parce qu'elle a un handicap. Quel principe n'est pas respecté ?",
+        "options": [
+          "L'indivisibilité",
+          "L'égalité et la non-discrimination",
+          "L'interdépendance",
+          "L'universalité"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On ne traite personne moins bien à cause de son handicap : c'est une discrimination."
+      },
+      {
+        "question": "Discriminer une personne, c'est…",
+        "options": [
+          "la traiter moins bien à cause de son sexe, sa religion ou son ethnie",
+          "l'aider à faire ses devoirs",
+          "écouter son avis",
+          "la soigner quand elle est malade"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La discrimination, c'est traiter quelqu'un moins bien à cause de ce qu'il est."
+      },
+      {
+        "question": "Lequel n'est pas un principe des droits de l'homme ?",
+        "options": [
+          "L'universalité",
+          "L'indivisibilité",
+          "La supériorité",
+          "L'égalité"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Personne n'est supérieur aux autres : tous les êtres humains sont égaux en droits."
+      },
+      {
+        "question": "Les droits sont comme les doigts d'une main : une seule main, et des doigts qui s'aident. Quels principes ?",
+        "options": [
+          "L'universalité et l'égalité",
+          "L'inaliénabilité et l'universalité",
+          "L'égalité et l'inaliénabilité",
+          "L'indivisibilité et l'interdépendance"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Une seule main : indivisibilité. Des doigts qui s'aident : interdépendance."
       }
     ]
   }

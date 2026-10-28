@@ -1,0 +1,57 @@
+{
+  "id": "edhc-principes-droits-homme",
+  "lecon": "edhc-principes-droits-homme",
+  "matiere": "edhc",
+  "titre": "La charte du vaisseau",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, ton vaisseau accueille des passagers venus de partout ! Un membre de l'équipage dit que les nouveaux n'ont pas les mêmes droits. Écris la charte du bord pour que chacun soit respecté.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🌍 Des droits de naissance",
+      "contenu": "Les droits de l'homme, toute personne les a dès sa naissance, parce qu'elle est un être humain. « Homme » veut dire ici fille ou garçon, enfant ou adulte. Ils sont écrits dans la DUDH, le 10 décembre 1948."
+    },
+    {
+      "titre": "🔒 Pour tous, pour toujours",
+      "contenu": "Les droits sont les mêmes partout (universalité). Personne ne peut te les enlever, comme un trésor scellé dans ton cœur (inaliénabilité). Et personne n'est traité moins bien à cause de son sexe ou de sa religion (égalité et non-discrimination)."
+    },
+    {
+      "titre": "✋ Les doigts de la main",
+      "contenu": "Les droits forment une seule main : on ne les sépare pas (indivisibilité). Et chaque doigt aide les autres : la santé aide à bien apprendre (interdépendance)."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Quand as-tu reçu tes droits de l'homme ?",
+      "options": [
+        "À 18 ans",
+        "À ta naissance",
+        "À ton entrée au collège",
+        "Quand tu as voté"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Tu les as dès ta naissance, parce que tu es un être humain."
+    },
+    {
+      "question": "« Personne ne peut t'enlever tes droits. » C'est…",
+      "options": [
+        "l'interdépendance",
+        "l'universalité",
+        "l'inaliénabilité",
+        "l'indivisibilité"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Inaliénable : on ne peut ni les enlever, ni les vendre, ni les donner."
+    },
+    {
+      "question": "Un club refuse une élève à cause de sa religion. Quel principe est oublié ?",
+      "options": [
+        "L'égalité et la non-discrimination",
+        "L'indivisibilité",
+        "L'interdépendance",
+        "L'inaliénabilité"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Tout le monde a les mêmes droits, quelle que soit sa religion."
+    }
+  ]
+}
