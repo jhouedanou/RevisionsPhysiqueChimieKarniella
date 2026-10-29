@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Saisir une leçon - Révisions Karniella</title>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/matieres.css">
+<link rel="stylesheet" href="css/lecon-5e.css">
+<script src="js/theme.js"></script>
+<script src="js/programme-5e.js"></script>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; background: var(--fond); color: var(--encre);
+        font-family: var(--police-texte); line-height: 1.5;
+    }
+    main { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1, h2 { font-family: var(--police-titre); line-height: 1.2; }
+    h1 { font-size: 28px; margin: 0 0 4px; color: var(--rose); }
+    h2 { font-size: 20px; margin: 0 0 12px; }
+    .sous { color: var(--doux); margin: 0 0 24px; }
+    .carte {
+        background: var(--surface); border: 1px solid var(--bord);
+        border-radius: var(--rayon-carte); box-shadow: var(--ombre-clay);
+        padding: 20px; margin-bottom: 20px;
+    }
+    form.connexion { display: flex; gap: 8px; flex-wrap: wrap; max-width: 420px; }
+    label { display: block; font-weight: 700; margin: 14px 0 6px; }
+    input[type=password], input[type=text], select, textarea {
+        width: 100%; font: inherit; padding: 10px 12px; color: var(--encre);
+        background: var(--surface-douce); border: 1px solid var(--bord); border-radius: 12px;
+    }
+    form.connexion input { flex: 1 1 200px; width: auto; border-radius: var(--rayon-bouton); }
+    textarea { min-height: 320px; resize: vertical; line-height: 1.5; }
+    .case-a-cocher { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+    .case-a-cocher input { width: 20px; height: 20px; }
+    button, a.bouton {
+        font: inherit; font-weight: 700; cursor: pointer; padding: 10px 16px;
+        border-radius: var(--rayon-bouton); border: 1px solid var(--rose);
+        background: var(--rose); color: #fff; text-decoration: none; display: inline-block;
+    }
+    button.discret, a.bouton.discret { background: transparent; color: var(--rose); }
+    button.danger { background: transparent; color: var(--erreur-texte); border-color: var(--erreur-texte); }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+    .erreur { color: var(--erreur-texte); font-weight: 700; }
+    .reussi { color: var(--succes-texte); font-weight: 700; }
+    .aide { font-size: 15px; color: var(--doux); }
+    .aide summary { cursor: pointer; color: var(--rose); font-weight: 700; }
+    .aide code { background: var(--surface-grise); padding: 1px 6px; border-radius: 6px; color: var(--encre); }
+    .aide ul { margin: 8px 0 0; padding-left: 20px; }
+    .apercu {
+        border: 2px dashed var(--bord); border-radius: 16px; padding: 4px 16px;
+        background: var(--surface); min-height: 60px;
+    }
+    .apercu h2 { font-size: 20px; margin: 16px 0 8px; }
+    .apercu h3 { font-size: 17px; margin: 14px 0 6px; }
+    .barre-outils { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
+    ul.liste { list-style: none; margin: 0; padding: 0; }
+    ul.liste li {
+        display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        padding: 12px 0; border-bottom: 1px solid var(--bord);
+    }
+    ul.liste .quoi { flex: 1 1 260px; min-width: 0; }
+    ul.liste .quoi strong { display: block; overflow-wrap: anywhere; }
+    ul.liste .muet { color: var(--doux); font-size: 14px; }
+    ul.liste button, ul.liste a.bouton { padding: 6px 12px; font-size: 14px; }
+    .pastille { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 13px; font-weight: 700;
+        background: var(--surface-grise); color: var(--doux); }
+    [hidden] { display: none !important; }
+</style>
+<link rel="stylesheet" href="css/jeu.css">
+</head>
+<body>
+<main>
+    <h1>✍️ Saisir une leçon</h1>
+    <p class="sous">Tape une leçon du cahier. Elle apparaît tout de suite dans le sommaire de sa matière.</p>
+
+    <section class="carte" id="ecran-connexion">
+        <h2>Mot de passe</h2>
+        <p class="aide">Le même que pour la page de suivi.</p>
+        <form class="connexion" id="form-connexion">
+            <input type="password" id="mdp" autocomplete="current-password" placeholder="Mot de passe du suivi" required>
+            <button type="submit">Entrer</button>
+        </form>
+        <p class="erreur" id="erreur-connexion" role="alert" hidden></p>
+    </section>
+
+    <div id="espace" hidden>
+        <div class="barre-outils">
+            <a class="bouton discret" href="suivi.html">📊 Suivi</a>
+            <a class="bouton discret" href="index.html">🏠 Le site</a>
+            <button type="button" class="discret" id="deconnexion">Se déconnecter</button>
+        </div>
+
+        <section class="carte">
+            <h2 id="titre-formulaire">Nouvelle leçon</h2>
+            <form id="form-lecon" novalidate>
+                <label for="matiere">Matière</label>
+                <select id="matiere" required>
+                    <option value="">— Choisis la matière —</option>
+                </select>
+
+                <label for="titre">Titre de la leçon</label>
+                <input type="text" id="titre" maxlength="200" required placeholder="Ex. : Leçon 2 : Les mélanges">
+
+                <label for="contenu">Texte de la leçon</label>
+                <textarea id="contenu" maxlength="60000" required placeholder="Recopie le cahier ici."></textarea>
+
+                <details class="aide">
+                    <summary>Mettre en forme</summary>
+                    <ul>
+                        <li><code># Titre</code> : un grand titre (I. Définitions…)</li>
+                        <li><code>## Titre</code> : un petit titre (1°) La notion…)</li>
+                        <li><code>- texte</code> : une puce</li>
+                        <li><code>&gt; texte</code> : un encadré de définition</li>
+                        <li><code>**mot**</code> : un mot en gras</li>
+                        <li>Une ligne vide : un nouveau paragraphe</li>
+                    </ul>
+                </details>
+
+                <label class="case-a-cocher"><input type="checkbox" id="visible" checked> Visible par Karniella</label>
+
+                <div class="actions">
+                    <button type="submit" id="enregistrer">Enregistrer</button>
+                    <button type="button" class="discret" id="annuler" hidden>Annuler la modification</button>
+                </div>
+                <p id="message" role="status" hidden></p>
+            </form>
+        </section>
+
+        <section class="carte">
+            <h2>Aperçu</h2>
+            <div class="apercu lecon-5e" id="apercu"><p class="aide">Le texte s'affichera ici, comme sur le site.</p></div>
+        </section>
+
+        <section class="carte">
+            <h2>Leçons déjà saisies</h2>
+            <ul class="liste" id="liste"></ul>
+        </section>
+    </div>
+</main>
+<script src="js/lecons-saisies.js"></script>
+<script src="js/saisie.js"></script>
+</body>
+</html>

@@ -129,6 +129,7 @@ ${corps}
 
 <script src="../js/chemin.js" defer></script>
 <script src="../js/interro.js" defer></script>
+<script src="../js/lecons-saisies.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>
