@@ -1,0 +1,76 @@
+{
+  "lecon": "svt-lutte-moustiques",
+  "matiere": "svt",
+  "date": "2026-10-11",
+  "restitution": [
+    {
+      "question": "Comment appelle-t-on un produit qui tue les larves de moustiques ?",
+      "reponse": "larvicide",
+      "accepte": ["larvicides", "produit larvicide"]
+    },
+    {
+      "question": "Mettre des poissons qui mangent les larves dans une mare, c'est quelle lutte ?",
+      "reponse": "lutte biologique",
+      "accepte": ["biologique"]
+    },
+    {
+      "question": "Comment appelle-t-on une pommade qui fait fuir les moustiques ?",
+      "reponse": "répulsif",
+      "accepte": ["répulsifs", "pommade répulsive"]
+    },
+    {
+      "question": "Définis un gîte larvaire.",
+      "reponse": "Un endroit avec de l'eau qui ne coule pas, où vivent les larves de moustiques. Par exemple : une flaque, un caniveau bouché, un vieux pneu."
+    },
+    {
+      "question": "Cite trois actions qui détruisent les gîtes larvaires.",
+      "reponse": "Par exemple : vider les vieux pneus et les boîtes, couvrir les jarres, curer les caniveaux, combler les flaques, ramasser les ordures, débroussailler."
+    },
+    {
+      "question": "Explique comment la moustiquaire imprégnée te protège du paludisme.",
+      "reponse": "Le moustique ne peut pas piquer à travers le filet. Traitée avec un insecticide, elle le tue aussi quand il se pose dessus. Pas de piqûre, pas de paludisme."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Ramasser les ordures, c'est la lutte chimique.",
+      "vrai": false,
+      "correction": "Faux : c'est la lutte physique (ou mécanique). On le fait avec ses mains et des outils, sans produit."
+    },
+    {
+      "affirmation": "Une opération de salubrité doit être refaite souvent.",
+      "vrai": true,
+      "correction": "Vrai : sinon l'eau stagnante et les ordures reviennent."
+    },
+    {
+      "affirmation": "On peut pulvériser un insecticide sur l'eau à boire pour chasser les moustiques.",
+      "vrai": false,
+      "correction": "Faux : un insecticide est un poison. Jamais sur les gens, la nourriture ou l'eau à boire."
+    },
+    {
+      "affirmation": "Les libellules et les chauves-souris mangent des moustiques.",
+      "vrai": true,
+      "correction": "Vrai, comme les araignées et certains oiseaux."
+    },
+    {
+      "affirmation": "On dort sous la moustiquaire seulement pendant la saison des pluies.",
+      "vrai": false,
+      "correction": "Faux : on dort dessous chaque nuit, toute l'année. On la borde bien sous le matelas."
+    },
+    {
+      "affirmation": "Le grillage aux fenêtres et aux portes empêche les moustiques d'entrer.",
+      "vrai": true,
+      "correction": "Vrai : c'est un moyen de se protéger des piqûres, comme les vêtements longs."
+    },
+    {
+      "affirmation": "Débroussailler, c'est déboucher les caniveaux.",
+      "vrai": false,
+      "correction": "Faux : débroussailler, c'est couper les herbes hautes. Déboucher les caniveaux, c'est les curer."
+    },
+    {
+      "affirmation": "Dès que tu as de la fièvre, tu dois aller au centre de santé.",
+      "vrai": true,
+      "correction": "Vrai : dis-le à un adulte. Soigné à temps, le paludisme guérit."
+    }
+  ]
+}

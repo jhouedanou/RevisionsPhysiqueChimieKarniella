@@ -1,0 +1,77 @@
+{
+  "lecon": "physique-chimie-tension-nominale",
+  "matiere": "physique-chimie",
+  "date": "2026-09-27",
+  "restitution": [
+    {
+      "question": "Quelle est l'unité de la tension électrique ?",
+      "reponse": "volt",
+      "accepte": ["volts", "V", "volt (V)"]
+    },
+    {
+      "question": "Quelle est la tension du courant du secteur, dans les prises de la maison ?",
+      "reponse": "220 V",
+      "accepte": ["220", "220 volts", "220 volt", "deux cent vingt volts"]
+    },
+    {
+      "question": "La lampe est un récepteur. Comment appelle-t-on sa tension nominale ?",
+      "reponse": "tension d'usage",
+      "accepte": ["usage"]
+    },
+    {
+      "question": "On branche une lampe de 6 V sur une pile de 1,5 V. Comment est la lampe ?",
+      "reponse": "en sous-tension",
+      "accepte": ["sous-tension", "elle est en sous-tension", "sous-voltée", "sous-alimentée"]
+    },
+    {
+      "question": "Quand dit-on qu'une lampe est adaptée à une pile ?",
+      "reponse": "Quand la tension de la pile est voisine de la tension d'usage de la lampe. Elles sont égales ou très proches. La lampe brille alors normalement."
+    },
+    {
+      "question": "Que provoque une surtension sur un récepteur ?",
+      "reponse": "Elle détériore le récepteur. Une lampe en surtension brille très fort, puis elle grille : son filament casse."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Dans un circuit, la pile est un récepteur.",
+      "vrai": false,
+      "correction": "Faux : la pile est un générateur. La lampe est un récepteur."
+    },
+    {
+      "affirmation": "La tension électrique se mesure avec un voltmètre.",
+      "vrai": true,
+      "correction": "Vrai : le voltmètre mesure la tension, en volts."
+    },
+    {
+      "affirmation": "La tension nominale est la tension inscrite sur la pile ou sur la lampe.",
+      "vrai": true,
+      "correction": "Vrai : par exemple, 4,5 V sur une pile plate."
+    },
+    {
+      "affirmation": "La tension nominale d'une pile s'appelle aussi la tension d'alimentation.",
+      "vrai": true,
+      "correction": "Vrai : c'est la tension que la pile neuve fournit entre ses deux bornes."
+    },
+    {
+      "affirmation": "Une lampe en sous-tension brille très fort.",
+      "vrai": false,
+      "correction": "Faux : en sous-tension, la lampe fonctionne mal. Elle brille faiblement, ou pas du tout."
+    },
+    {
+      "affirmation": "Une lampe en sous-tension est aussi dite sous-voltée ou sous-alimentée.",
+      "vrai": true,
+      "correction": "Vrai : ce sont trois façons de dire la même chose."
+    },
+    {
+      "affirmation": "La tension de la pile dépasse celle de la lampe : la lampe est en sous-tension.",
+      "vrai": false,
+      "correction": "Faux : la lampe est en surtension. La tension de la pile est supérieure à sa tension d'usage."
+    },
+    {
+      "affirmation": "On peut faire des expériences avec le courant des prises de la maison.",
+      "vrai": false,
+      "correction": "Faux : le courant du secteur peut tuer. On ne fait jamais d'expérience avec lui."
+    }
+  ]
+}

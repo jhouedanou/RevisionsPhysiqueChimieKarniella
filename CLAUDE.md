@@ -21,12 +21,16 @@ est dans la section « Écrire simple » ci-dessous.
 - Entrée dans `data/programme-5e.json` (`statut: "prete"`, `mission: true`),
   questions dans `data/section-questions.json`, mission de 3 minutes dans
   `data/missions/<slug>.json` (format de `docs/prompt-missions.md`).
+- Interro surprise dans `data/interros/<slug>.json` : questions de cours et
+  vrai ou faux (format de `docs/prompt-interros.md`), `date` = jour de
+  l'ajout. C'est ce qui fait apparaître l'interro surprise de la matière.
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
 - Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
   manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)
   qui suit le plan du professeur, corriger seulement l'orthographe, et mettre
   ce qui manque dans un encadré « ✏️ À vérifier ». Garder le texte brut reçu
-  dans `docs/sources/`.
+  dans `docs/sources/`. Ajouter à l'interro des questions sur le cahier et
+  mettre sa `date` au jour de l'ajout.
 
 ## Écrire simple
 

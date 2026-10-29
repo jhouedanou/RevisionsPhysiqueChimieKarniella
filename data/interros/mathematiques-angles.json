@@ -1,0 +1,62 @@
+{
+  "lecon": "mathematiques-angles",
+  "matiere": "mathematiques",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Quel est le sommet de l'angle DÊF ?",
+      "reponse": "E",
+      "accepte": ["point E", "le point E"]
+    },
+    {
+      "question": "Les angles xÔy et yÔz sont adjacents. Quel est leur côté commun ?",
+      "reponse": "[Oy)",
+      "accepte": ["Oy", "demi-droite [Oy)"]
+    },
+    {
+      "question": "Complète : un angle est formé par deux … qui partent du même point.",
+      "reponse": "demi-droites",
+      "accepte": ["demi-droite"]
+    },
+    {
+      "question": "Quand dit-on que deux angles sont adjacents ?",
+      "reponse": "Quand ils ont le même sommet, un côté commun, et qu'ils sont de part et d'autre de ce côté commun."
+    },
+    {
+      "question": "AÔB et AÔC ont le sommet O et le côté [OA) en commun. AÔB est dans AÔC. Pourquoi ne sont-ils pas adjacents ?",
+      "reponse": "Ils sont du même côté de [OA) : ils se recouvrent. Ils ne sont pas de part et d'autre du côté commun."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "AÔB et BÔA désignent le même angle.",
+      "vrai": true,
+      "correction": "Le sommet O reste au milieu : c'est le même angle."
+    },
+    {
+      "affirmation": "xÔy et zÔt ont le même sommet O, mais aucun côté commun. Ils sont adjacents.",
+      "vrai": false,
+      "correction": "Sans côté commun, deux angles ne sont pas adjacents."
+    },
+    {
+      "affirmation": "Pour être adjacents, deux angles doivent avoir la même taille.",
+      "vrai": false,
+      "correction": "La taille des angles ne compte pas. Il faut le même sommet, un côté commun et un angle de chaque côté."
+    },
+    {
+      "affirmation": "Deux angles de sommets différents peuvent être adjacents.",
+      "vrai": false,
+      "correction": "Deux angles adjacents ont toujours le même sommet."
+    },
+    {
+      "affirmation": "Deux angles adjacents restent adjacents si on tourne la figure.",
+      "vrai": true,
+      "correction": "Le sens de la figure ne compte pas. Seules les trois conditions comptent."
+    },
+    {
+      "affirmation": "« Adjacent » veut dire « voisin ».",
+      "vrai": true,
+      "correction": "Comme deux parts de gâteau voisines : même pointe, un bord commun, et elles ne se recouvrent pas."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "lecon": "anglais-unit1-lesson2-college",
+  "matiere": "anglais",
+  "date": "2026-09-27",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : redoubler.",
+      "reponse": "to stay down",
+      "accepte": ["stay down"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Donne le contraire de « to be late ».",
+      "reponse": "to be on time",
+      "accepte": ["be on time", "on time"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : faire un exposé.",
+      "reponse": "to deliver a presentation",
+      "accepte": ["deliver a presentation", "to give a presentation", "give a presentation"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quelle est la structure du présent continu à la forme affirmative ?",
+      "reponse": "Sujet + BE (am / is / are) + verbe-ING + complément. Ex : I am writing on the board."
+    },
+    {
+      "question": "Transforme en question : « They are learning English. » Puis réponds « non » en phrase courte.",
+      "reponse": "Are they learning English? — No, they aren't.",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Demande au professeur, en anglais et très poliment, la permission de sortir.",
+      "reponse": "May I go out, sir? (may est plus poli que can)",
+      "reponseLangue": "en"
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "To work hard means to work a lot.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : to work hard, c'est travailler beaucoup, travailler dur."
+    },
+    {
+      "affirmation": "To be top of means to be the worst of.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : to be top of, c'est être le meilleur (the best of). Être le pire, c'est to be bottom of."
+    },
+    {
+      "affirmation": "To resume class means to start class again after a break.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : to resume class, c'est reprendre les cours après la pause."
+    },
+    {
+      "affirmation": "Le contraire de « boring » est « easy ».",
+      "vrai": false,
+      "correction": "Faux : le contraire de boring est fun, interesting ou pleasant. Le contraire de easy est hard ou difficult."
+    },
+    {
+      "affirmation": "Pour refuser, on peut dire « No, you mayn't. »",
+      "vrai": false,
+      "correction": "Faux : on dit « No, you may not. » On ne dit jamais mayn't."
+    },
+    {
+      "affirmation": "« How » veut dire « comment ».",
+      "vrai": true,
+      "correction": "Vrai : « How are you going to school? » = Comment vas-tu à l'école ?"
+    },
+    {
+      "affirmation": "« Can I reading the text? » est une question juste.",
+      "vrai": false,
+      "correction": "Faux : après can ou may, le verbe reste à la base : « Can I read the text? »"
+    },
+    {
+      "affirmation": "To grant permission means to say yes.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : accorder la permission, c'est dire oui. To refuse permission, c'est dire non."
+    }
+  ]
+}

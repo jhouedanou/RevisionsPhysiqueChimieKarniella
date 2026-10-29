@@ -1,0 +1,76 @@
+{
+  "lecon": "francais-expose-oral",
+  "matiere": "francais",
+  "date": "2026-09-29",
+  "restitution": [
+    {
+      "question": "Complète : l'exposé oral est un … dans lequel on présente des informations et son point de vue.",
+      "reponse": "discours",
+      "accepte": ["discours oral"]
+    },
+    {
+      "question": "Qu'est-ce que le point de vue sur un thème ?",
+      "reponse": "C'est l'expression de ce qu'on pense sur le thème."
+    },
+    {
+      "question": "Complète : le thème d'un exposé peut être un comportement ou un …",
+      "reponse": "phénomène",
+      "accepte": ["phénomènes"]
+    },
+    {
+      "question": "Cite les deux phases à observer pour réussir un exposé.",
+      "reponse": "La phase de préparation et la phase de présentation."
+    },
+    {
+      "question": "Cite une formule pour donner ton avis dans un exposé.",
+      "reponse": "À mon avis",
+      "accepte": ["Je pense que", "Je pense", "Selon moi", "Je ne suis pas d'accord avec", "Je ne suis pas d'accord"]
+    },
+    {
+      "question": "En quelles parties organise-t-on le travail d'un exposé ?",
+      "reponse": "Comme dans un discours écrit : une introduction, un développement et une conclusion."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Pendant la phase de préparation, tu fais des recherches pour trouver les informations.",
+      "vrai": true,
+      "correction": "Vrai : ces recherches servent à recueillir les informations nécessaires à l'exposé."
+    },
+    {
+      "affirmation": "Tu rappelles les points de vue opposés au tien pendant la phase de préparation.",
+      "vrai": false,
+      "correction": "Faux : tu les rappelles pendant la phase de présentation."
+    },
+    {
+      "affirmation": "Les points de vue opposés au tien sont les avis de ceux qui ne pensent pas comme toi.",
+      "vrai": true,
+      "correction": "Vrai : tu les rappelles (« Certains pensent que… »), puis tu défends ton avis."
+    },
+    {
+      "affirmation": "Dans l'introduction, tu donnes tes arguments et tes exemples.",
+      "vrai": false,
+      "correction": "Faux : ils vont dans le développement. L'introduction présente le thème et annonce ton point de vue."
+    },
+    {
+      "affirmation": "Dans la conclusion, tu résumes et tu redis ton point de vue.",
+      "vrai": true,
+      "correction": "Vrai : c'est la dernière partie de l'exposé, après le développement."
+    },
+    {
+      "affirmation": "La pollution des lagunes est un exemple de comportement.",
+      "vrai": false,
+      "correction": "Faux : c'est un phénomène, quelque chose qui arrive. Un comportement, c'est ce que font les gens."
+    },
+    {
+      "affirmation": "Une phrase déclarative peut être affirmative ou négative.",
+      "vrai": true,
+      "correction": "Vrai : « Le téléphone distrait les élèves. » est affirmative. « Le téléphone n'aide pas à écouter. » est négative."
+    },
+    {
+      "affirmation": "Pendant la présentation, il faut utiliser des phrases interrogatives.",
+      "vrai": false,
+      "correction": "Faux : on utilise des phrases déclaratives. Elles disent quelque chose et finissent par un point."
+    }
+  ]
+}

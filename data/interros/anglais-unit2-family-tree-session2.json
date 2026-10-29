@@ -1,0 +1,77 @@
+{
+  "lecon": "anglais-unit2-family-tree-session2",
+  "matiere": "anglais",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : les petits-enfants.",
+      "reponse": "grandchildren",
+      "accepte": ["grandsons and granddaughters", "my grandchildren"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : ce soir.",
+      "reponse": "tonight",
+      "accepte": ["this evening"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Donne l'explication en anglais de « a grandson ».",
+      "reponse": "The son of your son or of your daughter.",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quelle est la structure de « be going to » à la forme affirmative ?",
+      "reponse": "Sujet + BE (am / is / are) + going to + verbe. Ex : I am going to visit my grandparents tomorrow."
+    },
+    {
+      "question": "Transforme en question : « Your parents are going to come. » Puis réponds « oui » en phrase courte.",
+      "reponse": "Are your parents going to come? — Yes, they are.",
+      "reponseLangue": "en"
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "A nephew is the son of your brother or of your sister.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : a nephew, c'est un neveu."
+    },
+    {
+      "affirmation": "A granddaughter is the daughter of your brother or of your sister.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : c'est la définition de a niece. A granddaughter est la fille de ton fils ou de ta fille."
+    },
+    {
+      "affirmation": "« Granddaughter » s'écrit avec deux « d ».",
+      "vrai": true,
+      "correction": "Vrai : grand + daughter, donc granddaughter."
+    },
+    {
+      "affirmation": "« Be going to » sert à parler du passé.",
+      "vrai": false,
+      "correction": "Faux : be going to exprime le futur proche, ce que tu vas faire bientôt."
+    },
+    {
+      "affirmation": "« She is going to cooks » est une phrase juste.",
+      "vrai": false,
+      "correction": "Faux : après going to, le verbe ne change pas : « She is going to cook. »"
+    },
+    {
+      "affirmation": "À la forme négative, on met not après BE : « I am not going to watch TV. »",
+      "vrai": true,
+      "correction": "Vrai : sujet + BE + not + going to + verbe."
+    },
+    {
+      "affirmation": "« Soon » veut dire « demain ».",
+      "vrai": false,
+      "correction": "Faux : soon veut dire « bientôt ». « Demain » se dit tomorrow."
+    },
+    {
+      "affirmation": "« I'm going to » est la forme courte de « I am going to ».",
+      "vrai": true,
+      "correction": "Vrai : à l'oral, on raccourcit : I'm going to, she's going to, we're going to."
+    }
+  ]
+}

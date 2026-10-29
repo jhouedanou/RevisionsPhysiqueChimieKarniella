@@ -18,10 +18,12 @@
 <link rel="stylesheet" href="css/matieres.css">
 <script src="js/theme.js"></script>
 <script src="js/programme-5e.js"></script>
+<script src="js/interros-index.js"></script>
 <link rel="stylesheet" href="css/coquille.css">
 <script src="js/coquille.js"></script>
 <link rel="stylesheet" href="css/accueil.css">
 <link rel="stylesheet" href="css/emploi-du-temps.css">
+<link rel="stylesheet" href="css/interro.css">
 <link rel="stylesheet" href="css/jeu.css">
 </head>
 <body>
@@ -32,6 +34,10 @@
 
   <!-- Série de jours, objectif du jour, « Reprendre » : rempli par js/accueil.js
        quand la progression est disponible. Caché sinon. -->
+  <!-- L'interro surprise d'une matière qui a du nouveau : remplie par js/interro.js.
+       En premier, pour qu'on la voie sans faire défiler. -->
+  <section id="interro-surprise" class="interro-surprise" aria-label="Interro surprise" hidden></section>
+
   <section id="mon-galop" class="mon-galop" aria-label="Ma série de révisions" hidden></section>
 
   <!-- Les cours du prochain jour de classe : rempli par js/emploi-du-temps.js -->
@@ -77,6 +83,7 @@
 </footer>
 
 <script src="js/accueil.js" defer></script>
+<script src="js/interro.js" defer></script>
 <script src="js/emploi-du-temps.js" defer></script>
 <script src="js/chat-assistant.js" defer></script>
 <script src="js/inscrire-sw.js" defer></script>

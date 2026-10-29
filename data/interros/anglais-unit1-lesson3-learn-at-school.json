@@ -1,0 +1,84 @@
+{
+  "lecon": "anglais-unit1-lesson3-learn-at-school",
+  "matiere": "anglais",
+  "date": "2026-10-11",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : un emploi du temps.",
+      "reponse": "timetable",
+      "accepte": ["school timetable", "schedule"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : une note (par exemple 13/20 après un contrôle).",
+      "reponse": "mark",
+      "accepte": ["grade"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Complète avec une préposition : « The break is … 10:15. »",
+      "reponse": "at",
+      "accepte": ["The break is at 10:15"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Cite les trois questions pour demander l'avis de quelqu'un.",
+      "reponse": "How do you find …? — What do you think about …? — What's your opinion about …?",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Réponds avec « I think » et l'adjectif « easy » : « What's your opinion about maths? »",
+      "reponse": "I think maths is easy. (Maths prend is, malgré le s.)",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Donne l'explication en anglais de « a free period ».",
+      "reponse": "A break time. Ex: breakfast time and lunch time.",
+      "reponseLangue": "en"
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "On dit « I find English is easy. »",
+      "vrai": false,
+      "correction": "Faux : avec find, on ne met pas is : « I find English easy. »"
+    },
+    {
+      "affirmation": "Spanish, French and English are literary subjects.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : ce sont des matières littéraires. Maths, physics et biology sont des matières scientifiques."
+    },
+    {
+      "affirmation": "On dit « I'm good in English. »",
+      "vrai": false,
+      "correction": "Faux : on dit good at : « I'm good at English. »"
+    },
+    {
+      "affirmation": "Spelling lessons are oral and pronunciation lessons.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : en spelling lessons, on travaille l'oral et la prononciation."
+    },
+    {
+      "affirmation": "« 7:30 » se lit « thirty seven ».",
+      "vrai": false,
+      "correction": "Faux : on lit les deux nombres dans l'ordre : seven thirty."
+    },
+    {
+      "affirmation": "En anglais, les noms de langues prennent une majuscule : English, French, Spanish.",
+      "vrai": true,
+      "correction": "Vrai : on écrit toujours English, French et Spanish avec une majuscule."
+    },
+    {
+      "affirmation": "« Computer science » veut dire « l'éducation civique ».",
+      "vrai": false,
+      "correction": "Faux : computer science, c'est l'informatique. L'éducation civique se dit civics."
+    },
+    {
+      "affirmation": "Avec he ou she, find prend un s : « He finds English very interesting. »",
+      "vrai": true,
+      "correction": "Vrai : I find, mais he finds et she finds."
+    }
+  ]
+}

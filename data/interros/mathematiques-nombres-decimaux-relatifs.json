@@ -1,0 +1,67 @@
+{
+  "lecon": "mathematiques-nombres-decimaux-relatifs",
+  "matiere": "mathematiques",
+  "date": "2026-09-27",
+  "restitution": [
+    {
+      "question": "Quelle est la distance à zéro de −12 ?",
+      "reponse": "12",
+      "accepte": ["douze"]
+    },
+    {
+      "question": "Une plongeuse est à 7 m sous la mer. Écris son altitude avec un nombre relatif.",
+      "reponse": "−7",
+      "accepte": ["−7 m", "moins 7", "moins 7 m"]
+    },
+    {
+      "question": "Comment s'appelle le nombre qui repère un point sur une droite graduée ?",
+      "reponse": "abscisse",
+      "accepte": ["son abscisse", "l'abscisse du point"]
+    },
+    {
+      "question": "Qu'est-ce qu'un nombre décimal relatif ?",
+      "reponse": "Un nombre entier naturel ou un nombre décimal précédé du signe − (moins) ou + (plus)."
+    },
+    {
+      "question": "Quand dit-on que deux nombres sont opposés ?",
+      "reponse": "Quand ils ont la même distance à zéro et des signes contraires. Exemple : +5 et −5."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "−18 est plus grand que −5.",
+      "vrai": false,
+      "correction": "−18 est plus à gauche sur la droite graduée : −18 < −5. Entre deux négatifs, le plus grand est le plus près du zéro."
+    },
+    {
+      "affirmation": "Un nombre négatif est toujours plus petit qu'un nombre positif.",
+      "vrai": true,
+      "correction": "Les négatifs sont à gauche du 0, les positifs à droite. Exemple : −100 < +1."
+    },
+    {
+      "affirmation": "On peut écrire −9 sans son signe : −9 = 9.",
+      "vrai": false,
+      "correction": "Un nombre négatif s'écrit toujours avec son signe −. Seul le signe + peut ne pas s'écrire."
+    },
+    {
+      "affirmation": "Sur une droite graduée, les nombres positifs sont à gauche du 0.",
+      "vrai": false,
+      "correction": "Les positifs sont à droite du 0. Les négatifs sont à gauche."
+    },
+    {
+      "affirmation": "Sur une droite graduée, deux nombres opposés sont symétriques par rapport au 0.",
+      "vrai": true,
+      "correction": "Par exemple, −2 et +2 sont à 2 graduations du 0, un de chaque côté."
+    },
+    {
+      "affirmation": "Si tu dois 2 000 F, tu peux l'écrire −2 000 F.",
+      "vrai": true,
+      "correction": "L'argent qu'on doit s'écrit avec le signe −. L'argent gagné s'écrit avec le signe +."
+    },
+    {
+      "affirmation": "Dans un calcul, on met un nombre négatif entre parenthèses : 3 + (−7).",
+      "vrai": true,
+      "correction": "On écrit bien 3 + (−7) : les parenthèses entourent le nombre négatif."
+    }
+  ]
+}

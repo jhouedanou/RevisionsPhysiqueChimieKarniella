@@ -1,0 +1,67 @@
+{
+  "lecon": "mathematiques-segments",
+  "matiere": "mathematiques",
+  "date": "2026-10-09",
+  "restitution": [
+    {
+      "question": "M est sur le segment [AB], avec AM = 4 cm et MB = 7 cm. Combien mesure AB ?",
+      "reponse": "11 cm",
+      "accepte": ["11", "onze", "11 centimètres", "AB = 11 cm"]
+    },
+    {
+      "question": "I est le milieu de [AB] et AB = 9 cm. Combien mesure IA ?",
+      "reponse": "4,5 cm",
+      "accepte": ["4,5", "4,5 centimètres", "IA = 4,5 cm"]
+    },
+    {
+      "question": "Quel mot veut dire « à la même distance de A et de B » ?",
+      "reponse": "équidistant",
+      "accepte": ["équidistante", "équidistant de A et de B"]
+    },
+    {
+      "question": "Qu'est-ce que la médiatrice d'un segment ?",
+      "reponse": "C'est la droite qui passe par le milieu de ce segment et qui est perpendiculaire à ce segment."
+    },
+    {
+      "question": "A, B et M sont trois points. Si AM + MB = AB, que peux-tu dire de M ?",
+      "reponse": "M appartient au segment [AB]."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Un segment est caractérisé par ses deux extrémités, sa longueur et son milieu.",
+      "vrai": true,
+      "correction": "Oui : deux extrémités, une longueur et un milieu."
+    },
+    {
+      "affirmation": "La longueur du segment [AB] se note [AB].",
+      "vrai": false,
+      "correction": "La longueur se note AB, sans crochets. [AB] désigne le segment."
+    },
+    {
+      "affirmation": "RS = 3 cm, ST = 4 cm et RT = 6 cm. Le point S est sur le segment [RT].",
+      "vrai": false,
+      "correction": "RS + ST = 3 + 4 = 7 cm. Ce n'est pas égal à RT = 6 cm : S n'est pas sur [RT]."
+    },
+    {
+      "affirmation": "Un point à la même distance de A et de B est toujours le milieu de [AB].",
+      "vrai": false,
+      "correction": "Pour être le milieu, il doit aussi être sur le segment [AB]."
+    },
+    {
+      "affirmation": "Un point équidistant de A et de B est sur la médiatrice de [AB].",
+      "vrai": true,
+      "correction": "Si un point est équidistant des extrémités d'un segment, il appartient à sa médiatrice."
+    },
+    {
+      "affirmation": "P est sur la médiatrice de [AB] et PA = 6 cm. Alors PB = 6 cm.",
+      "vrai": true,
+      "correction": "Un point de la médiatrice est équidistant des extrémités : PA = PB."
+    },
+    {
+      "affirmation": "Un segment n'a qu'une seule médiatrice.",
+      "vrai": true,
+      "correction": "Un segment n'a qu'un seul milieu, donc une seule médiatrice."
+    }
+  ]
+}

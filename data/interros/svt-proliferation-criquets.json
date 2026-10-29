@@ -1,0 +1,76 @@
+{
+  "lecon": "svt-proliferation-criquets",
+  "matiere": "svt",
+  "date": "2026-09-27",
+  "restitution": [
+    {
+      "question": "Comment appelle-t-on un très grand groupe de criquets qui se déplacent ensemble ?",
+      "reponse": "essaim",
+      "accepte": ["essaims", "essaim de criquets"]
+    },
+    {
+      "question": "Complète : le sol nu est emporté par la pluie et le vent. C'est l'… .",
+      "reponse": "érosion",
+      "accepte": ["érosion des sols", "érosion du sol"]
+    },
+    {
+      "question": "Comment appelle-t-on les cultures qui nourrissent la famille, comme le maïs ou le riz ?",
+      "reponse": "cultures vivrières",
+      "accepte": ["vivrières", "culture vivrière"]
+    },
+    {
+      "question": "Cite, dans l'ordre, les 4 étapes qui vérifient une hypothèse dans ton cours.",
+      "reponse": "1. L'observation (ou un document) ; 2. les résultats ; 3. l'analyse ; 4. la conclusion."
+    },
+    {
+      "question": "Cite les deux actions néfastes des criquets sur l'environnement.",
+      "reponse": "Ils détruisent les cultures et les végétaux. Ils polluent les eaux avec leurs déjections et leurs cadavres."
+    },
+    {
+      "question": "Explique pourquoi la prolifération des criquets provoque la famine.",
+      "reponse": "Les criquets ravagent les cultures vivrières. Les récoltes chutent et les greniers se vident : les gens n'ont plus assez à manger."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "La prolifération des criquets peut entraîner la mort du bétail.",
+      "vrai": true,
+      "correction": "Vrai : c'est un des résultats de ton cahier, avec la dévastation des cultures."
+    },
+    {
+      "affirmation": "Un criquet solitaire cause d'énormes dégâts sur les cultures.",
+      "vrai": false,
+      "correction": "Faux : un criquet seul n'est pas dangereux. C'est la prolifération des criquets qui cause les dégâts."
+    },
+    {
+      "affirmation": "La famine est une conséquence de la prolifération des criquets sur l'environnement.",
+      "vrai": false,
+      "correction": "Faux : la famine touche les gens. C'est une conséquence sur l'Homme."
+    },
+    {
+      "affirmation": "Un essaim de 1 km² mange autant en un jour que 35 000 personnes.",
+      "vrai": true,
+      "correction": "Vrai : cet essaim contient environ 40 millions de criquets."
+    },
+    {
+      "affirmation": "Les criquets piquent les gens quand ils passent.",
+      "vrai": false,
+      "correction": "Faux : les criquets ne piquent pas. Ils mangent les plantes et salissent l'eau."
+    },
+    {
+      "affirmation": "L'eau polluée par les criquets peut donner des maladies hydriques.",
+      "vrai": true,
+      "correction": "Vrai : les maladies hydriques s'attrapent en buvant de l'eau sale."
+    },
+    {
+      "affirmation": "La prolifération des criquets rend les sols plus fertiles.",
+      "vrai": false,
+      "correction": "Faux : les sols mis à nu s'appauvrissent. Ils perdent leur fertilité et donnent de mauvaises récoltes."
+    },
+    {
+      "affirmation": "La prolifération des criquets fait chuter les revenus des paysans.",
+      "vrai": true,
+      "correction": "Vrai : les récoltes baissent, donc les paysans gagnent moins. C'est une menace économique."
+    }
+  ]
+}

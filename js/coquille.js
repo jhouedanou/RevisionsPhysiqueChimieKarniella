@@ -188,6 +188,12 @@
             return liste;
         }
 
+        if (slug === 'interro') {
+            if (nomMatiere) { liste.push({ texte: nomMatiere, href: RACINE + '5e/' + idMatiere + '.html' }); }
+            liste.push({ texte: '⚡ Interro surprise' });
+            return liste;
+        }
+
         if (dans5e() && slug === idMatiere) {
             liste.push({ texte: nomMatiere || slug });
             return liste;

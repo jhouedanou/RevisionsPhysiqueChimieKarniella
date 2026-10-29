@@ -1,0 +1,72 @@
+{
+  "lecon": "physique-chimie-revisions-rentree",
+  "matiere": "physique-chimie",
+  "date": "2026-09-20",
+  "restitution": [
+    {
+      "question": "Cite les éléments nécessaires pour réaliser un circuit électrique simple.",
+      "reponse": "Un générateur (par exemple une pile), un récepteur (par exemple une ampoule), des fils électriques et, éventuellement, un interrupteur."
+    },
+    {
+      "question": "Cite les trois états physiques de la matière.",
+      "reponse": "L'état solide, l'état liquide et l'état gazeux."
+    },
+    {
+      "question": "Dans quel état physique est l'air ?",
+      "reponse": "gazeux",
+      "accepte": ["gaz", "état gazeux"]
+    },
+    {
+      "question": "Quel état de la matière a une forme propre et un volume propre ?",
+      "reponse": "solide",
+      "accepte": ["état solide"]
+    },
+    {
+      "question": "On agite du sucre dans l'eau. Il ne disparaît pas. Que fait-il ?",
+      "reponse": "il se dissout",
+      "accepte": ["se dissout", "le sucre se dissout", "se dissoudre", "dissolution"]
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Dans un circuit, c'est le récepteur qui donne le courant.",
+      "vrai": false,
+      "correction": "C'est le générateur (la pile) qui donne le courant. Le récepteur (la lampe) s'en sert."
+    },
+    {
+      "affirmation": "Dans un circuit, les fils électriques font le chemin du courant.",
+      "vrai": true,
+      "correction": "Le générateur donne le courant, le récepteur s'en sert, les fils font le chemin."
+    },
+    {
+      "affirmation": "Un liquide garde sa forme quand on le verse dans un verre.",
+      "vrai": false,
+      "correction": "Un liquide n'a pas de forme propre : il prend la forme du récipient."
+    },
+    {
+      "affirmation": "Un liquide a un volume propre, comme un solide.",
+      "vrai": true,
+      "correction": "Le liquide change de forme, mais il garde son volume."
+    },
+    {
+      "affirmation": "Un gaz n'a pas de forme propre : il occupe tout l'espace.",
+      "vrai": true,
+      "correction": "Un gaz remplit tout le récipient où il se trouve."
+    },
+    {
+      "affirmation": "L'eau et la glace sont deux matières différentes.",
+      "vrai": false,
+      "correction": "C'est la même matière, seul l'état change. L'eau refroidie devient de la glace."
+    },
+    {
+      "affirmation": "La vapeur d'eau est à l'état liquide.",
+      "vrai": false,
+      "correction": "La vapeur d'eau est à l'état gazeux."
+    },
+    {
+      "affirmation": "L'eau et le sable forment un mélange hétérogène.",
+      "vrai": true,
+      "correction": "On voit encore l'eau et le sable : il y a au moins deux constituants visibles."
+    }
+  ]
+}

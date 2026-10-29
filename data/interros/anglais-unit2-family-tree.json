@@ -1,0 +1,79 @@
+{
+  "lecon": "anglais-unit2-family-tree",
+  "matiere": "anglais",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : les grands-parents.",
+      "reponse": "grandparents",
+      "accepte": ["grandfather and grandmother", "my grandparents"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Qui est « the brother of your father or of your mother » ? Réponds en anglais.",
+      "reponse": "uncle",
+      "accepte": ["your uncle", "my uncle"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Donne l'explication en anglais de « a family tree ».",
+      "reponse": "A drawing of all the members of a family.",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Écris avec le cas possessif : « la sœur de mon père ».",
+      "reponse": "my father's sister (le possesseur, my father, vient en premier)",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quand met-on seulement une apostrophe, sans s, au cas possessif ?",
+      "reponse": "Quand le possesseur est un pluriel qui finit déjà par s. Ex : my parents' house."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "A grandmother is the mother of your father or of your mother.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : a grandmother, c'est une grand-mère."
+    },
+    {
+      "affirmation": "A son is the girl child of a father and a mother.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : c'est la définition de a daughter. A son est l'enfant garçon."
+    },
+    {
+      "affirmation": "« Cousin » s'emploie pour un garçon et pour une fille.",
+      "vrai": true,
+      "correction": "Vrai : en anglais, cousin veut dire cousin ou cousine."
+    },
+    {
+      "affirmation": "« Parents » veut dire toute la famille : oncles, tantes et cousins.",
+      "vrai": false,
+      "correction": "Faux : parents veut dire seulement le père et la mère."
+    },
+    {
+      "affirmation": "On dit « the Aya's brother » pour « le frère d'Aya ».",
+      "vrai": false,
+      "correction": "Faux : pas de the devant un prénom. On dit Aya's brother."
+    },
+    {
+      "affirmation": "« Children » ne finit pas par s, donc on écrit « the children's toys ».",
+      "vrai": true,
+      "correction": "Vrai : pour un pluriel sans s, on ajoute 's."
+    },
+    {
+      "affirmation": "Your mother is your father's sister.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : ta mère est la femme de ton père : your father's wife. La sœur de ton père, c'est ton aunt."
+    },
+    {
+      "affirmation": "A husband is a married man.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : a husband, c'est un mari."
+    }
+  ]
+}

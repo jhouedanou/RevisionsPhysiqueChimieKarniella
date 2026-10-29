@@ -1,0 +1,76 @@
+{
+  "lecon": "edhc-droits-developpement-participation",
+  "matiere": "edhc",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Complète : un enfant est tout être humain âgé de moins de … ans.",
+      "reponse": "18",
+      "accepte": ["18 ans", "dix-huit", "dix-huit ans"]
+    },
+    {
+      "question": "En quelle année l'ONU a-t-elle adopté la CIDE ?",
+      "reponse": "1989",
+      "accepte": ["en 1989", "20 novembre 1989"]
+    },
+    {
+      "question": "En Côte d'Ivoire, l'école est obligatoire à partir de 6 ans. Jusqu'à quel âge ?",
+      "reponse": "16 ans",
+      "accepte": ["16", "seize ans", "seize", "jusqu'à 16 ans"]
+    },
+    {
+      "question": "Définis les droits au développement de l'enfant.",
+      "reponse": "Ce sont des garanties fondamentales reconnues par les États. Ils permettent à l'enfant de recevoir tout ce dont il a besoin pour vivre et développer toutes ses capacités."
+    },
+    {
+      "question": "Cite trois droits à la participation de l'enfant.",
+      "reponse": "Trois au choix : la liberté d'opinion, la liberté d'expression, la liberté de pensée, de conscience et de religion, la liberté d'association, le droit à l'information."
+    },
+    {
+      "question": "Cite les quatre groupes de droits de l'enfant.",
+      "reponse": "Les droits à la survie, au développement, à la protection et à la participation."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Le droit aux loisirs est un droit à la participation.",
+      "vrai": false,
+      "correction": "Faux : c'est un droit au développement, comme le droit à la santé et le droit à l'éducation."
+    },
+    {
+      "affirmation": "La liberté d'association permet à l'enfant de former un club ou une association.",
+      "vrai": true,
+      "correction": "Vrai : c'est un droit à la participation. On se réunit dans le calme."
+    },
+    {
+      "affirmation": "Les droits de l'enfant restent valables même pendant une guerre.",
+      "vrai": true,
+      "correction": "Vrai : les enfants déplacés doivent pouvoir aller à l'école et jouer."
+    },
+    {
+      "affirmation": "La liberté d'expression permet de dire ce qu'on pense, même en insultant.",
+      "vrai": false,
+      "correction": "Faux : elle ne permet pas d'insulter. Tu donnes ton avis poliment et tu écoutes celui des autres."
+    },
+    {
+      "affirmation": "Voter pour élire le délégué de ta classe, c'est exercer un droit à la participation.",
+      "vrai": true,
+      "correction": "Vrai : tu donnes ton avis et tu prends part à la vie de ta classe."
+    },
+    {
+      "affirmation": "Le droit à l'information est un droit au développement.",
+      "vrai": false,
+      "correction": "Faux : c'est un droit à la participation. Il te donne accès aux livres, aux journaux, à la radio et à la télévision."
+    },
+    {
+      "affirmation": "Le 20 novembre est la Journée internationale des droits de l'enfant.",
+      "vrai": true,
+      "correction": "Vrai : c'est le jour où l'ONU a adopté la CIDE."
+    },
+    {
+      "affirmation": "Les droits à la protection permettent à l'enfant de donner son avis.",
+      "vrai": false,
+      "correction": "Faux : donner son avis, c'est la participation. La protection, c'est être protégé contre la violence, l'exploitation et les abus."
+    }
+  ]
+}

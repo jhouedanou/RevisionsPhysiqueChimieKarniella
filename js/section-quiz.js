@@ -31,36 +31,136 @@ function echapperHTML(texte) {
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+/* ============================================================
+   Les types de question
+   ============================================================
+   Sans `type`, une question est un QCM : `options` et `correctAnswer`.
+   Les interros (js/interro.js) ajoutent trois types :
+     vrai-faux : un QCM à deux options, « Vrai » et « Faux » (touches V et F) ;
+     saisie    : Karniella tape une réponse courte, corrigée toute seule
+                 (`reponse`, `accepte`, `exact`) ;
+     cours     : elle écrit sa réponse, voit celle du cours (`reponse`),
+                 puis dit elle-même si elle l'avait.
+   Pour les deux derniers, `choix[i]` est le texte tapé, pas un indice. */
+
+function typeQuestion(q) {
+    return q && (q.type === 'saisie' || q.type === 'cours' || q.type === 'vrai-faux') ? q.type : 'qcm';
+}
+
+function avecOptions(q) {
+    const type = typeQuestion(q);
+    return type === 'qcm' || type === 'vrai-faux';
+}
+
+/** Les lettres des options : V et F pour un vrai ou faux, A à F sinon. */
+function lettresDe(q) {
+    return typeQuestion(q) === 'vrai-faux' ? 'VF' : QUIZ_LETTRES;
+}
+
+/** La réponse donnée, prête à afficher. Ce qui a été tapé est échappé. */
+function texteReponse(q, choix) {
+    if (avecOptions(q)) { return q.options[choix]; }
+    const tape = String(choix || '').trim();
+    if (typeQuestion(q) === 'cours' && !tape) { return undefined; }
+    return echapperHTML(tape);
+}
+
+function texteBonne(q) {
+    return avecOptions(q) ? q.options[q.correctAnswer] : q.reponse;
+}
+
+/** La même réponse en texte brut, pour le suivi (js/suivi.js). */
+function texteBrut(html) {
+    return html === undefined ? null : String(html).replace(/<[^>]*>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+}
+
+/**
+ * Une réponse tapée, réduite à l'essentiel : sans majuscules, accents,
+ * ponctuation, espaces ni article du début. « La somme. » et « somme »
+ * deviennent pareils, comme « 1,5 V » et « 1.5v ».
+ */
+function normaliserReponse(texte) {
+    let t = String(texte || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    t = t.replace(/[’‘`´]/g, "'").replace(/[−–—]/g, '-').replace(/œ/g, 'oe').replace(/æ/g, 'ae');
+    t = t.replace(/(\d)\s*[,.]\s*(\d)/g, '$1#$2');          // virgule décimale = point
+    t = t.replace(/[«»"“”!?;:,.()[\]…/]/g, ' ').replace(/#/g, '.');
+    t = t.replace(/([a-z])-(?=[a-z])/g, '$1');               // grand-mère = grand mère
+    t = t.replace(/\s+/g, ' ').trim();
+    t = t.replace(/^(l'|le |la |les |un |une |des |du |de la |de l'|the |a |an )/, '');
+    return t.replace(/[\s']/g, '');
+}
+
+/**
+ * Nombre de fautes pour passer d'un mot à l'autre : une lettre en trop, en
+ * moins, changée, ou deux lettres inversées (« additoin »).
+ */
+function distanceMots(a, b) {
+    if (Math.abs(a.length - b.length) > 1) { return 2; }
+    let avantAvant = null;
+    let avant = Array.from({ length: b.length + 1 }, (v, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+        const ligne = [i];
+        for (let j = 1; j <= b.length; j++) {
+            ligne[j] = Math.min(avant[j] + 1, ligne[j - 1] + 1, avant[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+            if (avantAvant && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+                ligne[j] = Math.min(ligne[j], avantAvant[j - 2] + 1);
+            }
+        }
+        avantAvant = avant;
+        avant = ligne;
+    }
+    return avant[b.length];
+}
+
+/**
+ * Corrige une réponse tapée. `reponse` et chaque `accepte` sont justes ;
+ * une faute de frappe passe (`tolere`) si la réponse attendue fait au moins
+ * 6 lettres sans chiffre, sauf `exact` : là, l'orthographe est évaluée.
+ */
+function corrigerSaisie(q, texte) {
+    const donnee = normaliserReponse(texte);
+    const attendues = [q.reponse].concat(q.accepte || []).map(normaliserReponse).filter(Boolean);
+    if (!donnee) { return { juste: false, tolere: false }; }
+    if (attendues.indexOf(donnee) !== -1) { return { juste: true, tolere: false }; }
+    const proche = !q.exact && attendues.some((a) => a.length >= 6 && !/\d/.test(a) && distanceMots(donnee, a) <= 1);
+    return { juste: proche, tolere: proche };
+}
+
 /**
  * Le récapitulatif de fin de quiz : chaque question avec la réponse donnée.
  * Pour une erreur, il redonne la bonne réponse et l'explication : Karniella
  * revoit ce qu'elle a raté sans refaire tout le quiz.
  *
- * `choix[i]` est l'indice de l'option choisie à la question i. Les énoncés
- * et les options sont insérés tels quels, comme dans le reste du quiz : ils
- * viennent de nos fichiers de données et peuvent contenir du HTML.
+ * `choix[i]` est l'indice de l'option choisie à la question i (le texte tapé
+ * pour une saisie ou une question de cours). `reglages.reponses[i]` dit si
+ * elle était juste ; sans lui, on compare `choix[i]` à `correctAnswer`. Les
+ * énoncés et les options sont insérés tels quels, comme dans le reste du
+ * quiz : ils viennent de nos fichiers de données et peuvent contenir du HTML.
  */
 function recapitulatifHTML(questions, choix, reglages) {
     const avecTitre = !(reglages && reglages.titre === false);
-    const erreurs = questions.filter((q, i) => choix[i] !== q.correctAnswer).length;
+    const notes = reglages && reglages.reponses;
+    const estJuste = (q, i) => (notes ? Boolean(notes[i]) : choix[i] === q.correctAnswer);
+    const erreurs = questions.filter((q, i) => !estJuste(q, i)).length;
     const bilan = erreurs === 0
         ? 'Aucune erreur : tout est juste !'
         : `${erreurs} erreur${erreurs > 1 ? 's' : ''} à revoir : ${erreurs > 1 ? 'elles sont marquées' : 'elle est marquée'} ✗.`;
 
     const lignes = questions.map((q, i) => {
-        const juste = choix[i] === q.correctAnswer;
+        const juste = estJuste(q, i);
         const langEnonce = attributLangue(q.langue);
         const langOptions = attributLangue(q.optionsLangue || q.langue);
-        const donnee = q.options[choix[i]];
-        const correction = juste ? '' : `
-                    <p>Bonne réponse : <strong${langOptions}>${q.options[q.correctAnswer]}</strong></p>
-                    ${q.explanation ? `<p class="quiz-recap-explication">${q.explanation}</p>` : ''}`;
+        const donnee = texteReponse(q, choix[i]);
+        const cours = typeQuestion(q) === 'cours';
+        const correction = juste && !cours ? '' : `
+                    <p>${cours ? 'Réponse du cours' : 'Bonne réponse'} : <strong${langOptions}>${texteBonne(q)}</strong></p>
+                    ${q.explanation && !juste ? `<p class="quiz-recap-explication">${q.explanation}</p>` : ''}`;
         return `
             <li class="quiz-recap-ligne ${juste ? 'juste' : 'faux'}">
                 <span class="quiz-recap-marque" role="img" aria-label="${juste ? 'Juste' : 'Faux'}">${quizIcone(juste ? 'coche' : 'croix', 16) || (juste ? '✓' : '✗')}</span>
                 <div>
                     <p class="quiz-recap-question"${langEnonce}><strong>${i + 1}.</strong> ${q.question}</p>
-                    <p>Ta réponse : ${donnee === undefined ? '<em>pas de réponse</em>' : `<strong${langOptions}>${donnee}</strong>`}</p>${correction}
+                    <p>Ta réponse : ${donnee === undefined || donnee === '' ? `<em>${cours ? 'dans ta tête' : 'pas de réponse'}</em>` : `<strong${langOptions}>${donnee}</strong>`}${cours ? ` <em>(${juste ? 'tu l’avais' : 'pas encore'})</em>` : ''}</p>${correction}
                 </div>
             </li>`;
     }).join('');
@@ -289,8 +389,11 @@ class SectionQuiz {
             document.addEventListener('keydown', (e) => this.clavier(e));
         }
 
-        const enCours = lireEnCours(this.slug, this.questions.length);
-        if (enCours || this.record || this.revisables().length) {
+        // `reprise: false` : pas de reprise après un rechargement (une interro est
+        // tirée au hasard, les mêmes numéros ne seraient plus les mêmes questions).
+        // `accueil: false` : on part tout de suite, sans l'écran de départ.
+        const enCours = this.options.reprise === false ? null : lireEnCours(this.slug, this.questions.length);
+        if (this.options.accueil !== false && (enCours || this.record || this.revisables().length)) {
             this.rendreAccueil(enCours);
         } else {
             this.lancer({});
@@ -378,7 +481,7 @@ class SectionQuiz {
 
         const texte = enCours
             ? `Tu t'étais arrêtée à la question ${enCours.index + 1} sur ${enCours.serie.length}.`
-            : `${n} questions. Choisis une réponse, puis valide.`;
+            : (this.options.consigne || `${n} questions. Choisis une réponse, puis valide.`);
         const zoneGuide = this.elScene.querySelector('.quiz-depart-guide');
         if (J) {
             zoneGuide.appendChild(J.guide({ pose: 'wave', taille: 92, titre: enCours ? 'On reprend ?' : 'Prête pour le quiz ?', texte: texte }).el);
@@ -428,7 +531,7 @@ class SectionQuiz {
                 if (juste) { this.correct++; }
                 this.suite = juste ? this.suite + 1 : 0;
                 this.meilleureSuite = Math.max(this.meilleureSuite, this.suite);
-                this.details[k] = { q: q.question, r: q.options[this.choix[k]], b: q.options[q.correctAnswer], ok: juste };
+                this.details[k] = this.detail(q, this.choix[k], juste);
             });
         }
 
@@ -496,30 +599,56 @@ class SectionQuiz {
 
     rendreQuestion() {
         const q = this.questionCourante();
+        const type = typeQuestion(q);
         const n = this.index + 1;
         const total = this.serie.length;
         const langEnonce = attributLangue(q.langue);
         const langOptions = attributLangue(q.optionsLangue || q.langue);
         const id = `${this.container.id}-e${this.index}`;
+        const etiquette = { 'vrai-faux': 'Vrai ou faux ?', saisie: 'Question de cours', cours: 'Question de cours' }[type];
         this.selection = null;
         this.valide = false;
+        this.revele = false;
         this.poserBoutonSon();
         this.majPastilles();
 
-        this.elScene.innerHTML = `
-            <div class="quiz-question">
-                <span class="quiz-compte">${this.revision ? 'Révision · ' : ''}Question ${n} sur ${total}</span>
-                <p class="question-text" id="${id}-enonce"${langEnonce}>${q.question}</p>
+        let reponse;
+        let bouton = '<button type="button" class="btn quiz-valider" disabled>Valider</button>';
+        let aide;
+        if (type === 'saisie') {
+            reponse = `
+                <label class="quiz-champ-etiquette" for="${id}-champ">Ta réponse</label>
+                <input type="text" class="quiz-champ" id="${id}-champ" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done"${attributLangue(q.reponseLangue)}>`;
+            aide = 'Écris ta réponse, puis Entrée pour valider.';
+        } else if (type === 'cours') {
+            reponse = `
+                <label class="quiz-champ-etiquette" for="${id}-champ">Écris ta réponse (ou dis-la dans ta tête), puis regarde celle du cours.</label>
+                <textarea class="quiz-champ" id="${id}-champ" rows="3" spellcheck="false"${attributLangue(q.reponseLangue)}></textarea>`;
+            bouton = '<button type="button" class="btn quiz-valider">Voir la réponse</button>';
+            aide = 'Sois honnête : c’est toi qui dis si tu l’avais.';
+        } else {
+            const lettres = lettresDe(q);
+            reponse = `
                 <div class="quiz-options" role="radiogroup" aria-labelledby="${id}-enonce">
                     ${q.options.map((o, i) => `
                         <label class="quiz-option" data-index="${i}">
                             <input type="radio" class="quiz-radio" name="${id}" value="${i}">
-                            <b class="quiz-lettre" data-lire-ignore aria-hidden="true">${QUIZ_LETTRES[i] || i + 1}</b><span${langOptions}>${o}</span>
+                            <b class="quiz-lettre" data-lire-ignore aria-hidden="true">${lettres[i] || i + 1}</b><span${langOptions}>${o}</span>
                         </label>`).join('')}
-                </div>
+                </div>`;
+            aide = type === 'vrai-faux'
+                ? 'Touche V ou F pour choisir, Entrée pour valider.'
+                : `Touches A à ${lettres[q.options.length - 1] || 'D'} pour choisir, Entrée pour valider.`;
+        }
+
+        this.elScene.innerHTML = `
+            <div class="quiz-question quiz-type-${type}">
+                <span class="quiz-compte">${this.revision ? 'Révision · ' : ''}Question ${n} sur ${total}${etiquette ? ` · ${etiquette}` : ''}</span>
+                <p class="question-text" id="${id}-enonce"${langEnonce}>${q.question}</p>
+                ${reponse}
                 <div class="quiz-actions">
-                    <button type="button" class="btn quiz-valider" disabled>Valider</button>
-                    <p class="quiz-aide-clavier">Touches A à ${QUIZ_LETTRES[q.options.length - 1] || 'D'} pour choisir, Entrée pour valider.</p>
+                    ${bouton}
+                    <p class="quiz-aide-clavier">${aide}</p>
                 </div>
                 <div class="quiz-retour-zone" aria-live="polite"></div>
             </div>`;
@@ -527,16 +656,23 @@ class SectionQuiz {
         this.elScene.querySelectorAll('.quiz-radio').forEach((r) => {
             r.addEventListener('change', () => this.choisir(parseInt(r.value, 10), false));
         });
+        const champ = this.elScene.querySelector('.quiz-champ');
+        if (champ) {
+            champ.addEventListener('input', () => {
+                this.selection = champ.value.trim() || null;
+                if (type === 'saisie') { this.elScene.querySelector('.quiz-valider').disabled = !this.selection; }
+            });
+        }
         this.elScene.querySelector('.quiz-valider').addEventListener('click', () => this.action());
 
         if (window.LectureVocale) { window.LectureVocale.equiper(this.elScene); }
-        const premier = this.elScene.querySelector('.quiz-radio');
+        const premier = this.elScene.querySelector('.quiz-radio, .quiz-champ');
         if (premier && this.index > 0) { premier.focus({ preventScroll: true }); }
     }
 
     /** Une réponse choisie, pas encore validée. */
     choisir(i, auClavier) {
-        if (this.valide) { return; }
+        if (this.valide || !avecOptions(this.questionCourante())) { return; }
         const radios = this.elScene.querySelectorAll('.quiz-radio');
         if (!radios[i]) { return; }
         if (this.selection !== i && window.KarniellaJeu) { window.KarniellaJeu.sons.jouer('choix'); }
@@ -547,15 +683,47 @@ class SectionQuiz {
         this.elScene.querySelector('.quiz-valider').disabled = false;
     }
 
-    /** Le bouton du bas : « Valider », puis « Question suivante ». */
+    /**
+     * Le bouton du bas : « Valider », puis « Question suivante ». Pour une
+     * question de cours : « Voir la réponse », puis Karniella se note.
+     */
     action() {
-        if (this.valide) { this.suivant(); } else { this.valider(); }
+        if (this.valide) { this.suivant(); return; }
+        if (typeQuestion(this.questionCourante()) === 'cours') { this.reveler(); return; }
+        this.valider();
+    }
+
+    /** Question de cours : montre la réponse du cours et les deux boutons pour se noter. */
+    reveler() {
+        if (this.revele || this.valide) { return; }
+        const q = this.questionCourante();
+        this.revele = true;
+        const champ = this.elScene.querySelector('.quiz-champ');
+        if (champ) { champ.readOnly = true; }
+        this.elScene.querySelector('.quiz-actions').hidden = true;
+        const zone = this.elScene.querySelector('.quiz-retour-zone');
+        zone.innerHTML = `
+            <div class="quiz-cours">
+                <p class="quiz-cours-titre">Réponse du cours</p>
+                <p class="quiz-cours-texte"${attributLangue(q.reponseLangue)}>${q.reponse}</p>
+                <p class="quiz-cours-question">Tu l’avais ?</p>
+                <div class="quiz-cours-boutons">
+                    <button type="button" class="btn quiz-avais" data-note="1">${quizIcone('coche', 20)}Oui, je l’avais</button>
+                    <button type="button" class="btn btn-ghost quiz-avais" data-note="0">${quizIcone('croix', 20)}Pas encore</button>
+                </div>
+            </div>`;
+        zone.querySelectorAll('.quiz-avais').forEach((b) => {
+            b.addEventListener('click', () => this.valider(b.getAttribute('data-note') === '1'));
+        });
+        const oui = zone.querySelector('.quiz-avais');
+        if (oui) { oui.focus({ preventScroll: true }); }
+        this.montrerBas(zone);
     }
 
     /**
-     * Touches A à D (ou 1 à 4) pour choisir, Entrée pour valider puis passer
-     * à la suite. Seulement quand le quiz est à l'écran et que Karniella
-     * n'écrit pas ailleurs (le chat, la recherche).
+     * Touches A à D (ou 1 à 4) pour choisir, V ou F pour un vrai ou faux,
+     * Entrée pour valider puis passer à la suite. Seulement quand le quiz est
+     * à l'écran et que Karniella n'écrit pas ailleurs (le chat, la recherche).
      */
     clavier(e) {
         if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) { return; }
@@ -563,6 +731,8 @@ class SectionQuiz {
         if (!this.elScene.querySelector('.quiz-question')) { return; }
         const cible = e.target;
         if (cible !== document.body && !this.container.contains(cible)) { return; }
+        if (cible.tagName === 'TEXTAREA') { return; }   // Entrée y va à la ligne
+        const q = this.questionCourante();
         if (e.key === 'Enter') {
             // Sur un bouton, le navigateur fait déjà le clic.
             if (cible.closest && cible.closest('button, a, summary')) { return; }
@@ -571,72 +741,124 @@ class SectionQuiz {
             this.action();
             return;
         }
-        if (this.valide || !e.key || e.key.length !== 1) { return; }
-        let i = QUIZ_LETTRES.indexOf(e.key.toUpperCase());
+        if (this.valide || !avecOptions(q) || !e.key || e.key.length !== 1) { return; }
+        let i = lettresDe(q).indexOf(e.key.toUpperCase());
         if (i === -1 && /^[1-6]$/.test(e.key)) { i = parseInt(e.key, 10) - 1; }
-        if (i < 0 || i >= this.questionCourante().options.length) { return; }
+        if (i < 0 || i >= q.options.length) { return; }
         e.preventDefault();
         this.choisir(i, true);
     }
 
-    valider() {
-        if (this.valide || this.selection === null) { return; }
+    /** Une ligne pour le suivi de tonton (js/suivi.js). */
+    detail(q, choix, juste) {
+        return { q: q.question, r: texteBrut(texteReponse(q, choix)), b: texteBrut(texteBonne(q)), ok: juste };
+    }
+
+    /**
+     * Valide la réponse. `note` : pour une question de cours, ce que
+     * Karniella a dit (true : « je l'avais »).
+     */
+    valider(note) {
+        if (this.valide) { return; }
         const J = window.KarniellaJeu;
         const q = this.questionCourante();
-        const choix = this.selection;
-        const juste = choix === q.correctAnswer;
+        const type = typeQuestion(q);
+        let choix = this.selection;
+        let juste;
+        let tolere = false;
+        if (type === 'saisie') {
+            if (!choix) { return; }
+            const c = corrigerSaisie(q, choix);
+            juste = c.juste;
+            tolere = c.tolere;
+        } else if (type === 'cours') {
+            if (typeof note !== 'boolean') { return; }
+            choix = choix || '';
+            juste = note;
+        } else {
+            if (choix === null) { return; }
+            juste = choix === q.correctAnswer;
+        }
         this.valide = true;
 
-        this.elScene.querySelectorAll('.quiz-option').forEach((l, i) => {
-            l.querySelector('.quiz-radio').disabled = true;
-            const lettre = l.querySelector('.quiz-lettre');
-            if (i === q.correctAnswer) { l.classList.add('juste'); lettre.innerHTML = quizIcone('coche', 20) || '✓'; }
-            else if (i === choix) { l.classList.add('faux'); lettre.innerHTML = quizIcone('croix', 20) || '✗'; }
-            else { l.classList.add('grisee'); }
-        });
+        const lettres = lettresDe(q);
+        if (avecOptions(q)) {
+            this.elScene.querySelectorAll('.quiz-option').forEach((l, i) => {
+                l.querySelector('.quiz-radio').disabled = true;
+                const lettre = l.querySelector('.quiz-lettre');
+                if (i === q.correctAnswer) { l.classList.add('juste'); lettre.innerHTML = quizIcone('coche', 20) || '✓'; }
+                else if (i === choix) { l.classList.add('faux'); lettre.innerHTML = quizIcone('croix', 20) || '✗'; }
+                else { l.classList.add('grisee'); }
+            });
+        } else {
+            const champ = this.elScene.querySelector('.quiz-champ');
+            if (champ) {
+                champ.readOnly = true;
+                if (type === 'saisie') { champ.classList.add(juste ? 'juste' : 'faux'); }
+            }
+        }
 
         if (juste) { this.correct++; }
         this.suite = juste ? this.suite + 1 : 0;
         this.meilleureSuite = Math.max(this.meilleureSuite, this.suite);
         this.reponses[this.index] = juste;
         this.choix[this.index] = choix;
-        this.details[this.index] = { q: q.question, r: q.options[choix], b: q.options[q.correctAnswer], ok: juste };
+        this.details[this.index] = this.detail(q, choix, juste);
         if (J) { J.sons.jouer(juste ? 'juste' : 'faux'); }
         this.majPastilles();
-        ecrireEnCours(this.slug, {
-            n: this.questions.length,
-            serie: this.serie,
-            index: this.index + 1,
-            reponses: this.reponses,
-            choix: this.choix,
-            revision: this.revision,
-            temps: Math.round(this.secondes())
-        });
+        if (this.options.reprise !== false) {
+            ecrireEnCours(this.slug, {
+                n: this.questions.length,
+                serie: this.serie,
+                index: this.index + 1,
+                reponses: this.reponses,
+                choix: this.choix,
+                revision: this.revision,
+                temps: Math.round(this.secondes())
+            });
+        }
 
         // La réaction d'Aya, la bonne réponse et l'explication.
         const langOptions = attributLangue(q.optionsLangue || q.langue);
+        const langReponse = attributLangue(q.reponseLangue);
         const titre = juste
             ? (this.suite >= 3 ? `${this.suite} bonnes réponses de suite !` : quizAuHasard(QUIZ_REACTIONS_JUSTE))
-            : quizAuHasard(QUIZ_REACTIONS_FAUX);
+            : quizAuHasard(type === 'cours' ? QUIZ_REACTIONS_COURS : QUIZ_REACTIONS_FAUX);
+        let correction = '';
+        if (avecOptions(q)) {
+            if (!juste) { correction = `<p>Bonne réponse : <b>${lettres[q.correctAnswer]}.</b> <span${langOptions}>${q.options[q.correctAnswer]}</span></p>`; }
+        } else if (type === 'saisie') {
+            if (!juste) { correction = `<p>Réponse attendue : <b${langReponse}>${q.reponse}</b></p>`; }
+            else if (tolere) { correction = `<p>Attention à l’orthographe : <b${langReponse}>${q.reponse}</b></p>`; }
+        } else {
+            correction = `<p>Réponse du cours : <span${langReponse}>${q.reponse}</span></p>`;
+        }
         const zone = this.elScene.querySelector('.quiz-retour-zone');
         zone.innerHTML = `
             <div class="quiz-retour ${juste ? 'juste' : 'faux'}">
                 ${J ? `<div class="quiz-retour-aya" aria-hidden="true">${J.dessin(juste ? 'cheer' : 'think', 64)}</div>` : ''}
                 <div class="quiz-retour-texte">
                     <strong class="quiz-retour-titre">${titre}</strong>
-                    ${juste ? '' : `<p>Bonne réponse : <b>${QUIZ_LETTRES[q.correctAnswer]}.</b> <span${langOptions}>${q.options[q.correctAnswer]}</span></p>`}
+                    ${correction}
                     ${q.explanation ? `<p class="quiz-explication">${q.explanation}</p>` : ''}
                 </div>
             </div>`;
 
+        const actions = this.elScene.querySelector('.quiz-actions');
+        actions.hidden = false;
         const bouton = this.elScene.querySelector('.quiz-valider');
         const dernier = this.index + 1 >= this.serie.length;
+        bouton.disabled = false;
         bouton.innerHTML = (dernier ? 'Voir mon résultat' : 'Question suivante') + quizIcone('suivant', 20);
         bouton.focus({ preventScroll: true });
         const aide = this.elScene.querySelector('.quiz-aide-clavier');
         if (aide) { aide.textContent = 'Entrée pour continuer.'; }
-        // Sur téléphone, l'explication peut pousser le bouton sous l'écran : on le montre.
-        const bas = zone.getBoundingClientRect().bottom;
+        this.montrerBas(zone);
+    }
+
+    /** Sur téléphone, l'explication peut pousser le bouton sous l'écran : on le montre. */
+    montrerBas(element) {
+        const bas = element.getBoundingClientRect().bottom;
         if (bas > window.innerHeight) {
             const doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             window.scrollBy({ top: bas - window.innerHeight + 16, behavior: doux ? 'smooth' : 'auto' });
@@ -672,7 +894,7 @@ class SectionQuiz {
 
     terminer() {
         window.clearInterval(this.tic);
-        effacerEnCours(this.slug);
+        if (this.options.reprise !== false) { effacerEnCours(this.slug); }
         const J = window.KarniellaJeu;
         const XP = window.KarniellaXP;
         const P = window.KarniellaProgression;
@@ -758,7 +980,7 @@ class SectionQuiz {
             </div>
             <details class="quiz-correction"${nbRatees ? ' open' : ''}>
                 <summary>Voir la correction</summary>
-                ${recapitulatifHTML(jouees, this.choix, { titre: false })}
+                ${recapitulatifHTML(jouees, this.choix, { titre: false, reponses: this.reponses })}
             </details>`;
 
         const zoneGuide = this.elScene.querySelector('.quiz-fin-guide');
@@ -801,6 +1023,7 @@ class SectionQuiz {
 const QUIZ_LETTRES = 'ABCDEF';
 const QUIZ_REACTIONS_JUSTE = ['Exactement.', 'Bien vu !', 'C’est ça.', 'Juste !', 'Parfait.'];
 const QUIZ_REACTIONS_FAUX = ['Pas tout à fait.', 'Presque.', 'Ce n’est pas celle-là.'];
+const QUIZ_REACTIONS_COURS = ['Relis-la bien.', 'Elle reviendra : tu l’auras.', 'Pas grave, tu progresses.'];
 
 function quizAuHasard(liste) {
     return liste[Math.floor(Math.random() * liste.length)];

@@ -10,7 +10,8 @@
     "build": "echo 'No build step required'",
     "build:chat": "node scripts/build-chat-knowledge.js",
     "build:programme": "node scripts/build-programme-5e.js",
-    "build:all": "npm run build:programme && npm run build:chat"
+    "build:interros": "node scripts/build-interros.js",
+    "build:all": "npm run build:programme && npm run build:interros && npm run build:chat"
   },
   "keywords": [
     "education",
