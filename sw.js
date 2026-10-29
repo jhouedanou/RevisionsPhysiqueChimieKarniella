@@ -10,7 +10,7 @@
 // Seules les images et les polices, qui ne changent jamais, restent
 // « cache d'abord ».
 
-const CACHE_NAME = 'karniella-cache-v56';
+const CACHE_NAME = 'karniella-cache-v57';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Au-delà, on sert la copie en cache (si on en a une) et le réseau continue
@@ -30,6 +30,7 @@ const FILES_TO_CACHE = [
     '/5e/mission.html',
     '/5e/interro.html',
     '/5e/emploi-du-temps.html',
+    '/5e/lecon.html',
 
     '/css/theme.css',
     '/css/matieres.css',
@@ -67,6 +68,7 @@ const FILES_TO_CACHE = [
     '/js/emploi-du-temps.js',
     '/js/jeu.js',
     '/js/chemin.js',
+    '/js/lecons-saisies.js',
 
     '/data/section-questions.json',
     '/data/programme-5e.json',
@@ -258,10 +260,12 @@ self.addEventListener('fetch', (event) => {
     }
 
     // Pages, scripts, styles, manifeste : réseau d'abord. Une page introuvable
-    // hors-ligne retombe sur l'accueil.
+    // hors-ligne prend sa coquille sans le « ?id=… » (lecon.html, mission.html),
+    // sinon l'accueil.
     const estPage = requete.mode === 'navigate' || requete.destination === 'document';
     event.respondWith(reseauDAbord(event, CACHE_NAME,
-        estPage ? () => caches.match('/index.html') : null));
+        estPage ? () => caches.match(requete, { ignoreSearch: true })
+            .then((r) => r || caches.match('/index.html')) : null));
 });
 
 // Gestion des messages du client

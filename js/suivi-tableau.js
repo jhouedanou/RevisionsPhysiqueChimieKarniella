@@ -66,6 +66,7 @@
             var l = LECONS[page.slice(8)];
             return '🚀 Mission : ' + (l ? l.titre : page.slice(8));
         }
+        if (page.indexOf('saisie-') === 0) { return '✍️ Leçon ajoutée n° ' + page.slice(7); }
         if (LECONS[page]) { return (LECONS[page].icone || '📘') + ' ' + LECONS[page].titre; }
         if (MATIERES[page]) { return (MATIERES[page].icone || '') + ' Sommaire ' + MATIERES[page].nom; }
         return page;
