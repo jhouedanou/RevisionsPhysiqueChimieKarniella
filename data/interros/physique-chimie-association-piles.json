@@ -1,0 +1,71 @@
+{
+  "lecon": "physique-chimie-association-piles",
+  "matiere": "physique-chimie",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Deux piles de 4,5 V sont en série concordance. Quelle tension obtiens-tu ?",
+      "reponse": "9 V",
+      "accepte": ["9", "9 volts", "9 volt", "neuf volts"]
+    },
+    {
+      "question": "Une pile de 4,5 V et une pile de 1,5 V sont en série opposition. Quelle tension obtiens-tu ?",
+      "reponse": "3 V",
+      "accepte": ["3", "3 volts", "3 volt", "trois volts"]
+    },
+    {
+      "question": "Dans une lampe torche, deux piles de 1,5 V sont en concordance. Quelle tension reçoit la lampe ?",
+      "reponse": "3 V",
+      "accepte": ["3", "3 volts", "3 volt", "trois volts"]
+    },
+    {
+      "question": "Comment relie-t-on deux piles pour les mettre en série opposition ?",
+      "reponse": "On relie deux bornes de même signe : + avec +, ou − avec −."
+    },
+    {
+      "question": "On branche une lampe sur une pile, puis sur deux piles en concordance. Qu'est-ce qui change ?",
+      "reponse": "Avec deux piles en concordance, la lampe brille plus fort. Les tensions des deux piles s'ajoutent."
+    },
+    {
+      "question": "Avec quel appareil mesure-t-on la tension de piles associées ? Où le branche-t-on ?",
+      "reponse": "Avec un voltmètre. On le branche sur les deux bornes libres de l'association."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Une pile plate de 4,5 V contient 3 éléments de 1,5 V en série concordance.",
+      "vrai": true,
+      "correction": "Vrai : 1,5 V + 1,5 V + 1,5 V = 4,5 V."
+    },
+    {
+      "affirmation": "Sur une pile ronde, la borne − est le petit bouton.",
+      "vrai": false,
+      "correction": "Faux : le petit bouton est la borne +. La borne − est le fond plat."
+    },
+    {
+      "affirmation": "En série concordance, le + de chaque pile est relié au − de la suivante.",
+      "vrai": true,
+      "correction": "Vrai : c'est comme ça qu'on place les piles dans une lampe torche."
+    },
+    {
+      "affirmation": "En série concordance, la tension est la plus grande moins la plus petite.",
+      "vrai": false,
+      "correction": "Faux : en concordance, on additionne les tensions. On soustrait en opposition."
+    },
+    {
+      "affirmation": "Avec deux piles identiques en opposition, la lampe reste éteinte.",
+      "vrai": true,
+      "correction": "Vrai : la tension est 0 V. Par exemple, 1,5 V − 1,5 V = 0 V."
+    },
+    {
+      "affirmation": "Dans une lampe torche, on peut mettre les piles dans n'importe quel sens.",
+      "vrai": false,
+      "correction": "Faux : une seule pile à l'envers, et la torche ne s'allume plus. Le ressort touche toujours le fond plat (−)."
+    },
+    {
+      "affirmation": "Concordance veut dire « accord » : les piles poussent dans le même sens.",
+      "vrai": true,
+      "correction": "Vrai : c'est pour ça que leurs tensions s'ajoutent."
+    }
+  ]
+}

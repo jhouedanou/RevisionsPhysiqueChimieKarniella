@@ -1,0 +1,76 @@
+{
+  "lecon": "physique-chimie-association-lampes",
+  "matiere": "physique-chimie",
+  "date": "2026-10-09",
+  "restitution": [
+    {
+      "question": "Deux lampes et une pile forment une seule boucle. Comment sont montées les lampes ?",
+      "reponse": "en série",
+      "accepte": ["série", "montées en série", "elles sont en série"]
+    },
+    {
+      "question": "Au moins trois fils se rejoignent en un point du circuit. Comment appelle-t-on ce point ?",
+      "reponse": "nœud",
+      "accepte": ["nœuds"]
+    },
+    {
+      "question": "Quel autre nom donne-t-on au montage en dérivation ?",
+      "reponse": "en parallèle",
+      "accepte": ["parallèle", "montage en parallèle"]
+    },
+    {
+      "question": "Dans un circuit en série, une lampe grille. Que font les autres lampes ? Pourquoi ?",
+      "reponse": "Elles s'éteignent. Le circuit est ouvert : le courant ne passe plus."
+    },
+    {
+      "question": "Deux lampes sont en série. On court-circuite une lampe. Qu'observe-t-on ?",
+      "reponse": "La lampe court-circuitée s'éteint. L'autre lampe continue de briller, et son éclat augmente."
+    },
+    {
+      "question": "Cite deux exemples de lampes montées en dérivation.",
+      "reponse": "Les lampes de la maison et les lampadaires de la rue. On peut aussi citer les phares d'une voiture."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Dans un circuit en dérivation, si une lampe grille, les autres continuent de briller.",
+      "vrai": true,
+      "correction": "Vrai : chaque lampe a sa propre boucle, qui reste fermée."
+    },
+    {
+      "affirmation": "En dérivation, on court-circuite une lampe : l'autre lampe brille plus fort.",
+      "vrai": false,
+      "correction": "Faux : en dérivation, toutes les lampes s'éteignent. C'est en série que l'autre lampe brille plus fort."
+    },
+    {
+      "affirmation": "Un court-circuit peut provoquer un incendie dans une maison.",
+      "vrai": true,
+      "correction": "Vrai : il fait chauffer les fils. Les fusibles et le disjoncteur coupent alors le courant."
+    },
+    {
+      "affirmation": "Deux lampes identiques en série brillent plus fort qu'une lampe seule sur la même pile.",
+      "vrai": false,
+      "correction": "Faux : en série, elles brillent plus faiblement qu'une lampe seule."
+    },
+    {
+      "affirmation": "En dérivation, chaque lampe brille comme si elle était seule sur la pile.",
+      "vrai": true,
+      "correction": "Vrai : chaque lampe a son propre chemin. Elle brille normalement."
+    },
+    {
+      "affirmation": "Sur un schéma, une lampe se dessine avec deux traits, un grand et un petit.",
+      "vrai": false,
+      "correction": "Faux : la lampe est un cercle avec une croix. Les deux traits, c'est le symbole de la pile."
+    },
+    {
+      "affirmation": "En dérivation, on peut mettre un interrupteur pour chaque lampe.",
+      "vrai": true,
+      "correction": "Vrai : on peut alors éteindre une lampe sans éteindre les autres."
+    },
+    {
+      "affirmation": "Une branche dérivée, c'est le chemin de la pile et de l'interrupteur.",
+      "vrai": false,
+      "correction": "Faux : ça, c'est la branche principale. Une branche dérivée porte une lampe."
+    }
+  ]
+}
