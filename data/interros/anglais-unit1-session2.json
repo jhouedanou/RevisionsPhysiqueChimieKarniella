@@ -1,0 +1,67 @@
+{
+  "lecon": "anglais-unit1-session2",
+  "matiere": "anglais",
+  "date": "2026-09-20",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : le bureau de la secrétaire.",
+      "reponse": "secretary's office",
+      "accepte": ["secretary office"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Complète avec la forme -ing du verbe swim : « I like … . »",
+      "reponse": "swimming",
+      "accepte": ["I like swimming"],
+      "reponseLangue": "en",
+      "exact": true
+    },
+    {
+      "question": "Après like ou dislike, quelles sont les deux constructions possibles ?",
+      "reponse": "like / dislike + verbe + -ing (I like speaking English), ou like / dislike + nom (I like English)."
+    },
+    {
+      "question": "Donne la définition en anglais de « a playground ».",
+      "reponse": "It's the place where students go to play and practise sports.",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : « J'aime travailler dans le jardin de l'école. »",
+      "reponse": "I like working in the school garden.",
+      "reponseLangue": "en"
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "A school garden is the place where students go to grow vegetables.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : dans le school garden (le jardin de l'école), les élèves cultivent des légumes."
+    },
+    {
+      "affirmation": "Dans « I like English », like est suivi d'un nom.",
+      "vrai": true,
+      "correction": "Vrai : English est un nom. C'est la construction like + nom."
+    },
+    {
+      "affirmation": "Dans « I like reading », like est suivi d'un nom.",
+      "vrai": false,
+      "correction": "Faux : reading est un verbe avec -ing. C'est la construction like + verbe-ing."
+    },
+    {
+      "affirmation": "On écrit « danceing » : le e final reste.",
+      "vrai": false,
+      "correction": "Faux : le e final tombe. On écrit dancing, comme writing."
+    },
+    {
+      "affirmation": "« I dislike dogs » veut dire « J'aime les chiens ».",
+      "vrai": false,
+      "correction": "Faux : dislike veut dire « ne pas aimer ». I dislike dogs = je n'aime pas les chiens."
+    },
+    {
+      "affirmation": "À la question « Do you like your school? », on peut répondre « Yes, I do. »",
+      "vrai": true,
+      "correction": "Vrai : la réponse courte reprend do. Pour dire non : « No, I don't. »"
+    }
+  ]
+}

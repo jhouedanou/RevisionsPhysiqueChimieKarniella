@@ -1,0 +1,76 @@
+{
+  "lecon": "histoire-geo-milieu-physique",
+  "matiere": "histoire-geo",
+  "date": "2026-09-27",
+  "restitution": [
+    {
+      "question": "Quel relief trouve-t-on au sud de la Côte d'Ivoire ?",
+      "reponse": "les plaines",
+      "accepte": ["plaine"]
+    },
+    {
+      "question": "Comment s'appelle le climat du sud de la Côte d'Ivoire ?",
+      "reponse": "le climat attiéen",
+      "accepte": ["attiéen", "climat subéquatorial", "subéquatorial", "climat attiéen ou subéquatorial", "attiéen ou subéquatorial"]
+    },
+    {
+      "question": "Quel est le point le plus haut de la Côte d'Ivoire ?",
+      "reponse": "le mont Nimba",
+      "accepte": ["Nimba"]
+    },
+    {
+      "question": "Qu'est-ce que le milieu physique ?",
+      "reponse": "C'est le cadre de vie des sociétés humaines : l'ensemble des conditions naturelles qui influencent la vie."
+    },
+    {
+      "question": "Cite les cinq éléments du milieu physique.",
+      "reponse": "Le relief, le climat, la végétation, les sols et l'hydrographie."
+    },
+    {
+      "question": "Cite les trois types de sols de la Côte d'Ivoire.",
+      "reponse": "Les sols ferrallitiques, les sols ferrugineux et les sols hydromorphes."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Le relief de la Côte d'Ivoire est peu accidenté : cela gêne l'installation des populations.",
+      "vrai": false,
+      "correction": "Faux : le relief est surtout fait de surfaces planes. Cela favorise l'installation des populations et leurs activités."
+    },
+    {
+      "affirmation": "Les hauts plateaux sont au centre, et les bas plateaux au nord.",
+      "vrai": false,
+      "correction": "Faux : c'est l'inverse. Les bas plateaux sont au centre, les hauts plateaux au nord."
+    },
+    {
+      "affirmation": "Les montagnes se trouvent à l'ouest de la Côte d'Ivoire.",
+      "vrai": true,
+      "correction": "Vrai : à l'ouest, ce sont les montagnes. C'est la partie la plus haute du pays."
+    },
+    {
+      "affirmation": "La forêt galerie se trouve au sud, au bord de la mer.",
+      "vrai": false,
+      "correction": "Faux : la forêt galerie est au nord. C'est une bande d'arbres le long des cours d'eau."
+    },
+    {
+      "affirmation": "La forêt dense se trouve au sud, à l'ouest et à l'est du pays.",
+      "vrai": true,
+      "correction": "Vrai : la forêt dense couvre le sud, l'ouest et l'est. Au centre, c'est la forêt claire."
+    },
+    {
+      "affirmation": "La forêt de mangroves pousse dans les marais.",
+      "vrai": true,
+      "correction": "Vrai : les mangroves sont des arbres qui poussent les pieds dans l'eau, dans les marais."
+    },
+    {
+      "affirmation": "Au sud, sous la forêt dense, on trouve surtout des sols ferrugineux.",
+      "vrai": false,
+      "correction": "Faux : au sud, ce sont les sols ferrallitiques. Les sols ferrugineux sont au centre."
+    },
+    {
+      "affirmation": "Les sols hydromorphes se trouvent au bord des cours d'eau et dans les bas-fonds.",
+      "vrai": true,
+      "correction": "Vrai : ces sols sont gorgés d'eau. « Hydro » veut dire eau."
+    }
+  ]
+}

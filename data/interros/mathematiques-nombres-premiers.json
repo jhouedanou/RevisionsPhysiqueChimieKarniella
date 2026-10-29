@@ -1,0 +1,75 @@
+{
+  "lecon": "mathematiques-nombres-premiers",
+  "matiere": "mathematiques",
+  "date": "2026-10-04",
+  "restitution": [
+    {
+      "question": "Fais la division euclidienne de 38 par 5. Quel est le reste ?",
+      "reponse": "3",
+      "accepte": ["trois"]
+    },
+    {
+      "question": "Dans a = b × q + r, comment s'appelle le nombre q ?",
+      "reponse": "quotient",
+      "accepte": ["c'est le quotient", "q est le quotient"]
+    },
+    {
+      "question": "Qu'est-ce qu'un nombre premier ?",
+      "reponse": "Un nombre entier naturel non nul qui a exactement deux diviseurs : 1 et lui-même."
+    },
+    {
+      "question": "Qu'appelle-t-on la division euclidienne de a par b ?",
+      "reponse": "C'est l'écriture a = b × q + r, avec r < b. Le nombre b n'est pas nul."
+    },
+    {
+      "question": "Comment sais-tu si un nombre est premier ?",
+      "reponse": "Je le divise par 2, 3, 5, 7… dans l'ordre. Un reste nul : il n'est pas premier. Un quotient inférieur ou égal au diviseur : il est premier."
+    },
+    {
+      "question": "Encadre 23 par deux multiples consécutifs de 4.",
+      "reponse": "4 × 5 < 23 < 4 × 6, soit 20 < 23 < 24."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "9 est un nombre premier, car il est impair.",
+      "vrai": false,
+      "correction": "9 = 3 × 3 : ses diviseurs sont 1, 3 et 9. Un nombre impair n'est pas toujours premier."
+    },
+    {
+      "affirmation": "2 est un nombre premier.",
+      "vrai": true,
+      "correction": "Ses seuls diviseurs sont 1 et 2. Il est pair, et pourtant premier."
+    },
+    {
+      "affirmation": "1 est un nombre premier.",
+      "vrai": false,
+      "correction": "1 n'a qu'un seul diviseur. Un nombre premier en a exactement deux."
+    },
+    {
+      "affirmation": "29 est un nombre premier.",
+      "vrai": true,
+      "correction": "Par 2, par 3 et par 5, le reste n'est jamais nul. Ses seuls diviseurs sont 1 et 29."
+    },
+    {
+      "affirmation": "75 = 6 × 11 + 9 est la division euclidienne de 75 par 6.",
+      "vrai": false,
+      "correction": "Le reste 9 n'est pas plus petit que 6. La bonne écriture est 75 = 6 × 12 + 3."
+    },
+    {
+      "affirmation": "35 = 7 × 5, donc 7 est un diviseur de 35.",
+      "vrai": true,
+      "correction": "Le reste est nul : 7 est un diviseur de 35, et 35 est un multiple de 7."
+    },
+    {
+      "affirmation": "Dans une division euclidienne, le diviseur peut être 0.",
+      "vrai": false,
+      "correction": "Le diviseur n'est jamais nul. On ne divise pas par 0."
+    },
+    {
+      "affirmation": "36 = 2² × 3² est la décomposition de 36 en facteurs premiers.",
+      "vrai": true,
+      "correction": "36 = 2 × 2 × 3 × 3 = 2² × 3². Les facteurs 2 et 3 sont premiers."
+    }
+  ]
+}

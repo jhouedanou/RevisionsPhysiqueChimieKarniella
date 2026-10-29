@@ -1,0 +1,76 @@
+{
+  "lecon": "tice-initiation-ordinateur",
+  "matiere": "tice",
+  "date": "2026-10-04",
+  "restitution": [
+    {
+      "question": "Quelle combinaison de touches permet d'éteindre l'ordinateur avec le clavier ?",
+      "reponse": "Alt + F4",
+      "accepte": ["Alt F4", "Alt-F4"]
+    },
+    {
+      "question": "La clé USB est un périphérique de quel type ?",
+      "reponse": "stockage",
+      "accepte": ["de stockage", "périphérique de stockage"]
+    },
+    {
+      "question": "Complète : Windows, Mac OS et Linux sont des … .",
+      "reponse": "systèmes d'exploitation",
+      "accepte": ["système d'exploitation"]
+    },
+    {
+      "question": "Définis l'informatique.",
+      "reponse": "L'informatique est la science qui permet de traiter automatiquement des informations."
+    },
+    {
+      "question": "Qu'est-ce qu'un système informatique ?",
+      "reponse": "Un ensemble de composants (logiciels et matériels) qui fonctionnent ensemble et permettent de traiter les informations."
+    },
+    {
+      "question": "Explique comment démarrer un ordinateur de bureau.",
+      "reponse": "On vérifie que tous les composants sont bien connectés à l'unité centrale. On branche l'écran et l'unité centrale sur une prise électrique. Puis on appuie sur le bouton d'allumage."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "La partie logicielle de l'ordinateur s'appelle aussi le hardware.",
+      "vrai": false,
+      "correction": "Faux : la partie logicielle, c'est le software. Le hardware, c'est la partie matérielle."
+    },
+    {
+      "affirmation": "La partie matérielle comprend l'unité centrale et les périphériques.",
+      "vrai": true,
+      "correction": "Vrai : c'est la partie physique de l'ordinateur, celle qu'on peut toucher."
+    },
+    {
+      "affirmation": "L'écran et l'imprimante sont des périphériques d'entrée.",
+      "vrai": false,
+      "correction": "Faux : ce sont des périphériques de sortie. Le clavier et la souris sont des périphériques d'entrée."
+    },
+    {
+      "affirmation": "Le matériel se touche, mais le logiciel ne se touche pas.",
+      "vrai": true,
+      "correction": "Vrai : les logiciels sont des programmes. On ne peut pas les toucher."
+    },
+    {
+      "affirmation": "Pour aller plus vite, on peut débrancher un ordinateur allumé.",
+      "vrai": false,
+      "correction": "Faux : ce qui n'est pas enregistré serait perdu, et un fichier pourrait être abîmé. On choisit « Arrêter »."
+    },
+    {
+      "affirmation": "Avec le bon réglage, un ordinateur portable s'éteint quand on ferme l'écran.",
+      "vrai": true,
+      "correction": "Vrai : il faut le définir dans les paramètres. Sans réglage, il se met souvent en veille."
+    },
+    {
+      "affirmation": "Word et Paint servent à gérer tous les composants de l'ordinateur.",
+      "vrai": false,
+      "correction": "Faux : ce sont des logiciels d'application, pour une tâche précise. C'est le système d'exploitation qui gère les composants."
+    },
+    {
+      "affirmation": "À la fin du démarrage, l'écran affiche le « Bureau ».",
+      "vrai": true,
+      "correction": "Vrai : on y voit les icônes et, en bas, le bouton Démarrer."
+    }
+  ]
+}

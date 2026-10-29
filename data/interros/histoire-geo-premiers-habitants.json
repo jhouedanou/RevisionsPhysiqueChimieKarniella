@@ -1,0 +1,76 @@
+{
+  "lecon": "histoire-geo-premiers-habitants",
+  "matiere": "histoire-geo",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Les Pygmées portent aussi un autre nom. Lequel ?",
+      "reponse": "les Négrilles",
+      "accepte": ["Négrille"]
+    },
+    {
+      "question": "Que veut dire le mot « proto » ?",
+      "reponse": "premier",
+      "accepte": ["avant", "antérieur à", "antérieur", "premiers", "avant, premier", "premier, avant"]
+    },
+    {
+      "question": "Dans quelle partie de la Côte d'Ivoire vivent les Protomandé ?",
+      "reponse": "nord-ouest",
+      "accepte": ["au nord-ouest", "dans le nord-ouest"]
+    },
+    {
+      "question": "Cite les quatre grands groupes de premiers habitants de la Côte d'Ivoire.",
+      "reponse": "Les Protokrou, les Protoakan, les Protomandé et les Protogur."
+    },
+    {
+      "question": "Selon les traditions orales, comment sont les Pygmées ? Cite trois caractéristiques.",
+      "reponse": "Trois au choix : petits de taille (de 1,44 m à 1,55 m), pieds retournés, chevelure abondante, peau brune ou rougeâtre, face simiesque, très intelligents, force extraordinaire."
+    },
+    {
+      "question": "Que veut dire « autochtone » ?",
+      "reponse": "Qui habite le pays depuis toujours, qui n'est pas venu d'ailleurs."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Les sites et les vestiges montrent que la Côte d'Ivoire est habitée depuis la préhistoire.",
+      "vrai": true,
+      "correction": "Vrai : grâce aux sites et aux vestiges, on sait que des hommes vivent ici depuis la préhistoire."
+    },
+    {
+      "affirmation": "Les Protokrou vivent au centre et à l'est de la Côte d'Ivoire.",
+      "vrai": false,
+      "correction": "Faux : les Protokrou sont à l'ouest. Au centre et à l'est, ce sont les Protoakan."
+    },
+    {
+      "affirmation": "Les Protogur, au nord, se divisent en Protosénoufo et Protokoulango.",
+      "vrai": true,
+      "correction": "Vrai : les Protogur forment deux groupes, les Protosénoufo et les Protokoulango."
+    },
+    {
+      "affirmation": "Les Ehotilé racontent qu'ils sont descendus du ciel dans une bassine en cuivre.",
+      "vrai": false,
+      "correction": "Faux : les Ehotilé disent qu'ils sont sortis de l'eau, de la lagune. La bassine en cuivre, c'est le récit d'autres peuples."
+    },
+    {
+      "affirmation": "Les poteries et les restes du travail du fer sont des preuves orales.",
+      "vrai": false,
+      "correction": "Faux : ce sont des preuves matérielles. Les preuves orales, ce sont les récits des traditions."
+    },
+    {
+      "affirmation": "Personne n'a trouvé de traces des Pygmées en Côte d'Ivoire : on les connaît par les légendes.",
+      "vrai": true,
+      "correction": "Vrai : presque toutes les traditions orales parlent d'eux. Les légendes en font des êtres mystérieux."
+    },
+    {
+      "affirmation": "Le nom « Gban » veut dire « allez-vous en ».",
+      "vrai": false,
+      "correction": "Faux : c'est « Gagou » qui veut dire « allez-vous en ». « Gban » veut dire « puces »."
+    },
+    {
+      "affirmation": "À cause de leur petite taille, on a longtemps pensé que les Gban descendaient des Pygmées.",
+      "vrai": true,
+      "correction": "Vrai : les Gban sont très petits. On a donc cru qu'ils venaient des Pygmées."
+    }
+  ]
+}

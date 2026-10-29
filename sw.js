@@ -10,7 +10,7 @@
 // Seules les images et les polices, qui ne changent jamais, restent
 // « cache d'abord ».
 
-const CACHE_NAME = 'karniella-cache-v55';
+const CACHE_NAME = 'karniella-cache-v56';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Au-delà, on sert la copie en cache (si on en a une) et le réseau continue
@@ -28,6 +28,7 @@ const FILES_TO_CACHE = [
     '/index.html',
     '/boutique.html',
     '/5e/mission.html',
+    '/5e/interro.html',
     '/5e/emploi-du-temps.html',
 
     '/css/theme.css',
@@ -35,6 +36,7 @@ const FILES_TO_CACHE = [
     '/css/coquille.css',
     '/css/boutique.css',
     '/css/mission.css',
+    '/css/interro.css',
     '/css/accueil.css',
     '/css/lecon-5e.css',
     '/css/section-quiz.css',
@@ -59,6 +61,8 @@ const FILES_TO_CACHE = [
     '/js/xp.js',
     '/js/boutique.js',
     '/js/mission.js',
+    '/js/interro.js',
+    '/js/interros-index.js',
     '/js/suivi.js',
     '/js/emploi-du-temps.js',
     '/js/jeu.js',
@@ -93,6 +97,21 @@ try {
 } catch (err) {
     // Index pas encore généré : le chat retombera sur sa base en dur.
     console.warn('[ServiceWorker] base du chat absente', err);
+}
+
+/* Les questions des interros surprises (`npm run build:interros`), pour
+   qu'une interro marche aussi hors-ligne. Même principe : la liste vient
+   de l'index, pas d'une copie à tenir à jour ici. */
+try {
+    importScripts('/js/interros-index.js');
+    const matieres = (self.KarniellaInterros || {}).matieres || {};
+    for (const id of Object.keys(matieres)) {
+        for (const lecon of matieres[id].lecons) {
+            FICHIERS_CHAT.push('/data/interros/' + lecon.id + '.json');
+        }
+    }
+} catch (err) {
+    console.warn('[ServiceWorker] index des interros absent', err);
 }
 
 /**

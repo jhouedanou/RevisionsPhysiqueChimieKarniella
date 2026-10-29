@@ -1,0 +1,79 @@
+{
+  "lecon": "anglais-unit1-discover-my-school",
+  "matiere": "anglais",
+  "date": "2026-09-20",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : la cantine.",
+      "reponse": "canteen",
+      "accepte": ["school canteen"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : à l'étage.",
+      "reponse": "upstairs",
+      "accepte": ["it's upstairs", "it is upstairs"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quel lieu de l'école est « a big door » ? Réponds en anglais.",
+      "reponse": "gate",
+      "accepte": ["school gate"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quelle est la différence entre a grammar school et a secondary school ?",
+      "reponse": "A grammar school va de la 6e à la 3e. A secondary school va de la 2nde à la Terminale."
+    },
+    {
+      "question": "Donne la définition en anglais de « a staff room ».",
+      "reponse": "It's the meeting place of the teachers.",
+      "reponseLangue": "en"
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "A library is a place where students go to borrow books to read.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : à la library (la bibliothèque), on emprunte des livres pour les lire."
+    },
+    {
+      "affirmation": "An office is the work place of administration workers.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : an office est le lieu de travail du personnel administratif. Ex : the headmaster office."
+    },
+    {
+      "affirmation": "A science laboratory is a place where students go to take food at school.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : dans un science laboratory, on étudie les sciences. Pour manger, on va à la canteen."
+    },
+    {
+      "affirmation": "La forme polie est : « Can you tell me where is the library? »",
+      "vrai": false,
+      "correction": "Faux : dans la forme polie, is passe à la fin : « Can you tell me where the library is? »"
+    },
+    {
+      "affirmation": "« Opposite » veut dire « à côté de ».",
+      "vrai": false,
+      "correction": "Faux : opposite veut dire « en face de ». « À côté de » se dit next to."
+    },
+    {
+      "affirmation": "« In front of » veut dire « devant ».",
+      "vrai": true,
+      "correction": "Vrai : in front of = devant. Ex : The gate is in front of the school."
+    },
+    {
+      "affirmation": "« Near » veut dire « derrière ».",
+      "vrai": false,
+      "correction": "Faux : near veut dire « près de ». « Derrière » se dit behind."
+    },
+    {
+      "affirmation": "« You're welcome » veut dire « de rien ».",
+      "vrai": true,
+      "correction": "Vrai : tu le dis quand quelqu'un te remercie, par exemple après « Thanks a lot! »."
+    }
+  ]
+}

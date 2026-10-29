@@ -1,0 +1,61 @@
+{
+  "lecon": "physique-chimie-les-melanges",
+  "matiere": "physique-chimie",
+  "date": "2026-09-20",
+  "restitution": [
+    {
+      "question": "On agite du sucre dans l'eau et on ne le voit plus. Quel type de mélange obtient-on ?",
+      "reponse": "homogène",
+      "accepte": ["mélange homogène"]
+    },
+    {
+      "question": "Quel type de mélange forment l'eau et l'huile ?",
+      "reponse": "hétérogène",
+      "accepte": ["mélange hétérogène"]
+    },
+    {
+      "question": "On ne voit plus le sucre dans l'eau. Quelle preuve montre qu'il est toujours là ?",
+      "reponse": "L'eau a le goût sucré."
+    },
+    {
+      "question": "Qu'est-ce que la dissolution ?",
+      "reponse": "C'est quand un corps se mélange complètement à un liquide, jusqu'à ne plus être visible. Le corps ne disparaît pas : il se disperse."
+    },
+    {
+      "question": "Comment savoir si un mélange est homogène ou hétérogène ?",
+      "reponse": "Je me demande : est-ce que je vois encore les deux choses séparément ? Oui : hétérogène. Non : homogène."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Pour faire de l'eau sucrée, on utilise seulement du sucre.",
+      "vrai": false,
+      "correction": "On utilise le sucre et l'eau. Un mélange se fait toujours avec au moins deux choses."
+    },
+    {
+      "affirmation": "Quand on ne voit plus le sucre dans l'eau, c'est qu'il a disparu.",
+      "vrai": false,
+      "correction": "Ne plus voir n'est pas disparaître. Le sucre se dissout : il est toujours là."
+    },
+    {
+      "affirmation": "Dans l'eau sucrée, le sucre est en morceaux trop petits pour être vus.",
+      "vrai": true,
+      "correction": "C'est pour ça qu'on ne le voit plus, même s'il est encore là."
+    },
+    {
+      "affirmation": "Un mélange homogène a le même aspect partout.",
+      "vrai": true,
+      "correction": "Dans un mélange homogène, on ne distingue plus les constituants à l'œil nu."
+    },
+    {
+      "affirmation": "Un corps soluble est un corps qui peut se dissoudre.",
+      "vrai": true,
+      "correction": "Exemple : le sucre est soluble dans l'eau."
+    },
+    {
+      "affirmation": "Le sucre et le sable sont tous les deux solubles dans l'eau.",
+      "vrai": false,
+      "correction": "Le sucre est soluble dans l'eau, mais le sable ne l'est pas."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "lecon": "francais-groupe-nominal",
+  "matiere": "francais",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Donne la définition de la subordonnée relative.",
+      "reponse": "La subordonnée relative est une proposition introduite par un pronom relatif : qui, que, quoi, où, dont…"
+    },
+    {
+      "question": "Comment appelle-t-on le nom que la subordonnée relative complète ?",
+      "reponse": "antécédent",
+      "accepte": ["son antécédent"]
+    },
+    {
+      "question": "Complète avec un pronom relatif : « le cheval … galope ».",
+      "reponse": "qui",
+      "accepte": ["le cheval qui galope"]
+    },
+    {
+      "question": "Donne la définition du complément du nom.",
+      "reponse": "Le complément du nom est un mot ou un groupe de mots qui se rattache à un autre mot ou à une autre proposition, que l'on analyse comme de nature à le compléter, à le préciser."
+    },
+    {
+      "question": "À, de, en, par… : comment s'appellent ces mots qui introduisent le complément du nom ?",
+      "reponse": "prépositions",
+      "accepte": ["préposition"]
+    },
+    {
+      "question": "Écris le pluriel de « un animal ».",
+      "reponse": "animaux",
+      "accepte": ["des animaux"],
+      "exact": true
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "La subordonnée relative peut être supprimée, mais on la déplace rarement.",
+      "vrai": true,
+      "correction": "Vrai : comme l'adjectif épithète, c'est une expansion du nom."
+    },
+    {
+      "affirmation": "Quand la relative complète un pronom, elle est collée à ce pronom.",
+      "vrai": false,
+      "correction": "Faux : elle en est séparée. Dans « Je l'avais vu qui combattait le géant », « avais vu » sépare « l' » de la relative."
+    },
+    {
+      "affirmation": "Le plus souvent, la subordonnée relative a la fonction épithète.",
+      "vrai": true,
+      "correction": "Vrai : elle complète le nom qu'elle accompagne, comme dans « le géant qui habite une montagne »."
+    },
+    {
+      "affirmation": "Le complément du nom s'accorde avec le nom qu'il complète.",
+      "vrai": false,
+      "correction": "Faux : il ne s'accorde pas. On écrit « des robes en pagne », pas « en pagnes »."
+    },
+    {
+      "affirmation": "Le complément du nom peut avoir un déterminant ou non.",
+      "vrai": true,
+      "correction": "Vrai : « un sac en cuir » (sans déterminant), « le volant de la voiture » (avec « la »)."
+    },
+    {
+      "affirmation": "Un nom composé s'écrit toujours avec un trait d'union.",
+      "vrai": false,
+      "correction": "Faux : ses mots sont séparés ou non par un trait d'union : « un pique-bœuf », « une pomme de terre »."
+    },
+    {
+      "affirmation": "Un nom qui finit par s, x ou z prend un s de plus au pluriel.",
+      "vrai": false,
+      "correction": "Faux : il ne change pas. Une souris, des souris ; un nez, des nez."
+    },
+    {
+      "affirmation": "Le plus souvent, on met un nom simple au pluriel en ajoutant un s.",
+      "vrai": true,
+      "correction": "Vrai : un chien, des chiens. Mais il y a des exceptions."
+    }
+  ]
+}

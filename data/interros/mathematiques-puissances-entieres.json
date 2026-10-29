@@ -1,0 +1,67 @@
+{
+  "lecon": "mathematiques-puissances-entieres",
+  "matiere": "mathematiques",
+  "date": "2026-09-27",
+  "restitution": [
+    {
+      "question": "Calcule 2⁴.",
+      "reponse": "16",
+      "accepte": ["seize"]
+    },
+    {
+      "question": "7² × 7³ = 7 exposant combien ?",
+      "reponse": "5",
+      "accepte": ["cinq"]
+    },
+    {
+      "question": "Écris 10⁶ en chiffres.",
+      "reponse": "1 000 000",
+      "accepte": ["un million"]
+    },
+    {
+      "question": "Que désigne aⁿ, quand n est plus grand que 1 ?",
+      "reponse": "Le produit de n facteurs égaux au nombre a : aⁿ = a × a × … × a (n facteurs)."
+    },
+    {
+      "question": "Sans parenthèses, dans quel ordre fait-on les calculs ?",
+      "reponse": "D'abord la puissance, puis la multiplication et la division, enfin l'addition et la soustraction."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "2³ = 6.",
+      "vrai": false,
+      "correction": "2³ = 2 × 2 × 2 = 8. On ne fait pas 2 × 3."
+    },
+    {
+      "affirmation": "4³ = 64.",
+      "vrai": true,
+      "correction": "4 × 4 = 16, puis 16 × 4 = 64."
+    },
+    {
+      "affirmation": "1⁵ = 5.",
+      "vrai": false,
+      "correction": "1⁵ = 1 × 1 × 1 × 1 × 1 = 1. On a toujours 1ⁿ = 1."
+    },
+    {
+      "affirmation": "7¹ = 7.",
+      "vrai": true,
+      "correction": "Avec un seul facteur, a¹ = a."
+    },
+    {
+      "affirmation": "(−5)² est un nombre négatif.",
+      "vrai": false,
+      "correction": "(−5)² = (−5) × (−5) = +25. Exposant pair : le résultat est positif."
+    },
+    {
+      "affirmation": "2³ × 5³ = 10³.",
+      "vrai": true,
+      "correction": "Même exposant : on garde l'exposant et on multiplie les bases. 2 × 5 = 10."
+    },
+    {
+      "affirmation": "(3²)⁴ = 3⁶.",
+      "vrai": false,
+      "correction": "Pour une puissance d'une puissance, on multiplie les exposants. 2 × 4 = 8, donc (3²)⁴ = 3⁸."
+    }
+  ]
+}

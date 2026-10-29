@@ -1,0 +1,76 @@
+{
+  "lecon": "svt-proliferation-moustiques",
+  "matiere": "svt",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Comment appelle-t-on le moment où la cuticule de la nymphe se déchire pour libérer l'adulte ?",
+      "reponse": "émergence",
+      "accepte": ["émergence du moustique", "émergence du moustique adulte"]
+    },
+    {
+      "question": "Complète : quand l'œuf du moustique devient une larve, c'est le stade … .",
+      "reponse": "larvaire",
+      "accepte": ["stade larvaire"]
+    },
+    {
+      "question": "Comment appelle-t-on de l'eau qui ne coule pas ?",
+      "reponse": "eau stagnante",
+      "accepte": ["stagnante", "eaux stagnantes"]
+    },
+    {
+      "question": "Cite les deux hypothèses de ton cours sur la prolifération des moustiques.",
+      "reponse": "1. Elle agit grâce à certaines conditions du milieu. 2. Elle agit par des conséquences sur l'Homme."
+    },
+    {
+      "question": "Cite trois choses qui favorisent la prolifération des moustiques.",
+      "reponse": "Par exemple : l'eau stagnante, les ordures, les pneus usés, les herbes hautes, la chaleur et l'humidité."
+    },
+    {
+      "question": "Explique comment l'anophèle transmet le parasite d'une personne malade à une personne saine.",
+      "reponse": "L'anophèle femelle pique une personne malade et prend le parasite du paludisme. Puis elle pique une personne saine et lui donne ce parasite."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Dans ton cours, on a vu beaucoup de moustiques pendant une opération de salubrité dans un internat.",
+      "vrai": true,
+      "correction": "Vrai : c'est le constat de ton cours. On a aussi vu l'état de santé de certains élèves."
+    },
+    {
+      "affirmation": "Le moustique est d'abord une nymphe, puis une larve.",
+      "vrai": false,
+      "correction": "Faux : c'est l'inverse. L'ordre est œuf → larve → nymphe → adulte."
+    },
+    {
+      "affirmation": "Le moustique mâle pique l'Homme pour se nourrir de sang.",
+      "vrai": false,
+      "correction": "Faux : seule la femelle pique. Elle a besoin de sang pour ses œufs."
+    },
+    {
+      "affirmation": "Les herbes hautes aident les moustiques : ils s'y cachent le jour.",
+      "vrai": true,
+      "correction": "Vrai : ils y trouvent l'ombre et l'humidité."
+    },
+    {
+      "affirmation": "La fièvre et les maux de tête sont des signes du paludisme.",
+      "vrai": true,
+      "correction": "Vrai, comme la fatigue et les vomissements. Si tu as de la fièvre, dis-le à un adulte."
+    },
+    {
+      "affirmation": "Les piqûres et le mauvais sommeil favorisent la prolifération des moustiques.",
+      "vrai": false,
+      "correction": "Faux : ce sont des conséquences sur l'Homme. Ce qui aide les moustiques, ce sont l'eau stagnante, les ordures, les herbes hautes."
+    },
+    {
+      "affirmation": "Dans ton cours, l'étape « interprétation » vient juste après l'analyse.",
+      "vrai": true,
+      "correction": "Vrai : observation, résultats, analyse, interprétation, puis conclusion."
+    },
+    {
+      "affirmation": "Les larves du moustique vivent dans l'air, comme l'adulte.",
+      "vrai": false,
+      "correction": "Faux : œufs, larves et nymphes vivent dans l'eau, le milieu aquatique. Seul l'adulte vit dans l'air, le milieu aérien."
+    }
+  ]
+}

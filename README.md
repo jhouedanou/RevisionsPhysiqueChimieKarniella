@@ -590,6 +590,34 @@ Le bouton n'apparaît (dans la leçon comme sur l'accueil) qu'une fois la leçon
 `js/progression.js` retient les étapes lues (`marquerLecture`, `pourPage(slug).lue`).
 Ouvrir les onglets sans les lire ne suffit pas.
 
+### ⚡ Interros surprises
+
+Chaque leçon a son fichier `data/interros/<slug>.json` : des **questions de
+cours** (restitution) et des **vrai ou faux** (format et règles dans
+`docs/prompt-interros.md`). `npm run build:interros` (compris dans `build:all`)
+vérifie ces fichiers et écrit `js/interros-index.js` : par matière, ses leçons,
+la plus récente et une `version`.
+
+Quand du nouveau contenu arrive dans une matière (une leçon, des questions ou une
+`date` plus récente), sa version change. L'accueil montre alors la carte
+**« ⚡ Interro surprise ! »** de la matière la plus récente (« Plus tard » la cache
+jusqu'au lendemain), et la page de la matière marque sa carte « Nouveau ! ».
+
+`5e/interro.html?matiere=<id>` tire **10 questions au hasard** : d'abord les erreurs
+de la dernière fois (3 au plus), puis la moitié sur la leçon la plus récente, le
+reste sur les autres leçons ; autant de vrai ou faux que de questions de cours.
+Le quiz en étapes (`js/section-quiz.js`) sait poser trois types en plus du QCM :
+
+| Type | Ce que fait Karniella |
+|---|---|
+| `vrai-faux` | Vrai ou Faux (touches V et F) |
+| `saisie` | tape une réponse courte, corrigée toute seule (majuscules, accents, article du début ignorés ; une faute de frappe tolérée sauf `exact`) |
+| `cours` | écrit sa réponse, voit celle du cours, puis dit si elle l'avait |
+
+L'interro faite est gardée dans la clé `karniella-interros` ; les XP, le
+score (`interro-<matiere>`) et les erreurs passent par `js/xp.js` et
+`js/progression.js`, comme tout quiz.
+
 ### 📖 Dans les leçons
 
 Ajouté par `js/lecon-5e.js`, sans rien à écrire dans les pages :

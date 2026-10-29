@@ -1,0 +1,76 @@
+{
+  "lecon": "francais-portrait-simple",
+  "matiere": "francais",
+  "date": "2026-10-09",
+  "restitution": [
+    {
+      "question": "Donne la définition du portrait simple.",
+      "reponse": "Le portrait simple ou statique est la description ou la présentation d'un personnage qui n'est pas en mouvement ou en action."
+    },
+    {
+      "question": "Quel mot de ton cours veut dire « qui ne bouge pas, comme sur une photo » ?",
+      "reponse": "statique",
+      "accepte": ["portrait statique"]
+    },
+    {
+      "question": "Cite les quatre types de phrase.",
+      "reponse": "Déclaratif, interrogatif, impératif et exclamatif."
+    },
+    {
+      "question": "Quelle forme de phrase met un mot en valeur, comme « C'est sa gentillesse que j'aime » ?",
+      "reponse": "emphatique",
+      "accepte": ["forme emphatique", "phrase emphatique"]
+    },
+    {
+      "question": "Cite les trois temps verbaux utiles pour un portrait simple.",
+      "reponse": "L'imparfait, le présent et le passé composé de l'indicatif."
+    },
+    {
+      "question": "Complète : un mot négatif, comme « paresseux » ou « méchant », est un mot …",
+      "reponse": "dépréciatif",
+      "accepte": ["dépréciatifs", "péjoratif"]
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Dans le développement, on décrit le caractère avant l'aspect physique.",
+      "vrai": false,
+      "correction": "Faux : on commence toujours par le portrait physique, puis le portrait moral."
+    },
+    {
+      "affirmation": "Le portrait physique commence par la tête, le visage et les yeux.",
+      "vrai": true,
+      "correction": "Vrai : ensuite, on décrit les autres éléments."
+    },
+    {
+      "affirmation": "Dans l'introduction d'un portrait, on donne ses sentiments sur le personnage.",
+      "vrai": false,
+      "correction": "Faux : l'introduction donne le nom et l'âge du personnage. Les sentiments vont dans la conclusion."
+    },
+    {
+      "affirmation": "Le portrait moral présente les qualités, les défauts et les habitudes d'une personne.",
+      "vrai": true,
+      "correction": "Vrai : le portrait physique, lui, décrit la taille, le visage, les cheveux et les vêtements."
+    },
+    {
+      "affirmation": "« Elle est rapide comme une gazelle » contient une comparaison.",
+      "vrai": true,
+      "correction": "Vrai : « comme » rapproche deux choses. On peut aussi utiliser « pareil à » ou « tel »."
+    },
+    {
+      "affirmation": "Avant de rédiger, tu identifies le type d'écrit, le thème et le personnage à décrire.",
+      "vrai": true,
+      "correction": "Vrai : c'est la première étape du traitement de la situation."
+    },
+    {
+      "affirmation": "« Il est beau » est une description précise pour un portrait.",
+      "vrai": false,
+      "correction": "Faux : « beau » est un mot vague, il ne dit presque rien. Préfère un mot précis : « Il a un large sourire. »"
+    },
+    {
+      "affirmation": "Le portrait est la description d'un lieu.",
+      "vrai": false,
+      "correction": "Faux : le portrait est la description d'une personne, d'un personnage ou d'un animal."
+    }
+  ]
+}

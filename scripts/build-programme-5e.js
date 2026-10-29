@@ -78,8 +78,10 @@ function pageMatiere(matiere, programme) {
     const lecons = matiere.lecons || [];
     const pretes = lecons.filter((l) => l.statut === 'prete').length;
 
+    // La carte de l'interro surprise, remplie par js/interro.js si la matière en a une.
     const corps = lecons.length
-        ? `      <div class="chemin-jauge" hidden></div>
+        ? `      <div class="interro-matiere" hidden></div>
+      <div class="chemin-jauge" hidden></div>
       <ol class="chemin">
 ${lecons.map((l, i) => etapeLecon(l, i + 1)).join('\n')}
       </ol>`
@@ -102,9 +104,11 @@ ${lecons.map((l, i) => etapeLecon(l, i + 1)).join('\n')}
 <link rel="stylesheet" href="../css/matieres.css">
 <script src="../js/theme.js"></script>
 <script src="../js/programme-5e.js"></script>
+<script src="../js/interros-index.js"></script>
 <link rel="stylesheet" href="../css/coquille.css">
 <script src="../js/coquille.js"></script>
 <link rel="stylesheet" href="../css/lecon-5e.css">
+<link rel="stylesheet" href="../css/interro.css">
 <link rel="stylesheet" href="../css/jeu.css">
 </head>
 <body class="lecon-5e page-matiere" data-matiere="${echapper(matiere.id)}">
@@ -124,6 +128,7 @@ ${corps}
 <p class="pied">Révisions de Karniella · ${echapper(programme.niveau)} · ${echapper(programme.anneeScolaire)}</p>
 
 <script src="../js/chemin.js" defer></script>
+<script src="../js/interro.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
 </body>
 </html>

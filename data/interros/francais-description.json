@@ -1,0 +1,76 @@
+{
+  "lecon": "francais-description",
+  "matiere": "francais",
+  "date": "2026-10-09",
+  "restitution": [
+    {
+      "question": "Cite les quatre étapes de la lecture méthodique.",
+      "reponse": "La présentation du texte, la formulation de l'hypothèse générale, la vérification de l'hypothèse générale, le bilan."
+    },
+    {
+      "question": "Dans une lecture méthodique, comment s'appellent les mots qu'on relève pour vérifier l'hypothèse ?",
+      "reponse": "indices",
+      "accepte": ["indice"]
+    },
+    {
+      "question": "Cite les quatre colonnes du tableau de vérification.",
+      "reponse": "Entrées, repérage, analyse, interprétation."
+    },
+    {
+      "question": "« Ils étaient partis » : à quel temps est conjugué ce verbe ?",
+      "reponse": "plus-que-parfait",
+      "accepte": ["plus-que-parfait de l'indicatif"]
+    },
+    {
+      "question": "Qu'est-ce que l'hypothèse générale ?",
+      "reponse": "C'est une phrase qui dit, après une première lecture, ce que le texte présente et ce qu'il veut montrer. On la vérifie ensuite."
+    },
+    {
+      "question": "Comment appelle-t-on un rapprochement de deux choses sans outil de comparaison ?",
+      "reponse": "métaphore",
+      "accepte": ["métaphores"]
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Les axes de lecture sont les parties de l'hypothèse générale qu'on vérifie une à une.",
+      "vrai": true,
+      "correction": "Vrai : dans ton cahier, ils s'appellent H1 et H2."
+    },
+    {
+      "affirmation": "Dans le bilan, tu dis si l'hypothèse générale est confirmée ou non.",
+      "vrai": true,
+      "correction": "Vrai : tu rappelles aussi les procédés et tu donnes l'intérêt du texte."
+    },
+    {
+      "affirmation": "« L'huile chante » est une comparaison.",
+      "vrai": false,
+      "correction": "Faux : c'est une personnification. On donne à une chose une action humaine."
+    },
+    {
+      "affirmation": "Un champ lexical regroupe des mots qui se rapportent à une même idée.",
+      "vrai": true,
+      "correction": "Vrai : « cris, rires, appels » forment le champ lexical du bruit."
+    },
+    {
+      "affirmation": "Un mot mélioratif présente les choses de façon négative.",
+      "vrai": false,
+      "correction": "Faux : il les présente de façon positive. Son contraire est « péjoratif »."
+    },
+    {
+      "affirmation": "« À l'entrée », « au milieu », « plus loin » sont des indicateurs de temps.",
+      "vrai": false,
+      "correction": "Faux : ce sont des indicateurs de lieu. Ils donnent un ordre à la description."
+    },
+    {
+      "affirmation": "Dans le tableau de vérification, la colonne « Analyse » dit ce que le texte montre.",
+      "vrai": false,
+      "correction": "Faux : l'analyse nomme l'outil d'analyse, le procédé. C'est l'interprétation qui dit ce que ça montre."
+    },
+    {
+      "affirmation": "Dans « Il était grand », « était » est un verbe d'état.",
+      "vrai": true,
+      "correction": "Vrai : un verbe d'état indique l'état du personnage décrit."
+    }
+  ]
+}

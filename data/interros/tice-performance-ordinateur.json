@@ -1,0 +1,71 @@
+{
+  "lecon": "tice-performance-ordinateur",
+  "matiere": "tice",
+  "date": "2026-10-28",
+  "restitution": [
+    {
+      "question": "Dans quelle unité mesure-t-on la fréquence du processeur ?",
+      "reponse": "hertz",
+      "accepte": ["Hz", "en hertz", "en Hz"]
+    },
+    {
+      "question": "Complète : la RAM est la mémoire de … .",
+      "reponse": "travail",
+      "accepte": ["mémoire de travail", "de travail"]
+    },
+    {
+      "question": "Combien de bits faut-il pour faire 1 octet ?",
+      "reponse": "8",
+      "accepte": ["huit", "8 bits"]
+    },
+    {
+      "question": "Cite les trois éléments qui permettent de juger la performance d'un ordinateur.",
+      "reponse": "Le processeur, la mémoire RAM et le disque dur."
+    },
+    {
+      "question": "Quel est le rôle du processeur ?",
+      "reponse": "C'est le composant essentiel de l'ordinateur : il traite toutes les commandes passées par l'utilisateur."
+    },
+    {
+      "question": "Explique pourquoi un ordinateur avec 8 Go de RAM ralentit moins qu'un ordinateur avec 4 Go.",
+      "reponse": "Plus il y a de RAM, plus on peut y charger d'applications en même temps. L'ordinateur ralentit donc moins."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Le contenu de la RAM reste en mémoire quand on éteint l'ordinateur.",
+      "vrai": false,
+      "correction": "Faux : la RAM, aussi appelée mémoire vive, s'efface quand on éteint l'ordinateur."
+    },
+    {
+      "affirmation": "Plus la fréquence du processeur est grande, plus il est rapide.",
+      "vrai": true,
+      "correction": "Vrai : un processeur de 3,2 GHz est plus rapide qu'un processeur de 2,4 GHz."
+    },
+    {
+      "affirmation": "On compare le processeur au cerveau de l'ordinateur.",
+      "vrai": true,
+      "correction": "Vrai : c'est lui qui réfléchit. Les GHz disent à quelle vitesse."
+    },
+    {
+      "affirmation": "Les éléments de performance d'un ordinateur se trouvent dans l'écran.",
+      "vrai": false,
+      "correction": "Faux : le processeur, la RAM et le disque dur sont dans l'unité centrale."
+    },
+    {
+      "affirmation": "Un processeur de 3 GHz fait 3 millions de pas de calcul par seconde.",
+      "vrai": false,
+      "correction": "Faux : il en fait 3 milliards. 1 GHz, c'est 1 milliard de hertz."
+    },
+    {
+      "affirmation": "RAM est l'abréviation de l'anglais Random Access Memory.",
+      "vrai": true,
+      "correction": "Vrai : c'est le nom anglais de la mémoire de travail."
+    },
+    {
+      "affirmation": "L'octet est la plus petite unité de mesure informatique.",
+      "vrai": false,
+      "correction": "Faux : la plus petite unité est le bit. Il faut 8 bits pour faire 1 octet."
+    }
+  ]
+}

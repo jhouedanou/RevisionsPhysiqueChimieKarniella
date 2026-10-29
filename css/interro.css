@@ -1,0 +1,157 @@
+/**
+ * interro.css — Les interros surprises (js/interro.js).
+ *
+ * La carte de l'accueil, la carte d'une page de matière et la page
+ * 5e/interro.html. Le quiz lui-même reprend css/section-quiz.css. Les
+ * couleurs viennent de la matière (css/matieres.css, `data-matiere`).
+ */
+
+/* L'éclair, commun aux trois. */
+.interro-eclair {
+    flex: 0 0 auto;
+    display: inline-grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: 50%;
+    background: var(--orange, var(--rose));
+    font-size: 26px;
+    line-height: 1;
+}
+
+.interro-etiquette {
+    display: block;
+    margin: 0 0 4px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--matiere-texte, var(--doux));
+}
+
+.interro-boutons { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- L'accueil ---------- */
+.interro-surprise {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 12px 14px;
+    margin: 22px 0 0;   /* en haut de l'accueil, au-dessus de .mon-galop */
+    padding: 16px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: var(--rayon-carte, 20px);
+    background: var(--matiere-pale, var(--surface));
+    color: var(--encre);
+    box-shadow: var(--ombre);
+    animation: interro-secoue 0.6s var(--ease-out, ease) 0.3s both;
+}
+.interro-surprise .interro-titre { margin: 0 0 4px; font-family: var(--police-titre, inherit); font-size: 1.3rem; font-weight: 800; line-height: 1.25; }
+.interro-surprise .interro-detail { margin: 0; line-height: 1.45; }
+.interro-surprise .interro-boutons { grid-column: 1 / -1; }
+.interro-autres { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--doux); }
+.interro-autres a { color: var(--encre); font-weight: 700; }
+
+@keyframes interro-secoue {
+    0% { transform: rotate(0); }
+    20% { transform: rotate(-1.5deg); }
+    40% { transform: rotate(1.5deg); }
+    60% { transform: rotate(-1deg); }
+    80% { transform: rotate(0.5deg); }
+    100% { transform: rotate(0); }
+}
+
+/* ---------- La page d'une matière ---------- */
+.interro-matiere { margin: 0 0 18px; }
+.interro-carte {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: var(--rayon-carte, 20px);
+    background: var(--surface);
+    color: var(--encre);
+    text-decoration: none;
+    box-shadow: var(--ombre);
+    transition: transform var(--duree-rapide, 150ms) ease;
+}
+.interro-carte:hover { transform: translateY(-2px); }
+.interro-carte:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.interro-carte-nouveau { background: var(--matiere-pale, var(--surface)); }
+.interro-carte .interro-texte { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.interro-carte .interro-titre { font-family: var(--police-titre, inherit); font-size: 1.15rem; color: var(--matiere-texte, var(--encre)); }
+.interro-carte .interro-detail, .interro-note { font-size: 14.5px; color: var(--doux); }
+.interro-note { font-weight: 700; }
+.interro-nouveau {
+    flex: 0 0 auto;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--matiere-fort, var(--rose));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+}
+.interro-fleche { flex: 0 0 auto; font-size: 22px; font-weight: 800; color: var(--matiere-texte, var(--encre)); }
+
+/* ---------- La page de l'interro ---------- */
+body.interro-page {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--fond-degrade);
+    color: var(--encre);
+    font-family: var(--police-texte, 'Nunito', 'Segoe UI', sans-serif);
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+.interro {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 18px 16px 40px;
+    display: grid;
+    gap: 14px;
+}
+
+.interro-chargement, .interro-erreur { text-align: center; color: var(--doux); margin: 40px 0; }
+
+.interro-depart {
+    padding: 22px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: var(--rayon-carte, 20px);
+    background: var(--matiere-pale, var(--surface));
+    box-shadow: var(--ombre);
+    animation: interro-secoue 0.6s var(--ease-out, ease) both;
+}
+.interro-depart h1 { margin: 0 0 10px; font-family: var(--police-titre, inherit); font-size: clamp(24px, 5vw, 30px); line-height: 1.2; }
+.interro-depart p { margin: 0 0 10px; }
+.interro-nouveau-lecon { font-weight: 800; color: var(--matiere-texte, var(--encre)); }
+.interro-depart .interro-detail { color: var(--doux); }
+.interro-depart .interro-boutons { margin-top: 16px; }
+
+.interro .section-quiz-wrapper { margin: 0; }
+
+.interro-apres {
+    padding: 16px;
+    border: 2px solid var(--bord);
+    border-radius: 20px;
+    background: var(--surface);
+}
+.interro-revoir-titre { margin: 0 0 6px; font-weight: 800; }
+.interro-revoir { margin: 0 0 14px; padding-left: 20px; }
+.interro-revoir a { color: var(--matiere-texte, var(--rose)); font-weight: 700; }
+
+.interro-retour { margin: 0; text-align: center; font-size: 14px; }
+.interro-retour a { color: var(--matiere-texte, var(--rose)); font-weight: 800; }
+
+@media (max-width: 480px) {
+    .interro-surprise .interro-boutons .btn { flex: 1 1 auto; }
+    .interro-nouveau { display: none; }
+    .interro-carte-nouveau .interro-titre::after { content: ' · Nouveau !'; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .interro-surprise, .interro-depart { animation: none; }
+    .interro-carte { transition: none; }
+}
