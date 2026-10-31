@@ -61,13 +61,17 @@
         ecrireStockage(FILE, JSON.stringify(file.slice(-MAX_FILE)));
     }
 
-    /** La page, en mots courts : slug de la leçon, « accueil », « mission-<id> »… */
+    /** La page, en mots courts : slug de la leçon, « accueil », « mission-<id> », « saisie-<n> »… */
     function pageCourante() {
         var chemin = window.location.pathname.replace(/\/+$/, '/index.html');
         var nom = chemin.split('/').pop().replace(/\.html$/, '') || 'index';
         if (nom === 'mission') {
             var id = new URLSearchParams(window.location.search).get('id');
             return id ? 'mission-' + id : 'mission';
+        }
+        if (nom === 'lecon') {
+            var n = new URLSearchParams(window.location.search).get('id');
+            return n ? 'saisie-' + n : 'lecon';
         }
         if (nom === 'index') { return chemin.indexOf('/5e/') !== -1 ? '5e-accueil' : 'accueil'; }
         return nom;

@@ -32,6 +32,15 @@ est dans la section « Écrire simple » ci-dessous.
   dans `docs/sources/`. Ajouter à l'interro des questions sur le cahier et
   mettre sa `date` au jour de l'ajout.
 
+## Leçons tapées sur `saisie.html`
+
+Tonton peut taper une leçon (matière, titre, texte) sur `saisie.html` : elle
+s'affiche aussitôt sur `5e/lecon.html?id=<n>`, sans quiz ni mission. Elles sont
+dans la table Supabase `lecon_saisie` (commande `curl` dans le README). Quand
+on en fait une vraie leçon, le texte saisi compte comme le cahier : le garder
+dans `docs/sources/`, suivre « Toute leçon », puis dire à tonton de cacher ou
+supprimer la version saisie.
+
 ## Écrire simple
 
 Demandé le 14/10 : des leçons courtes, que Karniella comprend du premier coup.

@@ -35,6 +35,10 @@
         background: var(--rose); color: #fff;
     }
     button.discret { background: transparent; color: var(--rose); }
+    a.lien-saisie {
+        font-weight: 700; padding: 10px 16px; border-radius: var(--rayon-bouton);
+        border: 1px solid var(--rose); color: var(--rose); text-decoration: none;
+    }
     .erreur { color: var(--erreur-texte); font-weight: 700; }
     .tuiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 20px; }
     .tuile { background: var(--surface); border: 1px solid var(--bord); border-radius: var(--rayon-carte); padding: 16px; }
@@ -110,6 +114,7 @@
         <div class="barre-outils">
             <select id="choix-appareil" aria-label="Appareil" hidden></select>
             <button type="button" class="discret" id="rafraichir">↻ Actualiser</button>
+            <a class="discret lien-saisie" href="saisie.html">✍️ Saisir une leçon</a>
             <button type="button" class="discret" id="ne-pas-compter"></button>
             <button type="button" class="discret" id="deconnexion">Se déconnecter</button>
         </div>

@@ -231,6 +231,34 @@ Anglais, Physique-Chimie, Mathématiques, SVT, Français, Histoire-Géographie, 
 Une leçon annoncée `"prete"` dont la page n'existe pas est signalée par le
 générateur — pas de lien mort sur un sommaire.
 
+### ✍️ Saisir une leçon sans toucher au code (`saisie.html`)
+
+Tonton tape une leçon dans un formulaire : **matière**, **titre** et **texte**.
+Elle apparaît tout de suite dans le sommaire de la matière, sous « ✍️ Leçons
+ajoutées », et s'ouvre sur `5e/lecon.html?id=<n>`. Pas de build, pas de déploiement.
+
+- Mot de passe : celui de `suivi.html`.
+- Mise en forme : `# grand titre`, `## petit titre`, `- puce`,
+  `> encadré de définition`, `**gras**`, ligne vide = nouveau paragraphe.
+- « Visible par Karniella » décoché : la leçon reste cachée (brouillon).
+- Le texte en cours est gardé dans le navigateur : rien n'est perdu si la page se ferme.
+- Karniella garde les leçons déjà vues hors ligne (copie dans `localStorage`).
+
+Stockage : table `lecon_saisie` du projet Supabase « karniella ». **À faire une
+fois** : lancer `supabase/lecons-saisies.sql` dans l'éditeur SQL de Supabase
+(après `supabase/suivi.sql`). Le site lit les leçons visibles avec la clé
+publique ; ajouter, modifier ou effacer passe par des fonctions qui demandent
+le mot de passe. Le code : `js/saisie.js` (formulaire) et `js/lecons-saisies.js`
+(lecture, mise en forme, cartes du sommaire, page de la leçon).
+
+Une leçon saisie n'a ni quiz, ni mission, ni interro. Pour en faire une vraie
+leçon, la récupérer et suivre « Ajouter une leçon » ci-dessus :
+
+```bash
+curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*' \
+  -H 'apikey: sb_publishable_llOCHVMS5NQBudZW4E4RXw_Y1NJhWAI'
+```
+
 ### Conventions des pages de 5<sup>e</sup>
 
 - Onglets : `<button class="tab-button" data-onglet="tab2">` — `js/lecon-5e.js`
