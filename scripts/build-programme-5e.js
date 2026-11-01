@@ -255,14 +255,16 @@ function ecrireProgrammeJS(programme, matieres) {
             icone: m.icone,
             couleur: m.couleur || null,
             description: m.description,
-            lecons: (m.lecons || []).map((l) => ({
+            lecons: (m.lecons || []).map((l) => Object.assign({
                 id: l.id,
                 titre: l.titre,
                 sousTitre: l.sousTitre || '',
                 icone: l.icone || '📄',
                 statut: l.statut,
                 mission: Boolean(l.mission)
-            }))
+            // `saisie` : le numéro de la leçon tapée sur saisie.html d'où vient
+            // cette leçon. js/lecons-saisies.js cache alors la version saisie.
+            }, l.saisie ? { saisie: l.saisie } : {}))
         }))
     };
 

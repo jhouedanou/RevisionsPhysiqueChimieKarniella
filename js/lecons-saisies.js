@@ -9,6 +9,10 @@
  *   - sur le sommaire d'une matière, ajoute les cartes de ses leçons ;
  *   - sur 5e/lecon.html?id=…, affiche la leçon demandée.
  *
+ * Chaque soir, une tâche planifiée en fait une leçon complète (voir
+ * CLAUDE.md). Dès qu'elle est en ligne, la version saisie disparaît du
+ * sommaire et son lien mène à la leçon complète.
+ *
  * Si la table n'existe pas encore, ou sans réseau ni cache, il n'affiche
  * rien : le sommaire reste celui du programme.
  */
@@ -143,6 +147,22 @@
         return trouvee;
     }
 
+    /**
+     * La leçon complète faite à partir de la leçon saisie n° `id` (champ
+     * `saisie` dans data/programme-5e.json), ou null. Une fois la leçon
+     * complète en ligne, la version saisie ne s'affiche plus.
+     */
+    function leconComplete(id) {
+        var p = window.KarniellaProgramme;
+        var trouvee = null;
+        ((p && p.matieres) || []).forEach(function (m) {
+            (m.lecons || []).forEach(function (l) {
+                if (l.saisie != null && l.statut === 'prete' && String(l.saisie) === String(id)) { trouvee = l.id; }
+            });
+        });
+        return trouvee;
+    }
+
     /* ============================================================
        Sommaire d'une matière : les cartes « Leçons ajoutées »
        ============================================================ */
@@ -153,7 +173,7 @@
         if (!matiere || !zone) { return; }
 
         toutes().then(function (lecons) {
-            var miennes = lecons.filter(function (l) { return l.matiere === matiere; });
+            var miennes = lecons.filter(function (l) { return l.matiere === matiere && !leconComplete(l.id); });
             if (!miennes.length) { return; }
 
             var section = el('div', 'lecons-saisies');
@@ -181,6 +201,8 @@
 
     function afficherLecon() {
         var id = new URLSearchParams(window.location.search).get('id');
+        var complete = leconComplete(id);
+        if (complete) { window.location.replace(complete + '.html'); return; }
         var titre = document.getElementById('lecon-titre');
         var badge = document.getElementById('lecon-badge');
         var corps = document.getElementById('lecon-contenu');
@@ -208,7 +230,7 @@
         });
     }
 
-    window.KarniellaLeconsSaisies = { toutes: toutes, rendre: rendre };
+    window.KarniellaLeconsSaisies = { toutes: toutes, rendre: rendre, leconComplete: leconComplete };
 
     function demarrer() {
         if (document.body.classList.contains('page-matiere')) { remplirSommaire(); }

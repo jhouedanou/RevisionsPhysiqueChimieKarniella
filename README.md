@@ -251,8 +251,13 @@ publique ; ajouter, modifier ou effacer passe par des fonctions qui demandent
 le mot de passe. Le code : `js/saisie.js` (formulaire) et `js/lecons-saisies.js`
 (lecture, mise en forme, cartes du sommaire, page de la leçon).
 
-Une leçon saisie n'a ni quiz, ni mission, ni interro. Pour en faire une vraie
-leçon, la récupérer et suivre « Ajouter une leçon » ci-dessus :
+Une leçon saisie n'a ni quiz, ni mission, ni interro. **Chaque soir**, une
+tâche planifiée Claude (« Leçons du soir ») lit les nouvelles saisies, en fait
+des leçons complètes selon `CLAUDE.md` et ouvre une PR « Leçons du soir ».
+Quand la PR est fusionnée, l'entrée `"saisie": <n>` de `data/programme-5e.json`
+fait disparaître la version saisie : son lien mène à la leçon complète.
+
+Les leçons visibles, pour les lire à la main :
 
 ```bash
 curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*' \

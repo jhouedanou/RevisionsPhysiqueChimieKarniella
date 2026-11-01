@@ -240,11 +240,13 @@
             quoi.appendChild(el('strong', '', l.titre));
             var date = new Date(l.modifie_le).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
             quoi.appendChild(el('span', 'muet', nomMatiere(l.matiere) + ' · ' + date + ' '));
+            var complete = window.KarniellaLeconsSaisies.leconComplete(l.id);
             if (!l.visible) { quoi.appendChild(el('span', 'pastille', 'Cachée')); }
+            if (complete) { quoi.appendChild(el('span', 'pastille', '✅ Leçon complète')); }
 
-            if (l.visible) {
+            if (l.visible || complete) {
                 var voir = li.appendChild(el('a', 'bouton discret', 'Voir'));
-                voir.href = '5e/lecon.html?id=' + encodeURIComponent(l.id);
+                voir.href = complete ? '5e/' + complete + '.html' : '5e/lecon.html?id=' + encodeURIComponent(l.id);
             }
             li.appendChild(el('button', 'discret', 'Modifier')).addEventListener('click', function () { modifier(l); });
             li.appendChild(el('button', 'danger', 'Supprimer')).addEventListener('click', function () { supprimer(l); });

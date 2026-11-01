@@ -34,12 +34,23 @@ est dans la section « Écrire simple » ci-dessous.
 
 ## Leçons tapées sur `saisie.html`
 
-Tonton peut taper une leçon (matière, titre, texte) sur `saisie.html` : elle
-s'affiche aussitôt sur `5e/lecon.html?id=<n>`, sans quiz ni mission. Elles sont
-dans la table Supabase `lecon_saisie` (commande `curl` dans le README). Quand
-on en fait une vraie leçon, le texte saisi compte comme le cahier : le garder
-dans `docs/sources/`, suivre « Toute leçon », puis dire à tonton de cacher ou
-supprimer la version saisie.
+Karniella tape l'essentiel d'une leçon (matière, titre, texte) sur
+`saisie.html` : elle s'affiche aussitôt sur `5e/lecon.html?id=<n>`, sans quiz
+ni mission. Chaque soir, une tâche planifiée en fait une leçon complète. Les
+leçons visibles se lisent dans la table Supabase `lecon_saisie` (commande
+`curl` dans le README).
+
+- Le texte saisi compte comme le cahier : onglet « Mon cahier » avec ce texte
+  (orthographe corrigée seulement), puis les onglets de cours, les schémas,
+  les exercices et le quiz, selon « Toute leçon ». Ce qui n'est pas dans le
+  texte saisi va dans « ✏️ À vérifier dans ton cahier ».
+- Copie du texte saisi dans `docs/sources/saisie-<n>.md`, avec en tête son
+  `modifie_le`. Si la saisie change plus tard (nouveau `modifie_le`), mettre
+  la leçon à jour.
+- Entrée de `data/programme-5e.json` : `"saisie": <n>`. Une fois en ligne,
+  la version saisie quitte le sommaire et son lien mène à la leçon complète.
+- Une saisie déjà dans `data/programme-5e.json` ou dans une PR ouverte
+  « Leçons du soir » n'est pas refaite.
 
 ## Écrire simple
 
