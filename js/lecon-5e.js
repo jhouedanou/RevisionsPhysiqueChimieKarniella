@@ -677,7 +677,12 @@
        Le texte n'est jamais réduit pour tenir sur une feuille : à 5 ou 6 pt,
        la fiche était illisible sur A4 (retour de Karniella, 18/10, qui a
        demandé 12 pt). Une fiche trop longue prend plusieurs feuilles ; la
-       fenêtre dit combien (mesurerFiche). */
+       fenêtre dit combien (mesurerFiche).
+
+       Seule exception, demandée par tonton le 01/11 : la case « 2 pages par
+       feuille », décochée au départ. La feuille passe à l'horizontale, avec
+       deux pages réduites côte à côte (texte à 8,4 pt). Le choix est retenu
+       dans le navigateur. */
 
     var ONGLETS_ENTRAINEMENT = /exerci[cs]e|practice|entra[iî]n/i;
     var ONGLETS_ESSENTIEL = /retiens|retenir|essentiel/i;
@@ -688,6 +693,12 @@
     // 2 % de hauteur en moins : le navigateur arrondit un peu en imprimant.
     var MM = 96 / 25.4;
     var PAGE_HAUTEUR = (297 - 16) * MM * 0.98;
+
+    // « 2 pages par feuille » : deux colonnes réduites à 0,7036 sur la feuille
+    // à l'horizontale (css/lecon-5e.css, html.fiche-2-pages). Une colonne a la
+    // largeur d'une page ; sa hauteur, en px CSS : 194 mm utiles / 0,7036.
+    var DEUX_PAGES_HAUTEUR = (210 - 16) / 0.7036 * MM * 0.98;
+    var CLE_DEUX_PAGES = 'karniella-fiche-2-pages';
 
     function preparerEtapesFiche(boutons) {
         for (var i = 0; i < boutons.length; i++) {
@@ -735,11 +746,23 @@
         bandeau.appendChild(b);
     }
 
-    /** L'essentiel coché ; les traductions si elles sont affichées à l'écran. */
+    function lireDeuxPages() {
+        try { return window.localStorage.getItem(CLE_DEUX_PAGES) === '1'; } catch (err) { return false; }
+    }
+
+    function ecrireDeuxPages(oui) {
+        try { window.localStorage.setItem(CLE_DEUX_PAGES, oui ? '1' : '0'); } catch (err) { /* pas retenu */ }
+    }
+
+    /** L'essentiel coché ; les traductions si elles sont affichées à l'écran ; 2 pages par feuille si choisi avant. */
     function choixFicheParDefaut() {
         var etapes = {};
         fiche.etapes.forEach(function (e) { etapes[e.id] = e.defaut; });
-        return { etapes: etapes, traductions: !!document.querySelector('.trad-tout[aria-pressed="true"]') };
+        return {
+            etapes: etapes,
+            traductions: !!document.querySelector('.trad-tout[aria-pressed="true"]'),
+            deuxPages: lireDeuxPages()
+        };
     }
 
     /** Met la page dans l'état de la fiche choisie (étapes, traductions, quiz…). */
@@ -751,6 +774,14 @@
         });
         racine.classList.add('fiche-choix');
         racine.classList.toggle('fiche-traductions', !!choix.traductions);
+        racine.classList.toggle('fiche-2-pages', !!choix.deuxPages);
+        // La feuille à l'horizontale : un @page placé après celui de css/lecon-5e.css.
+        if (choix.deuxPages && !document.getElementById('fiche-2-pages')) {
+            var horizontale = document.createElement('style');
+            horizontale.id = 'fiche-2-pages';
+            horizontale.textContent = '@media print { @page { size: A4 landscape; } }';
+            document.head.appendChild(horizontale);
+        }
         fiche.etapes.forEach(function (e) {
             var contenu = document.getElementById(e.id);
             if (e.role === 'quiz' && choix.etapes[e.id] && !quizSurPapier(contenu)) {
@@ -810,7 +841,11 @@
         regle.media.mediaText = 'all';
         racine.classList.add('fiche-mesure');
         try {
-            return Math.max(1, Math.ceil(document.body.getBoundingClientRect().height / PAGE_HAUTEUR));
+            var hauteur = document.body.getBoundingClientRect().height;
+            if (racine.classList.contains('fiche-2-pages')) {
+                return Math.max(1, Math.ceil(Math.ceil(hauteur / DEUX_PAGES_HAUTEUR) / 2));
+            }
+            return Math.max(1, Math.ceil(hauteur / PAGE_HAUTEUR));
         } finally {
             racine.classList.remove('fiche-mesure');
             regle.media.mediaText = 'print';
@@ -888,6 +923,9 @@
         var racine = document.documentElement;
         racine.classList.remove('fiche-choix');
         racine.classList.remove('fiche-traductions');
+        racine.classList.remove('fiche-2-pages');
+        var horizontale = document.getElementById('fiche-2-pages');
+        if (horizontale) { horizontale.parentNode.removeChild(horizontale); }
         fiche.etapes.forEach(function (e) { document.getElementById(e.id).removeAttribute('data-fiche'); });
         fiche.detailsOuverts.forEach(function (d) { d.open = false; });
         fiche.detailsOuverts = [];
@@ -955,6 +993,9 @@
             caseTraductions.classList.add('fiche-option-traductions');
         }
 
+        var caseDeuxPages = caseACocher('2 pages par feuille (texte plus petit)', defaut.deuxPages);
+        caseDeuxPages.classList.add('fiche-option-deux-pages');
+
         var taille = document.createElement('p');
         taille.className = 'fiche-taille';
         taille.setAttribute('aria-live', 'polite');
@@ -975,6 +1016,7 @@
         boite.appendChild(titre);
         boite.appendChild(groupe);
         if (caseTraductions) { boite.appendChild(caseTraductions); }
+        boite.appendChild(caseDeuxPages);
         boite.appendChild(taille);
         boite.appendChild(bas);
         voile.appendChild(boite);
@@ -983,7 +1025,11 @@
 
         var cases = groupe.querySelectorAll('input[type="checkbox"]');
         function lireChoix() {
-            var choix = { etapes: {}, traductions: !!(caseTraductions && caseTraductions.querySelector('input').checked) };
+            var choix = {
+                etapes: {},
+                traductions: !!(caseTraductions && caseTraductions.querySelector('input').checked),
+                deuxPages: caseDeuxPages.querySelector('input').checked
+            };
             for (var i = 0; i < cases.length; i++) { choix.etapes[cases[i].value] = cases[i].checked; }
             return choix;
         }
@@ -992,7 +1038,9 @@
             for (var i = 0; i < cases.length; i++) { if (cases[i].checked) { une = true; } }
             imprimer.disabled = !une;
             if (!une) { taille.textContent = ''; return; }
-            var feuilles = estimerFiche(lireChoix());
+            var choix = lireChoix();
+            ecrireDeuxPages(choix.deuxPages);
+            var feuilles = estimerFiche(choix);
             taille.classList.toggle('trop-long', feuilles > 1);
             taille.textContent = feuilles > 1 ? '📄 ' + feuilles + ' feuilles. Pour une seule, décoche une étape.'
                 : '📄 Tient sur 1 feuille.';
