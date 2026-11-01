@@ -1068,7 +1068,8 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 
 .fiche-option input { flex: 0 0 auto; width: 22px; height: 22px; margin: 0; accent-color: var(--l5-fort); }
 .fiche-option:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
-.fiche-option-traductions { border-style: dashed; }
+.fiche-option-traductions,
+.fiche-option-deux-pages { border-style: dashed; }
 .fiche-taille { margin: 0; font-size: 14px; font-weight: 800; color: var(--succes-texte); }
 .fiche-taille.trop-long { color: var(--erreur-texte); }
 .fiche-boite .cartes-nav:disabled { opacity: 0.4; cursor: default; }
@@ -1080,7 +1081,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
    Sur papier
    ============================================================
    Une fiche sur une seule colonne (deux colonnes ressemblaient à deux pages
-   sur une feuille), marges de 8 mm, encadrés et tableaux resserrés. Le
+   sur une feuille : c'est maintenant une option, en bas), marges de 8 mm, encadrés et tableaux resserrés. Le
    texte est à 12 pt, jamais réduit : à 9 pt réduit à 67 % (6 pt), la fiche
    était illisible sur A4 (retour de Karniella, 18/10, qui a demandé 12 pt).
    Les petites mentions ne descendent pas sous 10 pt. On imprime le bandeau et les étapes
@@ -1270,4 +1271,18 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e a { color: inherit; text-decoration: none; }
 
     .pied { margin: 6pt 0 0; padding: 0; font-size: 10pt; }
+
+    /* « 2 pages par feuille » (case de la fenêtre, js/lecon-5e.js) : la
+       feuille à l'horizontale, deux colonnes larges comme une page, le tout
+       réduit : chaque moitié de feuille est une page de la fiche, le texte
+       passe de 12 à 8,4 pt. Pas pendant la mesure, qui compte des pages
+       normales puis les range par deux.
+       0,7036 = (281 mm utiles − 8 mm entre les colonnes) / 2 / 194 mm.
+       11,4 mm entre les colonnes : 8 mm sur le papier, une fois réduits. */
+    html.fiche-2-pages:not(.fiche-mesure) body.lecon-5e { zoom: 0.7036; }
+    html.fiche-2-pages:not(.fiche-mesure) .content {
+        column-count: 2;
+        column-gap: 11.4mm;
+        column-rule: 0.75pt dashed var(--bord);
+    }
 }
