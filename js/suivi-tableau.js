@@ -480,7 +480,8 @@
         if (!mdp || code.length < 8) { return; }
         appelerRpc('sauvegarde_definir_code', { mdp: mdp, nouveau_code: code }).then(function (r) {
             if (!r.ok) { throw new Error('http ' + r.status); }
-            var url = window.location.origin + window.location.pathname.replace(/suivi\.html$/, '') + 'sauvegarde.html#code=' + encodeURIComponent(code);
+            // Le site est servi à la racine ; suivi.html s'ouvre aussi en /suivi ou /suivi/.
+            var url = window.location.origin + '/sauvegarde.html#code=' + encodeURIComponent(code);
             lien.hidden = false;
             lien.innerHTML = '';
             lien.appendChild(document.createTextNode('✅ Code enregistré. Envoie ce lien à Karniella et ouvre-le sur chacun de ses appareils : '));
