@@ -2511,6 +2511,17 @@
         "explanation": "C'est une légende. Elle dit : « nous sommes ici depuis toujours ». C'est une preuve orale de l'autochtonie."
       },
       {
+        "question": "Selon ton cahier, que disent les Dida sur leur origine ?",
+        "options": [
+          "Qu'ils sont venus du Ghana",
+          "Qu'ils sont descendus du ciel ou sortis des eaux",
+          "Qu'ils sont sortis d'une montagne",
+          "Qu'ils sont arrivés en bateau"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les Dida disent qu'ils sont descendus du ciel ou sortis des eaux. D'autres disent qu'ils sont sortis d'une grotte."
+      },
+      {
         "question": "Le titre II de ton cahier étudie l'organisation des premières ethnies. Quels sont les quatre points ?",
         "options": [
           "Sportive, musicale, scolaire et religieuse",
@@ -2531,6 +2542,39 @@
         ],
         "correctAnswer": 3,
         "explanation": "Le pouvoir est au village : le chef décide avec les anciens du lignage."
+      },
+      {
+        "question": "Chez les Protoakan de la forêt et de la savane, qui dirige un royaume ?",
+        "options": [
+          "Un roi",
+          "Le chef de terre",
+          "Les notables",
+          "Le maire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Chaque royaume est dirigé par un roi. Chaque village est dirigé par un chef de village, assisté par les notables."
+      },
+      {
+        "question": "Quelles activités pratiquent les Protoakan de la forêt et de la savane ?",
+        "options": [
+          "Seulement la pêche",
+          "Seulement le commerce avec l'Europe",
+          "La chasse, la pêche, la cueillette, l'agriculture, l'élevage, l'artisanat et le commerce",
+          "Le travail en usine"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ton cahier cite sept activités : chasse, pêche, cueillette, agriculture, élevage, artisanat, commerce."
+      },
+      {
+        "question": "Au niveau religieux, que sont les Protoakan de la forêt et de la savane ?",
+        "options": [
+          "Chrétiens",
+          "Musulmans",
+          "Animistes",
+          "Sans croyance"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ils sont animistes : ils croient que les arbres, l'eau et la terre ont un esprit."
       },
       {
         "question": "Où vivent les Protoakan lagunaires, comme les Ehotilé ?",
