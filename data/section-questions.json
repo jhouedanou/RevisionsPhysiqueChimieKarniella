@@ -6315,5 +6315,187 @@
         "explanation": "La tension se mesure en volts (V) avec un voltmètre."
       }
     ]
+  },
+  "anglais-unit2-sunday-with-my-family": {
+    "tab6": [
+      {
+        "question": "To stop sleeping:",
+        "options": [
+          "to go to bed",
+          "to wake up",
+          "to have a shower",
+          "to sweep the yard"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To wake up: to stop sleeping (se réveiller).",
+        "langue": "en"
+      },
+      {
+        "question": "To clean the plates and the pots:",
+        "options": [
+          "to wash the dishes",
+          "to sweep the yard",
+          "to have breakfast",
+          "to watch TV"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To wash the dishes: faire la vaisselle.",
+        "langue": "en"
+      },
+      {
+        "question": "« Balayer la cour » se dit…",
+        "options": [
+          "to wash the yard",
+          "to sweep the yard",
+          "to clean the dishes",
+          "to go to the yard"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To sweep the yard: to clean the yard with a broom."
+      },
+      {
+        "question": "Complete: My mother ___ rice every Sunday.",
+        "options": [
+          "cook",
+          "cooks",
+          "cooking",
+          "is cook"
+        ],
+        "correctAnswer": 1,
+        "explanation": "My mother = she: the verb takes an -s. She cooks.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: My father ___ the car on Sundays.",
+        "options": [
+          "washs",
+          "washes",
+          "wash",
+          "washies"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Wash ends with -sh: + es. He washes.",
+        "langue": "en"
+      },
+      {
+        "question": "Choose the correct negative sentence.",
+        "options": [
+          "She don't cook.",
+          "She doesn't cooks.",
+          "She doesn't cook.",
+          "She not cook."
+        ],
+        "correctAnswer": 2,
+        "explanation": "She + doesn't + verb, with no -s on the verb.",
+        "langue": "en"
+      },
+      {
+        "question": "Choose the correct question.",
+        "options": [
+          "Does you go to church?",
+          "Do you go to church?",
+          "You go to church?",
+          "Do you goes to church?"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Do + you + verb: Do you go to church?",
+        "langue": "en"
+      },
+      {
+        "question": "« Dimanche dernier » se dit…",
+        "options": [
+          "next Sunday",
+          "every Sunday",
+          "last Sunday",
+          "on Sunday"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Last Sunday: le dimanche dernier. Next Sunday, c'est le prochain."
+      },
+      {
+        "question": "Complete: We ___ our grandparents last Sunday.",
+        "options": [
+          "visit",
+          "visits",
+          "visited",
+          "visiting"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Last Sunday is in the past: visit + ed = visited.",
+        "langue": "en"
+      },
+      {
+        "question": "The simple past of « go » is…",
+        "options": [
+          "goed",
+          "went",
+          "gone",
+          "goes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Go is irregular: go → went.",
+        "langue": "en"
+      },
+      {
+        "question": "The simple past of « eat » is…",
+        "options": [
+          "eated",
+          "ate",
+          "eats",
+          "eat"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Eat is irregular: eat → ate.",
+        "langue": "en"
+      },
+      {
+        "question": "Choose the correct negative sentence.",
+        "options": [
+          "I didn't went to school.",
+          "I didn't go to school.",
+          "I don't went to school.",
+          "I not go to school."
+        ],
+        "correctAnswer": 1,
+        "explanation": "After didn't, the verb stays at the base: didn't go.",
+        "langue": "en"
+      },
+      {
+        "question": "Choose the correct question.",
+        "options": [
+          "Did you saw your cousins?",
+          "Do you saw your cousins?",
+          "Did you see your cousins?",
+          "You did see your cousins?"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Did + subject + base verb: Did you see…?",
+        "langue": "en"
+      },
+      {
+        "question": "Did you visit your aunt? — Yes, …",
+        "options": [
+          "Yes, I did.",
+          "Yes, I visit.",
+          "Yes, I do.",
+          "Yes, I visited."
+        ],
+        "correctAnswer": 0,
+        "explanation": "Short answer with did: Yes, I did. / No, I didn't.",
+        "langue": "en"
+      },
+      {
+        "question": "Which words tell us it is the past?",
+        "options": [
+          "every day",
+          "tomorrow",
+          "yesterday",
+          "on Sundays"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Yesterday (hier) is in the past. Every day and on Sundays are for habits.",
+        "langue": "en"
+      }
+    ]
   }
 }
