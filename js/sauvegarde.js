@@ -7,6 +7,7 @@
  *   karniella-progression  scores, records, erreurs, jours, leçons lues
  *   karniella-badges       badges obtenus
  *   karniella-interros     interros faites
+ *   karniella-prononciation  meilleur score de chaque phrase dite au micro
  * Les réglages de l'appareil (thème clair ou sombre, son, taille du texte,
  * historique du chat, recherches) restent sur l'appareil.
  *
@@ -36,7 +37,8 @@
         xp: 'karniella-xp',
         progression: 'karniella-progression',
         badges: 'karniella-badges',
-        interros: 'karniella-interros'
+        interros: 'karniella-interros',
+        prononciation: 'karniella-prononciation'
     };
     var DELAI_ENVOI = 3000;         // après un changement, on attend un peu
     var RELIRE_APRES = 45000;       // relire si la dernière lecture est plus vieille
@@ -287,7 +289,26 @@
         return r;
     }
 
-    var FUSIONS = { xp: fusionXP, progression: fusionProgression, badges: fusionBadges, interros: fusionInterros };
+    // Prononciation : pour chaque phrase, le meilleur score, la date la plus
+    // récente et le dernier jour où elle a rapporté des XP.
+    function fusionPrononciation(a, b) {
+        if (!a) { return b; }
+        if (!b) { return a; }
+        var phrases = {};
+        cles(a.phrases, b.phrases).forEach(function (k) {
+            var x = (a.phrases || {})[k] || {};
+            var y = (b.phrases || {})[k] || {};
+            var p = { meilleur: max(x.meilleur, y.meilleur) || 0 };
+            var date = max(x.date, y.date);
+            if (date) { p.date = date; }
+            var jour = max(x.jourXP, y.jourXP);
+            if (jour) { p.jourXP = jour; }
+            phrases[k] = p;
+        });
+        return { phrases: phrases };
+    }
+
+    var FUSIONS = { xp: fusionXP, progression: fusionProgression, badges: fusionBadges, interros: fusionInterros, prononciation: fusionPrononciation };
 
     function fusionner(local, distant) {
         var r = {};

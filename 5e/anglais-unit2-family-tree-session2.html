@@ -27,6 +27,7 @@
 <div class="tabs">
 <button class="tab-button active" data-onglet="tab1">Vocabulary</button>
 <button class="tab-button" data-onglet="tab2">Be going to</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab3">Practice</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
 </div>
@@ -190,6 +191,24 @@
   </div>
 </section>
 
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="Je vais rendre visite à mes grands-parents demain.">I am going to visit my grandparents tomorrow.</li>
+        <li data-fr="Tu vas nettoyer ta chambre ce soir.">You are going to clean your bedroom this evening.</li>
+        <li data-fr="Elle va préparer du riz ce soir.">She is going to cook rice tonight.</li>
+        <li data-fr="Nous allons regarder la télé au salon.">We are going to watch TV in the living room.</li>
+        <li data-fr="Mon frère ne va pas venir demain.">My brother isn't going to come tomorrow.</li>
+        <li data-fr="C&#x27;est la pièce où on prépare à manger.">It's the room where we cook food.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRACTICE ============ -->
 <section class="tab-content" id="tab3">
   <div class="container">
@@ -319,6 +338,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>

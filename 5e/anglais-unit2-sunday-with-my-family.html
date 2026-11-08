@@ -29,6 +29,7 @@
 <button class="tab-button" data-onglet="tab2">Session 1: Simple present</button>
 <button class="tab-button" data-onglet="tab3">Session 2: Vocabulary</button>
 <button class="tab-button" data-onglet="tab4">Session 2: Simple past</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab5">Practice</button>
 <button class="tab-button" data-onglet="tab6">Quiz</button>
 </div>
@@ -319,6 +320,25 @@
   </div>
 </section>
 
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="Je me réveille à six heures chaque dimanche.">I wake up at six every Sunday.</li>
+        <li data-fr="Ma mère prépare du riz chaque dimanche.">My mother cooks rice every Sunday.</li>
+        <li data-fr="Je ne balaie pas la cour le dimanche.">I don't sweep the yard on Sundays.</li>
+        <li data-fr="Nous avons rendu visite à nos grands-parents dimanche dernier.">We visited our grandparents last Sunday.</li>
+        <li data-fr="J&#x27;ai joué avec mes cousins hier.">I played with my cousins yesterday.</li>
+        <li data-fr="Nous sommes allés à la plage dimanche dernier.">We went to the beach last Sunday.</li>
+        <li data-fr="J&#x27;ai déjeuné avec ma famille.">I had lunch with my family.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRACTICE (SESSION 3) ============ -->
 <section class="tab-content" id="tab5">
   <div class="container">
@@ -447,6 +467,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>

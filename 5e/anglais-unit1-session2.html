@@ -27,6 +27,7 @@
 <div class="tabs">
 <button class="tab-button active" data-onglet="tab1">Vocabulary</button>
 <button class="tab-button" data-onglet="tab2">Like &amp; dislike</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab3">Practice</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
 </div>
@@ -129,6 +130,24 @@
         <li data-lire data-fr="Je n&#x27;aime pas nettoyer la cour de récréation.">I dislike <strong>cleaning</strong> the playground. <em data-lire-ignore>(V-ing)</em></li>
         <li data-lire data-fr="Je n&#x27;aime pas la cantine.">I dislike the canteen. <em data-lire-ignore>(nom)</em></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="J&#x27;aime aller à la bibliothèque.">I like going to the library.</li>
+        <li data-fr="Je n&#x27;aime pas la cantine.">I dislike the canteen.</li>
+        <li data-fr="J&#x27;aime le jardin de l&#x27;école.">I like the school garden.</li>
+        <li data-fr="Je n&#x27;aime pas les chiens.">I dislike dogs.</li>
+        <li data-fr="C&#x27;est l&#x27;endroit où les élèves vont se laver les mains.">It's the place where students go to wash their hands.</li>
+        <li data-fr="C&#x27;est le lieu de travail de la secrétaire.">It's the work place of the secretary.</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -268,6 +287,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>

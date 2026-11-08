@@ -30,6 +30,7 @@
 <button class="tab-button" data-onglet="tab3">Session 2: Vocabulary</button>
 <button class="tab-button" data-onglet="tab4">Session 2: From / In / At</button>
 <button class="tab-button" data-onglet="tab7">Session 3: Exercises</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab5">Practice</button>
 <button class="tab-button" data-onglet="tab6">Quiz</button>
 </div>
@@ -371,6 +372,25 @@
   </div>
 </section>
 
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="Je regarde mon emploi du temps chaque matin.">I look at my school timetable every morning.</li>
+        <li data-fr="Nous allons en cours le matin.">We attend class in the morning.</li>
+        <li data-fr="En EPS, nous courons et nous jouons au football.">In physical training, we run and play football.</li>
+        <li data-fr="Quelle est ton opinion sur l&#x27;espagnol ?">What's your opinion about Spanish?</li>
+        <li data-fr="Je pense que l&#x27;espagnol est intéressant.">I think Spanish is interesting.</li>
+        <li data-fr="Comment trouves-tu les sciences ?">How do you find science?</li>
+        <li data-fr="Que penses-tu de la physique ?">What do you think about physics?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRACTICE ============ -->
 <section class="tab-content" id="tab5">
   <div class="container">
@@ -558,6 +578,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>

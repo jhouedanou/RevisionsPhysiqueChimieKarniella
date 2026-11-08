@@ -703,6 +703,21 @@ table `activite` du projet Supabase **karniella** (organisation socialmedia).
   d'ajouter des lignes. La lecture passe par la fonction `tableau_suivi(mdp)`.
   Pour changer le mot de passe, voir la fin de ce fichier.
 
+### 🎤 Prononciation au micro (anglais)
+
+Chaque leçon d'anglais a un onglet « Say it! 🎤 ». `js/prononciation.js`
+transforme chaque `<div class="prononciation">` en cartes : 🔊 écouter le
+modèle (`js/lecture-vocale.js`), 🎤 dire la phrase. La reconnaissance vocale du
+navigateur (Web Speech API, `en-GB`, Chrome et Safari, avec Internet) écrit ce
+qu'elle a entendu ; chaque mot passe en vert (entendu) ou surligné en rouge
+(pas entendu), avec un score sur 100. Les contractions (`it's` = `it is`), les
+chiffres (`6` = `six`) et l'anglais américain (`mom` = `mum`) sont acceptés ;
+les prénoms de `data-noms` ne comptent pas.
+
+Réussite à 85/100 : +5 XP, une fois par jour et par phrase. Le meilleur score
+de chaque phrase est dans `karniella-prononciation`, sauvegardé en ligne. Sans
+reconnaissance vocale (Firefox), le bloc garde 🔊 et explique quoi utiliser.
+
 ### ☁️ Sauvegarde en ligne
 
 `js/sauvegarde.js` garde dans la table `sauvegarde` (une seule ligne) tout ce
@@ -714,6 +729,7 @@ qui doit survivre à un changement d'appareil :
 | `karniella-progression` | scores, records, erreurs, jours, leçons lues | 10 dernières tentatives réunies, meilleur record, erreurs du quiz le plus récent |
 | `karniella-badges` | badges obtenus | réunis |
 | `karniella-interros` | interros faites | la plus récente par matière |
+| `karniella-prononciation` | meilleur score de chaque phrase dite au micro | meilleur score, dernier jour d'XP |
 
 Restent sur l'appareil : thème clair ou sombre, son, taille du texte,
 historique du chat, recherches, quiz en cours.
