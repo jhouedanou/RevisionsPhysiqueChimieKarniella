@@ -1,7 +1,7 @@
 {
   "lecon": "histoire-geo-premiers-habitants",
   "matiere": "histoire-geo",
-  "date": "2026-10-28",
+  "date": "2026-11-08",
   "restitution": [
     {
       "question": "Les Pygmées portent aussi un autre nom. Lequel ?",
@@ -29,6 +29,15 @@
     {
       "question": "Que veut dire « autochtone » ?",
       "reponse": "Qui habite le pays depuis toujours, qui n'est pas venu d'ailleurs."
+    },
+    {
+      "question": "Chez les Protoakan de la forêt et de la savane, qui dirige chaque royaume ? Et chaque village ?",
+      "reponse": "Un roi dirige chaque royaume. Un chef de village, assisté par les notables, dirige chaque village."
+    },
+    {
+      "question": "Au niveau religieux, que sont les Protoakan de la forêt et de la savane ?",
+      "reponse": "des animistes",
+      "accepte": ["animistes", "animiste", "ils sont animistes", "ils sont des animistes"]
     }
   ],
   "vrai_faux": [
@@ -71,6 +80,21 @@
       "affirmation": "À cause de leur petite taille, on a longtemps pensé que les Gban descendaient des Pygmées.",
       "vrai": true,
       "correction": "Vrai : les Gban sont très petits. On a donc cru qu'ils venaient des Pygmées."
+    },
+    {
+      "affirmation": "Les Dida disent qu'ils sont descendus du ciel ou sortis des eaux.",
+      "vrai": true,
+      "correction": "Vrai : c'est leur récit d'origine. D'autres peuples disent qu'ils sont sortis d'une grotte."
+    },
+    {
+      "affirmation": "Chez les Protoakan de la forêt et de la savane, il n'y a que des villages, pas de royaumes.",
+      "vrai": false,
+      "correction": "Faux : leur structure politique est le royaume et le village. Un roi dirige chaque royaume."
+    },
+    {
+      "affirmation": "Selon la conclusion de ton cahier, les premiers habitants de la Côte d'Ivoire sont les Pygmées.",
+      "vrai": true,
+      "correction": "Vrai : les premiers habitants sont les Pygmées. Puis viennent les premières ethnies, en quatre grands groupes."
     }
   ]
 }
