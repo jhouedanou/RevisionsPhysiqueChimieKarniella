@@ -545,6 +545,17 @@ récompenses en 6 rayons**, de 100 à 1 500 XP, qui changent vraiment l'applicat
 Un seul actif par rayon (sauf les badges). Les thèmes « de nuit » imposent le mode
 sombre, ceux « de jour » le clair ; le bouton 🌙 retire le thème actif.
 
+**Les XP restent sur l'appareil** (localStorage). Un autre téléphone, un autre
+navigateur, l'app installée sur l'écran d'accueil (sur iPhone), une fenêtre
+privée ou un effacement des données repartent de 0 XP.
+
+**Offrir des XP** : ajouter une ligne dans `data/bonus-xp.json`, avec un `id` neuf
+(au plus 1 000 XP par ligne), puis incrémenter `CACHE_NAME` dans `sw.js`. À
+l'ouverture suivante, chaque appareil reçoit chaque cadeau **une seule fois**, avec la
+bannière « Cadeau surprise » et les confettis.
+
+    { "id": "2026-11-08-travail", "xp": 250, "raison": "Bravo pour ton travail du 8 novembre !", "date": "2026-11-08" }
+
 ### 🎨 Polices et icônes
 
 Titres en **Baloo 2**, texte en **Nunito** (Google Fonts, chargées par

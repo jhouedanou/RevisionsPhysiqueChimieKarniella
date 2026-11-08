@@ -11,7 +11,9 @@
  * d'avatar, pluies de confettis, titres. Un achat ne se perd jamais.
  *
  * Tout tient dans une clé localStorage, comme js/progression.js :
- *   { version, total, depenses, achats[], actifs: { theme, avatar, cadre, confettis, titre } }
+ *   { version, total, depenses, achats[], actifs: { theme, avatar, cadre, confettis, titre }, cadeaux[] }
+ * Les XP restent donc sur l'appareil. Pour en offrir, ajouter une ligne à
+ * data/bonus-xp.json : chaque appareil la reçoit une fois (voir « Cadeaux »).
  * Chargé par chat-assistant.js sur toutes les pages, et directement par la
  * boutique. À chaque changement, l'événement `karniella:xp` prévient la barre.
  */
@@ -22,6 +24,11 @@
 
     var CLE = 'karniella-xp';
     var VERSION = 2;
+    var RACINE = (function () {
+        var script = document.currentScript;
+        if (script && script.src) { return script.src.replace(/js\/xp\.js(\?.*)?$/, ''); }
+        return window.KarniellaCoquille ? window.KarniellaCoquille.racine : '';
+    })();
     var XP_BONNE_REPONSE = 10;
     var XP_SANS_FAUTE = 50;
     var QUESTIONS_MIN_BONUS = 3;   // un sans-faute sur 2 questions, ce n'est pas un exploit
@@ -207,6 +214,46 @@
     }
 
     /* ============================================================
+       Cadeaux d'XP (data/bonus-xp.json)
+       ============================================================
+       Les XP vivent sur l'appareil : on ne peut pas les changer à distance.
+       Pour offrir des XP, on ajoute une ligne { id, xp, raison } au fichier.
+       Chaque appareil reçoit chaque cadeau une seule fois (liste `cadeaux`). */
+
+    var XP_CADEAU_MAX = 1000;
+
+    function annoncerCadeau(c, essai) {
+        var J = window.KarniellaJeu;
+        if (!J || !J.recompense || !document.body) {
+            if ((essai || 0) < 20) { window.setTimeout(function () { annoncerCadeau(c, (essai || 0) + 1); }, 500); }
+            return;
+        }
+        J.recompense({ id: 'cadeau', etiquette: 'Cadeau surprise', nom: '+' + c.xp + ' XP', quoi: c.raison || '', duree: 8000 });
+        if (window.KarniellaFete) { window.KarniellaFete(); }
+    }
+
+    function recevoirCadeaux() {
+        if (typeof window.fetch !== 'function') { return; }
+        window.fetch(RACINE + 'data/bonus-xp.json', { cache: 'no-cache' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; })
+            .then(function (fichier) {
+                var liste = fichier && Array.isArray(fichier.cadeaux) ? fichier.cadeaux : [];
+                liste.forEach(function (c) {
+                    var points = Math.round(Number(c && c.xp));
+                    if (!c || typeof c.id !== 'string' || !(points > 0) || points > XP_CADEAU_MAX) { return; }
+                    var d = lire();
+                    d.cadeaux = d.cadeaux || [];
+                    if (d.cadeaux.indexOf(c.id) !== -1) { return; }
+                    d.cadeaux.push(c.id);
+                    d.total += points;
+                    d.dernierGain = { points: points, raison: 'cadeau:' + c.id, date: Date.now() };
+                    if (ecrire(d)) { annoncerCadeau({ xp: points, raison: c.raison }); }
+                });
+            });
+    }
+
+    /* ============================================================
        Acheter et activer
        ============================================================ */
 
@@ -313,4 +360,6 @@
         activerAvatar: function (id) { return id === null ? desactiver('avatar') : activer(id); },
         reinitialiser: function () { try { window.localStorage.removeItem(CLE); } catch (err) { /* rien */ } }
     };
+
+    recevoirCadeaux();
 })();
