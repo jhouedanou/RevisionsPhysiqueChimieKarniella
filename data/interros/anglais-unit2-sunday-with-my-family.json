@@ -1,0 +1,84 @@
+{
+  "lecon": "anglais-unit2-sunday-with-my-family",
+  "matiere": "anglais",
+  "date": "2026-11-08",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : faire la vaisselle.",
+      "reponse": "to wash the dishes",
+      "accepte": ["wash the dishes", "do the dishes", "to do the dishes"],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Complète au présent simple : My mother … (cook) rice every Sunday.",
+      "reponse": "cooks",
+      "accepte": ["My mother cooks rice every Sunday."],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Donne le prétérit du verbe « take ».",
+      "reponse": "took",
+      "accepte": [],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quelle est la structure du présent simple à la forme négative ?",
+      "reponse": "Sujet + don't / doesn't + verbe. Ex : I don't sweep the yard on Sundays."
+    },
+    {
+      "question": "Mets à la forme interrogative : « She went to church. » Puis réponds « oui » en phrase courte.",
+      "reponse": "Did she go to church? — Yes, she did.",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Au présent simple, quand ajoute-t-on -s au verbe ?",
+      "reponse": "Avec he, she, it. Ex : She cooks rice every Sunday."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "She doesn't cooks rice.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : après doesn't, le verbe reste à la base. She doesn't cook rice."
+    },
+    {
+      "affirmation": "Yesterday, we went to the beach.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : went est le prétérit de go."
+    },
+    {
+      "affirmation": "Au prétérit, on ajoute -s au verbe avec he, she, it.",
+      "vrai": false,
+      "correction": "Faux : au prétérit, le verbe a la même forme pour toutes les personnes. She visited, they visited."
+    },
+    {
+      "affirmation": "« To sweep the yard » veut dire « balayer la cour ».",
+      "vrai": true,
+      "correction": "Vrai : to sweep the yard, c'est nettoyer la cour avec un balai."
+    },
+    {
+      "affirmation": "Did you saw your cousins?",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : après did, le verbe reste à la base. Did you see your cousins?"
+    },
+    {
+      "affirmation": "On utilise le présent simple pour dire ce qu'on fait d'habitude, par exemple « every Sunday ».",
+      "vrai": true,
+      "correction": "Vrai : I go to church every Sunday."
+    },
+    {
+      "affirmation": "Le prétérit de « eat » est « eated ».",
+      "vrai": false,
+      "correction": "Faux : eat est irrégulier. Eat → ate."
+    },
+    {
+      "affirmation": "My father washes the car on Sundays.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : wash finit par -sh, alors on ajoute -es avec he, she, it."
+    }
+  ]
+}

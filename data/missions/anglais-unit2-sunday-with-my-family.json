@@ -1,0 +1,42 @@
+{
+  "id": "anglais-unit2-sunday-with-my-family",
+  "lecon": "anglais-unit2-sunday-with-my-family",
+  "matiere": "anglais",
+  "titre": "Aya's Sunday diary",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le journal de bord d'Aya est tout mélangé ! Certaines pages racontent ses dimanches habituels, d'autres son dimanche dernier. Remets chaque phrase au bon temps avant le décollage.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🧹 Les missions du dimanche",
+      "contenu": "Wake up, have a shower, sweep the yard, wash the dishes, go to church, visit relatives : ce sont les tâches du dimanche. Comme une liste de missions à cocher !"
+    },
+    {
+      "titre": "🔁 Le présent simple, la routine",
+      "contenu": "Pour ce qu'on fait d'habitude : I go, she goes. Avec he, she, it, le verbe porte un S comme un badge. Négatif : don't / doesn't + verbe. Question : Do / Does… ?"
+    },
+    {
+      "titre": "⏪ Le prétérit, la machine à remonter le temps",
+      "contenu": "Pour hier ou last Sunday : verbe + ed (visited) ou forme irrégulière (went, ate, saw). Négatif : didn't + verbe. Question : Did… ? Le verbe redevient nu."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Complete: She ___ to church every Sunday.",
+      "options": ["go", "goes", "going", "gos"],
+      "correct_answer_index": 1,
+      "explanation": "She + verb + es: she goes."
+    },
+    {
+      "question": "Yesterday, we ___ to the beach.",
+      "options": ["go", "goes", "went", "goed"],
+      "correct_answer_index": 2,
+      "explanation": "Yesterday = past. Go → went."
+    },
+    {
+      "question": "Choose the correct question.",
+      "options": ["Did she went?", "Did she go?", "Does she went?", "She did go?"],
+      "correct_answer_index": 1,
+      "explanation": "Did + subject + base verb: Did she go?"
+    }
+  ]
+}

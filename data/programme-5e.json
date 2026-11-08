@@ -76,6 +76,15 @@
           "description": "Grandson, niece, only child, les pièces de la maison, et le futur proche : I'm going to visit my grandparents tomorrow.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "anglais-unit2-sunday-with-my-family",
+          "titre": "Unit 2 — At home : Lesson 2, A Sunday with my family",
+          "sousTitre": "Sessions 1 à 3 — Everyday activities, simple present & simple past",
+          "icone": "☀️",
+          "description": "Wake up, sweep the yard, visit relatives ; le présent simple (She cooks every Sunday) et le prétérit (We went to the beach last Sunday).",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
