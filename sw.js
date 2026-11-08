@@ -10,7 +10,7 @@
 // Seules les images et les polices, qui ne changent jamais, restent
 // « cache d'abord ».
 
-const CACHE_NAME = 'karniella-cache-v62';
+const CACHE_NAME = 'karniella-cache-v63';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Au-delà, on sert la copie en cache (si on en a une) et le réseau continue
@@ -27,6 +27,7 @@ const FILES_TO_CACHE = [
     '/',
     '/index.html',
     '/boutique.html',
+    '/sauvegarde.html',
     '/5e/mission.html',
     '/5e/interro.html',
     '/5e/emploi-du-temps.html',
@@ -65,6 +66,7 @@ const FILES_TO_CACHE = [
     '/js/interro.js',
     '/js/interros-index.js',
     '/js/suivi.js',
+    '/js/sauvegarde.js',
     '/js/emploi-du-temps.js',
     '/js/jeu.js',
     '/js/chemin.js',

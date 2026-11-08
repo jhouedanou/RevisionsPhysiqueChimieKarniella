@@ -11,9 +11,13 @@
  * d'avatar, pluies de confettis, titres. Un achat ne se perd jamais.
  *
  * Tout tient dans une clé localStorage, comme js/progression.js :
- *   { version, total, depenses, achats[], actifs: { theme, avatar, cadre, confettis, titre }, cadeaux[] }
- * Les XP restent donc sur l'appareil. Pour en offrir, ajouter une ligne à
- * data/bonus-xp.json : chaque appareil la reçoit une fois (voir « Cadeaux »).
+ *   { version, gagnes: { <appareil>: xp }, cadeaux: { <id>: xp }, achats[],
+ *     actifs: { theme, avatar, cadre, confettis, titre }, actifsDate,
+ *     total, depenses, dernierGain }
+ * Les XP gagnés sont comptés par appareil : js/sauvegarde.js additionne ceux
+ * de tous les appareils sans compter deux fois. `total` et `depenses` sont
+ * recalculés à chaque lecture (gagnés + cadeaux ; prix des achats).
+ * Pour offrir des XP, ajouter une ligne à data/bonus-xp.json (voir « Cadeaux »).
  * Chargé par chat-assistant.js sur toutes les pages, et directement par la
  * boutique. À chaque changement, l'événement `karniella:xp` prévient la barre.
  */
@@ -132,7 +136,46 @@
        ============================================================ */
 
     function vide() {
-        return { version: VERSION, total: 0, depenses: 0, achats: [], actifs: {} };
+        return { version: VERSION, gagnes: {}, cadeaux: {}, total: 0, depenses: 0, achats: [], actifs: {} };
+    }
+
+    /** L'identifiant de l'appareil, partagé avec js/suivi.js (même clé, même forme). */
+    function appareil() {
+        var id = null;
+        try { id = window.localStorage.getItem('karniella-appareil'); } catch (err) { /* rien */ }
+        if (!id) {
+            id = 'k-' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+            try { window.localStorage.setItem('karniella-appareil', id); } catch (err) { /* rien */ }
+        }
+        return id;
+    }
+
+    function somme(objet) {
+        return Object.keys(objet || {}).reduce(function (n, k) { return n + (Number(objet[k]) || 0); }, 0);
+    }
+
+    // Les cadeaux reçus avant le compte par appareil n'étaient qu'une liste d'id.
+    var CADEAUX_CONNUS = { '2026-11-08-travail': 250 };
+
+    /** Met les données au format du jour et recalcule total et dépenses. */
+    function normaliser(d) {
+        d.achats = d.achats || [];
+        d.actifs = d.actifs || {};
+        if (Array.isArray(d.cadeaux)) {
+            var carte = {};
+            d.cadeaux.forEach(function (id) { carte[id] = CADEAUX_CONNUS[id] || 0; });
+            d.cadeaux = carte;
+        }
+        d.cadeaux = d.cadeaux || {};
+        if (!d.gagnes || typeof d.gagnes !== 'object') {
+            // Avant : un seul total. Tout ce qui n'est pas un cadeau a été gagné ici.
+            d.gagnes = {};
+            var ici = Math.max(0, (d.total || 0) - somme(d.cadeaux));
+            if (ici) { d.gagnes[appareil()] = ici; }
+        }
+        d.total = somme(d.gagnes) + somme(d.cadeaux);
+        d.depenses = d.achats.reduce(function (n, id) { var a = article(id); return n + (a ? a.prix : 0); }, 0);
+        return d;
     }
 
     function lire() {
@@ -145,15 +188,14 @@
                 delete brut.skin; delete brut.avatar;
             }
             if (brut && brut.version === VERSION) {
-                brut.achats = brut.achats || [];
-                brut.actifs = brut.actifs || {};
-                return brut;
+                return normaliser(brut);
             }
         } catch (err) { /* stockage refusé ou illisible */ }
         return vide();
     }
 
     function ecrire(donnees) {
+        normaliser(donnees);
         try { window.localStorage.setItem(CLE, JSON.stringify(donnees)); } catch (err) { return false; }
         try { window.dispatchEvent(new CustomEvent('karniella:xp', { detail: donnees })); } catch (err) { /* rien */ }
         return true;
@@ -179,7 +221,8 @@
         points = Math.max(0, Math.round(points || 0));
         if (!points) { return 0; }
         var d = lire();
-        d.total += points;
+        var ici = appareil();
+        d.gagnes[ici] = (d.gagnes[ici] || 0) + points;
         d.dernierGain = { points: points, raison: raison || '', date: Date.now() };
         ecrire(d);
         return points;
@@ -216,9 +259,10 @@
     /* ============================================================
        Cadeaux d'XP (data/bonus-xp.json)
        ============================================================
-       Les XP vivent sur l'appareil : on ne peut pas les changer à distance.
        Pour offrir des XP, on ajoute une ligne { id, xp, raison } au fichier.
-       Chaque appareil reçoit chaque cadeau une seule fois (liste `cadeaux`). */
+       Chaque cadeau compte une seule fois (`cadeaux`, par id), même sur
+       plusieurs appareils une fois la sauvegarde reliée : on attend donc la
+       première synchronisation avant de distribuer. */
 
     var XP_CADEAU_MAX = 1000;
 
@@ -243,10 +287,8 @@
                     var points = Math.round(Number(c && c.xp));
                     if (!c || typeof c.id !== 'string' || !(points > 0) || points > XP_CADEAU_MAX) { return; }
                     var d = lire();
-                    d.cadeaux = d.cadeaux || [];
-                    if (d.cadeaux.indexOf(c.id) !== -1) { return; }
-                    d.cadeaux.push(c.id);
-                    d.total += points;
+                    if (Object.prototype.hasOwnProperty.call(d.cadeaux, c.id)) { return; }
+                    d.cadeaux[c.id] = points;
                     d.dernierGain = { points: points, raison: 'cadeau:' + c.id, date: Date.now() };
                     if (ecrire(d)) { annoncerCadeau({ xp: points, raison: c.raison }); }
                 });
@@ -272,9 +314,8 @@
         if (!a || possede(id)) { return false; }
         var d = lire();
         if (d.total - d.depenses < a.prix) { return false; }
-        d.depenses += a.prix;
         d.achats.push(id);
-        if (a.type !== 'badge') { d.actifs[a.type] = a.id; }
+        if (a.type !== 'badge') { d.actifs[a.type] = a.id; d.actifsDate = Date.now(); }
         ecrire(d);
         appliquerTheme();
         return true;
@@ -286,6 +327,7 @@
         if (!a || a.type === 'badge' || !possede(id)) { return false; }
         var d = lire();
         d.actifs[a.type] = a.id;
+        d.actifsDate = Date.now();
         ecrire(d);
         appliquerTheme();
         return true;
@@ -296,6 +338,7 @@
         var d = lire();
         if (!TYPES[type]) { return false; }
         d.actifs[type] = null;
+        d.actifsDate = Date.now();
         ecrire(d);
         appliquerTheme();
         return true;
@@ -349,6 +392,8 @@
         catalogue: catalogue,
         prochain: prochain,
         badgesAchetes: badgesAchetes,
+        /* Pour js/sauvegarde.js : recalcule total et dépenses d'un état fusionné. */
+        normaliser: function (d) { return normaliser(d); },
         /* Ce qui est actif, pour les modules qui l'affichent : */
         skin: function () { var a = articleActif('theme'); return a ? a.valeur : null; },
         avatar: function () { var a = articleActif('avatar'); return a ? a.valeur : '🐴'; },
@@ -361,5 +406,24 @@
         reinitialiser: function () { try { window.localStorage.removeItem(CLE); } catch (err) { /* rien */ } }
     };
 
-    recevoirCadeaux();
+    // Données d'avant le compte par appareil : on les réécrit au format du
+    // jour, pour que js/sauvegarde.js les trouve prêtes à fusionner.
+    try {
+        var brut = JSON.parse(window.localStorage.getItem(CLE));
+        if (brut && (!brut.gagnes || Array.isArray(brut.cadeaux) || brut.version !== VERSION)) {
+            window.localStorage.setItem(CLE, JSON.stringify(lire()));
+        }
+    } catch (err) { /* stockage refusé : rien à migrer */ }
+
+    // Reliée à la sauvegarde ? On attend la première synchronisation : un
+    // cadeau déjà reçu sur un autre appareil ne doit pas compter deux fois.
+    (function () {
+        var relie = false;
+        try { relie = !!(JSON.parse(window.localStorage.getItem('karniella-sauvegarde')) || {}).code; } catch (err) { /* rien */ }
+        if (!relie) { recevoirCadeaux(); return; }
+        var fait = false;
+        function go() { if (!fait) { fait = true; recevoirCadeaux(); } }
+        window.addEventListener('karniella:sauvegarde', go);
+        window.setTimeout(go, 15000);
+    })();
 })();
