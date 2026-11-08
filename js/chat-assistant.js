@@ -1489,9 +1489,15 @@
                 { details: quizEnCours.details });
         }
 
+        // Comme dans les quiz des leçons : 10 XP par bonne réponse (js/xp.js).
+        var xp = 0;
+        if (juste && window.KarniellaXP) {
+            xp = window.KarniellaXP.gagner(window.KarniellaXP.XP_BONNE_REPONSE, 'chat:' + (CONNAISSANCES.slug || ''));
+        }
+
         var verdict = document.createElement('span');
         verdict.className = 'kc-verdict';
-        verdict.textContent = juste ? '✅ Bravo, c\'est ça !' : '❌ Pas tout à fait.';
+        verdict.textContent = juste ? '✅ Bravo, c\'est ça !' + (xp ? ' +' + xp + ' XP' : '') : '❌ Pas tout à fait.';
         div.appendChild(verdict);
 
         if (q.explication) {

@@ -39,7 +39,7 @@
         interros: 'karniella-interros'
     };
     var DELAI_ENVOI = 3000;         // après un changement, on attend un peu
-    var RELIRE_APRES = 60000;       // au retour sur l'onglet, relire si plus vieux
+    var RELIRE_APRES = 45000;       // relire si la dernière lecture est plus vieille
     var MAX_QUIZ_GARDES = 10;       // comme js/progression.js
     var MAX_JOURS_GARDES = 60;
 
@@ -438,7 +438,13 @@
 
     window.addEventListener('karniella:xp', plusTard);
     window.addEventListener('karniella:progression', plusTard);
-    window.setInterval(function () { envoyer(false); }, 30000);   // badges et interros n'ont pas d'événement
+    // Toutes les 30 s : relire si la page est à l'écran (un autre appareil a
+    // peut-être gagné des XP), sinon envoyer ce qui a changé ici (badges et
+    // interros n'ont pas d'événement).
+    window.setInterval(function () {
+        if (document.visibilityState === 'visible' && Date.now() - derniereLecture > RELIRE_APRES) { synchroniser(); return; }
+        envoyer(false);
+    }, 30000);
     window.addEventListener('online', function () { synchroniser(); });
     window.addEventListener('pagehide', function () { envoyer(true); });
     document.addEventListener('visibilitychange', function () {
