@@ -4857,6 +4857,39 @@
         ],
         "correctAnswer": 1,
         "explanation": "Dans l'air, le moustique adulte se nourrit et se reproduit ; puis la femelle revient pondre dans l'eau."
+      },
+      {
+        "question": "Quel moustique transmet la dengue ?",
+        "options": [
+          "L'anophèle",
+          "L'aedes, le moustique tigre",
+          "Le moustique mâle",
+          "Le criquet"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'aedes transmet la dengue, la fièvre jaune et le Zika. L'anophèle transmet le paludisme."
+      },
+      {
+        "question": "Dans le corps, où le microbe du paludisme se multiplie-t-il ?",
+        "options": [
+          "Dans l'estomac",
+          "Dans le foie et surtout dans le sang",
+          "Dans la peau seulement",
+          "Dans les os"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Il se multiplie dans le foie et surtout dans le sang, où il détruit les globules rouges."
+      },
+      {
+        "question": "Le paludisme touche beaucoup de personnes. Quelle conséquence pour la région ?",
+        "options": [
+          "Plus d'élèves en classe",
+          "Un absentéisme important au travail et à l'école",
+          "Plus de récoltes",
+          "Moins de moustiques"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les malades manquent le travail et l'école : la productivité et l'économie baissent."
       }
     ]
   },

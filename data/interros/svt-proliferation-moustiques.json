@@ -1,7 +1,7 @@
 {
   "lecon": "svt-proliferation-moustiques",
   "matiere": "svt",
-  "date": "2026-10-28",
+  "date": "2026-11-07",
   "restitution": [
     {
       "question": "Comment appelle-t-on le moment où la cuticule de la nymphe se déchire pour libérer l'adulte ?",
@@ -14,9 +14,9 @@
       "accepte": ["stade larvaire"]
     },
     {
-      "question": "Comment appelle-t-on de l'eau qui ne coule pas ?",
-      "reponse": "eau stagnante",
-      "accepte": ["stagnante", "eaux stagnantes"]
+      "question": "Quel moustique, appelé aussi moustique tigre, transmet la dengue et la fièvre jaune ?",
+      "reponse": "aedes",
+      "accepte": ["l'aedes", "moustique tigre", "aedes moustique tigre"]
     },
     {
       "question": "Cite les deux hypothèses de ton cours sur la prolifération des moustiques.",
@@ -48,9 +48,9 @@
       "correction": "Faux : seule la femelle pique. Elle a besoin de sang pour ses œufs."
     },
     {
-      "affirmation": "Les herbes hautes aident les moustiques : ils s'y cachent le jour.",
+      "affirmation": "Dans le sang, le microbe du paludisme détruit les globules rouges.",
       "vrai": true,
-      "correction": "Vrai : ils y trouvent l'ombre et l'humidité."
+      "correction": "Vrai : il se multiplie dans le foie, puis surtout dans le sang, où il détruit les globules rouges."
     },
     {
       "affirmation": "La fièvre et les maux de tête sont des signes du paludisme.",
@@ -63,9 +63,9 @@
       "correction": "Faux : ce sont des conséquences sur l'Homme. Ce qui aide les moustiques, ce sont l'eau stagnante, les ordures, les herbes hautes."
     },
     {
-      "affirmation": "Dans ton cours, l'étape « interprétation » vient juste après l'analyse.",
+      "affirmation": "Quand beaucoup de personnes ont le paludisme, il y a des absences au travail et à l'école.",
       "vrai": true,
-      "correction": "Vrai : observation, résultats, analyse, interprétation, puis conclusion."
+      "correction": "Vrai : c'est l'absentéisme. La productivité et l'économie baissent aussi."
     },
     {
       "affirmation": "Les larves du moustique vivent dans l'air, comme l'adulte.",
