@@ -80,6 +80,9 @@
     ul.jamais { columns: 2 240px; padding-left: 18px; margin: 0; }
     .barre-outils { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
     .defile { overflow-x: auto; }
+    #sauvegarde-lien code { word-break: break-all; }
+    #form-code-sauvegarde input { flex: 1 1 200px; font: inherit; padding: 10px 12px; color: var(--encre);
+        background: var(--surface-douce); border: 1px solid var(--bord); border-radius: var(--rayon-bouton); }
     [hidden] { display: none !important; }
     @media (max-width: 520px) { .barre { grid-template-columns: 100px 1fr auto; font-size: 14px; } }
     /* Sur téléphone, chaque ligne de tableau devient une petite carte. */
@@ -119,6 +122,16 @@
             <button type="button" class="discret" id="deconnexion">Se déconnecter</button>
         </div>
         <div class="tuiles" id="tuiles"></div>
+        <section class="carte" id="carte-sauvegarde">
+            <h2>☁️ Sauvegarde (XP, badges, scores)</h2>
+            <p class="sous" id="sauvegarde-etat">Chargement…</p>
+            <div class="tuiles" id="sauvegarde-tuiles"></div>
+            <form class="connexion" id="form-code-sauvegarde">
+                <input type="text" id="code-sauvegarde" autocomplete="off" spellcheck="false" minlength="8" maxlength="64" aria-label="Code de sauvegarde" required>
+                <button type="submit">Enregistrer ce code</button>
+            </form>
+            <p class="sous" id="sauvegarde-lien" hidden></p>
+        </section>
         <section class="carte">
             <h2>Les 5 dernières semaines</h2>
             <div class="calendrier" id="calendrier"></div>

@@ -137,6 +137,7 @@
             $('ecran-connexion').hidden = true;
             $('tableau').hidden = false;
             rendre();
+            chargerSauvegarde(mdp);
         }).catch(function (err) {
             if (numero !== demande) { return; }
             ecrire('sessionStorage', CLE_MDP, null);
@@ -392,6 +393,112 @@
             ? '✅ Cet appareil n\'est pas compté (recompter)'
             : '🚫 Ne pas compter cet appareil';
     }
+
+    /* ============================================================
+       Sauvegarde (supabase/sauvegarde.sql) : XP, badges, scores
+       ============================================================ */
+
+    var sauvegarde = null;   // { code_pose, etat, version, appareil, modifie_le } ou { absente: true }
+
+    function appelerRpc(fonction, corps) {
+        return window.fetch(URL_SUPABASE + '/rest/v1/rpc/' + fonction, {
+            method: 'POST',
+            headers: { 'apikey': CLE_PUBLIQUE, 'Content-Type': 'application/json' },
+            body: JSON.stringify(corps)
+        });
+    }
+
+    function chargerSauvegarde(mdp) {
+        return appelerRpc('sauvegarde_suivi', { mdp: mdp }).then(function (r) {
+            if (r.status === 404) { return { absente: true }; }
+            if (!r.ok) { throw new Error('http ' + r.status); }
+            return r.json();
+        }).then(function (d) { sauvegarde = d; rendreSauvegarde(); })
+          .catch(function () { sauvegarde = { erreur: true }; rendreSauvegarde(); });
+    }
+
+    function codeAuHasard() {
+        var lettres = 'abcdefghjkmnpqrstuvwxyz23456789';
+        var octets = new Uint8Array(12);
+        (window.crypto || window.msCrypto).getRandomValues(octets);
+        var c = '';
+        for (var i = 0; i < octets.length; i++) { c += lettres[octets[i] % lettres.length]; }
+        return c.slice(0, 4) + '-' + c.slice(4, 8) + '-' + c.slice(8);
+    }
+
+    function rendreSauvegarde() {
+        var etatTexte = $('sauvegarde-etat');
+        var zone = $('sauvegarde-tuiles');
+        var form = $('form-code-sauvegarde');
+        zone.innerHTML = '';
+        if (!sauvegarde) { etatTexte.textContent = 'Chargement…'; return; }
+        if (sauvegarde.absente) {
+            etatTexte.textContent = 'Pas encore installée : lance supabase/sauvegarde.sql dans l\'éditeur SQL de Supabase.';
+            form.hidden = true;
+            return;
+        }
+        if (sauvegarde.erreur) { etatTexte.textContent = 'Impossible de lire la sauvegarde pour l\'instant.'; return; }
+        form.hidden = false;
+        if (!$('code-sauvegarde').value) { $('code-sauvegarde').value = codeAuHasard(); }
+
+        var e = sauvegarde.etat || {};
+        var xp = e.xp || {};
+        var progression = e.progression || {};
+        var pages = progression.pages || {};
+        var badges = Object.keys((e.badges && e.badges.obtenus) || {}).length +
+            (xp.achats || []).filter(function (id) { return !/^(theme|avatar|cadre|confettis|titre)-/.test(id); }).length;
+        var lues = Object.keys(pages).filter(function (s) { return pages[s].lue; }).length;
+        var appareils = Object.keys(xp.gagnes || {}).length;
+
+        if (!sauvegarde.code_pose) {
+            etatTexte.textContent = 'Pas encore de code. Enregistre celui-ci, puis envoie le lien à Karniella.';
+        } else if (!sauvegarde.modifie_le) {
+            etatTexte.textContent = 'Code posé. Aucun appareil n\'a encore envoyé sa sauvegarde : envoie le lien à Karniella.';
+        } else {
+            etatTexte.textContent = 'Dernière sauvegarde : ' + ilYa(new Date(sauvegarde.modifie_le)) + '. Changer le code oblige à renvoyer le lien.';
+        }
+        [
+            [String(xp.total || 0), 'XP gagnés en tout'],
+            [String(Math.max(0, (xp.total || 0) - (xp.depenses || 0))), 'XP à dépenser'],
+            [String((xp.achats || []).length), 'Achats en boutique'],
+            [String(badges), 'Badges'],
+            [String(lues), 'Leçons lues en entier'],
+            [String(appareils || 0), 'Appareils qui ont gagné des XP']
+        ].forEach(function (t) {
+            var d = el('div', 'tuile');
+            d.appendChild(el('div', 'valeur', t[0]));
+            d.appendChild(el('div', 'libelle', t[1]));
+            zone.appendChild(d);
+        });
+    }
+
+    $('form-code-sauvegarde').addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var mdp = lire('sessionStorage', CLE_MDP);
+        var code = $('code-sauvegarde').value.trim();
+        var lien = $('sauvegarde-lien');
+        if (!mdp || code.length < 8) { return; }
+        appelerRpc('sauvegarde_definir_code', { mdp: mdp, nouveau_code: code }).then(function (r) {
+            if (!r.ok) { throw new Error('http ' + r.status); }
+            var url = window.location.origin + window.location.pathname.replace(/suivi\.html$/, '') + 'sauvegarde.html#code=' + encodeURIComponent(code);
+            lien.hidden = false;
+            lien.innerHTML = '';
+            lien.appendChild(document.createTextNode('✅ Code enregistré. Envoie ce lien à Karniella et ouvre-le sur chacun de ses appareils : '));
+            var c = el('code', null, url);
+            lien.appendChild(c);
+            if (navigator.clipboard) {
+                var b = el('button', 'discret', 'Copier');
+                b.type = 'button';
+                b.addEventListener('click', function () { navigator.clipboard.writeText(url).then(function () { b.textContent = 'Copié ✓'; }); });
+                lien.appendChild(document.createTextNode(' '));
+                lien.appendChild(b);
+            }
+            chargerSauvegarde(mdp);
+        }).catch(function () {
+            lien.hidden = false;
+            lien.textContent = 'Le code n\'a pas été enregistré (8 à 64 caractères, et connexion internet).';
+        });
+    });
 
     function rendre() {
         rendreAppareils();

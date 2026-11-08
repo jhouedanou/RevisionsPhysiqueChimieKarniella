@@ -803,6 +803,7 @@
         chargerModule('KarniellaProgression', 'js/progression.js');
         chargerModule('KarniellaXP', 'js/xp.js');
         chargerModule('KarniellaSuivi', 'js/suivi.js');
+        chargerModule('KarniellaSauvegarde', 'js/sauvegarde.js');
     }
 
     /**

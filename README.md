@@ -545,9 +545,11 @@ récompenses en 6 rayons**, de 100 à 1 500 XP, qui changent vraiment l'applicat
 Un seul actif par rayon (sauf les badges). Les thèmes « de nuit » imposent le mode
 sombre, ceux « de jour » le clair ; le bouton 🌙 retire le thème actif.
 
-**Les XP restent sur l'appareil** (localStorage). Un autre téléphone, un autre
-navigateur, l'app installée sur l'écran d'accueil (sur iPhone), une fenêtre
-privée ou un effacement des données repartent de 0 XP.
+**Les XP sont comptés par appareil** (`gagnes`) et les cadeaux par id
+(`cadeaux`). Tant que l'appareil n'est pas relié à la sauvegarde en ligne
+(voir « ☁️ Sauvegarde en ligne »), ils restent dans son localStorage : un autre
+téléphone, un autre navigateur, l'app installée sur iPhone ou une fenêtre
+privée repartent de 0 XP.
 
 **Offrir des XP** : ajouter une ligne dans `data/bonus-xp.json`, avec un `id` neuf
 (au plus 1 000 XP par ligne), puis incrémenter `CACHE_NAME` dans `sw.js`. À
@@ -700,6 +702,35 @@ table `activite` du projet Supabase **karniella** (organisation socialmedia).
 - `supabase/suivi.sql` décrit la base : la clé publique permet seulement
   d'ajouter des lignes. La lecture passe par la fonction `tableau_suivi(mdp)`.
   Pour changer le mot de passe, voir la fin de ce fichier.
+
+### ☁️ Sauvegarde en ligne
+
+`js/sauvegarde.js` garde dans la table `sauvegarde` (une seule ligne) tout ce
+qui doit survivre à un changement d'appareil :
+
+| Clé localStorage | Contenu | Fusion entre deux appareils |
+|---|---|---|
+| `karniella-xp` | XP par appareil, cadeaux, achats, récompenses actives | max par appareil, cadeaux et achats réunis, actifs les plus récents |
+| `karniella-progression` | scores, records, erreurs, jours, leçons lues | 10 dernières tentatives réunies, meilleur record, erreurs du quiz le plus récent |
+| `karniella-badges` | badges obtenus | réunis |
+| `karniella-interros` | interros faites | la plus récente par matière |
+
+Restent sur l'appareil : thème clair ou sombre, son, taille du texte,
+historique du chat, recherches, quiz en cours.
+
+1. Lancer `supabase/sauvegarde.sql` dans l'éditeur SQL (après `suivi.sql`).
+2. Sur `suivi.html`, carte « ☁️ Sauvegarde » : enregistrer un code (8 à 64
+   caractères ; un code au hasard est proposé). La carte donne le lien
+   `sauvegarde.html#code=…`.
+3. Ouvrir ce lien une fois sur chaque appareil de Karniella. Ensuite tout se
+   synchronise seul : à l'ouverture, 3 s après un gain, toutes les 30 s si
+   quelque chose a changé, et en quittant la page.
+
+Sans le code, la clé publique ne lit rien. Chaque envoi donne la version lue :
+si un autre appareil a écrit entre-temps, la base renvoie son état, l'appareil
+fusionne et renvoie. Changer le code déconnecte les appareils, qui affichent
+« Le code a changé » sur `sauvegarde.html`. En local (`localhost`), rien ne part,
+sauf avec `localStorage['karniella-sauvegarde-test'] = '1'`.
 
 ## 📞 Support
 
