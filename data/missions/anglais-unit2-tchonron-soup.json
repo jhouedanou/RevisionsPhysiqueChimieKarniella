@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit2-tchonron-soup",
+  "lecon": "anglais-unit2-tchonron-soup",
+  "matiere": "anglais",
+  "titre": "Grandma's secret soup",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, ce soir l'équipage a faim ! Grand-mère t'a confié sa recette secrète du tchonron, mais les consignes sont en anglais. Décode-les avant que la marmite ne refroidisse.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🥄 Les gestes du chef",
+      "contenu": "Wash, cut, boil, add, stir, taste : six gestes pour une soupe. Tout se passe dans a pot, la marmite, qui est comme le réacteur de ta cuisine."
+    },
+    {
+      "titre": "🚦 Must, le feu rouge",
+      "contenu": "Must dit qu'une chose est obligatoire : You must wash your hands. Il ne change jamais, pas de -s. Le verbe vient juste après, sans « to »."
+    },
+    {
+      "titre": "👥 Have to et has to, les jumeaux",
+      "contenu": "Have to dit la même chose que must. Avec I, you, we, they : have to. Avec he, she, it : has to. She has to boil the water."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Complete: You ___ wash your hands.",
+      "options": [
+        "musts",
+        "must",
+        "must to",
+        "has to"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Subject + must + verb: You must wash your hands."
+    },
+    {
+      "question": "Complete: Grandma ___ boil the water.",
+      "options": [
+        "have to",
+        "haves to",
+        "has to",
+        "must to"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Grandma = she: she has to boil the water."
+    },
+    {
+      "question": "To mix with a spoon is…",
+      "options": [
+        "to cut",
+        "to stir",
+        "to add",
+        "to taste"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "To stir: remuer."
+    }
+  ]
+}
