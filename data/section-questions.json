@@ -4328,6 +4328,72 @@
         ],
         "correctAnswer": 0,
         "explanation": "Écrit en un seul mot, il se comporte comme un nom simple : on ajoute un s à la fin."
+      },
+      {
+        "question": "Quel est le pluriel de « un cheveu » ?",
+        "options": [
+          "des cheveus",
+          "des cheveux",
+          "des chevaux",
+          "des cheveu"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les noms en -eu prennent un x : des cheveux."
+      },
+      {
+        "question": "Quel est le pluriel de « un pneu » ?",
+        "options": [
+          "des pneux",
+          "des pneu",
+          "des pneus",
+          "des pneaux"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Pneu est une exception, comme bleu et landau : il prend un s."
+      },
+      {
+        "question": "Quel est le pluriel de « un trou » ?",
+        "options": [
+          "des trous",
+          "des troux",
+          "des trou",
+          "des traux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Les noms en -ou prennent un s : des trous."
+      },
+      {
+        "question": "Quel nom en -ou prend un x au pluriel ?",
+        "options": [
+          "un trou",
+          "un clou",
+          "un genou",
+          "un sou"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Sept noms en -ou prennent un x : bijoux, cailloux, choux, genoux, hiboux, joujoux, poux."
+      },
+      {
+        "question": "Quel est le pluriel de « un portail » ?",
+        "options": [
+          "des portaux",
+          "des portails",
+          "des portail",
+          "des portailx"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les noms en -ail prennent un s : des portails."
+      },
+      {
+        "question": "Quel est le pluriel de « un travail » ?",
+        "options": [
+          "des travails",
+          "des travail",
+          "des travaux",
+          "des travaus"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Travail est une exception : -ail devient -aux, des travaux."
       }
     ]
   },
@@ -6188,6 +6254,94 @@
         ],
         "correctAnswer": 3,
         "explanation": "Le même sommet ne suffit pas : il faut les trois conditions."
+      },
+      {
+        "question": "Deux angles sont complémentaires lorsque la somme de leurs mesures est égale à…",
+        "options": [
+          "45°",
+          "90°",
+          "180°",
+          "360°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Complémentaires : la somme fait 90°."
+      },
+      {
+        "question": "Deux angles sont supplémentaires lorsque la somme de leurs mesures est égale à…",
+        "options": [
+          "90°",
+          "100°",
+          "180°",
+          "360°"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Supplémentaires : la somme fait 180°."
+      },
+      {
+        "question": "Quels angles sont complémentaires ?",
+        "options": [
+          "30° et 50°",
+          "40° et 50°",
+          "90° et 90°",
+          "100° et 80°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "40° + 50° = 90°."
+      },
+      {
+        "question": "Quel est le complémentaire d'un angle de 25° ?",
+        "options": [
+          "55°",
+          "65°",
+          "75°",
+          "155°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "90° − 25° = 65°."
+      },
+      {
+        "question": "Quel est le supplémentaire d'un angle de 60° ?",
+        "options": [
+          "30°",
+          "100°",
+          "120°",
+          "300°"
+        ],
+        "correctAnswer": 2,
+        "explanation": "180° − 60° = 120°."
+      },
+      {
+        "question": "Deux droites se coupent en O. Deux angles face à face sont…",
+        "options": [
+          "adjacents",
+          "complémentaires",
+          "opposés par le sommet",
+          "droits"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ils ont le même sommet, et leurs côtés sont dans le prolongement les uns des autres."
+      },
+      {
+        "question": "Deux angles opposés par le sommet ont…",
+        "options": [
+          "la même mesure",
+          "une somme de 90°",
+          "une somme de 180°",
+          "un côté commun"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Propriété : deux angles opposés par le sommet ont la même mesure."
+      },
+      {
+        "question": "xÔy et x'Ôy' sont opposés par le sommet. xÔy mesure 70°. Combien mesure x'Ôy' ?",
+        "options": [
+          "20°",
+          "70°",
+          "110°",
+          "140°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Deux angles opposés par le sommet ont la même mesure : 70°."
       }
     ]
   },
@@ -6539,6 +6693,330 @@
         "correctAnswer": 2,
         "explanation": "Yesterday (hier) is in the past. Every day and on Sundays are for habits.",
         "langue": "en"
+      }
+    ]
+  },
+  "anglais-unit2-tchonron-soup": {
+    "tab4": [
+      {
+        "question": "To clean with water:",
+        "options": [
+          "to cut",
+          "to wash",
+          "to boil",
+          "to stir"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To wash: laver.",
+        "langue": "en"
+      },
+      {
+        "question": "To mix with a spoon:",
+        "options": [
+          "to add",
+          "to taste",
+          "to stir",
+          "to cut"
+        ],
+        "correctAnswer": 2,
+        "explanation": "To stir: remuer.",
+        "langue": "en"
+      },
+      {
+        "question": "« Faire bouillir » se dit…",
+        "options": [
+          "to boil",
+          "to wash",
+          "to add",
+          "to taste"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To boil: to cook in very hot water.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "You cook the soup in it:",
+        "options": [
+          "a recipe",
+          "a pot",
+          "salt",
+          "ingredients"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A pot: une marmite.",
+        "langue": "en"
+      },
+      {
+        "question": "The things you need to cook a dish:",
+        "options": [
+          "a recipe",
+          "a pot",
+          "ingredients",
+          "bean leaves"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ingredients: les ingrédients.",
+        "langue": "en"
+      },
+      {
+        "question": "To put one more thing in the pot:",
+        "options": [
+          "to add",
+          "to cut",
+          "to wash",
+          "to stir"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To add: ajouter.",
+        "langue": "en"
+      },
+      {
+        "question": "« Les feuilles de haricot » se dit…",
+        "options": [
+          "groundnut powder",
+          "dried fish",
+          "bean leaves",
+          "chilli"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Bean leaves : les feuilles de haricot, pour le tchonron.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: You ___ wash your hands before cooking.",
+        "options": [
+          "must",
+          "musts",
+          "must to",
+          "has to"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Subject + must + verb: You must wash your hands.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "She musts cook.",
+          "She must to cook.",
+          "She must cook.",
+          "She must cooks."
+        ],
+        "correctAnswer": 2,
+        "explanation": "Must ne prend pas de -s, et le verbe vient tout de suite après : She must cook.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: My mother ___ boil the water.",
+        "options": [
+          "have to",
+          "has to",
+          "haves to",
+          "has"
+        ],
+        "correctAnswer": 1,
+        "explanation": "He / She / It + has to + verb: My mother has to boil the water.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: We ___ buy the ingredients.",
+        "options": [
+          "has to",
+          "must to",
+          "have to",
+          "having to"
+        ],
+        "correctAnswer": 2,
+        "explanation": "I / You / We / They + have to + verb: We have to buy the ingredients.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: Aya ___ to stir the soup.",
+        "options": [
+          "have",
+          "must",
+          "has",
+          "is"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Aya = she: she has to stir the soup.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "They has to help.",
+          "They have to help.",
+          "They have help.",
+          "They must to help."
+        ],
+        "correctAnswer": 1,
+        "explanation": "They + have to + verb: They have to help.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Avec quels sujets utilise-t-on « has to » ?",
+        "options": [
+          "I, you",
+          "we, they",
+          "he, she, it",
+          "you, they"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Has to : avec he, she, it. Have to : avec I, you, we, they.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "« Must » et « have to » servent à dire…",
+        "options": [
+          "une obligation",
+          "ce qu'on aime",
+          "une action passée",
+          "un lieu"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Must et have to : pour dire qu'une chose est obligatoire."
+      }
+    ]
+  },
+  "histoire-geo-mouvements-migratoires": {
+    "tab3": [
+      {
+        "question": "Qu'est-ce que la migration ?",
+        "options": [
+          "Un voyage de vacances",
+          "Un déplacement d'un peuple d'un territoire à un autre, pour s'y installer définitivement",
+          "Une guerre entre deux peuples",
+          "Une fête traditionnelle"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La migration est un déplacement collectif ou individuel d'un peuple, d'un territoire à un autre, en vue de s'y installer définitivement."
+      },
+      {
+        "question": "Une migration peut être…",
+        "options": [
+          "seulement collective",
+          "seulement individuelle",
+          "collective ou individuelle",
+          "ni l'une ni l'autre"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ton cahier dit : un déplacement collectif ou individuel."
+      },
+      {
+        "question": "Dans une migration, on va dans un nouveau territoire pour…",
+        "options": [
+          "le visiter",
+          "y passer des vacances",
+          "y vendre des marchandises puis rentrer",
+          "s'y installer définitivement"
+        ],
+        "correctAnswer": 3,
+        "explanation": "On se déplace en vue de s'y installer définitivement."
+      },
+      {
+        "question": "Un déplacement « collectif », c'est quand…",
+        "options": [
+          "tout un groupe part ensemble",
+          "une personne part seule",
+          "personne ne part",
+          "on part puis on revient"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Collectif : tout un groupe. Individuel : une personne seule."
+      },
+      {
+        "question": "Un homme quitte seul son pays et s'installe pour toujours dans un autre. C'est…",
+        "options": [
+          "un voyage",
+          "une migration collective",
+          "une migration individuelle",
+          "une vague migratoire"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Il part seul et s'installe définitivement : c'est une migration individuelle."
+      },
+      {
+        "question": "Une famille part une semaine au village, puis rentre. Est-ce une migration ?",
+        "options": [
+          "Oui, car elle se déplace",
+          "Non, car elle ne s'installe pas définitivement",
+          "Oui, car c'est un groupe",
+          "Non, car le village est trop près"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Dans une migration, on reste dans le nouveau territoire."
+      },
+      {
+        "question": "Le peuplement actuel de la Côte d'Ivoire est le résultat de…",
+        "options": [
+          "une seule vague migratoire",
+          "plusieurs vagues migratoires",
+          "un seul peuple qui n'a jamais bougé",
+          "un seul voyage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le peuplement actuel est le résultat de plusieurs vagues migratoires d'origines diverses."
+      },
+      {
+        "question": "Les vagues migratoires étaient d'origines…",
+        "options": [
+          "identiques",
+          "inconnues",
+          "diverses",
+          "récentes"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ton cahier dit : d'origines diverses."
+      },
+      {
+        "question": "« D'origines diverses » veut dire que les groupes…",
+        "options": [
+          "venaient tous du même endroit",
+          "ne venaient pas tous du même endroit",
+          "sont arrivés le même jour",
+          "sont repartis chez eux"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Diverses : différentes. Les groupes venaient d'endroits différents."
+      },
+      {
+        "question": "Quel est le titre de la leçon 2 d'histoire ?",
+        "options": [
+          "Les premiers habitants de la Côte d'Ivoire",
+          "L'exploitation de documents",
+          "Le milieu physique de la Côte d'Ivoire",
+          "Les premiers mouvements migratoires en Côte d'Ivoire"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Leçon 1 : les premiers habitants. Leçon 2 : les premiers mouvements migratoires."
+      },
+      {
+        "question": "Cette leçon fait partie du thème…",
+        "options": [
+          "Le peuplement de la Côte d'Ivoire",
+          "L'homme et son milieu en Côte d'Ivoire",
+          "Les droits de l'enfant",
+          "Le groupe nominal"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Thème 1 : Le peuplement de la Côte d'Ivoire."
+      },
+      {
+        "question": "Quel est le titre de la partie I de la leçon ?",
+        "options": [
+          "Les Pygmées",
+          "Les causes des migrations",
+          "Les vestiges",
+          "Le relief"
+        ],
+        "correctAnswer": 1,
+        "explanation": "I. Les causes des migrations."
       }
     ]
   }

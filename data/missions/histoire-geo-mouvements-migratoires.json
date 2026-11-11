@@ -1,0 +1,57 @@
+{
+  "id": "histoire-geo-mouvements-migratoires",
+  "lecon": "histoire-geo-mouvements-migratoires",
+  "matiere": "histoire-geo",
+  "titre": "Le secret des vagues",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, ta machine à remonter le temps survole la Côte d'Ivoire d'autrefois. Tu vois des groupes arriver, les uns après les autres, et ne plus repartir. Trouve le mot qui explique ce mystère.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🧳 La migration, un aller sans retour",
+      "contenu": "La migration est un déplacement d'un peuple, d'un territoire à un autre, pour s'y installer définitivement. Ce n'est pas un voyage : on ne rentre pas, on pose ses bagages pour toujours."
+    },
+    {
+      "titre": "👥 En groupe ou en solo",
+      "contenu": "Une migration peut être collective ou individuelle. Collective : tout un groupe part ensemble, comme une équipe. Individuelle : une personne part seule."
+    },
+    {
+      "titre": "🌊 Vague après vague",
+      "contenu": "Le peuplement actuel de la Côte d'Ivoire est le résultat de plusieurs vagues migratoires d'origines diverses. Comme les vagues de la mer, les groupes sont arrivés les uns après les autres, de plusieurs endroits."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Dans une migration, le peuple…",
+      "options": [
+        "rentre chez lui après une semaine",
+        "s'installe définitivement ailleurs",
+        "ne se déplace pas",
+        "visite un territoire puis repart"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "On se déplace pour s'installer définitivement."
+    },
+    {
+      "question": "Une migration peut être…",
+      "options": [
+        "collective ou individuelle",
+        "seulement collective",
+        "seulement individuelle",
+        "impossible seul"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Ton cahier dit : collectif ou individuel."
+    },
+    {
+      "question": "Le peuplement actuel de la Côte d'Ivoire vient de…",
+      "options": [
+        "une seule vague migratoire",
+        "un seul voyage",
+        "plusieurs vagues migratoires",
+        "aucun déplacement"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Plusieurs vagues migratoires d'origines diverses."
+    }
+  ]
+}
