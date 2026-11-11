@@ -1,0 +1,79 @@
+{
+  "lecon": "histoire-geo-mouvements-migratoires",
+  "matiere": "histoire-geo",
+  "date": "2026-11-11",
+  "restitution": [
+    {
+      "question": "Complète : la migration est un … collectif ou individuel d'un peuple.",
+      "reponse": "déplacement",
+      "accepte": [
+        "un déplacement"
+      ]
+    },
+    {
+      "question": "Complète : la migration se fait d'un … à un autre.",
+      "reponse": "territoire",
+      "accepte": [
+        "un territoire"
+      ]
+    },
+    {
+      "question": "Complète : le peuplement actuel de la Côte d'Ivoire est le résultat de plusieurs vagues …",
+      "reponse": "migratoires",
+      "accepte": [
+        "migratoire",
+        "vagues migratoires"
+      ]
+    },
+    {
+      "question": "Donne la définition de la migration.",
+      "reponse": "La migration est un déplacement collectif ou individuel d'un peuple, d'un territoire à un autre, en vue de s'y installer définitivement."
+    },
+    {
+      "question": "De quoi le peuplement actuel de la Côte d'Ivoire est-il le résultat ?",
+      "reponse": "De plusieurs vagues migratoires d'origines diverses."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Une migration est toujours collective.",
+      "vrai": false,
+      "correction": "Faux : la migration est un déplacement collectif ou individuel."
+    },
+    {
+      "affirmation": "Dans une migration, le peuple s'installe définitivement dans le nouveau territoire.",
+      "vrai": true,
+      "correction": "Vrai : on se déplace en vue de s'y installer définitivement."
+    },
+    {
+      "affirmation": "Partir une semaine en vacances, c'est une migration.",
+      "vrai": false,
+      "correction": "Faux : après les vacances, on rentre. Dans une migration, on s'installe définitivement."
+    },
+    {
+      "affirmation": "Le peuplement actuel de la Côte d'Ivoire est le résultat d'une seule vague migratoire.",
+      "vrai": false,
+      "correction": "Faux : il est le résultat de plusieurs vagues migratoires."
+    },
+    {
+      "affirmation": "Les vagues migratoires étaient d'origines diverses.",
+      "vrai": true,
+      "correction": "Vrai : les groupes ne venaient pas tous du même endroit."
+    },
+    {
+      "affirmation": "La migration est un déplacement d'un territoire à un autre.",
+      "vrai": true,
+      "correction": "Vrai : le peuple quitte un territoire pour un autre."
+    },
+    {
+      "affirmation": "La leçon 2 d'histoire s'appelle « Les premiers habitants de la Côte d'Ivoire ».",
+      "vrai": false,
+      "correction": "Faux : c'est la leçon 1. La leçon 2 s'appelle « Les premiers mouvements migratoires en Côte d'Ivoire »."
+    },
+    {
+      "affirmation": "Une personne seule peut migrer.",
+      "vrai": true,
+      "correction": "Vrai : la migration peut être individuelle."
+    }
+  ]
+}

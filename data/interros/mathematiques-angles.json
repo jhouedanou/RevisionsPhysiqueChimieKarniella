@@ -1,30 +1,48 @@
 {
   "lecon": "mathematiques-angles",
   "matiere": "mathematiques",
-  "date": "2026-10-28",
+  "date": "2026-11-11",
   "restitution": [
     {
       "question": "Quel est le sommet de l'angle DÊF ?",
       "reponse": "E",
-      "accepte": ["point E", "le point E"]
+      "accepte": [
+        "point E",
+        "le point E"
+      ]
     },
     {
       "question": "Les angles xÔy et yÔz sont adjacents. Quel est leur côté commun ?",
       "reponse": "[Oy)",
-      "accepte": ["Oy", "demi-droite [Oy)"]
-    },
-    {
-      "question": "Complète : un angle est formé par deux … qui partent du même point.",
-      "reponse": "demi-droites",
-      "accepte": ["demi-droite"]
+      "accepte": [
+        "Oy",
+        "demi-droite [Oy)"
+      ]
     },
     {
       "question": "Quand dit-on que deux angles sont adjacents ?",
       "reponse": "Quand ils ont le même sommet, un côté commun, et qu'ils sont de part et d'autre de ce côté commun."
     },
     {
-      "question": "AÔB et AÔC ont le sommet O et le côté [OA) en commun. AÔB est dans AÔC. Pourquoi ne sont-ils pas adjacents ?",
-      "reponse": "Ils sont du même côté de [OA) : ils se recouvrent. Ils ne sont pas de part et d'autre du côté commun."
+      "question": "Complète : deux angles sont complémentaires lorsque la somme de leurs mesures est égale à … degrés.",
+      "reponse": "90",
+      "accepte": [
+        "90°",
+        "90 degrés",
+        "quatre-vingt-dix"
+      ]
+    },
+    {
+      "question": "Calcule le supplémentaire d'un angle de 60°.",
+      "reponse": "120°",
+      "accepte": [
+        "120",
+        "120 degrés"
+      ]
+    },
+    {
+      "question": "Quelle est la propriété des angles opposés par le sommet ?",
+      "reponse": "Deux angles opposés par le sommet ont la même mesure."
     }
   ],
   "vrai_faux": [
@@ -39,24 +57,34 @@
       "correction": "Sans côté commun, deux angles ne sont pas adjacents."
     },
     {
-      "affirmation": "Pour être adjacents, deux angles doivent avoir la même taille.",
-      "vrai": false,
-      "correction": "La taille des angles ne compte pas. Il faut le même sommet, un côté commun et un angle de chaque côté."
-    },
-    {
       "affirmation": "Deux angles de sommets différents peuvent être adjacents.",
       "vrai": false,
       "correction": "Deux angles adjacents ont toujours le même sommet."
     },
     {
-      "affirmation": "Deux angles adjacents restent adjacents si on tourne la figure.",
-      "vrai": true,
-      "correction": "Le sens de la figure ne compte pas. Seules les trois conditions comptent."
-    },
-    {
       "affirmation": "« Adjacent » veut dire « voisin ».",
       "vrai": true,
       "correction": "Comme deux parts de gâteau voisines : même pointe, un bord commun, et elles ne se recouvrent pas."
+    },
+    {
+      "affirmation": "Deux angles de 40° et 50° sont complémentaires.",
+      "vrai": true,
+      "correction": "Vrai : 40° + 50° = 90°."
+    },
+    {
+      "affirmation": "Deux angles supplémentaires ont une somme de 90°.",
+      "vrai": false,
+      "correction": "Faux : supplémentaires, c'est 180°. La somme de 90°, c'est pour les angles complémentaires."
+    },
+    {
+      "affirmation": "Deux angles opposés par le sommet ont la même mesure.",
+      "vrai": true,
+      "correction": "Vrai : c'est la propriété des angles opposés par le sommet."
+    },
+    {
+      "affirmation": "Deux angles complémentaires sont toujours adjacents.",
+      "vrai": false,
+      "correction": "Faux : seule la somme compte. Deux angles de 40° et 50° sont complémentaires, même s'ils ne se touchent pas."
     }
   ]
 }

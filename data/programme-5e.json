@@ -198,9 +198,9 @@
         {
           "id": "mathematiques-angles",
           "titre": "Angles",
-          "sousTitre": "Leçon 3 — I. Angles adjacents",
+          "sousTitre": "Leçon 3 : adjacents, complémentaires, supplémentaires, opposés par le sommet",
           "icone": "📐",
-          "description": "Nommer un angle (AÔB, le sommet au milieu) et reconnaître deux angles adjacents : même sommet, un côté commun, de part et d'autre.",
+          "description": "Reconnaître deux angles adjacents, complémentaires (90°), supplémentaires (180°) ou opposés par le sommet (même mesure).",
           "statut": "prete",
           "mission": true
         }
@@ -311,6 +311,15 @@
           "sousTitre": "Histoire — Thème 1 : Le peuplement de la Côte d'Ivoire, leçon 1",
           "icone": "🗺️",
           "description": "Les traces, les quatre groupes proto, les Pygmées et les Gban.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "histoire-geo-mouvements-migratoires",
+          "titre": "Les premiers mouvements migratoires en Côte d'Ivoire",
+          "sousTitre": "Histoire — Thème 1 : Le peuplement de la Côte d'Ivoire, leçon 2",
+          "icone": "🧭",
+          "description": "Ton cahier : la définition de la migration, et le peuplement de la Côte d'Ivoire par plusieurs vagues migratoires.",
           "statut": "prete",
           "mission": true
         },
