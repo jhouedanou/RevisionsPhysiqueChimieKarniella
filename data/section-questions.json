@@ -2726,13 +2726,13 @@
       {
         "question": "Où trouve-t-on la forêt galerie ?",
         "options": [
-          "Au nord, le long des cours d'eau",
+          "Au bord des cours d'eau",
           "Au sud, au bord de la mer",
           "Au sommet des montagnes de l'ouest",
           "Au milieu des villes"
         ],
         "correctAnswer": 0,
-        "explanation": "La forêt galerie est une bande d'arbres qui suit les cours d'eau, au nord, au milieu de la savane."
+        "explanation": "La forêt galerie est une bande d'arbres qui suit les cours d'eau, au milieu de la savane."
       },
       {
         "question": "Où sont situés les sols hydromorphes ?",
@@ -2755,6 +2755,94 @@
         ],
         "correctAnswer": 3,
         "explanation": "Au centre, ton cahier place la forêt claire (arbres espacés) et la savane arborée (herbes et beaucoup d'arbres)."
+      },
+      {
+        "question": "Qu'est-ce que la densité ?",
+        "options": [
+          "Le nombre d'habitants au kilomètre carré",
+          "La taille d'un pays",
+          "Le nombre de villes",
+          "La quantité de pluie"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La densité est le nombre d'habitants au kilomètre carré. Son unité est hab/km²."
+      },
+      {
+        "question": "Comment calcule-t-on la densité ?",
+        "options": [
+          "Superficie ÷ population totale",
+          "Population totale ÷ superficie",
+          "Population totale × superficie",
+          "Population totale + superficie"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Densité = population totale ÷ superficie, en hab/km²."
+      },
+      {
+        "question": "Une région de 1 000 km² compte 40 000 habitants. Quelle est sa densité ?",
+        "options": [
+          "4 hab/km²",
+          "40 hab/km²",
+          "400 hab/km²",
+          "40 000 hab/km²"
+        ],
+        "correctAnswer": 1,
+        "explanation": "40 000 ÷ 1 000 = 40. La densité est de 40 hab/km²."
+      },
+      {
+        "question": "Où se trouve la zone de faible densité ?",
+        "options": [
+          "Au sud",
+          "Au nord, sauf Korhogo",
+          "Au sud-ouest",
+          "Autour d'Abidjan"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La zone de faible densité est au nord, à l'exception de Korhogo."
+      },
+      {
+        "question": "Pourquoi la densité est-elle faible au nord ?",
+        "options": [
+          "La forêt dense et les fortes pluies",
+          "La longue saison sèche avec l'harmattan et la faiblesse de la pluviométrie",
+          "Les montagnes très hautes",
+          "La mer toute proche"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Au nord : longue saison sèche avec l'harmattan, savane, peu de pluie. C'est peu favorable à l'installation des populations."
+      },
+      {
+        "question": "Où se trouve la zone de forte densité ?",
+        "options": [
+          "Au sud, et à Bouaké, Yamoussoukro, Man et Korhogo",
+          "Seulement au nord",
+          "Dans la savane herbeuse",
+          "Au sud-ouest seulement"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Forte densité : au sud, et dans les villes de Bouaké, Yamoussoukro, Man et Korhogo."
+      },
+      {
+        "question": "D'après ton cahier, quel est le plus long fleuve de la Côte d'Ivoire ?",
+        "options": [
+          "Le Cavally (700 km)",
+          "Le Sassandra (600 km)",
+          "Le Bandama (1 050 km)",
+          "La Comoé (1 160 km)"
+        ],
+        "correctAnswer": 3,
+        "explanation": "La Comoé mesure 1 160 km. Puis viennent le Bandama (1 050 km), le Cavally (700 km) et le Sassandra (600 km)."
+      },
+      {
+        "question": "Où se localise la savane herbeuse ?",
+        "options": [
+          "Au sud",
+          "Au centre",
+          "Au nord",
+          "Dans les marais"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Au centre, la savane est arborée ou arbustive. Au nord, c'est la savane herbeuse."
       }
     ]
   },

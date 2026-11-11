@@ -1,7 +1,7 @@
 {
   "lecon": "histoire-geo-milieu-physique",
   "matiere": "histoire-geo",
-  "date": "2026-09-27",
+  "date": "2026-11-11",
   "restitution": [
     {
       "question": "Quel relief trouve-t-on au sud de la Côte d'Ivoire ?",
@@ -29,6 +29,23 @@
     {
       "question": "Cite les trois types de sols de la Côte d'Ivoire.",
       "reponse": "Les sols ferrallitiques, les sols ferrugineux et les sols hydromorphes."
+    },
+    {
+      "question": "Qu'est-ce que la densité ?",
+      "reponse": "Le nombre d'habitants au kilomètre carré (hab/km²)."
+    },
+    {
+      "question": "Comment calcule-t-on la densité ?",
+      "reponse": "Densité = population totale ÷ superficie."
+    },
+    {
+      "question": "Cite deux raisons de la forte densité au sud.",
+      "reponse": "Deux au choix : une bonne pluviométrie, un relief dominé par des surfaces planes, la forêt dense, des sols fertiles."
+    },
+    {
+      "question": "Quel est le plus long fleuve de la Côte d'Ivoire ?",
+      "reponse": "la Comoé",
+      "accepte": ["Comoé", "le Comoé", "la Comoé (1 160 km)", "comoe"]
     }
   ],
   "vrai_faux": [
@@ -71,6 +88,31 @@
       "affirmation": "Les sols hydromorphes se trouvent au bord des cours d'eau et dans les bas-fonds.",
       "vrai": true,
       "correction": "Vrai : ces sols sont gorgés d'eau. « Hydro » veut dire eau."
+    },
+    {
+      "affirmation": "La zone de faible densité se trouve au sud de la Côte d'Ivoire.",
+      "vrai": false,
+      "correction": "Faux : la zone de faible densité est au nord, sauf Korhogo. Le sud a une forte densité."
+    },
+    {
+      "affirmation": "Bouaké et Yamoussoukro font partie de la zone de forte densité.",
+      "vrai": true,
+      "correction": "Vrai : le centre a une densité moyenne, sauf Bouaké et Yamoussoukro, qui ont une forte densité."
+    },
+    {
+      "affirmation": "On calcule la densité en faisant : superficie ÷ population totale.",
+      "vrai": false,
+      "correction": "Faux : densité = population totale ÷ superficie."
+    },
+    {
+      "affirmation": "Au nord, on trouve la savane herbeuse.",
+      "vrai": true,
+      "correction": "Vrai : la savane herbeuse se localise au nord. Au centre, la savane est arborée ou arbustive."
+    },
+    {
+      "affirmation": "L'installation des populations dépend des éléments du milieu physique.",
+      "vrai": true,
+      "correction": "Vrai : c'est la conclusion de la leçon. Les hommes s'installent là où le milieu est favorable."
     }
   ]
 }
