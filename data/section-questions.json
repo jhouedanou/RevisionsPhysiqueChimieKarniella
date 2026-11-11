@@ -6469,15 +6469,15 @@
         "explanation": "En concordance, les tensions s'ajoutent : U = U₁ + U₂."
       },
       {
-        "question": "En série opposition, la tension de l'association est…",
+        "question": "En série opposition, la tension d'une pile retournée…",
         "options": [
-          "la somme des tensions",
-          "toujours 3 V",
-          "la tension de la plus petite pile",
-          "la plus grande tension moins la plus petite"
+          "s'ajoute aux autres",
+          "se retranche au lieu de s'ajouter",
+          "double",
+          "ne compte pas du tout"
         ],
-        "correctAnswer": 3,
-        "explanation": "En opposition, U = U₁ − U₂, avec U₁ la plus grande."
+        "correctAnswer": 1,
+        "explanation": "La pile retournée enlève sa tension : 1,5 V − 1,5 V + 1,5 V = 1,5 V."
       },
       {
         "question": "Deux piles de 1,5 V en concordance donnent une tension de…",
@@ -6599,6 +6599,39 @@
         ],
         "correctAnswer": 0,
         "explanation": "La tension se mesure en volts (V) avec un voltmètre."
+      },
+      {
+        "question": "Trois piles de 1,5 V sont en série, celle du milieu est retournée. Que fait la lampe ?",
+        "options": [
+          "Elle brille fortement",
+          "Elle brille faiblement",
+          "Elle ne s'allume pas",
+          "Elle grille"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La pile retournée enlève 1,5 V : il ne reste que 1,5 V au lieu de 4,5 V. La lampe brille faiblement."
+      },
+      {
+        "question": "Trois piles de 1,5 V, celle du milieu retournée. Quelle est la tension de l'ensemble ?",
+        "options": [
+          "4,5 V",
+          "3 V",
+          "1,5 V",
+          "0 V"
+        ],
+        "correctAnswer": 2,
+        "explanation": "U = 1,5 V − 1,5 V + 1,5 V = 1,5 V."
+      },
+      {
+        "question": "En démontant une pile plate, que découvre-t-on ?",
+        "options": [
+          "Du sable",
+          "3 piles rondes identiques reliées par des fils",
+          "Une seule grosse pile ronde",
+          "Une petite lampe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La pile plate contient 3 piles rondes identiques, reliées par des fils électriques, en série concordance."
       }
     ]
   },

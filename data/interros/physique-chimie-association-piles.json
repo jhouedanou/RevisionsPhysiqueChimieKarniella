@@ -1,7 +1,7 @@
 {
   "lecon": "physique-chimie-association-piles",
   "matiere": "physique-chimie",
-  "date": "2026-10-28",
+  "date": "2026-11-11",
   "restitution": [
     {
       "question": "Deux piles de 4,5 V sont en série concordance. Quelle tension obtiens-tu ?",
@@ -29,6 +29,15 @@
     {
       "question": "Avec quel appareil mesure-t-on la tension de piles associées ? Où le branche-t-on ?",
       "reponse": "Avec un voltmètre. On le branche sur les deux bornes libres de l'association."
+    },
+    {
+      "question": "Trois piles de 1,5 V sont en série, celle du milieu est retournée. Quelle tension obtiens-tu ?",
+      "reponse": "1,5 V",
+      "accepte": ["1,5", "1.5 V", "1,5 volt", "1,5 V (1,5 − 1,5 + 1,5)"]
+    },
+    {
+      "question": "Que découvre-t-on en démontant une pile plate ?",
+      "reponse": "3 piles rondes identiques, reliées entre elles par des fils électriques."
     }
   ],
   "vrai_faux": [
@@ -66,6 +75,16 @@
       "affirmation": "Concordance veut dire « accord » : les piles poussent dans le même sens.",
       "vrai": true,
       "correction": "Vrai : c'est pour ça que leurs tensions s'ajoutent."
+    },
+    {
+      "affirmation": "Avec trois piles en série dont une retournée, la lampe brille faiblement.",
+      "vrai": true,
+      "correction": "Vrai : la pile retournée enlève 1,5 V. Il reste 1,5 V au lieu de 4,5 V."
+    },
+    {
+      "affirmation": "Les lampes torches utilisent des piles cylindriques montées en série opposition.",
+      "vrai": false,
+      "correction": "Faux : dans une lampe torche, les piles cylindriques sont montées en série concordance."
     }
   ]
 }
