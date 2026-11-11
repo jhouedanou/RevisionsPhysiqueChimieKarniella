@@ -6541,5 +6541,193 @@
         "langue": "en"
       }
     ]
+  },
+  "anglais-unit2-tchonron-soup": {
+    "tab4": [
+      {
+        "question": "To clean with water:",
+        "options": [
+          "to cut",
+          "to wash",
+          "to boil",
+          "to stir"
+        ],
+        "correctAnswer": 1,
+        "explanation": "To wash: laver.",
+        "langue": "en"
+      },
+      {
+        "question": "To mix with a spoon:",
+        "options": [
+          "to add",
+          "to taste",
+          "to stir",
+          "to cut"
+        ],
+        "correctAnswer": 2,
+        "explanation": "To stir: remuer.",
+        "langue": "en"
+      },
+      {
+        "question": "« Faire bouillir » se dit…",
+        "options": [
+          "to boil",
+          "to wash",
+          "to add",
+          "to taste"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To boil: to cook in very hot water.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "You cook the soup in it:",
+        "options": [
+          "a recipe",
+          "a pot",
+          "salt",
+          "ingredients"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A pot: une marmite.",
+        "langue": "en"
+      },
+      {
+        "question": "The things you need to cook a dish:",
+        "options": [
+          "a recipe",
+          "a pot",
+          "ingredients",
+          "bean leaves"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ingredients: les ingrédients.",
+        "langue": "en"
+      },
+      {
+        "question": "To put one more thing in the pot:",
+        "options": [
+          "to add",
+          "to cut",
+          "to wash",
+          "to stir"
+        ],
+        "correctAnswer": 0,
+        "explanation": "To add: ajouter.",
+        "langue": "en"
+      },
+      {
+        "question": "« Les feuilles de haricot » se dit…",
+        "options": [
+          "groundnut powder",
+          "dried fish",
+          "bean leaves",
+          "chilli"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Bean leaves : les feuilles de haricot, pour le tchonron.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: You ___ wash your hands before cooking.",
+        "options": [
+          "must",
+          "musts",
+          "must to",
+          "has to"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Subject + must + verb: You must wash your hands.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "She musts cook.",
+          "She must to cook.",
+          "She must cook.",
+          "She must cooks."
+        ],
+        "correctAnswer": 2,
+        "explanation": "Must ne prend pas de -s, et le verbe vient tout de suite après : She must cook.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Complete: My mother ___ boil the water.",
+        "options": [
+          "have to",
+          "has to",
+          "haves to",
+          "has"
+        ],
+        "correctAnswer": 1,
+        "explanation": "He / She / It + has to + verb: My mother has to boil the water.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: We ___ buy the ingredients.",
+        "options": [
+          "has to",
+          "must to",
+          "have to",
+          "having to"
+        ],
+        "correctAnswer": 2,
+        "explanation": "I / You / We / They + have to + verb: We have to buy the ingredients.",
+        "langue": "en"
+      },
+      {
+        "question": "Complete: Aya ___ to stir the soup.",
+        "options": [
+          "have",
+          "must",
+          "has",
+          "is"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Aya = she: she has to stir the soup.",
+        "langue": "en"
+      },
+      {
+        "question": "Quelle phrase est CORRECTE ?",
+        "options": [
+          "They has to help.",
+          "They have to help.",
+          "They have help.",
+          "They must to help."
+        ],
+        "correctAnswer": 1,
+        "explanation": "They + have to + verb: They have to help.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "Avec quels sujets utilise-t-on « has to » ?",
+        "options": [
+          "I, you",
+          "we, they",
+          "he, she, it",
+          "you, they"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Has to : avec he, she, it. Have to : avec I, you, we, they.",
+        "langue": "fr",
+        "optionsLangue": "en"
+      },
+      {
+        "question": "« Must » et « have to » servent à dire…",
+        "options": [
+          "une obligation",
+          "ce qu'on aime",
+          "une action passée",
+          "un lieu"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Must et have to : pour dire qu'une chose est obligatoire."
+      }
+    ]
   }
 }

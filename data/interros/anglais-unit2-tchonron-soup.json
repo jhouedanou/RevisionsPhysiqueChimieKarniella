@@ -1,0 +1,93 @@
+{
+  "lecon": "anglais-unit2-tchonron-soup",
+  "matiere": "anglais",
+  "date": "2026-11-11",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : faire bouillir.",
+      "reponse": "to boil",
+      "accepte": [
+        "boil"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : une marmite.",
+      "reponse": "a pot",
+      "accepte": [
+        "pot"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Complète avec have to ou has to : My mother … boil the water.",
+      "reponse": "has to",
+      "accepte": [
+        "My mother has to boil the water."
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Complète avec must : You … wash your hands before cooking.",
+      "reponse": "must",
+      "accepte": [
+        "You must wash your hands before cooking."
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quelle est la structure pour dire une obligation avec must ?",
+      "reponse": "Sujet + must + verbe. Ex : She must cut the onions."
+    },
+    {
+      "question": "Quand utilise-t-on « have to », et quand « has to » ?",
+      "reponse": "Have to avec I, you, we, they. Has to avec he, she, it. Ex : We have to buy the ingredients. My mother has to boil the water."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "She must to cut the onions.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : pas de « to » après must. She must cut the onions."
+    },
+    {
+      "affirmation": "We have to buy the ingredients.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : we + have to + verbe."
+    },
+    {
+      "affirmation": "Avec he, she, it, « must » prend un -s.",
+      "vrai": false,
+      "correction": "Faux : must ne change jamais. She must cut the onions."
+    },
+    {
+      "affirmation": "« To stir » veut dire « remuer ».",
+      "vrai": true,
+      "correction": "Vrai : to stir, c'est mélanger avec une cuillère."
+    },
+    {
+      "affirmation": "My brother have to wash the pot.",
+      "langue": "en",
+      "vrai": false,
+      "correction": "Faux : my brother = he, alors on dit has to. My brother has to wash the pot."
+    },
+    {
+      "affirmation": "« Must » et « have to » servent à dire une obligation.",
+      "vrai": true,
+      "correction": "Vrai : ils veulent dire tous les deux « devoir »."
+    },
+    {
+      "affirmation": "« To add » veut dire « couper ».",
+      "vrai": false,
+      "correction": "Faux : to add, c'est ajouter. Couper se dit to cut."
+    },
+    {
+      "affirmation": "You must wash your hands before cooking.",
+      "langue": "en",
+      "vrai": true,
+      "correction": "Vrai : sujet + must + verbe."
+    }
+  ]
+}

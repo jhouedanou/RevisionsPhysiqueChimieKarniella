@@ -85,6 +85,15 @@
           "description": "Wake up, sweep the yard, visit relatives ; le présent simple (She cooks every Sunday) et le prétérit (We went to the beach last Sunday).",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "anglais-unit2-tchonron-soup",
+          "titre": "Unit 2 — At home : Lesson 3, The \"Tchonron\" soup",
+          "sousTitre": "Vocabulary & Expressing obligation with must and have to",
+          "icone": "🍲",
+          "description": "Les mots de la cuisine (a pot, to boil, to stir…) et l'obligation : You must wash your hands. She has to boil the water.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
