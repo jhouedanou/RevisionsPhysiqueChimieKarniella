@@ -27,6 +27,7 @@
 <div class="tabs">
 <button class="tab-button active" data-onglet="tab1">Vocabulary</button>
 <button class="tab-button" data-onglet="tab2">Possessive case</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab3">Practice</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
 </div>
@@ -173,6 +174,24 @@
   </div>
 </section>
 
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="Koffi est le frère d&#x27;Aya." data-noms="Koffi Aya">Koffi is Aya's brother.</li>
+        <li data-fr="Awa est l&#x27;épouse de Yao." data-noms="Awa Yao">Awa is Yao's wife.</li>
+        <li data-fr="Ama est la cousine d&#x27;Aya." data-noms="Ama Aya">Ama is Aya's cousin.</li>
+        <li data-fr="Une fille qui a les mêmes parents que toi.">A girl with the same parents as you.</li>
+        <li data-fr="Le frère de ton père ou de ta mère.">The brother of your father or of your mother.</li>
+        <li data-fr="Ton grand-père et ta grand-mère.">Your grandfather and your grandmother.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRACTICE ============ -->
 <section class="tab-content" id="tab3">
   <div class="container">
@@ -305,6 +324,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>

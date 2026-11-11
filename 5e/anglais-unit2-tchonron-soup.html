@@ -27,6 +27,7 @@
 <div class="tabs">
 <button class="tab-button active" data-onglet="tab1">A/ Vocabulary</button>
 <button class="tab-button" data-onglet="tab2">B/ Must and have to</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab3">C/ Practice</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
 </div>
@@ -150,6 +151,25 @@
         <li>Les exemples de ton professeur.</li>
         <li>Si ton professeur a aussi donné la forme négative.</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="Elle te dit comment préparer un plat.">It tells you how to cook a dish.</li>
+        <li data-fr="Les choses dont tu as besoin pour préparer un plat.">The things you need to cook a dish.</li>
+        <li data-fr="Tu fais cuire la soupe dedans.">You cook the soup in it.</li>
+        <li data-fr="Faire de petits morceaux avec un couteau.">To make small pieces with a knife.</li>
+        <li data-fr="Manger un peu pour voir si c&#x27;est bon.">To eat a little to see if it is good.</li>
+        <li data-fr="Elle doit couper les oignons.">She must cut the onions.</li>
+        <li data-fr="Ma mère doit faire bouillir l&#x27;eau.">My mother has to boil the water.</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -278,6 +298,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>

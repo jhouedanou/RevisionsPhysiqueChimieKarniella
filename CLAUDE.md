@@ -89,6 +89,17 @@ dont la traduction donnerait la réponse d'un exercice.
 Chaque leçon d'anglais a aussi un onglet « C/ Practice » (exercices avec
 correction dans `<details>`, classe `.exercice`) avant le quiz.
 
+Et un onglet « Say it! 🎤 » (`data-onglet="dire"`) juste avant « Practice » :
+6 à 8 phrases de la leçon que Karniella dit au micro. `js/prononciation.js`
+(à charger après `js/traduction.js`) l'écoute, colore les mots bien dits et
+donne 5 XP par phrase réussie (85/100), une fois par jour. Phrases courtes
+(4 à 10 mots), jamais la réponse d'un exercice ; `data-noms` pour les prénoms
+ivoiriens, que la reconnaissance anglaise comprend mal.
+
+    <div class="prononciation" lang="en-GB"><ol>
+      <li data-fr="Koffi est le frère d'Aya." data-noms="Koffi Aya">Koffi is Aya's brother.</li>
+    </ol></div>
+
 ## Leçons de physique-chimie : toujours des schémas
 
 Karniella l'a demandé : chaque leçon de physique-chimie a des **schémas**

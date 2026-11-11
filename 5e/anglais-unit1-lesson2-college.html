@@ -29,6 +29,7 @@
 <button class="tab-button" data-onglet="tab2">Present continuous</button>
 <button class="tab-button" data-onglet="tab3">Can / May</button>
 <button class="tab-button" data-onglet="session3">Session 3: Dialogue</button>
+<button class="tab-button" data-onglet="dire">Say it! 🎤</button>
 <button class="tab-button" data-onglet="tab4">Practice</button>
 <button class="tab-button" data-onglet="tab5">Quiz</button>
 </div>
@@ -323,6 +324,25 @@
   </div>
 </section>
 
+<!-- ============ SAY IT! — prononciation au micro (js/prononciation.js) ============ -->
+<section class="tab-content" id="dire">
+  <div class="container">
+    <h2>Say it! 🎤</h2>
+    <p>Dis chaque phrase en anglais. Le site t'écoute et te montre les mots bien dits.</p>
+    <div class="prononciation" lang="en-GB">
+      <ol>
+        <li data-fr="Elle est en train de se mettre en rang.">She is lining up.</li>
+        <li data-fr="Ils sont en train de travailler dur.">They are working hard.</li>
+        <li data-fr="Je ne suis pas en train d&#x27;écrire au tableau.">I am not writing on the board.</li>
+        <li data-fr="Tu n&#x27;es pas en train de parler français.">You are not speaking French.</li>
+        <li data-fr="Est-ce que je peux emprunter ton stylo, s&#x27;il te plaît ?">Can I borrow your pen, please?</li>
+        <li data-fr="Est-ce que je peux effacer le tableau, madame ?">Can I clean the board, madam?</li>
+        <li data-fr="Puis-je entrer, monsieur ?">May I come in, sir?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PRACTICE ============ -->
 <section class="tab-content" id="tab4">
   <div class="container">
@@ -572,6 +592,7 @@
 
 <script src="../js/lecon-5e.js" defer></script>
 <script src="../js/traduction.js" defer></script>
+<script src="../js/prononciation.js" defer></script>
 <script src="../js/lecture-vocale.js" defer></script>
 <script src="../js/section-quiz.js" defer></script>
 <script src="../js/chat-assistant.js" defer></script>
