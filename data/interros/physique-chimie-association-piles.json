@@ -1,22 +1,37 @@
 {
   "lecon": "physique-chimie-association-piles",
   "matiere": "physique-chimie",
-  "date": "2026-11-11",
+  "date": "2026-11-14",
   "restitution": [
     {
       "question": "Deux piles de 4,5 V sont en série concordance. Quelle tension obtiens-tu ?",
       "reponse": "9 V",
-      "accepte": ["9", "9 volts", "9 volt", "neuf volts"]
+      "accepte": [
+        "9",
+        "9 volts",
+        "9 volt",
+        "neuf volts"
+      ]
     },
     {
       "question": "Une pile de 4,5 V et une pile de 1,5 V sont en série opposition. Quelle tension obtiens-tu ?",
       "reponse": "3 V",
-      "accepte": ["3", "3 volts", "3 volt", "trois volts"]
+      "accepte": [
+        "3",
+        "3 volts",
+        "3 volt",
+        "trois volts"
+      ]
     },
     {
       "question": "Dans une lampe torche, deux piles de 1,5 V sont en concordance. Quelle tension reçoit la lampe ?",
       "reponse": "3 V",
-      "accepte": ["3", "3 volts", "3 volt", "trois volts"]
+      "accepte": [
+        "3",
+        "3 volts",
+        "3 volt",
+        "trois volts"
+      ]
     },
     {
       "question": "Comment relie-t-on deux piles pour les mettre en série opposition ?",
@@ -33,7 +48,12 @@
     {
       "question": "Trois piles de 1,5 V sont en série, celle du milieu est retournée. Quelle tension obtiens-tu ?",
       "reponse": "1,5 V",
-      "accepte": ["1,5", "1.5 V", "1,5 volt", "1,5 V (1,5 − 1,5 + 1,5)"]
+      "accepte": [
+        "1,5",
+        "1.5 V",
+        "1,5 volt",
+        "1,5 V (1,5 − 1,5 + 1,5)"
+      ]
     },
     {
       "question": "Que découvre-t-on en démontant une pile plate ?",
@@ -85,6 +105,11 @@
       "affirmation": "Les lampes torches utilisent des piles cylindriques montées en série opposition.",
       "vrai": false,
       "correction": "Faux : dans une lampe torche, les piles cylindriques sont montées en série concordance."
+    },
+    {
+      "affirmation": "Avec deux piles en série concordance, la lampe brille avec plus d'éclat qu'avec une seule pile.",
+      "vrai": true,
+      "correction": "Vrai : avec une pile, la lampe brille faiblement. Avec deux piles, elle brille avec plus d'éclat."
     }
   ]
 }

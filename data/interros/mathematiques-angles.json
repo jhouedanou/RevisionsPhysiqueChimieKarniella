@@ -1,7 +1,7 @@
 {
   "lecon": "mathematiques-angles",
   "matiere": "mathematiques",
-  "date": "2026-11-11",
+  "date": "2026-11-14",
   "restitution": [
     {
       "question": "Quel est le sommet de l'angle DÊF ?",
@@ -43,6 +43,27 @@
     {
       "question": "Quelle est la propriété des angles opposés par le sommet ?",
       "reponse": "Deux angles opposés par le sommet ont la même mesure."
+    },
+    {
+      "question": "Complète : dans un triangle, la somme des mesures des trois angles est égale à … degrés.",
+      "reponse": "180",
+      "accepte": [
+        "180°",
+        "180 degrés",
+        "cent quatre-vingts"
+      ]
+    },
+    {
+      "question": "Dans un triangle, deux angles mesurent 50° et 60°. Calcule le troisième angle.",
+      "reponse": "70°",
+      "accepte": [
+        "70",
+        "70 degrés"
+      ]
+    },
+    {
+      "question": "Qu'est-ce que deux angles opposés par le sommet ?",
+      "reponse": "Deux angles qui ont le même sommet et dont les côtés de l'un sont dans le prolongement des côtés de l'autre."
     }
   ],
   "vrai_faux": [
@@ -85,6 +106,16 @@
       "affirmation": "Deux angles complémentaires sont toujours adjacents.",
       "vrai": false,
       "correction": "Faux : seule la somme compte. Deux angles de 40° et 50° sont complémentaires, même s'ils ne se touchent pas."
+    },
+    {
+      "affirmation": "Dans un triangle, la somme des mesures des trois angles est égale à 90°.",
+      "vrai": false,
+      "correction": "Faux : la somme des mesures des trois angles d'un triangle est égale à 180°."
+    },
+    {
+      "affirmation": "Un triangle peut avoir des angles de 90°, 45° et 45°.",
+      "vrai": true,
+      "correction": "Vrai : 90° + 45° + 45° = 180°."
     }
   ]
 }
