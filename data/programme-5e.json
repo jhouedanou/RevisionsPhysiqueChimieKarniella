@@ -182,7 +182,7 @@
           "titre": "Les nombres décimaux relatifs",
           "sousTitre": "Calculs algébriques — Présentation et notation",
           "icone": "➕",
-          "description": "Les nombres avec un signe + ou − : opposés, droite graduée, comparaison.",
+          "description": "Les nombres avec un signe + ou − : les ensembles 𝔻, 𝔻⁺ et 𝔻⁻, opposés, droite graduée, comparaison.",
           "statut": "prete",
           "mission": true
         },
@@ -198,9 +198,9 @@
         {
           "id": "mathematiques-angles",
           "titre": "Angles",
-          "sousTitre": "Leçon 3 : adjacents, complémentaires, supplémentaires, opposés par le sommet",
+          "sousTitre": "Leçon 3 : adjacents, complémentaires, supplémentaires, opposés par le sommet, triangle",
           "icone": "📐",
-          "description": "Reconnaître deux angles adjacents, complémentaires (90°), supplémentaires (180°) ou opposés par le sommet (même mesure).",
+          "description": "Reconnaître deux angles adjacents, complémentaires (90°), supplémentaires (180°) ou opposés par le sommet (même mesure). La somme des angles d'un triangle : 180°.",
           "statut": "prete",
           "mission": true
         }

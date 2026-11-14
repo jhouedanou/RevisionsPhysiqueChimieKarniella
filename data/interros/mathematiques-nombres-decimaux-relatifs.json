@@ -1,22 +1,31 @@
 {
   "lecon": "mathematiques-nombres-decimaux-relatifs",
   "matiere": "mathematiques",
-  "date": "2026-09-27",
+  "date": "2026-11-14",
   "restitution": [
     {
       "question": "Quelle est la distance à zéro de −12 ?",
       "reponse": "12",
-      "accepte": ["douze"]
+      "accepte": [
+        "douze"
+      ]
     },
     {
       "question": "Une plongeuse est à 7 m sous la mer. Écris son altitude avec un nombre relatif.",
       "reponse": "−7",
-      "accepte": ["−7 m", "moins 7", "moins 7 m"]
+      "accepte": [
+        "−7 m",
+        "moins 7",
+        "moins 7 m"
+      ]
     },
     {
       "question": "Comment s'appelle le nombre qui repère un point sur une droite graduée ?",
       "reponse": "abscisse",
-      "accepte": ["son abscisse", "l'abscisse du point"]
+      "accepte": [
+        "son abscisse",
+        "l'abscisse du point"
+      ]
     },
     {
       "question": "Qu'est-ce qu'un nombre décimal relatif ?",
@@ -25,6 +34,25 @@
     {
       "question": "Quand dit-on que deux nombres sont opposés ?",
       "reponse": "Quand ils ont la même distance à zéro et des signes contraires. Exemple : +5 et −5."
+    },
+    {
+      "question": "Comment note-t-on l'ensemble des nombres décimaux relatifs ?",
+      "reponse": "𝔻",
+      "accepte": [
+        "D",
+        "grand D",
+        "la lettre D"
+      ]
+    },
+    {
+      "question": "Comment note-t-on l'ensemble des nombres décimaux relatifs négatifs ?",
+      "reponse": "𝔻⁻",
+      "accepte": [
+        "D−",
+        "D-",
+        "D moins",
+        "grand D moins"
+      ]
     }
   ],
   "vrai_faux": [
@@ -62,6 +90,21 @@
       "affirmation": "Dans un calcul, on met un nombre négatif entre parenthèses : 3 + (−7).",
       "vrai": true,
       "correction": "On écrit bien 3 + (−7) : les parenthèses entourent le nombre négatif."
+    },
+    {
+      "affirmation": "L'ensemble des nombres décimaux relatifs positifs se note 𝔻⁺.",
+      "vrai": true,
+      "correction": "Vrai : 𝔻⁺ pour les positifs, 𝔻⁻ pour les négatifs."
+    },
+    {
+      "affirmation": "−3 ∈ 𝔻⁺.",
+      "vrai": false,
+      "correction": "Faux : −3 est négatif. Il appartient à 𝔻⁻."
+    },
+    {
+      "affirmation": "0 appartient à 𝔻⁺ et à 𝔻⁻.",
+      "vrai": true,
+      "correction": "Vrai : 0 est à la fois positif et négatif."
     }
   ]
 }

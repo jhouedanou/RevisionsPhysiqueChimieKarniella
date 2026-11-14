@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Angles - Mathématiques 5e</title>
-<meta name="description" content="Leçon 3 : angles adjacents, complémentaires, supplémentaires et opposés par le sommet.">
+<meta name="description" content="Leçon 3 : angles adjacents, complémentaires, supplémentaires, opposés par le sommet, somme des angles d'un triangle.">
 <link rel="manifest" href="../manifest.json">
 <link rel="stylesheet" href="../css/theme.css">
 <link rel="stylesheet" href="../css/matieres.css">
@@ -21,22 +21,122 @@
 <header>
 <span class="badge-niveau">Mathématiques · Leçon 3 · Classe de 5e</span>
 <h1>📐 Angles</h1>
-<p>Angles adjacents, complémentaires, supplémentaires, opposés par le sommet</p>
+<p>Angles adjacents, complémentaires, supplémentaires, opposés par le sommet, angles d'un triangle</p>
 </header>
 
 <div class="tabs">
-<button class="tab-button active" data-onglet="tab1">I. Angles adjacents</button>
+<button class="tab-button active" data-onglet="cahier">Mon cahier</button>
+<button class="tab-button" data-onglet="tab1">I. Angles adjacents</button>
 <button class="tab-button" data-onglet="tab2">Exemples et contre-exemples</button>
 <button class="tab-button" data-onglet="tab5">Complémentaires et supplémentaires</button>
 <button class="tab-button" data-onglet="tab6">Opposés par le sommet</button>
+<button class="tab-button" data-onglet="tab7">Angles d'un triangle</button>
 <button class="tab-button" data-onglet="tab3">Exercices</button>
 <button class="tab-button" data-onglet="tab4">Quiz</button>
 </div>
 
 <main class="content">
 
+<!-- ============ MON CAHIER (cours du professeur) ============ -->
+<section class="tab-content active" id="cahier">
+  <div class="container">
+    <p><strong>Thème :</strong> Configuration du plan<br>
+    <strong>Leçon 3 :</strong> Angles</p>
+
+    <h2>I. Angles adjacents</h2>
+    <h3>1. Définition</h3>
+    <div class="definition-box">
+      <p>Deux angles adjacents sont deux angles qui ont le <strong>même sommet</strong>,
+      un <strong>côté commun</strong>, et qui sont situés <strong>de part et d'autre</strong>
+      de ce côté commun.</p>
+    </div>
+
+    <h3>2. Propriété</h3>
+    <div class="definition-box">
+      <p><span class="a-completer" data-lire-ignore>… (à recopier de ton cahier)</span></p>
+    </div>
+
+    <h3>3. Exemple</h3>
+    <div class="example-box">
+      <p>AÔB et BÔC sont adjacents.<br>
+      mes AÔB + mes BÔC = mes AÔC</p>
+    </div>
+
+    <h2>II. Angles complémentaires et angles supplémentaires</h2>
+    <h3>1. Angles complémentaires</h3>
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>Deux angles sont <strong>complémentaires</strong> lorsque la somme de leurs
+      mesures est égale à <strong>90°</strong>.</p>
+    </div>
+
+    <h3>2. Angles supplémentaires</h3>
+    <div class="definition-box">
+      <h4>📘 Définition</h4>
+      <p>Deux angles sont <strong>supplémentaires</strong> lorsque la somme de leurs
+      mesures est égale à <strong>180°</strong>.</p>
+    </div>
+
+    <h2>III. Angles opposés par le sommet</h2>
+    <h3>1. Définition</h3>
+    <div class="definition-box">
+      <p>Deux angles opposés par le sommet sont deux angles qui ont le <strong>même
+      sommet</strong> et dont les côtés de l'un sont dans le <strong>prolongement</strong>
+      des côtés de l'autre.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Figure : deux droites se coupent en O et forment quatre angles numérotés 1, 2, 3 et 4. Les angles 1 et 2 sont face à face. Les angles 3 et 4 sont face à face.">
+        <g stroke="none"><path d="M160 100 L191.9 88.4 A34 34 0 0 0 171.6 68.1 Z" style="fill:var(--rose);fill-opacity:.18"/><path d="M160 100 L128.1 111.6 A34 34 0 0 0 148.4 131.9 Z" style="fill:var(--rose);fill-opacity:.18"/></g>
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="37.8" y1="144.5" x2="282.2" y2="55.5"/>
+          <line x1="129.2" y1="184.6" x2="190.8" y2="15.4"/>
+        </g>
+        <path d="M191.9 88.4 A34 34 0 0 0 171.6 68.1" fill="none" stroke-width="2.5" style="stroke:var(--rose)"/>
+        <path d="M128.1 111.6 A34 34 0 0 0 148.4 131.9" fill="none" stroke-width="2.5" style="stroke:var(--rose)"/>
+        <path d="M167.5 79.3 A22 22 0 0 0 139.3 107.5" fill="none" stroke-width="2.5" style="stroke:var(--orange-encre)"/>
+        <path d="M152.5 120.7 A22 22 0 0 0 180.7 92.5" fill="none" stroke-width="2.5" style="stroke:var(--orange-encre)"/>
+        <text x="197" y="70" font-size="16" font-weight="700" text-anchor="middle" style="fill:var(--rose)">1</text>
+        <text x="123" y="141" font-size="16" font-weight="700" text-anchor="middle" style="fill:var(--rose)">2</text>
+        <text x="130" y="76" font-size="16" font-weight="700" text-anchor="middle" style="fill:var(--orange-encre)">3</text>
+        <text x="191" y="134" font-size="16" font-weight="700" text-anchor="middle" style="fill:var(--orange-encre)">4</text>
+        <text x="160" y="124" font-size="14" font-weight="700" text-anchor="middle">O</text>
+      </svg>
+      <figcaption>Deux droites se coupent en O : elles forment les angles 1, 2, 3 et 4.</figcaption>
+    </figure>
+
+    <div class="example-box">
+      <p>Les angles 1 et 2 sont opposés par le sommet.<br>
+      Les angles 3 et 4 sont opposés par le sommet.</p>
+    </div>
+
+    <h3>2. Propriété</h3>
+    <div class="definition-box">
+      <p>Deux angles opposés par le sommet ont la <strong>même mesure</strong>.</p>
+      <p>AÔB et EÔF sont opposés par le sommet : mes AÔB = mes EÔF.</p>
+    </div>
+
+    <h2>IV. Somme des mesures des angles d'un triangle</h2>
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p>Dans un triangle, la somme des mesures des trois angles est égale à
+      <strong>180°</strong>.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>La propriété des angles adjacents (I. 2), et les lettres de l'exemple.</li>
+        <li>Les lettres de la propriété du III : AÔB et EÔF ?</li>
+        <li>Les figures du professeur : celle des angles 1, 2, 3, 4 est refaite ici.</li>
+        <li>Le texte écrit après « Compétence ».</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ============ I. ANGLES ADJACENTS ============ -->
-<section class="tab-content active" id="tab1">
+<section class="tab-content" id="tab1">
   <div class="container">
     <p><strong>Thème :</strong> Configuration du plan<br>
     <strong>Leçon 3 :</strong> Angles</p>
@@ -126,8 +226,6 @@
     <div class="important-box" data-hors-chat>
       <h4>✏️ À vérifier dans ton cahier</h4>
       <ul>
-        <li>La phrase exacte de la définition.</li>
-        <li>Le texte écrit après « Compétence ».</li>
         <li>Les figures du professeur.</li>
       </ul>
     </div>
@@ -246,7 +344,7 @@
 <!-- ============ COMPLÉMENTAIRES ET SUPPLÉMENTAIRES ============ -->
 <section class="tab-content" id="tab5">
   <div class="container">
-    <h2>Angles complémentaires et angles supplémentaires</h2>
+    <h2>II. Angles complémentaires et angles supplémentaires</h2>
 
     <h3>1. Angles complémentaires</h3>
     <div class="definition-box">
@@ -326,8 +424,6 @@
     <div class="important-box" data-hors-chat>
       <h4>✏️ À vérifier dans ton cahier</h4>
       <ul>
-        <li>La phrase exacte des deux définitions.</li>
-        <li>Le numéro de ces deux parties.</li>
         <li>Les figures du professeur.</li>
       </ul>
     </div>
@@ -337,7 +433,7 @@
 <!-- ============ OPPOSÉS PAR LE SOMMET ============ -->
 <section class="tab-content" id="tab6">
   <div class="container">
-    <h2>Angles opposés par le sommet</h2>
+    <h2>III. Angles opposés par le sommet</h2>
 
     <h3>1. Définition</h3>
     <div class="definition-box">
@@ -387,8 +483,65 @@
     <div class="important-box" data-hors-chat>
       <h4>✏️ À vérifier dans ton cahier</h4>
       <ul>
-        <li>La phrase exacte de la définition et de la propriété.</li>
-        <li>Le numéro de cette partie, et la figure du professeur.</li>
+        <li>La figure du professeur.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IV. ANGLES D'UN TRIANGLE ============ -->
+<section class="tab-content" id="tab7">
+  <div class="container">
+    <h2>IV. Somme des mesures des angles d'un triangle</h2>
+
+    <div class="definition-box">
+      <h4>📘 Propriété</h4>
+      <p>Dans un triangle, la somme des mesures des trois angles est égale à
+      <strong>180°</strong>.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Figure : le triangle ABC. L'angle en A mesure 60 degrés, l'angle en B mesure 40 degrés, l'angle en C mesure 80 degrés.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M50 170 L290 170 L128.3 34.3 Z"/></g>
+        <path d="M78 170 A28 28 0 0 0 64 145.8" fill="none" stroke-width="2.5" style="stroke:var(--rose)"/>
+        <path d="M262 170 A28 28 0 0 1 268.6 152" fill="none" stroke-width="2.5" style="stroke:var(--orange-encre)"/>
+        <path d="M114.3 58.6 A28 28 0 0 0 149.8 52.3" fill="none" stroke-width="2.5" style="stroke:var(--l5-rose)"/>
+        <text x="36" y="186" font-size="16" font-weight="700" text-anchor="middle">A</text>
+        <text x="304" y="186" font-size="16" font-weight="700" text-anchor="middle">B</text>
+        <text x="128" y="24" font-size="16" font-weight="700" text-anchor="middle">C</text>
+        <text x="92" y="160" font-size="14" font-weight="700" text-anchor="middle" style="fill:var(--rose)">60°</text>
+        <text x="238" y="160" font-size="14" font-weight="700" text-anchor="middle" style="fill:var(--orange-encre)">40°</text>
+        <text x="137" y="86" font-size="14" font-weight="700" text-anchor="middle" style="fill:var(--l5-rose)">80°</text>
+      </svg>
+      <figcaption>Dans le triangle ABC : 60° + 40° + 80° = <strong>180°</strong>.</figcaption>
+    </figure>
+
+    <h3>Trouver le troisième angle</h3>
+    <p>Tu connais deux angles d'un triangle. Pour trouver le troisième :</p>
+    <ol>
+      <li>Additionne les deux angles connus.</li>
+      <li>Enlève cette somme de 180°.</li>
+    </ol>
+
+    <div class="example-box">
+      <h4>✍️ Exemple</h4>
+      <p>Dans le triangle EFG, l'angle Ê mesure 50° et l'angle F̂ mesure 70°.</p>
+      <ul>
+        <li>50° + 70° = 120°</li>
+        <li>180° − 120° = <strong>60°</strong> : l'angle Ĝ mesure 60°.</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <h4>🐴 Les trois coins du triangle</h4>
+      <p>Découpe les trois coins d'un triangle en papier. Pose-les côte à côte : ils
+      forment un angle plat, donc 180°.</p>
+    </div>
+
+    <div class="important-box" data-hors-chat>
+      <h4>✏️ À vérifier dans ton cahier</h4>
+      <ul>
+        <li>La figure et l'exemple du professeur pour cette partie.</li>
       </ul>
     </div>
   </div>
@@ -635,6 +788,79 @@
         </ol>
       </details>
     </div>
+    <div class="exercice">
+      <h3>Exercice 8 — Le troisième angle</h3>
+      <p class="consigne">Dans le triangle ABC, l'angle Â mesure 60° et l'angle B̂
+      mesure 40°.</p>
+      <figure class="schema">
+        <svg viewBox="0 0 320 200" role="img" aria-label="Figure : le triangle ABC. L'angle en A mesure 60 degrés, l'angle en B mesure 40 degrés. L'angle en C est marqué d'un point d'interrogation.">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M50 170 L290 170 L128.3 34.3 Z"/></g>
+        <path d="M78 170 A28 28 0 0 0 64 145.8" fill="none" stroke-width="2.5" style="stroke:var(--rose)"/>
+        <path d="M262 170 A28 28 0 0 1 268.6 152" fill="none" stroke-width="2.5" style="stroke:var(--orange-encre)"/>
+        <path d="M114.3 58.6 A28 28 0 0 0 149.8 52.3" fill="none" stroke-width="2.5" style="stroke:var(--l5-rose)"/>
+        <text x="36" y="186" font-size="16" font-weight="700" text-anchor="middle">A</text>
+        <text x="304" y="186" font-size="16" font-weight="700" text-anchor="middle">B</text>
+        <text x="128" y="24" font-size="16" font-weight="700" text-anchor="middle">C</text>
+        <text x="92" y="160" font-size="14" font-weight="700" text-anchor="middle" style="fill:var(--rose)">60°</text>
+        <text x="238" y="160" font-size="14" font-weight="700" text-anchor="middle" style="fill:var(--orange-encre)">40°</text>
+        <text x="137" y="86" font-size="14" font-weight="700" text-anchor="middle" style="fill:var(--l5-rose)">?</text>
+      </svg>
+        <figcaption>Le triangle ABC : trouve l'angle Ĉ.</figcaption>
+      </figure>
+      <ol>
+        <li>Écris la propriété que tu utilises.</li>
+        <li>Calcule la mesure de l'angle Ĉ.</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>Dans un triangle, la somme des mesures des trois angles est égale à 180°.</li>
+          <li>60° + 40° = 100°. Puis 180° − 100° = <strong>80°</strong>. L'angle Ĉ mesure
+              80°.</li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 9 — Calcule l'angle qui manque</h3>
+      <p class="consigne">Deux angles d'un triangle sont donnés. Calcule le troisième.</p>
+      <ol>
+        <li>50° et 60°</li>
+        <li>90° et 35°</li>
+        <li>40° et 40°</li>
+        <li>110° et 25°</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li>50° + 60° = 110°. 180° − 110° = <strong>70°</strong></li>
+          <li>90° + 35° = 125°. 180° − 125° = <strong>55°</strong></li>
+          <li>40° + 40° = 80°. 180° − 80° = <strong>100°</strong></li>
+          <li>110° + 25° = 135°. 180° − 135° = <strong>45°</strong></li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="exercice">
+      <h3>Exercice 10 — Un vrai triangle ?</h3>
+      <p class="consigne">Awa donne les trois angles de ses triangles. Dis si chaque
+      triangle peut exister.</p>
+      <ol>
+        <li>70°, 60° et 50°</li>
+        <li>90°, 45° et 45°</li>
+        <li>80°, 70° et 40°</li>
+        <li>60°, 60° et 60°</li>
+      </ol>
+      <details>
+        <summary>Voir la correction</summary>
+        <ol>
+          <li><strong>Oui</strong> : 70° + 60° + 50° = 180°.</li>
+          <li><strong>Oui</strong> : 90° + 45° + 45° = 180°.</li>
+          <li><strong>Non</strong> : 80° + 70° + 40° = 190°. La somme doit être 180°.</li>
+          <li><strong>Oui</strong> : 60° + 60° + 60° = 180°.</li>
+        </ol>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -642,7 +868,7 @@
 <section class="tab-content" id="tab4">
   <div class="container">
     <h2>🎯 Teste-toi</h2>
-    <p>Les angles adjacents, complémentaires, supplémentaires et opposés par le sommet.</p>
+    <p>Les angles adjacents, complémentaires, supplémentaires, opposés par le sommet, et les angles d'un triangle.</p>
     <div id="quiz-angles"></div>
   </div>
 </section>

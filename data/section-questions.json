@@ -1811,6 +1811,50 @@
         ],
         "correctAnswer": 1,
         "explanation": "De gauche à droite sur la droite graduée : −7, puis −3, puis 0, puis +2."
+      },
+      {
+        "question": "Comment note-t-on l'ensemble des nombres décimaux relatifs ?",
+        "options": [
+          "ℕ",
+          "𝔻",
+          "ℝ",
+          "ℤ"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'ensemble des nombres décimaux relatifs se note 𝔻."
+      },
+      {
+        "question": "Que veut dire 𝔻⁻ ?",
+        "options": [
+          "Les nombres décimaux relatifs positifs",
+          "Tous les nombres décimaux relatifs",
+          "Les nombres décimaux relatifs négatifs",
+          "Le nombre zéro"
+        ],
+        "correctAnswer": 2,
+        "explanation": "𝔻⁻ est l'ensemble des nombres décimaux relatifs négatifs."
+      },
+      {
+        "question": "Quelle écriture est juste ?",
+        "options": [
+          "−8 ∈ 𝔻⁺",
+          "+8 ∈ 𝔻⁻",
+          "−8 ∈ 𝔻⁻",
+          "+8 ∉ 𝔻"
+        ],
+        "correctAnswer": 2,
+        "explanation": "−8 est négatif : il appartient à 𝔻⁻."
+      },
+      {
+        "question": "Le nombre 0 appartient à…",
+        "options": [
+          "𝔻⁺ seulement",
+          "𝔻⁻ seulement",
+          "𝔻⁺ et 𝔻⁻",
+          "aucun des deux"
+        ],
+        "correctAnswer": 2,
+        "explanation": "0 est à la fois positif et négatif : 0 ∈ 𝔻⁺ et 0 ∈ 𝔻⁻."
       }
     ]
   },
@@ -6430,6 +6474,61 @@
         ],
         "correctAnswer": 1,
         "explanation": "Deux angles opposés par le sommet ont la même mesure : 70°."
+      },
+      {
+        "question": "Dans un triangle, la somme des mesures des trois angles est égale à…",
+        "options": [
+          "90°",
+          "180°",
+          "270°",
+          "360°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Propriété : dans un triangle, la somme des mesures des trois angles est égale à 180°."
+      },
+      {
+        "question": "Dans un triangle, deux angles mesurent 60° et 40°. Combien mesure le troisième ?",
+        "options": [
+          "100°",
+          "90°",
+          "80°",
+          "20°"
+        ],
+        "correctAnswer": 2,
+        "explanation": "60° + 40° = 100°. Puis 180° − 100° = 80°."
+      },
+      {
+        "question": "Un triangle a un angle droit et un angle de 30°. Combien mesure le troisième angle ?",
+        "options": [
+          "30°",
+          "60°",
+          "90°",
+          "150°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "90° + 30° = 120°. Puis 180° − 120° = 60°."
+      },
+      {
+        "question": "Un triangle peut-il avoir trois angles de 70°, 60° et 60° ?",
+        "options": [
+          "Oui, la somme fait 180°",
+          "Non, la somme fait 190°",
+          "Oui, tous les triangles existent",
+          "Non, la somme fait 170°"
+        ],
+        "correctAnswer": 1,
+        "explanation": "70° + 60° + 60° = 190°. La somme doit être égale à 180°."
+      },
+      {
+        "question": "AÔB et BÔC sont adjacents. AÔB mesure 30° et BÔC mesure 45°. Combien mesure AÔC ?",
+        "options": [
+          "15°",
+          "45°",
+          "75°",
+          "90°"
+        ],
+        "correctAnswer": 2,
+        "explanation": "mes AÔB + mes BÔC = mes AÔC : 30° + 45° = 75°."
       }
     ]
   },
@@ -6632,6 +6731,17 @@
         ],
         "correctAnswer": 1,
         "explanation": "La pile plate contient 3 piles rondes identiques, reliées par des fils électriques, en série concordance."
+      },
+      {
+        "question": "Dans le montage avec deux piles en concordance, comment brille la lampe ?",
+        "options": [
+          "Elle s'éteint",
+          "Faiblement",
+          "Avec plus d'éclat qu'avec une pile",
+          "Elle grille toujours"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Avec une pile, la lampe brille faiblement. Avec deux piles, elle brille avec plus d'éclat."
       }
     ]
   },
