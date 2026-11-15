@@ -364,6 +364,11 @@
         function lancer() {
             var questions = tirer(lecons, m.nouvelle, erreursPrecedentes());
             if (!questions.length) { erreur('Pas encore de questions pour cette matière. 🐴'); return; }
+            // La notion de chaque question : sa leçon. Elle sert à l'aide-mémoire du quiz.
+            questions.forEach(function (q) {
+                var titre = q.lecon ? titreLecon(m, q.lecon) : '';
+                if (titre && !q.indice) { q.indice = 'Pense à la leçon « ' + titre + ' ».'; }
+            });
             zone.textContent = '';
             var conteneur = el('div', 'interro-quiz');
             conteneur.id = 'interro-quiz';

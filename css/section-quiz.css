@@ -590,3 +590,35 @@ body.quiz-en-cours #kc-invite { display: none; }
     width: 20px; height: 20px; border: 2px solid currentColor; border-radius: 50%;
     font-family: Georgia, 'Times New Roman', serif; font-size: 13px; font-style: italic; line-height: 1;
 }
+
+/* L'aide-mémoire après 8 secondes sans réponse. */
+.quiz-aide-memoire {
+    display: flex; align-items: flex-start; gap: 8px; margin: 0 0 12px; padding: 8px 12px;
+    border-radius: 12px; background: var(--boite-exemple); color: var(--boite-exemple-texte);
+    font-size: 15px; animation: quiz-apparait .35s var(--ease-out, ease) both;
+}
+.quiz-aide-memoire .aide-i {
+    flex: none; display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; margin-top: 1px; border: 2px solid currentColor; border-radius: 50%;
+    font-family: Georgia, 'Times New Roman', serif; font-size: 13px; font-style: italic; font-weight: 700; line-height: 1;
+}
+
+/* La correction à lire : son cadre bat tant que le minuteur tourne. */
+.quiz-retour.a-lire { animation: quiz-a-lire 1.2s ease-in-out infinite; }
+@keyframes quiz-a-lire {
+    0%, 100% { box-shadow: 0 0 0 0 var(--surligne); }
+    50% { box-shadow: 0 0 0 8px var(--surligne); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .quiz-retour.a-lire { animation: none; box-shadow: 0 0 0 6px var(--surligne); }
+}
+
+/* Fin du quiz : les points que Karniella n'a pas trouvés. */
+.quiz-points-revoir { margin: 16px 0; padding: 14px 16px; border: 3px solid var(--erreur-bord); border-radius: 18px; background: var(--erreur-fond); text-align: left; }
+.quiz-points-revoir h5 { margin: 0 0 10px; font-family: var(--police-titre, inherit); font-size: 1.1rem; color: var(--erreur-texte); }
+.quiz-points-revoir ol { margin: 0; padding-left: 22px; }
+.quiz-points-revoir li { margin-bottom: 12px; }
+.quiz-points-revoir p { margin: 0 0 4px; }
+.quiz-point-question { font-weight: 800; }
+.quiz-point-explication { color: var(--doux); }
+.quiz-points-suite { margin: 10px 0 0; font-weight: 800; }

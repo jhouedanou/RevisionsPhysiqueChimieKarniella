@@ -614,9 +614,18 @@ retirée s'il y a 4 choix ou plus, un indice nomme la partie de la leçon, et
 Karniella réessaie une fois. La question compte comme une erreur
 (`deuxiemeChance: false` dans les options pour s'en passer). **Lecture
 imposée** : après chaque réponse, juste ou fausse, « Question suivante » reste
-désactivé. Un minuteur de 20 secondes tourne, puis le bouton « J'ai compris »
-apparaît et débloque la suite ; le chrono s'arrête pendant ce temps
-(`lecture: 10` pour une autre durée, `lecture: false` pour s'en passer).
+désactivé. La correction est mise en avant, un minuteur de 10 secondes tourne,
+puis le bouton « J'ai compris » débloque la suite ; le chrono s'arrête pendant
+ce temps (`lecture: 20` pour une autre durée, `lecture: false` pour s'en passer).
+
+**Aide-mémoire après 8 secondes** : sans réponse au bout de 8 secondes, un
+aide-mémoire apparaît sous la question avec sa notion (`aide: false` pour s'en
+passer). La notion vient du champ `notion` de la question
+(`python3 scripts/poser-notions.py` le pose : le nom de l'onglet de la leçon),
+de l'étape de la mission (`js/mission.js`) ou de la leçon pour une interro
+(`js/interro.js`). **Fin du quiz** : les points manqués sont redonnés avec leur
+notion, et le seul bouton est « Refaire ces questions » ; la leçon ne se rouvre
+qu'après cette révision (`refaire: false` pour s'en passer).
 
 - **Réviser mes erreurs** : les questions ratées sont gardées
   (`KarniellaProgression.noterErreurs` / `erreurs`) ; le bouton les repose seules.

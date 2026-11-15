@@ -613,6 +613,7 @@ class SectionQuiz {
             this.debut = Date.now();
             this.tic = window.setInterval(() => this.majChrono(), 250);
             this.majChrono();
+            this.armerAide();   // les 8 secondes partent quand la question est à l'écran
         };
         this.majChrono();
         if (!this.container || !('IntersectionObserver' in window)) { partir(); return; }
@@ -660,6 +661,8 @@ class SectionQuiz {
      */
     indice(q) {
         if (q.indice) { return q.indice; }
+        // `notion` : le nom de la partie de la leçon (scripts/poser-notions.py).
+        if (q.notion) { return 'Pense à la partie « ' + q.notion + ' » de ta leçon.'; }
         const enonce = texteBrut(q.question);
         const blocs = document.querySelectorAll('.exemple-exo');
         for (let i = 0; i < blocs.length; i++) {
@@ -670,6 +673,28 @@ class SectionQuiz {
             if (nom) { return 'Pense à la partie « ' + nom + ' » de ta leçon.'; }
         }
         return null;
+    }
+
+    /**
+     * Karniella met plus de 8 secondes à répondre : un aide-mémoire apparaît
+     * sous la question, avec la notion, pour l'aider à réfléchir. Jamais la
+     * réponse. Le délai ne court que quand le quiz est à l'écran.
+     */
+    armerAide() {
+        window.clearTimeout(this.minuteurAide);
+        if (!this.debut || this.valide || this.options.aide === false) { return; }
+        const question = this.elScene.querySelector('.quiz-question');
+        if (!question || question.querySelector('.quiz-aide-memoire')) { return; }
+        this.minuteurAide = window.setTimeout(() => {
+            if (this.valide || !question.isConnected || question.querySelector('.quiz-aide-memoire')) { return; }
+            const indice = this.indice(this.questionCourante());
+            const aide = document.createElement('p');
+            aide.className = 'quiz-aide-memoire';
+            aide.setAttribute('role', 'status');
+            aide.innerHTML = `<span class="aide-i" aria-hidden="true">i</span><span><strong>Aide-mémoire :</strong> ${echapperHTML(indice || 'Relis bien la question, puis écarte les réponses impossibles.')} Prends ton temps.</span>`;
+            const enonce = question.querySelector('.question-text');
+            enonce.insertAdjacentElement('afterend', aide);
+        }, typeof this.options.aide === 'number' ? this.options.aide : 8000);
     }
 
     /**
@@ -787,6 +812,7 @@ class SectionQuiz {
         if (window.LectureVocale) { window.LectureVocale.equiper(this.elScene); }
         const premier = this.elScene.querySelector('.quiz-radio, .quiz-champ');
         if (premier && this.index > 0) { premier.focus({ preventScroll: true }); }
+        this.armerAide();
     }
 
     /** Une réponse choisie, pas encore validée. */
@@ -905,6 +931,7 @@ class SectionQuiz {
             }
         }
         this.valide = true;
+        window.clearTimeout(this.minuteurAide);
         // Trouvée à la deuxième chance : bravo, mais elle compte comme une erreur à revoir.
         const rattrapee = juste && this.premierChoix !== null;
         if (this.premierChoix !== null) { juste = false; }
@@ -988,19 +1015,22 @@ class SectionQuiz {
             bouton.focus({ preventScroll: true });
             if (aide) { aide.textContent = 'Entrée pour continuer.'; }
         };
-        if (this.options.lecture === false) { liberer(); } else { this.imposerLecture(bouton, aide, libelle, liberer); }
+        if (this.options.lecture === false) { liberer(); } else { this.imposerLecture(bouton, aide, libelle, liberer, zone); }
         this.montrerBas(zone);
     }
 
     /**
      * Après chaque réponse, juste ou fausse, Karniella lit la réponse avant de
-     * continuer. « Question suivante » reste désactivé pendant 20 secondes
-     * (`lecture: 10` dans les options pour une autre durée). Puis le bouton
+     * continuer. « Question suivante » reste désactivé pendant 10 secondes
+     * (`lecture: 20` dans les options pour une autre durée). La correction est
+     * mise en avant : elle vient à l'écran, son cadre bat. Puis le bouton
      * « J'ai compris » apparaît : c'est lui qui débloque la suite. Le chrono
      * s'arrête pendant tout ce temps.
      */
-    imposerLecture(bouton, aide, libelle, liberer) {
-        let reste = typeof this.options.lecture === 'number' ? this.options.lecture : 20;
+    imposerLecture(bouton, aide, libelle, liberer, zone) {
+        let reste = typeof this.options.lecture === 'number' ? this.options.lecture : 10;
+        const retour = zone && zone.querySelector('.quiz-retour');
+        if (retour) { retour.classList.add('a-lire'); }
         this.enLecture = true;
         this.dejaPasse = this.secondes();   // le chrono s'arrête
         this.debut = null;
@@ -1009,7 +1039,7 @@ class SectionQuiz {
         const minuteur = document.createElement('p');
         minuteur.className = 'quiz-lecture';
         minuteur.setAttribute('role', 'timer');
-        const afficher = () => { minuteur.textContent = '📖 Lis bien la réponse… ' + reste + ' s'; };
+        const afficher = () => { minuteur.textContent = '👆 Lis bien la correction, juste au-dessus… ' + reste + ' s'; };
         afficher();
         bouton.parentNode.insertBefore(minuteur, bouton);
         if (aide) { aide.textContent = 'Le bouton « J’ai compris » arrive à la fin du minuteur.'; }
@@ -1025,6 +1055,7 @@ class SectionQuiz {
             compris.textContent = 'J’ai compris';
             compris.addEventListener('click', () => {
                 compris.remove();
+                if (retour) { retour.classList.remove('a-lire'); }
                 this.finirLecture();
                 liberer();
             });
@@ -1079,8 +1110,8 @@ class SectionQuiz {
 
     terminer() {
         this.finirLecture();
+        window.clearTimeout(this.minuteurAide);
         window.clearInterval(this.tic);
-        this.verrouiller(false);
         if (this.options.reprise !== false) { effacerEnCours(this.slug); }
         const J = window.KarniellaJeu;
         const XP = window.KarniellaXP;
@@ -1142,6 +1173,24 @@ class SectionQuiz {
         const boutique = window.KarniellaCoquille ? window.KarniellaCoquille.racine + 'boutique.html' : null;
         const nbRatees = ratees.length;
         const peutReviser = nbRatees > 0 && P && P.erreurs;
+        // Des erreurs au quiz : Karniella les refait tout de suite. La leçon reste
+        // fermée jusqu'à la fin de cette révision (ou « Quitter le quiz »).
+        const aRefaire = peutReviser && !this.revision && this.options.refaire !== false;
+        if (!aRefaire) { this.verrouiller(false); }
+        const langue = (q) => attributLangue(q.optionsLangue || q.langue);
+        const points = !nbRatees ? '' : `
+            <div class="quiz-points-revoir">
+                <h5>📌 ${nbRatees > 1 ? `Les ${nbRatees} points que tu n’as pas trouvés` : 'Le point que tu n’as pas trouvé'}</h5>
+                <ol>${jouees.map((q, k) => (this.reponses[k] ? '' : `
+                    <li>
+                        <p class="quiz-point-question"${attributLangue(q.langue)}>${q.question}</p>
+                        <p>${typeQuestion(q) === 'cours' ? 'Réponse du cours' : 'Bonne réponse'} : <strong${langue(q)}>${texteBonne(q)}</strong></p>
+                        ${q.explanation ? `<p class="quiz-point-explication">${q.explanation}</p>` : ''}
+                        ${q.notion ? `<p class="quiz-indice"><span class="aide-i" aria-hidden="true">i</span><span>Notion à revoir : « ${echapperHTML(q.notion)} »</span></p>` : (this.indice(q) ? `<p class="quiz-indice"><span class="aide-i" aria-hidden="true">i</span><span>${echapperHTML(this.indice(q))}</span></p>` : '')}
+                    </li>`)).join('')}
+                </ol>
+                ${aRefaire ? `<p class="quiz-points-suite">Lis bien ces ${nbRatees > 1 ? 'points' : 'lignes'}, puis refais ${nbRatees > 1 ? 'ces questions' : 'cette question'}.</p>` : ''}
+            </div>`;
 
         // Les pastilles du haut reviennent dans le résultat.
         this.elFantome.hidden = true;
@@ -1159,13 +1208,14 @@ class SectionQuiz {
                 </div>
                 ${fantome ? `<p class="quiz-fin-fantome">${quizIcone('fantome', 20)} ${fantome}</p>` : ''}
                 ${gains.length ? `<ul class="quiz-gains" role="list">${gains.map((g) => `<li class="quiz-gain">${g}</li>`).join('')}</ul>` : ''}
+                ${points}
                 <div class="quiz-depart-boutons">
-                    ${peutReviser ? `<button type="button" class="btn btn-energie quiz-reviser">${quizIcone('rejouer', 20)}Réviser ${nbRatees > 1 ? `mes ${nbRatees} erreurs` : 'mon erreur'}</button>` : ''}
-                    <button type="button" class="btn${peutReviser ? ' btn-ghost' : ''} quiz-rejouer">${quizIcone('rejouer', 20)}${this.revision ? 'Refaire tout le quiz' : 'Rejouer'}</button>
-                    ${boutique && xp ? `<a class="btn btn-ghost" href="${boutique}">${quizIcone('trophee', 20)}Boutique</a>` : ''}
+                    ${peutReviser ? `<button type="button" class="btn btn-energie quiz-reviser">${quizIcone('rejouer', 20)}${aRefaire ? `Refaire ${nbRatees > 1 ? `ces ${nbRatees} questions` : 'cette question'}` : `Réviser ${nbRatees > 1 ? `mes ${nbRatees} erreurs` : 'mon erreur'}`}</button>` : ''}
+                    ${aRefaire ? '' : `<button type="button" class="btn${peutReviser ? ' btn-ghost' : ''} quiz-rejouer">${quizIcone('rejouer', 20)}${this.revision ? 'Refaire tout le quiz' : 'Rejouer'}</button>`}
+                    ${boutique && xp && !aRefaire ? `<a class="btn btn-ghost" href="${boutique}">${quizIcone('trophee', 20)}Boutique</a>` : ''}
                 </div>
             </div>
-            <details class="quiz-correction"${nbRatees ? ' open' : ''}>
+            <details class="quiz-correction">
                 <summary>Voir la correction</summary>
                 ${recapitulatifHTML(jouees, this.choix, { titre: false, reponses: this.reponses })}
             </details>`;
@@ -1191,10 +1241,13 @@ class SectionQuiz {
                 if (liste.length) { this.lancer({ revision: liste }); this.remonter(); }
             });
         }
-        this.elScene.querySelector('.quiz-rejouer').addEventListener('click', () => {
-            this.rendreEtapes();
-            this.remonter();
-        });
+        const rejouer = this.elScene.querySelector('.quiz-rejouer');
+        if (rejouer) {
+            rejouer.addEventListener('click', () => {
+                this.rendreEtapes();
+                this.remonter();
+            });
+        }
         const titreFin = this.elScene.querySelector('.guide-titre, .quiz-fin-guide strong');
         if (titreFin) {
             titreFin.setAttribute('tabindex', '-1');

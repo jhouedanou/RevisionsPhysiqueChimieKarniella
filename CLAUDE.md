@@ -51,8 +51,18 @@ est dans la section « Écrire simple » ci-dessous.
   de l'exemple qui reprend la question ; sinon, on peut l'écrire dans la
   question : `"indice": "Pense à la partie « 2. En dérivation »."`. Jamais la
   réponse dans l'indice. Après chaque réponse, juste ou fausse, « Question
-  suivante » reste désactivé : un minuteur de 20 secondes tourne, puis le
-  bouton « J'ai compris » apparaît et débloque la suite. Ne pas le raccourcir.
+  suivante » reste désactivé : la correction est mise en avant, un minuteur de
+  10 secondes tourne, puis le bouton « J'ai compris » débloque la suite.
+- **Aide-mémoire après 8 secondes** (demandé le 15/11) : si Karniella met plus
+  de 8 secondes à répondre, un aide-mémoire apparaît sous la question avec la
+  notion, pour la pousser à réfléchir. Pareil dans les missions (l'étape de la
+  mission) et les interros (la leçon). La notion d'une question de leçon est
+  le champ `"notion"` : après avoir écrit les questions, lancer
+  `python3 scripts/poser-notions.py` (il trouve l'onglet ; `"notionFixe": true`
+  garde une notion écrite à la main).
+- **Fin du quiz** (demandé le 15/11) : les points qu'elle n'a pas trouvés sont
+  redonnés (question, bonne réponse, explication, notion à revoir), et elle
+  refait tout de suite ces questions. La leçon reste fermée jusque-là.
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
 - Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
   manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)

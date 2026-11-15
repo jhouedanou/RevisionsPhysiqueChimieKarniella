@@ -109,8 +109,23 @@
 
         window.setTimeout(function () {
             if (!window.initSectionQuiz) { conteneur.textContent = 'Le quiz n\'a pas pu se charger.'; return; }
+            // La notion de chaque question : l'étape de la mission qui lui ressemble le
+            // plus (les mêmes mots). Elle sert à l'aide-mémoire du quiz.
+            function motsDe(texte) {
+                return String(texte).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').match(/[a-z0-9]{4,}/g) || [];
+            }
+            var blocs = mission.micro_learning_blocks.map(function (b) { return { titre: b.titre, mots: motsDe(b.titre + ' ' + b.contenu) }; });
             var questions = mission.quiz.map(function (q) {
-                return { question: q.question, options: q.options, correctAnswer: q.correct_answer_index, explanation: q.explanation };
+                var cherche = motsDe(q.question + ' ' + q.options[q.correct_answer_index] + ' ' + (q.explanation || ''));
+                var meilleur = null, score = 0;
+                blocs.forEach(function (b) {
+                    var s = cherche.filter(function (m) { return b.mots.indexOf(m) >= 0; }).length;
+                    if (s > score) { score = s; meilleur = b; }
+                });
+                return {
+                    question: q.question, options: q.options, correctAnswer: q.correct_answer_index, explanation: q.explanation,
+                    indice: meilleur ? 'Pense à l\'étape « ' + meilleur.titre + ' » de ta mission.' : null
+                };
             });
             window.initSectionQuiz('mission-quiz', questions, {
                 etapes: true,
