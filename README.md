@@ -276,8 +276,10 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
 - `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
   À mettre sur les notes qui s'adressent à Karniella (« à compléter depuis ton
   cahier »), pas sur le contenu du cours.
-- `<p class="aide-memoire">` : sous le titre d'un exercice, l'icône i et la
-  partie du cours à revoir, avec un lien vers l'onglet.
+- `<p class="aide-memoire">` : sous le titre d'un exercice, l'icône i et un
+  lien `#exemple-N` vers un exemple résolu du cours
+  (`<div class="example-box exemple-exo" id="exemple-N">`, inspiré du quiz).
+  Le lien ouvre l'onglet et fait briller l'exemple.
 - `<span class="deduit">…</span>` : passage complété par logique (pointillé), à
   vérifier dans le cahier. Il remplace les anciens trous `a-completer`.
 - `<div class="schema-interactif" data-schema="montage" data-piles="…" …>` :

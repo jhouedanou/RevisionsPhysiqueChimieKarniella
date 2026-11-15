@@ -963,6 +963,11 @@ html.cartes-ouvertes { overflow: hidden; }
 
 .exercice h3 { margin-top: 0; }
 
+/* Exemples résolus pour les exercices : les aide-mémoire y mènent. */
+.exemples-titre { margin-top: 28px; }
+.exemple-exo { scroll-margin-top: 120px; }
+.exemple-exo p { margin: 0 0 6px; }
+
 /* Aide-mémoire d'un exercice : l'icône i et la partie du cours à revoir. */
 .aide-memoire {
     display: flex;

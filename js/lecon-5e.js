@@ -1115,10 +1115,35 @@
     /**
      * Lit `#onglet=tab3&notion=Mélange homogène` (ou un simple `#tab3`) :
      * ouvre l'onglet, fait défiler jusqu'à la notion et la fait briller.
+     * `#exemple-4` (l'id d'un bloc dans un onglet, comme l'exemple visé par
+     * l'aide-mémoire d'un exercice) : ouvre son onglet et montre le bloc.
      */
+    function montrerBloc(bloc) {
+        // Laisser l'onglet s'afficher avant de mesurer sa position.
+        window.requestAnimationFrame(function () {
+            var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            bloc.scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block: 'center' });
+            bloc.classList.remove('notion-ciblee');
+            void bloc.offsetWidth;   // relance l'animation si on revient sur le même bloc
+            bloc.classList.add('notion-ciblee');
+            window.setTimeout(function () { bloc.classList.remove('notion-ciblee'); }, 2600);
+        });
+    }
+
     function suivreAncre() {
         var ancre = window.location.hash.slice(1);
         if (!ancre) { return; }
+
+        if (ancre.indexOf('=') === -1) {
+            var cible = null;
+            try { cible = document.getElementById(decodeURIComponent(ancre)); } catch (err) { /* ancre mal écrite */ }
+            var section = cible && !cible.classList.contains('tab-content') ? cible.closest('.tab-content') : null;
+            if (section) {
+                ouvrirOnglet(section.id, document.querySelector('.tab-button[data-onglet="' + section.id + '"]'));
+                montrerBloc(cible);
+                return;
+            }
+        }
 
         var onglet = null;
         var notion = null;
@@ -1143,17 +1168,7 @@
 
         var element = trouverNotion(contenu || document.querySelector('main') || document.body, notion);
         if (!element) { return; }
-        var bloc = element.closest('tr') || element;
-
-        // Laisser l'onglet s'afficher avant de mesurer sa position.
-        window.requestAnimationFrame(function () {
-            var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            bloc.scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block: 'center' });
-            bloc.classList.remove('notion-ciblee');
-            void bloc.offsetWidth;   // relance l'animation si on revient sur la même notion
-            bloc.classList.add('notion-ciblee');
-            window.setTimeout(function () { bloc.classList.remove('notion-ciblee'); }, 2600);
-        });
+        montrerBloc(element.closest('tr') || element);
     }
 
     if (document.readyState === 'loading') {
