@@ -575,6 +575,11 @@
 
     /** Ouvre la fenêtre, éventuellement déjà remplie avec `terme`. */
     function ouvrir(terme) {
+        // Pendant le quiz d'une leçon, on ne cherche pas la réponse ailleurs.
+        if (document.body.classList.contains('quiz-en-cours')) {
+            document.dispatchEvent(new CustomEvent('karniella:lecon-fermee'));
+            return;
+        }
         construire();
         dernierFocus = document.activeElement;
         elVoile.hidden = false;
@@ -626,6 +631,11 @@
         var balise = (cible.tagName || '').toLowerCase();
         return balise === 'input' || balise === 'textarea' || balise === 'select' || cible.isContentEditable;
     }
+
+    // Le quiz commence : la recherche se ferme.
+    document.addEventListener('karniella:quiz-verrou', function (e) {
+        if (e.detail && e.detail.ferme) { fermer(false); }
+    });
 
     function brancherRaccourcis() {
         document.addEventListener('keydown', function (e) {

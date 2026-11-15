@@ -42,6 +42,27 @@ est dans la section « Écrire simple » ci-dessous.
       </div>
 
   Le lien `#exemple-4` ouvre l'onglet et montre l'exemple (`js/lecon-5e.js`).
+- **Le quiz** (demandé le 15/11, `js/section-quiz.js`) : pendant le quiz, la
+  leçon est fermée (les autres onglets ne s'ouvrent plus), le chat et la
+  recherche aussi ; « Quitter le quiz » les rouvre et garde l'avancement. À la première erreur sur un QCM,
+  Karniella a une **deuxième chance** : sa réponse est barrée, une autre
+  mauvaise réponse est retirée (4 choix ou plus), et un indice nomme la partie
+  de la leçon. La question compte quand même comme une erreur. L'indice vient
+  de l'exemple qui reprend la question ; sinon, on peut l'écrire dans la
+  question : `"indice": "Pense à la partie « 2. En dérivation »."`. Jamais la
+  réponse dans l'indice. Après chaque réponse, juste ou fausse, « Question
+  suivante » reste désactivé : la correction est mise en avant, un minuteur de
+  10 secondes tourne, puis le bouton « J'ai compris » débloque la suite.
+- **Aide-mémoire après 8 secondes** (demandé le 15/11) : si Karniella met plus
+  de 8 secondes à répondre, un aide-mémoire apparaît sous la question avec la
+  notion, pour la pousser à réfléchir. Pareil dans les missions (l'étape de la
+  mission) et les interros (la leçon). La notion d'une question de leçon est
+  le champ `"notion"` : après avoir écrit les questions, lancer
+  `python3 scripts/poser-notions.py` (il trouve l'onglet ; `"notionFixe": true`
+  garde une notion écrite à la main).
+- **Fin du quiz** (demandé le 15/11) : les points qu'elle n'a pas trouvés sont
+  redonnés (question, bonne réponse, explication, notion à revoir), et elle
+  refait tout de suite ces questions. La leçon reste fermée jusque-là.
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
 - Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
   manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)

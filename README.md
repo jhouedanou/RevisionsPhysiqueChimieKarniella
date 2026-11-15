@@ -605,6 +605,28 @@ Niveau expert : 12/15 et 8/15 au prorata), **1 à 3 étoiles**, le temps, la mei
 série et le détail des XP. La **correction** est repliée dessous (ouverte s'il y a
 des erreurs).
 
+**Pendant le quiz, la leçon est fermée** : les autres onglets ne s'ouvrent plus
+(classe `quiz-en-cours` sur `<body>`, lue par `js/lecon-5e.js`), le chat et la
+recherche non plus (`js/chat-assistant.js`, `js/recherche.js`). « Quitter le
+quiz » la rouvre ; l'avancement est gardé. **Deuxième chance** : à la première
+erreur sur un QCM, la réponse choisie est barrée, une autre mauvaise réponse est
+retirée s'il y a 4 choix ou plus, un indice nomme la partie de la leçon, et
+Karniella réessaie une fois. La question compte comme une erreur
+(`deuxiemeChance: false` dans les options pour s'en passer). **Lecture
+imposée** : après chaque réponse, juste ou fausse, « Question suivante » reste
+désactivé. La correction est mise en avant, un minuteur de 10 secondes tourne,
+puis le bouton « J'ai compris » débloque la suite ; le chrono s'arrête pendant
+ce temps (`lecture: 20` pour une autre durée, `lecture: false` pour s'en passer).
+
+**Aide-mémoire après 8 secondes** : sans réponse au bout de 8 secondes, un
+aide-mémoire apparaît sous la question avec sa notion (`aide: false` pour s'en
+passer). La notion vient du champ `notion` de la question
+(`python3 scripts/poser-notions.py` le pose : le nom de l'onglet de la leçon),
+de l'étape de la mission (`js/mission.js`) ou de la leçon pour une interro
+(`js/interro.js`). **Fin du quiz** : les points manqués sont redonnés avec leur
+notion, et le seul bouton est « Refaire ces questions » ; la leçon ne se rouvre
+qu'après cette révision (`refaire: false` pour s'en passer).
+
 - **Réviser mes erreurs** : les questions ratées sont gardées
   (`KarniellaProgression.noterErreurs` / `erreurs`) ; le bouton les repose seules.
   Une révision ne change pas le record (`enregistrerRevision`).

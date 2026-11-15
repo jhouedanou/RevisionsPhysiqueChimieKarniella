@@ -1740,6 +1740,11 @@
     }
 
     function ouvrir() {
+        // Pendant le quiz d'une leçon, on ne cherche pas la réponse ailleurs.
+        if (document.body.classList.contains('quiz-en-cours')) {
+            document.dispatchEvent(new CustomEvent('karniella:lecon-fermee'));
+            return;
+        }
         // Elle a trouvé le chat : plus besoin de l'inviter.
         retirerInvite();
         ecrireInvites(MAX_INVITES);
@@ -1944,6 +1949,10 @@
             if (e.key === 'Escape' && elFenetre.classList.contains('kc-ouvert')) {
                 fermer();
             }
+        });
+        // Le quiz commence : le chat se ferme.
+        document.addEventListener('karniella:quiz-verrou', function (e) {
+            if (e.detail && e.detail.ferme) { retirerInvite(); if (elFenetre.classList.contains('kc-ouvert')) { fermer(); } }
         });
     }
 
