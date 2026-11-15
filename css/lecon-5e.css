@@ -962,6 +962,36 @@ html.cartes-ouvertes { overflow: hidden; }
 }
 
 .exercice h3 { margin-top: 0; }
+
+/* Aide-mémoire d'un exercice : l'icône i et la partie du cours à revoir. */
+.aide-memoire {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0 0 10px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: var(--boite-exemple);
+    color: var(--boite-exemple-texte);
+    font-size: 14px;
+}
+.aide-memoire a { color: inherit; font-weight: 700; }
+.aide-i {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+}
 .exercice .consigne { color: var(--doux); font-size: 15px; }
 .exercice ol { margin-bottom: 8px; }
 .exercice li { margin-bottom: 8px; }
