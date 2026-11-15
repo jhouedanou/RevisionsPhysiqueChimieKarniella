@@ -574,6 +574,10 @@ body.quiz-en-cours .bouton-fiche,
 body.quiz-en-cours .bouton-cartes,
 body.quiz-en-cours .bouton-mission,
 body.quiz-en-cours .suite-onglets { opacity: .45; pointer-events: none; }
+/* Le chat et la recherche aussi : on ne cherche pas la réponse ailleurs. */
+body.quiz-en-cours #kc-bulle,
+body.quiz-en-cours .rech-bouton { opacity: .4; cursor: not-allowed; }
+body.quiz-en-cours #kc-invite { display: none; }
 
 .quiz-option.barree span { text-decoration: line-through; }
 .quiz-retour.chance { border-color: var(--boite-important-bord); background: var(--boite-important); color: var(--encre); }

@@ -410,6 +410,7 @@ class SectionQuiz {
     /**
      * Pendant le quiz d'une leçon, la leçon est fermée : les autres onglets ne
      * s'ouvrent plus (js/lecon-5e.js lit la classe `quiz-en-cours` du <body>).
+     * Le chat et la recherche non plus.
      * Le verrou tombe à la fin du quiz, ou avec « Quitter le quiz ».
      */
     verrouiller(ferme) {
@@ -420,6 +421,8 @@ class SectionQuiz {
         corps.classList.toggle('quiz-en-cours', ferme);
         if (ferme) { corps.dataset.quizOnglet = onglet.id; } else { delete corps.dataset.quizOnglet; }
         if (this.boutonQuitter) { this.boutonQuitter.hidden = !ferme; }
+        // Le chat et la recherche se ferment aussi (js/chat-assistant.js, js/recherche.js).
+        document.dispatchEvent(new CustomEvent('karniella:quiz-verrou', { detail: { ferme: ferme } }));
         if (!this.ecouteVerrou) {
             this.ecouteVerrou = true;
             // La leçon a refusé d'ouvrir un onglet : on dit pourquoi.
@@ -437,7 +440,7 @@ class SectionQuiz {
             message.setAttribute('role', 'status');
             haut.insertAdjacentElement('afterend', message);
         }
-        message.textContent = '🔒 La leçon est fermée pendant le quiz. Finis-le, ou touche « Quitter le quiz ».';
+        message.textContent = '🔒 La leçon, le chat et la recherche sont fermés pendant le quiz. Finis-le, ou touche « Quitter le quiz ».';
         window.clearTimeout(this.finMessage);
         this.finMessage = window.setTimeout(() => { message.remove(); }, 5000);
     }

@@ -606,7 +606,8 @@ série et le détail des XP. La **correction** est repliée dessous (ouverte s'i
 des erreurs).
 
 **Pendant le quiz, la leçon est fermée** : les autres onglets ne s'ouvrent plus
-(classe `quiz-en-cours` sur `<body>`, lue par `js/lecon-5e.js`). « Quitter le
+(classe `quiz-en-cours` sur `<body>`, lue par `js/lecon-5e.js`), le chat et la
+recherche non plus (`js/chat-assistant.js`, `js/recherche.js`). « Quitter le
 quiz » la rouvre ; l'avancement est gardé. **Deuxième chance** : à la première
 erreur sur un QCM, la réponse choisie est barrée, une autre mauvaise réponse est
 retirée s'il y a 4 choix ou plus, un indice nomme la partie de la leçon, et

@@ -43,8 +43,8 @@ est dans la section « Écrire simple » ci-dessous.
 
   Le lien `#exemple-4` ouvre l'onglet et montre l'exemple (`js/lecon-5e.js`).
 - **Le quiz** (demandé le 15/11, `js/section-quiz.js`) : pendant le quiz, la
-  leçon est fermée (les autres onglets ne s'ouvrent plus) ; « Quitter le
-  quiz » la rouvre et garde l'avancement. À la première erreur sur un QCM,
+  leçon est fermée (les autres onglets ne s'ouvrent plus), le chat et la
+  recherche aussi ; « Quitter le quiz » les rouvre et garde l'avancement. À la première erreur sur un QCM,
   Karniella a une **deuxième chance** : sa réponse est barrée, une autre
   mauvaise réponse est retirée (4 choix ou plus), et un indice nomme la partie
   de la leçon. La question compte quand même comme une erreur. L'indice vient
