@@ -276,16 +276,20 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
 - `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
   À mettre sur les notes qui s'adressent à Karniella (« à compléter depuis ton
   cahier »), pas sur le contenu du cours.
-- `<p class="aide-memoire">` : sous le titre d'un exercice, l'icône i et la
-  partie du cours à revoir, avec un lien vers l'onglet.
+- `<p class="aide-memoire">` : sous le titre d'un exercice, l'icône i et un
+  lien `#exemple-N` vers un exemple résolu du cours
+  (`<div class="example-box exemple-exo" id="exemple-N">`, inspiré du quiz).
+  Le lien ouvre l'onglet et fait briller l'exemple.
 - `<span class="deduit">…</span>` : passage complété par logique (pointillé), à
   vérifier dans le cahier. Il remplace les anciens trous `a-completer`.
 - `<div class="schema-interactif" data-schema="montage" data-piles="…" …>` :
   schéma de circuit à manipuler (`js/schema-interactif.js`). On touche un fil,
   une lampe, une pile ou l'interrupteur ; le circuit est recalculé. Les
   attributs sont décrits en tête du fichier. `data-schema="melange"` : le
-  sucre et le sable dans l'eau. Aya dit l'observation dans sa bulle et change
-  de pose ; les rayons des lampes et la flèche du courant sont animés.
+  sucre et le sable dans l'eau. Aya dit l'observation dans sa bulle, puis un
+  « Pourquoi ? » qui l'explique, et change de pose ; les rayons des lampes et
+  la flèche du courant sont animés. En maths, même fichier : `angles`,
+  `segment`, `droite`, `puissance`, `diviseurs` (un curseur à glisser).
 - `<span class="a-completer">…</span>` : surligne un passage illisible sur la
   photo du cahier, pour qu'elle le recopie.
 
