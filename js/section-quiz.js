@@ -447,6 +447,7 @@ class SectionQuiz {
 
     /** « Quitter le quiz » : la leçon se rouvre, le quiz reprendra où il en est. */
     quitter() {
+        this.finirLecture();
         window.clearInterval(this.tic);
         if (this.guetteur) { this.guetteur.disconnect(); }
         this.verrouiller(false);
@@ -806,6 +807,7 @@ class SectionQuiz {
      * question de cours : « Voir la réponse », puis Karniella se note.
      */
     action() {
+        if (this.enLecture) { return; }   // elle lit la correction
         if (this.valide) { this.suivant(); return; }
         if (typeQuestion(this.questionCourante()) === 'cours') { this.reveler(); return; }
         this.valider();
@@ -978,12 +980,47 @@ class SectionQuiz {
         actions.hidden = false;
         const bouton = this.elScene.querySelector('.quiz-valider');
         const dernier = this.index + 1 >= this.serie.length;
-        bouton.disabled = false;
-        bouton.innerHTML = (dernier ? 'Voir mon résultat' : 'Question suivante') + quizIcone('suivant', 20);
-        bouton.focus({ preventScroll: true });
+        const libelle = (dernier ? 'Voir mon résultat' : 'Question suivante') + quizIcone('suivant', 20);
         const aide = this.elScene.querySelector('.quiz-aide-clavier');
-        if (aide) { aide.textContent = 'Entrée pour continuer.'; }
+        const liberer = () => {
+            bouton.disabled = false;
+            bouton.innerHTML = libelle;
+            bouton.focus({ preventScroll: true });
+            if (aide) { aide.textContent = 'Entrée pour continuer.'; }
+        };
+        if (juste || this.options.lecture === false) { liberer(); } else { this.imposerLecture(zone, bouton, aide, liberer); }
         this.montrerBas(zone);
+    }
+
+    /**
+     * Après une erreur, Karniella lit la correction avant de continuer : le
+     * bouton « Question suivante » attend, le temps de lire (4 à 12 secondes,
+     * selon la longueur du texte). Le chrono s'arrête pendant ce temps.
+     */
+    imposerLecture(zone, bouton, aide, liberer) {
+        const mots = zone.textContent.trim().split(/\s+/).length;
+        let reste = Math.max(4, Math.min(12, Math.ceil(mots * 0.4)));
+        this.enLecture = true;
+        this.dejaPasse = this.secondes();   // le chrono s'arrête
+        this.debut = null;
+        bouton.disabled = true;
+        const afficher = () => { bouton.textContent = 'Lis la correction… ' + reste; };
+        afficher();
+        if (aide) { aide.textContent = 'Lis bien la correction : le bouton arrive dans quelques secondes.'; }
+        window.clearInterval(this.ticLecture);
+        this.ticLecture = window.setInterval(() => {
+            reste--;
+            if (reste > 0) { afficher(); return; }
+            this.finirLecture();
+            if (bouton.isConnected) { liberer(); }
+        }, 1000);
+    }
+
+    finirLecture() {
+        window.clearInterval(this.ticLecture);
+        if (!this.enLecture) { return; }
+        this.enLecture = false;
+        this.debut = Date.now();   // le chrono repart
     }
 
     /** Sur téléphone, l'explication peut pousser le bouton sous l'écran : on le montre. */
@@ -1023,6 +1060,7 @@ class SectionQuiz {
     }
 
     terminer() {
+        this.finirLecture();
         window.clearInterval(this.tic);
         this.verrouiller(false);
         if (this.options.reprise !== false) { effacerEnCours(this.slug); }
