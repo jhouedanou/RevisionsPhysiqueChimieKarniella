@@ -605,6 +605,14 @@ Niveau expert : 12/15 et 8/15 au prorata), **1 à 3 étoiles**, le temps, la mei
 série et le détail des XP. La **correction** est repliée dessous (ouverte s'il y a
 des erreurs).
 
+**Pendant le quiz, la leçon est fermée** : les autres onglets ne s'ouvrent plus
+(classe `quiz-en-cours` sur `<body>`, lue par `js/lecon-5e.js`). « Quitter le
+quiz » la rouvre ; l'avancement est gardé. **Deuxième chance** : à la première
+erreur sur un QCM, la réponse choisie est barrée, une autre mauvaise réponse est
+retirée s'il y a 4 choix ou plus, un indice nomme la partie de la leçon, et
+Karniella réessaie une fois. La question compte comme une erreur
+(`deuxiemeChance: false` dans les options pour s'en passer).
+
 - **Réviser mes erreurs** : les questions ratées sont gardées
   (`KarniellaProgression.noterErreurs` / `erreurs`) ; le bouton les repose seules.
   Une révision ne change pas le record (`enregistrerRevision`).

@@ -42,6 +42,15 @@ est dans la section « Écrire simple » ci-dessous.
       </div>
 
   Le lien `#exemple-4` ouvre l'onglet et montre l'exemple (`js/lecon-5e.js`).
+- **Le quiz** (demandé le 15/11, `js/section-quiz.js`) : pendant le quiz, la
+  leçon est fermée (les autres onglets ne s'ouvrent plus) ; « Quitter le
+  quiz » la rouvre et garde l'avancement. À la première erreur sur un QCM,
+  Karniella a une **deuxième chance** : sa réponse est barrée, une autre
+  mauvaise réponse est retirée (4 choix ou plus), et un indice nomme la partie
+  de la leçon. La question compte quand même comme une erreur. L'indice vient
+  de l'exemple qui reprend la question ; sinon, on peut l'écrire dans la
+  question : `"indice": "Pense à la partie « 2. En dérivation »."`. Jamais la
+  réponse dans l'indice.
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
 - Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
   manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)

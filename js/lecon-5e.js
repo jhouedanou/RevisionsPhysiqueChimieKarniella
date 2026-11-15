@@ -33,8 +33,20 @@
         }
     }
 
+    /**
+     * Pendant le quiz (js/section-quiz.js pose `quiz-en-cours` sur <body>), la
+     * leçon est fermée : seul l'onglet du quiz s'ouvre.
+     */
+    function leconFermee(id) {
+        var corps = document.body;
+        if (!corps.classList.contains('quiz-en-cours') || id === corps.dataset.quizOnglet) { return false; }
+        document.dispatchEvent(new CustomEvent('karniella:lecon-fermee'));
+        return true;
+    }
+
     /** Affiche l'onglet demandé et met à jour le bouton actif. */
     function ouvrirOnglet(id, bouton) {
+        if (leconFermee(id)) { return; }
         var contenus = document.querySelectorAll('.tab-content');
         for (var i = 0; i < contenus.length; i++) {
             contenus[i].classList.toggle('active', contenus[i].id === id);
@@ -279,6 +291,13 @@
 
         suivreAncre();
         window.addEventListener('hashchange', suivreAncre);
+        // « Quitter le quiz » : retour à l'onglet d'avant le quiz.
+        document.addEventListener('karniella:quiz-quitte', function () {
+            var tous = document.querySelectorAll('.tab-button[data-onglet]');
+            for (var q = 1; q < tous.length; q++) {
+                if (tous[q].classList.contains('active')) { ouvrirOnglet(tous[q - 1].getAttribute('data-onglet'), tous[q - 1]); return; }
+            }
+        });
         brancherBordsOnglets(groupe);
     }
 
@@ -1139,6 +1158,7 @@
             try { cible = document.getElementById(decodeURIComponent(ancre)); } catch (err) { /* ancre mal écrite */ }
             var section = cible && !cible.classList.contains('tab-content') ? cible.closest('.tab-content') : null;
             if (section) {
+                if (leconFermee(section.id)) { return; }
                 ouvrirOnglet(section.id, document.querySelector('.tab-button[data-onglet="' + section.id + '"]'));
                 montrerBloc(cible);
                 return;

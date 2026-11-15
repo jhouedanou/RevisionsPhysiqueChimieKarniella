@@ -381,6 +381,13 @@ class SectionQuiz {
         this.elScene = this.container.querySelector('.quiz-scene');
         this.elOutils = this.container.querySelector('.quiz-outils');
         this.boutonSon = null;
+        this.boutonQuitter = document.createElement('button');
+        this.boutonQuitter.type = 'button';
+        this.boutonQuitter.className = 'chip quiz-quitter';
+        this.boutonQuitter.textContent = 'Quitter le quiz';
+        this.boutonQuitter.hidden = !document.body.classList.contains('quiz-en-cours');
+        this.boutonQuitter.addEventListener('click', () => this.quitter());
+        this.elOutils.appendChild(this.boutonQuitter);
         this.poserBoutonSon();
         this.poserPastilles();
 
@@ -398,6 +405,50 @@ class SectionQuiz {
         } else {
             this.lancer({});
         }
+    }
+
+    /**
+     * Pendant le quiz d'une leçon, la leçon est fermée : les autres onglets ne
+     * s'ouvrent plus (js/lecon-5e.js lit la classe `quiz-en-cours` du <body>).
+     * Le verrou tombe à la fin du quiz, ou avec « Quitter le quiz ».
+     */
+    verrouiller(ferme) {
+        const corps = document.body;
+        const onglet = this.container && this.container.closest ? this.container.closest('.tab-content') : null;
+        if (!corps.classList.contains('lecon-5e') || !onglet) { return; }
+        if (ferme === corps.classList.contains('quiz-en-cours')) { return; }
+        corps.classList.toggle('quiz-en-cours', ferme);
+        if (ferme) { corps.dataset.quizOnglet = onglet.id; } else { delete corps.dataset.quizOnglet; }
+        if (this.boutonQuitter) { this.boutonQuitter.hidden = !ferme; }
+        if (!this.ecouteVerrou) {
+            this.ecouteVerrou = true;
+            // La leçon a refusé d'ouvrir un onglet : on dit pourquoi.
+            document.addEventListener('karniella:lecon-fermee', () => this.direVerrou());
+        }
+    }
+
+    direVerrou() {
+        const haut = this.container.querySelector('.quiz-etapes-haut');
+        if (!haut) { return; }
+        let message = this.container.querySelector('.quiz-verrou-message');
+        if (!message) {
+            message = document.createElement('p');
+            message.className = 'quiz-verrou-message';
+            message.setAttribute('role', 'status');
+            haut.insertAdjacentElement('afterend', message);
+        }
+        message.textContent = '🔒 La leçon est fermée pendant le quiz. Finis-le, ou touche « Quitter le quiz ».';
+        window.clearTimeout(this.finMessage);
+        this.finMessage = window.setTimeout(() => { message.remove(); }, 5000);
+    }
+
+    /** « Quitter le quiz » : la leçon se rouvre, le quiz reprendra où il en est. */
+    quitter() {
+        window.clearInterval(this.tic);
+        if (this.guetteur) { this.guetteur.disconnect(); }
+        this.verrouiller(false);
+        document.dispatchEvent(new CustomEvent('karniella:quiz-quitte'));
+        this.rendreEtapes();
     }
 
     remettreAZero() {
@@ -554,6 +605,7 @@ class SectionQuiz {
         window.clearInterval(this.tic);
         const partir = () => {
             if (this.debut) { return; }
+            this.verrouiller(true);   // le quiz est à l'écran : la leçon se ferme
             this.debut = Date.now();
             this.tic = window.setInterval(() => this.majChrono(), 250);
             this.majChrono();
@@ -597,7 +649,70 @@ class SectionQuiz {
         return this.questions[this.serie[this.index]];
     }
 
+    /**
+     * L'indice de la deuxième chance : la partie de la leçon où se trouve la
+     * réponse. `indice` dans la question, sinon le nom de l'onglet qui porte
+     * l'exemple tiré de cette question (« 💡 Exemples pour les exercices »).
+     */
+    indice(q) {
+        if (q.indice) { return q.indice; }
+        const enonce = texteBrut(q.question);
+        const blocs = document.querySelectorAll('.exemple-exo');
+        for (let i = 0; i < blocs.length; i++) {
+            if (blocs[i].textContent.indexOf(enonce) === -1) { continue; }
+            const onglet = blocs[i].closest('.tab-content');
+            const bouton = onglet && document.querySelector('.tab-button[data-onglet="' + onglet.id + '"]');
+            const nom = bouton && (bouton.getAttribute('data-nom') || bouton.textContent.replace(/^\s*\d+\s*/, '').trim());
+            if (nom) { return 'Pense à la partie « ' + nom + ' » de ta leçon.'; }
+        }
+        return null;
+    }
+
+    /**
+     * Première erreur à un QCM : on ne montre pas la réponse. La réponse choisie
+     * est barrée, une autre mauvaise réponse est retirée s'il en reste assez, et
+     * Karniella réessaie une fois. La question compte quand même comme une erreur.
+     */
+    deuxiemeChance(q, choix) {
+        const J = window.KarniellaJeu;
+        this.premierChoix = choix;
+        this.selection = null;
+        let retiree = -1;
+        if (q.options.length >= 4) {
+            for (let k = q.options.length - 1; k >= 0; k--) {
+                if (k !== choix && k !== q.correctAnswer) { retiree = k; break; }
+            }
+        }
+        this.elScene.querySelectorAll('.quiz-option').forEach((l, i) => {
+            if (i !== choix && i !== retiree) { return; }
+            const radio = l.querySelector('.quiz-radio');
+            radio.checked = false;
+            radio.disabled = true;
+            l.classList.remove('choisie');
+            l.classList.add(i === choix ? 'faux' : 'grisee', 'barree');
+            if (i === choix) { l.querySelector('.quiz-lettre').innerHTML = quizIcone('croix', 20) || '✗'; }
+        });
+        if (J) { J.sons.jouer('faux'); }
+        const indice = this.indice(q);
+        const zone = this.elScene.querySelector('.quiz-retour-zone');
+        zone.innerHTML = `
+            <div class="quiz-retour chance">
+                ${J ? `<div class="quiz-retour-aya" aria-hidden="true">${J.dessin('think', 64)}</div>` : ''}
+                <div class="quiz-retour-texte">
+                    <strong class="quiz-retour-titre">Pas tout à fait. Tu as une deuxième chance !</strong>
+                    <p>J’ai barré ta réponse${retiree >= 0 ? ' et j’ai retiré une autre mauvaise réponse' : ''}. Relis bien la question.</p>
+                    ${indice ? `<p class="quiz-indice"><span class="aide-i" aria-hidden="true">i</span><span>${echapperHTML(indice)}</span></p>` : ''}
+                </div>
+            </div>`;
+        const bouton = this.elScene.querySelector('.quiz-valider');
+        bouton.disabled = true;
+        const aide = this.elScene.querySelector('.quiz-aide-clavier');
+        if (aide) { aide.textContent = 'Choisis une autre réponse, puis valide.'; }
+        this.montrerBas(zone);
+    }
+
     rendreQuestion() {
+        this.premierChoix = null;
         const q = this.questionCourante();
         const type = typeQuestion(q);
         const n = this.index + 1;
@@ -674,7 +789,7 @@ class SectionQuiz {
     choisir(i, auClavier) {
         if (this.valide || !avecOptions(this.questionCourante())) { return; }
         const radios = this.elScene.querySelectorAll('.quiz-radio');
-        if (!radios[i]) { return; }
+        if (!radios[i] || radios[i].disabled) { return; }   // réponse déjà barrée (deuxième chance)
         if (this.selection !== i && window.KarniellaJeu) { window.KarniellaJeu.sons.jouer('choix'); }
         this.selection = i;
         radios[i].checked = true;
@@ -778,16 +893,25 @@ class SectionQuiz {
         } else {
             if (choix === null) { return; }
             juste = choix === q.correctAnswer;
+            // Une deuxième chance pour un QCM (pas pour un vrai ou faux : il ne reste qu'une réponse).
+            if (!juste && type === 'qcm' && q.options.length >= 3 && this.premierChoix === null && this.options.deuxiemeChance !== false) {
+                this.deuxiemeChance(q, choix);
+                return;
+            }
         }
         this.valide = true;
+        // Trouvée à la deuxième chance : bravo, mais elle compte comme une erreur à revoir.
+        const rattrapee = juste && this.premierChoix !== null;
+        if (this.premierChoix !== null) { juste = false; }
 
         const lettres = lettresDe(q);
         if (avecOptions(q)) {
             this.elScene.querySelectorAll('.quiz-option').forEach((l, i) => {
                 l.querySelector('.quiz-radio').disabled = true;
                 const lettre = l.querySelector('.quiz-lettre');
+                l.classList.remove('grisee', 'barree');
                 if (i === q.correctAnswer) { l.classList.add('juste'); lettre.innerHTML = quizIcone('coche', 20) || '✓'; }
-                else if (i === choix) { l.classList.add('faux'); lettre.innerHTML = quizIcone('croix', 20) || '✗'; }
+                else if (i === choix || i === this.premierChoix) { l.classList.add('faux'); lettre.innerHTML = quizIcone('croix', 20) || '✗'; }
                 else { l.classList.add('grisee'); }
             });
         } else {
@@ -802,6 +926,8 @@ class SectionQuiz {
         this.suite = juste ? this.suite + 1 : 0;
         this.meilleureSuite = Math.max(this.meilleureSuite, this.suite);
         this.reponses[this.index] = juste;
+        // Ce qu'on garde, c'est la première réponse : la vraie erreur.
+        if (this.premierChoix !== null) { choix = this.premierChoix; }
         this.choix[this.index] = choix;
         this.details[this.index] = this.detail(q, choix, juste);
         if (J) { J.sons.jouer(juste ? 'juste' : 'faux'); }
@@ -821,12 +947,13 @@ class SectionQuiz {
         // La réaction d'Aya, la bonne réponse et l'explication.
         const langOptions = attributLangue(q.optionsLangue || q.langue);
         const langReponse = attributLangue(q.reponseLangue);
-        const titre = juste
+        const titre = rattrapee ? 'Bien rattrapé !' : (juste
             ? (this.suite >= 3 ? `${this.suite} bonnes réponses de suite !` : quizAuHasard(QUIZ_REACTIONS_JUSTE))
-            : quizAuHasard(type === 'cours' ? QUIZ_REACTIONS_COURS : QUIZ_REACTIONS_FAUX);
+            : quizAuHasard(type === 'cours' ? QUIZ_REACTIONS_COURS : QUIZ_REACTIONS_FAUX));
         let correction = '';
         if (avecOptions(q)) {
-            if (!juste) { correction = `<p>Bonne réponse : <b>${lettres[q.correctAnswer]}.</b> <span${langOptions}>${q.options[q.correctAnswer]}</span></p>`; }
+            if (rattrapee) { correction = '<p>Tu l’as trouvée à la deuxième chance. Elle compte comme une erreur : tu la reverras dans « Réviser mes erreurs ».</p>'; }
+            else if (!juste) { correction = `<p>Bonne réponse : <b>${lettres[q.correctAnswer]}.</b> <span${langOptions}>${q.options[q.correctAnswer]}</span></p>`; }
         } else if (type === 'saisie') {
             if (!juste) { correction = `<p>Réponse attendue : <b${langReponse}>${q.reponse}</b></p>`; }
             else if (tolere) { correction = `<p>Attention à l’orthographe : <b${langReponse}>${q.reponse}</b></p>`; }
@@ -835,8 +962,8 @@ class SectionQuiz {
         }
         const zone = this.elScene.querySelector('.quiz-retour-zone');
         zone.innerHTML = `
-            <div class="quiz-retour ${juste ? 'juste' : 'faux'}">
-                ${J ? `<div class="quiz-retour-aya" aria-hidden="true">${J.dessin(juste ? 'cheer' : 'think', 64)}</div>` : ''}
+            <div class="quiz-retour ${juste ? 'juste' : (rattrapee ? 'chance' : 'faux')}">
+                ${J ? `<div class="quiz-retour-aya" aria-hidden="true">${J.dessin(juste ? 'cheer' : (rattrapee ? 'point' : 'think'), 64)}</div>` : ''}
                 <div class="quiz-retour-texte">
                     <strong class="quiz-retour-titre">${titre}</strong>
                     ${correction}
@@ -894,6 +1021,7 @@ class SectionQuiz {
 
     terminer() {
         window.clearInterval(this.tic);
+        this.verrouiller(false);
         if (this.options.reprise !== false) { effacerEnCours(this.slug); }
         const J = window.KarniellaJeu;
         const XP = window.KarniellaXP;

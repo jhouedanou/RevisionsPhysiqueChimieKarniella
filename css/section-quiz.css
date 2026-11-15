@@ -562,3 +562,24 @@ textarea.quiz-champ { resize: vertical; min-height: 84px; }
 @media (prefers-reduced-motion: reduce) {
     .quiz-piste i, .quiz-piste-marque { transition: none; }
 }
+
+/* ============================================================
+   La leçon fermée pendant le quiz, et la deuxième chance
+   ============================================================ */
+.quiz-quitter { cursor: pointer; font: inherit; font-weight: 700; }
+.quiz-quitter:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.quiz-verrou-message { margin: 8px 0 0; padding: 8px 12px; border-radius: 10px; background: var(--boite-important); color: var(--boite-important-texte); font-weight: 700; }
+body.quiz-en-cours .tab-button:not(.active) { opacity: .45; cursor: not-allowed; }
+body.quiz-en-cours .bouton-fiche,
+body.quiz-en-cours .bouton-cartes,
+body.quiz-en-cours .bouton-mission,
+body.quiz-en-cours .suite-onglets { opacity: .45; pointer-events: none; }
+
+.quiz-option.barree span { text-decoration: line-through; }
+.quiz-retour.chance { border-color: var(--boite-important-bord); background: var(--boite-important); color: var(--encre); }
+.quiz-indice { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0 0; font-weight: 700; }
+.quiz-indice .aide-i {
+    flex: none; display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border: 2px solid currentColor; border-radius: 50%;
+    font-family: Georgia, 'Times New Roman', serif; font-size: 13px; font-style: italic; line-height: 1;
+}
