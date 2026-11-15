@@ -504,8 +504,8 @@ incrémenter `CACHE_NAME` dans `sw.js`.
 
 - `css/theme.css` porte **toutes** les couleurs du site, en clair et en sombre.
   `js/theme.js`, chargé sans `defer` dans le `<head>`, pose `data-theme` sur `<html>`
-  avant l'affichage : le site suit le réglage de l'appareil, puis le choix fait avec
-  le bouton 🌙 (dans la barre du haut). Le bouton **A+** agrandit le texte.
+  avant l'affichage : toujours `light`, sauf avec un thème foncé de la boutique.
+  Le bouton **A+** (dans la barre du haut) agrandit le texte.
 - `css/matieres.css` est **généré** par `npm run build:programme` à partir du champ
   `couleur` de `data/programme-5e.json` : trois teintes par matière, vérifiées à
   4,5:1 en clair et en sombre. Les pages portent `data-matiere` sur `<body>`.
@@ -556,7 +556,7 @@ récompenses en 6 rayons**, de 100 à 1 500 XP, qui changent vraiment l'applicat
 | Titres (3) | sous « Salut Karniella » sur l'accueil | Capitaine Karniella, Reine de l'écurie |
 
 Un seul actif par rayon (sauf les badges). Les thèmes « de nuit » imposent le mode
-sombre, ceux « de jour » le clair ; le bouton 🌙 retire le thème actif.
+sombre, ceux « de jour » le clair ; le bouton « Retirer » de la boutique enlève le thème actif.
 
 **Les XP sont comptés par appareil** (`gagnes`) et les cadeaux par id
 (`cadeaux`). Tant que l'appareil n'est pas relié à la sauvegarde en ligne
