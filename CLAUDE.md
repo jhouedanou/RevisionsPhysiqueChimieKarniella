@@ -24,6 +24,14 @@ est dans la section « Écrire simple » ci-dessous.
 - Interro surprise dans `data/interros/<slug>.json` : questions de cours et
   vrai ou faux (format de `docs/prompt-interros.md`), `date` = jour de
   l'ajout. C'est ce qui fait apparaître l'interro surprise de la matière.
+- **Un aide-mémoire sous le titre de chaque exercice** (demandé le 15/11) :
+  l'icône i, puis la partie du cours ou le schéma à revoir, avec un lien vers
+  l'onglet (`href="#tab2"` l'ouvre). Une phrase, sans donner la réponse.
+
+      <p class="aide-memoire" data-hors-chat><span class="aide-i" aria-hidden="true">i</span><span><strong>Aide-mémoire :</strong> revois <a href="#tab2">« 2. En dérivation »</a>. Regarde le schéma 6.</span></p>
+
+  Exercice placé dans la partie du cours : « relis cette partie, juste
+  au-dessus. »
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
 - Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
   manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)
