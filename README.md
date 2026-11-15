@@ -276,6 +276,11 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
 - `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
   À mettre sur les notes qui s'adressent à Karniella (« à compléter depuis ton
   cahier »), pas sur le contenu du cours.
+- `<span class="deduit">…</span>` : passage complété par logique (pointillé), à
+  vérifier dans le cahier. Il remplace les anciens trous `a-completer`.
+- `<div class="schema-interactif" data-schema="…">` : schéma de physique-chimie
+  à manipuler (`js/schema-interactif.js`) : `circuit`, `tension`, `lampes`,
+  `piles`, `melange`.
 - `<span class="a-completer">…</span>` : surligne un passage illisible sur la
   photo du cahier, pour qu'elle le recopie.
 

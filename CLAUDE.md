@@ -65,6 +65,11 @@ Demandé le 14/10 : des leçons courtes, que Karniella comprend du premier coup.
   piège ou un danger ; pas d'idée dite deux fois.
 - « ✏️ À vérifier dans ton cahier » : un seul par onglet au plus, à la fin,
   1 à 4 puces courtes qui disent quoi vérifier, sans parler de l'audio.
+- **Pas de trou « à recopier de ton cahier »** (demandé le 15/11) : un passage
+  inaudible ou illisible est complété par la logique de la leçon, dans
+  `<span class="deduit">…</span>` (pointillé discret), et cité dans
+  « ✏️ À vérifier ». On ne devine pas une citation d'un texte d'étude : on
+  l'enlève.
 - On ne simplifie jamais le texte du cahier ni les textes d'étude (seule
   l'orthographe est corrigée), ni les définitions, les schémas, les exercices
   et leurs corrections.
@@ -119,6 +124,14 @@ du cours, et un schéma dans chaque exercice qui parle d'un montage.
   courant : de la borne + vers la borne −, à l'extérieur de la pile.
 - Schéma du manuel ou du cahier : le refaire fidèlement. S'il est
   illisible ou deviné, le dire dans l'encadré « ✏️ À vérifier ».
+- **Un schéma interactif par leçon, au moins** (demandé le 15/11) : sous un
+  titre « 🕹️ Essaie toi-même », une phrase de consigne, puis
+  `<div class="schema-interactif" data-schema="…"></div>`. Charger
+  `js/schema-interactif.js` après `js/lecon-5e.js`. Schémas prêts : `circuit`,
+  `tension`, `lampes` (`data-montage="serie"` ou `"derivation"`), `piles`
+  (`data-retourner="non"` pour la concordance seule), `melange`. Si aucun ne
+  convient à la leçon, en ajouter un dans `SCHEMAS` (même fichier) : Karniella
+  change une chose, le schéma et la phrase d'observation suivent.
 
     <figure class="schema">
       <svg viewBox="0 0 240 120" role="img" aria-label="Pile reliée à une lampe">…</svg>

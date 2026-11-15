@@ -581,6 +581,31 @@ main.content > .kv-reglage { margin: 0 0 14px; }
     font-style: italic;
 }
 
+/* Passage complété par logique (pas lu dans le cahier) : un pointillé discret. */
+.deduit { border-bottom: 2px dotted var(--boite-important-bord); }
+.deduit-bloc { border-style: dashed; }
+
+/* Schémas interactifs de physique-chimie (js/schema-interactif.js). */
+.si-commandes { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.si-groupe { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; }
+.si-titre { font-weight: 800; }
+.si-bouton {
+    min-height: 44px;
+    padding: 6px 14px;
+    border: 2px solid var(--bord);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--encre);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+.si-bouton:hover { border-color: var(--l5-rose); }
+.si-bouton:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.si-bouton[aria-pressed="true"] { border-color: var(--l5-rose); background: var(--l5-rose); color: var(--surface); }
+.si-bouton:disabled { opacity: .45; cursor: default; }
+.si-figure figcaption { min-height: 3em; }
+
 /* ============================================================
    Sommaire d'une matière
    ============================================================ */
@@ -1212,6 +1237,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e h4 { break-after: avoid; }
 
     /* Les encadrés peuvent se couper : pas de grand blanc en bas de page. */
+    .si-commandes { display: none; }
     .schema,
     .table-vocab tr,
     .dialogue p,
