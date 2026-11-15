@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz à imprimer - Révisions Karniella</title>
+<meta name="description" content="Tous les quiz d'une matière sur une feuille à imprimer, avec le corrigé à la fin.">
+<link rel="manifest" href="../manifest.json">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/matieres.css">
+<script src="../js/theme.js"></script>
+<script src="../js/programme-5e.js"></script>
+<link rel="stylesheet" href="../css/imprimer-quiz.css">
+</head>
+<body class="imprimer-quiz">
+
+<div class="iq-outils">
+  <a class="iq-retour" href="../index.html">← Accueil</a>
+  <label class="iq-option"><input type="checkbox" id="iq-corrige" checked> Avec le corrigé</label>
+  <button type="button" id="iq-imprimer" class="iq-bouton" disabled>🖨️ Imprimer</button>
+</div>
+
+<main id="iq-feuille" class="iq-feuille" aria-live="polite">
+  <p class="iq-message">Préparation des quiz…</p>
+</main>
+
+<script src="../js/imprimer-quiz.js" defer></script>
+</body>
+</html>
