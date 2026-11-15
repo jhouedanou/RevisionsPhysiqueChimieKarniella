@@ -192,6 +192,16 @@
             titre.appendChild(badge);
         }
 
+        // Tous les quiz de la matière sur une feuille (5e/imprimer-quiz.html).
+        if ((matiere.lecons || []).some(function (l) { return l.statut === 'prete'; })) {
+            var imprimer = document.createElement('a');
+            imprimer.className = 'imprimer-quiz-lien';
+            imprimer.href = '5e/imprimer-quiz.html?matiere=' + encodeURIComponent(matiere.id);
+            imprimer.textContent = '🖨️ Imprimer les quiz';
+            imprimer.setAttribute('aria-label', 'Imprimer les quiz de ' + matiere.nom);
+            titre.appendChild(imprimer);
+        }
+
         section.appendChild(titre);
 
         var liste = document.createElement('ul');

@@ -205,6 +205,20 @@ body {
 }
 
 .titre-matiere a:hover { text-decoration: underline; }
+
+/* Le lien « Imprimer les quiz » : petit, à droite du titre. */
+.titre-matiere a.imprimer-quiz-lien {
+    margin-left: auto;
+    padding: 6px 12px;
+    border: 1px solid var(--ac-bord);
+    border-radius: 999px;
+    color: var(--encre);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.titre-matiere .avancement + a.imprimer-quiz-lien { margin-left: 0; }
 .titre-matiere a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 /* Avancement dans la matière : un anneau qui se remplit, et le compte à côté. */
