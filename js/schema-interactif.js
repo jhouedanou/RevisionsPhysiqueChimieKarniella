@@ -13,7 +13,9 @@
  * l'interrupteur pour l'ouvrir, une pile pour la retourner. Le circuit est
  * recalculé (loi des nœuds) : l'éclat des lampes, la flèche du courant et la
  * phrase d'observation suivent. La légende écrite dans la page reste sous le
- * schéma.
+ * schéma. Aya (js/jeu.js) dit l'observation dans sa bulle et change de pose :
+ * elle saute de joie quand tout brille, réfléchit quand le circuit est ouvert,
+ * s'alarme au court-circuit.
  *
  * data-schema="montage" — tout circuit de piles, de lampes et d'interrupteurs :
  *   data-piles="1.5,1.5"       tension de chaque pile, en volts (défaut : 4.5)
@@ -97,7 +99,7 @@
         s += '</g>';
         var rayon = { faible: 5, normale: 8, forte: 12 }[etat];
         if (rayon) {
-            s += '<g stroke-width="' + (etat === 'forte' ? 3 : 2.5) + '" stroke-linecap="round" style="stroke:var(--boite-important-texte)"' +
+            s += '<g class="si-rayons" stroke-width="' + (etat === 'forte' ? 3 : 2.5) + '" stroke-linecap="round" style="stroke:var(--boite-important-texte)"' +
                 (etat === 'faible' ? ' opacity="0.6" stroke-dasharray="2 3"' : '') + '>';
             for (var i = 0; i < 8; i++) {
                 var a = (i + 0.5) * Math.PI / 4, c = Math.cos(a), n = Math.sin(a);
@@ -124,7 +126,7 @@
 
     /** La flèche du courant, sur un fil horizontal. Elle sort de la borne +. */
     function courant(x, y, versLaGauche) {
-        return '<path d="M' + x + ' ' + y + (versLaGauche ? ' l10 -5 v10 z' : ' l-10 -5 v10 z') + '" style="fill:var(--rose)"/>' +
+        return '<path class="si-courant' + (versLaGauche ? '' : ' si-courant-droite') + '" d="M' + x + ' ' + y + (versLaGauche ? ' l10 -5 v10 z' : ' l-10 -5 v10 z') + '" style="fill:var(--rose)"/>' +
             texte(x + (versLaGauche ? 6 : -6), y - 9, 'I', { gras: true, couleur: '--rose' });
     }
 
@@ -431,6 +433,17 @@
             return i < 0 ? null : { delai: 1300, action: function () { e.lampes[i] = 'grillee'; changer(); } };
         },
 
+        /** La pose d'Aya : wave au départ, cheer, point, think, ou alerte (court-circuit). */
+        pose: function (e, auDepart) {
+            var r = e.resultat;
+            if (r.court) { return 'alerte'; }
+            if (auDepart) { return 'wave'; }
+            if (e.voltmetre) { return 'point'; }
+            var allumees = r.eclat.filter(function (x) { return x === 'faible' || x === 'normale' || x === 'forte'; }).length;
+            if (!allumees) { return 'think'; }
+            return allumees === r.eclat.length && r.eclat.indexOf('faible') < 0 ? 'cheer' : 'point';
+        },
+
         aide: function (e) {
             var gestes = ['un fil pour l\'enlever'];
             if (e.lampes.length) { gestes.push('une lampe pour la dévisser'); }
@@ -477,7 +490,7 @@
                 return etatMontage(copie);
             },
             dessin: function (e) { return SCHEMAS.montage.dessin(e); },
-            commandes: SCHEMAS.montage.commandes, ensuite: SCHEMAS.montage.ensuite, aide: SCHEMAS.montage.aide,
+            commandes: SCHEMAS.montage.commandes, ensuite: SCHEMAS.montage.ensuite, aide: SCHEMAS.montage.aide, pose: SCHEMAS.montage.pose,
             texte: SCHEMAS.montage.texte, agir: SCHEMAS.montage.agir
         };
     }
@@ -527,6 +540,7 @@
                 }
             ];
         },
+        pose: function (e) { return e.etape === 0 ? 'wave' : (e.etape === 1 ? 'point' : (e.produit === 'sucre' ? 'cheer' : 'think')); },
         texte: function (e) {
             if (e.etape === 0) { return 'Un verre d\'eau. Verse du sucre ou du sable.'; }
             if (e.etape === 1) { return 'Le ' + e.produit + ' tombe au fond. Maintenant, <strong>agite</strong>.'; }
@@ -561,10 +575,26 @@
             legende.remove();
         }
 
+        // L'observation : dans la bulle d'Aya dès que js/jeu.js est arrivé, dans un
+        // simple paragraphe en attendant (ou sur une page sans la coquille).
         var observation = document.createElement('p');
         observation.className = 'si-observation';
         observation.setAttribute('aria-live', 'polite');
         figure.appendChild(observation);
+        var aya = null;
+
+        function dire(html, pose) {
+            if (!aya && window.KarniellaJeu && window.KarniellaJeu.guide) {
+                aya = window.KarniellaJeu.guide({ taille: 84 });
+                aya.el.classList.add('si-aya');
+                figure.replaceChild(aya.el, observation);
+            }
+            if (!aya) { observation.innerHTML = html; return; }
+            var phrase = document.createElement('p');
+            phrase.innerHTML = html;
+            aya.dire(phrase, pose === 'alerte' ? 'think' : pose);
+            aya.el.classList.toggle('si-alerte', pose === 'alerte');
+        }
 
         var commandes = document.createElement('div');
         commandes.className = 'si-commandes';
@@ -587,7 +617,7 @@
             svg.setAttribute('viewBox', d.vue);
             svg.setAttribute('aria-label', d.label);
             svg.innerHTML = d.svg;
-            observation.innerHTML = schema.texte(etat);
+            dire(schema.texte(etat), schema.pose ? schema.pose(etat, JSON.stringify(sansResultat(etat)) === depart) : 'idle');
 
             commandes.textContent = '';
             schema.commandes(etat, changer, depart).forEach(function (groupe) {
@@ -647,6 +677,8 @@
 
         hote.appendChild(figure);
         dessiner();
+        // js/jeu.js (Aya) est chargé par la coquille, parfois après ce script.
+        if (!aya) { window.addEventListener('load', function () { if (!aya) { dessiner(); } }); }
     }
 
     function demarrer() {

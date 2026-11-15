@@ -114,7 +114,10 @@ du cours, et un schéma dans chaque exercice qui parle d'un montage.
 - SVG écrit dans la page (pas d'image externe), dans
   `<figure class="schema">` avec une `<figcaption>` qui dit ce qu'on voit.
   `viewBox`, `role="img"` et `aria-label` sur le `<svg>`.
-- Mode sombre : traits en `stroke="currentColor"`, texte sans `fill`
+- **Le mode sombre est désactivé** (demandé le 15/11) : le site est toujours
+  en clair, sans bouton 🌙 (`js/theme.js`). Ne pas le remettre. Les thèmes
+  foncés de la boutique existent encore, donc la règle des couleurs reste.
+- Couleurs : traits en `stroke="currentColor"`, texte sans `fill`
   (la classe `.schema` le met en `currentColor`), accents avec les variables
   du thème (`var(--rose)`, `var(--boite-exemple-texte)`…). Jamais de
   couleur codée en dur.
@@ -140,6 +143,15 @@ du cours, et un schéma dans chaque exercice qui parle d'un montage.
   `data-inter`, `data-inter-branches`, `data-devissees`, `data-grillees`,
   `data-court`, `data-voltmetre`, `data-options="retourner nombre choix grille"`.
   Le script calcule le circuit : ne pas écrire l'éclat des lampes à la main.
+- **Des animations avec Aya, le personnage** (demandé le 15/11, pour toutes
+  les leçons à venir) : dans un schéma à manipuler, Aya dit l'observation dans
+  sa bulle et change de pose (`wave` au départ, `cheer` quand tout brille,
+  `point`, `think` quand le circuit est ouvert, `alerte` au court-circuit). Les
+  rayons des lampes et la flèche du courant bougent. C'est automatique pour
+  `montage` et `melange`. Un nouveau schéma dans `SCHEMAS` fournit `texte(etat)`
+  et `pose(etat)`. Dans une autre matière, pour animer une explication,
+  réutiliser Aya (`KarniellaJeu.guide`, `KarniellaJeu.dessin(pose)` dans
+  `js/jeu.js`) plutôt qu'un nouveau personnage.
 - Restent en `<svg>` fixe : les schémas des **exercices** (le schéma vivant
   donnerait la réponse) et les dessins qui ne sont pas des circuits (pile
   plate, lampe torche, verre). Pour une expérience sans circuit, un bloc

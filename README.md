@@ -282,7 +282,8 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
   schéma de circuit à manipuler (`js/schema-interactif.js`). On touche un fil,
   une lampe, une pile ou l'interrupteur ; le circuit est recalculé. Les
   attributs sont décrits en tête du fichier. `data-schema="melange"` : le
-  sucre et le sable dans l'eau.
+  sucre et le sable dans l'eau. Aya dit l'observation dans sa bulle et change
+  de pose ; les rayons des lampes et la flèche du courant sont animés.
 - `<span class="a-completer">…</span>` : surligne un passage illisible sur la
   photo du cahier, pour qu'elle le recopie.
 
@@ -494,7 +495,12 @@ un devoir prévu est signalé. `5e/emploi-du-temps.html` montre un jour au choix
 toute la semaine. Pour changer l'emploi du temps : modifier `SEMAINE`, puis
 incrémenter `CACHE_NAME` dans `sw.js`.
 
-### 🌙 Mode sombre, A+ et couleurs des matières
+### 🌙 Mode sombre (désactivé), A+ et couleurs des matières
+
+> Depuis le 15/11, le mode sombre est **désactivé** : `js/theme.js` pose toujours
+> `data-theme="light"`, ne suit plus le réglage de l'appareil, et le bouton 🌙
+> n'existe plus. Seul un thème foncé acheté dans la boutique assombrit le site.
+> Les couleurs sombres de `css/theme.css` ne servent plus qu'à ces thèmes.
 
 - `css/theme.css` porte **toutes** les couleurs du site, en clair et en sombre.
   `js/theme.js`, chargé sans `defer` dans le `<head>`, pose `data-theme` sur `<html>`
@@ -524,7 +530,7 @@ Comme sur une plateforme de cours en ligne :
 
 - une **barre fixe en haut** : le logo 🐴 ramène à l'accueil, un fil d'Ariane
   (`Accueil › Physique-Chimie › Les mélanges`) mène partout en un clic, puis
-  🔥 la série, ⭐ les XP, 🌙, A+, 🔍 et l'avatar (→ boutique) ;
+  🔥 la série, ⭐ les XP, A+, 🔍 et l'avatar (→ boutique) ;
 - sur **téléphone**, une barre en bas : Accueil · Leçons · Boutique · Badges ;
 - dans les leçons, les onglets deviennent un **parcours** numéroté : colonne à
   gauche sur grand écran, puces sous la barre sur téléphone, coche sur les
