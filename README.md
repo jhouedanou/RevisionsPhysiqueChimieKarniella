@@ -613,9 +613,10 @@ erreur sur un QCM, la réponse choisie est barrée, une autre mauvaise réponse 
 retirée s'il y a 4 choix ou plus, un indice nomme la partie de la leçon, et
 Karniella réessaie une fois. La question compte comme une erreur
 (`deuxiemeChance: false` dans les options pour s'en passer). **Lecture
-imposée** : après une erreur, « Question suivante » attend 4 à 12 secondes selon
-la longueur de la correction ; le chrono s'arrête pendant ce temps
-(`lecture: false` pour s'en passer).
+imposée** : après chaque réponse, juste ou fausse, « Question suivante » reste
+désactivé. Un minuteur de 20 secondes tourne, puis le bouton « J'ai compris »
+apparaît et débloque la suite ; le chrono s'arrête pendant ce temps
+(`lecture: 10` pour une autre durée, `lecture: false` pour s'en passer).
 
 - **Réviser mes erreurs** : les questions ratées sont gardées
   (`KarniellaProgression.noterErreurs` / `erreurs`) ; le bouton les repose seules.

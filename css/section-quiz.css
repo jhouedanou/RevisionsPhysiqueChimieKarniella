@@ -580,6 +580,9 @@ body.quiz-en-cours .rech-bouton { opacity: .4; cursor: not-allowed; }
 body.quiz-en-cours #kc-invite { display: none; }
 
 .quiz-option.barree span { text-decoration: line-through; }
+/* Le minuteur de lecture, puis le bouton « J'ai compris ». */
+.quiz-lecture { margin: 0 0 8px; font-weight: 800; color: var(--doux); }
+.quiz-compris { margin: 0 0 8px; }
 .quiz-retour.chance { border-color: var(--boite-important-bord); background: var(--boite-important); color: var(--encre); }
 .quiz-indice { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0 0; font-weight: 700; }
 .quiz-indice .aide-i {

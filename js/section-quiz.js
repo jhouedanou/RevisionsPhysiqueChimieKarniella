@@ -988,31 +988,49 @@ class SectionQuiz {
             bouton.focus({ preventScroll: true });
             if (aide) { aide.textContent = 'Entrée pour continuer.'; }
         };
-        if (juste || this.options.lecture === false) { liberer(); } else { this.imposerLecture(zone, bouton, aide, liberer); }
+        if (this.options.lecture === false) { liberer(); } else { this.imposerLecture(bouton, aide, libelle, liberer); }
         this.montrerBas(zone);
     }
 
     /**
-     * Après une erreur, Karniella lit la correction avant de continuer : le
-     * bouton « Question suivante » attend, le temps de lire (4 à 12 secondes,
-     * selon la longueur du texte). Le chrono s'arrête pendant ce temps.
+     * Après chaque réponse, juste ou fausse, Karniella lit la réponse avant de
+     * continuer. « Question suivante » reste désactivé pendant 20 secondes
+     * (`lecture: 10` dans les options pour une autre durée). Puis le bouton
+     * « J'ai compris » apparaît : c'est lui qui débloque la suite. Le chrono
+     * s'arrête pendant tout ce temps.
      */
-    imposerLecture(zone, bouton, aide, liberer) {
-        const mots = zone.textContent.trim().split(/\s+/).length;
-        let reste = Math.max(4, Math.min(12, Math.ceil(mots * 0.4)));
+    imposerLecture(bouton, aide, libelle, liberer) {
+        let reste = typeof this.options.lecture === 'number' ? this.options.lecture : 20;
         this.enLecture = true;
         this.dejaPasse = this.secondes();   // le chrono s'arrête
         this.debut = null;
         bouton.disabled = true;
-        const afficher = () => { bouton.textContent = 'Lis la correction… ' + reste; };
+        bouton.innerHTML = libelle;
+        const minuteur = document.createElement('p');
+        minuteur.className = 'quiz-lecture';
+        minuteur.setAttribute('role', 'timer');
+        const afficher = () => { minuteur.textContent = '📖 Lis bien la réponse… ' + reste + ' s'; };
         afficher();
-        if (aide) { aide.textContent = 'Lis bien la correction : le bouton arrive dans quelques secondes.'; }
+        bouton.parentNode.insertBefore(minuteur, bouton);
+        if (aide) { aide.textContent = 'Le bouton « J’ai compris » arrive à la fin du minuteur.'; }
         window.clearInterval(this.ticLecture);
         this.ticLecture = window.setInterval(() => {
             reste--;
             if (reste > 0) { afficher(); return; }
-            this.finirLecture();
-            if (bouton.isConnected) { liberer(); }
+            window.clearInterval(this.ticLecture);
+            if (!minuteur.isConnected) { return; }
+            const compris = document.createElement('button');
+            compris.type = 'button';
+            compris.className = 'btn btn-energie quiz-compris';
+            compris.textContent = 'J’ai compris';
+            compris.addEventListener('click', () => {
+                compris.remove();
+                this.finirLecture();
+                liberer();
+            });
+            minuteur.replaceWith(compris);
+            if (aide) { aide.textContent = 'Touche « J’ai compris » pour continuer.'; }
+            compris.focus({ preventScroll: true });
         }, 1000);
     }
 

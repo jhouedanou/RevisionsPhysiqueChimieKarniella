@@ -50,8 +50,9 @@ est dans la section « Écrire simple » ci-dessous.
   de la leçon. La question compte quand même comme une erreur. L'indice vient
   de l'exemple qui reprend la question ; sinon, on peut l'écrire dans la
   question : `"indice": "Pense à la partie « 2. En dérivation »."`. Jamais la
-  réponse dans l'indice. Après une erreur, le bouton « Question suivante »
-  attend 4 à 12 secondes : Karniella lit la correction avant de continuer.
+  réponse dans l'indice. Après chaque réponse, juste ou fausse, « Question
+  suivante » reste désactivé : un minuteur de 20 secondes tourne, puis le
+  bouton « J'ai compris » apparaît et débloque la suite. Ne pas le raccourcir.
 - Puis `npm run build:all` et incrémenter `CACHE_NAME` dans `sw.js`.
 - Quand Karniella envoie son **cahier** pour une leçon déjà faite d'après le
   manuel : ajouter un premier onglet « Mon cahier » (`data-onglet="cahier"`)
