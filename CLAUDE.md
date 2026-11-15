@@ -123,6 +123,24 @@ ivoiriens, que la reconnaissance anglaise comprend mal.
       <li data-fr="Koffi est le frère d'Aya." data-noms="Koffi Aya">Koffi is Aya's brother.</li>
     </ol></div>
 
+## Leçons de mathématiques : des figures à manipuler
+
+Même logique qu'en physique-chimie (demandé le 15/11) : quand une notion se
+voit sur une figure, ajouter un bloc « 🕹️ Essaie toi-même » avec une figure à
+manipuler. Karniella fait glisser un curseur, la figure suit, Aya dit le
+résultat puis le « Pourquoi ? ». Les figures fixes du cahier restent.
+
+    <h3>🕹️ Essaie toi-même</h3>
+    <p>Change les angles Â et B̂. Regarde l'angle Ĉ.</p>
+    <div class="schema-interactif" data-schema="angles" data-figure="triangle"></div>
+
+Figures prêtes (`js/schema-interactif.js`, à charger après `js/lecon-5e.js`) :
+`angles` (`data-figure` : `adjacents`, `complementaires`, `supplementaires`,
+`opposes`, `triangle`), `segment` (`milieu`, `mediatrice`), `droite` (nombre
+relatif, opposé, distance à zéro), `puissance`, `diviseurs` (premier ou pas).
+Pour une nouvelle notion, ajouter un schéma dans `SCHEMAS`, avec `curseur(…)`
+pour une valeur à faire glisser.
+
 ## Leçons de physique-chimie : toujours des schémas
 
 Karniella l'a demandé : chaque leçon de physique-chimie a des **schémas**
@@ -167,7 +185,11 @@ du cours, et un schéma dans chaque exercice qui parle d'un montage.
   `point`, `think` quand le circuit est ouvert, `alerte` au court-circuit). Les
   rayons des lampes et la flèche du courant bougent. C'est automatique pour
   `montage` et `melange`. Un nouveau schéma dans `SCHEMAS` fournit `texte(etat)`
-  et `pose(etat)`. Dans une autre matière, pour animer une explication,
+  et `pose(etat)`.
+- **Aya explique en détail** (demandé le 15/11) : la bulle donne l'observation,
+  puis un « Pourquoi ? » d'une à trois phrases qui dit la cause
+  (`<span class="si-pourquoi">` dans `texte(etat)`). Jamais l'observation
+  seule. Dans une autre matière, pour animer une explication,
   réutiliser Aya (`KarniellaJeu.guide`, `KarniellaJeu.dessin(pose)` dans
   `js/jeu.js`) plutôt qu'un nouveau personnage.
 - Restent en `<svg>` fixe : les schémas des **exercices** (le schéma vivant

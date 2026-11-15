@@ -627,6 +627,12 @@ main.content > .kv-reglage { margin: 0 0 14px; }
     .si-rayons, .si-courant, .si-alerte .guide-bulle, .si-alerte .aya-corps { animation: none; }
 }
 
+/* Le « Pourquoi ? » d'Aya : l'explication, sous l'observation. */
+.si-pourquoi { display: block; margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--bord); font-weight: 500; font-size: 14px; }
+/* Un curseur à glisser (figures de maths). */
+.si-curseur { display: flex; flex-direction: column; align-items: stretch; gap: 2px; width: 100%; max-width: 300px; font-weight: 800; text-align: center; }
+.si-curseur input { width: 100%; min-height: 36px; accent-color: var(--l5-rose); cursor: pointer; }
+
 .si-aide { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--doux); }
 .si-clic { cursor: pointer; outline: none; }
 .si-clic:hover > path:first-of-type,

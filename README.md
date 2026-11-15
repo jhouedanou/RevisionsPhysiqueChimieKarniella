@@ -286,8 +286,10 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
   schéma de circuit à manipuler (`js/schema-interactif.js`). On touche un fil,
   une lampe, une pile ou l'interrupteur ; le circuit est recalculé. Les
   attributs sont décrits en tête du fichier. `data-schema="melange"` : le
-  sucre et le sable dans l'eau. Aya dit l'observation dans sa bulle et change
-  de pose ; les rayons des lampes et la flèche du courant sont animés.
+  sucre et le sable dans l'eau. Aya dit l'observation dans sa bulle, puis un
+  « Pourquoi ? » qui l'explique, et change de pose ; les rayons des lampes et
+  la flèche du courant sont animés. En maths, même fichier : `angles`,
+  `segment`, `droite`, `puissance`, `diviseurs` (un curseur à glisser).
 - `<span class="a-completer">…</span>` : surligne un passage illisible sur la
   photo du cahier, pour qu'elle le recopie.
 
