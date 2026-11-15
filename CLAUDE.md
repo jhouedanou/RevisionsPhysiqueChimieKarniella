@@ -42,6 +42,22 @@ est dans la section « Écrire simple » ci-dessous.
       </div>
 
   Le lien `#exemple-4` ouvre l'onglet et montre l'exemple (`js/lecon-5e.js`).
+- **Des exemples et des exercices actifs** (demandé le 15/11, pour toutes les
+  leçons) : Karniella complète, elle ne lit pas seulement. `js/a-completer.js`
+  (à charger après `js/section-quiz.js`) le fait tout seul, à condition
+  d'écrire le balisage habituel :
+  - un **exemple** : la réponse est cachée ; elle la tape si elle est courte
+    (3 mots au plus), sinon elle la choisit parmi les réponses du quiz. Deux
+    essais, puis la réponse et l'explication s'affichent ;
+  - un **exercice à trous** : chaque `<span class="trou">…</span>` devient une
+    case à remplir, avec un bouton « Vérifier ». La réponse est lue dans
+    « Voir la correction » : même nombre de lignes que l'énoncé, et sur chaque
+    ligne la réponse en `<strong>` (une par trou, dans l'ordre), ou seule sur
+    la ligne, ou séparées par « · ». Exemple : les pluriels,
+    `un chien → des <span class="trou">…</span>` et
+    `des <strong>chiens</strong> : on ajoute un s.`
+  Préférer des exercices à trous avec des réponses d'un à trois mots : ce sont
+  ceux qui deviennent actifs.
 - **Le quiz** (demandé le 15/11, `js/section-quiz.js`) : pendant le quiz, la
   leçon est fermée (les autres onglets ne s'ouvrent plus), le chat et la
   recherche aussi ; « Quitter le quiz » les rouvre et garde l'avancement. À la première erreur sur un QCM,
