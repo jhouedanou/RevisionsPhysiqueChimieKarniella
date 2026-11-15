@@ -604,7 +604,13 @@ main.content > .kv-reglage { margin: 0 0 14px; }
 .si-bouton:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .si-bouton[aria-pressed="true"] { border-color: var(--l5-rose); background: var(--l5-rose); color: var(--surface); }
 .si-bouton:disabled { opacity: .45; cursor: default; }
-.si-figure figcaption { min-height: 3em; }
+.si-observation { margin: 8px 0 0; text-align: center; font-weight: 600; min-height: 3em; }
+.si-aide { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--doux); }
+.si-clic { cursor: pointer; outline: none; }
+.si-clic:hover > path:first-of-type,
+.si-clic:hover > g > line,
+.si-clic:hover > g > circle { stroke: var(--l5-rose); }
+.si-clic:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
 
 /* ============================================================
    Sommaire d'une matière
@@ -1237,7 +1243,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e h4 { break-after: avoid; }
 
     /* Les encadrés peuvent se couper : pas de grand blanc en bas de page. */
-    .si-commandes { display: none; }
+    .si-commandes, .si-aide { display: none; }
     .schema,
     .table-vocab tr,
     .dialogue p,

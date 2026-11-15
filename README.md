@@ -278,9 +278,11 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
   cahier »), pas sur le contenu du cours.
 - `<span class="deduit">…</span>` : passage complété par logique (pointillé), à
   vérifier dans le cahier. Il remplace les anciens trous `a-completer`.
-- `<div class="schema-interactif" data-schema="…">` : schéma de physique-chimie
-  à manipuler (`js/schema-interactif.js`) : `circuit`, `tension`, `lampes`,
-  `piles`, `melange`.
+- `<div class="schema-interactif" data-schema="montage" data-piles="…" …>` :
+  schéma de circuit à manipuler (`js/schema-interactif.js`). On touche un fil,
+  une lampe, une pile ou l'interrupteur ; le circuit est recalculé. Les
+  attributs sont décrits en tête du fichier. `data-schema="melange"` : le
+  sucre et le sable dans l'eau.
 - `<span class="a-completer">…</span>` : surligne un passage illisible sur la
   photo du cahier, pour qu'elle le recopie.
 
