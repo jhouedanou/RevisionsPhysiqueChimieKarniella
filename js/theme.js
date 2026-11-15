@@ -1,22 +1,20 @@
 /**
- * theme.js — Mode sombre 🌙 et texte plus grand A+.
+ * theme.js — Thème du site et texte plus grand A+.
  *
  * Chargé SANS defer dans le <head> de chaque page, juste après css/theme.css :
- * il pose `data-theme` sur <html> avant le premier affichage, sinon la page
- * clignoterait en blanc avant de passer en sombre.
+ * il pose `data-theme` sur <html> avant le premier affichage.
  *
- * Tant que Karniella n'a rien choisi, le site suit le réglage de l'appareil.
- * Son choix, une fois fait, est gardé.
+ * Le mode sombre est désactivé (demandé le 15/11) : le site est toujours en
+ * clair, même si l'appareil est en sombre, et le bouton 🌙 n'existe plus.
+ * Seuls les thèmes foncés achetés dans la boutique gardent leurs couleurs.
  */
 (function () {
     'use strict';
 
     if (window.KarniellaTheme) { return; }
 
-    var CLE_THEME = 'karniella-theme';
     var CLE_TEXTE = 'karniella-texte';
     var html = document.documentElement;
-    var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
     function lire(cle) {
         try { return window.localStorage.getItem(cle); } catch (err) { return null; }
@@ -50,14 +48,11 @@
     }
 
     function estSombre() {
+        // Plus de mode sombre : seul un thème foncé de la boutique assombrit le site.
         var skin = skinActif();
-        if (skin) { return !skin.clair; }
-        var choix = lire(CLE_THEME);
-        if (choix === 'dark' || choix === 'light') { return choix === 'dark'; }
-        return Boolean(media && media.matches);
+        return skin ? !skin.clair : false;
     }
 
-    var boutonTheme = null;
     var boutonTexte = null;
 
     /** Le fond du thème en mode sombre (thèmes de la boutique compris), le rose sinon. */
@@ -85,22 +80,14 @@
         }
         if (meta) { meta.setAttribute('content', couleurBarre(sombre)); }
 
-        if (boutonTheme) {
-            var I = window.KarniellaIcones;
-            if (I) { boutonTheme.innerHTML = I.svg(sombre ? 'soleil' : 'lune'); } else { boutonTheme.textContent = sombre ? '☀️' : '🌙'; }
-            boutonTheme.setAttribute('aria-label', sombre ? 'Passer en mode clair' : 'Passer en mode sombre');
-            boutonTheme.setAttribute('title', sombre ? 'Mode clair' : 'Mode sombre');
-        }
         if (boutonTexte) {
             boutonTexte.setAttribute('aria-pressed', lire(CLE_TEXTE) === 'grand' ? 'true' : 'false');
         }
     }
 
+    /** Retire le thème de la boutique : retour au thème clair de base. */
     function basculerTheme() {
-        // Avec un thème de boutique, 🌙 ramène au thème de base (clair ou sombre).
-        var skin = skinActif();
-        if (skin && window.KarniellaXP) { window.KarniellaXP.desactiver('theme'); ecrire(CLE_THEME, skin.clair ? 'dark' : 'light'); appliquer(); return; }
-        ecrire(CLE_THEME, estSombre() ? 'light' : 'dark');
+        if (skinActif() && window.KarniellaXP) { window.KarniellaXP.desactiver('theme'); }
         appliquer();
     }
 
@@ -110,15 +97,10 @@
     }
 
     appliquer();
-    if (media) {
-        var suivre = function () { if (!lire(CLE_THEME)) { appliquer(); } };
-        if (media.addEventListener) { media.addEventListener('change', suivre); }
-        else if (media.addListener) { media.addListener(suivre); }
-    }
 
     /**
-     * Les deux boutons, dans la barre du haut (js/coquille.js). Sans elle —
-     * une vieille page qui ne la charge pas — ils vont dans l'en-tête.
+     * Le bouton A+, dans la barre du haut (js/coquille.js). Sans elle —
+     * une vieille page qui ne la charge pas — il va dans l'en-tête.
      */
     function ajouterBoutons() {
         var zone = window.KarniellaCoquille ? window.KarniellaCoquille.zoneOutils() : null;
@@ -127,11 +109,6 @@
 
         var groupe = document.createElement('div');
         groupe.className = 'reglages';
-
-        boutonTheme = document.createElement('button');
-        boutonTheme.type = 'button';
-        boutonTheme.className = 'reglage';
-        boutonTheme.addEventListener('click', basculerTheme);
 
         boutonTexte = document.createElement('button');
         boutonTexte.type = 'button';
@@ -142,7 +119,6 @@
         boutonTexte.setAttribute('title', 'Texte plus grand');
         boutonTexte.addEventListener('click', basculerTexte);
 
-        groupe.appendChild(boutonTheme);
         groupe.appendChild(boutonTexte);
         if (!zone) { entete.style.position = entete.style.position || 'relative'; }
         entete.appendChild(groupe);

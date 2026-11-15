@@ -114,7 +114,10 @@ du cours, et un schéma dans chaque exercice qui parle d'un montage.
 - SVG écrit dans la page (pas d'image externe), dans
   `<figure class="schema">` avec une `<figcaption>` qui dit ce qu'on voit.
   `viewBox`, `role="img"` et `aria-label` sur le `<svg>`.
-- Mode sombre : traits en `stroke="currentColor"`, texte sans `fill`
+- **Le mode sombre est désactivé** (demandé le 15/11) : le site est toujours
+  en clair, sans bouton 🌙 (`js/theme.js`). Ne pas le remettre. Les thèmes
+  foncés de la boutique existent encore, donc la règle des couleurs reste.
+- Couleurs : traits en `stroke="currentColor"`, texte sans `fill`
   (la classe `.schema` le met en `currentColor`), accents avec les variables
   du thème (`var(--rose)`, `var(--boite-exemple-texte)`…). Jamais de
   couleur codée en dur.
@@ -124,14 +127,36 @@ du cours, et un schéma dans chaque exercice qui parle d'un montage.
   courant : de la borne + vers la borne −, à l'extérieur de la pile.
 - Schéma du manuel ou du cahier : le refaire fidèlement. S'il est
   illisible ou deviné, le dire dans l'encadré « ✏️ À vérifier ».
-- **Un schéma interactif par leçon, au moins** (demandé le 15/11) : sous un
-  titre « 🕹️ Essaie toi-même », une phrase de consigne, puis
-  `<div class="schema-interactif" data-schema="…"></div>`. Charger
-  `js/schema-interactif.js` après `js/lecon-5e.js`. Schémas prêts : `circuit`,
-  `tension`, `lampes` (`data-montage="serie"` ou `"derivation"`), `piles`
-  (`data-retourner="non"` pour la concordance seule), `melange`. Si aucun ne
-  convient à la leçon, en ajouter un dans `SCHEMAS` (même fichier) : Karniella
-  change une chose, le schéma et la phrase d'observation suivent.
+- **Tout schéma de circuit du cours se manipule** (demandé le 15/11) :
+  Karniella enlève un fil, dévisse une lampe, ouvre l'interrupteur, retourne
+  une pile, et voit la conséquence. Au lieu d'un `<svg>` fixe, écrire le
+  montage en attributs ; la légende reste dans la page :
+
+      <div class="schema-interactif" data-schema="montage" data-piles="4.5"
+           data-lampes="2" data-montage="derivation" data-inter="ferme" data-court="2">
+        <p class="si-legende">Schéma 6 : un fil relie les bornes de L2.</p>
+      </div>
+
+  Attributs (détail en tête de `js/schema-interactif.js`, à charger après
+  `js/lecon-5e.js`) : `data-piles` (tensions), `data-retournees`,
+  `data-lampes` (1 à 3), `data-montage="derivation"`, `data-nominal`,
+  `data-inter`, `data-inter-branches`, `data-devissees`, `data-grillees`,
+  `data-court`, `data-voltmetre`, `data-options="retourner nombre choix grille"`.
+  Le script calcule le circuit : ne pas écrire l'éclat des lampes à la main.
+- **Des animations avec Aya, le personnage** (demandé le 15/11, pour toutes
+  les leçons à venir) : dans un schéma à manipuler, Aya dit l'observation dans
+  sa bulle et change de pose (`wave` au départ, `cheer` quand tout brille,
+  `point`, `think` quand le circuit est ouvert, `alerte` au court-circuit). Les
+  rayons des lampes et la flèche du courant bougent. C'est automatique pour
+  `montage` et `melange`. Un nouveau schéma dans `SCHEMAS` fournit `texte(etat)`
+  et `pose(etat)`. Dans une autre matière, pour animer une explication,
+  réutiliser Aya (`KarniellaJeu.guide`, `KarniellaJeu.dessin(pose)` dans
+  `js/jeu.js`) plutôt qu'un nouveau personnage.
+- Restent en `<svg>` fixe : les schémas des **exercices** (le schéma vivant
+  donnerait la réponse) et les dessins qui ne sont pas des circuits (pile
+  plate, lampe torche, verre). Pour une expérience sans circuit, un bloc
+  « 🕹️ Essaie toi-même » (`data-schema="melange"`), ou un nouveau schéma dans
+  `SCHEMAS`.
 
     <figure class="schema">
       <svg viewBox="0 0 240 120" role="img" aria-label="Pile reliée à une lampe">…</svg>

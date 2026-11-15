@@ -604,7 +604,35 @@ main.content > .kv-reglage { margin: 0 0 14px; }
 .si-bouton:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .si-bouton[aria-pressed="true"] { border-color: var(--l5-rose); background: var(--l5-rose); color: var(--surface); }
 .si-bouton:disabled { opacity: .45; cursor: default; }
-.si-figure figcaption { min-height: 3em; }
+.si-observation { margin: 8px 0 0; text-align: center; font-weight: 600; min-height: 3em; }
+/* Aya dit l'observation : elle reste à gauche de sa bulle, même sur téléphone. */
+.si-aya { margin-top: 8px; text-align: left; }
+.si-aya .guide-interieur { flex-direction: row; align-items: center; gap: 12px; }
+.si-aya .guide-bulle { flex: 1; min-height: 4.2em; margin-top: 0; padding: 8px 12px; font-size: 15px; font-weight: 600; }
+.si-aya .guide-bulle::before { top: calc(50% - 8px); left: -10.5px; transform: rotate(45deg); }
+.si-aya .guide-bulle strong { font-weight: 800; }
+.si-alerte .guide-bulle { border-color: var(--erreur-bord); background: var(--erreur-fond); animation: si-secoue .45s ease-in-out 2; }
+.si-alerte .guide-bulle::before { border-color: var(--erreur-bord); background: var(--erreur-fond); }
+.si-alerte .aya-corps { animation: si-secoue .45s ease-in-out 2; }
+@keyframes si-secoue { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+/* Le circuit vit : les rayons de la lampe battent, la flèche du courant avance. */
+.si-rayons { animation: si-brille 1.4s ease-in-out infinite; }
+.si-courant { animation: si-avance 1.1s ease-in-out infinite; }
+.si-courant-droite { animation-name: si-avance-droite; }
+@keyframes si-brille { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+@keyframes si-avance { 0%, 100% { transform: translateX(3px); } 50% { transform: translateX(-5px); } }
+@keyframes si-avance-droite { 0%, 100% { transform: translateX(-3px); } 50% { transform: translateX(5px); } }
+@media (prefers-reduced-motion: reduce) {
+    .si-rayons, .si-courant, .si-alerte .guide-bulle, .si-alerte .aya-corps { animation: none; }
+}
+
+.si-aide { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--doux); }
+.si-clic { cursor: pointer; outline: none; }
+.si-clic:hover > path:first-of-type,
+.si-clic:hover > g > line,
+.si-clic:hover > g > circle { stroke: var(--l5-rose); }
+.si-clic:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
 
 /* ============================================================
    Sommaire d'une matière
@@ -1237,7 +1265,7 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e h4 { break-after: avoid; }
 
     /* Les encadrés peuvent se couper : pas de grand blanc en bas de page. */
-    .si-commandes { display: none; }
+    .si-commandes, .si-aide, .si-aya .guide-perso { display: none; }
     .schema,
     .table-vocab tr,
     .dialogue p,

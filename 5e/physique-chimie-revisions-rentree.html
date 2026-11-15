@@ -56,10 +56,9 @@
       <li>éventuellement un <strong>interrupteur</strong> ;</li>
       <li>des <strong>fils électriques</strong>.</li>
     </ul>
-    <figure class="schema">
-      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit simple : une pile, un interrupteur fermé et une lampe reliés par des fils"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H125 M175 40 H230 V74 M230 106 V140 H60 V84"/><line x1="125" y1="40" x2="175" y2="40"/><circle cx="125" cy="40" r="3.5" fill="currentColor"/><circle cx="175" cy="40" r="3.5" fill="currentColor"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L241.2 101.2 M241.2 78.8 L218.8 101.2"/></g><line x1="248.5" y1="97.7" x2="257.7" y2="101.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="237.7" y1="108.5" x2="241.5" y2="117.7" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="222.3" y1="108.5" x2="218.5" y2="117.7" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.5" y1="97.7" x2="202.3" y2="101.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="211.5" y1="82.3" x2="202.3" y2="78.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="222.3" y1="71.5" x2="218.5" y2="62.3" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="237.7" y1="71.5" x2="241.5" y2="62.3" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><line x1="248.5" y1="82.3" x2="257.7" y2="78.5" stroke="var(--boite-important-bord)" stroke-width="2.5" stroke-linecap="round"/><path d="M96 40 l-10 -5 v10 z" fill="var(--rose)"/><text x="94" y="30" font-size="11" text-anchor="middle" style="fill:var(--rose)">I</text><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="82" font-size="12" text-anchor="end">pile</text><text x="266" y="95" font-size="12">lampe</text><text x="150" y="60" font-size="12" text-anchor="middle">interrupteur</text></svg>
-      <figcaption>Schéma 1 : un circuit simple. Pile (générateur), interrupteur, lampe (récepteur) et fils.</figcaption>
-    </figure>
+    <div class="schema-interactif" data-schema="montage" data-piles="4.5" data-inter="ferme">
+      <p class="si-legende">Schéma 1 : un circuit simple. Pile (générateur), interrupteur, lampe (récepteur) et fils.</p>
+    </div>
 
     <div class="note-box">
       <h4>🐴 Comment les retenir</h4>
@@ -71,20 +70,15 @@
     <h3>Réponse 2 — Lorsque le circuit est ouvert</h3>
     <p>Le circuit est <strong>coupé</strong> : le courant électrique
     <strong>ne circule pas</strong>. La lampe reste <strong>éteinte</strong>.</p>
-    <figure class="schema">
-      <svg viewBox="-10 0 335 180" role="img" aria-label="Circuit ouvert : l'interrupteur est ouvert, la lampe est éteinte"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 72 V40 H125 M175 40 H230 V74 M230 106 V140 H60 V84"/><line x1="125" y1="40" x2="168" y2="20"/><circle cx="125" cy="40" r="3.5" fill="currentColor"/><circle cx="175" cy="40" r="3.5" fill="currentColor"/><line x1="42" y1="72" x2="78" y2="72"/><line x1="51" y1="84" x2="69" y2="84" stroke-width="6"/><circle cx="230" cy="90" r="16"/><path d="M218.8 78.8 L241.2 101.2 M241.2 78.8 L218.8 101.2"/></g><text x="84" y="70" font-size="12">+</text><text x="84" y="92" font-size="14">−</text><text x="36" y="82" font-size="12" text-anchor="end">pile</text><text x="266" y="95" font-size="12">lampe</text><text x="150" y="60" font-size="12" text-anchor="middle">interrupteur</text></svg>
-      <figcaption>Schéma 2 : interrupteur ouvert, le circuit est coupé. La lampe est éteinte.</figcaption>
-    </figure>
+    <div class="schema-interactif" data-schema="montage" data-piles="4.5" data-inter="ouvert">
+      <p class="si-legende">Schéma 2 : interrupteur ouvert, le circuit est coupé. La lampe est éteinte.</p>
+    </div>
 
     <h3>Réponse 3 — Lorsque le circuit est fermé</h3>
     <p>La boucle est complète : le courant électrique <strong>circule</strong>.
     La lampe <strong>s'allume</strong> (schéma 1). La flèche <strong>I</strong> va de la
     borne <strong>+</strong> (grand trait) vers la borne <strong>−</strong> (petit trait
     épais).</p>
-
-    <h3>🕹️ Essaie toi-même</h3>
-    <p>Ouvre et ferme l'interrupteur K. Regarde la lampe.</p>
-    <div class="schema-interactif" data-schema="circuit"></div>
 
     <div class="example-box">
       <h4>⚠️ Le piège à ne pas confondre</h4>

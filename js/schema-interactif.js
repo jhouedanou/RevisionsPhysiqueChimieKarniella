@@ -3,25 +3,41 @@
  *
  * Dans une leçon :
  *
- *     <div class="schema-interactif" data-schema="lampes" data-montage="serie"></div>
+ *     <div class="schema-interactif" data-schema="montage" data-piles="4.5"
+ *          data-lampes="2" data-montage="serie" data-inter="ferme">
+ *       <p class="si-legende">Schéma 1 : deux lampes en série.</p>
+ *     </div>
  *
- * Le script (à charger après js/lecon-5e.js) y dessine un schéma SVG, des
- * boutons et une phrase qui dit ce qu'on observe. Chaque clic redessine le
- * schéma. Mêmes règles que les schémas fixes (CLAUDE.md) : traits en
- * currentColor, accents avec les variables du thème, symboles normalisés,
- * lisible à 390 px.
+ * Le script (à charger après js/lecon-5e.js) dessine le circuit et le rend
+ * vivant : Karniella touche un fil pour l'enlever, une lampe pour la dévisser,
+ * l'interrupteur pour l'ouvrir, une pile pour la retourner. Le circuit est
+ * recalculé (loi des nœuds) : l'éclat des lampes, la flèche du courant et la
+ * phrase d'observation suivent. La légende écrite dans la page reste sous le
+ * schéma. Aya (js/jeu.js) dit l'observation dans sa bulle et change de pose :
+ * elle saute de joie quand tout brille, réfléchit quand le circuit est ouvert,
+ * s'alarme au court-circuit.
  *
- * Schémas disponibles (data-schema) :
- *   - circuit   : pile, interrupteur, lampe. On ouvre et on ferme.
- *   - tension   : on choisit la pile et la lampe. Sous-tension, adaptée, surtension.
- *   - lampes    : deux lampes. data-montage="serie" ou "derivation".
- *                 On dévisse ou on court-circuite une lampe.
- *   - piles     : 1 à 3 piles de 1,5 V. data-retourner="non" pour ne pas
- *                 proposer de retourner une pile (concordance seulement).
- *   - melange   : du sucre ou du sable dans l'eau. On verse, on agite.
+ * data-schema="montage" — tout circuit de piles, de lampes et d'interrupteurs :
+ *   data-piles="1.5,1.5"       tension de chaque pile, en volts (défaut : 4.5)
+ *   data-retournees="2"        piles retournées au départ (numéros à partir de 1)
+ *   data-lampes="2"            nombre de lampes, 1 à 3 (défaut : 1)
+ *   data-montage="derivation"  lampes en dérivation (défaut : serie)
+ *   data-nominal="3.8"         tension d'usage des lampes (défaut : 3.8)
+ *   data-inter="ouvert|ferme"  un interrupteur K sur la branche principale
+ *   data-inter-branches="ouvert,ferme"  un interrupteur par branche (dérivation)
+ *   data-devissees="1"  data-grillees="2"  data-court="1"   état de départ des lampes
+ *   data-voltmetre             un voltmètre à la place des lampes
+ *   data-options="retourner nombre choix grille"
+ *        retourner : toucher une pile la retourne ;  nombre : choisir 1 à 3 piles ;
+ *        choix : choisir la tension de la pile et de la lampe ;
+ *        grille : en surtension, la lampe brille très fort puis grille.
  *
- * Pour ajouter un schéma : une entrée de plus dans SCHEMAS, avec
- * depart(options), dessin(etat), commandes(etat, changer) et texte(etat).
+ * Raccourcis : data-schema="circuit", "tension", "lampes" (data-montage),
+ * "piles" (data-retourner="non"). Et data-schema="melange" : du sucre ou du
+ * sable dans l'eau.
+ *
+ * Mêmes règles que les schémas fixes (CLAUDE.md) : traits en currentColor,
+ * accents avec les variables du thème, symboles normalisés, lisible à 390 px.
  */
 (function () {
     'use strict';
@@ -32,7 +48,7 @@
 
     var TRAIT = '<g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">';
 
-    function nombre(v) { return String(v).replace('.', ','); }
+    function nombre(v) { return String(Math.round(v * 10) / 10).replace('.', ','); }
 
     function texte(x, y, contenu, options) {
         var o = options || {};
@@ -42,9 +58,24 @@
             (o.couleur ? ' style="fill:var(' + o.couleur + ')"' : '') + '>' + contenu + '</text>';
     }
 
+    /** Une zone qu'on peut toucher : un groupe SVG qui se comporte en bouton. */
+    function touche(action, label, dessin, zone) {
+        return '<g class="si-clic" tabindex="0" role="button" data-act="' + action + '" aria-label="' + label + '">' +
+            dessin + zone + '</g>';
+    }
+
+    function zoneRonde(cx, cy, r) {
+        return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="transparent" stroke="none"/>';
+    }
+
+    function zoneTrait(d) {
+        return '<path d="' + d + '" fill="none" stroke="transparent" stroke-width="24" stroke-linejoin="round" pointer-events="stroke"/>';
+    }
+
     /**
      * Une lampe. etat : eteinte, faible, normale, forte, grillee, devissee.
      * Des petits traits autour : elle brille. Croix coupée : elle est grillée.
+     * Cercle en pointillé : elle est dévissée.
      */
     function lampe(cx, cy, etat) {
         var r = 14, d = r * 0.707, s = '';
@@ -68,7 +99,7 @@
         s += '</g>';
         var rayon = { faible: 5, normale: 8, forte: 12 }[etat];
         if (rayon) {
-            s += '<g stroke-width="' + (etat === 'forte' ? 3 : 2.5) + '" stroke-linecap="round" style="stroke:var(--boite-important-texte)"' +
+            s += '<g class="si-rayons" stroke-width="' + (etat === 'forte' ? 3 : 2.5) + '" stroke-linecap="round" style="stroke:var(--boite-important-texte)"' +
                 (etat === 'faible' ? ' opacity="0.6" stroke-dasharray="2 3"' : '') + '>';
             for (var i = 0; i < 8; i++) {
                 var a = (i + 0.5) * Math.PI / 4, c = Math.cos(a), n = Math.sin(a);
@@ -95,248 +126,378 @@
 
     /** La flèche du courant, sur un fil horizontal. Elle sort de la borne +. */
     function courant(x, y, versLaGauche) {
-        return '<path d="M' + x + ' ' + y + (versLaGauche ? ' l10 -5 v10 z' : ' l-10 -5 v10 z') + '" style="fill:var(--rose)"/>' +
+        return '<path class="si-courant' + (versLaGauche ? '' : ' si-courant-droite') + '" d="M' + x + ' ' + y + (versLaGauche ? ' l10 -5 v10 z' : ' l-10 -5 v10 z') + '" style="fill:var(--rose)"/>' +
             texte(x + (versLaGauche ? 6 : -6), y - 9, 'I', { gras: true, couleur: '--rose' });
     }
 
-    /** L'interrupteur K sur le fil de gauche (x = 40), entre y = 80 et y = 115. */
-    function interrupteur(ferme) {
-        return TRAIT + (ferme ? '<line x1="40" y1="115" x2="40" y2="80"/>' : '<line x1="40" y1="115" x2="20" y2="86"/>') + '</g>' +
-            '<g fill="currentColor"><circle cx="40" cy="80" r="3.5"/><circle cx="40" cy="115" r="3.5"/></g>' +
-            texte(ferme ? 24 : 14, ferme ? 103 : 110, 'K', { taille: 15, gras: true });
+    /* ---------- Le circuit : son plan, son calcul ---------- */
+
+    function liste(v) {   // "1,3" → [1, 3]
+        return String(v || '').split(/[ ,;]+/).filter(Boolean).map(Number);
     }
 
-    /* ---------- Les schémas ---------- */
+    /** L'état de départ, lu dans les attributs data-… de la page. */
+    function etatMontage(d) {
+        var options = String(d.options || '').split(/[ ,]+/).filter(Boolean);
+        var tensions = d.piles ? liste(d.piles) : [4.5];
+        var retournees = liste(d.retournees), devissees = liste(d.devissees), grillees = liste(d.grillees), court = liste(d.court);
+        var voltmetre = d.voltmetre !== undefined;
+        var n = voltmetre ? 0 : Math.max(1, Math.min(3, Number(d.lampes) || 1));
+        var e = {
+            piles: tensions.map(function (t, j) { return { e: t, ret: retournees.indexOf(j + 1) >= 0 }; }),
+            lampes: [], ponts: [],
+            derivation: d.montage === 'derivation' && n > 1,
+            nominal: Number(d.nominal) || 3.8,
+            voltmetre: voltmetre,
+            inter: d.inter ? d.inter === 'ferme' : null,
+            interB: d.interBranches ? d.interBranches.split(/[ ,]+/).map(function (x) { return x === 'ferme'; }) : null,
+            fils: {},
+            options: {}
+        };
+        for (var i = 0; i < n; i++) {
+            e.lampes.push(grillees.indexOf(i + 1) >= 0 ? 'grillee' : (devissees.indexOf(i + 1) >= 0 ? 'devissee' : 'ok'));
+            e.ponts.push(court.indexOf(i + 1) >= 0);
+        }
+        options.forEach(function (o) { e.options[o] = true; });
+        if (n > 1) { e.options.pont = true; }
+        return e;
+    }
+
+    /**
+     * Le plan du circuit : où sont les fils, les lampes, les piles. Chaque
+     * élément relie deux bornes (a et b). Un fil est une ligne brisée.
+     */
+    function plan(e) {
+        var elements = [], n = e.lampes.length, m = e.piles.length, k = 0;
+        var haut = e.voltmetre ? 1 : n;
+        var xp = { 1: [160], 2: [127, 193], 3: [95, 160, 225] }[m];
+
+        function fil(points, a, b) { elements.push({ type: 'fil', id: 'f' + (k++), points: points, a: a, b: b }); }
+        function piles(y) {
+            for (var j = 0; j < m; j++) {
+                elements.push({ type: 'pile', j: j, x: xp[j], y: y, a: 'p' + j + 'g', b: 'p' + j + 'd' });
+                if (j < m - 1) { fil([[xp[j] + 6, y], [xp[j + 1] - 6, y]], 'p' + j + 'd', 'p' + (j + 1) + 'g'); }
+            }
+        }
+
+        if (!e.derivation) {
+            var yH = 50, yB = 150, xs = [];
+            for (var i = 0; i < haut; i++) { xs.push(Math.round(40 + 240 * (i + 0.5) / haut)); }
+            if (e.inter !== null) {
+                fil([[xp[0] - 6, yB], [40, yB], [40, 115]], 'p0g', 'kb');
+                elements.push({ type: 'inter', cle: 'K', nom: 'K', p1: [40, 115], p2: [40, 80], a: 'kb', b: 'kh' });
+                fil([[40, 80], [40, yH], [xs[0] - 14, yH]], 'kh', 'l0g');
+            } else {
+                fil([[xp[0] - 6, yB], [40, yB], [40, yH], [xs[0] - 14, yH]], 'p0g', 'l0g');
+            }
+            for (i = 0; i < haut; i++) {
+                elements.push(e.voltmetre
+                    ? { type: 'volt', cx: xs[i], cy: yH, a: 'l0g', b: 'l0d' }
+                    : { type: 'lampe', i: i, cx: xs[i], cy: yH, a: 'l' + i + 'g', b: 'l' + i + 'd', nomX: xs[i], nomY: yH + (haut > 1 ? 48 : 42) });
+                if (i < haut - 1) { fil([[xs[i] + 14, yH], [xs[i + 1] - 14, yH]], 'l' + i + 'd', 'l' + (i + 1) + 'g'); }
+            }
+            fil([[xs[haut - 1] + 14, yH], [280, yH], [280, yB], [xp[m - 1] + 6, yB]], 'l' + (haut - 1) + 'd', 'p' + (m - 1) + 'd');
+            piles(yB);
+            return { elements: elements, vue: '0 0 320 200', yPiles: yB, xGauche: 40, noeuds: [], formuleY: 115 };
+        }
+
+        // En dérivation : deux rails, une branche par lampe. L1 est la plus proche de la pile.
+        var yP = 45 + 70 * n, noeuds = [];
+        function yb(b) { return 45 + 70 * (n - 1 - b); }
+        if (e.inter !== null) {
+            fil([[xp[0] - 6, yP], [50, yP], [50, yP - 16]], 'p0g', 'kb');
+            elements.push({ type: 'inter', cle: 'K', nom: 'K', p1: [50, yP - 16], p2: [50, yP - 50], a: 'kb', b: 'kh' });
+            fil([[50, yP - 50], [50, yb(0)]], 'kh', 'jg0');
+        } else {
+            fil([[xp[0] - 6, yP], [50, yP], [50, yb(0)]], 'p0g', 'jg0');
+        }
+        fil([[xp[m - 1] + 6, yP], [270, yP], [270, yb(0)]], 'p' + (m - 1) + 'd', 'jd0');
+        for (var b = 0; b < n; b++) {
+            var y = yb(b), cx = e.interB ? 185 : 160;
+            if (b < n - 1) {
+                fil([[50, y], [50, yb(b + 1)]], 'jg' + b, 'jg' + (b + 1));
+                fil([[270, y], [270, yb(b + 1)]], 'jd' + b, 'jd' + (b + 1));
+                noeuds.push([50, y], [270, y]);
+            }
+            if (e.interB) {
+                fil([[50, y], [90, y]], 'jg' + b, 'kb' + b);
+                elements.push({ type: 'inter', cle: 'K' + b, nom: 'K' + (b + 1), b_: b, p1: [90, y], p2: [124, y], a: 'kb' + b, b: 'kh' + b, horizontal: true });
+                fil([[124, y], [cx - 14, y]], 'kh' + b, 'l' + b + 'g');
+            } else {
+                fil([[50, y], [cx - 14, y]], 'jg' + b, 'l' + b + 'g');
+            }
+            elements.push({ type: 'lampe', i: b, cx: cx, cy: y, a: 'l' + b + 'g', b: 'l' + b + 'd', nomX: cx + 52, nomY: y - 8 });
+            fil([[cx + 14, y], [270, y]], 'l' + b + 'd', 'jd' + b);
+        }
+        piles(yP);
+        return { elements: elements, vue: '0 0 320 ' + (yP + 40), yPiles: yP, xGauche: 50, noeuds: noeuds, etiquettes: [[36, yb(0) + 5, 'A'], [284, yb(0) + 5, 'B']], formuleY: null };
+    }
+
+    /**
+     * Le calcul du circuit (loi des nœuds). Les fils, les interrupteurs fermés
+     * et les fils de court-circuit soudent leurs deux bornes. Une lampe est une
+     * résistance. Une pile pousse sa tension, avec une toute petite résistance :
+     * un court-circuit donne alors un courant énorme, qu'on sait repérer.
+     */
+    function calculer(e, p) {
+        var parent = {};
+        function racine(x) {
+            if (parent[x] === undefined) { parent[x] = x; }
+            while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; }
+            return x;
+        }
+        function souder(a, b) { parent[racine(a)] = racine(b); }
+
+        p.elements.forEach(function (el) {
+            racine(el.a); racine(el.b);
+            if (el.type === 'fil' && !e.fils[el.id]) { souder(el.a, el.b); }
+            if (el.type === 'inter' && (el.cle === 'K' ? e.inter : e.interB[el.b_])) { souder(el.a, el.b); }
+            if (el.type === 'lampe' && e.ponts[el.i]) { souder(el.a, el.b); }
+        });
+
+        var index = {}, taille = 0;
+        Object.keys(parent).forEach(function (x) { var r = racine(x); if (index[r] === undefined) { index[r] = taille++; } });
+        function n(x) { return index[racine(x)]; }
+
+        var G = [], I = [], i, j;
+        for (i = 0; i < taille; i++) { G.push([]); I.push(0); for (j = 0; j < taille; j++) { G[i].push(i === j ? 1e-9 : 0); } }
+        function resistance(a, b, g) {
+            a = n(a); b = n(b);
+            if (a === b) { return; }
+            G[a][a] += g; G[b][b] += g; G[a][b] -= g; G[b][a] -= g;
+        }
+        var R_PILE = 0.05, rLampe = e.nominal / 0.3;
+        p.elements.forEach(function (el) {
+            if (el.type === 'lampe' && e.lampes[el.i] === 'ok') { resistance(el.a, el.b, 1 / rLampe); }
+            if (el.type === 'volt') { resistance(el.a, el.b, 1e-6); }
+            if (el.type === 'pile') {
+                var pl = e.piles[el.j], plus = n(pl.ret ? el.b : el.a), moins = n(pl.ret ? el.a : el.b);
+                resistance(el.a, el.b, 1 / R_PILE);
+                I[plus] += pl.e / R_PILE; I[moins] -= pl.e / R_PILE;
+            }
+        });
+
+        // Élimination de Gauss.
+        var V = I.slice(), c, l, f, pivot;
+        for (c = 0; c < taille; c++) {
+            pivot = c;
+            for (l = c + 1; l < taille; l++) { if (Math.abs(G[l][c]) > Math.abs(G[pivot][c])) { pivot = l; } }
+            f = G[c]; G[c] = G[pivot]; G[pivot] = f; f = V[c]; V[c] = V[pivot]; V[pivot] = f;
+            for (l = c + 1; l < taille; l++) {
+                f = G[l][c] / G[c][c];
+                if (!f) { continue; }
+                for (j = c; j < taille; j++) { G[l][j] -= f * G[c][j]; }
+                V[l] -= f * V[c];
+            }
+        }
+        for (c = taille - 1; c >= 0; c--) {
+            for (j = c + 1; j < taille; j++) { V[c] -= G[c][j] * V[j]; }
+            V[c] /= G[c][c];
+        }
+        function tension(a, b) { return V[n(a)] - V[n(b)]; }
+
+        var r = { eclat: [], court: false, sortParLaGauche: null, volt: 0 };
+        p.elements.forEach(function (el) {
+            if (el.type === 'lampe') {
+                var etat = e.lampes[el.i], u = Math.abs(tension(el.a, el.b)) / e.nominal;
+                r.eclat[el.i] = etat !== 'ok' ? etat : (u < 0.08 ? 'eteinte' : (u < 0.8 ? 'faible' : (u <= 1.3 ? 'normale' : 'forte')));
+            }
+            if (el.type === 'volt') { r.volt = Math.abs(tension(el.a, el.b)); }
+            if (el.type === 'pile') {
+                var pl = e.piles[el.j];
+                var debit = (pl.e - (pl.ret ? tension(el.b, el.a) : tension(el.a, el.b))) / R_PILE;   // > 0 : il sort par la borne +
+                if (Math.abs(debit) > 3) { r.court = true; }
+                if (el.j === 0 && Math.abs(debit) > 0.02) { r.sortParLaGauche = (debit > 0) !== pl.ret; }
+            }
+        });
+        return r;
+    }
+
+    /** « U = 1,5 − 1,5 + 1,5 = 1,5 V » : on compte dans le sens du plus grand camp. */
+    function formule(e) {
+        var somme = 0;
+        e.piles.forEach(function (pl) { somme += pl.ret ? -pl.e : pl.e; });
+        var sens = somme < 0 ? -1 : 1;
+        var termes = e.piles.map(function (pl) { return (pl.ret ? -pl.e : pl.e) * sens; });
+        if (termes[0] < 0) { termes.sort(function (x, y) { return y - x; }); }   // on commence par une pile comptée en plus
+        var s = 'U = ' + nombre(termes[0]);
+        for (var i = 1; i < termes.length; i++) { s += (termes[i] > 0 ? ' + ' : ' − ') + nombre(Math.abs(termes[i])); }
+        return s + (termes.length > 1 ? ' = ' + nombre(Math.abs(somme)) : '') + ' V';
+    }
+
+    var MOT = {
+        eteinte: 'est <strong>éteinte</strong>', faible: 'brille <strong>faiblement</strong>', normale: 'brille <strong>normalement</strong>',
+        forte: 'brille <strong>très fort</strong>', grillee: 'est <strong>grillée</strong>', devissee: 'est <strong>dévissée</strong>'
+    };
 
     var SCHEMAS = {};
 
-    /* --- Circuit simple : on ouvre, on ferme --- */
-    SCHEMAS.circuit = {
-        depart: function () { return { ferme: false }; },
-        dessin: function (e) {
-            return {
-                vue: '0 0 320 200',
-                label: 'Circuit simple : une pile, un interrupteur K ' + (e.ferme ? 'fermé' : 'ouvert') + ' et une lampe ' + (e.ferme ? 'qui brille.' : 'éteinte.'),
-                svg: TRAIT + '<path d="M40 80 L40 45 L146 45 M174 45 L280 45 L280 150 L166 150 M154 150 L40 150 L40 115"/></g>' +
-                    lampe(160, 45, e.ferme ? 'normale' : 'eteinte') + pile(160, 150, false) + interrupteur(e.ferme) +
-                    (e.ferme ? courant(90, 150, true) : '') +
-                    texte(200, 76, 'lampe', { ancre: 'start' }) + texte(160, 186, 'pile')
-            };
-        },
-        commandes: function (e, changer) {
-            return [{ boutons: [{ cle: 'k', texte: e.ferme ? 'Ouvrir l\'interrupteur' : 'Fermer l\'interrupteur', action: function () { e.ferme = !e.ferme; changer(); } }] }];
-        },
-        texte: function (e) {
-            return e.ferme
-                ? 'Circuit <strong>fermé</strong> : le courant passe. La lampe <strong>brille</strong>.'
-                : 'Circuit <strong>ouvert</strong> : le courant ne passe pas. La lampe est <strong>éteinte</strong>.';
-        }
-    };
+    SCHEMAS.montage = {
+        depart: function (d) { return etatMontage(d); },
 
-    /* --- Tension de la pile et tension de la lampe --- */
-    SCHEMAS.tension = {
-        depart: function () { return { pile: 4.5, lampe: 3.5, grillee: false }; },
-        cas: function (e) {
-            var rapport = e.pile / e.lampe;
-            return rapport < 0.8 ? 'sous' : (rapport <= 1.3 ? 'adaptee' : 'sur');
-        },
         dessin: function (e) {
-            var cas = this.cas(e);
-            var etat = cas === 'sous' ? 'faible' : (cas === 'adaptee' ? 'normale' : (e.grillee ? 'grillee' : 'forte'));
-            return {
-                vue: '0 0 320 200',
-                label: 'Une pile de ' + nombre(e.pile) + ' volts alimente une lampe de ' + nombre(e.lampe) + ' volts. ' +
-                    { faible: 'La lampe brille faiblement.', normale: 'La lampe brille normalement.', forte: 'La lampe brille très fort.', grillee: 'La lampe est grillée.' }[etat],
-                svg: TRAIT + '<path d="M40 45 L146 45 M174 45 L280 45 L280 150 L166 150 M154 150 L40 150 L40 45"/></g>' +
-                    lampe(160, 45, etat) + pile(160, 150, false) +
-                    (etat === 'grillee' ? '' : courant(90, 150, true)) +
-                    texte(160, 92, 'lampe : ' + nombre(e.lampe) + ' V', { gras: true }) +
-                    texte(160, 186, 'pile : ' + nombre(e.pile) + ' V', { gras: true })
-            };
+            var p = plan(e), r = calculer(e, p), s = '', n = e.lampes.length;
+            e.resultat = r;
+            // Les fils d'abord : les lampes, les piles et les interrupteurs passent dessus,
+            // pour que le doigt les attrape avant le fil d'à côté.
+            var ordre = p.elements.filter(function (el) { return el.type === 'fil'; })
+                .concat(p.elements.filter(function (el) { return el.type !== 'fil'; }));
+            ordre.forEach(function (el) {
+                var d;
+                if (el.type === 'fil') {
+                    d = 'M' + el.points.map(function (pt) { return pt[0] + ' ' + pt[1]; }).join(' L');
+                    var enleve = !!e.fils[el.id];
+                    s += touche('fil:' + el.id, enleve ? 'Fil enlevé. Le remettre.' : 'Fil. L\'enlever.',
+                        '<path d="' + d + '" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"' +
+                        (enleve ? ' stroke-dasharray="2 7" opacity="0.4"' : '') + '/>', zoneTrait(d));
+                }
+                if (el.type === 'lampe') {
+                    var etat = e.lampes[el.i], nom = n > 1 ? 'L' + (el.i + 1) : 'lampe';
+                    if (e.ponts[el.i]) {   // le fil du court-circuit, par-dessus la lampe
+                        d = 'M' + (el.cx - 24) + ' ' + el.cy + ' C' + (el.cx - 24) + ' ' + (el.cy - 34) + ' ' + (el.cx + 24) + ' ' + (el.cy - 34) + ' ' + (el.cx + 24) + ' ' + el.cy;
+                        s += touche('pont:' + el.i, 'Fil aux bornes de ' + nom + '. L\'enlever.',
+                            '<path d="' + d + '" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--rose)"/>' +
+                            '<g style="fill:var(--rose)"><circle cx="' + (el.cx - 24) + '" cy="' + el.cy + '" r="3.5"/><circle cx="' + (el.cx + 24) + '" cy="' + el.cy + '" r="3.5"/></g>', zoneTrait(d));
+                    }
+                    s += touche('lampe:' + el.i,
+                        nom + ' ' + MOT[r.eclat[el.i]].replace(/<[^>]+>/g, '') + '. ' + (etat === 'ok' ? 'La dévisser.' : (etat === 'grillee' ? 'La remplacer.' : 'La revisser.')),
+                        lampe(el.cx, el.cy, r.eclat[el.i]), zoneRonde(el.cx, el.cy, 22));
+                    s += texte(el.nomX, el.nomY, n > 1 ? nom : (e.options.choix ? 'lampe : ' + nombre(e.nominal) + ' V' : 'lampe'), { taille: n > 1 ? 15 : 13, gras: n > 1 || e.options.choix });
+                }
+                if (el.type === 'volt') {
+                    s += TRAIT + '<circle cx="' + el.cx + '" cy="' + el.cy + '" r="14"/></g>' + texte(el.cx, el.cy + 5, 'V', { taille: 15, gras: true }) +
+                        texte(el.cx, el.cy + 44, nombre(r.volt) + ' V', { taille: 17, gras: true, couleur: '--rose' });
+                }
+                if (el.type === 'pile') {
+                    var pl = e.piles[el.j], dessinPile = pile(el.x, el.y, pl.ret) + texte(el.x, el.y + 36, nombre(pl.e) + ' V');
+                    s += e.options.retourner
+                        ? touche('pile:' + el.j, 'Pile ' + (el.j + 1) + ' de ' + nombre(pl.e) + ' volt. La retourner.', dessinPile, zoneRonde(el.x, el.y, 22))
+                        : dessinPile;
+                }
+                if (el.type === 'inter') {
+                    var ferme = el.cle === 'K' ? e.inter : e.interB[el.b_], x1 = el.p1[0], y1 = el.p1[1], x2 = el.p2[0], y2 = el.p2[1];
+                    var bout = ferme ? [x2, y2] : (el.horizontal ? [x2 - 5, y2 - 20] : [x2 - 20, y2 + 6]);
+                    s += touche('inter:' + el.cle, 'Interrupteur ' + el.nom + (ferme ? ' fermé. L\'ouvrir.' : ' ouvert. Le fermer.'),
+                        TRAIT + '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + bout[0] + '" y2="' + bout[1] + '"/></g>' +
+                        '<g fill="currentColor"><circle cx="' + x1 + '" cy="' + y1 + '" r="3.5"/><circle cx="' + x2 + '" cy="' + y2 + '" r="3.5"/></g>' +
+                        (el.horizontal ? texte((x1 + x2) / 2, y1 + 20, el.nom, { taille: 15, gras: true }) : texte(x1 + 18, (y1 + y2) / 2 + 5, el.nom, { taille: 15, gras: true })),
+                        zoneRonde((x1 + x2) / 2, (y1 + y2) / 2, 24));
+                }
+            });
+            p.noeuds.forEach(function (pt) { s += '<circle cx="' + pt[0] + '" cy="' + pt[1] + '" r="3.5" fill="currentColor"/>'; });
+            (p.etiquettes || []).forEach(function (t) { s += texte(t[0], t[1], t[2], { taille: 15, gras: true }); });
+            if (r.sortParLaGauche !== null && !r.court) {
+                var x0 = p.elements.filter(function (el) { return el.type === 'pile'; })[0].x;
+                s += r.sortParLaGauche ? courant(Math.round((p.xGauche + x0) / 2) - 4, p.yPiles, true) : courant(Math.round((320 - p.xGauche + x0 + 130) / 2), p.yPiles, false);
+            }
+            if (p.formuleY && !e.voltmetre && (e.piles.length > 1 || e.options.nombre)) {
+                s += texte(160, p.formuleY, formule(e), { taille: 15, gras: true, couleur: '--rose' });
+            }
+            return { vue: p.vue, svg: s, label: 'Schéma à manipuler. ' + this.texte(e).replace(/<[^>]+>/g, '') };
         },
-        commandes: function (e, changer) {
-            function choix(cle, valeurs) {
-                return valeurs.map(function (v) {
-                    return { cle: cle + v, texte: nombre(v) + ' V', actif: e[cle] === v, action: function () { e[cle] = v; e.grillee = false; changer(); } };
+
+        commandes: function (e, changer, depart) {
+            var groupes = [];
+            function choix(titre, valeurs, lire, ecrire) {
+                groupes.push({
+                    titre: titre, boutons: valeurs.map(function (v) {
+                        return { cle: titre + v, texte: e.options.nombre && titre === 'Piles' ? String(v) : nombre(v) + ' V', actif: lire() === v, action: function () { ecrire(v); changer(); } };
+                    })
                 });
             }
-            return [
-                { titre: 'Pile', boutons: choix('pile', [1.5, 4.5, 9, 12]) },
-                { titre: 'Lampe', boutons: choix('lampe', [3.5, 6]) }
-            ];
-        },
-        /** En surtension, la lampe brille très fort, puis elle grille. */
-        ensuite: function (e, changer) {
-            if (this.cas(e) !== 'sur' || e.grillee) { return null; }
-            return { delai: 1300, action: function () { e.grillee = true; changer(); } };
-        },
-        texte: function (e) {
-            var cas = this.cas(e);
-            if (cas === 'sous') { return '<strong>Sous-tension</strong> : la pile est trop faible. La lampe brille <strong>faiblement</strong>.'; }
-            if (cas === 'adaptee') { return 'Lampe <strong>adaptée</strong> : les deux tensions sont voisines. La lampe brille <strong>normalement</strong>.'; }
-            return e.grillee
-                ? '<strong>Surtension</strong> : la pile est trop forte. La lampe a <strong>grillé</strong>.'
-                : '<strong>Surtension</strong> : la lampe brille <strong>très fort</strong>…';
-        }
-    };
-
-    /* --- Deux lampes, en série ou en dérivation --- */
-    var ETATS_LAMPE = ['normale', 'devissee', 'court'];
-    var NOM_ETAT = { normale: 'en place', devissee: 'dévissée', court: 'court-circuitée' };
-
-    SCHEMAS.lampes = {
-        depart: function (options) {
-            return { montage: options.montage === 'derivation' ? 'derivation' : 'serie', l: ['normale', 'normale'] };
-        },
-        /** L'éclat de chaque lampe, et ce qui arrive au circuit. */
-        resultat: function (e) {
-            var courts = e.l.filter(function (x) { return x === 'court'; }).length;
-            var devissees = e.l.filter(function (x) { return x === 'devissee'; }).length;
-            var eclat;
-            if (e.montage === 'serie') {
-                if (devissees) { return { cas: 'coupe', eclat: ['eteinte', 'eteinte'] }; }
-                if (courts === 2) { return { cas: 'danger', eclat: ['eteinte', 'eteinte'] }; }
-                if (courts === 1) {
-                    eclat = e.l.map(function (x) { return x === 'court' ? 'eteinte' : 'forte'; });
-                    return { cas: 'court', eclat: eclat };
-                }
-                return { cas: 'normal', eclat: ['faible', 'faible'] };
+            if (e.options.choix) {
+                choix('Pile', [1.5, 4.5, 9, 12], function () { return e.piles[0].e; }, function (v) { e.piles[0].e = v; e.lampes[0] = 'ok'; });
+                choix('Lampe', [3.5, 6], function () { return e.nominal; }, function (v) { e.nominal = v; e.lampes[0] = 'ok'; });
             }
-            if (courts) { return { cas: 'danger', eclat: ['eteinte', 'eteinte'] }; }
-            eclat = e.l.map(function (x) { return x === 'devissee' ? 'eteinte' : 'normale'; });
-            return { cas: devissees === 2 ? 'coupe' : (devissees ? 'panne' : 'normal'), eclat: eclat };
-        },
-        dessin: function (e) {
-            var r = this.resultat(e), s = '', serie = e.montage === 'serie';
-            function etatDessin(i) { return e.l[i] === 'devissee' ? 'devissee' : r.eclat[i]; }
-            function pont(x, y) {   // le fil du court-circuit, par-dessus la lampe
-                return '<path d="M' + (x - 30) + ' ' + y + ' C' + (x - 30) + ' ' + (y - 34) + ' ' + (x + 30) + ' ' + (y - 34) + ' ' + (x + 30) + ' ' + y +
-                    '" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--rose)"/>' +
-                    '<g style="fill:var(--rose)"><circle cx="' + (x - 30) + '" cy="' + y + '" r="3.5"/><circle cx="' + (x + 30) + '" cy="' + y + '" r="3.5"/></g>';
+            if (e.options.nombre) {
+                choix('Piles', [1, 2, 3], function () { return e.piles.length; }, function (v) {
+                    while (e.piles.length < v) { e.piles.push({ e: e.piles[0].e, ret: false }); }
+                    e.piles.length = v; e.fils = {};
+                });
             }
-            var passe = r.cas === 'normal' || r.cas === 'court' || r.cas === 'panne';
-            if (serie) {
-                s += TRAIT + '<path d="M40 150 L40 50 L86 50 M114 50 L206 50 M234 50 L280 50 L280 150 L166 150 M154 150 L40 150"/></g>';
-                s += lampe(100, 50, etatDessin(0)) + lampe(220, 50, etatDessin(1));
-                if (e.l[0] === 'court') { s += pont(100, 50); }
-                if (e.l[1] === 'court') { s += pont(220, 50); }
-                s += texte(100, 100, 'L1', { taille: 15, gras: true }) + texte(220, 100, 'L2', { taille: 15, gras: true });
-                s += pile(160, 150, false) + (passe ? courant(90, 150, true) : '');
-                return { vue: '0 0 320 190', svg: s, label: 'Deux lampes en série sur une pile. ' + this.phrase(e) };
-            }
-            s += TRAIT + '<path d="M50 190 L50 45 L146 45 M174 45 L270 45 L270 190 L166 190 M154 190 L50 190 M50 115 L146 115 M174 115 L270 115"/></g>';
-            s += '<g fill="currentColor"><circle cx="50" cy="115" r="3.5"/><circle cx="270" cy="115" r="3.5"/></g>';
-            s += lampe(160, 45, etatDessin(1)) + lampe(160, 115, etatDessin(0));
-            if (e.l[1] === 'court') { s += pont(160, 45); }
-            if (e.l[0] === 'court') { s += pont(160, 115); }
-            s += texte(214, 38, 'L2', { taille: 15, gras: true }) + texte(214, 108, 'L1', { taille: 15, gras: true });
-            s += texte(36, 120, 'A', { taille: 15, gras: true }) + texte(284, 120, 'B', { taille: 15, gras: true });
-            s += pile(160, 190, false) + (passe ? courant(100, 190, true) : '');
-            return { vue: '0 0 320 226', svg: s, label: 'Deux lampes en dérivation sur une pile, entre les nœuds A et B. ' + this.phrase(e) };
-        },
-        commandes: function (e, changer) {
-            return [0, 1].map(function (i) {
-                return {
-                    titre: 'L' + (i + 1),
-                    boutons: ETATS_LAMPE.map(function (etat) {
-                        return { cle: 'l' + i + etat, texte: NOM_ETAT[etat], actif: e.l[i] === etat, action: function () { e.l[i] = etat; changer(); } };
+            if (e.options.pont) {
+                groupes.push({
+                    titre: 'Ajouter un fil sur', boutons: e.lampes.map(function (x, i) {
+                        return { cle: 'pont' + i, texte: 'L' + (i + 1), actif: e.ponts[i], action: function () { e.ponts[i] = !e.ponts[i]; changer(); } };
                     })
-                };
-            });
-        },
-        phrase: function (e) { return this.texte(e).replace(/<[^>]+>/g, ''); },
-        texte: function (e) {
-            var r = this.resultat(e), autre;
-            if (e.montage === 'serie') {
-                if (r.cas === 'coupe') { return 'Une lampe est dévissée : la boucle est <strong>coupée</strong>. <strong>Toutes les lampes s\'éteignent</strong>.'; }
-                if (r.cas === 'danger') { return '⚠️ Les deux lampes sont court-circuitées : c\'est un <strong>court-circuit de la pile</strong>. Danger !'; }
-                if (r.cas === 'court') {
-                    autre = e.l[0] === 'court' ? 'L2' : 'L1';
-                    return 'La lampe court-circuitée <strong>s\'éteint</strong>. ' + autre + ' brille <strong>plus fort</strong>.';
-                }
-                return 'Une seule boucle : les deux lampes brillent <strong>faiblement</strong>.';
+                });
             }
-            if (r.cas === 'danger') { return '⚠️ Le fil relie aussi les bornes de la pile : <strong>toutes les lampes s\'éteignent</strong>. Danger, la pile chauffe !'; }
-            if (r.cas === 'coupe') { return 'Les deux lampes sont dévissées : aucune ne brille.'; }
-            if (r.cas === 'panne') {
-                autre = e.l[0] === 'devissee' ? 'L2' : 'L1';
-                return 'Une lampe est dévissée. ' + autre + ' a sa propre branche : elle <strong>brille toujours</strong>.';
-            }
-            return 'Chaque lampe a sa branche : les deux lampes brillent <strong>normalement</strong>.';
-        }
-    };
-
-    /* --- Des piles de 1,5 V en série --- */
-    SCHEMAS.piles = {
-        depart: function (options) {
-            return { nombre: 2, retournee: [false, false, false], retourner: options.retourner !== 'non' };
-        },
-        /** Les signes des piles posées (+1 ou −1), le sens du courant et la tension. */
-        calcul: function (e) {
-            var signes = [], somme = 0, i;
-            for (i = 0; i < e.nombre; i++) { signes.push(e.retournee[i] ? -1 : 1); somme += signes[i]; }
-            return { signes: signes, somme: somme, u: Math.abs(somme) * 1.5 };
-        },
-        /** « U = 1,5 − 1,5 + 1,5 = 1,5 V » : on compte dans le sens du plus grand camp. */
-        formule: function (e) {
-            var c = this.calcul(e), sens = c.somme < 0 ? -1 : 1;
-            var signes = c.signes.map(function (x) { return x * sens; });
-            // On commence toujours par une pile comptée en plus.
-            if (signes[0] < 0) { signes.sort(function (x, y) { return y - x; }); }
-            var s = 'U = 1,5';
-            for (var i = 1; i < signes.length; i++) { s += (signes[i] > 0 ? ' + ' : ' − ') + '1,5'; }
-            return s + (e.nombre > 1 ? ' = ' + nombre(c.u) : '') + ' V';
-        },
-        dessin: function (e) {
-            var c = this.calcul(e);
-            var etat = ['eteinte', 'faible', 'normale', 'forte'][Math.round(c.u / 1.5)];
-            var places = { 1: [160], 2: [127, 193], 3: [95, 160, 225] }[e.nombre];
-            var fil = 'M40 150 L40 45 L146 45 M174 45 L280 45 L280 150 L' + (places[places.length - 1] + 6) + ' 150 M' + (places[0] - 6) + ' 150 L40 150';
-            for (var i = 0; i < places.length - 1; i++) { fil += ' M' + (places[i] + 6) + ' 150 L' + (places[i + 1] - 6) + ' 150'; }
-            var s = TRAIT + '<path d="' + fil + '"/></g>' + lampe(160, 45, etat);
-            places.forEach(function (x, k) {
-                s += pile(x, 150, e.retournee[k]) + texte(x, 186, '1,5 V');
-            });
-            if (c.somme > 0) { s += courant(62, 150, true); }
-            if (c.somme < 0) { s += courant(258, 150, false); }
-            s += texte(200, 76, 'lampe', { ancre: 'start' });
-            s += texte(160, 110, this.formule(e), { taille: 15, gras: true, couleur: '--rose' });
-            return {
-                vue: '0 0 320 200',
-                svg: s,
-                label: e.nombre + (e.nombre > 1 ? ' piles' : ' pile') + ' de 1,5 volt en série et une lampe. ' + this.formule(e).replace('U =', 'Tension :') + '. ' +
-                    { eteinte: 'La lampe est éteinte.', faible: 'La lampe brille faiblement.', normale: 'La lampe brille avec plus d\'éclat.', forte: 'La lampe brille fort.' }[etat]
-            };
-        },
-        commandes: function (e, changer) {
-            var groupes = [{
-                titre: 'Piles',
-                boutons: [1, 2, 3].map(function (n) {
-                    return { cle: 'n' + n, texte: String(n), actif: e.nombre === n, action: function () { e.nombre = n; changer(); } };
-                })
-            }];
-            if (e.retourner) {
-                var boutons = [];
-                for (var i = 0; i < e.nombre; i++) {
-                    (function (k) {
-                        boutons.push({ cle: 'r' + k, texte: 'pile ' + (k + 1), actif: e.retournee[k], bascule: true, action: function () { e.retournee[k] = !e.retournee[k]; changer(); } });
-                    })(i);
-                }
-                groupes.push({ titre: 'Retourner', boutons: boutons });
-            }
+            groupes.push({ boutons: [{ cle: 'depart', texte: '↺ Tout remettre', inactif: JSON.stringify(sansResultat(e)) === depart, action: function () { changer(JSON.parse(depart)); } }] });
             return groupes;
         },
+
+        /** En surtension, la lampe brille très fort, puis elle grille. */
+        ensuite: function (e, changer) {
+            if (!e.options.grille) { return null; }
+            var i = e.resultat.eclat.indexOf('forte');
+            return i < 0 ? null : { delai: 1300, action: function () { e.lampes[i] = 'grillee'; changer(); } };
+        },
+
+        /** La pose d'Aya : wave au départ, cheer, point, think, ou alerte (court-circuit). */
+        pose: function (e, auDepart) {
+            var r = e.resultat;
+            if (r.court) { return 'alerte'; }
+            if (auDepart) { return 'wave'; }
+            if (e.voltmetre) { return 'point'; }
+            var allumees = r.eclat.filter(function (x) { return x === 'faible' || x === 'normale' || x === 'forte'; }).length;
+            if (!allumees) { return 'think'; }
+            return allumees === r.eclat.length && r.eclat.indexOf('faible') < 0 ? 'cheer' : 'point';
+        },
+
+        aide: function (e) {
+            var gestes = ['un fil pour l\'enlever'];
+            if (e.lampes.length) { gestes.push('une lampe pour la dévisser'); }
+            if (e.inter !== null || e.interB) { gestes.push('l\'interrupteur'); }
+            if (e.options.retourner) { gestes.push('une pile pour la retourner'); }
+            return '👆 Touche ' + gestes.join(', ') + '.';
+        },
+
         texte: function (e) {
-            var c = this.calcul(e);
-            if (e.nombre === 1) { return 'Une seule pile : la lampe brille <strong>faiblement</strong>.'; }
-            if (Math.abs(c.somme) === e.nombre) {
-                return 'Série <strong>concordance</strong> : les tensions <strong>s\'ajoutent</strong>. La lampe brille ' +
-                    (e.nombre === 2 ? 'avec <strong>plus d\'éclat</strong>.' : '<strong>fort</strong>.');
+            var r = e.resultat || calculer(e, plan(e)), n = e.lampes.length;
+            if (r.court) {
+                return '⚠️ <strong>Court-circuit</strong> : le courant passe par le fil, sans traverser de lampe. La pile chauffe : danger !' +
+                    (n ? (n > 1 ? ' Les lampes sont éteintes.' : ' La lampe est éteinte.') : '');
             }
-            if (c.u === 0) { return 'Série <strong>opposition</strong> : les deux piles s\'annulent. La lampe est <strong>éteinte</strong>.'; }
-            return 'Série <strong>opposition</strong> : la pile retournée <strong>se retranche</strong>. La lampe brille <strong>faiblement</strong>.';
+            if (e.voltmetre) { return 'Le voltmètre affiche <strong>' + nombre(r.volt) + ' V</strong>.'; }
+            var lampes = r.eclat.map(function (etat, i) { return (n > 1 ? 'L' + (i + 1) : 'La lampe') + ' ' + MOT[etat] + '.'; }).join(' ');
+            var passe = r.eclat.some(function (etat) { return etat === 'faible' || etat === 'normale' || etat === 'forte'; });
+            if (r.eclat.indexOf('grillee') >= 0) { lampes += ' Touche la lampe grillée pour la remplacer.'; }
+            if (passe) { return 'Le courant passe. ' + lampes; }
+            var somme = 0;
+            e.piles.forEach(function (pl) { somme += pl.ret ? -pl.e : pl.e; });
+            if (!somme && e.piles.length > 1) { return 'Les piles s\'annulent : le courant ne passe pas. ' + lampes; }
+            return 'Le circuit est <strong>ouvert</strong> : le courant ne passe pas. ' + lampes;
+        },
+
+        agir: function (e, action) {
+            var quoi = action.split(':')[0], qui = action.split(':')[1];
+            if (quoi === 'fil') { e.fils[qui] = !e.fils[qui]; if (!e.fils[qui]) { delete e.fils[qui]; } }
+            if (quoi === 'lampe') { e.lampes[qui] = e.lampes[qui] === 'ok' ? 'devissee' : 'ok'; }
+            if (quoi === 'pont') { e.ponts[qui] = false; }
+            if (quoi === 'pile') { e.piles[qui].ret = !e.piles[qui].ret; }
+            if (quoi === 'inter') { if (qui === 'K') { e.inter = !e.inter; } else { e.interB[Number(qui.slice(1))] = !e.interB[Number(qui.slice(1))]; } }
         }
     };
+
+    function sansResultat(e) { var c = {}; Object.keys(e).forEach(function (k) { if (k !== 'resultat') { c[k] = e[k]; } }); return c; }
+
+    /* Les raccourcis : un montage tout prêt. */
+    function raccourci(attributs) {
+        return {
+            depart: function (d) {
+                var a = attributs(d), copie = {};
+                Object.keys(a).forEach(function (k) { copie[k] = a[k]; });
+                return etatMontage(copie);
+            },
+            dessin: function (e) { return SCHEMAS.montage.dessin(e); },
+            commandes: SCHEMAS.montage.commandes, ensuite: SCHEMAS.montage.ensuite, aide: SCHEMAS.montage.aide, pose: SCHEMAS.montage.pose,
+            texte: SCHEMAS.montage.texte, agir: SCHEMAS.montage.agir
+        };
+    }
+    SCHEMAS.circuit = raccourci(function () { return { piles: '4.5', inter: 'ouvert' }; });
+    SCHEMAS.tension = raccourci(function () { return { piles: '4.5', nominal: '3.5', options: 'choix grille' }; });
+    SCHEMAS.lampes = raccourci(function (d) { return { piles: '4.5', lampes: '2', montage: d.montage, nominal: d.montage === 'derivation' ? '3.8' : '3.3' }; });
+    SCHEMAS.piles = raccourci(function (d) { return { piles: '1.5,1.5', nominal: '3', options: 'nombre' + (d.retourner === 'non' ? '' : ' retourner') }; });
 
     /* --- Du sucre ou du sable dans l'eau --- */
     var GRAINS = [[128, 168], [141, 171], [154, 167], [167, 171], [180, 168], [193, 171], [135, 162], [150, 161], [163, 163], [176, 161], [188, 163], [158, 156]];
@@ -379,6 +540,7 @@
                 }
             ];
         },
+        pose: function (e) { return e.etape === 0 ? 'wave' : (e.etape === 1 ? 'point' : (e.produit === 'sucre' ? 'cheer' : 'think')); },
         texte: function (e) {
             if (e.etape === 0) { return 'Un verre d\'eau. Verse du sucre ou du sable.'; }
             if (e.etape === 1) { return 'Le ' + e.produit + ' tombe au fond. Maintenant, <strong>agite</strong>.'; }
@@ -396,33 +558,69 @@
         hote.dataset.pret = '1';
 
         var etat = schema.depart(hote.dataset);
+        var depart = JSON.stringify(etat);
         var figure = document.createElement('figure');
         figure.className = 'schema si-figure';
 
         var svg = document.createElementNS(NS, 'svg');
-        svg.setAttribute('role', 'img');
+        svg.setAttribute('role', 'group');
         figure.appendChild(svg);
+
+        // La légende écrite dans la page reste sous le schéma.
+        var legende = hote.querySelector('.si-legende');
+        if (legende) {
+            var fixe = document.createElement('figcaption');
+            fixe.innerHTML = legende.innerHTML;
+            figure.appendChild(fixe);
+            legende.remove();
+        }
+
+        // L'observation : dans la bulle d'Aya dès que js/jeu.js est arrivé, dans un
+        // simple paragraphe en attendant (ou sur une page sans la coquille).
+        var observation = document.createElement('p');
+        observation.className = 'si-observation';
+        observation.setAttribute('aria-live', 'polite');
+        figure.appendChild(observation);
+        var aya = null;
+
+        function dire(html, pose) {
+            if (!aya && window.KarniellaJeu && window.KarniellaJeu.guide) {
+                aya = window.KarniellaJeu.guide({ taille: 84 });
+                aya.el.classList.add('si-aya');
+                figure.replaceChild(aya.el, observation);
+            }
+            if (!aya) { observation.innerHTML = html; return; }
+            var phrase = document.createElement('p');
+            phrase.innerHTML = html;
+            aya.dire(phrase, pose === 'alerte' ? 'think' : pose);
+            aya.el.classList.toggle('si-alerte', pose === 'alerte');
+        }
 
         var commandes = document.createElement('div');
         commandes.className = 'si-commandes';
         figure.appendChild(commandes);
 
-        var legende = document.createElement('figcaption');
-        legende.setAttribute('aria-live', 'polite');
-        figure.appendChild(legende);
+        if (schema.aide) {
+            var aide = document.createElement('p');
+            aide.className = 'si-aide';
+            aide.textContent = schema.aide(etat);
+            figure.appendChild(aide);
+        }
 
         var attente = null;
 
         function dessiner() {
+            var actif = document.activeElement, focus = null;
+            if (actif && figure.contains(actif)) { focus = actif.dataset.cle ? '[data-cle="' + actif.dataset.cle + '"]' : (actif.dataset.act ? '[data-act="' + actif.dataset.act + '"]' : null); }
+
             var d = schema.dessin(etat);
             svg.setAttribute('viewBox', d.vue);
             svg.setAttribute('aria-label', d.label);
             svg.innerHTML = d.svg;
-            legende.innerHTML = schema.texte(etat);
+            dire(schema.texte(etat), schema.pose ? schema.pose(etat, JSON.stringify(sansResultat(etat)) === depart) : 'idle');
 
-            var focus = document.activeElement && commandes.contains(document.activeElement) ? document.activeElement.dataset.cle : null;
             commandes.textContent = '';
-            schema.commandes(etat, changer).forEach(function (groupe) {
+            schema.commandes(etat, changer, depart).forEach(function (groupe) {
                 var bloc = document.createElement('div');
                 bloc.className = 'si-groupe';
                 if (groupe.titre) {
@@ -438,14 +636,18 @@
                     bouton.dataset.cle = b.cle;
                     bouton.textContent = b.texte;
                     if (b.actif !== undefined) { bouton.setAttribute('aria-pressed', b.actif ? 'true' : 'false'); }
-                    if (groupe.titre) { bouton.setAttribute('aria-label', groupe.titre + ' : ' + b.texte); }
+                    if (groupe.titre) { bouton.setAttribute('aria-label', groupe.titre + ' ' + b.texte); }
                     bouton.disabled = !!b.inactif;
                     bouton.addEventListener('click', b.action);
                     bloc.appendChild(bouton);
-                    if (focus === b.cle && !b.inactif) { bouton.focus(); }
                 });
                 commandes.appendChild(bloc);
             });
+
+            if (focus) {
+                var cible = figure.querySelector(focus);
+                if (cible && !cible.disabled) { cible.focus(); }
+            }
 
             // Une suite qui arrive toute seule (la lampe en surtension grille).
             if (attente) { clearTimeout(attente); attente = null; }
@@ -453,10 +655,30 @@
             if (suite) { attente = setTimeout(function () { attente = null; suite.action(); }, suite.delai); }
         }
 
-        function changer() { dessiner(); }
+        /** Redessine. Avec un état en argument : on repart de cet état. */
+        function changer(nouvelEtat) {
+            if (nouvelEtat) { etat = nouvelEtat; }
+            dessiner();
+        }
+
+        // Toucher un élément du schéma (souris, doigt, ou Entrée / Espace au clavier).
+        function toucher(evenement) {
+            var cible = evenement.target.closest ? evenement.target.closest('[data-act]') : null;
+            if (!cible || !schema.agir) { return; }
+            if (evenement.type === 'keydown') {
+                if (evenement.key !== 'Enter' && evenement.key !== ' ') { return; }
+                evenement.preventDefault();
+            }
+            schema.agir(etat, cible.dataset.act);
+            dessiner();
+        }
+        svg.addEventListener('click', toucher);
+        svg.addEventListener('keydown', toucher);
 
         hote.appendChild(figure);
         dessiner();
+        // js/jeu.js (Aya) est chargé par la coquille, parfois après ce script.
+        if (!aya) { window.addEventListener('load', function () { if (!aya) { dessiner(); } }); }
     }
 
     function demarrer() {
