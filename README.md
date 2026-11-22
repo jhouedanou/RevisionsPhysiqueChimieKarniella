@@ -276,6 +276,10 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
 - `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
   À mettre sur les notes qui s'adressent à Karniella (« à compléter depuis ton
   cahier »), pas sur le contenu du cours.
+- `js/a-completer.js` rend actifs les exemples (`.exemple-exo` : réponse à
+  taper ou à choisir, deux essais) et les exercices à trous
+  (`<span class="trou">…</span>` devient une case, vérifiée avec la correction
+  de la même ligne). Aucun balisage en plus.
 - `<p class="aide-memoire">` : sous le titre d'un exercice, l'icône i et un
   lien `#exemple-N` vers un exemple résolu du cours
   (`<div class="example-box exemple-exo" id="exemple-N">`, inspiré du quiz).

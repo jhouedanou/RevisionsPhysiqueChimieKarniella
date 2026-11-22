@@ -974,6 +974,51 @@ html.cartes-ouvertes { overflow: hidden; }
 .exemple-exo { scroll-margin-top: 120px; }
 .exemple-exo p { margin: 0 0 6px; }
 
+/* Exemples et exercices à compléter (js/a-completer.js). */
+.ac-exemple { margin: 6px 0 8px; }
+.ac-ligne { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ac-champ {
+    min-height: 40px;
+    padding: 4px 10px;
+    border: 2px solid var(--bord);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--encre);
+    font: inherit;
+    font-weight: 700;
+}
+.ac-ligne .ac-champ { flex: 1 1 140px; min-width: 0; }
+.ac-trou { min-height: 34px; margin: 2px 0; padding: 2px 8px; vertical-align: baseline; text-align: center; }
+.ac-champ:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+.ac-champ.juste { border-color: var(--succes-bord); background: var(--succes-fond); color: var(--succes-texte); }
+.ac-champ.faux { border-color: var(--erreur-bord); background: var(--erreur-fond); color: var(--erreur-texte); }
+.ac-verifier, .ac-option {
+    min-height: 44px;
+    padding: 6px 16px;
+    border: 2px solid var(--l5-rose);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--encre);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
+.ac-verifier { background: var(--l5-rose); color: var(--surface); }
+.ac-verifier:disabled, .ac-option:disabled { opacity: .5; cursor: default; }
+.ac-verifier:focus-visible, .ac-option:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.ac-choix { display: flex; flex-direction: column; gap: 6px; }
+.ac-option { border-radius: 14px; border-color: var(--bord); text-align: left; font-weight: 700; }
+.ac-option.juste { border-color: var(--succes-bord); background: var(--succes-fond); color: var(--succes-texte); opacity: 1; }
+.ac-option.faux { border-color: var(--erreur-bord); background: var(--erreur-fond); color: var(--erreur-texte); text-decoration: line-through; }
+.ac-retour { margin: 6px 0 0; min-height: 1.4em; font-weight: 800; }
+.ac-retour.juste { color: var(--succes-texte); }
+.ac-retour.faux { color: var(--erreur-texte); }
+.ac-barre { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 8px 0; }
+.ac-barre .ac-retour { margin: 0; }
+.ac-devoilee { animation: ac-arrive .35s ease both; }
+@keyframes ac-arrive { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ac-devoilee { animation: none; } }
+
 /* Aide-mémoire d'un exercice : l'icône i et la partie du cours à revoir. */
 .aide-memoire {
     display: flex;
@@ -1306,7 +1351,8 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
     .lecon-5e h4 { break-after: avoid; }
 
     /* Les encadrés peuvent se couper : pas de grand blanc en bas de page. */
-    .si-commandes, .si-aide, .si-aya .guide-perso { display: none; }
+    .si-commandes, .si-aide, .si-aya .guide-perso, .ac-barre, .ac-exemple { display: none; }
+    .exemple-exo p[hidden] { display: block; }
     .schema,
     .table-vocab tr,
     .dialogue p,
