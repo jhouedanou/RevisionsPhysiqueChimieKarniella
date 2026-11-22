@@ -1,0 +1,57 @@
+{
+  "id": "tice-traitement-texte",
+  "lecon": "tice-traitement-texte",
+  "matiere": "tice",
+  "titre": "Le bureau bien rangé",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, la salle informatique est en pagaille ! Les exposés de la classe sont perdus dans l'ordinateur. Ta mission : apprendre à écrire un texte et à bien le ranger.",
+  "micro_learning_blocks": [
+    {
+      "titre": "⌨️ La machine à écrire magique",
+      "contenu": "Le logiciel de traitement de texte, comme Word, est une machine à écrire magique. Tu saisis ton texte au clavier, tu le mets en forme, tu l'enregistres, tu l'imprimes. Et une faute s'efface sans rature !"
+    },
+    {
+      "titre": "📄 Le fichier, ta feuille",
+      "contenu": "Ton texte enregistré devient un fichier : une feuille qui porte un nom, comme « lettre.docx ». La fin du nom, après le point, dit son type."
+    },
+    {
+      "titre": "📁 Le dossier, ta chemise",
+      "contenu": "Le dossier est la chemise où tu ranges tes feuilles. Il contient des fichiers, et même d'autres dossiers. Bien rangé, rien ne se perd."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Quel outil sert à écrire un texte sur l'ordinateur ?",
+      "options": [
+        "Le logiciel de traitement de texte",
+        "Le haut-parleur",
+        "La calculatrice",
+        "La corbeille"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Le traitement de texte, comme Word, sert à saisir et mettre en forme un texte."
+    },
+    {
+      "question": "Ton texte enregistré sous un nom, c'est…",
+      "options": [
+        "un dossier",
+        "un fichier",
+        "un clavier",
+        "un écran"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Des informations enregistrées sous un nom : un fichier."
+    },
+    {
+      "question": "Où ranges-tu plusieurs fichiers ensemble ?",
+      "options": [
+        "Dans un fichier",
+        "Dans la souris",
+        "Dans un dossier",
+        "Dans le clavier"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Le dossier sert à ranger les fichiers."
+    }
+  ]
+}

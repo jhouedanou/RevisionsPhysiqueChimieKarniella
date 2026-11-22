@@ -1,7 +1,7 @@
 {
   "lecon": "histoire-geo-mouvements-migratoires",
   "matiere": "histoire-geo",
-  "date": "2026-11-11",
+  "date": "2026-11-22",
   "restitution": [
     {
       "question": "Complète : la migration est un … collectif ou individuel d'un peuple.",
@@ -32,6 +32,10 @@
     {
       "question": "De quoi le peuplement actuel de la Côte d'Ivoire est-il le résultat ?",
       "reponse": "De plusieurs vagues migratoires d'origines diverses."
+    },
+    {
+      "question": "Cite les quatre sortes de causes des migrations vers la Côte d'Ivoire.",
+      "reponse": "Les causes politiques, économiques, sociales et démographiques, et religieuses."
     }
   ],
   "vrai_faux": [
@@ -74,6 +78,11 @@
       "affirmation": "Une personne seule peut migrer.",
       "vrai": true,
       "correction": "Vrai : la migration peut être individuelle."
+    },
+    {
+      "affirmation": "Les migrations vers la Côte d'Ivoire ont seulement des causes économiques.",
+      "vrai": false,
+      "correction": "Faux : il y a aussi des causes politiques, sociales et démographiques, et religieuses."
     }
   ]
 }
