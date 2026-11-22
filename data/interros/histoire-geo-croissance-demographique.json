@@ -1,0 +1,69 @@
+{
+  "lecon": "histoire-geo-croissance-demographique",
+  "matiere": "histoire-geo",
+  "date": "2026-11-22",
+  "restitution": [
+    {
+      "question": "Comment appelle-t-on l'augmentation du nombre d'habitants d'un pays ?",
+      "reponse": "croissance démographique",
+      "accepte": [
+        "la croissance de la population"
+      ]
+    },
+    {
+      "question": "Comment appelle-t-on le comptage de tous les habitants d'un pays ?",
+      "reponse": "recensement",
+      "accepte": [
+        "le recensement de la population"
+      ]
+    },
+    {
+      "question": "Complète : de 1960 à 2014, la courbe de la population ivoirienne … toujours.",
+      "reponse": "monte",
+      "accepte": [
+        "augmente",
+        "grimpe"
+      ]
+    },
+    {
+      "question": "Que lit-on sur chacun des deux axes de la courbe de la population ?",
+      "reponse": "Sur l'axe horizontal, les années. Sur l'axe vertical, le nombre d'habitants."
+    },
+    {
+      "question": "Décris la croissance de la population ivoirienne de 1960 à 2014.",
+      "reponse": "La population augmente sans arrêt : elle passe d'environ 3,7 millions à 22,7 millions d'habitants. La croissance est rapide."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "La croissance démographique est la baisse du nombre d'habitants.",
+      "vrai": false,
+      "correction": "Faux : c'est l'augmentation du nombre d'habitants."
+    },
+    {
+      "affirmation": "Le recensement sert à compter les habitants d'un pays.",
+      "vrai": true,
+      "correction": "Vrai : c'est le comptage de tous les habitants."
+    },
+    {
+      "affirmation": "En 2014, la Côte d'Ivoire avait environ 22,7 millions d'habitants.",
+      "vrai": true,
+      "correction": "Vrai : environ 22,7 millions en 2014."
+    },
+    {
+      "affirmation": "De 1960 à 2014, la population ivoirienne a diminué.",
+      "vrai": false,
+      "correction": "Faux : elle a toujours augmenté. La courbe monte."
+    },
+    {
+      "affirmation": "Sur la courbe, l'axe horizontal donne le nombre d'habitants.",
+      "vrai": false,
+      "correction": "Faux : l'axe horizontal donne les années. Le nombre d'habitants est sur l'axe vertical."
+    },
+    {
+      "affirmation": "La croissance de la population ivoirienne est rapide.",
+      "vrai": true,
+      "correction": "Vrai : la population a été multipliée par environ 6 en 54 ans."
+    }
+  ]
+}

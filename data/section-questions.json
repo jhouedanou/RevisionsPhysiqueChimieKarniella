@@ -4636,7 +4636,7 @@
         ],
         "correctAnswer": 0,
         "explanation": "Un nom simple n'a qu'un mot : un loup, un cheval.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Lequel est un nom composé ?",
@@ -4648,7 +4648,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "Pique-bœuf est formé de deux mots, reliés par un trait d'union.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Le plus souvent, pour mettre un nom simple au pluriel, on ajoute…",
@@ -4660,7 +4660,7 @@
         ],
         "correctAnswer": 2,
         "explanation": "Un chien → des chiens : on ajoute un s.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « une perdrix » ?",
@@ -4672,7 +4672,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "Perdrix finit déjà par x : le nom ne change pas au pluriel.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un animal » ?",
@@ -4684,7 +4684,7 @@
         ],
         "correctAnswer": 3,
         "explanation": "Les noms en -al font leur pluriel en -aux : un animal → des animaux.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Pourquoi écrit-on « les souris », sans s en plus ?",
@@ -4696,7 +4696,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "Un nom qui finit déjà par s, x ou z ne change pas au pluriel.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Dans un nom composé, quels mots prennent la marque du pluriel ?",
@@ -4708,7 +4708,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "Seuls le nom et l'adjectif s'accordent. Le verbe, l'adverbe et la préposition ne changent pas.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un arc-en-ciel » ?",
@@ -4720,7 +4720,7 @@
         ],
         "correctAnswer": 2,
         "explanation": "Nom + préposition + nom : seul le premier nom prend un s.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un tire-bouchon » ?",
@@ -4732,7 +4732,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "« Tire » est un verbe : il ne change pas. Le nom « bouchon » prend un s.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Un nom composé écrit en un seul mot, comme « portefeuille », fait son pluriel…",
@@ -4744,7 +4744,7 @@
         ],
         "correctAnswer": 0,
         "explanation": "Écrit en un seul mot, il se comporte comme un nom simple : on ajoute un s à la fin.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un cheveu » ?",
@@ -4756,7 +4756,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "Les noms en -eu prennent un x : des cheveux.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un pneu » ?",
@@ -4768,7 +4768,7 @@
         ],
         "correctAnswer": 2,
         "explanation": "Pneu est une exception, comme bleu et landau : il prend un s.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un trou » ?",
@@ -4780,7 +4780,7 @@
         ],
         "correctAnswer": 0,
         "explanation": "Les noms en -ou prennent un s : des trous.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel nom en -ou prend un x au pluriel ?",
@@ -4792,7 +4792,7 @@
         ],
         "correctAnswer": 2,
         "explanation": "Sept noms en -ou prennent un x : bijoux, cailloux, choux, genoux, hiboux, joujoux, poux.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un portail » ?",
@@ -4804,7 +4804,7 @@
         ],
         "correctAnswer": 1,
         "explanation": "Les noms en -ail prennent un s : des portails.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       },
       {
         "question": "Quel est le pluriel de « un travail » ?",
@@ -4816,7 +4816,7 @@
         ],
         "correctAnswer": 2,
         "explanation": "Travail est une exception : -ail devient -aux, des travaux.",
-        "notion": "Séance 4 : Le pluriel des noms"
+        "notion": "Séances 4 et 5 : Le pluriel des noms"
       }
     ]
   },
@@ -5660,6 +5660,71 @@
         "correctAnswer": 1,
         "explanation": "L'eau et les ordures reviennent : il faut nettoyer régulièrement.",
         "notion": "1. Dans l'eau"
+      },
+      {
+        "question": "D'après ton cahier, les moyens de lutte sont répartis en combien de catégories ?",
+        "options": [
+          "Deux",
+          "Trois",
+          "Quatre",
+          "Cinq"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Trois catégories : la lutte mécanique, la lutte biologique et la lutte chimique.",
+        "notion": "Mon cahier",
+        "notionFixe": true
+      },
+      {
+        "question": "Quelles sont les trois catégories de lutte de ton cahier ?",
+        "options": [
+          "Mécanique, biologique, chimique",
+          "Mécanique, électrique, chimique",
+          "Biologique, magique, chimique",
+          "Rapide, lente, chimique"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La lutte mécanique, la lutte biologique et la lutte chimique.",
+        "notion": "Mon cahier",
+        "notionFixe": true
+      },
+      {
+        "question": "Quel est le but de la première enquête ?",
+        "options": [
+          "Compter les moustiques",
+          "Dessiner un criquet",
+          "Déterminer les moyens pour lutter contre les criquets et les moustiques",
+          "Trouver le nom des insectes"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le but de l'enquête est de déterminer les moyens pour lutter contre ces insectes.",
+        "notion": "Mon cahier",
+        "notionFixe": true
+      },
+      {
+        "question": "Pour faire l'enquête, comment la classe s'organise-t-elle ?",
+        "options": [
+          "Chacun travaille seul",
+          "En groupes de travail avec des rôles bien définis",
+          "Le professeur fait tout",
+          "Un seul élève enquête"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Nous nous organisons en groupes de travail avec des rôles bien définis.",
+        "notion": "Mon cahier",
+        "notionFixe": true
+      },
+      {
+        "question": "Quel est le but de la deuxième enquête ?",
+        "options": [
+          "Identifier les moyens et les techniques de sensibilisation",
+          "Acheter des insecticides",
+          "Élever des criquets",
+          "Mesurer la pluie"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Elle sert à identifier les moyens et les techniques de sensibilisation contre ces insectes.",
+        "notion": "Mon cahier",
+        "notionFixe": true
       }
     ]
   },
@@ -7770,7 +7835,638 @@
           "Le relief"
         ],
         "correctAnswer": 1,
-        "explanation": "I. Les causes des migrations."
+        "explanation": "I. Les causes des migrations.",
+        "notion": "I. Les causes"
+      },
+      {
+        "question": "Combien de sortes de causes des migrations ton cahier donne-t-il ?",
+        "options": [
+          "Deux",
+          "Trois",
+          "Quatre",
+          "Six"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Quatre : politiques, économiques, sociales et démographiques, religieuses.",
+        "notion": "I. Les causes"
+      },
+      {
+        "question": "Un peuple fuit une guerre. C'est une cause…",
+        "options": [
+          "politique",
+          "économique",
+          "religieuse",
+          "démographique"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La guerre et les querelles pour le pouvoir sont des causes politiques.",
+        "notion": "I. Les causes"
+      },
+      {
+        "question": "Un peuple part chercher de l'or et de la cola. C'est une cause…",
+        "options": [
+          "politique",
+          "économique",
+          "religieuse",
+          "sociale"
+        ],
+        "correctAnswer": 1,
+        "explanation": "L'or, la cola et le commerce sont des richesses : c'est une cause économique.",
+        "notion": "I. Les causes"
+      },
+      {
+        "question": "Le mot « démographique » parle…",
+        "options": [
+          "de la religion",
+          "du nombre d'habitants",
+          "des rois",
+          "de l'or"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Démographique : qui parle du nombre d'habitants.",
+        "notion": "I. Les causes"
+      },
+      {
+        "question": "Une « cause », c'est…",
+        "options": [
+          "une raison",
+          "un résultat",
+          "un voyage",
+          "un territoire"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La cause dit pourquoi : c'est la raison du départ.",
+        "notion": "I. Les causes"
+      }
+    ]
+  },
+  "tice-traitement-texte": {
+    "tab4": [
+      {
+        "question": "Un logiciel de traitement de texte sert à…",
+        "options": [
+          "écouter de la musique",
+          "saisir et mettre en forme un texte",
+          "réparer l'ordinateur",
+          "regarder des films"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Il sert à saisir un texte, à le mettre en forme, à l'enregistrer et à l'imprimer.",
+        "notion": "1. Le logiciel de traitement de texte"
+      },
+      {
+        "question": "Lequel est un logiciel de traitement de texte ?",
+        "options": [
+          "La souris",
+          "Le disque dur",
+          "Microsoft Word",
+          "L'écran"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Microsoft Word est un logiciel de traitement de texte. La souris, l'écran et le disque dur sont du matériel.",
+        "notion": "1. Le logiciel de traitement de texte"
+      },
+      {
+        "question": "« Saisir » un texte, c'est…",
+        "options": [
+          "le taper au clavier",
+          "l'effacer",
+          "l'imprimer",
+          "le lire à voix haute"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Saisir un texte : le taper au clavier.",
+        "notion": "1. Le logiciel de traitement de texte"
+      },
+      {
+        "question": "Mettre un mot en gras, c'est…",
+        "options": [
+          "de la saisie",
+          "de la mise en forme",
+          "de l'impression",
+          "de l'enregistrement"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Gras, couleur, taille des lettres : c'est la mise en forme.",
+        "notion": "1. Le logiciel de traitement de texte"
+      },
+      {
+        "question": "Qu'est-ce qu'un fichier ?",
+        "options": [
+          "Un meuble de bureau",
+          "Une touche du clavier",
+          "Des informations enregistrées sous un nom",
+          "Un écran"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un fichier est un ensemble d'informations enregistrées sous un nom.",
+        "notion": "2. Le fichier et le dossier"
+      },
+      {
+        "question": "À quoi sert un dossier ?",
+        "options": [
+          "À ranger des fichiers",
+          "À taper un texte",
+          "À allumer l'ordinateur",
+          "À imprimer"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Un dossier sert à ranger des fichiers et d'autres dossiers.",
+        "notion": "2. Le fichier et le dossier"
+      },
+      {
+        "question": "Un dossier peut contenir…",
+        "options": [
+          "seulement un fichier",
+          "rien du tout",
+          "des fichiers et d'autres dossiers",
+          "seulement des images"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un dossier contient des fichiers, et aussi d'autres dossiers.",
+        "notion": "2. Le fichier et le dossier"
+      },
+      {
+        "question": "Dans le nom « lettre.docx », que dit « .docx » ?",
+        "options": [
+          "Le nom du dossier",
+          "Le type du fichier",
+          "La date",
+          "Le nom de l'élève"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La fin du nom, après le point, dit le type du fichier. « .docx » : un texte de Word.",
+        "notion": "2. Le fichier et le dossier"
+      },
+      {
+        "question": "Pour retrouver ton texte demain, tu dois…",
+        "options": [
+          "l'enregistrer",
+          "éteindre l'écran",
+          "le mettre en gras",
+          "fermer les yeux"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Enregistrer garde le texte dans un fichier. Sans cela, il est perdu.",
+        "notion": "1. Le logiciel de traitement de texte",
+        "notionFixe": true
+      },
+      {
+        "question": "Karniella range tous ses devoirs de TICE au même endroit. Elle crée…",
+        "options": [
+          "un fichier",
+          "un logiciel",
+          "un clavier",
+          "un dossier"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Pour ranger plusieurs fichiers ensemble, on crée un dossier.",
+        "notion": "2. Le fichier et le dossier"
+      },
+      {
+        "question": "Dans quel thème se trouve cette leçon ?",
+        "options": [
+          "Bureautique",
+          "Internet",
+          "Matériel",
+          "Dessin"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Thème 2 : Bureautique. Leçon 1 : Traitement d'un document texte.",
+        "notion": "1. Le logiciel de traitement de texte"
+      }
+    ]
+  },
+  "francais-formation-mots-derivation": {
+    "tab4": [
+      {
+        "question": "La dérivation, c'est former un mot nouveau en ajoutant…",
+        "options": [
+          "un préfixe ou un suffixe à un radical",
+          "un s à la fin",
+          "un autre mot avec un trait d'union",
+          "une majuscule"
+        ],
+        "correctAnswer": 0,
+        "explanation": "On ajoute un préfixe ou un suffixe au radical.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Où se place le préfixe ?",
+        "options": [
+          "Après le radical",
+          "Avant le radical",
+          "Au milieu du radical",
+          "À la place du radical"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le préfixe se place avant le radical : re + faire = refaire.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Où se place le suffixe ?",
+        "options": [
+          "Avant le radical",
+          "À la place du radical",
+          "Après le radical",
+          "N'importe où"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le suffixe se place après le radical : chant + eur = chanteur.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Dans « refaire », quel est le préfixe ?",
+        "options": [
+          "faire",
+          "re",
+          "fai",
+          "ire"
+        ],
+        "correctAnswer": 1,
+        "explanation": "re + faire : « re » est le préfixe, « faire » est le radical.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Dans « chanteur », quel est le suffixe ?",
+        "options": [
+          "chant",
+          "ch",
+          "eur",
+          "teur"
+        ],
+        "correctAnswer": 2,
+        "explanation": "chant + eur : « chant » est le radical, « eur » est le suffixe.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Quel est le radical de « déterrer » ?",
+        "options": [
+          "dé",
+          "terr",
+          "er",
+          "déter"
+        ],
+        "correctAnswer": 1,
+        "explanation": "dé + terr + er : le radical est « terr », comme dans terre.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Quel mot n'est PAS de la famille de « terre » ?",
+        "options": [
+          "terrain",
+          "enterrer",
+          "terrasse",
+          "terrible"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Terrible ne parle pas de la terre : il n'est pas de la même famille.",
+        "notion": "1. Définition"
+      },
+      {
+        "question": "Que veut dire le préfixe « re » dans « relire » ?",
+        "options": [
+          "le contraire",
+          "de nouveau",
+          "avant",
+          "petit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Relire : lire de nouveau.",
+        "notion": "2. Formation par dérivation"
+      },
+      {
+        "question": "Quel est le contraire de « possible », formé avec un préfixe ?",
+        "options": [
+          "inpossible",
+          "repossible",
+          "impossible",
+          "dépossible"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Devant m, b, p, le préfixe « in » s'écrit « im » : impossible.",
+        "notion": "2. Formation par dérivation"
+      },
+      {
+        "question": "Le suffixe « ette » dans « fillette » veut dire…",
+        "options": [
+          "petit",
+          "contraire",
+          "de nouveau",
+          "celui qui fait"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Une fillette : une petite fille.",
+        "notion": "2. Formation par dérivation"
+      },
+      {
+        "question": "Quel mot est formé avec un préfixe ET un suffixe ?",
+        "options": [
+          "chanteur",
+          "refaire",
+          "décollage",
+          "terre"
+        ],
+        "correctAnswer": 2,
+        "explanation": "dé + coll + age : un préfixe, un radical, un suffixe.",
+        "notion": "2. Formation par dérivation"
+      },
+      {
+        "question": "« lent » devient « lentement ». Le suffixe « ment » a changé…",
+        "options": [
+          "rien du tout",
+          "la classe du mot : l'adjectif devient un adverbe",
+          "le radical",
+          "le préfixe"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Lent est un adjectif. Lentement est un adverbe : le suffixe change souvent la classe du mot.",
+        "notion": "2. Formation par dérivation"
+      }
+    ]
+  },
+  "histoire-geo-croissance-demographique": {
+    "tab4": [
+      {
+        "question": "La croissance démographique, c'est…",
+        "options": [
+          "la baisse du nombre d'habitants",
+          "l'augmentation du nombre d'habitants",
+          "la taille des habitants",
+          "le départ des habitants"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La croissance démographique est l'augmentation du nombre d'habitants.",
+        "notion": "Introduction"
+      },
+      {
+        "question": "La population d'un pays, c'est…",
+        "options": [
+          "l'ensemble de ses habitants",
+          "l'ensemble de ses villes",
+          "sa superficie",
+          "ses forêts"
+        ],
+        "correctAnswer": 0,
+        "explanation": "La population : tous les habitants du pays.",
+        "notion": "Introduction"
+      },
+      {
+        "question": "Comment appelle-t-on le comptage de tous les habitants d'un pays ?",
+        "options": [
+          "Une migration",
+          "Une élection",
+          "Un recensement",
+          "Une récolte"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le recensement compte tous les habitants.",
+        "notion": "Introduction"
+      },
+      {
+        "question": "Sur la courbe, que lit-on sur l'axe horizontal ?",
+        "options": [
+          "Les habitants",
+          "Les années",
+          "Les villes",
+          "Les régions"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Axe horizontal : les années. Axe vertical : le nombre d'habitants.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "Combien d'habitants la Côte d'Ivoire avait-elle en 1975 ?",
+        "options": [
+          "Environ 3,7 millions",
+          "Environ 6,7 millions",
+          "Environ 15,4 millions",
+          "Environ 22,7 millions"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En 1975 : environ 6,7 millions d'habitants.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "Combien d'habitants la Côte d'Ivoire avait-elle en 1998 ?",
+        "options": [
+          "Environ 6,7 millions",
+          "Environ 10,8 millions",
+          "Environ 15,4 millions",
+          "Environ 22,7 millions"
+        ],
+        "correctAnswer": 2,
+        "explanation": "En 1998 : environ 15,4 millions d'habitants.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "De 1960 à 2014, la courbe de la population…",
+        "options": [
+          "descend",
+          "reste plate",
+          "monte puis descend",
+          "monte toujours"
+        ],
+        "correctAnswer": 3,
+        "explanation": "La courbe monte toujours : la population augmente sans arrêt.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "Une courbe qui monte montre que la population…",
+        "options": [
+          "augmente",
+          "diminue",
+          "ne change pas",
+          "disparaît"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Quand la courbe monte, le nombre d'habitants augmente.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "De 1960 à 2014, la population ivoirienne a été multipliée par environ…",
+        "options": [
+          "2",
+          "3",
+          "6",
+          "20"
+        ],
+        "correctAnswer": 2,
+        "explanation": "De 3,7 à 22,7 millions : environ 6 fois plus.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "Comment est la croissance de la population ivoirienne ?",
+        "options": [
+          "Lente",
+          "Rapide",
+          "Nulle",
+          "En baisse"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La population a été multipliée par 6 en 54 ans : la croissance est rapide.",
+        "notion": "1. La courbe de 1960 à 2014"
+      },
+      {
+        "question": "Entre 1975 et 1998, de combien la population a-t-elle augmenté ?",
+        "options": [
+          "2 millions",
+          "8,7 millions",
+          "15,4 millions",
+          "22,1 millions"
+        ],
+        "correctAnswer": 1,
+        "explanation": "15,4 − 6,7 = 8,7 millions d'habitants en plus.",
+        "notion": "1. La courbe de 1960 à 2014"
+      }
+    ]
+  },
+  "anglais-unit3-weather": {
+    "tab4": [
+      {
+        "question": "Quelle question pose-t-on pour connaître le temps qu'il fait ?",
+        "options": [
+          "What's your name?",
+          "What's the weather like?",
+          "Where is the library?",
+          "How old are you?"
+        ],
+        "correctAnswer": 1,
+        "explanation": "What's the weather like? : Quel temps fait-il ?",
+        "notion": "Session 1: The weather"
+      },
+      {
+        "question": "The sun is shining. It's…",
+        "options": [
+          "rainy",
+          "cloudy",
+          "sunny",
+          "cold"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Sunny: ensoleillé. The sun is shining.",
+        "notion": "Session 1: The weather"
+      },
+      {
+        "question": "Water falls from the sky. It's…",
+        "options": [
+          "rainy",
+          "sunny",
+          "hot",
+          "windy"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Rainy: pluvieux. Water falls from the sky.",
+        "notion": "Session 1: The weather"
+      },
+      {
+        "question": "« Windy » veut dire…",
+        "options": [
+          "nuageux",
+          "venteux",
+          "chaud",
+          "froid"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Windy: the wind is blowing. Venteux.",
+        "notion": "Session 1: The weather"
+      },
+      {
+        "question": "Complete: What's the weather like? — ___ hot.",
+        "options": [
+          "It",
+          "Its",
+          "It's",
+          "Is"
+        ],
+        "correctAnswer": 2,
+        "explanation": "On répond avec It's + adjectif : It's hot.",
+        "notion": "Session 1: The weather"
+      },
+      {
+        "question": "Complete: School starts ___ seven o'clock.",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "of"
+        ],
+        "correctAnswer": 2,
+        "explanation": "At + l'heure : at seven o'clock.",
+        "notion": "Session 2: In, on, at"
+      },
+      {
+        "question": "Complete: We have English ___ Monday.",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "to"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On + le jour : on Monday.",
+        "notion": "Session 2: In, on, at"
+      },
+      {
+        "question": "Complete: It rains a lot ___ June.",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "by"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In + le mois : in June.",
+        "notion": "Session 2: In, on, at"
+      },
+      {
+        "question": "Complete: I do my homework ___ the evening.",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "for"
+        ],
+        "correctAnswer": 0,
+        "explanation": "In the morning, in the afternoon, in the evening.",
+        "notion": "Session 2: In, on, at"
+      },
+      {
+        "question": "Complete: The stars shine ___ night.",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "of"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Attention : at night.",
+        "notion": "Session 2: In, on, at"
+      },
+      {
+        "question": "Quelle préposition met-on devant une date ? ___ 16th November",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "to"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On + la date : on 16th November.",
+        "notion": "Session 2: In, on, at",
+        "notionFixe": true
+      },
+      {
+        "question": "« The dry season », c'est…",
+        "options": [
+          "la saison des pluies",
+          "la saison sèche",
+          "le matin",
+          "la nuit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The dry season: the months when it does not rain.",
+        "notion": "Session 2: In, on, at"
       }
     ]
   }

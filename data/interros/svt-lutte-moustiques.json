@@ -1,22 +1,30 @@
 {
   "lecon": "svt-lutte-moustiques",
   "matiere": "svt",
-  "date": "2026-10-11",
+  "date": "2026-11-22",
   "restitution": [
     {
       "question": "Comment appelle-t-on un produit qui tue les larves de moustiques ?",
       "reponse": "larvicide",
-      "accepte": ["larvicides", "produit larvicide"]
+      "accepte": [
+        "larvicides",
+        "produit larvicide"
+      ]
     },
     {
       "question": "Mettre des poissons qui mangent les larves dans une mare, c'est quelle lutte ?",
       "reponse": "lutte biologique",
-      "accepte": ["biologique"]
+      "accepte": [
+        "biologique"
+      ]
     },
     {
       "question": "Comment appelle-t-on une pommade qui fait fuir les moustiques ?",
       "reponse": "répulsif",
-      "accepte": ["répulsifs", "pommade répulsive"]
+      "accepte": [
+        "répulsifs",
+        "pommade répulsive"
+      ]
     },
     {
       "question": "Définis un gîte larvaire.",
@@ -29,6 +37,17 @@
     {
       "question": "Explique comment la moustiquaire imprégnée te protège du paludisme.",
       "reponse": "Le moustique ne peut pas piquer à travers le filet. Traitée avec un insecticide, elle le tue aussi quand il se pose dessus. Pas de piqûre, pas de paludisme."
+    },
+    {
+      "question": "Cite les trois catégories de moyens de lutte contre les criquets et les moustiques.",
+      "reponse": "La lutte mécanique, la lutte biologique et la lutte chimique."
+    },
+    {
+      "question": "Complète : pour l'enquête, nous nous organisons en … de travail.",
+      "reponse": "groupes",
+      "accepte": [
+        "groupe"
+      ]
     }
   ],
   "vrai_faux": [
@@ -71,6 +90,16 @@
       "affirmation": "Dès que tu as de la fièvre, tu dois aller au centre de santé.",
       "vrai": true,
       "correction": "Vrai : dis-le à un adulte. Soigné à temps, le paludisme guérit."
+    },
+    {
+      "affirmation": "Les moyens de lutte contre les criquets et les moustiques sont répartis en trois catégories.",
+      "vrai": true,
+      "correction": "Vrai : la lutte mécanique, la lutte biologique et la lutte chimique."
+    },
+    {
+      "affirmation": "On ne peut pas lutter contre les criquets et les moustiques.",
+      "vrai": false,
+      "correction": "Faux : on peut effectivement lutter contre ces insectes par des moyens appropriés."
     }
   ]
 }

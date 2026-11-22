@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit3-weather",
+  "lecon": "anglais-unit3-weather",
+  "matiere": "anglais",
+  "titre": "Miss Météo",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, la radio de l'école a besoin de toi : la présentatrice météo est malade ! Ta mission : annoncer le temps en anglais, sans te tromper d'heure ni de jour.",
+  "micro_learning_blocks": [
+    {
+      "titre": "☀️ Le ciel te parle",
+      "contenu": "Lève les yeux : le ciel est ton écran. Sunny, le soleil brille. Rainy, l'eau tombe. Cloudy, des nuages partout. Windy, le vent souffle."
+    },
+    {
+      "titre": "🎙️ La question magique",
+      "contenu": "Pour demander le temps : What's the weather like? Tu réponds toujours avec It's : It's hot. It's rainy. Ici, « like » ne veut pas dire aimer !"
+    },
+    {
+      "titre": "⏰ At, on, in",
+      "contenu": "Trois clés pour dire quand. At ouvre l'heure : at seven o'clock. On ouvre le jour : on Monday. In ouvre le mois : in June. Et le piège : at night."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Comment demandes-tu le temps qu'il fait ?",
+      "options": [
+        "What's the weather like?",
+        "What time is it?",
+        "Where is the sun?",
+        "Who are you?"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "What's the weather like? : Quel temps fait-il ?"
+    },
+    {
+      "question": "Water falls from the sky. It's…",
+      "options": [
+        "sunny",
+        "windy",
+        "rainy",
+        "hot"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Rainy : il pleut."
+    },
+    {
+      "question": "Complete: We have English ___ Monday.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "of"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "On + le jour : on Monday."
+    }
+  ]
+}

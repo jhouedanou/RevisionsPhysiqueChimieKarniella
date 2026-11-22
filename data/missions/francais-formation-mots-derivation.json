@@ -1,0 +1,57 @@
+{
+  "id": "francais-formation-mots-derivation",
+  "lecon": "francais-formation-mots-derivation",
+  "matiere": "francais",
+  "titre": "L'atelier des mots",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, bienvenue dans l'atelier secret où l'on fabrique les mots ! Ta mission : apprendre à monter un mot neuf avec trois pièces.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🚃 Le wagon du milieu",
+      "contenu": "Le radical est le wagon qui porte le sens : « terr » dans terre, terrain, enterrer. Tous les mots construits sur ce wagon sont de la même famille."
+    },
+    {
+      "titre": "⬅️ Le préfixe, devant",
+      "contenu": "Le préfixe s'accroche avant le radical et change le sens. « re » veut dire de nouveau : relire. « in » dit le contraire : injuste. Devant m, b, p, il devient « im » : impossible."
+    },
+    {
+      "titre": "➡️ Le suffixe, derrière",
+      "contenu": "Le suffixe s'accroche après le radical. « eur » : celui qui fait, un chanteur. « ette » : petit, une fillette. Avec les deux pièces, tu obtiens dé-coll-age !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Quelle pièce se place avant le radical ?",
+      "options": [
+        "Le suffixe",
+        "Le préfixe",
+        "Le verbe",
+        "Le point"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Le préfixe se place avant, le suffixe après."
+    },
+    {
+      "question": "Dans « chanteur », « eur » est…",
+      "options": [
+        "un préfixe",
+        "un radical",
+        "un suffixe",
+        "une famille"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Il est après le radical « chant » : c'est un suffixe."
+    },
+    {
+      "question": "Quel mot est bien écrit ?",
+      "options": [
+        "inpossible",
+        "impossible",
+        "ilpossible",
+        "irpossible"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Devant m, b, p : « im »."
+    }
+  ]
+}

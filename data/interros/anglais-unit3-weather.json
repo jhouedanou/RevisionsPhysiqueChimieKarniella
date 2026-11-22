@@ -1,0 +1,93 @@
+{
+  "lecon": "anglais-unit3-weather",
+  "matiere": "anglais",
+  "date": "2026-11-22",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : ensoleillé.",
+      "reponse": "sunny",
+      "accepte": [
+        "it's sunny"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : pluvieux.",
+      "reponse": "rainy",
+      "accepte": [
+        "it's rainy"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Complète avec in, on ou at : School starts … seven o'clock.",
+      "reponse": "at",
+      "accepte": [
+        "School starts at seven o'clock."
+      ],
+      "reponseLangue": "en",
+      "exact": true
+    },
+    {
+      "question": "Complète avec in, on ou at : It rains a lot … June.",
+      "reponse": "in",
+      "accepte": [
+        "It rains a lot in June."
+      ],
+      "reponseLangue": "en",
+      "exact": true
+    },
+    {
+      "question": "Quelle question pose-t-on en anglais pour connaître le temps qu'il fait ? Donne aussi une réponse.",
+      "reponse": "What's the weather like? — It's sunny.",
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quand utilise-t-on at, on et in ?",
+      "reponse": "At avec l'heure (at seven o'clock). On avec le jour ou la date (on Monday). In avec le mois, la saison, l'année (in June)."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "« Windy » means the wind is blowing.",
+      "vrai": true,
+      "correction": "Vrai : windy, le vent souffle.",
+      "langue": "en"
+    },
+    {
+      "affirmation": "« Cloudy » means the sun is shining.",
+      "vrai": false,
+      "correction": "Faux : cloudy, il y a beaucoup de nuages. Le soleil qui brille : sunny.",
+      "langue": "en"
+    },
+    {
+      "affirmation": "We have English in Monday.",
+      "vrai": false,
+      "correction": "Faux : on + le jour. We have English on Monday.",
+      "langue": "en"
+    },
+    {
+      "affirmation": "It rains a lot in June.",
+      "vrai": true,
+      "correction": "Vrai : in + le mois.",
+      "langue": "en"
+    },
+    {
+      "affirmation": "The stars shine in night.",
+      "vrai": false,
+      "correction": "Faux : on dit at night.",
+      "langue": "en"
+    },
+    {
+      "affirmation": "It's cold in the morning.",
+      "vrai": true,
+      "correction": "Vrai : in the morning, in the afternoon, in the evening.",
+      "langue": "en"
+    },
+    {
+      "affirmation": "Dans « What's the weather like? », « like » veut dire « aimer ».",
+      "vrai": false,
+      "correction": "Faux : ici, like veut dire « comment ». Quel temps fait-il ?"
+    }
+  ]
+}

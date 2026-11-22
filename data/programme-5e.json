@@ -94,6 +94,15 @@
           "description": "Les mots de la cuisine (a pot, to boil, to stir…) et l'obligation : You must wash your hands. She has to boil the water.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "anglais-unit3-weather",
+          "titre": "Unit 3 — Time and date : Lesson 1, What's the weather like?",
+          "sousTitre": "Sessions 1 et 2 — Weather vocabulary, prepositions of time",
+          "icone": "🌦️",
+          "description": "Les mots de la météo (sunny, rainy, windy…), la question What's the weather like? et les prépositions de temps : at seven o'clock, on Monday, in June.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },
@@ -180,7 +189,7 @@
         {
           "id": "mathematiques-nombres-decimaux-relatifs",
           "titre": "Les nombres décimaux relatifs",
-          "sousTitre": "Calculs algébriques — Présentation et notation",
+          "sousTitre": "Leçon 4 — Présentation, notation et comparaison",
           "icone": "➕",
           "description": "Les nombres avec un signe + ou − : les ensembles 𝔻, 𝔻⁺ et 𝔻⁻, opposés, droite graduée, comparaison.",
           "statut": "prete",
@@ -234,10 +243,10 @@
         },
         {
           "id": "svt-lutte-moustiques",
-          "titre": "La lutte contre la prolifération des moustiques",
-          "sousTitre": "Détruire les gîtes, tuer les moustiques, se protéger des piqûres",
+          "titre": "La lutte contre les criquets et les moustiques",
+          "sousTitre": "Lutte mécanique, biologique et chimique",
           "icone": "🛡️",
-          "description": "Lutte physique, chimique et biologique, moustiquaire imprégnée, et les exercices corrigés. Rédigée d'après le titre du cahier.",
+          "description": "Ton cahier : les deux enquêtes et les trois catégories de lutte. Puis détruire les gîtes, tuer les moustiques, se protéger des piqûres.",
           "statut": "prete",
           "mission": true
         }
@@ -272,9 +281,9 @@
         {
           "id": "francais-groupe-nominal",
           "titre": "Le groupe nominal",
-          "sousTitre": "Grammaire · Séances 1 à 4 : adjectif, relative, complément du nom, pluriel des noms",
+          "sousTitre": "Grammaire · Séances 1 à 5 : adjectif, relative, complément du nom, pluriel des noms",
           "icone": "🧩",
-          "description": "Les trois expansions du nom et le pluriel des noms simples, avec ton cahier pour les séances 2, 3 et 4.",
+          "description": "Les trois expansions du nom, le pluriel des noms simples et composés et les pluriels irréguliers, avec ton cahier pour les séances 2 à 5.",
           "statut": "prete",
           "mission": true
         },
@@ -284,6 +293,15 @@
           "sousTitre": "Lecture · Séance 1 : lecture méthodique d'un texte descriptif",
           "icone": "🔎",
           "description": "Ton cahier : le portrait de César (axes, tableau de vérification, bilan, vocabulaire), puis la méthode sur d'autres textes.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "francais-formation-mots-derivation",
+          "titre": "La formation des mots par dérivation",
+          "sousTitre": "Orthographe lexicale · Séance 1",
+          "icone": "🧱",
+          "description": "Radical, préfixe, suffixe et famille de mots : re-faire, chant-eur, dé-coll-age. Et l'orthographe de in-, im-, il-, ir-.",
           "statut": "prete",
           "mission": true
         }
@@ -319,7 +337,7 @@
           "titre": "Les premiers mouvements migratoires en Côte d'Ivoire",
           "sousTitre": "Histoire — Thème 1 : Le peuplement de la Côte d'Ivoire, leçon 2",
           "icone": "🧭",
-          "description": "Ton cahier : la définition de la migration, et le peuplement de la Côte d'Ivoire par plusieurs vagues migratoires.",
+          "description": "Ton cahier : la définition de la migration, les vagues migratoires, et les quatre sortes de causes des migrations.",
           "statut": "prete",
           "mission": true
         },
@@ -329,6 +347,15 @@
           "sousTitre": "Géographie — Thème 1 : L'homme et son milieu en Côte d'Ivoire, leçon 1",
           "icone": "🏞️",
           "description": "Ton cahier : le relief, le climat, la végétation, les sols et les fleuves, puis la densité de la population, faible au nord et forte au sud.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "histoire-geo-croissance-demographique",
+          "titre": "La croissance démographique en Côte d'Ivoire",
+          "sousTitre": "Géographie — Thème 1 : L'homme et son milieu en Côte d'Ivoire, leçon 2",
+          "icone": "📈",
+          "description": "L'augmentation du nombre d'habitants, et la courbe de la population ivoirienne de 1960 à 2014 : de 3,7 à 22,7 millions.",
           "statut": "prete",
           "mission": true
         }
@@ -385,6 +412,15 @@
           "sousTitre": "Leçon 2",
           "icone": "⚙️",
           "description": "Ton cahier : le processeur (Hz, GHz), la mémoire RAM (octets, Go) et le disque dur.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
+          "id": "tice-traitement-texte",
+          "titre": "Traitement d'un document de texte",
+          "sousTitre": "Thème 2 : Bureautique — Leçon 1",
+          "icone": "📝",
+          "description": "Le logiciel de traitement de texte (saisir, mettre en forme, enregistrer, imprimer), le fichier et le dossier.",
           "statut": "prete",
           "mission": true
         }

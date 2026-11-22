@@ -1,0 +1,57 @@
+{
+  "id": "histoire-geo-croissance-demographique",
+  "lecon": "histoire-geo-croissance-demographique",
+  "matiere": "histoire-geo",
+  "titre": "La courbe qui grimpe",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, le ministre te confie un dessin mystérieux : une ligne qui grimpe comme une colline. Ta mission : lire cette courbe et dire ce qu'elle raconte sur les Ivoiriens.",
+  "micro_learning_blocks": [
+    {
+      "titre": "👨‍👩‍👧‍👦 De plus en plus nombreux",
+      "contenu": "La croissance démographique, c'est le nombre d'habitants qui augmente. Comme une classe qui passe de 40 à 60 élèves. Pour compter tout le monde, on fait un recensement."
+    },
+    {
+      "titre": "🧭 Deux axes",
+      "contenu": "L'axe couché donne les années, l'axe debout donne les habitants. Chaque point est une photo du pays : 1975, environ 6,7 millions. 1998, environ 15,4 millions."
+    },
+    {
+      "titre": "⛰️ Une côte qui monte",
+      "contenu": "De 1960 à 2014, la courbe monte toujours : de 3,7 à 22,7 millions d'habitants. C'est environ 6 fois plus en 54 ans. La croissance est rapide !"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "La croissance démographique, c'est le nombre d'habitants qui…",
+      "options": [
+        "baisse",
+        "augmente",
+        "ne bouge pas",
+        "disparaît"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Croissance : ça grandit, ça augmente."
+    },
+    {
+      "question": "Que donne l'axe couché de la courbe ?",
+      "options": [
+        "Les habitants",
+        "Les villes",
+        "Les années",
+        "Les fleuves"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Axe horizontal : les années."
+    },
+    {
+      "question": "De 1960 à 2014, la population ivoirienne a été multipliée par environ…",
+      "options": [
+        "2",
+        "6",
+        "10",
+        "50"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "De 3,7 à 22,7 millions : environ 6 fois plus."
+    }
+  ]
+}

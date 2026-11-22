@@ -1,0 +1,69 @@
+{
+  "lecon": "tice-traitement-texte",
+  "matiere": "tice",
+  "date": "2026-11-22",
+  "restitution": [
+    {
+      "question": "Comment appelle-t-on le programme qui sert à saisir et à mettre en forme un texte ?",
+      "reponse": "logiciel de traitement de texte",
+      "accepte": [
+        "traitement de texte",
+        "un traitement de texte"
+      ]
+    },
+    {
+      "question": "Complète : un … sert à ranger des fichiers.",
+      "reponse": "dossier",
+      "accepte": [
+        "répertoire"
+      ]
+    },
+    {
+      "question": "Complète : un ensemble d'informations enregistrées sous un nom s'appelle un …",
+      "reponse": "fichier",
+      "accepte": [
+        "fichiers"
+      ]
+    },
+    {
+      "question": "Cite les quatre actions que permet un logiciel de traitement de texte.",
+      "reponse": "Saisir un texte, le mettre en forme, l'enregistrer et l'imprimer."
+    },
+    {
+      "question": "Quelle est la différence entre un fichier et un dossier ?",
+      "reponse": "Le fichier contient des informations (un texte, une image). Le dossier sert à ranger des fichiers et d'autres dossiers."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Microsoft Word est un logiciel de traitement de texte.",
+      "vrai": true,
+      "correction": "Vrai : Word sert à saisir et à mettre en forme un texte."
+    },
+    {
+      "affirmation": "Saisir un texte, c'est l'imprimer sur une feuille.",
+      "vrai": false,
+      "correction": "Faux : saisir, c'est taper le texte au clavier."
+    },
+    {
+      "affirmation": "Un dossier peut contenir d'autres dossiers.",
+      "vrai": true,
+      "correction": "Vrai : un dossier range des fichiers et d'autres dossiers."
+    },
+    {
+      "affirmation": "Un fichier sert à ranger des dossiers.",
+      "vrai": false,
+      "correction": "Faux : c'est le dossier qui range les fichiers."
+    },
+    {
+      "affirmation": "Mettre un titre en couleur, c'est de la mise en forme.",
+      "vrai": true,
+      "correction": "Vrai : la mise en forme change l'aspect du texte."
+    },
+    {
+      "affirmation": "Un texte qui n'est pas enregistré se retrouve quand même le lendemain.",
+      "vrai": false,
+      "correction": "Faux : il faut l'enregistrer pour le garder dans un fichier."
+    }
+  ]
+}

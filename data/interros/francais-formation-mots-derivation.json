@@ -1,0 +1,78 @@
+{
+  "lecon": "francais-formation-mots-derivation",
+  "matiere": "francais",
+  "date": "2026-11-22",
+  "restitution": [
+    {
+      "question": "Comment appelle-t-on la partie du mot qui porte le sens ?",
+      "reponse": "radical",
+      "accepte": [
+        "le radical"
+      ]
+    },
+    {
+      "question": "Comment appelle-t-on l'élément placé avant le radical ?",
+      "reponse": "préfixe",
+      "accepte": [
+        "préfixes"
+      ]
+    },
+    {
+      "question": "Comment appelle-t-on l'élément placé après le radical ?",
+      "reponse": "suffixe",
+      "accepte": [
+        "suffixes"
+      ]
+    },
+    {
+      "question": "Écris le contraire de « possible ».",
+      "reponse": "impossible",
+      "exact": true
+    },
+    {
+      "question": "Qu'est-ce que la dérivation ?",
+      "reponse": "C'est la formation d'un mot nouveau en ajoutant un préfixe ou un suffixe à un radical."
+    },
+    {
+      "question": "Qu'est-ce qu'une famille de mots ? Donne un exemple.",
+      "reponse": "Ce sont les mots formés sur le même radical. Exemple : terre, terrain, enterrer."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Le préfixe se place après le radical.",
+      "vrai": false,
+      "correction": "Faux : le préfixe est avant le radical. C'est le suffixe qui est après."
+    },
+    {
+      "affirmation": "Dans « relire », « re » veut dire « de nouveau ».",
+      "vrai": true,
+      "correction": "Vrai : relire, c'est lire de nouveau."
+    },
+    {
+      "affirmation": "« Terrible » est de la famille de « terre ».",
+      "vrai": false,
+      "correction": "Faux : terrible ne parle pas de la terre."
+    },
+    {
+      "affirmation": "Devant m, b et p, le préfixe « in » s'écrit « im ».",
+      "vrai": true,
+      "correction": "Vrai : impossible, imbattable, immangeable."
+    },
+    {
+      "affirmation": "Dans « fillette », le suffixe « ette » veut dire « grand ».",
+      "vrai": false,
+      "correction": "Faux : « ette » veut dire petit. Une fillette est une petite fille."
+    },
+    {
+      "affirmation": "« Décollage » a un préfixe et un suffixe.",
+      "vrai": true,
+      "correction": "Vrai : dé + coll + age."
+    },
+    {
+      "affirmation": "Le préfixe change la classe du mot : « refaire » n'est plus un verbe.",
+      "vrai": false,
+      "correction": "Faux : faire et refaire sont deux verbes. Le préfixe change le sens."
+    }
+  ]
+}
