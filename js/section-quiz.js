@@ -1028,41 +1028,97 @@ class SectionQuiz {
      * s'arrête pendant tout ce temps.
      */
     imposerLecture(bouton, aide, libelle, liberer, zone) {
-        let reste = typeof this.options.lecture === 'number' ? this.options.lecture : 10;
+        const duree = typeof this.options.lecture === 'number' ? this.options.lecture : 10;
         const retour = zone && zone.querySelector('.quiz-retour');
-        if (retour) { retour.classList.add('a-lire'); }
+        const q = this.questionCourante();
+        const question = this.elScene.querySelector('.quiz-question');
+        // Après une erreur à un QCM, « J'ai compris » ne suffit pas : Karniella doit
+        // retrouver la bonne réponse, correction cachée. Elle passait dessus sans lire.
+        const preuve = this.reponses[this.index] === false && avecOptions(q) && this.options.preuve !== false;
         this.enLecture = true;
         this.dejaPasse = this.secondes();   // le chrono s'arrête
         this.debut = null;
         bouton.disabled = true;
         bouton.innerHTML = libelle;
-        const minuteur = document.createElement('p');
-        minuteur.className = 'quiz-lecture';
-        minuteur.setAttribute('role', 'timer');
-        const afficher = () => { minuteur.textContent = '👆 Lis bien la correction, juste au-dessus… ' + reste + ' s'; };
-        afficher();
-        bouton.parentNode.insertBefore(minuteur, bouton);
-        if (aide) { aide.textContent = 'Le bouton « J’ai compris » arrive à la fin du minuteur.'; }
-        window.clearInterval(this.ticLecture);
-        this.ticLecture = window.setInterval(() => {
-            reste--;
-            if (reste > 0) { afficher(); return; }
+
+        const fin = () => {
+            if (retour) { retour.classList.remove('a-lire'); }
+            if (question) { question.classList.remove('en-preuve'); }
+            this.finirLecture();
+            liberer();
+        };
+
+        const lire = (secondes, message) => {
+            let reste = secondes;
+            if (retour) { retour.classList.add('a-lire'); }
+            if (question) { question.classList.remove('en-preuve'); }
+            const minuteur = document.createElement('p');
+            minuteur.className = 'quiz-lecture';
+            minuteur.setAttribute('role', 'timer');
+            const afficher = () => { minuteur.textContent = message + ' ' + reste + ' s'; };
+            afficher();
+            bouton.parentNode.insertBefore(minuteur, bouton);
+            if (aide) { aide.textContent = preuve ? 'Lis bien : je vais te redemander la bonne réponse.' : 'Le bouton « J’ai compris » arrive à la fin du minuteur.'; }
+            if (retour) { this.montrerBas(retour); }
             window.clearInterval(this.ticLecture);
-            if (!minuteur.isConnected) { return; }
-            const compris = document.createElement('button');
-            compris.type = 'button';
-            compris.className = 'btn btn-energie quiz-compris';
-            compris.textContent = 'J’ai compris';
-            compris.addEventListener('click', () => {
-                compris.remove();
-                if (retour) { retour.classList.remove('a-lire'); }
-                this.finirLecture();
-                liberer();
+            this.ticLecture = window.setInterval(() => {
+                reste--;
+                if (reste > 0) { afficher(); return; }
+                window.clearInterval(this.ticLecture);
+                if (!minuteur.isConnected) { return; }
+                if (preuve) { minuteur.remove(); demander(); return; }
+                const compris = document.createElement('button');
+                compris.type = 'button';
+                compris.className = 'btn btn-energie quiz-compris';
+                compris.textContent = 'J’ai compris';
+                compris.addEventListener('click', () => { compris.remove(); fin(); });
+                minuteur.replaceWith(compris);
+                if (aide) { aide.textContent = 'Touche « J’ai compris » pour continuer.'; }
+                compris.focus({ preventScroll: true });
+            }, 1000);
+        };
+
+        // La preuve de lecture : la correction et les réponses marquées se cachent,
+        // les réponses reviennent mélangées. Une erreur : on relit, puis on recommence.
+        const demander = () => {
+            if (!question) { fin(); return; }
+            question.classList.add('en-preuve');
+            const bloc = document.createElement('div');
+            bloc.className = 'quiz-preuve';
+            const titre = document.createElement('p');
+            titre.className = 'quiz-preuve-titre';
+            titre.textContent = '✍️ Sans regarder : quelle était la bonne réponse ?';
+            bloc.appendChild(titre);
+            const ordre = q.options.map((o, i) => i);
+            for (let i = ordre.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const t = ordre[i]; ordre[i] = ordre[j]; ordre[j] = t;
+            }
+            const langue = attributLangue(q.optionsLangue || q.langue);
+            ordre.forEach((i) => {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'quiz-preuve-option';
+                b.dataset.index = String(i);
+                b.innerHTML = `<span${langue}>${q.options[i]}</span>`;
+                b.addEventListener('click', () => {
+                    bloc.remove();
+                    if (i === q.correctAnswer) {
+                        if (aide) { aide.textContent = 'Oui, c’est bien ça. Entrée pour continuer.'; }
+                        fin();
+                    } else {
+                        lire(Math.max(5, Math.round(duree / 2)), '👆 Ce n’était pas ça. Relis la correction…');
+                    }
+                });
+                bloc.appendChild(b);
             });
-            minuteur.replaceWith(compris);
-            if (aide) { aide.textContent = 'Touche « J’ai compris » pour continuer.'; }
-            compris.focus({ preventScroll: true });
-        }, 1000);
+            bouton.parentNode.insertBefore(bloc, bouton);
+            if (aide) { aide.textContent = 'Touche la bonne réponse pour continuer.'; }
+            this.montrerBas(bloc);
+            bloc.querySelector('button').focus({ preventScroll: true });
+        };
+
+        lire(duree, '👆 Lis bien la correction, juste au-dessus…');
     }
 
     finirLecture() {

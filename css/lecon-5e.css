@@ -974,6 +974,64 @@ html.cartes-ouvertes { overflow: hidden; }
 .exemple-exo { scroll-margin-top: 120px; }
 .exemple-exo p { margin: 0 0 6px; }
 
+/* ============================================================
+   La leçon en cartes (js/cartes-lecon.js)
+   ============================================================ */
+.en-cartes .carte-lecon { display: none; }
+.en-cartes .carte-lecon.active { display: block; animation: carte-arrive .3s ease both; }
+@keyframes carte-arrive { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+.carte-lecon {
+    position: relative;
+    margin: 0 0 12px;
+    padding: 34px 16px 14px;
+    border: 3px solid var(--contour, var(--encre));
+    border-radius: 22px;
+    background: var(--surface);
+    box-shadow: var(--ombre-clay, none);
+    min-height: 180px;
+}
+.carte-lecon > :first-child + * { margin-top: 0; }
+.carte-etiquette {
+    position: absolute; top: 8px; left: 14px;
+    padding: 1px 10px; border-radius: 999px;
+    background: var(--surface-grise); color: var(--doux);
+    font-size: 12px; font-weight: 800; letter-spacing: .02em;
+}
+.carte-schema .carte-etiquette { background: var(--boite-exemple); color: var(--boite-exemple-texte); }
+.carte-exemple .carte-etiquette, .carte-exercice .carte-etiquette { background: var(--boite-important); color: var(--boite-important-texte); }
+.carte-passage { border-style: dashed; padding-top: 14px; }
+.carte-lecon .exercice, .carte-lecon .exemple-exo { margin-bottom: 0; }
+.cartes-barre { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 8px; }
+.cartes-compte-lecon { font-weight: 800; color: var(--doux); white-space: nowrap; }
+.cartes-points { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
+.cartes-points i { width: 10px; height: 10px; border-radius: 50%; background: var(--bord); }
+.cartes-points i.fait { background: var(--succes-bord); }
+.cartes-points i.ici { background: var(--l5-rose); transform: scale(1.35); }
+.cartes-nav-lecon { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; margin: 0 0 18px; }
+.cartes-etat { grid-column: 1 / -1; grid-row: 1; margin: 0; min-height: 1.5em; text-align: center; font-weight: 800; color: var(--boite-important-texte); }
+.cartes-avant, .cartes-apres {
+    min-height: 48px; padding: 8px 12px;
+    border: 3px solid var(--contour, var(--encre)); border-radius: 999px;
+    background: var(--surface); color: var(--encre);
+    font: inherit; font-weight: 800; cursor: pointer;
+}
+.cartes-apres { background: var(--l5-rose); color: var(--surface); }
+.cartes-avant:disabled, .cartes-apres:disabled { opacity: .45; cursor: not-allowed; }
+.cartes-avant:focus-visible, .cartes-apres:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.cartes-message { margin: 0 0 10px; padding: 8px 12px; border-radius: 10px; background: var(--boite-important); color: var(--boite-important-texte); font-weight: 800; }
+.passage-consigne { color: var(--doux); }
+.passage-question { font-weight: 800; }
+.passage-retour { margin-top: 10px; }
+.passage-retour.juste strong { color: var(--succes-texte); }
+.passage-retour.faux strong { color: var(--erreur-texte); }
+.passage-retour p { margin: 4px 0 8px; }
+/* Une partie pas terminée : pas de bouton vers la suite, pas de repère de fin. */
+.en-cartes:not(.partie-faite) .fin-etape { display: none; }
+.suite-suivant:disabled { opacity: .45; cursor: not-allowed; }
+.tab-button.partie-verrou { opacity: .5; cursor: not-allowed; }
+.tab-button.partie-verrou::after { content: " 🔒"; }
+@media (prefers-reduced-motion: reduce) { .en-cartes .carte-lecon.active { animation: none; } }
+
 /* Exemples et exercices à compléter (js/a-completer.js). */
 .ac-exemple { margin: 6px 0 8px; }
 .ac-ligne { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -1352,6 +1410,9 @@ main.content > .trad-tout { display: block; margin: 0 0 14px auto; }
 
     /* Les encadrés peuvent se couper : pas de grand blanc en bas de page. */
     .si-commandes, .si-aide, .si-aya .guide-perso, .ac-barre, .ac-exemple { display: none; }
+    /* La fiche imprime toutes les cartes à la suite, sans leur cadre. */
+    .en-cartes .carte-lecon { display: block; border: 0; padding: 0; margin: 0; box-shadow: none; min-height: 0; }
+    .cartes-barre, .cartes-nav-lecon, .carte-etiquette, .carte-passage, .cartes-message { display: none; }
     .exemple-exo p[hidden] { display: block; }
     .schema,
     .table-vocab tr,

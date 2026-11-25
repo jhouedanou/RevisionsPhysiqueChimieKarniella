@@ -39,9 +39,13 @@
      */
     function leconFermee(id) {
         var corps = document.body;
-        if (!corps.classList.contains('quiz-en-cours') || id === corps.dataset.quizOnglet) { return false; }
-        document.dispatchEvent(new CustomEvent('karniella:lecon-fermee'));
-        return true;
+        if (corps.classList.contains('quiz-en-cours') && id !== corps.dataset.quizOnglet) {
+            document.dispatchEvent(new CustomEvent('karniella:lecon-fermee'));
+            return true;
+        }
+        // Une partie après l'autre : la suivante s'ouvre quand les cartes de
+        // celle-ci sont lues (js/cartes-lecon.js).
+        return !!(window.KarniellaCartes && window.KarniellaCartes.ferme(id));
     }
 
     /** Affiche l'onglet demandé et met à jour le bouton actif. */
@@ -1138,6 +1142,8 @@
      * l'aide-mémoire d'un exercice) : ouvre son onglet et montre le bloc.
      */
     function montrerBloc(bloc) {
+        // La leçon est en cartes : on ouvre celle qui contient le bloc.
+        if (window.KarniellaCartes) { window.KarniellaCartes.montrer(bloc); }
         // Laisser l'onglet s'afficher avant de mesurer sa position.
         window.requestAnimationFrame(function () {
             var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -1074,6 +1074,17 @@
         svg.addEventListener('click', toucher);
         svg.addEventListener('keydown', toucher);
 
+        // Karniella a manipulé le schéma : les cartes de la leçon l'attendent
+        // avant d'ouvrir la suivante (js/cartes-lecon.js).
+        function signaler() { hote.dispatchEvent(new CustomEvent('karniella:interaction', { bubbles: true })); }
+        figure.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('.si-bouton, [data-act]')) { signaler(); }
+        });
+        figure.addEventListener('input', signaler);
+        figure.addEventListener('keydown', function (e) {
+            if ((e.key === 'Enter' || e.key === ' ') && e.target.closest && e.target.closest('[data-act]')) { signaler(); }
+        });
+
         hote.appendChild(figure);
         dessiner();
         // js/jeu.js (Aya) est chargé par la coquille, parfois après ce script.

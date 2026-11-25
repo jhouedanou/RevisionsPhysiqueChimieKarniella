@@ -622,3 +622,16 @@ body.quiz-en-cours #kc-invite { display: none; }
 .quiz-point-question { font-weight: 800; }
 .quiz-point-explication { color: var(--doux); }
 .quiz-points-suite { margin: 10px 0 0; font-weight: 800; }
+
+/* La preuve de lecture : après une erreur, retrouver la bonne réponse, correction cachée. */
+.quiz-question.en-preuve .quiz-options,
+.quiz-question.en-preuve .quiz-retour-zone,
+.quiz-question.en-preuve .quiz-aide-memoire { display: none; }
+.quiz-preuve { display: flex; flex-direction: column; gap: 8px; margin: 0 0 10px; padding: 12px; border: 3px dashed var(--boite-important-bord); border-radius: 16px; background: var(--boite-important); }
+.quiz-preuve-titre { margin: 0 0 2px; font-weight: 800; }
+.quiz-preuve-option {
+    min-height: 44px; padding: 8px 14px; border: 2px solid var(--bord); border-radius: 14px;
+    background: var(--surface); color: var(--encre); font: inherit; font-weight: 700; text-align: left; cursor: pointer;
+}
+.quiz-preuve-option:hover { border-color: var(--contour, var(--encre)); }
+.quiz-preuve-option:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }

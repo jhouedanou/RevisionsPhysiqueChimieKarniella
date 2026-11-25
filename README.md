@@ -276,6 +276,13 @@ curl -s 'https://bpxhzpzybvldbyvbzslb.supabase.co/rest/v1/lecon_saisie?select=*'
 - `data-hors-chat` sur un encadré : il s'affiche sur la page mais le chat l'ignore.
   À mettre sur les notes qui s'adressent à Karniella (« à compléter depuis ton
   cahier »), pas sur le contenu du cours.
+- `js/cartes-lecon.js` : la leçon en cartes. Chaque onglet est découpé en
+  cartes (notion, schéma, exemple, exercice), une seule à l'écran. « Carte
+  suivante » attend une action : lire (minuteur), toucher le schéma, répondre,
+  vérifier. Une question de passage termine la partie ; la suivante et le quiz
+  s'ouvrent alors. L'avancement est gardé dans le navigateur
+  (`karniella-cartes:<leçon>`) ; une partie déjà lue avant les cartes reste
+  ouverte. `?libre=1` ouvre tout, `data-cartes="non"` garde un onglet en page.
 - `js/a-completer.js` rend actifs les exemples (`.exemple-exo` : réponse à
   taper ou à choisir, deux essais) et les exercices à trous
   (`<span class="trou">…</span>` devient une case, vérifiée avec la correction
@@ -621,6 +628,10 @@ imposée** : après chaque réponse, juste ou fausse, « Question suivante » re
 désactivé. La correction est mise en avant, un minuteur de 10 secondes tourne,
 puis le bouton « J'ai compris » débloque la suite ; le chrono s'arrête pendant
 ce temps (`lecture: 20` pour une autre durée, `lecture: false` pour s'en passer).
+
+**Preuve de lecture** : après une erreur à un QCM, la correction se cache à la
+fin du minuteur et Karniella doit retrouver la bonne réponse parmi les réponses
+mélangées ; une erreur la renvoie lire (`preuve: false` pour s'en passer).
 
 **Aide-mémoire après 8 secondes** : sans réponse au bout de 8 secondes, un
 aide-mémoire apparaît sous la question avec sa notion (`aide: false` pour s'en
