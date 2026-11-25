@@ -10,7 +10,7 @@
 // Seules les images et les polices, qui ne changent jamais, restent
 // « cache d'abord ».
 
-const CACHE_NAME = 'karniella-cache-v83';
+const CACHE_NAME = 'karniella-cache-v84';
 const DATA_CACHE_NAME = 'karniella-data-v1';
 
 // Au-delà, on sert la copie en cache (si on en a une) et le réseau continue
@@ -58,6 +58,7 @@ const FILES_TO_CACHE = [
     '/js/lecon-5e.js',
     '/js/schema-interactif.js',
     '/js/a-completer.js',
+    '/js/cartes-lecon.js',
     '/js/lecture-vocale.js',
     '/js/recherche.js',
     '/js/recherche-index.js',

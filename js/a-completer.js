@@ -104,6 +104,8 @@
         var essais = 0;
 
         function finir(trouve) {
+            // Les cartes de la leçon attendent cette réponse (js/cartes-lecon.js).
+            bloc.dispatchEvent(new CustomEvent('karniella:interaction', { bubbles: true }));
             zone.querySelectorAll('input, button').forEach(function (e) { e.disabled = true; });
             retour.className = 'ac-retour ' + (trouve ? 'juste' : 'faux');
             retour.textContent = trouve ? '✓ Bravo, c\'est ça !' : 'La réponse est juste en dessous. Lis bien l\'explication.';
@@ -229,6 +231,7 @@
         details.insertAdjacentElement('beforebegin', barre);
 
         function verifierTout() {
+            exercice.dispatchEvent(new CustomEvent('karniella:interaction', { bubbles: true }));
             var justes = 0, vides = 0;
             cases.forEach(function (c) {
                 c.champ.classList.remove('juste', 'faux');

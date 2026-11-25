@@ -11,6 +11,20 @@ est dans la section « Écrire simple » ci-dessous.
 
 ## Toute leçon
 
+- **Une leçon se lit carte par carte** (demandé le 25/11, pour de meilleures
+  notes) : plus de longue page. `js/cartes-lecon.js` (à charger en dernier,
+  juste avant `js/chat-assistant.js`) découpe chaque onglet en cartes : une
+  carte par titre (`<h3>`, `<h4>`) pour les notions, une carte à part pour
+  chaque schéma, une par exemple, une par exercice. Avant « Carte suivante »,
+  Karniella agit : elle lit (minuteur), touche le schéma, répond à l'exemple,
+  vérifie l'exercice. À la fin d'une partie, une question de passage tirée du
+  quiz. La partie suivante et le quiz ne s'ouvrent qu'après. Pour que le
+  découpage soit bon : **un titre par notion, des textes courts sous chaque
+  titre, et chaque schéma dans sa propre `<figure>` ou son propre
+  `<div class="schema-interactif">`, jamais dans un encadré de texte.**
+  `?libre=1` dans l'adresse ouvre tout (pour un adulte) ; `data-cartes="non"`
+  sur une `<section>` la laisse en une page.
+
 - Modèle de page : une leçon existante de la même matière dans `5e/`
   (même `<head>`, `<body class="lecon-5e" data-matiere="…">`, onglets
   `data-onglet="tabN"`, dernier onglet = quiz en étapes
@@ -68,7 +82,10 @@ est dans la section « Écrire simple » ci-dessous.
   question : `"indice": "Pense à la partie « 2. En dérivation »."`. Jamais la
   réponse dans l'indice. Après chaque réponse, juste ou fausse, « Question
   suivante » reste désactivé : la correction est mise en avant, un minuteur de
-  10 secondes tourne, puis le bouton « J'ai compris » débloque la suite.
+  10 secondes tourne, puis le bouton « J'ai compris » débloque la suite. Après
+  une **erreur** à un QCM, « J'ai compris » ne suffit pas (demandé le 25/11) :
+  la correction se cache et Karniella doit retrouver la bonne réponse parmi
+  les réponses mélangées ; si elle se trompe, elle relit, puis recommence.
 - **Aide-mémoire après 8 secondes** (demandé le 15/11) : si Karniella met plus
   de 8 secondes à répondre, un aide-mémoire apparaît sous la question avec la
   notion, pour la pousser à réfléchir. Pareil dans les missions (l'étape de la
