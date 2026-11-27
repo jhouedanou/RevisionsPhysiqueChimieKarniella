@@ -1,0 +1,57 @@
+{
+  "id": "francais-portrait-lecture",
+  "lecon": "francais-portrait-lecture",
+  "matiere": "francais",
+  "titre": "L'enquête du portrait",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, un portrait cache des indices ! Ta mission : fouiller le texte pour trouver ses mots et ses outils.",
+  "micro_learning_blocks": [
+    {
+      "titre": "👀 Deux portraits en un",
+      "contenu": "Le portrait physique montre ce qu'on voit : la taille, le visage, les vêtements. Le portrait moral montre le caractère : les qualités et les défauts."
+    },
+    {
+      "titre": "🗝️ Les mots",
+      "contenu": "Qualités : généreux, patient, courageux. Défauts : avare, impatient, peureux. Un synonyme a presque le même sens, un contraire a le sens opposé."
+    },
+    {
+      "titre": "🧰 Les outils",
+      "contenu": "L'adjectif dit comment est le personnage et s'accorde avec le nom. Les verbes d'état (être, sembler, paraître) le relient à une qualité. Le temps : le présent."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "« Il a de larges épaules » : quel portrait ?",
+      "options": [
+        "moral",
+        "physique",
+        "les deux",
+        "aucun"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Les épaules se voient : portrait physique."
+    },
+    {
+      "question": "Quel est le contraire de « courageux » ?",
+      "options": [
+        "peureux",
+        "patient",
+        "poli",
+        "honnête"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Le courageux n'a pas peur, le peureux a peur."
+    },
+    {
+      "question": "Quel verbe est un verbe d'état ?",
+      "options": [
+        "marcher",
+        "paraître",
+        "porter",
+        "parler"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Paraître relie le personnage à une qualité."
+    }
+  ]
+}
