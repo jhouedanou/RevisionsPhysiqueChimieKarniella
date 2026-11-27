@@ -1,0 +1,91 @@
+{
+  "lecon": "anglais-unit3-time-is-money",
+  "matiere": "anglais",
+  "date": "2026-11-27",
+  "restitution": [
+    {
+      "question": "Traduis en anglais : Quelle heure est-il ?",
+      "reponse": "What time is it?",
+      "accepte": [
+        "what time is it"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : midi.",
+      "reponse": "midday",
+      "accepte": [
+        "noon"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : minuit.",
+      "reponse": "midnight",
+      "accepte": [],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Écris en anglais : il est sept heures.",
+      "reponse": "It's seven o'clock.",
+      "accepte": [
+        "it is seven o'clock",
+        "it's seven o'clock"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Écris en anglais : il est sept heures et demie.",
+      "reponse": "It's half past seven.",
+      "accepte": [
+        "it is half past seven",
+        "it's half past seven"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Traduis en anglais : se lever.",
+      "reponse": "to get up",
+      "accepte": [
+        "get up"
+      ],
+      "reponseLangue": "en"
+    },
+    {
+      "question": "Quand dit-on « past » et quand dit-on « to » ?",
+      "reponse": "On dit past jusqu'à la demie, et to après la demie, avec l'heure qui arrive."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "« Half past six » veut dire 6 h 30.",
+      "vrai": true,
+      "correction": "Vrai : half past, c'est la demie."
+    },
+    {
+      "affirmation": "« A quarter to nine » veut dire 9 h 15.",
+      "vrai": false,
+      "correction": "Faux : a quarter to nine, c'est 8 h 45. 9 h 15 se dit a quarter past nine."
+    },
+    {
+      "affirmation": "« Midnight » veut dire midi.",
+      "vrai": false,
+      "correction": "Faux : midnight, c'est minuit. Midi se dit midday."
+    },
+    {
+      "affirmation": "On dit « She get up at six ».",
+      "vrai": false,
+      "correction": "Faux : avec she, le verbe prend un s. She gets up at six."
+    },
+    {
+      "affirmation": "On dit « What time do you go to school? ».",
+      "vrai": true,
+      "correction": "Vrai : avec you, la question se fait avec do."
+    },
+    {
+      "affirmation": "« To have breakfast » veut dire prendre le petit déjeuner.",
+      "vrai": true,
+      "correction": "Vrai : breakfast, c'est le repas du matin."
+    }
+  ]
+}

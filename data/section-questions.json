@@ -8677,5 +8677,189 @@
         "notion": "3. La formation d'un adjectif"
       }
     ]
+  },
+  "anglais-unit3-time-is-money": {
+    "tab4": [
+      {
+        "question": "Quelle question pose-t-on pour demander l'heure ?",
+        "options": [
+          "What's the weather like?",
+          "What time is it?",
+          "How old are you?",
+          "Where is it?"
+        ],
+        "correctAnswer": 1,
+        "explanation": "What time is it? : Quelle heure est-il ?",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "« A quarter » veut dire…",
+        "options": [
+          "la demie",
+          "le quart",
+          "une heure",
+          "minuit"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A quarter: fifteen minutes. Le quart d'heure.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "Twelve o'clock at night is…",
+        "options": [
+          "midday",
+          "midnight",
+          "half",
+          "a quarter"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Midnight: minuit.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "« A watch » veut dire…",
+        "options": [
+          "une horloge",
+          "une montre",
+          "une heure",
+          "un réveil"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A watch shows the time on your arm : une montre.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "7 h 00 in English: It's…",
+        "options": [
+          "seven o'clock",
+          "half past seven",
+          "seven past",
+          "a quarter to seven"
+        ],
+        "correctAnswer": 0,
+        "explanation": "L'heure juste : o'clock. Seven o'clock.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "8 h 30 in English: It's…",
+        "options": [
+          "half to eight",
+          "eight half",
+          "half past eight",
+          "a quarter past eight"
+        ],
+        "correctAnswer": 2,
+        "explanation": "La demie : half past + l'heure.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "9 h 45 in English: It's a quarter…",
+        "options": [
+          "past nine",
+          "to nine",
+          "past ten",
+          "to ten"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Après la demie, on dit « to » et l'heure qui arrive : dix heures.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "6 h 15 in English: It's…",
+        "options": [
+          "a quarter past six",
+          "a quarter to six",
+          "half past six",
+          "six o'clock"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le quart : a quarter past + l'heure.",
+        "notion": "Session 1: The time"
+      },
+      {
+        "question": "« To get up » veut dire…",
+        "options": [
+          "se coucher",
+          "se lever",
+          "déjeuner",
+          "se doucher"
+        ],
+        "correctAnswer": 1,
+        "explanation": "I get up at six o'clock : je me lève à six heures.",
+        "notion": "Session 2: My day"
+      },
+      {
+        "question": "« To have breakfast » veut dire…",
+        "options": [
+          "prendre le petit déjeuner",
+          "faire ses devoirs",
+          "aller à l'école",
+          "dîner"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Breakfast : le petit déjeuner, le matin.",
+        "notion": "Session 2: My day"
+      },
+      {
+        "question": "Complete: What time ___ you get up?",
+        "options": [
+          "does",
+          "do",
+          "is",
+          "are"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Avec you, la question se fait avec do.",
+        "notion": "Session 2: My day"
+      },
+      {
+        "question": "Complete: What time ___ your sister go to bed?",
+        "options": [
+          "do",
+          "is",
+          "does",
+          "are"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Avec he, she, it (your sister), on emploie does.",
+        "notion": "Session 2: My day"
+      },
+      {
+        "question": "Complete: She ___ up at six. (get)",
+        "options": [
+          "get",
+          "gets",
+          "getting",
+          "to get"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Avec she, le verbe prend un s : she gets up.",
+        "notion": "Session 2: My day"
+      },
+      {
+        "question": "Complete: He ___ to school at seven. (go)",
+        "options": [
+          "go",
+          "gos",
+          "goes",
+          "going"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Go devient goes avec he, she, it.",
+        "notion": "Session 2: My day"
+      },
+      {
+        "question": "Complete: I go to bed ___ nine o'clock.",
+        "options": [
+          "in",
+          "on",
+          "at",
+          "to"
+        ],
+        "correctAnswer": 2,
+        "explanation": "At + l'heure : at nine o'clock.",
+        "notion": "Session 2: My day"
+      }
+    ]
   }
 }
