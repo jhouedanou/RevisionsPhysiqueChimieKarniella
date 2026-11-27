@@ -1,0 +1,78 @@
+{
+  "lecon": "francais-portrait-lecture",
+  "matiere": "francais",
+  "date": "2026-11-27",
+  "restitution": [
+    {
+      "question": "Quelles sont les deux parties d'un portrait ?",
+      "reponse": "le portrait physique et le portrait moral",
+      "accepte": [
+        "physique et moral",
+        "portrait physique et portrait moral",
+        "moral et physique"
+      ]
+    },
+    {
+      "question": "Écris le contraire de « généreux ».",
+      "reponse": "avare",
+      "exact": true
+    },
+    {
+      "question": "Écris le contraire de « patient ».",
+      "reponse": "impatient",
+      "exact": true
+    },
+    {
+      "question": "Cite un verbe d'état.",
+      "reponse": "être",
+      "accepte": [
+        "sembler",
+        "paraître",
+        "avoir l'air",
+        "devenir",
+        "rester",
+        "demeurer"
+      ]
+    },
+    {
+      "question": "Que décrit le portrait moral ?",
+      "reponse": "Il décrit le caractère du personnage : ses qualités et ses défauts."
+    },
+    {
+      "question": "Quels outils de grammaire emploie un portrait ?",
+      "reponse": "Les adjectifs qualificatifs, les verbes d'état et le présent de description."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Le portrait physique décrit le caractère.",
+      "vrai": false,
+      "correction": "Faux : il décrit ce qu'on voit. Le caractère, c'est le portrait moral."
+    },
+    {
+      "affirmation": "« Avare » est un défaut.",
+      "vrai": true,
+      "correction": "Vrai : l'avare garde tout pour lui."
+    },
+    {
+      "affirmation": "« Mince » et « maigre » sont des contraires.",
+      "vrai": false,
+      "correction": "Faux : ce sont des synonymes, ils ont presque le même sens."
+    },
+    {
+      "affirmation": "« Sembler » est un verbe d'état.",
+      "vrai": true,
+      "correction": "Vrai : elle semble calme."
+    },
+    {
+      "affirmation": "Dans un portrait, l'adjectif s'accorde avec le nom.",
+      "vrai": true,
+      "correction": "Vrai : une voix douce, des yeux noirs."
+    },
+    {
+      "affirmation": "« Des cheveux tressé » est bien écrit.",
+      "vrai": false,
+      "correction": "Faux : cheveux est au masculin pluriel. Des cheveux tressés."
+    }
+  ]
+}

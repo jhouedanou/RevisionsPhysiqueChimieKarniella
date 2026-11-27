@@ -288,6 +288,15 @@
           "mission": true
         },
         {
+          "id": "francais-portrait-lecture",
+          "titre": "Le portrait simple : exploitation de texte",
+          "sousTitre": "Lecture · Leçon 1 : vocabulaire et grammaire du portrait",
+          "icone": "🔍",
+          "description": "Portrait physique et portrait moral, les qualités et les défauts, les adjectifs, les verbes d'état et le présent de description.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
           "id": "francais-groupe-nominal",
           "titre": "Le groupe nominal",
           "sousTitre": "Grammaire · Séances 1 à 5 : adjectif, relative, complément du nom, pluriel des noms",

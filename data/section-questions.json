@@ -8861,5 +8861,177 @@
         "notion": "Session 2: My day"
       }
     ]
+  },
+  "francais-portrait-lecture": {
+    "tab5": [
+      {
+        "question": "Exploiter un texte, c'est étudier…",
+        "options": [
+          "son vocabulaire et sa grammaire",
+          "seulement son titre",
+          "le nombre de pages",
+          "la couverture du livre"
+        ],
+        "correctAnswer": 0,
+        "explanation": "On relit le texte pour étudier ses mots et ses outils.",
+        "notion": "Le texte"
+      },
+      {
+        "question": "Le portrait physique décrit…",
+        "options": [
+          "le caractère",
+          "ce qu'on voit du personnage",
+          "ses qualités",
+          "ses défauts"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le portrait physique : le corps, le visage, les vêtements.",
+        "notion": "Le texte"
+      },
+      {
+        "question": "Le portrait moral décrit…",
+        "options": [
+          "les vêtements",
+          "la taille",
+          "le caractère",
+          "les cheveux"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le portrait moral : les qualités et les défauts.",
+        "notion": "Le texte"
+      },
+      {
+        "question": "« Elle a un visage rond » : quel portrait ?",
+        "options": [
+          "physique",
+          "moral",
+          "les deux",
+          "aucun"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le visage se voit : c'est le portrait physique.",
+        "notion": "Le texte"
+      },
+      {
+        "question": "« Elle est généreuse » : quel portrait ?",
+        "options": [
+          "physique",
+          "moral",
+          "les deux",
+          "aucun"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La générosité est une qualité du caractère : c'est le portrait moral.",
+        "notion": "Le texte"
+      },
+      {
+        "question": "Quel mot est une qualité ?",
+        "options": [
+          "avare",
+          "menteur",
+          "honnête",
+          "paresseux"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Honnête est une qualité. Avare, menteur et paresseux sont des défauts.",
+        "notion": "1. Vocabulaire"
+      },
+      {
+        "question": "Quel est le contraire de « généreux » ?",
+        "options": [
+          "patient",
+          "avare",
+          "poli",
+          "grand"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le généreux donne, l'avare garde tout.",
+        "notion": "1. Vocabulaire"
+      },
+      {
+        "question": "« Patiente » veut dire…",
+        "options": [
+          "qui donne facilement",
+          "qui sait attendre sans se fâcher",
+          "qui a peur",
+          "qui parle fort"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Une personne patiente sait attendre.",
+        "notion": "1. Vocabulaire"
+      },
+      {
+        "question": "Deux mots qui ont presque le même sens sont des…",
+        "options": [
+          "contraires",
+          "synonymes",
+          "verbes",
+          "adjectifs"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Mince et maigre sont des synonymes.",
+        "notion": "1. Vocabulaire"
+      },
+      {
+        "question": "Dans « des yeux noirs », quel mot est l'adjectif ?",
+        "options": [
+          "des",
+          "yeux",
+          "noirs",
+          "aucun"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Noirs dit comment sont les yeux. Il est au masculin pluriel, comme « yeux ».",
+        "notion": "2. Grammaire"
+      },
+      {
+        "question": "Quel verbe est un verbe d'état ?",
+        "options": [
+          "courir",
+          "sembler",
+          "manger",
+          "porter"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Sembler relie le personnage à une qualité : elle semble calme.",
+        "notion": "2. Grammaire"
+      },
+      {
+        "question": "À quel temps est « elle porte un pagne » ?",
+        "options": [
+          "présent",
+          "futur",
+          "passé composé",
+          "imparfait"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Le portrait est au présent de description.",
+        "notion": "2. Grammaire"
+      },
+      {
+        "question": "Quel groupe est bien accordé ?",
+        "options": [
+          "une voix doux",
+          "des yeux noir",
+          "une femme grande",
+          "des cheveux tressé"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Grande s'accorde avec femme : féminin singulier.",
+        "notion": "Le texte"
+      },
+      {
+        "question": "Pour un bon portrait, il vaut mieux…",
+        "options": [
+          "répéter « gentil »",
+          "choisir des mots précis",
+          "ne pas mettre d'adjectifs",
+          "écrire au futur"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un mot précis montre mieux le personnage : souriant, généreux.",
+        "notion": "1. Vocabulaire"
+      }
+    ]
   }
 }
