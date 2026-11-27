@@ -103,6 +103,15 @@
           "description": "Les mots de la météo (sunny, rainy, windy…), la question What's the weather like? et les prépositions de temps : at seven o'clock, on Monday, in June.",
           "statut": "prete",
           "mission": true
+        },
+        {
+          "id": "anglais-unit3-time-is-money",
+          "titre": "Unit 3 — Time and date : Lesson 2, Time is money",
+          "sousTitre": "Sessions 1 et 2 — Telling the time, daily activities",
+          "icone": "⏰",
+          "description": "Dire l'heure (o'clock, half past, a quarter to), la question What time is it? et raconter sa journée au présent simple : I get up, she gets up.",
+          "statut": "prete",
+          "mission": true
         }
       ]
     },

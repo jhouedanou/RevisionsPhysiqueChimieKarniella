@@ -1,0 +1,57 @@
+{
+  "id": "anglais-unit3-time-is-money",
+  "lecon": "anglais-unit3-time-is-money",
+  "matiere": "anglais",
+  "titre": "La gardienne de l'horloge",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, l'horloge de l'école s'est arrêtée et tout le monde est en retard ! Ta mission : donner l'heure en anglais et raconter ta journée.",
+  "micro_learning_blocks": [
+    {
+      "titre": "🕖 O'clock, half, quarter",
+      "contenu": "L'heure juste : seven o'clock. La demie : half past seven. Le quart : a quarter past seven. On dit les minutes d'abord, l'heure ensuite."
+    },
+    {
+      "titre": "↩️ Past, puis to",
+      "contenu": "Jusqu'à la demie, on dit past : ten past seven. Après la demie, on dit to, avec l'heure qui arrive : 7 h 45, a quarter to eight."
+    },
+    {
+      "titre": "🌅 Ma journée",
+      "contenu": "I get up, I have breakfast, I go to school, I do my homework, I go to bed. Avec he ou she, le verbe prend un s : she gets up, he goes to school."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "7 h 30 in English: It's…",
+      "options": [
+        "half past seven",
+        "half to seven",
+        "seven half",
+        "a quarter past seven"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "La demie : half past + l'heure."
+    },
+    {
+      "question": "7 h 45 in English: It's a quarter…",
+      "options": [
+        "past seven",
+        "to seven",
+        "to eight",
+        "past eight"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "Après la demie : to + l'heure qui arrive."
+    },
+    {
+      "question": "Complete: She ___ up at six.",
+      "options": [
+        "get",
+        "gets",
+        "getting",
+        "to get"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Avec she, le verbe prend un s."
+    }
+  ]
+}
