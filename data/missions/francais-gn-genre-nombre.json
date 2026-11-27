@@ -1,0 +1,57 @@
+{
+  "id": "francais-gn-genre-nombre",
+  "lecon": "francais-gn-genre-nombre",
+  "matiere": "francais",
+  "titre": "L'uniforme du groupe nominal",
+  "duree_minutes": 3,
+  "story_context": "Capitaine Karniella, dans le groupe nominal, tout le monde porte le même uniforme que le chef. Ta mission : habiller chaque adjectif comme son nom.",
+  "micro_learning_blocks": [
+    {
+      "titre": "👑 Le nom est le chef",
+      "contenu": "Le nom a un genre (masculin ou féminin) et un nombre (singulier ou pluriel). Le déterminant et l'adjectif s'accordent avec lui : une petite robe, de petites robes."
+    },
+    {
+      "titre": "👗 Le féminin",
+      "contenu": "En général, on ajoute un e : petit, petite. Mais léger devient légère, heureux devient heureuse, neuf devient neuve, bon devient bonne."
+    },
+    {
+      "titre": "👥 Le pluriel",
+      "contenu": "En général, on ajoute un s : de petits villages. Gris et heureux ne changent pas. Beau devient beaux. National devient nationaux."
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Qui commande l'accord dans le groupe nominal ?",
+      "options": [
+        "L'adjectif",
+        "Le nom",
+        "Le déterminant",
+        "Le verbe"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Le nom donne son genre et son nombre au déterminant et à l'adjectif."
+    },
+    {
+      "question": "Quel est le féminin de « neuf » ?",
+      "options": [
+        "neufe",
+        "neuse",
+        "neuve",
+        "neuffe"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "-f devient -ve : neuf, neuve."
+    },
+    {
+      "question": "Quel est le pluriel de « un chant national » ?",
+      "options": [
+        "des chants nationals",
+        "des chants nationaux",
+        "des chants nationales",
+        "des chants national"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "-al devient -aux : nationaux."
+    }
+  ]
+}

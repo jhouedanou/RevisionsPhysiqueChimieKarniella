@@ -8469,5 +8469,213 @@
         "notion": "Session 2: In, on, at"
       }
     ]
+  },
+  "francais-gn-genre-nombre": {
+    "tab6": [
+      {
+        "question": "La morphologie étudie…",
+        "options": [
+          "le sens des phrases",
+          "la forme des mots",
+          "la ponctuation",
+          "les rimes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "La morphologie étudie la forme des mots.",
+        "notion": "Définition de la notion"
+      },
+      {
+        "question": "Quel est le genre du nom « maison » ?",
+        "options": [
+          "masculin",
+          "féminin",
+          "singulier",
+          "pluriel"
+        ],
+        "correctAnswer": 1,
+        "explanation": "On dit « une maison » : le nom est féminin.",
+        "notion": "Définition de la notion"
+      },
+      {
+        "question": "Quel est le nombre du nom dans « des cahiers » ?",
+        "options": [
+          "singulier",
+          "masculin",
+          "pluriel",
+          "féminin"
+        ],
+        "correctAnswer": 2,
+        "explanation": "« Des cahiers » : il y en a plusieurs. C'est le pluriel.",
+        "notion": "Définition de la notion"
+      },
+      {
+        "question": "Dans le groupe nominal, quel mot donne son genre et son nombre aux autres ?",
+        "options": [
+          "l'adjectif",
+          "le déterminant",
+          "le nom",
+          "le verbe"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Le nom commande : le déterminant et l'adjectif s'accordent avec lui.",
+        "notion": "Définition de la notion"
+      },
+      {
+        "question": "L'adjectif s'accorde avec le nom…",
+        "options": [
+          "en genre seulement",
+          "en nombre seulement",
+          "en genre et en nombre",
+          "jamais"
+        ],
+        "correctAnswer": 2,
+        "explanation": "L'adjectif s'accorde en genre et en nombre avec le nom qu'il qualifie.",
+        "notion": "1. L'accord en genre et en nombre"
+      },
+      {
+        "question": "Quel est le féminin de « léger » ?",
+        "options": [
+          "légere",
+          "légère",
+          "légeuse",
+          "légerre"
+        ],
+        "correctAnswer": 1,
+        "explanation": "-er devient -ère : léger, légère.",
+        "notion": "1. L'accord en genre et en nombre"
+      },
+      {
+        "question": "Quel est le féminin de « heureux » ?",
+        "options": [
+          "heureuxe",
+          "heureue",
+          "heureuse",
+          "heureusse"
+        ],
+        "correctAnswer": 2,
+        "explanation": "-eux devient -euse : heureux, heureuse.",
+        "notion": "1. L'accord en genre et en nombre"
+      },
+      {
+        "question": "Quel est le féminin de « neuf » ?",
+        "options": [
+          "neufe",
+          "neuve",
+          "neuffe",
+          "neuse"
+        ],
+        "correctAnswer": 1,
+        "explanation": "-f devient -ve : neuf, neuve.",
+        "notion": "1. L'accord en genre et en nombre"
+      },
+      {
+        "question": "Complète : « un frère et une sœur… » (content)",
+        "options": [
+          "content",
+          "contente",
+          "contents",
+          "contentes"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Un nom masculin et un nom féminin : l'adjectif est au masculin pluriel.",
+        "notion": "1. L'accord en genre et en nombre"
+      },
+      {
+        "question": "Quel adjectif ne change pas au féminin ?",
+        "options": [
+          "grand",
+          "jeune",
+          "petit",
+          "bon"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Jeune finit déjà par e : un garçon jeune, une fille jeune.",
+        "notion": "1. L'accord en genre et en nombre"
+      },
+      {
+        "question": "Quel est le pluriel de « un beau pagne » ?",
+        "options": [
+          "de beaus pagnes",
+          "de beaux pagnes",
+          "de beau pagnes",
+          "de bels pagnes"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Les adjectifs en -eau prennent un x au pluriel.",
+        "notion": "2. Le nombre de l'adjectif"
+      },
+      {
+        "question": "Quel est le masculin pluriel de « national » ?",
+        "options": [
+          "nationals",
+          "nationales",
+          "nationaux",
+          "nationaus"
+        ],
+        "correctAnswer": 2,
+        "explanation": "-al devient -aux : national, nationaux.",
+        "notion": "2. Le nombre de l'adjectif"
+      },
+      {
+        "question": "Quel est le pluriel de « un mur gris » ?",
+        "options": [
+          "des murs gris",
+          "des murs grises",
+          "des murs griss",
+          "des murs grix"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Gris finit par s : il ne change pas au masculin pluriel.",
+        "notion": "2. Le nombre de l'adjectif"
+      },
+      {
+        "question": "Quel adjectif en -al prend un s au pluriel ?",
+        "options": [
+          "national",
+          "général",
+          "natal",
+          "amical"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Natal est une exception : des pays natals.",
+        "notion": "2. Le nombre de l'adjectif"
+      },
+      {
+        "question": "Quel adjectif vient du nom « courage » ?",
+        "options": [
+          "courageux",
+          "couragique",
+          "courageable",
+          "couragu"
+        ],
+        "correctAnswer": 0,
+        "explanation": "courage + eux : courageux.",
+        "notion": "3. La formation d'un adjectif"
+      },
+      {
+        "question": "Quel adjectif vient du verbe « laver » ?",
+        "options": [
+          "laveux",
+          "lavable",
+          "lavique",
+          "laval"
+        ],
+        "correctAnswer": 1,
+        "explanation": "lav + able : lavable, qu'on peut laver.",
+        "notion": "3. La formation d'un adjectif"
+      },
+      {
+        "question": "Comment forme-t-on le contraire de « utile » ?",
+        "options": [
+          "avec un suffixe",
+          "avec un préfixe : inutile",
+          "en ajoutant un s",
+          "en ajoutant un e"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Le préfixe in- donne le contraire : utile, inutile.",
+        "notion": "3. La formation d'un adjectif"
+      }
+    ]
   }
 }

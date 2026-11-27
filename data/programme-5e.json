@@ -288,6 +288,15 @@
           "mission": true
         },
         {
+          "id": "francais-gn-genre-nombre",
+          "titre": "Le groupe nominal : genre et nombre",
+          "sousTitre": "Grammaire · Leçon 2 · Séance 1 : la morphologie",
+          "icone": "⚖️",
+          "description": "Le genre et le nombre, l'accord de l'adjectif avec le nom, son féminin, son pluriel, et comment on forme un adjectif.",
+          "statut": "prete",
+          "mission": true
+        },
+        {
           "id": "francais-description",
           "titre": "La description",
           "sousTitre": "Lecture · Séance 1 : lecture méthodique d'un texte descriptif",

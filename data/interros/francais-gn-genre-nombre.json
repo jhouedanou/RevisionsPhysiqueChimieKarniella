@@ -1,0 +1,85 @@
+{
+  "lecon": "francais-gn-genre-nombre",
+  "matiere": "francais",
+  "date": "2026-11-27",
+  "restitution": [
+    {
+      "question": "Quels sont les deux genres ?",
+      "reponse": "masculin et féminin",
+      "accepte": [
+        "le masculin et le féminin",
+        "féminin et masculin",
+        "masculin, féminin"
+      ]
+    },
+    {
+      "question": "Quels sont les deux nombres ?",
+      "reponse": "singulier et pluriel",
+      "accepte": [
+        "le singulier et le pluriel",
+        "pluriel et singulier",
+        "singulier, pluriel"
+      ]
+    },
+    {
+      "question": "Écris le féminin de « heureux ».",
+      "reponse": "heureuse",
+      "exact": true
+    },
+    {
+      "question": "Écris le masculin pluriel de « beau ».",
+      "reponse": "beaux",
+      "exact": true
+    },
+    {
+      "question": "Écris l'adjectif formé sur le nom « courage ».",
+      "reponse": "courageux",
+      "exact": true
+    },
+    {
+      "question": "Avec quoi l'adjectif s'accorde-t-il ?",
+      "reponse": "L'adjectif s'accorde en genre et en nombre avec le nom qu'il qualifie."
+    },
+    {
+      "question": "Comment accorde-t-on un adjectif qui qualifie un nom masculin et un nom féminin ?",
+      "reponse": "On le met au masculin pluriel. Exemple : un pagne et une robe neufs."
+    }
+  ],
+  "vrai_faux": [
+    {
+      "affirmation": "Le genre, c'est le singulier ou le pluriel.",
+      "vrai": false,
+      "correction": "Faux : le genre, c'est le masculin ou le féminin. Le singulier et le pluriel, c'est le nombre."
+    },
+    {
+      "affirmation": "Dans le groupe nominal, l'adjectif s'accorde avec le nom.",
+      "vrai": true,
+      "correction": "Vrai : il prend le genre et le nombre du nom."
+    },
+    {
+      "affirmation": "Le féminin de « léger » est « légère ».",
+      "vrai": true,
+      "correction": "Vrai : -er devient -ère."
+    },
+    {
+      "affirmation": "Au pluriel, « gris » devient « grises » au masculin.",
+      "vrai": false,
+      "correction": "Faux : gris finit par s, il ne change pas. Des murs gris."
+    },
+    {
+      "affirmation": "Le masculin pluriel de « national » est « nationaux ».",
+      "vrai": true,
+      "correction": "Vrai : -al devient -aux."
+    },
+    {
+      "affirmation": "« Un cahier et une règle neuves » est bien accordé.",
+      "vrai": false,
+      "correction": "Faux : un masculin et un féminin donnent le masculin pluriel. Un cahier et une règle neufs."
+    },
+    {
+      "affirmation": "« Lavable » est formé sur le verbe « laver ».",
+      "vrai": true,
+      "correction": "Vrai : lav + able."
+    }
+  ]
+}
